@@ -57,8 +57,9 @@ function getPlayerData() {
     return s
 }
 
-function wipe(reload) {
+function wipe(reload,start) {
 	player = getPlayerData()
+    if (start) return
     setupOptions()
     reloadTemp()
     tab = 0, stab = [0,0,0,0], tab_name = 'shark'
@@ -130,7 +131,7 @@ function load(x){
     if(typeof x == "string" & x != ''){
         loadPlayer(JSON.parse(atob(x)))
     } else {
-        wipe()
+        wipe(false,true)
     }
 }
 
