@@ -1,0 +1,217 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/text-style.css">
+    <link rel="stylesheet" href="style/radio.css">
+    <link rel="stylesheet" href="style/notify.css">
+    <link rel="icon" href="textures/shark.png">
+    <title>Shark Incremental</title>
+
+    <script src="js/modules/break_eternity.js"></script>
+    <script src="js/modules/formulas.js"></script>
+    <script src="js/modules/radio.js"></script>
+    <script src="js/modules/graph.js"></script>
+    <script src="js/modules/popup.js"></script>
+    <script src="js/modules/notify.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/modules/currency.js"></script>
+
+    <script src="js/features/offline.js"></script>
+
+    <script src="js/features/automation.js"></script>
+    <script src="js/features/shark.js"></script>
+    <script src="js/features/research.js"></script>
+    <script src="js/features/explore.js"></script>
+    <script src="js/features/core-reactor.js"></script>
+
+    <script src="js/features/resets.js"></script>
+
+    <script src="js/temp.js"></script>
+    <script src="js/calc.js"></script>
+
+    <script src="js/element.js"></script>
+
+    <!-- Languages Setup -->
+
+    <script src="js/languages/language.js"></script>
+
+    <script src="js/languages/lang-en.js"></script>
+    <script src="js/languages/lang-ru.js"></script>
+
+    <!-- Load Scripts -->
+
+    <script src="js/tab.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/load.js"></script>
+</head>
+<body onload="loadGame()">
+    <input id="copy" style="position: absolute; top: 0; left: 0; user-select: all; visibility: hidden;">
+    <div id="app" style="display: none;">
+        <div id="currs-top">
+            <div class="curr-top">
+                <div>1.23e123,456,789 <text-style text="prestige">Prestige</text-style> Shards</div><button>Reset</button>
+            </div>
+        </div>
+        <div id="fish-div">Your <text-style text="shark">Shark</text-style> has eaten <h2><text-style text="fish" id="fish-amount">38.14SpDc</text-style></h2> (108.9SxDc/s) fish.</div>
+        <div class="main-line"></div>
+        <div id="tabs"></div>
+
+        <div id="shark-tab">
+            <div id="shark-div" class="table-center">
+                <div id="shark-stats"></div>
+                <button class="locked" id="shark-button" onclick="upgradeShark()"></button>
+                <div id="shark-bonus"></div>
+            </div><div id="shark-upgrades">
+                <div class="shark-upgrade">
+                    <div class="shark-upgrade-div">
+                        <div><h2>Upgrade Name</h2><br>Level: 0</div>
+                        <div>x???</div>
+                        <div><button class="shark-upgrade-button">Cost: ???</button></div>
+                    </div>
+                    <div class="shark-upgrade-requirement"><div>???</div></div>
+                </div>
+            </div>
+        </div><div id="auto-tab">
+            <div id="auto-table">
+                <div class="auto-div">
+                    <div class="auto-name">Auto-Shark Level</div>
+                    <div>Interval: 1.000s ➜ 0.800s</div>
+                    <button class="auto-button">Decrease Interval by 20%.<br>Cost: ???</button>
+                    <button class="auto-button-switch">OFF</button>
+                </div>
+            </div>
+        </div><div id="research-tab">
+            <div id="research-table">
+                <div class="research-div">
+                    <div class="research-name">Prestigious Agility</div>
+                    <div class="research-desc">'Shark Agility' now affects the base of <text-style text="shark">Shark</text-style> Level's <text-style text="prestige">Prestige</text-style> Shard bonus at a reduced rate.</div>
+                    <div class="research-short-text"><b>Require:</b> 10,000,000 Prestige Shard</div>
+                    <div class="research-status">
+                        <div><b>Not Purchased</b></div>
+                        <div><b>Effect:</b> +0.41</div>
+                    </div>
+                    <button class="research-button">Purchase</button>
+                </div>
+            </div>
+        </div><div id="explore-tab">
+            <div id="next-explore"></div>
+            <div id="explore-table">
+                <div class="explore-div">
+                    <div class="explore-desc">
+                        <button>Your base is +1/s.<br>Explore the ocean!</button>
+                        <div>
+                            <div style="min-height: 98px; text-align: left;">
+                                <h3>Pacific Ocean</h3><br>
+                                <text-style text="coral">Corals</text-style>: 0<br>
+                                <b>Effect</b>: ???<br>
+                                <b>Depth</b>: 0m / 10,935m
+                            </div><div class="table-left">
+                                <button class="explore-cost">Double <text-style text="coral">Corals</text-style> gained.<br>Cost: ???</button>
+                                <button class="explore-cost">Double depth progression gained.<br>Cost: ???</button>
+                            </div>
+                        </div><div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="core-reactor-tab">
+            <div id="core-reactor-table">
+                <button class="core-reactor-button">
+                    <div class="core-reactor-symbol">Fe</div>
+                    <div class="core-reactor-desc">This is Iron.</div>
+                </button><button class="core-reactor-button">
+                    <div class="core-reactor-symbol">Ni</div>
+                    <div class="core-reactor-desc">This is Nickel.</div>
+                </button><button class="core-reactor-button">
+                    <div class="core-reactor-symbol">O</div>
+                    <div class="core-reactor-desc">This is Oxygen.</div>
+                </button><button class="core-reactor-button">
+                    <div class="core-reactor-symbol">Ne</div>
+                    <div class="core-reactor-desc">This is Neon.</div>
+                </button>
+            </div>
+            <p id="core-reactor-bonus"></p>
+        </div><div id="options-tab">
+            <div class="option-div">
+                <div>
+                    <h2 id="option-title-1">Main Options</h2>
+                    <div class="table-center" id="option-buttons">
+                        <button class="big-btn">Save</button>
+                        <button class="big-btn">Export via clipboard</button>
+                        <button class="big-btn">Export via file</button>
+                        <button class="big-btn">Import via prompt</button>
+                        <button class="big-btn">Import via file</button>
+                        <button class="big-btn" id="wipe">WIPE!!!</button>
+                    </div>
+                    <div class="item-left">
+                        <div id="radio-autosave" class="input-radio"></div>
+                        <br><div id="radio-autosave-time" class="input-radio"></div>
+                        <br><div id="radio-offline" class="input-radio"></div>
+                    </div>
+                </div><div>
+                    <h2 id="option-title-2">Notations</h2>
+                    <div class="item-left">
+                        <div id="radio-notation" class="input-radio"></div>
+                        <br><div id="radio-comma-format" class="input-radio"></div>
+                    </div>
+                </div>
+            </div><div class="option-div">
+                <div>
+                    <h2 id="option-title-3">Confirmations</h2>
+                    <div class="item-left" id="confirmations-table"></div>
+                </div><div>
+                    <h2 id="option-title-4">Languages</h2>
+                    <div class="table-left" id="languages">
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 60px;"></div>
+        <div id="bottom-div">
+            Shark Incremental v0.0 by MrRedShark77
+            <div id="feature-progress">
+                <div id="fp-bar"></div>
+                <div id="fp-text">Feature Progression</div>
+            </div>
+        </div>
+
+        <div id="popup">
+            <div id="popup-ctn">
+                <div id="popup-html"></div>
+                <div id="popup-btns"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="offline" style="display: none;"> <!--  -->
+        <div id="offline-time"></div>
+        <div id="offline-html"></div>
+        <canvas id="offline-graph" class="graph" width="800" height="600"></canvas><br>
+        <button class="big-btn" onclick="offline.speed *= 2">Speed Offline</button>
+        <button class="big-btn" id="offline-done" onclick="offlineDone()" style="display: none;">Done</button>
+    </div>
+
+    <div id="notify">
+        <!--
+        <div class="notify-ctn">
+            <img src="https://imageio.forbes.com/specials-images/imageserve/5942a879a7ea434078d51f5a/960x960.jpg?height=400&width=400&fit=bounds">
+            You stupid, clone?
+        </div><div class="notify-ctn">
+            <img src="https://imageio.forbes.com/specials-images/imageserve/5942a879a7ea434078d51f5a/960x960.jpg?height=400&width=400&fit=bounds">
+            Hello everybody, my name is Markiplier and welcome to Five Nights at Freddy's, an indie horror game that you guys suggested, en masse, and I saw that Yamimash played it and he said it was really really good... So I'm very eager to see what is up. And that is a terrifying animatronic bear! 'Family pizzeria looking for security guard to work the nightshift.' Oh... 12 a.m. The first night. If I didn't wanna stay the first night, why would I stay any more than... five... Why I stay any more than two- hello? Okay...
+        </div>
+        -->
+    </div>
+</body>
+</html>

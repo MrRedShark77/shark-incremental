@@ -1,0 +1,45 @@
+.input-radio {
+    margin: 5px 0px;
+    display: inline-flex;
+    height: 40px;
+    align-items: center;
+}
+
+.input-radio-list {
+    display: flex;
+    justify-content: start;
+    align-self: stretch;
+    position: relative;
+    margin-left: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #11857f;
+	border: solid 2px #075551;
+}
+
+.input-radio-ctn {
+    min-width: 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.input-radio-ctn > div {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    z-index: 1;
+    color: white;
+}
+
+.input-ratio-select {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    min-width: 40px;
+    height: 100%;
+    background-color: #075551;
+    pointer-events: none;
+    transition: left 0.4s;
+}

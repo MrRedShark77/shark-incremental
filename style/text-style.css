@@ -1,0 +1,51 @@
+text-style {
+    font-style: normal;
+    font-weight: 1000;
+    filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
+
+    &[text="prestige"] {
+        color: cyan;
+    };
+
+    &[text="fish"] {
+        color: orange;
+    };
+
+    &[text="shark"] {
+        color: #93a3ac;
+    };
+
+    &[text="coral"] {
+        color: coral;
+    };
+
+    &[text="ice"] {
+        color: skyblue;
+    };
+
+    &[text="salt"] {
+        color: whitesmoke;
+    };
+
+    &[text="snow"] {
+        color: snow;
+    };
+
+    @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+        &[text="core"] {
+            background: radial-gradient(circle, #feff00 0%, #ff5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="humanoid"] {
+            background: linear-gradient(#003001, #00FF03, #003001);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="black-hole"] {
+            background: linear-gradient(magenta, purple, #303, purple, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+    };
+};
