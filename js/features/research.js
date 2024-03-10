@@ -125,7 +125,7 @@ function setupResearchHTML() {
                 </div>
                 <div class="research-buttons">
                     <button id="research-${i}-button" onclick="purchaseResearch('${i}')">Purchase</button>
-                    ${(x.max??1)>1&&!x.noBuyMax?`<button onclick="purchaseResearch('${i}',true)">${lang_text("buyMax")}</button>`:""}
+                    ${(x.max??1)>1&&!x.noBuyMax?`<button id="research-${i}-max-button" onclick="purchaseResearch('${i}',true)">${lang_text("buyMax")}</button>`:""}
                 </div>
             </div>
             `
@@ -181,6 +181,7 @@ function updateResearchHTML() {
             el(el_id+"-desc").innerHTML = lang_text(el_id+"-desc")
             el(el_id+"-require").style.display = el_display(!bought)
             el(el_id+"-button").style.display = el_display(!bought)
+            if ((x.max??1)>1&&!x.noBuyMax) el(el_id+"-max-button").style.display = el_display(!bought)
             if (!bought) {
                 el(el_id+"-require").innerHTML = `<b>${text[2]}:</b> ` + x.require.map(r => {
                     let curr = CURRENCIES[r[0]], cost = max>1?r[2](amt):r[2], a = (r[1]?curr.total:curr.amount).gte(cost)
