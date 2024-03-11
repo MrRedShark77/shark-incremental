@@ -78,7 +78,7 @@ const SHARK_UPGRADES = {
     p1: {
         req: ()=>player.prestige.times>0,
 
-        cost: l => Decimal.pow(2,l.pow(1.1)),
+        cost: l => Decimal.pow(2,l.pow(1.1)).ceil(),
         bulk: x => x.log(2).root(1.1).floor().add(1),
 
         curr: "prestige",

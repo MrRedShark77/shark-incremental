@@ -253,7 +253,7 @@ LANGUAGES.EN = {
         'next-at': "Next at",
         'depth': "Depth",
 
-        'research-afford': bool => bool ? "Purchase" : "Not Afford",
+        'research-afford': bool => bool ? "Purchase" : "Can't Afford",
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
 
         'off-on': bool => bool ? "ON" : "OFF",

@@ -5,7 +5,7 @@ const CORE_REACTOR = [
         get req_text() { return CURRENCIES.core.costName },
         get resource() { return CURRENCIES.core.amount },
 
-        require: l => Decimal.pow(2,l),
+        require: l => Decimal.pow(2,l).ceil(),
         bulk: x => x.log(2).floor().add(1),
 
         effect: l=>player.fish.max(10).log10().log10().div(100).mul(l).add(1),

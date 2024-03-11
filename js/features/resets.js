@@ -19,7 +19,7 @@ const RESETS = {
         }
     },
     core: {
-        get require() { return player.prestige.total.gte('e400') }, 
+        get require() { return player.prestige.total.gte('e450') }, 
         reset(force) {
             if (!force) {
                 gainCurrency('core',tmp.currency_gain.core)
@@ -53,6 +53,6 @@ const RESETS = {
 
 function doReset(id, force, ...arg) {
     var r = RESETS[id]
-    if (force || !player.radios['confirm-'+id]) r.reset(force, ...arg)
+    if (force || !player.radios['confirm-'+id] && r.require) r.reset(force, ...arg)
     else if (r.require) createConfirmationPopup(lang_text('reset-'+id+"-message"), () => {r.reset(false, ...arg)})
 }
