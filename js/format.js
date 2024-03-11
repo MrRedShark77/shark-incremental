@@ -334,6 +334,8 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
                 return neg+(be?'':m.toFixed(2))+'e'+format(e, 0, max, "sc")
             }
         case "st":
+            if (e.lt(max)) return format(ex, acc, max, "sc")
+
             let e3 = ex.log(1e3).floor()
             if (e3.lt(1)) {
               return neg+ex.toFixed(Math.max(Math.min(acc-e.toNumber(), acc), 0))

@@ -6,7 +6,7 @@ const CORE_REACTOR = [
         get resource() { return CURRENCIES.core.amount },
 
         require: l => Decimal.pow(2,l).ceil(),
-        bulk: x => x.log(2).floor().add(1),
+        bulk: x => x.log(2),
 
         effect: l=>player.fish.max(10).log10().log10().div(100).mul(l).add(1),
         effDesc: x => formatPow(x,3),
@@ -17,7 +17,7 @@ const CORE_REACTOR = [
         get resource() { return CURRENCIES.fish.amount },
         
         require: l => Decimal.pow(1e100,l.pow(3)).mul('e6000'),
-        bulk: x => x.div('e6000').log(1e100).root(3).floor().add(1),
+        bulk: x => x.div('e6000').log(1e100).root(3),
 
         effect: l=>{
             let x = player.prestige.shards.max(10).log10().log10().div(100).mul(l)
@@ -32,7 +32,7 @@ const CORE_REACTOR = [
         get resource() { return CURRENCIES.prestige.amount },
 
         require: l => Decimal.pow(1e10,l.pow(3)).mul('e700'),
-        bulk: x => x.div('e700').log(1e10).root(3).floor().add(1),
+        bulk: x => x.div('e700').log(1e10).root(3),
 
         effect(l) {
             let x = E(1)
@@ -51,12 +51,24 @@ const CORE_REACTOR = [
         get resource() { return CURRENCIES.coral.amount },
 
         require: l => Decimal.pow(10,l.pow(2.5)).mul('e60'),
-        bulk: x => x.div('e60').log(10).root(2.5).floor().add(1),
+        bulk: x => x.div('e60').log(10).root(2.5),
 
         effect: l=>player.shark_level.sqrt().div(100).mul(l).add(1),
         effDesc: x => format(x,3)+"√",
     },
 ]
+
+function getCoreReactorCost(i,l) {
+    let CR = CORE_REACTOR[i], x = l??player.core.reactor[i]
+
+    return CR.require(x.scale(9,3,3))
+}
+
+function getCoreReactorBulk(i,res) {
+    let CR = CORE_REACTOR[i], x = res??CR.resource
+
+    return CR.bulk(x).scale(9,3,3,true).floor().add(1)
+}
 
 function getBonusReactor() {
     let x = E(1)
@@ -71,8 +83,8 @@ function getBonusReactor() {
 function upgradeCoreReactor(i) {
     var CR = CORE_REACTOR[i]
 
-    if (CR.resource.gte(CR.require(player.core.reactor[i]))) {
-        player.core.reactor[i] = CR.bulk(CR.resource).max(player.core.reactor[i].add(1))
+    if (CR.resource.gte(getCoreReactorCost(i))) {
+        player.core.reactor[i] = getCoreReactorBulk(i).max(player.core.reactor[i].add(1))
     }
 }
 
@@ -86,11 +98,11 @@ function updateCoreHTML() {
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var CR = CORE_REACTOR[i], el_id = `core-reactor-${i}-`, level = player.core.reactor[i], res = CR.resource
 
-        var req = CR.require(level), bulk = res.lt(req) ? Decimal.dZero : CR.bulk(res), afford = bulk.gt(level)
+        var req = getCoreReactorCost(i,level), bulk = res.lt(req) ? Decimal.dZero : getCoreReactorBulk(i,res), afford = bulk.gt(level)
 
         el(el_id+"div").className = el_classes({"core-reactor-button": true, locked: !afford})
         el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "")
-        el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(CR.require(bulk),0).bold()+")" : "")
+        el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(getCoreReactorCost(i,bulk),0).bold()+")" : "")
         el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk)).bold() : "")
     }
 

@@ -2,7 +2,7 @@ const RESEARCH = {
     p1: {
         unl: ()=>true,
         require: [
-            ['prestige',false,1e7],
+            ['prestige',false,1e9],
             // ['prestige',false,l=>Decimal.pow(10,l).mul(1e7),x=>x.div(1e7).log(10).floor().add(1)],
         ],
         effect(r) {
@@ -13,7 +13,7 @@ const RESEARCH = {
     p2: {
         unl: ()=>true,
         require: [
-            ['prestige',false,1e10],
+            ['prestige',false,1e11],
         ],
     },
     p3: {
@@ -21,7 +21,8 @@ const RESEARCH = {
         noBuyMax: true,
         unl: ()=>true,
         require: [
-            ['prestige',false,l=>Decimal.pow(100,l.pow(2)).mul(1e12),x=>x.div(1e12).log(100).root(2).floor().add(1)],
+            // l=>Decimal.pow(100,l.pow(2.5)).mul(1e13)
+            ['prestige',false,l=>[1e13,1e15,1e24,1e30,1e48][l.round().toNumber()]??EINF,x=>0],
         ],
         onBuy() {
             CURRENCIES.prestige.amount = E(0)
@@ -36,7 +37,7 @@ const RESEARCH = {
     p4: {
         unl: ()=>true,
         require: [
-            ['prestige',false,1e55],
+            ['prestige',false,1e56],
         ],
     },
     p5: {
@@ -59,7 +60,7 @@ const RESEARCH = {
     p7: {
         unl: ()=>player.explore.unl>=3 || player.core.times>0,
         require: [
-            ['prestige',false,1e270],
+            ['prestige',false,1e265],
             ['salt',false,1e7],
         ],
     },

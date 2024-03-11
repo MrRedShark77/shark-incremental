@@ -12,13 +12,13 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow('1e700', Decimal.pow(1.015, l)), x=>x.log('1e700').log(1.015).floor().add(1),"fish"],
-            [l=>Decimal.pow(10, l.pow(1.25)).mul(1e6), x=>x.div(1e6).log10().root(1.25).floor().add(1)]
+            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
         ],
 
-        fish_req: E('1e125'),
+        fish_req: E('1e135'),
 
         milestone: [
-            200, 500, 1000, 5000, 10935
+            100, 250, 1000, 5000, 10935
         ],
     },{
         resource: "ice",
@@ -33,13 +33,13 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow('1e120', Decimal.pow(1.015, l)), x=>x.log('1e120').log(1.015).floor().add(1),"prestige"],
-            [l=>Decimal.pow(10, l.pow(1.25)).mul(1e6), x=>x.div(1e6).log10().root(1.25).floor().add(1)]
+            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
         ],
 
         fish_req: E('1e440'),
 
         milestone: [
-            200, 500, 1000, 5450
+            100, 250, 1000, 5450
         ],
     },{
         resource: "salt",
@@ -55,17 +55,17 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow(100, l.pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).floor().add(1),"coral"],
-            [l=>Decimal.pow(10, l.pow(1.25)).mul(1e6), x=>x.div(1e6).log10().root(1.25).floor().add(1)]
+            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
         ],
 
-        fish_req: E('1e190'),
+        fish_req: E('1e170'),
 
         milestone: [
-            200, 500, 1000, 8605
+            100, 250, 1000, 8605
         ],
     },{
         resource: "snow",
-        level_req: 215,
+        level_req: 210,
         maxDepth: 7236,
 
         effect(r) {
@@ -76,14 +76,14 @@ const EXPLORE = [
         effDesc: x => formatPow(x,3) + " " + toTextStyle('Prestige','prestige') + " shards",
 
         cost: [
-            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).floor().add(1),"ice"],
-            [l=>Decimal.pow(10, l.pow(1.25)).mul(1e6), x=>x.div(1e6).log10().root(1.25).floor().add(1)]
+            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).floor().add(1),"ice"],
+            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
         ],
 
-        fish_req: E('1e210'),
+        fish_req: E('1e200'),
 
         milestone: [
-            200, 500, 7236
+            100, 250, 7236
         ],
     },
 ]

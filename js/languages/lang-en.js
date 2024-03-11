@@ -61,15 +61,15 @@ LANGUAGES.EN = {
         'su-s1-name': 'Shark Strength',
         'su-s1-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>+1</b> per level.`,
 
-        'su-s2-req': "Level 6",
+        'su-s2-req': "Level 7",
         'su-s2-name': 'Shark Agility',
         'su-s2-desc': `Increases the base of ${toTextStyle('Shark','shark')} Level's ${toTextStyle('Fish','fish')} bonus by <b>+1</b> per level.`,
 
-        'su-s3-req': "Level 13",
+        'su-s3-req': "Level 15",
         'su-s3-name': 'Shark Teeth',
         'su-s3-desc': `Increases the exponent of 1st ${toTextStyle('Shark','shark')} Upgrade by <b>+50%</b> per level.`,
 
-        'su-s4-req': "Level 40",
+        'su-s4-req': "Level 38",
         'su-s4-name': 'Shark Exponent',
         'su-s4-desc': `Increases the exponent of ${toTextStyle('Fish','fish')} by <b>+1%</b> per level.`,
 

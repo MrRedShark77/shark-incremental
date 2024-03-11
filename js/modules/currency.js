@@ -20,7 +20,7 @@ const CURRENCIES = {
         },
     },
     prestige: {
-        get require() { return E('1e40') },
+        get require() { return E(1e36) },
 
         get amount() { return player.prestige.shards },
         set amount(v) { player.prestige.shards = v },
@@ -29,7 +29,7 @@ const CURRENCIES = {
         set total(v) { player.prestige.total = v },
     
         get gain() {
-            let x = player.total_fish.div(1e40)
+            let x = player.total_fish.div(1e36)
 
             if (x.lt(1)) return E(0)
 

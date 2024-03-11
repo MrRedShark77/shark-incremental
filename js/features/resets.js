@@ -1,6 +1,6 @@
 const RESETS = {
     prestige: {
-        get require() { return player.fish.gte(1e40) }, 
+        get require() { return player.fish.gte(1e36) }, 
         reset(force) {
             if (!force) {
                 gainCurrency('prestige',tmp.currency_gain.prestige)

@@ -33,7 +33,7 @@ const PROGRESS = [
     {
         cond_text: true,
         get amount() { return CURRENCIES.fish.total },
-        require: 1e40,
+        require: 1e36,
         logHeight: 1,
     },{
         auto: true,
@@ -42,7 +42,7 @@ const PROGRESS = [
     },{
         auto: true,
         get amount() { return CURRENCIES.prestige.amount },
-        require: 1e7,
+        require: 1e9,
         logHeight: 1,
     },{
         auto: true,

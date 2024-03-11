@@ -28,10 +28,10 @@ const SHARK_UPGRADES = {
         effDesc: x=>formatMult(x),
     },
     s2: {
-        req: ()=>player.shark_level.gte(6),
+        req: ()=>player.shark_level.gte(7),
 
-        cost: l => Decimal.pow(10,l.pow(1.25)).mul(1e5),
-        bulk: x => x.div(1e5).log(10).root(1.25).floor().add(1),
+        cost: l => Decimal.pow(10,l.pow(1.25)).mul(1e6),
+        bulk: x => x.div(1e6).log(10).root(1.25).floor().add(1),
 
         curr: "fish",
 
@@ -39,16 +39,16 @@ const SHARK_UPGRADES = {
         effDesc: x=>"+"+format(x,0),
     },
     s3: {
-        req: ()=>player.shark_level.gte(13),
+        req: ()=>player.shark_level.gte(15),
 
         cost: l => {
-            let x = Decimal.pow(1e3,l.scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e15)
+            let x = Decimal.pow(1e3,l.scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e21)
             if (hasResearch('c3')) x = x.root(coreReactorEffect(3))
             return x
         },
         bulk: x => {
             if (hasResearch('c3')) x = x.pow(coreReactorEffect(3))
-            return x.div(1e15).log(1e3).root(1.25).scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
+            return x.div(1e21).log(1e3).root(1.25).scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
         },
 
         curr: "fish",
@@ -58,16 +58,16 @@ const SHARK_UPGRADES = {
     },
     s4: {
         unl: ()=>hasResearch('p3'),
-        req: ()=>player.shark_level.gte(40),
+        req: ()=>player.shark_level.gte(38),
 
         cost: l => {
-            let x = Decimal.pow(1e5,l.scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e140)
+            let x = Decimal.pow(1e5,l.scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e135)
             if (hasResearch('c3')) x = x.root(coreReactorEffect(3))
             return x
         },
         bulk: x => {
             if (hasResearch('c3')) x = x.pow(coreReactorEffect(3))
-            return x.div(1e140).log(1e5).root(1.25).scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
+            return x.div(1e135).log(1e5).root(1.25).scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
         },
 
         curr: "fish",
