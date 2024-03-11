@@ -27,10 +27,10 @@ LANGUAGES.RU = {
         'core-name': "Магматические Фрагменты",
         'core-costName': toTextStyle('Магматических','core') + ' Фрагментов',
 
-        'curr-top-0-req': x => `Набрать <b>${format(1e40)}</b> ${toTextStyle('Рыб','fish')}`, 
+        'curr-top-0-req': x => `Набрать <b>${format(x)}</b> ${toTextStyle('Рыб','fish')}`, 
         'curr-top-0-reset': x => `Престиж за <b>${x.format(0)}</b> Осколков ${toTextStyle('Престижа','prestige')}`,
 
-        'curr-top-1-req': x => `Набрать <b>${format('1e450')}</b> Осколков ${toTextStyle('Престижа','prestige')}`, 
+        'curr-top-1-req': x => `Набрать <b>${format(x)}</b> Осколков ${toTextStyle('Престижа','prestige')}`, 
         'curr-top-1-reset': x => `Войти в ядро за <b>${x.format(0)}</b> ${toTextStyle('Магматических','core')} Фрагментов`,
 
         // Tabs
