@@ -45,6 +45,7 @@ const RESETS = {
                 player.explore.base[x] = E(0)
                 player.explore.upg[x] = [E(0), E(0)]
             }
+            player.explore.active = -1
 
             RESETS.prestige.doReset()
         }
