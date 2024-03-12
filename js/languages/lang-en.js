@@ -104,7 +104,7 @@ LANGUAGES.EN = {
         'research-p5-desc': `'Super Shark Strength' is <b>1%</b> stronger for every ${toTextStyle("Shark",'shark')} Level, starting at 100.`,
 
         'research-p6-name': "Super Scaled Shark",
-        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as stronger.`,
+        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as strong.`,
 
         'research-p7-name': "Better Resources I",
         'research-p7-desc': `${toTextStyle("Corals",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
