@@ -14,8 +14,8 @@ LANGUAGES.EN = {
         'prestige-name': "Prestige Shards",
         'prestige-costName': toTextStyle('Prestige','prestige') + " Shards",
 
-        'coral-name': "Corals",
-        'coral-costName': toTextStyle('Corals','coral'),
+        'coral-name': "Coral",
+        'coral-costName': toTextStyle('Coral','coral'),
 
         'ice-name': "Ice",
         'ice-costName': toTextStyle('Ice','ice'),
@@ -107,7 +107,7 @@ LANGUAGES.EN = {
         'research-p6-desc': `'Scaled Shark' is <b>twice</b> as strong.`,
 
         'research-p7-name': "Better Resources I",
-        'research-p7-desc': `${toTextStyle("Corals",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
+        'research-p7-desc': `${toTextStyle("Coral",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
 
         'research-e1-name': "Ocean Synergism I",
         'research-e1-desc': `${toTextStyle("Salt",'salt')} boosts ${toTextStyle("Corals",'coral')} generated.`,
