@@ -82,7 +82,7 @@ LANGUAGES.EN = {
         'su-p2-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×lg(${toTextStyle('Fish','fish')})</b> per level.`,
 
         'su-p3-name': 'Scaled Shark',
-        'su-p3-desc': `Increases the first scale of ${toTextStyle('Shark','shark')} Level starting by <b>+1</b> per level.`,
+        'su-p3-desc': `Increases the first scaling of ${toTextStyle('Shark','shark')} Level's start by <b>+1</b> per level.`,
 
         // Researches
 
