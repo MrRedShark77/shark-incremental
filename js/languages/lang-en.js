@@ -232,7 +232,7 @@ LANGUAGES.EN = {
             return `
             <h3>The ${c}</h3><br>
             The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments,
-            unlocking the ${c} reactor for the first time.<br>
+            also unlocking the ${c} reactor.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
             `
