@@ -284,7 +284,7 @@ LANGUAGES.EN = {
 
         'prompt-placeholder': "Type text here...",
 
-        'option-buttons-text': ["Save","Export via clipboard","Export via file","Import via prompt","Import via file","WIPE!!!"],
+        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!"],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
