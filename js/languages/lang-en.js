@@ -163,7 +163,7 @@ LANGUAGES.EN = {
             `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} Level's first scaling starts +1 later per 500m of depth.`,
-            `The ocean's effect is 50% as powerful.`,
+            `${toTextStyle("Salt",'salt')}'s effect is 50% as powerful.`,
         ],
 
         'explore-3-name': `Southern Ocean`,
@@ -171,7 +171,7 @@ LANGUAGES.EN = {
         'explore-3-milestone': [
             `Increase the base of exploration by 10x.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `The ocean's effect is 50% as powerful.`,
+            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% as powerful.`,
         ],
 
         // Core Reactor
