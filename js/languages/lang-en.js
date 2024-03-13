@@ -136,7 +136,7 @@ LANGUAGES.EN = {
         'explore-next': x=>`New Ocean at ${toTextStyle("Shark",'shark')} Level <h3>${format(x,0)}</h3>.`,
 
         'explore-doubler-1': x=>`Double ${x} gained.`,
-        'explore-doubler-2': `Double depth of progression gained.`,
+        'explore-doubler-2': `Double depth progression gain.`,
 
         'explore-0-name': `Pacific Ocean`,
         'explore-0-desc': `${toTextStyle('Fish','fish')} gain is rooted by 2.`,
