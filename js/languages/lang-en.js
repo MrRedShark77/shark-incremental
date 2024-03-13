@@ -82,7 +82,7 @@ LANGUAGES.EN = {
         'su-p2-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×lg(${toTextStyle('Fish','fish')})</b> per level.`,
 
         'su-p3-name': 'Scaled Shark',
-        'su-p3-desc': `Increases the first scaling of ${toTextStyle('Shark','shark')} Level's start by <b>+1</b> per level.`,
+        'su-p3-desc': `Delays the first ${toTextStyle('Shark','shark')} Level scaling by <b>+1</b> per level.`,
 
         // Researches
 
@@ -232,7 +232,7 @@ LANGUAGES.EN = {
             return `
             <h3>The ${c}</h3><br>
             The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments,
-            also unlocking the ${c} reactor.<br>
+            and also unlocks the ${c} reactor.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
             `
