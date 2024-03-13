@@ -142,7 +142,7 @@ LANGUAGES.EN = {
         'explore-0-desc': `${toTextStyle('Fish','fish')} gain is rooted by 2.`,
         'explore-0-milestone': [
             `Raise ${toTextStyle('Prestige','prestige')} shards gained to the 1.05th power.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Leveling ${toTextStyle('Shark','shark')} will no longer spend ${toTextStyle('Fish','fish')}.`,
             `Raise ${toTextStyle('Fish','fish')} eaten to the 1.05th power.`,
             `Unlock the ${toTextStyle('Core','core')}.`,
@@ -152,7 +152,7 @@ LANGUAGES.EN = {
         'explore-1-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Prestige','prestige')} Shards gain is rooted by 2.`,
         'explore-1-milestone': [
             `Unlock Auto-${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades will no longer spend ${toTextStyle('Prestige','prestige')} shards.`,
             `Passively generate 100% of ${toTextStyle('Prestige','prestige')} shards earned on ${toTextStyle('Prestige','prestige')}.`,
         ],
@@ -161,7 +161,7 @@ LANGUAGES.EN = {
         'explore-2-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Shark','shark')} Level scales 10x as strong.` ,
         'explore-2-milestone': [
             `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} Level's first scale starts +1 later per 500m of the depth.`,
             `The ocean's effect is 50% as powerful.`,
         ],
@@ -170,7 +170,7 @@ LANGUAGES.EN = {
         'explore-3-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. You cannot buy ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} & ${toTextStyle('Prestige','prestige')} upgrades.`,
         'explore-3-milestone': [
             `Increase the base of exploration by 10x.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `The ocean's effect is 50% as powerful.`,
         ],
 
