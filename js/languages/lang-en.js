@@ -163,7 +163,7 @@ LANGUAGES.EN = {
             `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} Level's first scaling starts +1 later per 500m of depth.`,
-            `${toTextStyle("Salt",'salt')}'s effect is 50% as powerful.`,
+            `${toTextStyle("Salt",'salt')}'s effect is 50% more powerful.`,
         ],
 
         'explore-3-name': `Southern Ocean`,
@@ -171,7 +171,7 @@ LANGUAGES.EN = {
         'explore-3-milestone': [
             `Increase the base of exploration by 10x.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% as powerful.`,
+            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% more powerful.`,
         ],
 
         // Core Reactor
@@ -231,8 +231,8 @@ LANGUAGES.EN = {
             let c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
             return `
             <h3>The ${c}</h3><br>
-            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments,
-            and also unlocks the ${c} reactor.<br>
+            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments.
+            It also unlocks the ${c} reactor.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
             `
