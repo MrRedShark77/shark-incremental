@@ -1,5 +1,3 @@
-// This is main language file! It's English!
-
 LANGUAGES.ES = {
     name: "Spanish",
     inter_name: "Español",
