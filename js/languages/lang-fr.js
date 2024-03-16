@@ -129,7 +129,7 @@ LANGUAGES.FR = {
 
         'explore-while': `En explorant`,
         'explore-inside': (a,b,c)=>`Base ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Atteignez ${format(c,0)} meilleur ${toTextStyle("Poissons",'fish')}.`,
-        'explore-outside': x=>`Votre base actuelle est de R${x.format()}/s.<br>Explorer l'océan!`,
+        'explore-outside': x=>`Votre base actuelle est de ${x.format()}/s.<br>Explorer l'océan!`,
 
         'explore-next': x=>`Nouvel océan à ${toTextStyle("Requin",'shark')} Niveau <h3>${format(x,0)}</h3>.`,
 
@@ -147,7 +147,7 @@ LANGUAGES.FR = {
         ],
 
         'explore-1-name': `Océan Arctique`,
-        'explore-1-desc': `Réinitialise vos Éclats de ${toTextStyle("Prestige",'prestige')} et amélioration ${toTextStyle("Prestige",'prestige')}. Gain des Éclats de ${toTextStyle('Prestige','prestige')} mis à la racine carrée.`,
+        'explore-1-desc': `Réinitialise vos Éclats de ${toTextStyle("Prestige",'prestige')} et amélioration de ${toTextStyle("Prestige",'prestige')}. Gain des Éclats de ${toTextStyle('Prestige','prestige')} mis à la racine carrée.`,
         'explore-1-milestone': [
             `Débloque l'Auto-${toTextStyle('Requin','shark')} améliorations de ${toTextStyle('Prestige','prestige')}.`,
             `Augmenter les ressources et la profondeur de la progression de 25% par niveau de ${toTextStyle('Requin','shark')} à la racine carrée.`,
