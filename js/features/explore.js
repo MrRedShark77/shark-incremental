@@ -243,7 +243,7 @@ function updateExplorationTemp() {
         if (hasDepthMilestone(i,1)) d = d.mul(Decimal.pow(1.25,player.shark_level.root(2)))
         tmp.depth_gain[i] = d
 
-        tmp.explore_mil_reached[i] = x.milestone.map((p) => player.explore.depth[i].gte(p))
+        tmp.explore_mil_reached[i] = x.milestone.map((p) => player.explore.depth[i].round().gte(Decimal.round(p)))
 
         tmp.explore_mult[i] = getResourceOtherMult(i)
     })
