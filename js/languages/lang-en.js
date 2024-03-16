@@ -14,8 +14,8 @@ LANGUAGES.EN = {
         'prestige-name': "Prestige Shards",
         'prestige-costName': toTextStyle('Prestige','prestige') + " Shards",
 
-        'coral-name': "Corals",
-        'coral-costName': toTextStyle('Corals','coral'),
+        'coral-name': "Coral",
+        'coral-costName': toTextStyle('Coral','coral'),
 
         'ice-name': "Ice",
         'ice-costName': toTextStyle('Ice','ice'),
@@ -82,7 +82,7 @@ LANGUAGES.EN = {
         'su-p2-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×lg(${toTextStyle('Fish','fish')})</b> per level.`,
 
         'su-p3-name': 'Scaled Shark',
-        'su-p3-desc': `Increases the first scale of ${toTextStyle('Shark','shark')} Level starting by <b>+1</b> per level.`,
+        'su-p3-desc': `Delays the first ${toTextStyle('Shark','shark')} Level scaling by <b>+1</b> per level.`,
 
         // Researches
 
@@ -104,10 +104,10 @@ LANGUAGES.EN = {
         'research-p5-desc': `'Super Shark Strength' is <b>1%</b> stronger for every ${toTextStyle("Shark",'shark')} Level, starting at 100.`,
 
         'research-p6-name': "Super Scaled Shark",
-        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as stronger.`,
+        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as strong.`,
 
         'research-p7-name': "Better Resources I",
-        'research-p7-desc': `${toTextStyle("Corals",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
+        'research-p7-desc': `${toTextStyle("Coral",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
 
         'research-e1-name': "Ocean Synergism I",
         'research-e1-desc': `${toTextStyle("Salt",'salt')} boosts ${toTextStyle("Corals",'coral')} generated.`,
@@ -136,13 +136,13 @@ LANGUAGES.EN = {
         'explore-next': x=>`New Ocean at ${toTextStyle("Shark",'shark')} Level <h3>${format(x,0)}</h3>.`,
 
         'explore-doubler-1': x=>`Double ${x} gained.`,
-        'explore-doubler-2': `Double depth of progression gained.`,
+        'explore-doubler-2': `Double depth progression gain.`,
 
         'explore-0-name': `Pacific Ocean`,
         'explore-0-desc': `${toTextStyle('Fish','fish')} gain is rooted by 2.`,
         'explore-0-milestone': [
             `Raise ${toTextStyle('Prestige','prestige')} shards gained to the 1.05th power.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Leveling ${toTextStyle('Shark','shark')} will no longer spend ${toTextStyle('Fish','fish')}.`,
             `Raise ${toTextStyle('Fish','fish')} eaten to the 1.05th power.`,
             `Unlock the ${toTextStyle('Core','core')}.`,
@@ -152,7 +152,7 @@ LANGUAGES.EN = {
         'explore-1-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Prestige','prestige')} Shards gain is rooted by 2.`,
         'explore-1-milestone': [
             `Unlock Auto-${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades will no longer spend ${toTextStyle('Prestige','prestige')} shards.`,
             `Passively generate 100% of ${toTextStyle('Prestige','prestige')} shards earned on ${toTextStyle('Prestige','prestige')}.`,
         ],
@@ -161,17 +161,17 @@ LANGUAGES.EN = {
         'explore-2-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Shark','shark')} Level scales 10x as strong.` ,
         'explore-2-milestone': [
             `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Shark','shark')} Level's first scale starts +1 later per 500m of the depth.`,
-            `The ocean's effect is 50% as powerful.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `${toTextStyle('Shark','shark')} Level's first scaling starts +1 later per 500m of depth.`,
+            `${toTextStyle("Salt",'salt')}'s effect is 50% more powerful.`,
         ],
 
         'explore-3-name': `Southern Ocean`,
         'explore-3-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. You cannot buy ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} & ${toTextStyle('Prestige','prestige')} upgrades.`,
         'explore-3-milestone': [
             `Increase the base of exploration by 10x.`,
-            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `The ocean's effect is 50% as powerful.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% more powerful.`,
         ],
 
         // Core Reactor
@@ -231,8 +231,8 @@ LANGUAGES.EN = {
             let c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
             return `
             <h3>The ${c}</h3><br>
-            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments,
-            unlocking the ${c} reactor for the first time.<br>
+            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments.
+            It also unlocks the ${c} reactor.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
             `
@@ -284,7 +284,7 @@ LANGUAGES.EN = {
 
         'prompt-placeholder': "Type text here...",
 
-        'option-buttons-text': ["Save","Export via clipboard","Export via file","Import via prompt","Import via file","WIPE!!!"],
+        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!"],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
