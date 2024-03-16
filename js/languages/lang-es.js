@@ -14,8 +14,8 @@ LANGUAGES.ES = {
         'prestige-name': "Cristales de prestigio",
         'prestige-costName': "Cristales de " + toTextStyle('Prestigio','prestige'),
 
-        'coral-name': "Corales",
-        'coral-costName': toTextStyle('Corales','coral'),
+        'coral-name': "Coral",
+        'coral-costName': toTextStyle('Coral','coral'),
 
         'ice-name': "Hielo",
         'ice-costName': toTextStyle('Hielo','ice'),
@@ -82,7 +82,7 @@ LANGUAGES.ES = {
         'su-p2-desc': `Aumenta los ${toTextStyle('Peces','fish')} comidos en <b>×lg(${toTextStyle('Peces','fish')})</b> por nivel.`,
 
         'su-p3-name': 'Escalado de Tiburón',
-        'su-p3-desc': `Aumenta el primer escalado de los niveles del ${toTextStyle('Tiburón','shark')} comenzando en <b>+1</b> por nivel.`,
+        'su-p3-desc': `Retrasa el primer escalado de los niveles del ${toTextStyle('Tiburón','shark')} en <b>+1</b> por nivel.`,
 
         // Researches
 
@@ -107,13 +107,13 @@ LANGUAGES.ES = {
         'research-p6-desc': `'Tiburón Escalado' es el <b>doble</b> de poderoso.`,
 
         'research-p7-name': "Mejores recursos I",
-        'research-p7-desc': `El efecto de los ${toTextStyle("Corales",'coral')} y el ${toTextStyle("Hielo",'ice')} son mejores.`,
+        'research-p7-desc': `El efecto de ${toTextStyle("Coral",'coral')} y el ${toTextStyle("Hielo",'ice')} son mejores.`,
 
         'research-e1-name': "Sinergia oceánica I",
         'research-e1-desc': `La ${toTextStyle("Sal",'salt')} impulsa los ${toTextStyle("Corales",'coral')} generados.`,
 
         'research-e2-name': "Sinergia oceánica II",
-        'research-e2-desc': `La ${toTextStyle("Compressed Nieve",'snow')} impulsa el ${toTextStyle("Hielo",'ice')} generado.`,
+        'research-e2-desc': `La ${toTextStyle("Nieve Comprimida",'snow')} impulsa el ${toTextStyle("Hielo",'ice')} generado.`,
 
         'research-c1-name': "Investigaciones C-Keeper",
         'research-c1-desc': `Manten tus ${toTextStyle("Investigaciones",'prestige')} al entrar al ${toTextStyle('Núcleo','core')}.`,
@@ -160,10 +160,10 @@ LANGUAGES.ES = {
         'explore-2-name': `Océano Atlántico`,
         'explore-2-desc': `Resetéa tus cristales de ${toTextStyle("Prestigio",'prestige')} y mejoras de ${toTextStyle("Prestigio",'prestige')}.Nivelar el ${toTextStyle('Tiburón','shark')} escala 10x más rápido.` ,
         'explore-2-milestone': [
-            `El escalamiento de los 'Dientes del Tiburón' y 'Exponente del Tiburón' son ligeramente más débiles.`,
+            `El escalado de 'Dientes del Tiburón' y 'Exponente del Tiburón' son ligeramente más débiles.`,
             `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
-            `La escala de los niveles del ${toTextStyle('Tiburón','shark')} empiezan +1 más tarde por cada 500m de profundidad.`,
-            `El efecto del océano es un 50% más debil.`,
+            `El escalado de los niveles del ${toTextStyle('Tiburón','shark')} empiezan +1 más tarde por cada 500m de profundidad.`,
+            `El efecto de la ${toTextStyle("Sal",'salt')}' es un 50% más fuerte.`,
         ],
 
         'explore-3-name': `Oceáno Antártico`,
@@ -171,7 +171,7 @@ LANGUAGES.ES = {
         'explore-3-milestone': [
             `Aumenta la base de la exploración en 10x.`,
             `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
-            `El efecto del océano es un 50% más debil.`,
+            `El efecto de ${toTextStyle('Nieve Comprimida','snow')} es un 50% más fuerte.`,
         ],
 
         // Core Reactor
@@ -231,8 +231,8 @@ LANGUAGES.ES = {
             let c = toTextStyle('Núcleo','core'), m = toTextStyle('Magmáticos','core'), p = toTextStyle('Prestigio','prestige')
             return `
             <h3>El ${c}</h3><br>
-            El ${c} es la segunda capa de reinicio. Entrar al núcleo reiniciara todo lo que el ${p} hace, también como los cristales de ${p} , mejoras de ${p} , ${toTextStyle('Investigaciones','prestige')} (casi todas), y exploraciones por fragmentos ${m},
-            Desbloqueando el reactor del ${c} por la primera vez.<br>
+            El ${c} es la segunda capa de reinicio. Entrar al núcleo reiniciara todo lo que el ${p} hace, también como los cristales de ${p} , mejoras de ${p} , ${toTextStyle('Investigaciones','prestige')} (casi todas), y exploraciones por fragmentos ${m}.
+            Tambien desbloquea el reactor del ${c}.<br>
             <img src="textures/Magmatic.png"><br>
             ¿Estás seguro que quieres entrar al núcleo?
             `
