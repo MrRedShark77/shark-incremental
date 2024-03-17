@@ -41,7 +41,7 @@ LANGUAGES.ES = {
         'tab-options': "Opciones",
         'tab-auto': "Automatización",
         'tab-research': toTextStyle('Investigaciones','prestige'),
-        'tab-explore': "Exploraciónes",
+        'tab-explore': "Exploraciones",
         'tab-core': "El "+toTextStyle('Núcleo','core'),
         'tab-core-reactor': "Reactor " + toTextStyle('Nuclear','core'),
 
