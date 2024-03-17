@@ -93,7 +93,7 @@ LANGUAGES.ES = {
         'research-p2-desc': `Las mejororas de ${toTextStyle("Tiburón",'shark')} que usan ${toTextStyle("Peces",'fish')} ya no gastan ${toTextStyle("Peces",'fish')}.`,
 
         'research-p3-name': "Niveles de Tiburón Mejorados",
-        'research-p3-desc': `Reduce la base de los requisitos de los niveles del ${toTextStyle("Shark",'shark')} por <b>1</b>,
+        'research-p3-desc': `Reduce la base de los requisitos de los niveles del ${toTextStyle("Tiburón",'shark')} por <b>1</b>,
         pero fuerza un reseteo de ${toTextStyle("Prestigio",'prestige')}, reseteando tus cristales de ${toTextStyle("Prestigio",'prestige')} y las mejoras de ${toTextStyle("Prestigio",'prestige')}.
         Desbloquea mejoras de ${toTextStyle("Tiburón",'shark')}.`,
 
