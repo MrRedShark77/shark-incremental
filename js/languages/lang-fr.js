@@ -131,7 +131,7 @@ LANGUAGES.FR = {
         'explore-inside': (a,b,c)=>`Base ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Atteignez ${format(c,0)} meilleur ${toTextStyle("Poissons",'fish')}.`,
         'explore-outside': x=>`Votre base actuelle est de ${x.format()}/s.<br>Explorer l'océan!`,
 
-        'explore-next': x=>`Nouvel océan à ${toTextStyle("Requin",'shark')} Niveau <h3>${format(x,0)}</h3>.`,
+        'explore-next': x=>`Nouvel océan au niveau <h3>${format(x,0)}</h3> du ${toTextStyle("Requin",'shark')}.`,
 
         'explore-doubler-1': x=>`Double ${x} acquis.`,
         'explore-doubler-2': `Double profondeur de la progression acquise.`,
