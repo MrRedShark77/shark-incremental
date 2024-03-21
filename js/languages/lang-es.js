@@ -1,4 +1,4 @@
-// This is main language file! It's Spanish!
+// This is Spanish!
 
 LANGUAGES.ES = {
     name: "Spanish",
