@@ -23,7 +23,7 @@ function simulateOffline(time) {
     el("offline").style.display = ""
     resetCanvasGraph("offline")
 
-    el("offline-time").innerHTML = `You have been offline for <b>${formatTime(time,0)}</b>.`
+    el("offline-time").innerHTML = lang_text('offline-time-text',time)
 
     graphs.offline.max_graph_x = time
     addGraphPlot("offline",0,player.fish,false)

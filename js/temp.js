@@ -22,7 +22,9 @@ function reloadTemp() {
         explore_upg_boost: [],
         explore_mil_reached: [],
 
+        core_bonus_level: [],
         core_effect: [],
+        cr_boost: [],
     }
 
     for (let x in EXPLORE) {
@@ -32,6 +34,8 @@ function reloadTemp() {
 }
 
 function updateTemp() {
+    tmp.cr_active = player.core.radiation.active
+
     updateResearchTemp()
     updateCoreTemp()
     updateExplorationTemp()

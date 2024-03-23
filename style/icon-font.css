@@ -1,0 +1,9 @@
+@font-face {
+	font-family: IconFont;
+	src: url('iconly.ttf');
+}
+
+icon {
+    font-family: IconFont;
+    display: inline-block;
+}

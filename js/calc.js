@@ -29,8 +29,16 @@ function calc(dt) {
         if (player.explore.active > -1) player.explore.best_fish = player.explore.best_fish.max(player.fish)
 
         for (let i in EXPLORE) {
-            if (u > parseInt(i)) player.explore.depth[i] = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt)).min(EXPLORE[i].maxDepth)
+            i = parseInt(i)
+            if (u > i) player.explore.depth[i] = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt)).min(EXPLORE[i].maxDepth)
+            if (player.research.e3.toNumber() > i) player.explore.base[i] = player.explore.base[i].max(getBaseExploration(i,player.fish))
         }
+    }
+
+    if (player.feature >= 7) {
+        var rad = player.core.radiation
+
+        if (rad.amount.lt(tmp.cr_limit)) rad.amount = rad.amount.add(tmp.cr_gain.mul(dt)).min(tmp.cr_limit)
     }
 
     player.latest_time = Date.now()

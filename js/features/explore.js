@@ -8,7 +8,7 @@ const EXPLORE = [
             let x = r.add(1).pow(hasResearch('p7') ? 4 : 3)
             return x
         },
-        effDesc: x => formatMult(x) + " " + toTextStyle('Fish','fish'),
+        effDesc: x => formatMult(x) + " " + CURRENCIES.fish.costName,
 
         cost: [
             [l=>Decimal.pow('1e700', Decimal.pow(1.015, l)), x=>x.log('1e700').log(1.015).floor().add(1),"fish"],
@@ -29,7 +29,7 @@ const EXPLORE = [
             let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5)
             return x
         },
-        effDesc: x => formatMult(x) + " " + toTextStyle('Prestige','prestige') + " shards",
+        effDesc: x => formatMult(x) + " " + CURRENCIES.prestige.costName,
 
         cost: [
             [l=>Decimal.pow('1e120', Decimal.pow(1.015, l)), x=>x.log('1e120').log(1.015).floor().add(1),"prestige"],
@@ -51,7 +51,7 @@ const EXPLORE = [
             if (hasDepthMilestone(2,3)) x = x.mul(1.5)
             return x.add(1)
         },
-        effDesc: x => formatPow(x,3) + " " + toTextStyle('Fish','fish'),
+        effDesc: x => formatPow(x,3) + " " + CURRENCIES.fish.costName,
 
         cost: [
             [l=>Decimal.pow(100, l.pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).floor().add(1),"coral"],
@@ -73,7 +73,7 @@ const EXPLORE = [
             if (hasDepthMilestone(3,2)) x = x.mul(1.5)
             return x.add(1)
         },
-        effDesc: x => formatPow(x,3) + " " + toTextStyle('Prestige','prestige') + " shards",
+        effDesc: x => formatPow(x,3) + " " + CURRENCIES.prestige.costName,
 
         cost: [
             [l=>Decimal.pow(100, l.pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).floor().add(1),"ice"],
@@ -84,6 +84,27 @@ const EXPLORE = [
 
         milestone: [
             100, 250, 7236
+        ],
+    },{
+        resource: "kelp",
+        level_req: 1000,
+        maxDepth: 7290,
+
+        effect(r) {
+            let x = expPow(r.add(1),hasDepthMilestone(4,3) ? 0.75 : 0.5)
+            return x
+        },
+        effDesc: x => formatMult(x) + " " + lang_text("radioactive-name"),
+
+        cost: [
+            [l=>Decimal.pow(10, l.pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).floor().add(1),"core"],
+            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+        ],
+
+        fish_req: E('1e6000'),
+
+        milestone: [
+            100, 250, 5000, 7290
         ],
     },
 ]
@@ -97,20 +118,25 @@ function getResourceOtherMult(i) {
         case 1:
             if (hasResearch('e2')) x = x.mul(researchEffect('e2'))
         break;
+        case 4:
+            if (hasResearch('e4')) x = x.mul(researchEffect('e4'))
+        break;
     }
+    if (i < 4) x = x.mul(coreReactorEffect(2))
+    if (hasDepthMilestone(i,1)) x = x.mul(Decimal.pow(1.25,player.shark_level.root(2)))
     return x
 }
 
-function getBaseExploration(i=player.explore.active) {
+function getBaseExploration(i=player.explore.active,amt=player.explore.best_fish) {
     let req = EXPLORE[i]?.fish_req??EINF
-    let x = player.explore.best_fish.div(req)
+    let x = amt.div(req)
     if (x.lt(1)) return E(0)
-    x = x.log10().add(1).pow(2)
+    x = i == 4 ? x.log10().div(100).add(1).pow(2) : x.log10().add(1).pow(2)
     if (hasDepthMilestone(3,0)) x = x.mul(10)
     return x
 }
 
-function inExploration(i) { return player.explore.active == i }
+function inExploration(i) { return player.explore.active == i || player.explore.active == 4 && i < 4 }
 function hasDepthMilestone(i,j) { return tmp.explore_mil_reached[i][j] }
 
 function calcNextDepth(x,gain) {

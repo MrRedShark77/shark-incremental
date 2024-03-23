@@ -31,6 +31,10 @@ text-style {
         color: snow;
     };
 
+    &[text="kelp"] {
+        color: #bd9159;
+    };
+
     @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
         &[text="core"] {
             background: radial-gradient(circle, #feff00 0%, #ff5500 100%);

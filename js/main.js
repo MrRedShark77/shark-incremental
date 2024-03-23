@@ -57,6 +57,14 @@ const PROGRESS = [
         get amount() { return CURRENCIES.prestige.total },
         require: '1e450',
         logHeight: 1,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.core.amount },
+        require: 10000,
+    },{
+        auto: true,
+        get amount() { return player.shark_level },
+        require: 1000,
     },
 ]
 

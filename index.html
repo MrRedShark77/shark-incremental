@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/icon-font.css">
     <link rel="stylesheet" href="style/text-style.css">
     <link rel="stylesheet" href="style/radio.css">
     <link rel="stylesheet" href="style/notify.css">
@@ -16,6 +17,8 @@
     <meta property="og:image" content="https://mrredshark77.github.io/shark-incremental//textures/shark.png" />
 
     <title>Shark Incremental</title>
+
+    <script src="js/modules/icon.js"></script>
 
     <script src="js/modules/break_eternity.js"></script>
     <script src="js/modules/formulas.js"></script>
@@ -35,6 +38,7 @@
     <script src="js/features/research.js"></script>
     <script src="js/features/explore.js"></script>
     <script src="js/features/core-reactor.js"></script>
+    <script src="js/features/core-radiation.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -148,6 +152,23 @@
                 </button>
             </div>
             <p id="core-reactor-bonus"></p>
+        </div><div id="core-radiation-tab">
+            <details id="radioactive-summary"></details>
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <p id="radioactive-div"></p>
+                        <div class="table-center">
+                            <button class="huge-btn" id="start-cr-experiment" onclick="CORE_RAD.experiment()">Start the experiment.</button>
+                            <button class="huge-btn" id="upgrade-cr-btn" onclick="CORE_RAD.purchaseGeneration()">Upgrade the radiation generation.</button>
+                            <button class="huge-btn" id="reset-cr-btn" onclick="CORE_RAD.purchaseBoost()" style="font-size: 12px;">Reset the radiation, but increase its limit by <b>???</b>, and sometimes add a new boost or upgrade the boosts.</button>
+                        </div>
+                    </td><td style="width: 50%;">
+                        <p id="radioboost-div"></p>
+                        <div id="cr-boosts-div"></div>
+                    </td>
+                </tr>
+            </table>
         </div><div id="options-tab">
             <div class="option-div">
                 <div>
@@ -190,7 +211,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.0.1 by MrRedShark77
+            Shark Incremental v0.1 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>
@@ -209,7 +230,7 @@
         <div id="offline-time"></div>
         <div id="offline-html"></div>
         <canvas id="offline-graph" class="graph" width="800" height="600"></canvas><br>
-        <button class="big-btn" onclick="offline.speed *= 2">Speed Offline</button>
+        <button class="big-btn" id="offline-speed" onclick="offline.speed *= 2">Speed Offline</button>
         <button class="big-btn" id="offline-done" onclick="offlineDone()" style="display: none;">Done</button>
     </div>
 

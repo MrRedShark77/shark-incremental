@@ -15,6 +15,10 @@ const CURRENCIES = {
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
+
+            if (tmp.cr_active) x = x.root(3)
+
+            if (inExploration(4)) x = expPow(x,0.75)
     
             return x
         },
@@ -39,6 +43,8 @@ const CURRENCIES = {
 
             if (hasDepthMilestone(0,0)) x = x.pow(1.05)
             if (inExploration(1)) x = x.root(2)
+
+            if (tmp.cr_active) x = x.root(3)
     
             return x.floor()
         },
@@ -56,7 +62,7 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0)
 
-            x = x.log10().div(10).add(1).mul(getSharkBonus("core"))
+            x = x.log10().div(10).add(1).mul(getSharkBonus("core")).mul(getCRBoost(1))
     
             return x.floor()
         },
@@ -77,9 +83,7 @@ function setupCurrencies() {
 
                 let x = player.explore.base[i].mul(tmp.explore_upg_boost[i][0]).mul(tmp.explore_mult[i])
 
-                if (i < 4) x = x.mul(coreReactorEffect(2))
-
-                if (hasDepthMilestone(i,1)) x = x.mul(Decimal.pow(1.25,player.shark_level.root(2)))
+                if (i < 4 && tmp.cr_active) x = x.root(3)
         
                 return x
             },
