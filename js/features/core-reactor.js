@@ -53,7 +53,7 @@ const CORE_REACTOR = [
         require: l => Decimal.pow(10,l.pow(2.5)).mul('e60'),
         bulk: x => x.div('e60').log(10).root(2.5),
 
-        effect: l=>player.shark_level.sqrt().div(100).mul(l).add(1),
+        effect: l=>player.shark_level.max(0).sqrt().div(100).mul(l).add(1),
         effDesc: x => format(x,3)+"√",
     },
 ]
@@ -61,13 +61,13 @@ const CORE_REACTOR = [
 function getCoreReactorCost(i,l) {
     let CR = CORE_REACTOR[i], x = l??player.core.reactor[i]
 
-    return CR.require(x.scale(9,3,3))
+    return CR.require(x.scale(tmp.core_scale1,3,3))
 }
 
 function getCoreReactorBulk(i,res) {
     let CR = CORE_REACTOR[i], x = res??CR.resource
 
-    return CR.bulk(x).scale(9,3,3,true).floor().add(1)
+    return CR.bulk(x).scale(tmp.core_scale1,3,3,true).floor().add(1)
 }
 
 function getBonusReactor() {
@@ -76,6 +76,8 @@ function getBonusReactor() {
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         x = x.mul(player.core.reactor[i].add(1))
     }
+
+    if (hasResearch('c5')) x = x.mul(getCRBoost(0,0).div(50).add(1))
 
     return Decimal.pow10(x.pow(0.8).sub(1))
 }
@@ -98,12 +100,12 @@ function updateCoreHTML() {
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var CR = CORE_REACTOR[i], el_id = `core-reactor-${i}-`, level = player.core.reactor[i], res = CR.resource
 
-        var req = getCoreReactorCost(i,level), bulk = res.lt(req) ? Decimal.dZero : getCoreReactorBulk(i,res), afford = bulk.gt(level)
+        var req = getCoreReactorCost(i,level), bulk = res.lt(req) ? Decimal.dZero : getCoreReactorBulk(i,res), afford = bulk.gt(level), bonus = tmp.core_bonus_level[i]
 
         el(el_id+"div").className = el_classes({"core-reactor-button": true, locked: !afford})
-        el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "")
+        el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "") + (bonus.gt(0) ? " + " + format(bonus) : "")
         el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(getCoreReactorCost(i,bulk),0).bold()+")" : "")
-        el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk)).bold() : "")
+        el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus))).bold() : "")
     }
 
     el("core-reactor-bonus").innerHTML = lang_text(`core-bonus`,tmp.core_bonus)
@@ -134,11 +136,25 @@ function setupCoreHTML() {
 }
 
 function updateCoreTemp() {
+    updateCoreRadiationTemp()
+
+    var bonus1 = getCRBoost(0,0)
+    
     for (let i = 0; i < CORE_REACTOR.length; i++) {
-        var CR = CORE_REACTOR[i], level = player.core.reactor[i]
+        var bonus = Decimal.dZero
+
+        if (i < 4) bonus = bonus.add(bonus1)
+
+        tmp.core_bonus_level[i] = bonus
+
+        var CR = CORE_REACTOR[i], level = tmp.cr_active ? Decimal.dZero : player.core.reactor[i].add(bonus)
 
         tmp.core_effect[i] = CR.effect(level)
     }
 
     tmp.core_bonus = getBonusReactor()
+
+    var scale = 10
+    if (hasDepthMilestone(4,2)) scale += 5
+    tmp.core_scale1 = scale
 }

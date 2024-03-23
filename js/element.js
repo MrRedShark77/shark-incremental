@@ -4,7 +4,7 @@ function el_classes(data) { return Object.keys(data).filter(x => data[x]).join("
 function updateHTML() {
     updateTabs()
 
-    el('fish-amount').textContent = CURRENCIES.fish.amount.format(0)
+    el('fish-amount').innerHTML = CURRENCIES.fish.amount.format(0) + (tmp.cr_active ? " " + icon("radioactive") : "")
     el('fish-gain').textContent = tmp.currency_gain.fish.gt(0) ? CURRENCIES.fish.amount.formatGain(tmp.currency_gain.fish) : ""
 
     updateTopCurrenciesHTML()

@@ -38,7 +38,7 @@ const RESETS = {
 
             var k = player.research.c2.round().toNumber()
 
-            player.explore.unl = k
+            player.explore.unl = k == 4 && player.feature>=8 ? 5 : k
             for (let x = 0; x < 4; x++) {
                 player.explore.res[x] = E(0)
                 if (x >= k) player.explore.depth[x] = E(0)

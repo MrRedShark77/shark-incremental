@@ -1,4 +1,4 @@
-const AUTO_MIN_INTERVAL = 0.1
+const AUTO_MIN_INTERVAL = 1/FPS
 var auto_time = {}
 
 const AUTOMATION = {
@@ -25,7 +25,7 @@ const AUTOMATION = {
         curr: "prestige",
 
         trigger() {
-            buyAllSharkUpgrades(['s4','s3','s2','s1'])
+            buyAllSharkUpgrades(['s5','s4','s3','s2','s1'])
         },
     },
     spu: {

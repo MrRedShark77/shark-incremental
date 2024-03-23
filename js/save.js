@@ -33,6 +33,13 @@ function getPlayerData() {
             times: 0,
 
             reactor: [],
+            
+            radiation: {
+                active: false,
+                amount: E(0),
+                gen: E(0),
+                boost: E(0),
+            },
         },
 
         radios: {},

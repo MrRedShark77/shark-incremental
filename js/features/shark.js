@@ -1,11 +1,12 @@
 const SHARK = {
-    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(100,3,3).scale(tmp.scale_shark1,2,0)).root(coreReactorEffect(3)) },
-    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,0,true).scale(100,3,3,true).div(tmp.shark_scale_str).floor().add(1) },
+    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(1e3,3,0).scale(tmp.scale_shark2,3,3).scale(tmp.scale_shark1,2,0)).root(coreReactorEffect(3)) },
+    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,0,true).scale(tmp.scale_shark2,3,3,true).scale(1e3,3,0,true).div(tmp.shark_scale_str).floor().add(1) },
 
     bonuses: {
         fish: [()=>player.shark_level.gte(1),l=>Decimal.pow(tmp.shark_base,l).mul(l),E(0)],
         prestige: [()=>player.shark_level.gte(20),l=>Decimal.add(1.25,simpleResearchEffect('p1',0)).pow(l.sub(19)),E(1)],
-        core: [()=>player.shark_level.gte(300),l=>Decimal.pow(1.01,l.sub(299)),E(1)],
+        core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)),E(1)],
+        // rad: [()=>player.shark_level.gte(600),l=>Decimal.pow(1.01,l.sub(599)),E(1)],
     },
 
     bonus() {
@@ -53,7 +54,7 @@ const SHARK_UPGRADES = {
 
         curr: "fish",
 
-        effect: l=>l.div(2).add(1),
+        effect: l=>l.div(2).add(1).pow(hasResearch('c7')?2.5:1),
         effDesc: x=>formatPow(x),
     },
     s4: {
@@ -74,6 +75,23 @@ const SHARK_UPGRADES = {
 
         effect: l=>l.div(100).add(1),
         effDesc: x=>formatPow(x),
+    },
+    s5: {
+        unl: ()=>player.feature>=7,
+        req: ()=>player.shark_level.gte(640),
+
+        cost: l => {
+            let x = Decimal.pow('e8e5',Decimal.pow(1.1,l))
+            return x
+        },
+        bulk: x => {
+            return x.log('e8e5').log(1.1).floor().add(1)
+        },
+
+        curr: "fish",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x),
     },
     p1: {
         req: ()=>player.prestige.times>0,
@@ -165,12 +183,20 @@ function updateSharkTemp() {
     tmp.su_el.fish = hasResearch('p2')
     tmp.su_el.prestige = hasDepthMilestone(1,2)
 
-    for (let [i,v] of Object.entries(SHARK_UPGRADES)) tmp.shark_upg_eff[i] = v.effect(player.shark_upg[i])
+    for (let [i,v] of Object.entries(SHARK_UPGRADES)) {
+        var lvl = player.shark_upg[i]
+        if (['s1','s2','s3','s4'].includes(i)) lvl = lvl.mul(getCRBoost(2))
+        tmp.shark_upg_eff[i] = v.effect(lvl)
+    }
 
     tmp.shark_base = sharkUpgEffect('s2').add(2)
     tmp.shark_scale_str = inExploration(2) ? 10 : 1
+
     tmp.shark_req_base = Decimal.sub(10,researchEffect('p3',0))
+    if (hasResearch('p8')) tmp.shark_req_base = tmp.shark_req_base.sub(1)
+
     tmp.scale_shark1 = Decimal.add(10,sharkUpgEffect('p3',0)).add(hasDepthMilestone(2,2)?player.explore.depth[2].div(500).floor():0)
+    tmp.scale_shark2 = Decimal.add(100,getCRBoost(3,0))
 
     for (let [i,v] of Object.entries(SHARK.bonuses)) tmp.shark_bonus[i] = v[0]() ? v[1](player.shark_level) : v[2]
 }
@@ -193,16 +219,17 @@ function updateSharkHTML() {
 
         if (!unl) continue;
     
+        let amt = player.shark_upg[i]
         let req = true
         if (v.req) {
-            req = v.req()
+            req = amt.gt(0) || v.req()
             el('su-'+i+'-req-div').style.display = el_display(!req)
             el('su-'+i+'-info').style.display = el_display(req)
         }
 
         if (!req) continue;
 
-        let amt = player.shark_upg[i], cost = v.cost(amt)
+        let cost = v.cost(amt)
 
         el('su-'+i+'-level').textContent = amt.format(0)
 

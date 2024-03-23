@@ -1,4 +1,4 @@
-// This is Vietnamese!
+// This is main language file! It's Vietnamese!
 
 LANGUAGES.VN = {
     name: "Vietnamese",
@@ -11,8 +11,8 @@ LANGUAGES.VN = {
         'fish-name': "Cá",
         'fish-costName': toTextStyle('Cá','fish'),
 
-        'prestige-name': "Mãnh Uy Tín",
-        'prestige-costName': "Mãnh " + toTextStyle('Uy Tín','prestige'),
+        'prestige-name': "Mãnh Prestige",
+        'prestige-costName': "Mãnh " + toTextStyle('Prestige','prestige'),
 
         'coral-name': "San Hô",
         'coral-costName': toTextStyle('San Hô','coral'),
@@ -30,9 +30,9 @@ LANGUAGES.VN = {
         'core-costName': 'Miếng ' + toTextStyle('Mắc Ma','core'),
 
         'curr-top-0-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> con ${toTextStyle('Cá','fish')}`, 
-        'curr-top-0-reset': x => `Làm uy tín để nhận <b>${x.format(0)}</b> Mãnh ${toTextStyle('Uy Tín','prestige')}`,
+        'curr-top-0-reset': x => `Làm uy tín để nhận <b>${x.format(0)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`,
 
-        'curr-top-1-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> Mãnh ${toTextStyle('Uy Tín','prestige')}`, 
+        'curr-top-1-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`, 
         'curr-top-1-reset': x => `Vào lõi để nhận <b>${x.format(0)}</b> Miếng ${toTextStyle('Mắc Ma','core')}`,
 
         // Tabs
@@ -43,7 +43,7 @@ LANGUAGES.VN = {
         'tab-research': toTextStyle('Nghiên Cứu','prestige'),
         'tab-explore': "Cuộc thám hiểm",
         'tab-core': toTextStyle('Lõi','core'),
-        'tab-core-reactor': "Lò phản ứng của " + toTextStyle('Lõi','core'),
+        'tab-core-reactor': "Lò phản ứng " + toTextStyle('Lõi','core'),
 
         // Elements
 
@@ -73,11 +73,11 @@ LANGUAGES.VN = {
         'su-s4-name': 'Lũy thừa Cá Mập',
         'su-s4-desc': `Tăng luỹ thừa của ${toTextStyle('Cá','fish')} lên <b>+1%</b> mỗi level.`,
 
-        'su-p1-req': "Lần uy tín đầu tiên",
+        'su-p1-req': "Lần Prestige đầu tiên",
         'su-p1-name': 'Siêu Sức Mạnh Cá Mập',
         'su-p1-desc': `Tăng lượng ${toTextStyle('Cá','fish')} đã ăn lên <b>×3</b> mỗi level.`,
 
-        'su-p2-req': "Lần uy tín đầu tiên",
+        'su-p2-req': "Lần Prestige đầu tiên",
         'su-p2-name': 'Tăng Điểm Uy Tín',
         'su-p2-desc': `Tăng lượng ${toTextStyle('Cá','fish')} đã ăn lên <b>×lg(${toTextStyle('Cá','fish')})</b> mỗi level.`,
 
@@ -86,19 +86,19 @@ LANGUAGES.VN = {
 
         // Researches
 
-        'research-p1-name': "Độ Nhanh Nhẹn Điểm Uy Tín",
-        'research-p1-desc': `'Độ Nhanh Nhẹn của Cá Mập' bây giờ ảnh hưởng tới cơ số phần thưởng Mãnh ${toTextStyle('Uy Tín','prestige')} của Level ${toTextStyle("Cá Mập",'shark')} ở một tỉ lệ nhỏ.`,
+        'research-p1-name': "Độ Nhanh Nhẹn của Prestige",
+        'research-p1-desc': `'Độ Nhanh Nhẹn của Cá Mập' bây giờ ảnh hưởng tới cơ số phần thưởng Mãnh ${toTextStyle('Prestige','prestige')} của Level ${toTextStyle("Cá Mập",'shark')} ở một tỉ lệ nhỏ.`,
 
         'research-p2-name': "Nâng Cấp Cá Mập EL",
         'research-p2-desc': `Nâng cấp ${toTextStyle("Cá",'fish')} của ${toTextStyle("Cá Mập",'shark')} không còn chi tiêu lượng ${toTextStyle("Cá",'fish')} nữa.`,
 
         'research-p3-name': "Level Cá Mập Được Nâng Cấp",
         'research-p3-desc': `Giảm cơ số của mức yêu cầu level ${toTextStyle("Cá Mập",'shark')} xuống <b>1</b>,
-        nhưng sẽ reset từ ${toTextStyle("Uy Tín",'prestige')} trở xuống, reset Mãnh ${toTextStyle("Uy Tín",'prestige')} và các nâng cấp ${toTextStyle("Uy Tín",'prestige')} của bạn.
+        nhưng sẽ reset từ ${toTextStyle("Prestige",'prestige')} trở xuống, reset Mãnh ${toTextStyle("Prestige",'prestige')} và các nâng cấp ${toTextStyle("Prestife",'prestige')} của bạn.
         Mở khóa các nâng cấp ${toTextStyle("Cá Mập",'shark')}.`,
 
-        'research-p4-name': "Điểm Uy Tín Tốt Hơn",
-        'research-p4-desc': `Cải thiện một xíu về công thức số lượng mãnh ${toTextStyle("Uy Tín",'prestige')} nhận được.`,
+        'research-p4-name': "Prestife Tốt Hơn",
+        'research-p4-desc': `Cải thiện một xíu về công thức số lượng mãnh ${toTextStyle("Prestige",'prestige')} nhận được.`,
 
         'research-p5-name': "Siêu Sức Mạnh",
         'research-p5-desc': `'Siêu Sức Mạnh Cá Mập' mạnh hơn <b>1%</b> cho mỗi Level ${toTextStyle("Cá Mập",'shark')}, bắt đầu ở 100.`,
@@ -141,7 +141,7 @@ LANGUAGES.VN = {
         'explore-0-name': `Thái Bình Dương`,
         'explore-0-desc': `Căn bậc 2 lượng ${toTextStyle('Cá','fish')} nhận được.`,
         'explore-0-milestone': [
-            `Nâng mãnh ${toTextStyle('Uy Tín','prestige')} nhận được lên ^1.05.`,
+            `Nâng mãnh ${toTextStyle('Prestige','prestige')} nhận được lên ^1.05.`,
             `Tăng tài nguyên và tiến trình độ sâu lên 25% nhân lên mỗi căn bậc 2 của level ${toTextStyle('Cá Mập','shark')}.`,
             `Level ${toTextStyle('Cá Mập','shark')} sẽ không còn chi tiêu lượng ${toTextStyle('Cá','fish')} nữa.`,
             `Nâng lượng ${toTextStyle('Cá','fish')} lên ^1.05.`,
@@ -149,16 +149,16 @@ LANGUAGES.VN = {
         ],
 
         'explore-1-name': `Bắc Băng Dương`,
-        'explore-1-desc': `Reset mãnh ${toTextStyle("Uy Tín",'prestige')} và các nâng cấp ${toTextStyle("Uy Tín",'prestige')} của bạn. Căn bậc 2 lượng mãnh ${toTextStyle('Uy Tín','prestige')} nhận được.`,
+        'explore-1-desc': `Reset mãnh ${toTextStyle("Prestige",'prestige')} và các nâng cấp ${toTextStyle("Prestige",'prestige')} của bạn. Căn bậc 2 lượng mãnh ${toTextStyle('Prestige','prestige')} nhận được.`,
         'explore-1-milestone': [
-            `Mở khóa tự động nâng cấp ${toTextStyle('Uy Tín','prestige')} của ${toTextStyle('Cá Mập','shark')}.`,
+            `Mở khóa tự động nâng cấp ${toTextStyle('Prestige','prestige')} của ${toTextStyle('Cá Mập','shark')}.`,
             `Tăng tài nguyên và tiến trình độ sâu lên 25% nhân lên mỗi căn bậc 2 của level ${toTextStyle('Cá Mập','shark')}.`,
-            `Các nâng cấp ${toTextStyle('Uy Tín','prestige')} của ${toTextStyle('Cá Mập','shark')} sẽ không còn chi tiêu mãnh ${toTextStyle('Uy Tín','prestige')} nữa.`,
-            `Sản sinh một cách thụ động 100% lượng mãnh ${toTextStyle('Uy Tín','prestige')} nhận được trong ${toTextStyle('Uy Tín','prestige')}.`,
+            `Các nâng cấp ${toTextStyle('Prestige','prestige')} của ${toTextStyle('Cá Mập','shark')} sẽ không còn chi tiêu mãnh ${toTextStyle('Prestige','prestige')} nữa.`,
+            `Tự động sản xuất 100% lượng mãnh ${toTextStyle('Prestige','prestige')} nhận được trong ${toTextStyle('Prestige','prestige')} mỗi giây.`,
         ],
 
         'explore-2-name': `Đại Tây Dương`,
-        'explore-2-desc': `Reset mãnh ${toTextStyle("Uy Tín",'prestige')} và các nâng cấp ${toTextStyle("Uy Tín",'prestige')} của bạn. Level ${toTextStyle('Cá Mập','shark')} mở rộng mạnh gấp 10 lần.` ,
+        'explore-2-desc': `Reset mãnh ${toTextStyle("Prestige",'prestige')} và các nâng cấp ${toTextStyle("Prestige",'prestige')} của bạn. Level ${toTextStyle('Cá Mập','shark')} mở rộng mạnh gấp 10 lần.` ,
         'explore-2-milestone': [
             `Sự mở rộng của 'Răng Cá Mập' và 'Lũy Thừa Cá Mập' yếu hơn một tí.`,
             `Tăng tài nguyên và tiến trình độ sâu lên 25% nhân lên mỗi căn bậc 2 của level ${toTextStyle('Cá Mập','shark')}.`,
@@ -167,7 +167,7 @@ LANGUAGES.VN = {
         ],
 
         'explore-3-name': `Nam Đại Dương`,
-        'explore-3-desc': `Reset mãnh ${toTextStyle("Uy Tín",'prestige')} và các nâng cấp ${toTextStyle("Uy Tín",'prestige')}. Bạn không thể mua các nâng cấp ${toTextStyle('Cá','fish')} của ${toTextStyle('Cá Mập','shark')} & ${toTextStyle('Uy Tín','prestige')}.`,
+        'explore-3-desc': `Reset mãnh ${toTextStyle("Prestige",'prestige')} và các nâng cấp ${toTextStyle("Prestige",'prestige')}. Bạn không thể mua các nâng cấp ${toTextStyle('Cá','fish')} của ${toTextStyle('Cá Mập','shark')} & ${toTextStyle('Prestige','prestige')}.`,
         'explore-3-milestone': [
             `Tăng cơ số của các cuộc thám hiểm lên 10 lần.`,
             `Tăng tài nguyên và tiến trình độ sâu lên 25% nhân lên mỗi căn bậc 2 của level ${toTextStyle('Cá Mập','shark')}.`,
@@ -180,7 +180,7 @@ LANGUAGES.VN = {
         'core-0-desc': `${toTextStyle("Cá",'fish')} nâng chính nó lên dựa vào cấp của <b>Sắt</b>.`,
 
         'core-1-name': `Kẽm`,
-        'core-1-desc': `Mãnh ${toTextStyle("Uy Tín",'prestige')} nâng cơ số của chúng lên dựa vào cấp của <b>Kẽm</b>.`,
+        'core-1-desc': `Mãnh ${toTextStyle("Prestige",'prestige')} nâng cơ số của chúng lên dựa vào cấp của <b>Kẽm</b>.`,
 
         'core-2-name': `Oxy`,
         'core-2-desc': `Sản phẩm của các tài nguyên đầu tiên của bốn đại dương tăng sự sản xuất của chúng dựa vào cấp của <b>Oxy</b>.`,
@@ -194,7 +194,7 @@ LANGUAGES.VN = {
 
         'auto-shark-name': `Tự động level ${toTextStyle("Cá Mập","shark")}`,
         'auto-su-name': `Tự động nâng cấp ${toTextStyle("Cá",'fish')} của ${toTextStyle("Cá Mập","shark")}`,
-        'auto-spu-name': `Tự động nâng cấp ${toTextStyle("Uy Tín",'prestige')} của ${toTextStyle("Cá Mập","shark")}`,
+        'auto-spu-name': `Tự động nâng cấp ${toTextStyle("Prestige",'prestige')} của ${toTextStyle("Cá Mập","shark")}`,
         'auto-eu-name': `Tự động nâng cấp các cuộc thám hiểm`,
 
         'auto-cost': (D,cost,name) => `Giảm khoảng thời gian xuống ${formatReduction(D,0)}.<br>Giá: ${format(cost,0)} ${name}`,
@@ -203,14 +203,14 @@ LANGUAGES.VN = {
         // Progress
 
         'progress-0-text': r => `Chạm tới tổng cộng ${format(r)} ${toTextStyle('Cá','fish')}`, 
-        get 'progress-0-cond-text'() { return `Làm một ${toTextStyle('Uy Tín','prestige')}` },
+        get 'progress-0-cond-text'() { return `Làm một ${toTextStyle('Prestige','prestige')}` },
 
-        'progress-1-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Uy Tín','prestige')} để mở khóa Tự Động`,
-        'progress-2-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Uy Tín','prestige')} để mở khóa Nghiên Cứu`,
+        'progress-1-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Prestige','prestige')} để mở khóa Tự Động`,
+        'progress-2-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Prestige','prestige')} để mở khóa Nghiên Cứu`,
         'progress-3-text': r => `Chạm tới level ${toTextStyle('Cá Mập','shark')} ${format(r,0)} để mở khóa Cuộc Thám Hiểm`,
         'progress-4-text': r => `Chạm tới độ sâu ${format(r)}m của Thái Bình Dương để mở khóa ${toTextStyle('Lõi','core')}`,
 
-        'progress-5-text': r => `Chạm tới tổng cộng ${format(r)} mãnh ${toTextStyle('Uy Tín','prestige')}`, 
+        'progress-5-text': r => `Chạm tới tổng cộng ${format(r)} mãnh ${toTextStyle('Prestige','prestige')}`, 
         get 'progress-5-cond-text'() { return `Bước vào ${toTextStyle('Lõi','core')}` },
 
         'maxed-progress': "Các tính năng đã được mở khóa!",
@@ -218,7 +218,7 @@ LANGUAGES.VN = {
         // Reset
 
         get 'reset-prestige-message'() {
-            let p = toTextStyle('Uy Tín','prestige'), s = toTextStyle('Cá Mập','shark'), f = toTextStyle('Cá','fish')
+            let p = toTextStyle('Prestige','prestige'), s = toTextStyle('Cá Mập','shark'), f = toTextStyle('Cá','fish')
             return `
             <h3>${p}</h3><br>
             ${p} là tầng reset đầu tiên. Làm uy tín reset các nâng cấp ${s}, ${s}, và ${f} để nhận mãnh ${p}.
@@ -228,7 +228,7 @@ LANGUAGES.VN = {
             `
         },
         get 'reset-core-message'() {
-            let c = toTextStyle('Lõi','core'), m = toTextStyle('Mắc Ma','core'), p = toTextStyle('Uy Tín','prestige')
+            let c = toTextStyle('Lõi','core'), m = toTextStyle('Mắc Ma','core'), p = toTextStyle('Prestige','prestige')
             return `
             <h3>${c}</h3><br>
             ${c} là tầng reset thứ hai. Bước vào lõi reset mọi thứ mà ${p} làm, cũng như mãnh ${p}, nâng cấp ${p}, ${toTextStyle('Nghiên Cứu','prestige')} (Hầu hết là vậy), và Cuộc thám hiểm để nhận miếng ${m}.
@@ -242,7 +242,7 @@ LANGUAGES.VN = {
 
         'upgrade-shark': x => `Nâng cấp Level ${toTextStyle('Cá Mập','shark')}<br>Giá: ${x.format(0)} con ${toTextStyle('Cá','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} cơ số của ${toTextStyle('Cá','fish')}`,
-        'shark-bonus-prestige': x => `${formatMult(x)} mãnh ${toTextStyle('Uy Tín','prestige')}`,
+        'shark-bonus-prestige': x => `${formatMult(x)} mãnh ${toTextStyle('Prestige','prestige')}`,
         'shark-bonus-core': x => `${formatMult(x)} miếng ${toTextStyle('Mắc Ma','core')}`,
 
         'level': "Level",

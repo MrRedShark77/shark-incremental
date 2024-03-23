@@ -17,9 +17,12 @@ body {
     overflow-x: hidden;
 }
 
-table, tr {
-    display: flex;
-    justify-content: center;
+.table {
+	width: 100%;
+}
+
+.table td {
+	vertical-align: top;
 }
 
 h1 {
@@ -121,6 +124,11 @@ button:not(.locked,.selected,#wipe):hover {
 button.big-btn {
 	width: 150px;
 	height: 50px;
+}
+
+button.huge-btn {
+	width: 250px;
+	height: 100px;
 }
 
 .tab-button.selected,

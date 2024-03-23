@@ -46,7 +46,7 @@ const RESEARCH = {
             ['prestige',false,1e98],
         ],
         effect(r) {
-            return player.shark_level.sub(99).max(0).div(100).add(1)
+            return player.shark_level.sub(99).max(0).div(100).add(1).softcap(10,0.5,0)
         },
         effDesc: x => formatPercent(x.sub(1)),
     },
@@ -62,6 +62,13 @@ const RESEARCH = {
         require: [
             ['prestige',false,1e265],
             ['salt',false,1e7],
+        ],
+    },
+    p8: {
+        unl: ()=>player.feature>=7,
+        require: [
+            ['core',false,25e6],
+            ['prestige',false,'e14000'],
         ],
     },
     e1: {
@@ -84,6 +91,23 @@ const RESEARCH = {
         },
         effDesc: x => formatMult(x),
     },
+    e3: {
+        max: 4,
+        unl: ()=>player.feature>=7,
+        require: [
+            ['core',false,l=>Decimal.pow(5,l).mul(1e4),x=>x.div(1e4).log(5).add(1).floor()],
+        ],
+    },
+    e4: {
+        unl: ()=>player.explore.unl>=5,
+        require: [
+            ['core',false,1e18],
+        ],
+        effect(r) {
+            return expPow(coreReactorEffect(2),0.5)
+        },
+        effDesc: x => formatMult(x),
+    },
     c1: {
         unl: ()=>player.core.times>0,
         require: [
@@ -94,7 +118,7 @@ const RESEARCH = {
         max: 4,
         unl: ()=>player.core.times>0,
         require: [
-            ['core',false,l=>Decimal.pow(5,l).mul(100),x=>x.div(100).log(5).floor().add(1)],
+            ['core',false,l=>l.add(1).pow(3).mul(100),x=>x.div(100).root(3).floor()],
         ],
     },
     c3: {
@@ -108,6 +132,28 @@ const RESEARCH = {
         require: [
             ['core',false,1e3],
             ['prestige',false,'e2000'],
+        ],
+    },
+    c5: {
+        unl: ()=>player.feature>=7,
+        require: [
+            ['core',false,1e9],
+        ],
+    },
+    c6: {
+        unl: ()=>player.feature>=8,
+        require: [
+            ['core',false,1e20],
+        ],
+        effect(r) {
+            return expPow(CURRENCIES.core.amount.add(1),0.5)
+        },
+        effDesc: x => formatMult(x.pow(-1)),
+    },
+    c7: {
+        unl: ()=>player.feature>=8,
+        require: [
+            ['core',false,1e36],
         ],
     },
 }

@@ -26,6 +26,9 @@ LANGUAGES.EN = {
         'snow-name': "Compressed Snow",
         'snow-costName': toTextStyle('Compressed Snow','snow'),
 
+        'kelp-name': "Kelp",
+        'kelp-costName': toTextStyle('Kelp','kelp'),
+
         'core-name': "Magmatic Fragments",
         'core-costName': toTextStyle('Magmatic','core') + ' Fragments',
 
@@ -34,6 +37,8 @@ LANGUAGES.EN = {
 
         'curr-top-1-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Prestige','prestige')} Shards`, 
         'curr-top-1-reset': x => `Enter the core for <b>${x.format(0)}</b> ${toTextStyle('Magmatic','core')} Fragments`,
+
+        'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
         // Tabs
 
@@ -44,6 +49,7 @@ LANGUAGES.EN = {
         'tab-explore': "Exploration",
         'tab-core': "The "+toTextStyle('Core','core'),
         'tab-core-reactor': toTextStyle('Core','core')+" Reactor",
+        'tab-core-radiation': toTextStyle('Core','core')+" Radiation",
 
         // Elements
 
@@ -54,6 +60,22 @@ LANGUAGES.EN = {
         'option-title-2': "Notations",
         'option-title-3': "Confirmations",
         'option-title-4': "Languages",
+
+        'offline-speed': "Speed Offline",
+        'offline-done': "Done",
+
+        'radioactive-div': `The ${toTextStyle('Core','core')} has produced <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+        get 'radioactive-summary'() {
+            var c = toTextStyle('Core','core'), rf = toTextStyle('Fish '+icon("radioactive"),'fish')
+            return `
+            <summary>The ${c} Radiation Experiment</summary>
+            Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
+            While in the experiment, all core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
+            The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
+            Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
+            `
+        },
+        'radioboost-div': `You have <h3 id="radioactive-boost">0</h3> radioactive boosts.`,
 
         // Upgrades
 
@@ -72,6 +94,10 @@ LANGUAGES.EN = {
         'su-s4-req': "Level 38",
         'su-s4-name': 'Shark Exponent',
         'su-s4-desc': `Increases the exponent of ${toTextStyle('Fish','fish')} by <b>+1%</b> per level.`,
+
+        'su-s5-req': "Level 640",
+        'su-s5-name': 'Radioactive Shark',
+        'su-s5-desc': `Increase ${toTextStyle('Radiation '+icon("radioactive"),'core')} production by <b>x2</b> per level.`,
 
         'su-p1-req': "First Prestige",
         'su-p1-name': 'Super Shark Strength',
@@ -109,11 +135,20 @@ LANGUAGES.EN = {
         'research-p7-name': "Better Resources I",
         'research-p7-desc': `${toTextStyle("Coral",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
 
+        'research-p8-name': "Further Upgraded Shark Level",
+        'research-p8-desc': `Further reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by 1.`,
+
         'research-e1-name': "Ocean Synergism I",
         'research-e1-desc': `${toTextStyle("Salt",'salt')} boosts ${toTextStyle("Corals",'coral')} generated.`,
 
         'research-e2-name': "Ocean Synergism II",
         'research-e2-desc': `${toTextStyle("Compressed Snow",'snow')} boosts ${toTextStyle("Ice",'ice')} generated.`,
+
+        'research-e3-name': "Exploration Automation",
+        'research-e3-desc': `Automatically update the best base of the first <b>X</b> oceans without exploring.`,
+
+        'research-e4-name': "Kelp Oxidation",
+        'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
 
         'research-c1-name': "Research C-Keeper",
         'research-c1-desc': `Keep ${toTextStyle("Research",'prestige')} on entering the ${toTextStyle('Core','core')}.`,
@@ -126,6 +161,15 @@ LANGUAGES.EN = {
 
         'research-c4-name': "Better Nickel",
         'research-c4-desc': `<b>Nickel</b>'s effect is <b>twice</b> as powerful.`,
+
+        'research-c5-name': "Additional Core Boost",
+        'research-c5-desc': `The core radiation's first boost now affects the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
+
+        'research-c6-name': "Radiation Reduction",
+        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce the core radiation's limit at a reduced rate.`,
+
+        'research-c7-name': "Greater Shark Teeth",
+        'research-c7-desc': `The effect of 'Shark Teeth' is raised to the <b>2.5th</b> power.`,
 
         // Exploration
 
@@ -174,6 +218,15 @@ LANGUAGES.EN = {
             `${toTextStyle('Compressed Snow','snow')}'s effect is 50% more powerful.`,
         ],
 
+        'explore-4-name': `Indian Ocean`,
+        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is rooted to the 0.75th power.`,
+        'explore-4-milestone': [
+            `Decrease core radiation's limit by /1,000.`,
+            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Core reactors scale +5 later.`,
+            `Improve ${toTextStyle('Kelp','kelp')} better.`,
+        ],
+
         // Core Reactor
 
         'core-0-name': `Iron`,
@@ -189,6 +242,25 @@ LANGUAGES.EN = {
         'core-3-desc': `${toTextStyle("Shark",'shark')} Level reduces its requirement based on <b>Neon</b>'s tier.`,
 
         'core-bonus': x => `Product of core reactors will boost ${toTextStyle("Fish",'fish')} by <h4>${formatMult(x)}</h4>.`,
+
+        // Core Radiation
+
+        'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
+
+        'upgrade-cr': (gen,cost)=>`
+        Upgrade the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
+        Producing <b>${format(gen,0)}</b> per second.<br>
+        Cost: ${format(cost,0)} ${toTextStyle('Fish '+icon("radioactive"),'fish')}`,
+
+        'reset-cr': (inc)=>`Reset the ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and sometimes add a new boost or upgrade the boosts. You need to reach the limit to reset.`,
+
+        'cr-boosts': [
+            x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the first row.`,
+            x=>`Boost ${toTextStyle('Magmatic','core')} fragments by <h4>${formatMult(x)}</h4>.`,
+            x=>`The first four ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
+            x=>`Second ${toTextStyle('Shark','shark')} level scaling is delayed by <h4>+${format(x)}</h4>.`,
+            x=>`Increase the base of ${toTextStyle('Shark','shark')} level's ${toTextStyle('Magmatic','core')} fragment bonus by <h4>+${format(x,3)}</h4>.`,
+        ],
 
         // Automation
 
@@ -212,6 +284,10 @@ LANGUAGES.EN = {
 
         'progress-5-text': r => `Reach ${format(r)} total ${toTextStyle('Prestige','prestige')} shards`, 
         get 'progress-5-cond-text'() { return `Enter the ${toTextStyle('Core','core')}` },
+
+        'progress-6-text': r => `Reach ${format(r)} ${toTextStyle('Magmatic','core')} fragments to unlock the next core feature`, 
+
+        'progress-7-text': r => `Reach ${toTextStyle('Shark','shark')} Level ${format(r,0)} to unlock new ocean type`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -244,6 +320,7 @@ LANGUAGES.EN = {
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('Fish','fish')}'s base`,
         'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('Prestige','prestige')} shard`,
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
+        // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
         'level': "Level",
         'effect': "Effect",
@@ -252,6 +329,8 @@ LANGUAGES.EN = {
         'require': "Require",
         'next-at': "Next at",
         'depth': "Depth",
+
+        'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "Purchase" : "Can't Afford",
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,

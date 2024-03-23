@@ -29,6 +29,10 @@ const TAB_IDS = {
         name: "Core Reactor",
         html: updateCoreHTML,
     },
+    'core-radiation': {
+        name: "Core Radiation",
+        html: updateCoreRadiation,
+    },
 }
 
 const TABS = [
@@ -48,7 +52,10 @@ const TABS = [
     },{
         id: 'core',
         unl: ()=>player.core.times>0,
-        stab: ["core-reactor"],
+        stab: [
+            ["core-reactor"],
+            ['core-radiation',()=>player.feature>=7]
+        ],
     },
 ]
 
@@ -58,7 +65,7 @@ function switchTab(t,st) {
 
     let s = TABS[t].stab
 
-    if (Array.isArray(s)) tab_name = s[stab[t]??0]
+    if (Array.isArray(s)) tab_name = s[stab[t]??0][0]
     else tab_name = s
 }
 
@@ -71,7 +78,12 @@ function updateTabs() {
 
             elem.style.display = el_display(selected)
 
-            v.stab.forEach((x,j) => { el('stab'+i+'-'+j+'-button').className = "tab-button stab"+(x == tab_name ? " selected" : "") })
+            if (selected) v.stab.forEach(([x,u],j) => {
+                var s_elem = el('stab'+i+'-'+j+'-button')
+
+                s_elem.style.display = el_display(!u || u())
+                s_elem.className = "tab-button stab"+(x == tab_name ? " selected" : "")
+            })
         }
 
         elem = el('tab'+i+'-button')
@@ -106,7 +118,7 @@ function setupTabs() {
 
         if (Array.isArray(v.stab)) {
             h2 += `<div id="stab${i}-div" id="${v.stab[stab[i]]}-tab">
-            ${v.stab.map((x,j) => `<button class="tab-button stab" id="stab${i}-${j}-button" onclick="switchTab(${i},${j})">${TAB_IDS[x].name}</button>`).join("")}
+            ${v.stab.map(([x],j) => `<button class="tab-button stab" id="stab${i}-${j}-button" onclick="switchTab(${i},${j})">${TAB_IDS[x].name}</button>`).join("")}
             </div>`
         }
     }
