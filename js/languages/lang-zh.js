@@ -1,3 +1,5 @@
+// This is Simplified Chinese！
+
 LANGUAGES.ZH = {
     name: "Simplified Chinese",
     inter_name: "简体中文",
