@@ -24,6 +24,9 @@ LANGUAGES.RU = {
         'snow-name': "Сжатый Снег",
         'snow-costName': toTextStyle('Сжатых Снега','snow'),
 
+        'kelp-name': "Ламинария",
+        'kelp-costName': toTextStyle('Ламинария','kelp'),
+
         'core-name': "Магматические Фрагменты",
         'core-costName': toTextStyle('Магматических','core') + ' Фрагментов',
 
@@ -33,6 +36,7 @@ LANGUAGES.RU = {
         'curr-top-1-req': x => `Набрать <b>${format(x)}</b> Осколков ${toTextStyle('Престижа','prestige')}`, 
         'curr-top-1-reset': x => `Войти в ядро за <b>${x.format(0)}</b> ${toTextStyle('Магматических','core')} Фрагментов`,
 
+        'radioactive-name': toTextStyle('Радиация '+icon("radioactive"),'core'),
         // Tabs
 
         'tab-shark': toTextStyle('Акула','shark'),
@@ -42,6 +46,7 @@ LANGUAGES.RU = {
         'tab-explore': "Исследование",
         'tab-core': toTextStyle('Ядро','core'),
         'tab-core-reactor': "Реактор "+toTextStyle('Ядра','core'),
+        'tab-core-radiation':"Радиация "+toTextStyle('Ядра','core'),
 
         // Elements
 
@@ -52,6 +57,23 @@ LANGUAGES.RU = {
         'option-title-2': "Запись Чисел",
         'option-title-3': "Подтверждения",
         'option-title-4': "Языки",
+
+        'offline-speed': "Оффлайн Скорость",
+        'offline-done': "Завершено!",
+
+        'radioactive-div': `${toTextStyle('Ядро','core')} создало <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+        get 'radioactive-summary'() {
+            var c = toTextStyle('Ядра','core'), rf = toTextStyle('Рыбу '+icon("radioactive"),'fish')
+            return `
+            <summary>Радиационный Эксперимент  ${c}</summary>
+            Экспериментации с радиацией ядра произведет ${toTextStyle('Ядерный','core')} сброс.
+            Пока эксперимент активен, все ядерные реакторы не работают и ${toTextStyle('Рыба','fish')}, ${toTextStyle('Престижные','prestige')} осколки, и ресурсы первых четырех океанов коренятся на 2.
+            Эксперимент заставит вашу ${toTextStyle('Акулу','shark')} есть радиоактивную ${rf}.<br>
+            Покупайте улучшения за радиоактивную ${rf}, чтобы создавать больше ${toTextStyle('Радиации '+icon("radioactive"),'core')}, которая дает вам дополнительные бонусы.
+            `
+        },
+        'radioboost-div': `У вас есть <h3 id="radioactive-boost">0</h3> радиоактивных бонусов.`,
+
         
         // Upgrades
 
@@ -70,6 +92,10 @@ LANGUAGES.RU = {
         'su-s4-req': "Уровень 38",
         'su-s4-name': 'Экспонента Акулы',
         'su-s4-desc': `Увеличивает экспоненту ${toTextStyle('Рыбы','fish')} на <b>+1%</b> за уровень.`,
+
+        'su-s5-req': "Уровень 640",
+        'su-s5-name': 'Раиоактивная Акула',
+        'su-s5-desc': `Увеличивает производство ${toTextStyle('Радиации '+icon("radioactive"),'core')} в <b>2</b> раза за уровень.`,
 
         'su-p1-req': "Первый Престиж",
         'su-p1-name': 'Суперсила Акулы',
@@ -107,11 +133,21 @@ LANGUAGES.RU = {
         'research-p7-name': "Лучшие Ресурсы I",
         'research-p7-desc': `Эффекты ${toTextStyle("Коралла",'coral')} и ${toTextStyle("Льда",'ice')} становятся лучше.`,
 
+        'research-p8-name': "Углубленно Улучшенный Уровень Акулы",
+        'research-p8-desc': `Больше уменьшить базу требования уровня ${toTextStyle("Акулы",'shark')} на 1.`,
+
         'research-e1-name': "Океанский Синтез I",
         'research-e1-desc': `${toTextStyle("Соль",'salt')} усиливает генерацию ${toTextStyle("Кораллов",'coral')}.`,
 
         'research-e2-name': "Океанский Синтез II",
         'research-e2-desc': `${toTextStyle("Сжатый Снег",'snow')} усиливает генерацию ${toTextStyle("Льда",'ice')}.`,
+
+        'research-e3-name': "Автоматизация Исследований",
+        'research-e3-desc': `Автоматически обновлять лучшую базу первых <b>X</b> океанов вне исследования.`,
+
+        'research-e4-name': "Оксидированная Ламинария",
+        'research-e4-desc': `Теперь <b>Кислород</b> увеличивает производство ${toTextStyle("Ламинарии",'kelp')} в меньшей степени.`,
+
 
         'research-c1-name': "C-Хранитель Изучения",
         'research-c1-desc': `Сохраняет ${toTextStyle("Изучения",'prestige')} при входе в ${toTextStyle('Ядро','core')}.`,
@@ -124,6 +160,15 @@ LANGUAGES.RU = {
 
         'research-c4-name': "Улучшенный Никель",
         'research-c4-desc': `Эффект <b>Никеля</b> в <b>два</b> раза сильнее.`,
+
+        'research-c5-name': "Дополнительный Бонус Ядра",
+        'research-c5-desc': `Теперь первый бонус радиации ядра увеличивает бонус ядерного реактора к ${toTextStyle('Рыбе','fish')} в меньшей степени.`,
+
+        'research-c6-name': "Уменьшение Радиации",
+        'research-c6-desc': `${toTextStyle('Магматические','core')} фрагменты уменьшают лимит радиации ядра в меньшей степени.`,
+
+        'research-c7-name': "Громадные Акульи Зубы",
+        'research-c7-desc': `Эффект 'Зубы Акулы' увеличен в <b>2.5</b> степени.`,
 
         // Exploration
 
@@ -172,6 +217,16 @@ LANGUAGES.RU = {
             `Эффект этого океана на 50% мощнее.`,
         ],
 
+        'explore-4-name': `Индийский Океан`,
+        'explore-4-desc': `Вы заперты в первых четырех океанах, и вашы ${toTextStyle('Рыбы','fish')} уменьшены в 0.75 степени.`,
+        'explore-4-milestone': [
+            `Уменьшить лимит радиации ядра на /1,000.`,
+            `Увеличивает ресурс и глубину прогрессии на 25% за уровень ${toTextStyle('Акулы','shark')} с квадратным корнем.`,
+            `Шкала ядерных реакторов начинает действовать через +5.`,
+            `Улучшить заработок ${toTextStyle('Ламинарий','kelp')}.`,
+        ],
+
+
         // Core Reactor
 
         'core-0-name': `Железо`,
@@ -187,6 +242,25 @@ LANGUAGES.RU = {
         'core-3-desc': `Уровень ${toTextStyle("Акулы",'shark')} снижает свое требование на основе уровня <b>Неона</b>.`,
 
         'core-bonus': x => `Произведение ядерных реакторов увеличивает количество съеденной ${toTextStyle("Рыбы",'fish')} на <h4>${formatMult(x)}</h4>.`,
+
+        // Core Radiation
+
+        'cr-start': x=>x?"Остановить эксперимент.":"Начать эксперимент.",
+
+        'upgrade-cr': (gen,cost)=>`
+        Улучшить заработок ${toTextStyle('Радиации '+icon("radioactive"),'core')}.<br>
+        На данный момент производит <b>${format(gen,0)}</b> в секунду.<br>
+        Стоимость: ${format(cost,0)} ${toTextStyle('Рыбы '+icon("radioactive"),'fish')}`,
+        
+        'reset-cr': (inc)=>`Сбросить ${toTextStyle('Радиацию '+icon("radioactive"),'core')}, но увеличить её лимит на <b>${formatMult(inc,0)}</b>, и иногда добавить новое улучшение или улучшить бонусы. Вам необходимо достичь лимита, чтобы совершить сброс.`,
+        
+        'cr-boosts': [
+            x=>`Добавить <h4>+${format(x)}</h4> дополнительных ядерных реакторов в первую строчку.`,
+            x=>`Улучшить заработок ${toTextStyle('Магматических','core')} фрагментов в <h4>${formatMult(x)}</h4>.`,
+            x=>`Первые четыре ${toTextStyle('Рыбных','fish')} улучшений сильнее на <h4>${formatPercent(x.sub(1))}</h4>.`,
+            x=>`Вторая шкала уровня ${toTextStyle('Акулы','shark')} начинает действовать через <h4>+${format(x)}</h4>.`,
+            x=>`Увеличить базовый показатель бонуса от ${toTextStyle('Магматических','core')} фрагментов на уровень ${toTextStyle('Акулы','shark')} на <h4>+${format(x,3)}</h4>.`,
+                ],
 
         // Automation
 
@@ -209,6 +283,11 @@ LANGUAGES.RU = {
         'progress-4-text': r => `Достигните ${format(r)} м глубины Тихого океан, чтобы разблокировать ${toTextStyle('Ядро','core')}`,
 
         'progress-5-text': r => `Наберите ${format(r)} осколки ${toTextStyle('Престижа','prestige')}`, 
+
+        'progress-6-text': r => `Наберите ${format(r)} ${toTextStyle('Магматических','core')} фрагментов, чтобы открыть следующую функцию ядра`, 
+
+        'progress-7-text': r => `Достигните ${format(r,0)} уровня ${toTextStyle('Акулы','shark')}, чтобы открыть следующий тип океана`, 
+
         get 'progress-5-cond-text'() { return `Войдите в ${toTextStyle('Ядро','core')}` },
 
         'maxed-progress': "Все возможности разблокированы!",
@@ -248,7 +327,7 @@ LANGUAGES.RU = {
         'require': "Требуется",
         'next-at': "Следующее",
         'depth': "Глубина",
-
+        'offline-time-text': x=>`Вы были не в игре <b>${formatTime(x,0)}</b>.`,
         'upgrade-shark': x => `Повысить уровень ${toTextStyle('Акулы','shark')}<br>Цена: ${x.format(0)} ${toTextStyle('Рыб','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} к основе ${toTextStyle('Рыбы','fish')}`,
         'shark-bonus-prestige': x => `${formatMult(x)} Осколков ${toTextStyle('Престижа','prestige')}`,
