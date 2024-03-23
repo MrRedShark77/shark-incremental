@@ -363,7 +363,7 @@ LANGUAGES.EN = {
 
         'prompt-placeholder': "Type text here...",
 
-        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!"],
+        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!",'Join the community (Discord)','Support the creator (Boosty)'],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
