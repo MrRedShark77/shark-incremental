@@ -1,9 +1,9 @@
-// This is main language file! It's English!
+// This isn't main language file! It's Engrish!
 
-LANGUAGES.EN = {
-    name: "English",
-    inter_name: "English",
-    icon: "lang-en",
+LANGUAGES.ER = {
+    name: "Engrish",
+    inter_name: "Engrish",
+    icon: "lang-ru",
 
     text: {
         // Currencies
@@ -14,8 +14,8 @@ LANGUAGES.EN = {
         'prestige-name': "Prestige Shards",
         'prestige-costName': toTextStyle('Prestige','prestige') + " Shards",
 
-        'coral-name': "Coral",
-        'coral-costName': toTextStyle('Coral','coral'),
+        'coral-name': "Corals",
+        'coral-costName': toTextStyle('Corals','coral'),
 
         'ice-name': "Ice",
         'ice-costName': toTextStyle('Ice','ice'),
@@ -36,7 +36,7 @@ LANGUAGES.EN = {
         'curr-top-0-reset': x => `Prestige for <b>${x.format(0)}</b> ${toTextStyle('Prestige','prestige')} Shards`,
 
         'curr-top-1-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Prestige','prestige')} Shards`, 
-        'curr-top-1-reset': x => `Enter the core for <b>${x.format(0)}</b> ${toTextStyle('Magmatic','core')} Fragments`,
+        'curr-top-1-reset': x => `Enter the core for <b>${x.format(0)}</b> ${toTextStyle('Magmatic','core')} Fragemnts`,
 
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -50,7 +50,7 @@ LANGUAGES.EN = {
         'tab-core': "The "+toTextStyle('Core','core'),
         'tab-core-reactor': toTextStyle('Core','core')+" Reactor",
         'tab-core-radiation': toTextStyle('Core','core')+" Radiation",
-
+        
         // Elements
 
         'fish-div': `Your ${toTextStyle('Shark','shark')} has eaten <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> fish.`,
@@ -70,7 +70,7 @@ LANGUAGES.EN = {
             return `
             <summary>The ${c} Radiation Experiment</summary>
             Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
-            While in the experiment, core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
+            While in the experiment, all core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
             The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
             Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
             `
@@ -108,7 +108,7 @@ LANGUAGES.EN = {
         'su-p2-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×lg(${toTextStyle('Fish','fish')})</b> per level.`,
 
         'su-p3-name': 'Scaled Shark',
-        'su-p3-desc': `Delays the first ${toTextStyle('Shark','shark')} Level scaling by <b>+1</b> per level.`,
+        'su-p3-desc': `Increases the first scale of ${toTextStyle('Shark','shark')} Level starting by <b>+1</b> per level.`,
 
         // Researches
 
@@ -130,10 +130,10 @@ LANGUAGES.EN = {
         'research-p5-desc': `'Super Shark Strength' is <b>1%</b> stronger for every ${toTextStyle("Shark",'shark')} Level, starting at 100.`,
 
         'research-p6-name': "Super Scaled Shark",
-        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as strong.`,
+        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as stronger.`,
 
         'research-p7-name': "Better Resources I",
-        'research-p7-desc': `${toTextStyle("Coral",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
+        'research-p7-desc': `${toTextStyle("Corals",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
 
         'research-p8-name': "Further Upgraded Shark Level",
         'research-p8-desc': `Further reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by 1.`,
@@ -145,7 +145,7 @@ LANGUAGES.EN = {
         'research-e2-desc': `${toTextStyle("Compressed Snow",'snow')} boosts ${toTextStyle("Ice",'ice')} generated.`,
 
         'research-e3-name': "Exploration Automation",
-        'research-e3-desc': `Automatically gain base of the first <b>X</b> oceans without exploring.`,
+        'research-e3-desc': `Automatically update the best base of the first <b>X</b> oceans without exploring.`,
 
         'research-e4-name': "Kelp Oxidation",
         'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
@@ -163,10 +163,10 @@ LANGUAGES.EN = {
         'research-c4-desc': `<b>Nickel</b>'s effect is <b>twice</b> as powerful.`,
 
         'research-c5-name': "Additional Core Boost",
-        'research-c5-desc': `The core radiation's bonus reactors now affect the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
+        'research-c5-desc': `The core radiation's first boost now affects the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
 
         'research-c6-name': "Radiation Reduction",
-        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce radiation's limit at a reduced rate.`,
+        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce the core radiation's limit at a reduced rate.`,
 
         'research-c7-name': "Greater Shark Teeth",
         'research-c7-desc': `The effect of 'Shark Teeth' is raised to the <b>2.5th</b> power.`,
@@ -180,13 +180,13 @@ LANGUAGES.EN = {
         'explore-next': x=>`New Ocean at ${toTextStyle("Shark",'shark')} Level <h3>${format(x,0)}</h3>.`,
 
         'explore-doubler-1': x=>`Double ${x} gained.`,
-        'explore-doubler-2': `Double depth progression gain.`,
+        'explore-doubler-2': `Double depth of progression gained.`,
 
         'explore-0-name': `Pacific Ocean`,
         'explore-0-desc': `${toTextStyle('Fish','fish')} gain is rooted by 2.`,
         'explore-0-milestone': [
             `Raise ${toTextStyle('Prestige','prestige')} shards gained to the 1.05th power.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Leveling ${toTextStyle('Shark','shark')} will no longer spend ${toTextStyle('Fish','fish')}.`,
             `Raise ${toTextStyle('Fish','fish')} eaten to the 1.05th power.`,
             `Unlock the ${toTextStyle('Core','core')}.`,
@@ -196,7 +196,7 @@ LANGUAGES.EN = {
         'explore-1-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Prestige','prestige')} Shards gain is rooted by 2.`,
         'explore-1-milestone': [
             `Unlock Auto-${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades will no longer spend ${toTextStyle('Prestige','prestige')} shards.`,
             `Passively generate 100% of ${toTextStyle('Prestige','prestige')} shards earned on ${toTextStyle('Prestige','prestige')}.`,
         ],
@@ -205,28 +205,28 @@ LANGUAGES.EN = {
         'explore-2-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Shark','shark')} Level scales 10x as strong.` ,
         'explore-2-milestone': [
             `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Shark','shark')} Level's first scaling starts +1 later per 500m of depth.`,
-            `${toTextStyle("Salt",'salt')}'s effect is 50% more powerful.`,
+            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `${toTextStyle('Shark','shark')} Level's first scale starts +1 later per 500m of the depth.`,
+            `The ocean's effect is 50% as powerful.`,
         ],
 
         'explore-3-name': `Southern Ocean`,
         'explore-3-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. You cannot buy ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} & ${toTextStyle('Prestige','prestige')} upgrades.`,
         'explore-3-milestone': [
             `Increase the base of exploration by 10x.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% more powerful.`,
+            `Increase the resource and depth of progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
+            `The ocean's effect is 50% as powerful.`,
         ],
 
         'explore-4-name': `Indian Ocean`,
-        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is raised to the 0.75th power.`,
+        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is rooted to the 0.75th power.`,
         'explore-4-milestone': [
-            `Decrease radiation's limit by /1,000.`,
+            `Decrease core radiation's limit by /1,000.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')} effect.`,
+            `Improve ${toTextStyle('Kelp','kelp')} better.`,
         ],
-
+        
         // Core Reactor
 
         'core-0-name': `Iron`,
@@ -248,11 +248,11 @@ LANGUAGES.EN = {
         'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
 
         'upgrade-cr': (gen,cost)=>`
-        Upgrade ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
+        Upgrade the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
         Producing <b>${format(gen,0)}</b> per second.<br>
         Cost: ${format(cost,0)} ${toTextStyle('Fish '+icon("radioactive"),'fish')}`,
 
-        'reset-cr': (inc)=>`Reset ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and upgrades radioactive boosts and sometimes adds new effects. You need to reach the limit to reset.`,
+        'reset-cr': (inc)=>`Reset the ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and sometimes add a new boost or upgrade the boosts. You need to reach the limit to reset.`,
 
         'cr-boosts': [
             x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the first row.`,
@@ -307,8 +307,8 @@ LANGUAGES.EN = {
             let c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
             return `
             <h3>The ${c}</h3><br>
-            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments.
-            It also unlocks the ${c} reactor.<br>
+            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments,
+            unlocking the ${c} reactor for the first time.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
             `
@@ -332,7 +332,7 @@ LANGUAGES.EN = {
 
         'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
 
-        'research-afford': bool => bool ? "Purchase" : "Can't Afford",
+        'research-afford': bool => bool ? "Purchase" : "Not Afford",
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
 
         'off-on': bool => bool ? "ON" : "OFF",
@@ -363,7 +363,7 @@ LANGUAGES.EN = {
 
         'prompt-placeholder': "Type text here...",
 
-        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!",'Join the community (Discord)','Support the creator (Boosty)'],
+        'option-buttons-text': ["Save","Export via clipboard","Export via file","Import via prompt","Import via file","WIPE!!!"],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
