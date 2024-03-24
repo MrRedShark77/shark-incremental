@@ -219,7 +219,7 @@ LANGUAGES.ES = {
         ],
 		
 		'explore-4-name': `Océano Índico`,
-        'explore-4-desc': `Estás atrapado en los primeros cuatro océanos activos, y el exponente de los ${toTextStyle('Peces','fish')} es enraizado a la potencia de 0.75.`,
+        'explore-4-desc': `Estás atrapado en los primeros cuatro océanos activos, y el exponente de los ${toTextStyle('Peces','fish')} es aumentado a la potencia de 0.75.`,
         'explore-4-milestone': [
             `Reduce el límite de la radiación del núcleo en /1,000.`,
             `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
