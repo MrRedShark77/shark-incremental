@@ -24,11 +24,11 @@ LANGUAGES.FR = {
         'snow-name': "Compressed Snow",
         'snow-costName': toTextStyle('Neige comprimé','snow'),
 		
-		'kelp-name': "Kelp",
-        'kelp-costName': toTextStyle('Kelp','kelp'),
+		'kelp-name': "Varech",
+        'kelp-costName': toTextStyle('Varech','kelp'),
 
         'core-name': "Fragments Magmatique",
-        'core-costName': toTextStyle('Magmatique','core') + ' Fragments',
+        'core-costName': ' Fragments' + toTextStyle('Magmatique','core'),
 
         'curr-top-0-req': x => `Atteignez un total de <b>${format(x)}</b> ${toTextStyle('Poissons','fish')}`, 
         'curr-top-0-reset': x => `Prestige pour <b>${x.format(0)}</b> Éclats de ${toTextStyle('Prestige','prestige')}`,
@@ -47,7 +47,7 @@ LANGUAGES.FR = {
         'tab-explore': "Exploration",
         'tab-core': "Le " + toTextStyle('Noyau','core'),
         'tab-core-reactor': "Réacteur du " + toTextStyle('Noyau','core'),
-        'tab-core-radiation': toTextStyle('Noyau','core') + " Radiation",
+        'tab-core-radiation': "Radiation du " + toTextStyle('Noyau','core'),
 
         // Elements
 
@@ -59,21 +59,21 @@ LANGUAGES.FR = {
         'option-title-3': "Confirmations",
         'option-title-4': "Langues",
 
-        'offline-speed': "Speed Offline",
-        'offline-done': "Done",
+        'offline-speed': "Vitesse hors-ligne",
+        'offline-done': "Terminé",
 
-        'radioactive-div': `The ${toTextStyle('Core','core')} has produced <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+        'radioactive-div': `Le ${toTextStyle('Noyau','core')} à produit <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
         get 'radioactive-summary'() {
-            var c = toTextStyle('Core','core'), rf = toTextStyle('Fish '+icon("radioactive"),'fish')
+            var c = toTextStyle('Noyau','core'), rf = toTextStyle('Poissons '+icon("radioactive"),'fish')
             return `
-            <summary>The ${c} Radiation Experiment</summary>
-            Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
-            While in the experiment, all core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
-            The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
-            Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
+            <summary>L'${c}Expérimentation de Radiation</summary>
+            Expérimenter avec la radiation du noyau force une réinitialisation de ${toTextStyle('Noyau','core')}.
+            Pendant l'éxperiance, tout les réacteurs du noyau ne fonctionnent pas, et les ${toTextStyle('Poissons','fish')}, Éclats de ${toTextStyle('Prestige','prestige')}, et les ressources des 4 premiers océans sont mis à leur racine cubique.
+            L'Expérimentation force votre ${toTextStyle('Requin','shark')} à manger des ${rf} radioactifs.<br>
+            Améliorer avec des ${rf} pour générer plus de ${toTextStyle('Radiation '+icon("radioactive"),'core')}, ce qui vous donne des boosts supplémentaires.
             `
         },
-        'radioboost-div': `You have <h3 id="radioactive-boost">0</h3> radioactive boosts.`,
+        'radioboost-div': `Vous avez <h3 id="radioactive-boost">0</h3> boosts radioactif.`,
 
         // Upgrades
 
@@ -93,9 +93,9 @@ LANGUAGES.FR = {
         'su-s4-name': 'L\'éxposant du Requin',
         'su-s4-desc': `Augment l'exposant de  ${toTextStyle('Poissons','fish')} de <b>+1%</b> par niveau.`,
 
-        'su-s5-req': "Level 640",
-        'su-s5-name': 'Radioactive Shark',
-        'su-s5-desc': `Increase ${toTextStyle('Radiation '+icon("radioactive"),'core')} production by <b>x2</b> per level.`,
+        'su-s5-req': "Niveau 640",
+        'su-s5-name': 'Requin Radioactif',
+        'su-s5-desc': `Augmente la production de ${toTextStyle('Radiation '+icon("radioactive"),'core')} de <b>x2</b> par niveau.`,
 
         'su-p1-req': "Premier Prestige",
         'su-p1-name': 'Super Force du Requin',
@@ -116,7 +116,7 @@ LANGUAGES.FR = {
         'research-p2-name': "Amélioration EL du Requin",
         'research-p2-desc': `Les amélioration ${toTextStyle("Poissons",'fish')} ne dépense plus de ${toTextStyle("Poissons",'fish')}.`,
 
-        'research-p3-name': "Niveau du Requin améliorer",
+        'research-p3-name': "Niveau du Requin amélioré",
         'research-p3-desc': `Réduit la base du requis pour le niveau du ${toTextStyle("Requin",'shark')} par <b>1</b>,
         mais force une réinitialisation ${toTextStyle("Prestige",'prestige')}, réinitialisant vos Éclats de ${toTextStyle("Prestige",'prestige')} et amélioration ${toTextStyle("Prestige",'prestige')}.
         Débloque de nouvelles amélioration de ${toTextStyle("Requin",'shark')}.`,
@@ -133,8 +133,8 @@ LANGUAGES.FR = {
         'research-p7-name': "Meilleures Ressources I",
         'research-p7-desc': `Effet des ${toTextStyle("Coraux",'coral')} et ${toTextStyle("Glaces",'ice')}' est meilleurs.`,
 
-        'research-p8-name': "Further Upgraded Shark Level",
-        'research-p8-desc': `Further reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by 1.`,
+        'research-p8-name': "Niveau du Requin amélioré II",
+        'research-p8-desc': `Réduit encore la base du requis pour le niveau du ${toTextStyle("Requin",'shark')} de 1.`,
 
         'research-e1-name': "Synérgie de l'Océan I",
         'research-e1-desc': `${toTextStyle("Sels",'salt')} augmente les ${toTextStyle("Coraux",'coral')} généré.`,
@@ -142,11 +142,11 @@ LANGUAGES.FR = {
         'research-e2-name': "Synérgie de l'Océan II",
         'research-e2-desc': `${toTextStyle("Neige comprimé",'snow')} augmente les ${toTextStyle("Glaces",'ice')} généré.`,
 
-        'research-e3-name': "Exploration Automation",
-        'research-e3-desc': `Automatically update the best base of the first <b>X</b> oceans without exploring.`,
-
-        'research-e4-name': "Kelp Oxidation",
-        'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
+        'research-e3-name': "Automatisation de l'xploration",
+        'research-e3-desc': `Améliore automatiquement la meilleure base des premiers <b>X</b> océans sans explorer.`,
+		
+        'research-e4-name': "Oxydation du Varech",
+        'research-e4-desc': `L'<b>Oxygene</b> maintenant affecte la production de ${toTextStyle("Varech",'kelp')} à taux réduit.`,
 
         'research-c1-name': "C-Gardien de la Recherche",
         'research-c1-desc': `Garder les ${toTextStyle("Recherche",'prestige')} à l'entrée du ${toTextStyle('Noyau','core')}.`,
@@ -160,14 +160,14 @@ LANGUAGES.FR = {
         'research-c4-name': "Nickel Amélioré",
         'research-c4-desc': `L'effet de <b>Nickel</b> est <b>deux fois</b> plus puissant.`,
 
-        'research-c5-name': "Additional Core Boost",
-        'research-c5-desc': `The core radiation's first boost now affects the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
+        'research-c5-name': "Boost du Noyau additionnel",
+        'research-c5-desc': `Le premier boost de la radiation du noyau affecte maintenant le boost du réacteur du noyau pour les ${toTextStyle('Poissons','fish')} à taux réduit.`,
 
-        'research-c6-name': "Radiation Reduction",
-        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce the core radiation's limit at a reduced rate.`,
+        'research-c6-name': "Réduction des Radiations",
+        'research-c6-desc': `Fragments ${toTextStyle('Magmatique','core')} réduit la limite de la radiation du noyau à taux réduit.`,
 
-        'research-c7-name': "Greater Shark Teeth",
-        'research-c7-desc': `The effect of 'Shark Teeth' is raised to the <b>2.5th</b> power.`,
+        'research-c7-name': "Dents du Requin amélioré",
+        'research-c7-desc': `L'effet de 'Dents du Requin' est augmenté à la puissance <b>2.5e</b>.`,
 
         // Exploration
 
@@ -183,17 +183,17 @@ LANGUAGES.FR = {
         'explore-0-name': `Océan Pacifique`,
         'explore-0-desc': `Le gain de ${toTextStyle('Poissons','fish')} est divisé par 2.`,
         'explore-0-milestone': [
-            `Augmenter les Éclats de ${toTextStyle('Prestige','prestige')} acquis à la puissance 1.05.`,
+            `Augmenter les Éclats de ${toTextStyle('Prestige','prestige')} acquis à la puissance 1.05e.`,
             `Augmenter les ressources et la profondeur de la progression de 25% par niveau du ${toTextStyle('Requin','shark')} à la racine carrée.`,
             `Augmenter le niveau du ${toTextStyle('Requin','shark')} ne dépensera plus de ${toTextStyle('Poissons','fish')}.`,
-            `Augmente le nombre de ${toTextStyle('Poissons','fish')} mangé à la puissance 1.05.`,
+            `Augmente le nombre de ${toTextStyle('Poissons','fish')} mangé à la puissance 1.05e.`,
             `Débloquer le ${toTextStyle('Noyau','core')}.`,
         ],
 
         'explore-1-name': `Océan Arctique`,
         'explore-1-desc': `Réinitialise vos Éclats de ${toTextStyle("Prestige",'prestige')} et amélioration de ${toTextStyle("Prestige",'prestige')}. Gain des Éclats de ${toTextStyle('Prestige','prestige')} mis à la racine carrée.`,
         'explore-1-milestone': [
-            `Débloque l'Auto-${toTextStyle('Requin','shark')} améliorations de ${toTextStyle('Prestige','prestige')}.`,
+            `Débloque les auto améliorations de ${toTextStyle('Prestige','prestige')} du ${toTextStyle('Requin','shark')}.`,
             `Augmenter les ressources et la profondeur de la progression de 25% par niveau de ${toTextStyle('Requin','shark')} à la racine carrée.`,
             `Améliorations de ${toTextStyle('Prestige','prestige')} ne dépensera plus d'Éclats de ${toTextStyle('Prestige','prestige')}.`,
             `Génére passivement 100% des Éclats de ${toTextStyle('Prestige','prestige')} reçu en faisant un ${toTextStyle('Prestige','prestige')}.`,
@@ -216,13 +216,13 @@ LANGUAGES.FR = {
             `L'effet de l'océan est 50% plus puissant.`,
         ],
 
-        'explore-4-name': `Indian Ocean`,
-        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is raised to the 0.75th power.`,
+        'explore-4-name': `Océan Indien`,
+        'explore-4-desc': `Vous êtes piégé dans les quatre premiers océans actifs, et vos ${toTextStyle('Poissons','fish')} l'exposant est élevé à la puissance 0,75e.`,
         'explore-4-milestone': [
-            `Decrease core radiation's limit by /1,000.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')} better.`,
+            `Diminuer la limite de la radiation du noyau de /1,000.`,
+            `Augmentation de la progression des ressources et de la profondeur de 25% par niveau de ${toTextStyle('Requin','shark')} à la racine carrée.`,
+            `Les réacteurs du noyau sont mis à l'échelle plus tard de +5.`,
+            `Améliore le ${toTextStyle('Varech','kelp')}.`,
         ],
 
         // Core Reactor
@@ -239,25 +239,25 @@ LANGUAGES.FR = {
         'core-3-name': `Néon`,
         'core-3-desc': `Niveau du ${toTextStyle("Requin",'shark')} réduit le ${toTextStyle("Poissons",'fish')} requis basé sur le niveau du <b>Néon</b>.`,
 
-        'core-bonus': x => `Product of core reactors will boost ${toTextStyle("Fish",'fish')} by <h4>${formatMult(x)}</h4>.`,
+        'core-bonus': x => `Le produit des réacteurs du noyau vont booster vos ${toTextStyle("Poissons",'fish')} de <h4>${formatMult(x)}</h4>.`,
 		
 		// Core Radiation
 
-        'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
+        'cr-start': x=>x?"Arrêter l'expérience.":"Commencer l'expérience.",
 
         'upgrade-cr': (gen,cost)=>`
-        Upgrade the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
-        Producing <b>${format(gen,0)}</b> per second.<br>
-        Cost: ${format(cost,0)} ${toTextStyle('Fish '+icon("radioactive"),'fish')}`,
+        Améliorer votre production de ${toTextStyle('Radiation '+icon("radioactive"),'core')}.<br>
+        Produit <b>${format(gen,0)}</b> par seconde.<br>
+        Coût: ${format(cost,0)} ${toTextStyle('Poissons '+icon("radioactive"),'fish')}`,
 
-        'reset-cr': (inc)=>`Reset the ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and sometimes add a new boost or upgrade the boosts. You need to reach the limit to reset.`,
+        'reset-cr': (inc)=>`Réinitialise vos ${toTextStyle('Radiation '+icon("radioactive"),'core')}, mais augmente sa limite de <b>${formatMult(inc,0)}</b>, et parfois ajoute un nouveau boost ou améliore les boosts. Vous devez atteindre la limite pour réinitialiser.`,
 
         'cr-boosts': [
-            x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the first row.`,
-            x=>`Boost ${toTextStyle('Magmatic','core')} fragments by <h4>${formatMult(x)}</h4>.`,
-            x=>`The first four ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
-            x=>`Second ${toTextStyle('Shark','shark')} level scaling is delayed by <h4>+${format(x)}</h4>.`,
-            x=>`Increase the base of ${toTextStyle('Shark','shark')} level's ${toTextStyle('Magmatic','core')} fragment bonus by <h4>+${format(x,3)}</h4>.`,
+            x=>`Fournis <h4>+${format(x)}</h4> réacteurs du noyau bonus sur la première rangée.`,
+            x=>`Boost vos Fragments ${toTextStyle('Magmatique','core')} de <h4>${formatMult(x)}</h4>.`,
+            x=>`Les 4 premiers améliorations de ${toTextStyle('Poissons','fish')} du ${toTextStyle('Requin','shark')} sont <h4>${formatPercent(x.sub(1))}</h4> plus puissants.`,
+            x=>`L'échelonnement du deuxième niveau du ${toTextStyle('Requin','shark')} est retardé de <h4>+${format(x)}</h4>.`,
+            x=>`Augmente le base du niveau du ${toTextStyle('Requin','shark')} pour le bonus de Fragments ${toTextStyle('Magmatique','core')} de <h4>+${format(x,3)}</h4>.`,
         ],
 
         // Automation
@@ -283,9 +283,9 @@ LANGUAGES.FR = {
         'progress-5-text': r => `Atteignez un total de  ${format(r)} Éclats de ${toTextStyle('Prestige','prestige')}`, 
         get 'progress-5-cond-text'() { return `Entrer dans le ${toTextStyle('Noyau','core')}` },
 
-        'progress-6-text': r => `Reach ${format(r)} ${toTextStyle('Magmatic','core')} fragments to unlock the next core feature`, 
+        'progress-6-text': r => `Atteignez ${format(r)} Fragments ${toTextStyle('Magmatique','core')} pour débloquer la nouvelle fonctionnalitée du Noyau`, 
 
-        'progress-7-text': r => `Reach ${toTextStyle('Shark','shark')} Level ${format(r,0)} to unlock new ocean type`, 
+        'progress-7-text': r => `Atteignez le niveau du ${toTextStyle('Requin','shark')} ${format(r,0)} pour débloquer un nouvel océan`, 
 
         'maxed-progress': "Acquis toutes les fonctionnalités!",
 
@@ -328,7 +328,7 @@ LANGUAGES.FR = {
         'next-at': "Suivant à",
         'depth': "Profondeur",
 		
-		'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
+		'offline-time-text': x=>`Vous avez été hors-ligne depuis <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "Acheter" : "Pas assez",
         'research-bought': bool => bool ? `<b>Acheté</b>` : `<b>Non acheté</b>`,
