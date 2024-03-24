@@ -70,7 +70,7 @@ LANGUAGES.EN = {
             return `
             <summary>The ${c} Radiation Experiment</summary>
             Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
-            While in the experiment, all core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
+            While in the experiment, core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
             The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
             Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
             `
@@ -145,7 +145,7 @@ LANGUAGES.EN = {
         'research-e2-desc': `${toTextStyle("Compressed Snow",'snow')} boosts ${toTextStyle("Ice",'ice')} generated.`,
 
         'research-e3-name': "Exploration Automation",
-        'research-e3-desc': `Automatically update the best base of the first <b>X</b> oceans without exploring.`,
+        'research-e3-desc': `Automatically gain base of the first <b>X</b> oceans without exploring.`,
 
         'research-e4-name': "Kelp Oxidation",
         'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
@@ -163,10 +163,10 @@ LANGUAGES.EN = {
         'research-c4-desc': `<b>Nickel</b>'s effect is <b>twice</b> as powerful.`,
 
         'research-c5-name': "Additional Core Boost",
-        'research-c5-desc': `The core radiation's first boost now affects the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
+        'research-c5-desc': `The core radiation's bonus reactors now affect the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
 
         'research-c6-name': "Radiation Reduction",
-        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce the core radiation's limit at a reduced rate.`,
+        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce radiation's limit at a reduced rate.`,
 
         'research-c7-name': "Greater Shark Teeth",
         'research-c7-desc': `The effect of 'Shark Teeth' is raised to the <b>2.5th</b> power.`,
@@ -219,12 +219,12 @@ LANGUAGES.EN = {
         ],
 
         'explore-4-name': `Indian Ocean`,
-        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is raised to the 0.75th power.`,
+        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponenet is raised to the 0.75th power.`,
         'explore-4-milestone': [
-            `Decrease core radiation's limit by /1,000.`,
+            `Decrease radiation's limit by /1,000.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')} better.`,
+            `Improve ${toTextStyle('Kelp','kelp')} effect.`,
         ],
 
         // Core Reactor
@@ -248,11 +248,11 @@ LANGUAGES.EN = {
         'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
 
         'upgrade-cr': (gen,cost)=>`
-        Upgrade the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
+        Upgrade ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
         Producing <b>${format(gen,0)}</b> per second.<br>
         Cost: ${format(cost,0)} ${toTextStyle('Fish '+icon("radioactive"),'fish')}`,
 
-        'reset-cr': (inc)=>`Reset the ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and sometimes add a new boost or upgrade the boosts. You need to reach the limit to reset.`,
+        'reset-cr': (inc)=>`Reset ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and upgrades radioactive boosts and sometimes adds new effects. You need to reach the limit to reset.`,
 
         'cr-boosts': [
             x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the first row.`,
