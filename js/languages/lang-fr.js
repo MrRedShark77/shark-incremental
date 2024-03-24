@@ -172,7 +172,7 @@ LANGUAGES.FR = {
 		// Exploration
 
 		'explore-while': `En explorant`,
-		'explore-inside': (a,b,c)=>`Base ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Atteignez ${format(c,0)} meilleur ${toTextStyle("Poissons",'fish')}.`,
+		'explore-inside': (a,b,c)=>`Base ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Atteignez ${format(c,0)} ${toTextStyle("Poissons",'fish')}.`,
 		'explore-outside': x=>`Votre base actuelle est de ${x.format()}/s.<br>Explorer l'océan!`,
 
 		'explore-next': x=>`Nouvel océan au niveau <h3>${format(x,0)}</h3> du ${toTextStyle("Requin",'shark')}.`,
@@ -211,7 +211,7 @@ LANGUAGES.FR = {
 		'explore-3-name': `Océan Austral`,
 		'explore-3-desc': `Réinitialise vos Éclats de ${toTextStyle("Prestige",'prestige')} et améliorations de ${toTextStyle("Prestige",'prestige')}. Vous ne pouvez pas acheter d'améliorations ${toTextStyle('Poissons','fish')} & ${toTextStyle('Prestige','prestige')} du ${toTextStyle('Requin','shark')}.`,
 		'explore-3-milestone': [
-			`Augmenter la base d'exploration de 10x.`,
+			`Augmenter la base d'éxploration de 10x.`,
 			`Augmenter les ressources et la profondeur de la progression de 25% par niveau de ${toTextStyle('Requin','shark')} à la racine carrée.`,
 			`L'effet de l'océan est 50% plus puissant.`,
 		],
@@ -265,7 +265,7 @@ LANGUAGES.FR = {
 		'auto-shark-name': `Auto-Niveau du ${toTextStyle("Requin","shark")}`,
 		'auto-su-name': `Auto-Améliorations de ${toTextStyle("Poissons","fish")}`,
 		'auto-spu-name': `Auto-Améliorations de ${toTextStyle("Prestige","prestige")}`,
-		'auto-eu-name': `Auto-Améliorations d'Exploration`,
+		'auto-eu-name': `Auto-Améliorations d'Éxploration`,
 
 		'auto-cost': (D,cost,name) => `Réduit l'intervale de ${formatReduction(D,0)}.<br>Coût: ${format(cost,0)} ${name}`,
 		'auto-interval': (a,b,maxed) => `Intervale: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
