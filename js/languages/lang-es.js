@@ -25,6 +25,9 @@ LANGUAGES.ES = {
 
         'snow-name': "Nieve Comprimida",
         'snow-costName': toTextStyle('Nieve Comprimida','snow'),
+		
+		'kelp-name': "Algas",
+        'kelp-costName': toTextStyle('Algas','kelp'),
 
         'core-name': "Fragmentos Magmáticos",
         'core-costName': 'Fragmentos ' + toTextStyle('Magmáticos','core'),
@@ -34,6 +37,8 @@ LANGUAGES.ES = {
 
         'curr-top-1-req': x => `Alcanza un total de <b>${format(x)}</b> fragmentos de ${toTextStyle('Prestigio','prestige')}`, 
         'curr-top-1-reset': x => `Entra al núcleo para conseguir <b>${x.format(0)}</b> fragmentos ${toTextStyle('Magmáticos','core')}`,
+		
+		'radioactive-name': toTextStyle('Radiación '+icon("radioactive"),'core'),
 
         // Tabs
 
@@ -44,6 +49,7 @@ LANGUAGES.ES = {
         'tab-explore': "Exploraciones",
         'tab-core': "El "+toTextStyle('Núcleo','core'),
         'tab-core-reactor': "Reactor " + toTextStyle('Nuclear','core'),
+		'tab-core-radiation': "Radiación " + toTextStyle('Nuclear','core'),
 
         // Elements
 
@@ -54,6 +60,22 @@ LANGUAGES.ES = {
         'option-title-2': "Notaciones",
         'option-title-3': "Confirmaciones",
         'option-title-4': "Idiomas",
+		
+		'offline-speed': "Acelerar progreso Offline",
+        'offline-done': "Hecho",
+		
+		'radioactive-div': `El ${toTextStyle('Núcleo','core')} ha producido <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+        get 'radioactive-summary'() {
+            var c = toTextStyle('Núcleo','core'), rf = toTextStyle('Peces '+icon("radioactive"),'fish')
+            return `
+            <summary>El Experimento de la Radiación del ${c}</summary>
+            Experimentar con la radiación del núcleo fuerza un reseteo del ${toTextStyle('Núcleo','core')}.
+            Durante el experimento, todos los reactores del núcleo no funcionan, y los ${toTextStyle('Peces','fish')}, fragmentos de ${toTextStyle('Prestigio','prestige')}, y los recursos de los primeros 4 océanos son enraizados al cubo.
+            El experimento obliga a tu ${toTextStyle('Tiburón','shark')} a comer ${rf} radioactivos.<br>
+            Mejora con ${rf} radioactivos para generar más ${toTextStyle('Radiación '+icon("radioactive"),'core')}, que dará impulsos adicionales.
+            `
+        },
+        'radioboost-div': `Tienes <h3 id="radioactive-boost">0</h3> impulsos radioactivos.`,
         
         // Upgrades
 
@@ -72,6 +94,10 @@ LANGUAGES.ES = {
         'su-s4-req': "Nivel 38",
         'su-s4-name': 'Exponente del Tiburón',
         'su-s4-desc': `Aumenta el exponente de los ${toTextStyle('Peces','fish')} en <b>+1%</b> por nivel.`,
+		
+		'su-s5-req': "Level 640",
+        'su-s5-name': 'Tiburón Radioactivo',
+        'su-s5-desc': `Aumenta la producción de ${toTextStyle('Radiación '+icon("radioactive"),'core')} por <b>x2</b> por level.`,
 
         'su-p1-req': "Primer Prestigio",
         'su-p1-name': 'Fuerza de Super Tiburón',
@@ -87,7 +113,7 @@ LANGUAGES.ES = {
         // Researches
 
         'research-p1-name': "Agilidad prestigiosa",
-        'research-p1-desc': `'Agilidad del Tiburón' ahora afecta a la base de los niveles del ${toTextStyle("Tiburón",'shark')} dando un bonus de fragmentos de ${toTextStyle("Prestigio",'prestige')} de manera reducida.`,
+        'research-p1-desc': `'Agilidad del Tiburón' ahora afecta a la base de los niveles del ${toTextStyle("Tiburón",'shark')} dando un bonus de fragmentos de ${toTextStyle("Prestigio",'prestige')} a ritmo reducido.`,
 
         'research-p2-name': "Mejora de Tiburón EL",
         'research-p2-desc': `Las mejororas de ${toTextStyle("Tiburón",'shark')} que usan ${toTextStyle("Peces",'fish')} ya no gastan ${toTextStyle("Peces",'fish')}.`,
@@ -107,16 +133,25 @@ LANGUAGES.ES = {
         'research-p6-desc': `'Tiburón Escalado' es el <b>doble</b> de poderoso.`,
 
         'research-p7-name': "Mejores recursos I",
-        'research-p7-desc': `El efecto de ${toTextStyle("Coral",'coral')} y el ${toTextStyle("Hielo",'ice')} son mejores.`,
+        'research-p7-desc': `El efecto del ${toTextStyle("Coral",'coral')} y el ${toTextStyle("Hielo",'ice')} son mejores.`,
+		
+		'research-p8-name': "Niveles de Tiburón aún más Mejorados",
+        'research-p8-desc': `Reduce aún más la base de los requisitos de los niveles del ${toTextStyle("Tiburón",'shark')} por 1.`,
 
         'research-e1-name': "Sinergia oceánica I",
         'research-e1-desc': `La ${toTextStyle("Sal",'salt')} impulsa los ${toTextStyle("Corales",'coral')} generados.`,
 
         'research-e2-name': "Sinergia oceánica II",
         'research-e2-desc': `La ${toTextStyle("Nieve Comprimida",'snow')} impulsa el ${toTextStyle("Hielo",'ice')} generado.`,
+		
+		'research-e3-name': "Automatización de Exploración",
+        'research-e3-desc': `Actualiza automáticamente la base de los primeros <b>X</b> océanos sin explorar.`,
+
+        'research-e4-name': "Oxidación de Algas",
+        'research-e4-desc': `El <b>Oxígeno</b> ahora afecta a la producción de ${toTextStyle("Algas",'kelp')} a ritmo reducido.`,
 
         'research-c1-name': "Investigaciones C-Keeper",
-        'research-c1-desc': `Manten tus ${toTextStyle("Investigaciones",'prestige')} al entrar al ${toTextStyle('Núcleo','core')}.`,
+        'research-c1-desc': `Mantén tus ${toTextStyle("Investigaciones",'prestige')} al entrar al ${toTextStyle('Núcleo','core')}.`,
 
         'research-c2-name': "Exploración C-Keeper",
         'research-c2-desc': `Mantén los primeros <b>X</b> océanos desbloqueados y su profundidad al entrar al ${toTextStyle('Núcleo','core')}.`,
@@ -126,6 +161,15 @@ LANGUAGES.ES = {
 
         'research-c4-name': "Mejor Níquel",
         'research-c4-desc': `El efecto del <b>Níquel</b> es el <b>doble</b> de poderoso.`,
+		
+		'research-c5-name': "Impulso del núcleo adicional",
+        'research-c5-desc': `El primer impulso de la radiación del núcleo ahora afecta al impulso de ${toTextStyle('Peces','fish')} del reactor del núcleo a ritmo reducido.`,
+
+        'research-c6-name': "Reducción Radioactiva",
+        'research-c6-desc': `Los fragmentos ${toTextStyle('Magmáticos','core')} reducen el límite de la radiación del núcleo a ritmo reducido.`,
+
+        'research-c7-name': "Mejores Dientes del Tiburón",
+        'research-c7-desc': `El efecto de los 'Dientes del tiburón' es elevado a la potencia de <b>2.5</b> .`,
 
         // Exploration
 
@@ -158,7 +202,7 @@ LANGUAGES.ES = {
         ],
 
         'explore-2-name': `Océano Atlántico`,
-        'explore-2-desc': `Resetéa tus fragmentos de ${toTextStyle("Prestigio",'prestige')} y mejoras de ${toTextStyle("Prestigio",'prestige')}. El nivel del ${toTextStyle('Tiburón','shark')} escala 10x más rápido.` ,
+        'explore-2-desc': `Resetea tus fragmentos de ${toTextStyle("Prestigio",'prestige')} y mejoras de ${toTextStyle("Prestigio",'prestige')}. El nivel del ${toTextStyle('Tiburón','shark')} escala 10x más rápido.` ,
         'explore-2-milestone': [
             `El escalado de 'Dientes del Tiburón' y 'Exponente del Tiburón' son ligeramente más débiles.`,
             `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
@@ -167,11 +211,20 @@ LANGUAGES.ES = {
         ],
 
         'explore-3-name': `Océano Antártico`,
-        'explore-3-desc': `Resetéa tus fragmentos de ${toTextStyle("Prestigio",'prestige')} y mejoras de ${toTextStyle("Prestigio",'prestige')}. No puedes comprar mejoras de ${toTextStyle('Peces','fish')} y ${toTextStyle('Prestigio','prestige')} del ${toTextStyle('Tiburón','shark')}.`,
+        'explore-3-desc': `Resetea tus fragmentos de ${toTextStyle("Prestigio",'prestige')} y mejoras de ${toTextStyle("Prestigio",'prestige')}. No puedes comprar mejoras de ${toTextStyle('Peces','fish')} y ${toTextStyle('Prestigio','prestige')} del ${toTextStyle('Tiburón','shark')}.`,
         'explore-3-milestone': [
             `Aumenta la base de la exploración en 10x.`,
             `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
             `El efecto de la ${toTextStyle('Nieve Comprimida','snow')} es un 50% más fuerte.`,
+        ],
+		
+		'explore-4-name': `Océano Índico`,
+        'explore-4-desc': `Estás atrapado en los primeros cuatro océanos activos, y el exponente de los ${toTextStyle('Peces','fish')} es aumentado a la potencia de 0.75.`,
+        'explore-4-milestone': [
+            `Reduce el límite de la radiación del núcleo en /1,000.`,
+            `Aumenta los recursos y el progreso de la profundidad en un 25% por cada raíz cuadrada de los niveles del ${toTextStyle('Tiburón','shark')}.`,
+            `Los reactores del núcleo escalan +5 después.`,
+            `Mejora el efecto de las ${toTextStyle('Algas','kelp')}.`,
         ],
 
         // Core Reactor
@@ -189,6 +242,25 @@ LANGUAGES.ES = {
         'core-3-desc': `Los niveles del ${toTextStyle("Tiburón",'shark')} bajan sus requisitos basados en los niveles de <b>Neón</b>.`,
 
         'core-bonus': x => `Los reactores del núcleo impulsarán los ${toTextStyle("Peces",'fish')} en <h4>${formatMult(x)}</h4>.`,
+		
+		// Core Radiation
+
+        'cr-start': x=>x?"Terminar el experimento.":"Empezar el experimento.",
+
+        'upgrade-cr': (gen,cost)=>`
+        Mejora la producción de la ${toTextStyle('Radiación '+icon("radioactive"),'core')}.<br>
+        Generando <b>${format(gen,0)}</b> por segundo.<br>
+        Coste: ${format(cost,0)} ${toTextStyle('Peces '+icon("radioactive"),'fish')}`,
+
+        'reset-cr': (inc)=>`Resetea la ${toTextStyle('Radiación '+icon("radioactive"),'core')}, pero aumenta su límite por <b>${formatMult(inc,0)}</b>, y a veces añade un nuevo impulso o mejora los impulsos. Necesitas llegar al límite para resetear.`,
+
+        'cr-boosts': [
+            x=>`Provee <h4>+${format(x)}</h4> reactores del núcleo extras en la primera fila.`,
+            x=>`Impulsa los fragmentos ${toTextStyle('Magmáticos','core')} por <h4>${formatMult(x)}</h4>.`,
+            x=>`Las primeras cuatro mejoras de ${toTextStyle('Peces','fish')} del ${toTextStyle('Tiburón','shark')} son un <h4>${formatPercent(x.sub(1))}</h4> más poderosos.`,
+            x=>`El segundo escalado de los niveles del ${toTextStyle('Tiburón','shark')} se retrasa en <h4>+${format(x)}</h4>.`,
+            x=>`Aumenta la base del bonus de fragmentos ${toTextStyle('Magmáticos','core')} de los niveles del ${toTextStyle('Tiburón','shark')} en <h4>+${format(x,3)}</h4>.`,
+        ],
 
         // Automation
 
@@ -212,6 +284,10 @@ LANGUAGES.ES = {
 
         'progress-5-text': r => `Alcanza un total de ${format(r)} fragmentos de ${toTextStyle('Prestigio','prestige')}`, 
         get 'progress-5-cond-text'() { return `Entra al ${toTextStyle('Núcleo','core')}` },
+		
+		'progress-6-text': r => `Alcanza ${format(r)} fragmentos ${toTextStyle('Magmáticos','core')} para desbloquear la siguiente característica del núcleo`, 
+
+        'progress-7-text': r => `Alcanza el nivel ${format(r,0)} del ${toTextStyle('Tiburón','shark')} para desbloquear un nuevo tipo de océano`,
 
         'maxed-progress': "¡Todas las mecánicas desbloqueadas!",
 
@@ -221,7 +297,7 @@ LANGUAGES.ES = {
             let p = toTextStyle('Prestigio','prestige'), s = toTextStyle('Tiburón','shark'), f = toTextStyle('Peces','fish')
             return `
             <h3>${p}</h3><br>
-            El ${p} es la primera capa de reseteo. Hacer un prestigio reseteará las mejoras de ${s}, y los ${f} por fragmentos de ${p} .
+            El ${p} es la primera capa de reseteo. Hacer un prestigio resetea las mejoras de ${s}, y los ${f} por fragmentos de ${p} .
             El primer ${p} desbloqueará mejoras de ${s}.<br>
             <img src="textures/PrestigeShard.png"><br>
             ¿Estás seguro que quieres hacer un prestigio?
@@ -231,7 +307,7 @@ LANGUAGES.ES = {
             let c = toTextStyle('Núcleo','core'), m = toTextStyle('Magmáticos','core'), p = toTextStyle('Prestigio','prestige')
             return `
             <h3>El ${c}</h3><br>
-            El ${c} es la segunda capa de reseteo. Entrar al núcleo reseteará todo lo que el ${p} hace, también como los fragmentos de ${p} , mejoras de ${p} , ${toTextStyle('Investigaciones','prestige')} (casi todas), y exploraciones por fragmentos ${m}.
+            El ${c} es la segunda capa de reseteo. Entrar al núcleo resetea todo lo que el ${p} hace, también como los fragmentos de ${p} , mejoras de ${p} , ${toTextStyle('Investigaciones','prestige')} (casi todas), y exploraciones por fragmentos ${m}.
             Desbloqueando el reactor del ${c} la primera vez.<br>
             <img src="textures/Magmatic.png"><br>
             ¿Estás seguro que quieres entrar al núcleo?
@@ -252,6 +328,8 @@ LANGUAGES.ES = {
         'require': "Requiere",
         'next-at': "Siguiente en",
         'depth': "Profundidad",
+		
+		'offline-time-text': x=>`Has estado desconectado por <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "Comprar" : "No tienes suficiente",
         'research-bought': bool => bool ? `<b>Comprado</b>` : `<b>Sin comprar</b>`,
@@ -284,7 +362,7 @@ LANGUAGES.ES = {
 
         'prompt-placeholder': "Escribe aquí para...",
 
-        'option-buttons-text': ["Guardar","Exportar al portapapeles","Exportar en un archivo","Importar por texto","Importar de un archivo","¡¡¡BORRAR PROGRESO!!!"],
+        'option-buttons-text': ["Guardar","Exportar al portapapeles","Exportar en un archivo","Importar por texto","Importar de un archivo","¡¡¡BORRAR PROGRESO!!!",'Únete a la comunidad (Discord)','Apoya al creador (Boosty)'],
 
         'confirm-prestige': "Hacer un prestigio",
         'confirm-core': "Entrar al núcleo",
