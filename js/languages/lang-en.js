@@ -219,7 +219,7 @@ LANGUAGES.EN = {
         ],
 
         'explore-4-name': `Indian Ocean`,
-        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponenet is raised to the 0.75th power.`,
+        'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is raised to the 0.75th power.`,
         'explore-4-milestone': [
             `Decrease radiation's limit by /1,000.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
