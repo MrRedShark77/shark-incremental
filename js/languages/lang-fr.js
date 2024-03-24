@@ -59,8 +59,8 @@ LANGUAGES.FR = {
 		'option-title-3': "Confirmations",
 		'option-title-4': "Langues",
 
-		'offline-speed': "Vitesse hors-ligne",
-		'offline-done': "Terminé",
+		'offline-speed': "Accelérer",
+		'offline-done': "Terminer",
 
 		'radioactive-div': `Le ${toTextStyle('Noyau','core')} à produit <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
 		get 'radioactive-summary'() {
@@ -68,7 +68,7 @@ LANGUAGES.FR = {
 			return `
 			<summary>L'${c}Expérimentation de Radiation</summary>
 			Expérimenter avec la radiation du noyau force une réinitialisation de ${toTextStyle('Noyau','core')}.
-			Pendant l'éxperiance, tout les réacteurs du noyau ne fonctionnent pas, et les ${toTextStyle('Poissons','fish')}, Éclats de ${toTextStyle('Prestige','prestige')}, et les ressources des 4 premiers océans sont mis à leur racine cubique.
+			Pendant l'expérience, aucun des réacteurs du noyau ne fonctionnent, et les ${toTextStyle('Poissons','fish')}, Éclats de ${toTextStyle('Prestige','prestige')}, et les ressources des 4 premiers océans sont mis à leur racine cubique.
 			L'Expérimentation force votre ${toTextStyle('Requin','shark')} à manger des ${rf} radioactifs.<br>
 			Améliorer avec des ${rf} pour générer plus de ${toTextStyle('Radiation '+icon("radioactive"),'core')}, ce qui vous donne des boosts supplémentaires.
 			`
@@ -142,11 +142,11 @@ LANGUAGES.FR = {
 		'research-e2-name': "Synérgie de l'Océan II",
 		'research-e2-desc': `${toTextStyle("Neige comprimé",'snow')} augmente les ${toTextStyle("Glaces",'ice')} généré.`,
 
-		'research-e3-name': "Automatisation de l'xploration",
+		'research-e3-name': "Automatisation de l'Éxploration",
 		'research-e3-desc': `Améliore automatiquement la meilleure base des premiers <b>X</b> océans sans explorer.`,
 		
 		'research-e4-name': "Oxydation du Varech",
-		'research-e4-desc': `L'<b>Oxygene</b> maintenant affecte la production de ${toTextStyle("Varech",'kelp')} à taux réduit.`,
+		'research-e4-desc': `L'<b>Oxygene</b> affecte maintenant la production de ${toTextStyle("Varech",'kelp')} à taux réduit.`,
 
 		'research-c1-name': "C-Gardien de la Recherche",
 		'research-c1-desc': `Garder les ${toTextStyle("Recherche",'prestige')} à l'entrée du ${toTextStyle('Noyau','core')}.`,
@@ -217,7 +217,7 @@ LANGUAGES.FR = {
 		],
 
 		'explore-4-name': `Océan Indien`,
-		'explore-4-desc': `Vous êtes piégé dans les quatre premiers océans actifs, et vos ${toTextStyle('Poissons','fish')} l'exposant est élevé à la puissance 0,75e.`,
+		'explore-4-desc': `Vous êtes piégé dans les quatre premiers océans actifs, et l'exposant de vos ${toTextStyle('Poissons','fish')} est élevé à la puissance 0,75e.`,
 		'explore-4-milestone': [
 			`Diminuer la limite de la radiation du noyau de /1,000.`,
 			`Augmentation de la progression des ressources et de la profondeur de 25% par niveau de ${toTextStyle('Requin','shark')} à la racine carrée.`,
@@ -255,8 +255,8 @@ LANGUAGES.FR = {
 		'cr-boosts': [
 			x=>`Fournis <h4>+${format(x)}</h4> réacteurs du noyau bonus sur la première rangée.`,
 			x=>`Boost vos Fragments ${toTextStyle('Magmatique','core')} de <h4>${formatMult(x)}</h4>.`,
-			x=>`Les 4 premiers améliorations de ${toTextStyle('Poissons','fish')} du ${toTextStyle('Requin','shark')} sont <h4>${formatPercent(x.sub(1))}</h4> plus puissants.`,
-			x=>`L'échelonnement du deuxième niveau du ${toTextStyle('Requin','shark')} est retardé de <h4>+${format(x)}</h4>.`,
+			x=>`Les 4 premières améliorations de ${toTextStyle('Poissons','fish')} du ${toTextStyle('Requin','shark')} sont <h4>${formatPercent(x.sub(1))}</h4> plus puissants.`,
+			x=>`Le deuxième échelonnement du niveau du ${toTextStyle('Requin','shark')} est retardé de <h4>+${format(x)}</h4>.`,
 			x=>`Augmente le base du niveau du ${toTextStyle('Requin','shark')} pour le bonus de Fragments ${toTextStyle('Magmatique','core')} de <h4>+${format(x,3)}</h4>.`,
 		],
 
@@ -287,7 +287,7 @@ LANGUAGES.FR = {
 
 		'progress-7-text': r => `Atteignez le niveau du ${toTextStyle('Requin','shark')} ${format(r,0)} pour débloquer un nouvel océan`, 
 
-		'maxed-progress': "Acquis toutes les fonctionnalités!",
+		'maxed-progress': "Toutes les fonctionnalités sont acquises!",
 
 		// Reset
 
