@@ -12,7 +12,7 @@ LANGUAGES.FR = {
 		'prestige-name': "Éclats de prestige",
 		'prestige-costName': "Éclats de " + toTextStyle('Prestige','prestige'),
 
-		'coral-name': "Corals",
+		'coral-name': "Coraux",
 		'coral-costName': toTextStyle('Coraux','coral'),
 
 		'ice-name': "Ice",
