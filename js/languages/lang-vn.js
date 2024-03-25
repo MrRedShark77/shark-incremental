@@ -363,7 +363,7 @@ LANGUAGES.VN = {
 
         'prompt-placeholder': "Nhập văn bản vào đây...",
 
-        'option-buttons-text': ["Lưu","Xuất vào bộ nhớ tạm","Xuất dưới dạng tệp tin","Nhập dưới dạng kí tự","Nhập từ tệp tin","XÓA DỮ LIỆU!!!",'Tham gia vào cộng đồng (Discord)','Ủng hộ người tạo (Người ủng hộ)'],
+        'option-buttons-text': ["Lưu","Xuất vào bộ nhớ tạm","Xuất dưới dạng tệp tin","Nhập dưới dạng kí tự","Nhập từ tệp tin","XÓA DỮ LIỆU!!!",'Tham gia vào cộng đồng (Discord)','Ủng hộ người tạo (Boosty)'],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Vào lõi",

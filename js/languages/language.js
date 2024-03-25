@@ -1,5 +1,6 @@
 var lang_data = {}
 const LANGUAGES = {}
+var TOTAL_ENG_TEXTS = 0
 
 function setupLanguage(lang=player.language) {
     lang_data = LANGUAGES.EN.text // Set Main Language
@@ -17,6 +18,8 @@ function setupLanguage(lang=player.language) {
         }
         */
     }
+
+    TOTAL_ENG_TEXTS = calculateTotalLanguageTexts(LANGUAGES.EN.text)
 }
 
 function changeLanguage(lang) {
@@ -35,11 +38,20 @@ function setupLanguageHTML() {
         <button class="lang-button" onclick="changeLanguage('${id}')">
             <img src="textures/${v.icon}.png">
             <div>${v.inter_name}</div>
+            <div>${id=="EN" ? "(Main)".bold() : `(${(calculateTotalLanguageTexts(v.text)/TOTAL_ENG_TEXTS*100).toFixed(2)}%)`.bold()}</div>
         </button>
         `
     }
 
     el("languages").innerHTML = h
+}
+
+function calculateTotalLanguageTexts(obj,s=0) {
+    for (let v of Object.values(obj)) {
+        if (typeof v == 'object') s = calculateTotalLanguageTexts(v,s)
+        else s++
+    }
+    return s
 }
 
 function deepCheckLanguage(obj,data) {
