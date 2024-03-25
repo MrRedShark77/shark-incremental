@@ -249,17 +249,17 @@ LANGUAGES.ZH = {
 
         'upgrade-cr': (gen,cost)=>`
         提升${toTextStyle('辐射'+icon("radioactive"),'core')}产量。<br>
-        每秒生产 <b>${format(gen,0)}</b>.<br>
+        每秒产生 <b>${format(gen,0)}</b>.<br>
         价格：${format(cost,0)} ${toTextStyle('鱼'+icon("radioactive"),'fish')}`,
 
         'reset-cr': (inc)=>`重置${toTextStyle('辐射'+icon("radioactive"),'core')}数量，辐射上限 <b>${formatMult(inc,0)}</b>, 你还可以获得新的辐射加成或辐射升级。你需要达到辐射上限才能进行这项重置。`,
 
         'cr-boosts': [
-            x=>`第一行的地核反应堆数量 <h4>+${format(x)}</h4>.`,
+            x=>`第一行地核反应堆的数量 <h4>+${format(x)}</h4>.`,
             x=>`获得${toTextStyle('岩浆','core')}碎片的量 <h4>${formatMult(x)}</h4>.`,
             x=>`前四个用${toTextStyle('鲨鱼','shark')}购买的${toTextStyle('鱼','fish')}升级的效果增强 <h4>${formatPercent(x.sub(1))}</h4>.`,
-            x=>`Second ${toTextStyle('Shark','shark')} level scaling is delayed by <h4>+${format(x)}</h4>.`,
-            x=>`Increase the base of ${toTextStyle('Shark','shark')} level's ${toTextStyle('Magmatic','core')} fragment bonus by <h4>+${format(x,3)}</h4>.`,
+            x=>`${toTextStyle('鲨鱼','shark')}等级的第二次价格折算延迟 <h4>+${format(x)}</h4>.`,
+            x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('岩浆','core')}碎片加成的基数 <h4>+${format(x,3)}</h4>.`,
         ],
 
         // Automation
