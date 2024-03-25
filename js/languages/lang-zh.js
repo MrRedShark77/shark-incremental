@@ -26,8 +26,8 @@ LANGUAGES.ZH = {
         'snow-name': "压缩雪花",
         'snow-costName': toTextStyle('压缩雪花','snow'),
 
-        'kelp-name': "海藻",
-        'kelp-costName': toTextStyle('海藻','kelp'),
+        'kelp-name': "褐藻",
+        'kelp-costName': toTextStyle('褐藻','kelp'),
 
         'core-name': "岩浆碎片",
         'core-costName': toTextStyle('岩浆','core') + '碎片',
@@ -136,7 +136,7 @@ LANGUAGES.ZH = {
         'research-p7-desc': `提升${toTextStyle("珊瑚",'coral')}和${toTextStyle("冰",'ice')}的效果`,
 		
 		'research-p8-name': "超强鲨鱼等级",
-        'research-p8-desc': `${toTextStyle("鲨鱼",'shark')}等级的基数继续减 1.`,
+        'research-p8-desc': `再次将${toTextStyle("鲨鱼",'shark')}等级的价格基数继续减 1.`,
 
         'research-e1-name': "海洋协同 I",
         'research-e1-desc': `${toTextStyle("盐",'salt')}提升${toTextStyle("珊瑚",'coral')}的产量。`,
@@ -145,10 +145,10 @@ LANGUAGES.ZH = {
         'research-e2-desc': `${toTextStyle("压缩雪花",'snow')}提升${toTextStyle("冰",'ice')}的产量。`,
 		
 		'research-e3-name': "自动探索",
-        'research-e3-desc': `无需进行探索，自动更新前 <b>X</b> 个海洋的基数。`,
+        'research-e3-desc': `无需进行探索，自动更新前 <b>X</b> 个海洋的基数，<b>X</b> 为此${toTextStyle("研究",'prestige')}等级。`,
 
-        'research-e4-name': "海藻氧化",
-        'research-e4-desc': `<b>氧</b>能增加${toTextStyle("海藻",'kelp')}的产量。`,
+        'research-e4-name': "褐藻氧化",
+        'research-e4-desc': `<b>氧</b>能增加${toTextStyle("褐藻",'kelp')}的产量。`,
 
         'research-c1-name': "研究保持",
         'research-c1-desc': `进入${toTextStyle('地核','core')}后保留${toTextStyle("研究",'prestige')}。`,
@@ -219,12 +219,12 @@ LANGUAGES.ZH = {
         ],
 
         'explore-4-name': `印度洋`,
-        'explore-4-desc': `前四个海洋的削弱效果始终有效，${toTextStyle('鱼','fish')}的指数是原来的 0.75 次幂。`,
+        'explore-4-desc': `前四个海洋的效果始终生效，吃${toTextStyle('鱼','fish')}的指数是原来的 0.75 次幂。`,
         'explore-4-milestone': [
             `地核辐射的上限除以 1,000.`,
             `${toTextStyle('鲨鱼','shark')}等级的平方根每增加 1, 下潜速度和资源产量增加 25%.`,
             `地核反应堆的价格折算延迟 5.`,
-            `提升${toTextStyle('海藻','kelp')}的效果。`,
+            `提升${toTextStyle('褐藻','kelp')}的效果。`,
         ],
 
         // Core Reactor
@@ -330,7 +330,7 @@ LANGUAGES.ZH = {
         'next-at': "下一个需要",
         'depth': "深度",
 
-        'offline-time-text': x=>`你已离线 <b>${formatTime(x,0)}</b>.`,
+        'offline-time-text': x=>`您离线了 <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "购买" : "无法购买",
         'research-bought': bool => bool ? `<b>已购买</b>` : `<b>未购买</b>`,
