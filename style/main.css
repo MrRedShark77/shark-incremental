@@ -570,7 +570,7 @@ button:not(.locked):active {
 
 .lang-button {
 	width: 120px;
-	height: 120px;
+	height: 140px;
 }
 
 .lang-button > img {
