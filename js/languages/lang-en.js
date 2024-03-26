@@ -61,7 +61,7 @@ LANGUAGES.EN = {
         'option-title-3': "Confirmations",
         'option-title-4': "Languages",
 
-        'offline-speed': "Speed Offline",
+        'offline-speed': "Speed up Offline time",
         'offline-done': "Done",
 
         'radioactive-div': `The ${toTextStyle('Core','core')} has produced <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
@@ -70,7 +70,7 @@ LANGUAGES.EN = {
             return `
             <summary>The ${c} Radiation Experiment</summary>
             Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
-            While in the experiment, core reactors don't work, and ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
+            While in the experiment, core reactors don't work. ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
             The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
             Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
             `
@@ -151,7 +151,7 @@ LANGUAGES.EN = {
         'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
 
         'research-c1-name': "Research C-Keeper",
-        'research-c1-desc': `Keep ${toTextStyle("Research",'prestige')} on entering the ${toTextStyle('Core','core')}.`,
+        'research-c1-desc': `Keep ${toTextStyle("Research",'prestige')} when entering the ${toTextStyle('Core','core')}.`,
 
         'research-c2-name': "Exploration C-Keeper",
         'research-c2-desc': `Keep first <b>X</b> oceans unlocked and their depth on entering the ${toTextStyle('Core','core')}.`,
@@ -224,7 +224,7 @@ LANGUAGES.EN = {
             `Decrease radiation's limit by /1,000.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')} effect.`,
+            `Improve ${toTextStyle('Kelp','kelp')}'s effect.`,
         ],
 
         // Core Reactor
