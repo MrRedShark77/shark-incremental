@@ -61,7 +61,7 @@ LANGUAGES.EN = {
         'option-title-3': "Confirmations",
         'option-title-4': "Languages",
 
-        'offline-speed': "Speed Offline",
+        'offline-speed': "Speed up Offline time",
         'offline-done': "Done",
 
         'radioactive-div': `The ${toTextStyle('Core','core')} has produced <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
@@ -224,7 +224,7 @@ LANGUAGES.EN = {
             `Decrease radiation's limit by /1,000.`,
             `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
             `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')} effect.`,
+            `Improve ${toTextStyle('Kelp','kelp')}'s effect.`,
         ],
 
         // Core Reactor
