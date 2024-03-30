@@ -330,7 +330,8 @@ LANGUAGES.EN = {
         'next-at': "Next at",
         'depth': "Depth",
 
-        'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
+        'offline-time-text': x=>`For today and today only, you can type "what's e621" in the discord to get a free role! 
+        You have been offline for <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "Purchase" : "Can't Afford",
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
