@@ -81,7 +81,7 @@ LANGUAGES.EN = {
         'radioboost-div': `You have <h3 id="radioactive-boost">0</h3> radioactive boosts.`,
 
         'core-temp-div': `The ${toTextStyle('Core','core')}'s temperature is <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, which makes radioactive boosts <h4 id="core-temp-effect">100%</h4> effective.`,
-        'core-temp-after-div': `(The ${toTextStyle('Core','core')}'s temperature will be <span id="core-temp-after">???</span> after a reset)`,
+        'core-temp-after-div': `(The ${toTextStyle('Core','core')}'s temperature will be <span id="core-temp-after">???</span> after a ${toTextStyle('Core','core')} reset)`,
 
         // Upgrades
 
