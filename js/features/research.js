@@ -111,7 +111,7 @@ const RESEARCH = {
     e5: {
         unl: ()=>player.feature>=10 && hasResearch('e3'),
         require: [
-            ['kelp',false,1e77],
+            ['kelp',false,1e78],
         ],
     },
     c1: {
@@ -177,7 +177,7 @@ const RESEARCH = {
     c10: {
         unl: ()=>player.feature>=9,
         require: [
-            ['core',false,1e108],
+            ['core',false,1e133],
         ],
         effect(r) {
             return Decimal.root(sharkUpgEffect('p3',0),3)

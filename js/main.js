@@ -74,7 +74,7 @@ const PROGRESS = [
     },{
         auto: true,
         get amount() { return CURRENCIES.fish.total },
-        require: 'ee15',
+        require: 'e6e15',
         logHeight: 2,
     },
 ]
