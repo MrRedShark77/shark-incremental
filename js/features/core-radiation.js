@@ -22,7 +22,7 @@ const CORE_RAD = {
     },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(10,2,0).pow(1.25))
+        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(10,2,'P').pow(1.25))
 
         return x
     },
@@ -85,7 +85,21 @@ const CORE_RAD = {
         },{
             req: 13,
             effect: (r,b)=>{
-                let x = r.add(1).log10().div(5000).mul(b.add(1).root(2))
+                let x = r.add(1).log10().mul(b.add(1).root(2)).softcap(250,3,3).div(5000)
+
+                return x
+            },
+        },{
+            req: 17,
+            effect: (r,b)=>{
+                let x = r.add(10).log10().log10().mul(b.root(2).div(10).add(1)).add(1).root(2).mul(1.25)
+
+                return x
+            },
+        },{
+            req: 20,
+            effect: (r,b)=>{
+                let x = r.add(1).log10().mul(b.add(1)).root(3).div(100).add(1)
 
                 return x
             },
@@ -94,6 +108,24 @@ const CORE_RAD = {
 }
 
 function getCRBoost(i,def=1) { return tmp.cr_boost[i] ?? def }
+
+function getCoreTemperature() {
+    var x = E(6150)
+
+    for (let i = 0; i < CORE_ASSEMBLER.length; i++) x = x.add(CORE_ASSEMBLER[i].temperature(player.core.assembler_strength[i]))
+
+    return x
+}
+
+function getCoreTemperatureEffect() {
+    var x = getCoreTemperature()
+
+    if (x.gte(6150)) {
+        x = x.sub(6050).div(100).root(2)
+
+        return x
+    } else return x.div(6150).max(0)
+}
 
 function updateCoreRadiation() {
     var rad = player.core.radiation
@@ -117,16 +149,24 @@ function updateCoreRadiation() {
     el('cr-boosts-div').innerHTML = h
 
     el('radioactive-boost').innerHTML = format(player.core.radiation.boost,0)
+
+    el('core-temp-div').style.display = el_display(player.feature>=9)
+    if (player.feature>=9) {
+        el('core-temperature').innerHTML = format(getCoreTemperature())+"°K"
+        el('core-temp-effect').innerHTML = formatPercent(tmp.core_temp_eff.sub(1))
+    }
 }
 
 function updateCoreRadiationTemp() {
     tmp.cr_gain = CORE_RAD.gain()
     tmp.cr_limit = CORE_RAD.limit()
 
+    var temp_eff = tmp.core_temp_eff = getCoreTemperatureEffect()
+
     var amt = player.core.radiation.amount, b = player.core.radiation.boost
 
     for (let i = 0; i < CORE_RAD.boosts.length; i++) {
         let boost = CORE_RAD.boosts[i]
-        tmp.cr_boost[i] = boost.effect(b.gte(boost.req) ? amt : Decimal.dZero, b.sub(boost.req).max(0))
+        tmp.cr_boost[i] = boost.effect(b.gte(boost.req) ? amt : Decimal.dZero, b.sub(boost.req).max(0).mul(temp_eff))
     }
 }

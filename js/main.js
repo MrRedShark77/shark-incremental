@@ -2,6 +2,7 @@ const el = id => document.getElementById(id);
 const FPS = 30;
 
 function toTextStyle(text,style,id) { return `<text-style text="${style}" ${id ? `id="${id}"` : ""}>${text}</text-style>` }
+function compareStyle(text,x,y) { return Decimal.eq(x,y)?toTextStyle(text):Decimal.gte(x,y)?toTextStyle(icon("up-arrow")+text,"green"):toTextStyle(icon("down-arrow")+text,"red") }
 
 var player = {}, date = Date.now(), diff = 0;
 
@@ -65,6 +66,16 @@ const PROGRESS = [
         auto: true,
         get amount() { return player.shark_level },
         require: 1000,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.core.amount },
+        require: 1e72,
+        logHeight: 1,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.fish.total },
+        require: 'ee15',
+        logHeight: 2,
     },
 ]
 

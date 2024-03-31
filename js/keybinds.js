@@ -1,7 +1,7 @@
 document.addEventListener("keydown",e=>{
     var keyCode = e.keyCode;
 
-    console.log(keyCode)
+    // console.log(keyCode)
 
     // Shark Level
     if (keyCode == 83) upgradeShark()

@@ -116,7 +116,7 @@ button * {
 	pointer-events: none;
 }
 
-button:not(.locked,.selected,#wipe):hover {
+button:not(.locked,.selected,#wipe,.ca-grid-btn):hover {
 	background-color: #0b6965;
 	border-color: #043f3c;
 }
@@ -131,8 +131,13 @@ button.huge-btn {
 	height: 100px;
 }
 
+button.half-huge-btn {
+	width: 250px;
+	height: 50px;
+}
+
 .tab-button.selected,
-button:not(.locked):active {
+button:not(.locked,.ca-grid-btn):active {
 	background-color: #075551;
 }
 
@@ -390,11 +395,17 @@ button:not(.locked):active {
 	}
 }
 
-#auto-table, #research-table, #core-reactor-table {
+#auto-table, #research-table {
 	display: flex;
 	justify-content: center;
 	align-items: start;
 	flex-wrap: wrap;
+}
+
+#core-reactor-table {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	justify-content: center;
 }
 
 .auto-div {
@@ -577,4 +588,57 @@ button:not(.locked):active {
 	width: 80px;
 	height: 80px;
 	margin-bottom: 5px;
+}
+
+#core-assembler-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 80px);
+	grid-auto-rows: 80px;
+	justify-content: center;
+}
+
+.ca-grid-btn {
+	background-color: #075551;
+	border: solid 2px #02302d;
+	margin: 2px;
+	padding: 0px;
+
+	text-shadow: 1px 1px 0px black, 0px 0px 2px black;
+	box-shadow: 2px 2px 0px black;
+	font-weight: bold;
+
+	& > div {
+		font-size: 36px;
+	}
+
+	&.active {
+		border-color: var(--color1);
+		box-shadow: inset 0px 0px 20px var(--color1), inset 0px 0px 20px var(--color1), 2px 2px 0px black;
+		background-color: var(--color2);
+	}
+}
+
+#core-assembler-choose-div {
+	align-items: center;
+}
+
+.ca-building {
+	width: 300px;
+	height: 150px;
+
+	& > .table-center {
+		align-items: center;
+
+		font-weight: bold;
+		font-size: 20px;
+	}
+}
+
+.ca-building-symbol {
+	content: "";
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	box-shadow: inset 0px 0px 4px var(--color1), inset 0px 0px 4px var(--color1), 2px 2px 0px black;
+	background-color: var(--color2);
 }

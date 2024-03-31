@@ -25,6 +25,9 @@ function reloadTemp() {
         core_bonus_level: [],
         core_effect: [],
         cr_boost: [],
+
+        ca_building_effect: [],
+        ca_building_strength: [],
     }
 
     for (let x in EXPLORE) {

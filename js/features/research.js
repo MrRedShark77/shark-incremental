@@ -108,6 +108,12 @@ const RESEARCH = {
         },
         effDesc: x => formatMult(x),
     },
+    e5: {
+        unl: ()=>player.feature>=10 && hasResearch('e3'),
+        require: [
+            ['kelp',false,1e77],
+        ],
+    },
     c1: {
         unl: ()=>player.core.times>0,
         require: [
@@ -146,7 +152,7 @@ const RESEARCH = {
             ['core',false,1e20],
         ],
         effect(r) {
-            return expPow(CURRENCIES.core.amount.add(1),0.5)
+            return expPow(CURRENCIES.core.amount.add(1),hasResearch('c11') ? 0.55 : 0.5)
         },
         effDesc: x => formatMult(x.pow(-1)),
     },
@@ -154,6 +160,34 @@ const RESEARCH = {
         unl: ()=>player.feature>=8,
         require: [
             ['core',false,1e36],
+        ],
+    },
+    c8: {
+        unl: ()=>player.feature>=8,
+        require: [
+            ['core',false,1e60],
+        ],
+    },
+    c9: {
+        unl: ()=>player.feature>=9,
+        require: [
+            ['core',false,1e84],
+        ],
+    },
+    c10: {
+        unl: ()=>player.feature>=9,
+        require: [
+            ['core',false,1e108],
+        ],
+        effect(r) {
+            return Decimal.root(sharkUpgEffect('p3',0),3)
+        },
+        effDesc: x => "+"+format(x),
+    },
+    c11: {
+        unl: ()=>player.feature>=10,
+        require: [
+            ['core',false,1e213],
         ],
     },
 }

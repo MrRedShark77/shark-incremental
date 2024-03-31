@@ -1,14 +1,16 @@
 text-style {
+    display: inline-block;
     font-style: normal;
     font-weight: 1000;
-    filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
+    text-shadow: 1px 1px 0px black, 0px 0px 2px black, 1px 1px 2px black;
+    color: white;
 
     &[text="prestige"] {
-        color: cyan;
+        color: #00ffff;
     };
 
     &[text="fish"] {
-        color: orange;
+        color: #ffa500;
     };
 
     &[text="shark"] {
@@ -35,7 +37,21 @@ text-style {
         color: #bd9159;
     };
 
+    &[text="red"] {
+        color: red;
+    };
+    &[text="green"] {
+        color: limegreen;
+    };
+
     @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+        &[text="core"],
+        &[text="humanoid"],
+        &[text="black-hole"] {
+            filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
+            text-shadow: none;
+        };
+
         &[text="core"] {
             background: radial-gradient(circle, #feff00 0%, #ff5500 100%);
             -webkit-background-clip: text;

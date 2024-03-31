@@ -21,12 +21,12 @@
     <script src="js/modules/icon.js"></script>
 
     <script src="js/modules/break_eternity.js"></script>
-    <script src="js/modules/formulas.js"></script>
     <script src="js/modules/radio.js"></script>
     <script src="js/modules/graph.js"></script>
     <script src="js/modules/popup.js"></script>
     <script src="js/modules/notify.js"></script>
     <script src="js/format.js"></script>
+    <script src="js/modules/formulas.js"></script>
     <script src="js/main.js"></script>
 
     <script src="js/modules/currency.js"></script>
@@ -39,6 +39,7 @@
     <script src="js/features/explore.js"></script>
     <script src="js/features/core-reactor.js"></script>
     <script src="js/features/core-radiation.js"></script>
+    <script src="js/features/core-assembler.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -165,9 +166,26 @@
                             <button class="huge-btn" id="upgrade-cr-btn" onclick="CORE_RAD.purchaseGeneration()">Upgrade the radiation generation.</button>
                             <button class="huge-btn" id="reset-cr-btn" onclick="CORE_RAD.purchaseBoost()" style="font-size: 12px;">Reset the radiation, but increase its limit by <b>???</b>, and sometimes add a new boost or upgrade the boosts.</button>
                         </div>
+                        <p id="core-temp-div"></p>
                     </td><td style="width: 50%;">
                         <p id="radioboost-div"></p>
                         <div id="cr-boosts-div"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="core-assembler-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="table-center">
+                            <button id="ca-building-limit" class="huge-btn" onclick="purchaseCAMaxBuildings()"></button>
+                            <button class="huge-btn" id="core-assembler-erase" onclick="chooseCABuilding(-1)"></button>
+                        </div>
+                        <div id="core-assembler-grid"></div>
+                        <div id="core-assembler-choose-div" class="table-center"></div>
+                    </td><td style="width: 50%;">
+                        <p id="core-temp-after-div"></p>
+                        <div id="core-assembler-buildings" class="table-center"></div>
                     </td>
                 </tr>
             </table>
@@ -201,19 +219,14 @@
                     <div class="item-left" id="confirmations-table"></div>
                 </div><div>
                     <h2 id="option-title-4">Languages</h2>
-                    <div class="table-left" id="languages">
-                        
-                        
-                        
-                        
-                    </div>
+                    <div class="table-left" id="languages"></div>
                 </div>
             </div>
         </div>
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.1 by MrRedShark77
+            Shark Incremental v0.1.1 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

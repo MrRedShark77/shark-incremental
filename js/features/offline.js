@@ -23,7 +23,9 @@ function simulateOffline(time) {
     el("offline").style.display = ""
     resetCanvasGraph("offline")
 
-    el("offline-time").innerHTML = lang_text('offline-time-text',time)
+    var d = new Date()
+
+    el("offline-time").innerHTML = (d.getDate() == 1 && d.getMonth() == 3 ? `For today and today only, you can type "what's e621" in my community (discord) to get a free role! ` : "")+lang_text('offline-time-text',time)
 
     graphs.offline.max_graph_x = time
     addGraphPlot("offline",0,player.fish,false)

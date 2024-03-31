@@ -1,9 +1,9 @@
 const SHARK = {
-    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(1e3,3,0).scale(tmp.scale_shark2,3,3).scale(tmp.scale_shark1,2,0)).root(coreReactorEffect(3)) },
-    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,0,true).scale(tmp.scale_shark2,3,3,true).scale(1e3,3,0,true).div(tmp.shark_scale_str).floor().add(1) },
+    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(1e3,3,'P').scale(tmp.scale_shark2,3,'E2').scale(tmp.scale_shark1,2,'P')).root(coreReactorEffect(3)) },
+    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,'P',true).scale(tmp.scale_shark2,3,'E2',true).scale(1e3,3,'P',true).div(tmp.shark_scale_str).floor().add(1) },
 
     bonuses: {
-        fish: [()=>player.shark_level.gte(1),l=>Decimal.pow(tmp.shark_base,l).mul(l),E(0)],
+        fish: [()=>player.shark_level.gte(1),l=>expPow(Decimal.pow(tmp.shark_base,l).mul(l),getCRBoost(5)),E(0)],
         prestige: [()=>player.shark_level.gte(20),l=>Decimal.add(1.25,simpleResearchEffect('p1',0)).pow(l.sub(19)),E(1)],
         core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)),E(1)],
         // rad: [()=>player.shark_level.gte(600),l=>Decimal.pow(1.01,l.sub(599)),E(1)],
@@ -43,13 +43,13 @@ const SHARK_UPGRADES = {
         req: ()=>player.shark_level.gte(15),
 
         cost: l => {
-            let x = Decimal.pow(1e3,l.scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e21)
+            let x = Decimal.pow(1e3,l.scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,'E2').pow(1.25)).mul(1e21)
             if (hasResearch('c3')) x = x.root(coreReactorEffect(3))
             return x
         },
         bulk: x => {
             if (hasResearch('c3')) x = x.pow(coreReactorEffect(3))
-            return x.div(1e21).log(1e3).root(1.25).scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
+            return x.div(1e21).log(1e3).root(1.25).scale(30,hasDepthMilestone(2,0) ? 2.75 : 3,'E2',true).floor().add(1)
         },
 
         curr: "fish",
@@ -62,13 +62,13 @@ const SHARK_UPGRADES = {
         req: ()=>player.shark_level.gte(38),
 
         cost: l => {
-            let x = Decimal.pow(1e5,l.scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3).pow(1.25)).mul(1e135)
+            let x = Decimal.pow(1e5,l.scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,'E2').pow(1.25)).mul(1e135)
             if (hasResearch('c3')) x = x.root(coreReactorEffect(3))
             return x
         },
         bulk: x => {
             if (hasResearch('c3')) x = x.pow(coreReactorEffect(3))
-            return x.div(1e135).log(1e5).root(1.25).scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,3,true).floor().add(1)
+            return x.div(1e135).log(1e5).root(1.25).scale(10,hasDepthMilestone(2,0) ? 2.75 : 3,'E2',true).floor().add(1)
         },
 
         curr: "fish",
@@ -112,7 +112,7 @@ const SHARK_UPGRADES = {
 
         curr: "prestige",
 
-        effect: l=>Decimal.pow(player.fish.add(10).log10(),l),
+        effect: l=>Decimal.pow(player.fish.add(10).max(10).log10(),l),
         effDesc: x=>formatMult(x),
     },
     p3: {
@@ -186,6 +186,7 @@ function updateSharkTemp() {
     for (let [i,v] of Object.entries(SHARK_UPGRADES)) {
         var lvl = player.shark_upg[i]
         if (['s1','s2','s3','s4'].includes(i)) lvl = lvl.mul(getCRBoost(2))
+        if (['p1','p2','p3'].includes(i)) lvl = lvl.mul(getCRBoost(6))
         tmp.shark_upg_eff[i] = v.effect(lvl)
     }
 
@@ -196,7 +197,7 @@ function updateSharkTemp() {
     if (hasResearch('p8')) tmp.shark_req_base = tmp.shark_req_base.sub(1)
 
     tmp.scale_shark1 = Decimal.add(10,sharkUpgEffect('p3',0)).add(hasDepthMilestone(2,2)?player.explore.depth[2].div(500).floor():0)
-    tmp.scale_shark2 = Decimal.add(100,getCRBoost(3,0))
+    tmp.scale_shark2 = Decimal.add(100,getCRBoost(3,0)).add(simpleResearchEffect('c10',0))
 
     for (let [i,v] of Object.entries(SHARK.bonuses)) tmp.shark_bonus[i] = v[0]() ? v[1](player.shark_level) : v[2]
 }

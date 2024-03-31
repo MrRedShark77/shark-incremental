@@ -28,10 +28,12 @@ function calc(dt) {
 
         if (player.explore.active > -1) player.explore.best_fish = player.explore.best_fish.max(player.fish)
 
+        var auto_e = player.research.e3.toNumber() + (hasResearch('e5') ? 1 : 0)
+
         for (let i in EXPLORE) {
             i = parseInt(i)
             if (u > i) player.explore.depth[i] = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt)).min(EXPLORE[i].maxDepth)
-            if (player.research.e3.toNumber() > i) player.explore.base[i] = player.explore.base[i].max(getBaseExploration(i,player.fish))
+            if (auto_e > i) player.explore.base[i] = player.explore.base[i].max(getBaseExploration(i,player.fish))
         }
     }
 

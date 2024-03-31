@@ -40,6 +40,10 @@ function getPlayerData() {
                 gen: E(0),
                 boost: E(0),
             },
+
+            assembler: [],
+            assembler_strength: [],
+            max_buildings: 0,
         },
 
         radios: {},
@@ -59,7 +63,11 @@ function getPlayerData() {
         s.explore.res[x] = s.explore.depth[x] = s.explore.base[x] = E(0)
         s.explore.upg[x] = [E(0), E(0)]
     }
-    for (let x in CORE_REACTOR) s.core.reactor[x] = E(0)
+    for (let x in CORE_REACTOR) {
+        s.core.reactor[x] = E(0)
+        s.core.assembler_strength[x] = 0
+    }
+    for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
 
     return s
 }

@@ -27,6 +27,8 @@ const RESETS = {
                 increaseFeature(6)
             }
 
+            player.core.assembler_strength = player.core.assembler_strength.map((_,i)=>tmp.ca_building_strength[i])
+
             this.doReset()
         },
         doReset() {

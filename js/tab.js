@@ -33,6 +33,10 @@ const TAB_IDS = {
         name: "Core Radiation",
         html: updateCoreRadiation,
     },
+    'core-assembler': {
+        name: "Core Assembler",
+        html: updateCoreAssemblerHTML,
+    },
 }
 
 const TABS = [
@@ -54,7 +58,8 @@ const TABS = [
         unl: ()=>player.core.times>0,
         stab: [
             ["core-reactor"],
-            ['core-radiation',()=>player.feature>=7]
+            ['core-radiation',()=>player.feature>=7],
+            ['core-assembler',()=>player.feature>=9],
         ],
     },
 ]
