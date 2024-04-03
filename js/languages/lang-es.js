@@ -32,6 +32,8 @@ LANGUAGES.ES = {
         'core-name': "Fragmentos Magmáticos",
         'core-costName': 'Fragmentos ' + toTextStyle('Magmáticos','core'),
 
+        'full-shark-level': 'Niveles de ' +  toTextStyle('Tiburón','shark'),
+
         'curr-top-0-req': x => `Alcanza <b>${format(x)}</b> ${toTextStyle('Peces','fish')} en total`, 
         'curr-top-0-reset': x => `Haz un prestigio para conseguir <b>${x.format(0)}</b> fragmentos de ${toTextStyle('Prestigio','prestige')}`,
 
@@ -50,6 +52,7 @@ LANGUAGES.ES = {
         'tab-core': "El "+toTextStyle('Núcleo','core'),
         'tab-core-reactor': "Reactor " + toTextStyle('Nuclear','core'),
 		'tab-core-radiation': "Radiación " + toTextStyle('Nuclear','core'),
+        'tab-core-assembler': "Ensambladora " + toTextStyle('Nuclear','core'),
 
         // Elements
 
@@ -76,6 +79,9 @@ LANGUAGES.ES = {
             `
         },
         'radioboost-div': `Tienes <h3 id="radioactive-boost">0</h3> impulsos radioactivos.`,
+
+        'core-temp-div': `La temperatura del ${toTextStyle('Núcleo','core')} es <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, haciendo los impulsos radioactivos un <h4 id="core-temp-effect">100%</h4> más efectivos.`,
+        'core-temp-after-div': `(La temperatura del ${toTextStyle('Núcleo','core')} sera <span id="core-temp-after">???</span> tras un reseteo del ${toTextStyle('Núcleo','core')})`,
         
         // Upgrades
 
@@ -150,6 +156,9 @@ LANGUAGES.ES = {
         'research-e4-name': "Oxidación de Algas",
         'research-e4-desc': `El <b>Oxígeno</b> ahora afecta a la producción de ${toTextStyle("Algas",'kelp')} a ritmo reducido.`,
 
+        'research-e5-name': "Automatización de Exploración MK2",
+        'research-e5-desc': `Actualiza automáticamente la base del Oceano Índico sin explorar. Mejora el efecto de las ${toTextStyle('Algas','kelp')} otra vez.`,
+
         'research-c1-name': "Investigaciones C-Keeper",
         'research-c1-desc': `Mantén tus ${toTextStyle("Investigaciones",'prestige')} al entrar al ${toTextStyle('Núcleo','core')}.`,
 
@@ -170,6 +179,18 @@ LANGUAGES.ES = {
 
         'research-c7-name': "Mejores Dientes del Tiburón",
         'research-c7-desc': `El efecto de los 'Dientes del tiburón' es elevado a la potencia de <b>2.5</b> .`,
+
+        'research-c8-name': "Mejor Hierro y Neón",
+        'research-c8-desc': `El efecto del <b>Hierro</b> es el doble de fuerte y los requisitos para el <b>Hierro</b> y el <b>Neón</b> se reducen drasticamente.`,
+
+        'research-c9-name': "Mejores impulsos del núcleo",
+        'research-c9-desc': `Mejora el impulso de los reactores del núcleo hacia los ${toTextStyle('Peces','fish')}.`,
+
+        'research-c10-name': "Tiburón superescalado",
+        'research-c10-desc': `'Tiburón Escalado' ahora retrasa el segundo escalado de nivel del ${toTextStyle('Tiburón','shark')} a ritmo reducido.`,
+
+        'research-c11-name': "Mejor Reducción Radioactiva",
+        'research-c11-desc': `'Reducción Radioactiva' es levemente más poderosa.`,
 
         // Exploration
 
@@ -241,7 +262,26 @@ LANGUAGES.ES = {
         'core-3-name': `Neón`,
         'core-3-desc': `Los niveles del ${toTextStyle("Tiburón",'shark')} bajan sus requisitos basados en los niveles de <b>Neón</b>.`,
 
+        'core-4-name': `Azufre`,
+        'core-4-desc': `Los ${toTextStyle("Peces",'fish')} fortalecen el <b>Hierro</b> en base al nivel del <b>Azufre</b>.`,
+
+        'core-5-name': `Silicio`,
+        'core-5-desc': `Los Fragmentos de ${toTextStyle("Prestigio",'prestige')} fortalecen el <b>Níquel</b> basado en el nivel del <b>Silicio</b>.`,
+
+        'core-6-name': `Nitrógeno`,
+        'core-6-desc': `Las ${toTextStyle("Algas",'kelp')} fortalecen el <b>Oxígeno</b> basado en el nivel del <b>Nitrógeno</b>.`,
+
+        'core-7-name': `Helio`,
+        'core-7-desc': `El nivel del ${toTextStyle("Tiburón",'shark')} fortalece el <b>Neón</b> basado en el nivel del <b>Helio</b>.`,
+
         'core-bonus': x => `Los reactores del núcleo impulsarán los ${toTextStyle("Peces",'fish')} en <h4>${formatMult(x)}</h4>.`,
+
+        'core-assembler-erase': `Modo de borrado`,
+        'core-assembler-choose': `Estás eligiendo`,
+        'core-assembler-building-stats': (s,p,m) => `Poder <b>${s}</b> | Colocados <b>${p} / ${m}</b>`,
+        'core-assembler-building-limit': (m,x,mm) => `Edificios máximos: ${mm} / ${m}<br>Requiere: ${format(x)} fragmentos ${toTextStyle("Magmáticos",'core')}`, 
+        'ca-building-base': b => `[Base: ${b}]`,
+        'ca-building-temp': t => `Aumenta la temperatura del nucleo en ${t}.`,
 		
 		// Core Radiation
 
@@ -260,6 +300,8 @@ LANGUAGES.ES = {
             x=>`Las primeras cuatro mejoras de ${toTextStyle('Peces','fish')} del ${toTextStyle('Tiburón','shark')} son un <h4>${formatPercent(x.sub(1))}</h4> más poderosos.`,
             x=>`El segundo escalado de los niveles del ${toTextStyle('Tiburón','shark')} se retrasa en <h4>+${format(x)}</h4>.`,
             x=>`Aumenta la base del bonus de fragmentos ${toTextStyle('Magmáticos','core')} de los niveles del ${toTextStyle('Tiburón','shark')} en <h4>+${format(x,3)}</h4>.`,
+            x=>`Aumenta el bonus de ${toTextStyle('Peces','fish')} en base a los niveles del ${toTextStyle('Tiburón','shark')} al exponente de <h4>${formatPow(x,3)}</h4>.`,
+            x=>`Las tres primeras mejoras de ${toTextStyle('Prestigio','prestige')} del ${toTextStyle('Tiburón','shark')} son <h4>${formatPercent(x.sub(1))}</h4> más fuertes.`,
         ],
 
         // Automation
@@ -286,8 +328,9 @@ LANGUAGES.ES = {
         get 'progress-5-cond-text'() { return `Entra al ${toTextStyle('Núcleo','core')}` },
 		
 		'progress-6-text': r => `Alcanza ${format(r)} fragmentos ${toTextStyle('Magmáticos','core')} para desbloquear la siguiente característica del núcleo`, 
-
         'progress-7-text': r => `Alcanza el nivel ${format(r,0)} del ${toTextStyle('Tiburón','shark')} para desbloquear un nuevo tipo de océano`,
+        'progress-8-text': r => `Alcanza ${format(r)} fragmentos ${toTextStyle('Magmáticos','core')} para desbloquear la siguiente característica del ${toTextStyle('Núcleo','core')}`, 
+        'progress-9-text': r => `Alcanza ${format(r)} ${toTextStyle('Peces','fish')} totales para desbloquear nuevos reactores del  ${toTextStyle('Núcleo','core')}`, 
 
         'maxed-progress': "¡Todas las mecánicas desbloqueadas!",
 
