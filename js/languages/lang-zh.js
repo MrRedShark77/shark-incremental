@@ -31,6 +31,8 @@ LANGUAGES.ZH = {
 
         'core-name': "岩浆碎片",
         'core-costName': toTextStyle('岩浆','core') + '碎片',
+		
+		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
 
         'curr-top-0-req': x => `${toTextStyle('鱼','fish')}的总量达到 <b>${format(x)}</b>`, 
         'curr-top-0-reset': x => `获得 <b>${x.format(0)}</b> ${toTextStyle('重生','prestige')}碎片`,
@@ -50,6 +52,7 @@ LANGUAGES.ZH = {
         'tab-core': toTextStyle('地核','core'),
         'tab-core-reactor': toTextStyle('地核','core')+"反应堆",
         'tab-core-radiation': toTextStyle('地核','core')+"辐射",
+		'tab-core-assembler': toTextStyle('地核','core')+"生产线",
 
         // Elements
 
@@ -76,6 +79,9 @@ LANGUAGES.ZH = {
             `
         },
         'radioboost-div': `你拥有 <h3 id="radioactive-boost">0</h3> 个辐射加成`,
+		
+		'core-temp-div': `${toTextStyle('地核','core')}温度：<h3>${toTextStyle('6,150','core','core-temperature')}</h3>，辐射加成的效果提升 <h4 id="core-temp-effect">100%</h4>.`,
+        'core-temp-after-div': `（进行${toTextStyle('地核','core')}重置后，${toTextStyle('地核','core')}温度为 <span id="core-temp-after">???</span>）`,
 
         // Upgrades
 
@@ -149,6 +155,9 @@ LANGUAGES.ZH = {
 
         'research-e4-name': "褐藻氧化",
         'research-e4-desc': `<b>氧</b>能增加${toTextStyle("褐藻",'kelp')}的产量。`,
+		
+		'research-e5-name': "自动探索 MK2",
+        'research-e5-desc': `无需进行探索，自动更新印度洋的基数，进一步提升${toTextStyle('褐藻','kelp')}的效果。`,
 
         'research-c1-name': "研究保持",
         'research-c1-desc': `进入${toTextStyle('地核','core')}后保留${toTextStyle("研究",'prestige')}。`,
@@ -170,6 +179,18 @@ LANGUAGES.ZH = {
 
         'research-c7-name': "鲨之巨齿",
         'research-c7-desc': `'鲨鱼牙齿'的效果是原来的 <b>2.5次幂</b>。`,
+		
+		'research-c8-name': "更好的铁和氖",
+        'research-c8-desc': `<b>铁</b>的效果是原来的两倍，大幅降低<b>铁</b>和<b>氖</b>的价格。`,
+
+        'research-c9-name': "更好的地核加成",
+        'research-c9-desc': `提升地核反应堆对${toTextStyle('鱼','fish')}的加成。`,
+
+        'research-c10-name': "高硬度鱼鳞",
+        'research-c10-desc': `“鲨鱼鱼鳞”延迟第二个${toTextStyle('鲨鱼','shark')}升级的价格折算。`,
+
+        'research-c11-name': "更好的辐射防护",
+        'research-c11-desc': `提升“辐射防护”的效果。`,
 
         // Exploration
 
@@ -240,8 +261,27 @@ LANGUAGES.ZH = {
 
         'core-3-name': `氖`,
         'core-3-desc': `基于<b>氖</b>的等级降低${toTextStyle("鲨鱼",'shark')}等级的价格。`,
+		
+		'core-4-name': `硫`,
+        'core-4-desc': `基于<b>硫</b>的等级，${toTextStyle("鱼",'fish')}增强<b>铁</b>的效果。`,
+
+        'core-5-name': `硅`,
+        'core-5-desc': `基于<b>硅</b>的等级，${toTextStyle("重生",'prestige')}碎片增强<b>镍</b>的效果。`,
+
+        'core-6-name': `氮`,
+        'core-6-desc': `基于<b>氮</b>的等级，${toTextStyle("褐藻",'kelp')}增强<b>氧</b>的效果。`,
+
+        'core-7-name': `氦`,
+        'core-7-desc': `基于<b>氦</b>的等级，${toTextStyle("鲨鱼",'shark')}等级增强<b>氖</b>的效果。`,
 
         'core-bonus': x => `反应堆的产物将吃${toTextStyle("鱼",'fish')}的数量<h4>${formatMult(x)}</h4>.`,
+		
+		'core-assembler-erase': `移除模式`,
+        'core-assembler-choose': `你选择了`,
+        'core-assembler-building-stats': (s,p,m) => `强度 <b>${s}</b> | 已放置 <b>${p} / ${m}</b>`,
+        'core-assembler-building-limit': (m,x,mm) => `最大数量： ${mm} / ${m}<br>需要 ${format(x)} ${toTextStyle("岩浆",'core')}碎片`, 
+        'ca-building-base': b => `【基础资源：${b}】`,
+        'ca-building-temp': t => `地核温度提升 ${t}.`,
 		
         // Core Radiation
 
@@ -257,9 +297,11 @@ LANGUAGES.ZH = {
         'cr-boosts': [
             x=>`第一行地核反应堆的数量 <h4>+${format(x)}</h4>.`,
             x=>`获得${toTextStyle('岩浆','core')}碎片的量 <h4>${formatMult(x)}</h4>.`,
-            x=>`前四个用${toTextStyle('鲨鱼','shark')}购买的${toTextStyle('鱼','fish')}升级的效果增强 <h4>${formatPercent(x.sub(1))}</h4>.`,
+            x=>`前四个用${toTextStyle('鱼','fish')}购买的${toTextStyle('鲨鱼','shark')}升级的效果增强 <h4>${formatPercent(x.sub(1))}</h4>.`,
             x=>`${toTextStyle('鲨鱼','shark')}等级的第二次价格折算延迟 <h4>+${format(x)}</h4>.`,
             x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('岩浆','core')}碎片加成的基数 <h4>+${format(x,3)}</h4>.`,
+			x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('鱼','fish')}的加成，其指数是原来的 <h4>${formatPow(x,3)}</h4>.`,
+            x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
         ],
 
         // Automation
@@ -277,17 +319,18 @@ LANGUAGES.ZH = {
         'progress-0-text': r => `${toTextStyle('鱼','fish')}的总量达到 ${format(r)}`, 
         get 'progress-0-cond-text'() { return `进行一次${toTextStyle('重生','prestige')}` },
 
-        'progress-1-text': r => `达到 ${format(r)} ${toTextStyle('重生','prestige')}碎片解锁自动化`,
-        'progress-2-text': r => `达到 ${format(r)} ${toTextStyle('重生','prestige')}碎片解锁研究`,
+        'progress-1-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 解锁自动化`,
+        'progress-2-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 解锁研究`,
         'progress-3-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁探索`,
         'progress-4-text': r => `在太平洋中下潜 ${format(r)} 米解锁${toTextStyle('地核','core')}`,
 
         'progress-5-text': r => `${toTextStyle('重生','prestige')}碎片的总量达到 ${format(r)}`, 
         get 'progress-5-cond-text'() { return `进入${toTextStyle('地核','core')}` },
 		
-		'progress-6-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁地核的下一个机制`, 
-
-        'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁新的海洋`, 
+		'progress-6-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁${toTextStyle('地核','core')}的下一个机制`, 
+		'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁新的海洋`, 
+		'progress-8-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁${toTextStyle('地核','core')}的下一个机制`, 
+        'progress-9-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)} 解锁新的${toTextStyle('地核','core')}反应堆`, 
 
         'maxed-progress': "已解锁所有机制！",
 
