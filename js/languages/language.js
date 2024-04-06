@@ -57,7 +57,8 @@ function calculateTotalLanguageTexts(obj,s=0) {
 function deepCheckLanguage(obj,data) {
     for (let [i,v] of Object.entries(data)) {
         // console.log(i,v)
-        if (Object.getOwnPropertyDescriptor(obj, i).get) {
+        var opd = Object.getOwnPropertyDescriptor(obj, i)
+        if (opd && opd.get) {
             Object.defineProperty(obj, i, {
                 get: Object.getOwnPropertyDescriptor(data, i).get
             })
