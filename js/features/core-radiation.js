@@ -107,7 +107,7 @@ const CORE_RAD = {
     ],
 }
 
-function getCRBoost(i,def=1) { return tmp.cr_boost[i] ?? def }
+function getCRBoost(i,def=1) { return player.core.radiation.boost.gte(CORE_RAD.boosts[i].req) ? tmp.cr_boost[i] ?? def : def }
 
 function getCoreTemperature() {
     var x = E(6150)
