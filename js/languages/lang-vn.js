@@ -26,11 +26,13 @@ LANGUAGES.VN = {
         'snow-name': "Tuyết Nén",
         'snow-costName': toTextStyle('Tuyết Nén','snow'),
     
-        'kelp-name': "Tảo Bẹ",
-        'kelp-costName': toTextStyle('Tảo Bẹ','kelp'),
+        'kelp-name': "Tảo",
+        'kelp-costName': toTextStyle('Tảo','kelp'),
 
         'core-name': "Miếng Mắc Ma",
         'core-costName': 'Miếng ' + toTextStyle('Mắc Ma','core'),
+
+        'full-shark-level': 'Level '+toTextStyle('Cá Mập','shark'),
 
         'curr-top-0-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> con ${toTextStyle('Cá','fish')}`, 
         'curr-top-0-reset': x => `Làm uy tín để nhận <b>${x.format(0)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`,
@@ -50,6 +52,7 @@ LANGUAGES.VN = {
         'tab-core': toTextStyle('Lõi','core'),
         'tab-core-reactor': "Lò phản ứng " + toTextStyle('Lõi','core'),
         'tab-core-radiation': "Bức Xạ "+toTextStyle('Lõi','core'),
+        'tab-core-asssembler': "Phát triển "+toTextStyle('Lõi','core'),
 
         // Elements
 
@@ -61,7 +64,7 @@ LANGUAGES.VN = {
         'option-title-3': "Yêu cầu xác nhận",
         'option-title-4': "Ngôn ngữ",
 
-        'offline-speed': "Tăng tốc tiến trình ngoại tuyến",
+        'offline-speed': "Tăng tốc thời gian off",
         'offline-done': "Xong",
 
         'radioactive-div': `${toTextStyle('Lõi','core')} đã sản xuất <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
@@ -76,6 +79,9 @@ LANGUAGES.VN = {
             `
         },
         'radioboost-div': `Bạn có <h3 id="radioactive-boost">0</h3> boost phóng xạ.`,
+
+        'core-temp-div': `Nhiệt độ của ${toTextStyle('Lõi','core')} là <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, cái mà làm boost phóng xạ hiệu quả hơn <h4 id="core-temp-effect">100%</h4>.`,
+        'core-temp-after-div': `(Nhiệt độ của ${toTextStyle('Lõi','core')} sẽ là <span id="core-temp-after">???</span> sau reset ${toTextStyle('Lõi','core')})`,
 
         // Upgrades
 
@@ -147,8 +153,11 @@ LANGUAGES.VN = {
         'research-e3-name': "Tự Động Thám Hiểm",
         'research-e3-desc': `Tự động cập nhật cơ số cao nhất đại dương <b>X</b> đầu tiên mà không cần khám phá.`,
 
-        'research-e4-name': "Sự Oxy Hóa của Tảo Bẹ",
-        'research-e4-desc': `<b>Oxy</b> giờ ảnh hưởng đến sản xuất ${toTextStyle("Tảo Bẹ",'kelp')} ở một tỉ lệ nhỏ.`,
+        'research-e4-name': "Sự Oxy Hóa của Tảo",
+        'research-e4-desc': `<b>Oxy</b> giờ ảnh hưởng đến sản xuất ${toTextStyle("Tảo",'kelp')} ở một tỉ lệ nhỏ.`,
+
+        'research-e5-name': "Tự Động Thám Hiểm MK2",
+        'research-e5-desc': `Tự động nhận cơ số trong Ấn Độ Dương mà không cần khám phá. Cải thiện hiệu ứng của ${toTextStyle('Tảo','kelp')} một lần nữa.`,
 
         'research-c1-name': "Nghiên Cứu C-Keeper",
         'research-c1-desc': `Giữ ${toTextStyle("Nghiên Cứu",'prestige')} khi bước vào ${toTextStyle('Lõi','core')}.`,
@@ -171,6 +180,18 @@ LANGUAGES.VN = {
         'research-c7-name': "Răng Cá Mập Lớn Hơn",
         'research-c7-desc': `Hiệu ứng của 'Răng Cá Mập' được nâng lên <b>^2.5</b>.`,
 
+        'research-c8-name': "Sắt & Neon Tốt Hơn",
+        'research-c8-desc': `Hiệu ứng của <b>Sắt</b> mạnh hơn hai lần, và mức yêu cầu của <b>Sắt</b> & <b>Neon</b> được giảm xuống một cách quyết liệt.`,
+
+        'research-c9-name': "Boost của Lõi Tốt Hơn",
+        'research-c9-desc': `Cải thiện boost con ${toTextStyle('Cá','fish')} của lò phản ứng lõi.`,
+
+        'research-c10-name': "Siêu Cá Mập Mở Rộng",
+        'research-c10-desc': `'Cá Mập Mở Rộng' giờ làm trì hoãn sự mở rộng của Level ${toTextStyle('Cá Mập','shark')} thứ hai ở một tỉ lệ nhỏ.`,
+
+        'research-c11-name': "Giảm Lượng Bức Xạ Nhiều Hơn",
+        'research-c11-desc': `'Giảm Lượng Bức Xạ' mạnh hơn một chút.`,
+      
         // Exploration
 
         'explore-while': `Trong khi khám phá`,
@@ -224,7 +245,7 @@ LANGUAGES.VN = {
             `Giảm giới hạn bức xạ lõi xuống /1,000.`,
             `Tăng tài nguyên và tiến trình độ sâu lên 25% nhân lên mỗi căn bậc 2 của level ${toTextStyle('Cá Mập','shark')}.`,
             `Các lò phản ứng lõi mở rộng +5 sau.`,
-            `Cải thiện ${toTextStyle('Tảo Bẹ','kelp')} tốt hơn.`,
+            `Cải thiện ${toTextStyle('Tảo','kelp')} tốt hơn.`,
         ],
 
         // Core Reactor
@@ -241,7 +262,26 @@ LANGUAGES.VN = {
         'core-3-name': `Neon`,
         'core-3-desc': `Level ${toTextStyle("Cá Mập",'shark')} giảm mức yêu cầu của nó dựa vào cấp của <b>Neon</b>.`,
 
+        'core-4-name': `Lưu Huỳnh`,
+        'core-4-desc': `${toTextStyle("Cá",'fish')} tăng cường <b>Sắt</b> dựa vào cấp của <b>Lưu Huỳnh</b>.`,
+
+        'core-5-name': `Silicon`,
+        'core-5-desc': `Mãnh ${toTextStyle("Prestige",'prestige')} tăng cường <b>Kẽm</b> dựa vào cấp của <b>Silicon</b>.`,
+
+        'core-6-name': `Nitơ`,
+        'core-6-desc': `${toTextStyle("Tảo",'kelp')} tăng cường <b>Oxy</b> dựa vào cấp của <b>Nitơ</b>.`,
+
+        'core-7-name': `Heli`,
+        'core-7-desc': `Level ${toTextStyle("Cá Mập",'shark')} tăng cường <b>Neon</b> dựa vào cấp của <b>Heli</b>.`,
+
         'core-bonus': x => `Sản phẩm của các lò phản ứng lõi sẽ tăng lượng ${toTextStyle("Cá",'fish')} lên <h4>${formatMult(x)}</h4>.`,
+
+        'core-assembler-erase': `Chế độ bôi xóa`,
+        'core-assembler-chooose': `Bạn đang chọn`,
+        'core-assembler-building-stats': (s,p,m) => `Sức mạnh <b>${s}</b> | Đã đặt <b>${p} / ${m}</b>`,
+        'core-assembler-building-limit': (m,x,mm) => `Xây tối đa: ${mm} / ${m}<br>Yêu cầu: ${format(x)} mãnh ${toTextStyle("Mắc Ma",'core')}`, 
+        'ca-building-base': b => `[Dựa vào: ${b}]`,
+        'ca-building-temp': t => `Tăng nhiệt độ của lõi lên ${t}.`,
 
         // Core Radiation
 
@@ -259,7 +299,9 @@ LANGUAGES.VN = {
             x=>`Tăng mãnh ${toTextStyle('Mắc Ma','core')} lên <h4>${formatMult(x)}</h4>.`,
             x=>`Bốn nâng cấp ${toTextStyle('Cá','fish')} của ${toTextStyle('Cá Mập','Shark')} đầu tiên mạnh hơn <h4>${formatPercent(x.sub(1))}</h4>.`,
             x=>`Sự mở rộng của level ${toTextStyle('Cá Mập','shark')} thứ hai bị trễ lên <h4>+${format(x)}</h4>.`,
-            x=>`Tăng cơ số phần thưởng mãnh ${toTextStyle('Mắc Ma','core')} của level ${toTextStyle('Cá Mập','shark')} lên <h4>+${format(x,3)}</h4>.`,
+            x=>`Tăng cơ số phần thưởng miếng ${toTextStyle('Mắc Ma','core')} của level ${toTextStyle('Cá Mập','shark')} lên <h4>+${format(x,3)}</h4>.`,
+            x=>`Tăng lũy thừa phần thưởng ${toTextStyle('Cá','fish')} của Level ${toTextStyle('Cá Mập','shark')} lên <h4>${formatPow(x,3)}</h4>.`,
+            x=>`Ba nâng cấp ${toTextStyle('Prestige','prestige')} của ${toTextStyle('Cá Mập','shark')} đầu tiên mạnh hơn <h4>${formatPercent(x.sub(1))}</h4>.`,
         ],
 
         // Automation
@@ -285,10 +327,11 @@ LANGUAGES.VN = {
         'progress-5-text': r => `Chạm tới tổng cộng ${format(r)} mãnh ${toTextStyle('Prestige','prestige')}`, 
         get 'progress-5-cond-text'() { return `Bước vào ${toTextStyle('Lõi','core')}` },
 
-        'progress-6-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Mắc Ma','core')} để mở khóa tính năng lõi mới`, 
-
+        'progress-6-text': r => `Chạm tới ${format(r)} miêngz ${toTextStyle('Mắc Ma','core')} để mở khóa tính năng lõi mới`, 
         'progress-7-text': r => `Chạm tới level ${toTextStyle('Cá Mập','shark')} ${format(r,0)} để mở khóa loại đại dương mới`,
-
+        'progress-8-text': r => `Chạm tới ${format(r)} miếng ${toTextStyle('Mắc Ma','core')} để mở khóa tính năng ${toTextStyle('Lõi','core')} tiếp theo`, 
+        'progress-9-text': r => `Chạm tới tổng cộng ${format(r)} con ${toTextStyle('Cá','fish')} để mở khóa các lò phản ứng ${toTextStyle('Lõi','core')} mới`,
+      
         'maxed-progress': "Các tính năng đã được mở khóa!",
 
         // Reset
@@ -363,7 +406,7 @@ LANGUAGES.VN = {
 
         'prompt-placeholder': "Nhập văn bản vào đây...",
 
-        'option-buttons-text': ["Lưu","Xuất vào bộ nhớ tạm","Xuất dưới dạng tệp tin","Nhập dưới dạng kí tự","Nhập từ tệp tin","XÓA DỮ LIỆU!!!",'Tham gia vào cộng đồng (Discord)','Ủng hộ người tạo (Boosty)'],
+        'option-buttons-text': ["Lưu","Xuất vào bộ nhớ tạm","Xuất dưới dạng tệp tin","Nhập dưới dạng kí tự","Nhập từ tệp tin","XÓA DỮ LIỆU!!!",'Tham gia vào cộng đồng (Discord)','Ủng hộ người sáng lập (Boosty)'],
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Vào lõi",
