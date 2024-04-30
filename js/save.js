@@ -7,6 +7,7 @@ function getPlayerData() {
         fish: E(1),
         total_fish: E(0),
         shark_level: E(0),
+        shark_rank: E(0),
         shark_upg: {},
 
         prestige: {
@@ -44,6 +45,16 @@ function getPlayerData() {
             assembler: [],
             assembler_strength: [],
             max_buildings: 0,
+        },
+
+        humanoid: {
+            shark: E(0),
+            times: 0,
+
+            faith: [E(0), E(0), E(0)],
+            tree: [],
+
+            goal: [],
         },
 
         radios: {},

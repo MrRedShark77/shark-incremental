@@ -91,7 +91,7 @@ function chooseCABuilding(i) {
     ca_builder = ca_builder == i ? -1 : i
 }
 
-const CA_MAX_BUILDINGS_COST = [1e72,1e76,1e101,1e109,1e196]
+const CA_MAX_BUILDINGS_COST = [1e72,1e76,1e101,1e109,1e196,1e300,'1e650','1e800']
 
 function purchaseCAMaxBuildings() {
     if (CURRENCIES.core.amount.gte(CA_MAX_BUILDINGS_COST[player.core.max_buildings]??EINF)) {
@@ -157,7 +157,7 @@ function updateCoreAssemblerHTML() {
 function updateCoreAssemblerTemp() {
     tmp.totalCABuildings = player.core.assembler.filter(b => b>=0).length
 
-    tmp.maxCABuildingEach = 1 + Math.floor(player.core.max_buildings/4)
+    tmp.maxCABuildingEach = Math.min(2,1 + Math.floor(player.core.max_buildings/4))
 
     tmp.placedACBuildings = [0,0,0,0]
     tmp.ca_building_strength = [0,0,0,0]

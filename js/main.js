@@ -28,6 +28,11 @@ const TOP_CURR = [
         curr: "core",
         req: ()=>player.prestige.total.gte(CURRENCIES.core.require),
     },
+    {
+        unl: ()=>player.humanoid.times > 0 || player.feature >= 10,
+        curr: "humanoid",
+        req: ()=>player.fish.gte(CURRENCIES.humanoid.require),
+    },
 ]
 
 const PROGRESS = [
@@ -76,6 +81,15 @@ const PROGRESS = [
         get amount() { return CURRENCIES.fish.total },
         require: 'e6e15',
         logHeight: 2,
+    },{
+        cond_text: true,
+        get amount() { return CURRENCIES.fish.total },
+        require: 'e1.5e18',
+        logHeight: 2,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.humanoid.amount },
+        require: 10,
     },
 ]
 
@@ -86,4 +100,5 @@ function increaseFeature(v) {
 const CONFIRMATIONS = {
     prestige: [()=>player.prestige.times>0],
     core: [()=>player.core.times>0],
+    humanoid: [()=>player.humanoid.times>0],
 }

@@ -180,7 +180,7 @@ const RESEARCH = {
             ['core',false,1e133],
         ],
         effect(r) {
-            return Decimal.root(sharkUpgEffect('p3',0),3)
+            return Decimal.root(sharkUpgEffect('p3',0),3).overflow(1e3,0.5)
         },
         effDesc: x => "+"+format(x),
     },
@@ -188,6 +188,12 @@ const RESEARCH = {
         unl: ()=>player.feature>=10,
         require: [
             ['core',false,1e213],
+        ],
+    },
+    c12: {
+        unl: ()=>player.feature>=12,
+        require: [
+            ['core',false,'1e675'],
         ],
     },
 }
@@ -259,7 +265,7 @@ function updateResearchHTML() {
         if (unl) {
             let amt = player.research[i], max = x.max??1, bought = amt.gte(max), afford = true
 
-            el(el_id+"-desc").innerHTML = lang_text(el_id+"-desc")
+            el(el_id+"-desc").innerHTML = `<b style="font-size:12px">[${i}]</b> ` + lang_text(el_id+"-desc")
             el(el_id+"-require").style.display = el_display(!bought)
             el(el_id+"-button").style.display = el_display(!bought)
             if ((x.max??1)>1&&!x.noBuyMax) el(el_id+"-max-button").style.display = el_display(!bought)

@@ -32,13 +32,21 @@ LANGUAGES.EN = {
         'core-name': "Magmatic Fragments",
         'core-costName': toTextStyle('Magmatic','core') + ' Fragments',
 
+        'humanoid-name': "Humanoid Sharks",
+        'humanoid-costName': toTextStyle('Humanoid','humanoid') + ' Sharks',
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
+
+        'sharkoid-faith': toTextStyle('Sharkoid Faith','humanoid'),
 
         'curr-top-0-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Fish','fish')}`, 
         'curr-top-0-reset': x => `Prestige for <b>${x.format(0)}</b> ${toTextStyle('Prestige','prestige')} Shards`,
 
         'curr-top-1-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Prestige','prestige')} Shards`, 
         'curr-top-1-reset': x => `Enter the core for <b>${x.format(0)}</b> ${toTextStyle('Magmatic','core')} Fragments`,
+
+        'curr-top-2-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')}`, 
+        'curr-top-2-reset': (x,next) => `Evolve your ${toTextStyle('Sharks','shark')} into <b>${format(x,0)}</b> ${toTextStyle('Humanoid','humanoid')} Sharks (Next at <b>${format(next)}</b> ${toTextStyle('Fish','fish')})`,
 
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -49,15 +57,26 @@ LANGUAGES.EN = {
         'tab-auto': "Automation",
         'tab-research': toTextStyle('Research','prestige'),
         'tab-explore': "Exploration",
-        'tab-core': "The "+toTextStyle('Core','core'),
+
+        'tab-core': toTextStyle('Core','core'),
         'tab-core-reactor': toTextStyle('Core','core')+" Reactor",
         'tab-core-radiation': toTextStyle('Core','core')+" Radiation",
         'tab-core-assembler': toTextStyle('Core','core')+" Assembler",
 
+        'tab-evolution': toTextStyle('Evolution','humanoid'),
+        'tab-shark-rank': toTextStyle('Shark','shark') + " Rank",
+        'tab-evolution-tree': toTextStyle('Evolution','humanoid') + " Tree",
+        'tab-evolution-goal': toTextStyle('Evolution','humanoid') + " Goals",
+
         // Elements
 
         'fish-div': `Your ${toTextStyle('Shark','shark')} has eaten <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> fish.`,
-        'shark-stats': `${toTextStyle('Shark','shark')} Stats<br>Level: <h4 id="shark-level">???</h4><br>Rank: <h4 id="shark-tier">???</h4>`,
+        'shark-stats': `${toTextStyle('Shark','shark')} Stats<br>Level: <h4 id="shark-level">???</h4><br>Rank: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
+
+        'shark-elo-div': `Your ${toTextStyle('Shark','shark')} ELO is <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
+        'shark-rank-div': `Your ${toTextStyle('Shark','shark')} Rank is <h3 id="shark-rank">0</h3>.`,
+        'shark-rank-req-div': `The next rank requires ${toTextStyle('Shark','shark')} ELO <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
+        'shark-rank-note': `Note: Shark Rank gets reset when you trigger an Evolution reset.`,
 
         'option-title-1': "Main Options",
         'option-title-2': "Notations",
@@ -82,6 +101,10 @@ LANGUAGES.EN = {
 
         'core-temp-div': `The ${toTextStyle('Core','core')}'s temperature is <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, which makes radioactive boosts <h4 id="core-temp-effect">100%</h4> effective.`,
         'core-temp-after-div': `(The ${toTextStyle('Core','core')}'s temperature will be <span id="core-temp-after">???</span> after a ${toTextStyle('Core','core')} reset)`,
+
+        'sharkoid-faith-div': `You have <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Sharkoid Faith','humanoid')}.`,
+        'respec-evolution-tree': `Respec ${toTextStyle('Evolution','humanoid')} Tree`,
+        'rerun-evolution': `Re-run ${toTextStyle('Evolution','humanoid')}, respecing its Tree`,
 
         // Upgrades
 
@@ -191,6 +214,9 @@ LANGUAGES.EN = {
 
         'research-c11-name': "Better Radiation Reduction",
         'research-c11-desc': `'Radiation Reduction' is stronger slightly.`,
+
+        'research-c12-name': "Mega Radiation Reduction",
+        'research-c12-desc': `Drastically reduce radiation's limit.`,
 
         // Exploration
 
@@ -302,6 +328,74 @@ LANGUAGES.EN = {
             x=>`Increase the base of ${toTextStyle('Shark','shark')} level's ${toTextStyle('Magmatic','core')} fragment bonus by <h4>+${format(x,3)}</h4>.`,
             x=>`Increase ${toTextStyle('Shark','shark')} Level's ${toTextStyle('Fish','fish')} bonus by <h4>${formatPow(x,3)}</h4> to the exponent.`,
             x=>`The first three ${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
+            x=>`${toTextStyle('Shark','shark')} Level boosts ${toTextStyle('Shark','shark')} ELO by <h4>${formatMult(x)}</h4>.`,
+        ],
+
+        // Evolution Tree
+
+        'evolution-tree-row': (r,a) => `<b>Row ${r}</b><br>${a} available`,
+        'evolution-tree-ctn': [
+            ["Fish Body", x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
+            ["Prestigious Body", x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
+            ["Radioactive Body", x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
+            ["Perfect Body", x=>`${toTextStyle('Shark','shark')} ELO is multiplied by <b>${formatMult(x,0)}</b>.`],
+
+            ["Steel Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Iron</b> tiers.`],
+            ["Priceful Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nickel</b> tiers.`],
+            ["Air-breathing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Oxygen</b> tiers.`],
+            ["Glowing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Neon</b> tiers.`],
+
+            ["Mariana Trench", x=>`The <b>Pacific Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+            ["Litke Deep", x=>`The <b>Arctic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+            ["Milwaukee Deep", x=>`The <b>Atlantic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+            ["South Sandwich Trench", x=>`The <b>Southern Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+
+            ["Inflated Fish", x=>`${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`],
+            ["Overprestige", x=>`${toTextStyle('Prestige','prestige')} shards are raised to the <b>${format(x)}th</b> power.`],
+            ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`],
+            ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`],
+
+            ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`],
+            ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`],
+            ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`],
+            ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`],
+
+            ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Perfect Body'</b> by <b>${formatPow(x)}</b>.`],
+            ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
+            ["Supernatural Body", x=>`${toTextStyle('Magmatic','core')} fragments boost <b>'Radioactive Body'</b> by <b>${formatPow(x)}</b>.`],
+            ["Immortal Body", x=>`<b>'Perfect Body'</b> is <b>squared</b>.`],
+        ],
+
+        'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
+        'evolution-goal-ctn': [
+            [
+                x=>`Earn at least <b>${format(x,0)}</b> ${toTextStyle("Magmatic",'core')} fragments on the first entering ${toTextStyle("Core",'core')}.`,
+                `Passively generate <b>100%</b> of ${toTextStyle("Magmatic",'core')} fragments earned on entering ${toTextStyle("Core",'core')}.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments without purchasing the ${toTextStyle("Core",'core')} assembler's building.`,
+                `Keep the ${toTextStyle("Magmatic",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments.`,
+                `Improve the formula of ${toTextStyle('Prestige','prestige')} shards for ${toTextStyle("Magmatic",'core')} fragments.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating ${toTextStyle('Kelp','kelp')}.`,
+                `Start with capped depth in every ocean.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating resources in each ocean.`,
+                `Keep research on ${toTextStyle('Evolution','humanoid')}.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards.`,
+                `Further improve the formula of ${toTextStyle('Prestige','prestige')} shards gain.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} with at most <b>10</b> radioactive boosts.`,
+                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limits.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} without radioactive boosts.`,
+                `Radioactive boosts no longer reset anything. Unlock Auto-Radioactive Boosts.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')}.`,
+                `First ${toTextStyle('Shark','shark')} Rank scaling is delayed by <b>+5</b>.`,
+            ],
         ],
 
         // Automation
@@ -310,6 +404,9 @@ LANGUAGES.EN = {
         'auto-su-name': `Auto-${toTextStyle("Shark","shark")} ${toTextStyle("Fish","fish")} Upgrade`,
         'auto-spu-name': `Auto-${toTextStyle("Shark","shark")} ${toTextStyle("Prestige","prestige")} Upgrade`,
         'auto-eu-name': `Auto-Exploration Upgrade`,
+        'auto-core_reactor-name': `Auto-${toTextStyle("Core","core")} Reactor`,
+        'auto-core_radiation-name': `Auto-${toTextStyle("Core","core")} Radiation`,
+        'auto-radioactive_boosts-name': `Auto-Radioactive Boosts`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -332,6 +429,11 @@ LANGUAGES.EN = {
         'progress-8-text': r => `Reach ${format(r)} ${toTextStyle('Magmatic','core')} fragments to unlock the next ${toTextStyle('Core','core')} feature`, 
         'progress-9-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')} to unlock new ${toTextStyle('Core','core')} reactors`, 
 
+        'progress-10-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
+        get 'progress-10-cond-text'() { return `Evolve your ${toTextStyle('Sharks','shark')}` },
+
+        'progress-11-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+
         'maxed-progress': "All features unlocked!",
 
         // Reset
@@ -350,10 +452,21 @@ LANGUAGES.EN = {
             let c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
             return `
             <h3>The ${c}</h3><br>
-            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, ${toTextStyle('Research','prestige')} (almost), and Exploration for ${m} fragments.
+            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, some ${toTextStyle('Research','prestige')}, and Exploration for ${m} fragments.
             It also unlocks the ${c} reactor.<br>
             <img src="textures/Magmatic.png"><br>
             Are you sure you want to enter the core?
+            `
+        },
+        get 'reset-humanoid-message'() {
+            let e = toTextStyle('Evolution','humanoid'), c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
+            return `
+            <h3>The ${e}</h3><br>
+            <subtitle>“Mutating will make sharks wild, turning them into humanoid sharks. However with a cost of everything you had up to this point.”</subtitle>
+            The ${e} is the third reset layer. Evolving sharks will reset everything the ${c} does, as well as ${m} fragments, ${c} reactors, ${c} radiation, ${c} assembler, and some ${toTextStyle('Research','prestige')} for ${toTextStyle('Humanoid','humanoid')} sharks.
+            It also unlocks the Rank and the ${e} tree.<br>
+            <img src="textures/Evolution.png"><br>
+            Are you sure you want to evolve your sharks?
             `
         },
         
@@ -365,6 +478,11 @@ LANGUAGES.EN = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
         // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
+        'shark-rank-bonuses': {
+            fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,
+            prestige: x => `${formatPow(x)} ${toTextStyle('Prestige','prestige')} shard`,
+        },
+
         'level': "Level",
         'effect': "Effect",
         'cost': "Cost",
@@ -372,6 +490,7 @@ LANGUAGES.EN = {
         'require': "Require",
         'next-at': "Next at",
         'depth': "Depth",
+        'reward': "Reward",
 
         'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
 
@@ -388,6 +507,7 @@ LANGUAGES.EN = {
         'popup-desc' : {
             import: `Paste in your save. WARNING: WILL OVERWRITE YOUR CURRENT SAVE!`,
             wipe: `Are you sure you want to wipe your save? To wipe, type "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
+            "evolution-tree-respec": `Are you sure you want to respec ${toTextStyle('Evolution','humanoid')} tree? It will trigger an ${toTextStyle('Evolution','humanoid')} reset, not gaining ${toTextStyle('Humanoid','humanoid')} sharks.`,
         },
 
         'notify-desc' : {
@@ -410,5 +530,6 @@ LANGUAGES.EN = {
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
+        'confirm-humanoid': "Evolve Sharks",
     },
 }

@@ -2,11 +2,9 @@ var tab = 0, stab = [0,0,0,0,0], tab_name = 'shark'
 
 const TAB_IDS = {
     'shark': {
-        name: "Shark",
         html: updateSharkHTML,
     },
     'options': {
-        name: "Options",
         html: ()=>{
             for (let [i,x] of Object.entries(CONFIRMATIONS)) {
                 el("radio-confirm-"+i).style.display = el_display(x[0]())
@@ -14,28 +12,31 @@ const TAB_IDS = {
         },
     },
     'auto': {
-        name: "Automation",
         html: updateAutomationHTML,
     },
     'research': {
-        name: "Research",
         html: updateResearchHTML,
     },
     'explore': {
-        name: "Exploration",
         html: updateExplorationHTML,
     },
     'core-reactor': {
-        name: "Core Reactor",
         html: updateCoreHTML,
     },
     'core-radiation': {
-        name: "Core Radiation",
         html: updateCoreRadiation,
     },
     'core-assembler': {
-        name: "Core Assembler",
         html: updateCoreAssemblerHTML,
+    },
+    'shark-rank': {
+        html: updateSharkRankHTML,
+    },
+    'evolution-tree': {
+        html: updateEvolutionTreeHTML,
+    },
+    'evolution-goal': {
+        html: updateEvolutionGoalHTML,
     },
 }
 
@@ -60,6 +61,14 @@ const TABS = [
             ["core-reactor"],
             ['core-radiation',()=>player.feature>=7],
             ['core-assembler',()=>player.feature>=9],
+        ],
+    },{
+        id: 'evolution',
+        unl: ()=>player.humanoid.times>0,
+        stab: [
+            ["shark-rank"],
+            ["evolution-tree"],
+            ["evolution-goal",()=>player.feature>=12],
         ],
     },
 ]

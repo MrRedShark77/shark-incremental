@@ -116,7 +116,7 @@ button * {
 	pointer-events: none;
 }
 
-button:not(.locked,.selected,#wipe,.ca-grid-btn):hover {
+button:not(.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn):hover {
 	background-color: #0b6965;
 	border-color: #043f3c;
 }
@@ -137,7 +137,7 @@ button.half-huge-btn {
 }
 
 .tab-button.selected,
-button:not(.locked,.ca-grid-btn):active {
+button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
 	background-color: #075551;
 }
 
@@ -146,6 +146,13 @@ button:not(.locked,.ca-grid-btn):active {
 	border-color: #02302d;
 	cursor: default;
 	color: #f44;
+}
+
+.bought {
+	background-color: #11853e;
+	border: solid 2px #07552e;
+	cursor: default;
+	color: #8f8;
 }
 
 .tab-button {
@@ -274,6 +281,7 @@ button:not(.locked,.ca-grid-btn):active {
 .curr-top > button {
 	width: calc(100% - 80px);
 	height: calc(100% - 36px);
+	font-size: 12px;
 }
 
 .option-div {
@@ -327,6 +335,7 @@ button:not(.locked,.ca-grid-btn):active {
 #popup-html {
 	min-height: 100px;
 	max-height: 400px;
+	padding: 5px;
 	overflow-y: auto;
 }
 
@@ -641,4 +650,76 @@ button:not(.locked,.ca-grid-btn):active {
 	height: 20px;
 	box-shadow: inset 0px 0px 4px var(--color1), inset 0px 0px 4px var(--color1), 2px 2px 0px black;
 	background-color: var(--color2);
+}
+
+subtitle {
+	display: block;
+	font-size: 14px;
+	margin: 5px 0px;
+	font-style: italic;
+}
+
+#evolution-tree {
+	display: grid;
+	grid-template-columns: repeat(5, 150px);
+	grid-auto-rows: 150px;
+	justify-content: center;
+}
+
+#evolution-tree > div {
+	position: relative;
+}
+
+.evolution-tree-avilable {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+	font-size: 14px;
+}
+
+.evolution-tree-btn {
+	position: relative;
+	margin: 2px;
+	padding: 25px 4px;
+	font-size: 12px;
+}
+
+.etb-name, .etb-cost {
+	position: absolute;
+	color: black;
+	font-weight: bold;
+	width: 100%;
+	text-align: left;
+	font-size: 12px;
+}
+
+.etb-name {
+	top: 0px; left: 0px;
+}
+
+.etb-cost {
+	bottom: 0px; left: 0px;
+}
+
+#sharkoid-faith-btns {
+	display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+#evolution-goal-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-auto-rows: 160px;
+	justify-content: center;
+}
+
+.evolution-goal-ctn {
+	font-size: 13px;
+	cursor: default !important;
+}
+
+#rerun-evolution {
+	width: 240px;
 }

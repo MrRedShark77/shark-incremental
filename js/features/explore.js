@@ -4,8 +4,8 @@ const EXPLORE = [
         level_req: 110,
         maxDepth: 10935,
 
-        effect(r) {
-            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3)
+        effect(r,d) {
+            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3).pow(d.div(this.maxDepth).max(1).pow(.85))
             return x
         },
         effDesc: x => formatMult(x) + " " + CURRENCIES.fish.costName,
@@ -25,8 +25,8 @@ const EXPLORE = [
         level_req: 130,
         maxDepth: 5450,
 
-        effect(r) {
-            let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5)
+        effect(r,d) {
+            let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5).pow(d.div(this.maxDepth).max(1).pow(.8))
             return x
         },
         effDesc: x => formatMult(x) + " " + CURRENCIES.prestige.costName,
@@ -46,8 +46,8 @@ const EXPLORE = [
         level_req: 175,
         maxDepth: 8605,
 
-        effect(r) {
-            let x = r.add(1).log10().div(100)
+        effect(r,d) {
+            let x = r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(2,3)) x = x.mul(1.5)
             return x.add(1)
         },
@@ -68,8 +68,8 @@ const EXPLORE = [
         level_req: 210,
         maxDepth: 7236,
 
-        effect(r) {
-            let x = r.add(1).log10().div(100)
+        effect(r,d) {
+            let x = r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(3,2)) x = x.mul(1.5)
             return x.add(1)
         },
@@ -90,7 +90,7 @@ const EXPLORE = [
         level_req: 1000,
         maxDepth: 7290,
 
-        effect(r) {
+        effect(r,d) {
             let x = expPow(r.add(1),hasDepthMilestone(4,3) ? 0.75 : 0.5)
             if (hasResearch('e5')) x = x.max(r.add(1).root(2))
             return x
@@ -261,7 +261,7 @@ function updateExplorationHTML() {
 
 function updateExplorationTemp() {
     EXPLORE.forEach((x,i)=>{
-        tmp.explore_eff[i] = x.effect(player.explore.unl > i ? player.explore.res[i] : E(0))
+        tmp.explore_eff[i] = x.effect(player.explore.unl > i ? player.explore.res[i] : E(0), player.explore.depth[i])
 
         let upg = player.explore.upg[i]
         tmp.explore_upg_boost[i] = [Decimal.pow(2,upg[0]), Decimal.pow(2,upg[1])]

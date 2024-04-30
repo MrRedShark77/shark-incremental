@@ -237,7 +237,8 @@ function updateCoreTemp() {
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
 
-        if (i < 4) bonus = bonus.add(bonus1)
+        if (i < 4) bonus = bonus.add(bonus1).add(simpleETEffect(i+4,0))
+        else if (i < 8) bonus = bonus.add(simpleETEffect(i+12,0))
 
         tmp.core_bonus_level[i] = bonus
 

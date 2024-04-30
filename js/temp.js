@@ -2,6 +2,7 @@ var tmp = {}
 var options = {
     notation: "mixed_sc",
     max_range: 9,
+    pass: 0,
 }
 
 function reloadTemp() {
@@ -10,6 +11,9 @@ function reloadTemp() {
 
         shark_bonus: {},
         shark_upg_eff: [],
+
+        shark_elo: E(0),
+        shark_rank_bonus: {},
 
         research_eff: {},
 
@@ -28,6 +32,8 @@ function reloadTemp() {
 
         ca_building_effect: [],
         ca_building_strength: [],
+
+        evolution_tree_effect: [],
     }
 
     for (let x in EXPLORE) {
@@ -40,6 +46,7 @@ function updateTemp() {
     tmp.cr_active = player.core.radiation.active
 
     updateResearchTemp()
+    updateEvolutionTreeTemp()
     updateCoreTemp()
     updateExplorationTemp()
     updateSharkTemp()

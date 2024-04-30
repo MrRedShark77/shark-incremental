@@ -56,6 +56,45 @@ const AUTOMATION = {
             }
         },
     },
+    core_reactor: {
+        unl: ()=>player.humanoid.times>0,
+        interval: [10,0.9],
+
+        cost: x=>Decimal.pow(1e10,x+1),
+        bulk: x=>x.log(1e10).floor(),
+
+        curr: "core",
+
+        trigger() {
+            for (let i=0; i<tmp.core_reactor_unl; i++) upgradeCoreReactor(i)
+        },
+    },
+    core_radiation: {
+        unl: ()=>player.humanoid.times>0,
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e10,x+1),
+        bulk: x=>x.log(1e10).floor(),
+
+        curr: "core",
+
+        trigger() {
+            CORE_RAD.purchaseGeneration()
+        },
+    },
+    radioactive_boosts: {
+        unl: ()=>hasEvolutionGoal(7),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e100,x+1),
+        bulk: x=>x.log(1e100).floor(),
+
+        curr: "core",
+
+        trigger() {
+            CORE_RAD.purchaseBoost()
+        },
+    },
 }
 
 for (let [i,x] of Object.entries(AUTOMATION)) {

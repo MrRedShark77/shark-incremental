@@ -20,9 +20,18 @@ const CORE_RAD = {
 
         return x
     },
+    boostBulk() {
+        let x = player.core.radiation.amount
+
+        if (hasDepthMilestone(4,0)) x = x.mul(1e3)
+
+        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(10,2,'P',true).floor().add(1)
+
+        return x
+    },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(10,2,'P').pow(1.25))
+        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(10,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
 
         return x
     },
@@ -30,13 +39,17 @@ const CORE_RAD = {
     purchaseBoost() {
         var rad = player.core.radiation
         if (rad.amount.gte(this.limit())) {
-            player.core.radiation.boost = player.core.radiation.boost.add(1)
+            rad.boost = rad.boost.add(1).max(this.boostBulk())
 
-            rad.amount = E(0)
-            rad.gen = E(0)
+            if (!hasEvolutionGoal(6)) {
+                rad.gen = E(0)
+                resetSharkUpgrades('s5')
+            }
 
-            resetSharkUpgrades('s5')
-            doReset("core",true)
+            if (!hasEvolutionGoal(7)) {
+                rad.amount = E(0)
+                doReset("core",true)
+            }
         }
     },
 
@@ -100,6 +113,13 @@ const CORE_RAD = {
             req: 20,
             effect: (r,b)=>{
                 let x = r.add(1).log10().mul(b.add(1)).root(3).div(100).add(1)
+
+                return x
+            },
+        },{
+            req: 25,
+            effect: (r,b)=>{
+                let x = player.shark_level.add(1).pow(r.add(1).log10().mul(b.add(1)).root(2).div(100)).overflow(1e3,0.5)
 
                 return x
             },

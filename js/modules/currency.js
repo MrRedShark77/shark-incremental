@@ -11,7 +11,7 @@ const CURRENCIES = {
 
             .mul(tmp.explore_eff[0]).mul(tmp.core_bonus)
 
-            x = x.pow(sharkUpgEffect('s4')).pow(tmp.explore_eff[2]).pow(coreReactorEffect(0))
+            x = x.pow(sharkUpgEffect('s4')).pow(tmp.explore_eff[2]).pow(coreReactorEffect(0)).pow(getSharkRankBonus('fish')).pow(simpleETEffect(12))
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
@@ -37,9 +37,13 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0)
 
-            x = expPow(x,hasResearch('p4') ? 0.55 : 0.5).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1])
+            var exp = 0.5
+            if (hasResearch('p4')) exp += 0.05
+            if (hasEvolutionGoal(5)) exp += 0.0125
 
-            x = x.pow(tmp.explore_eff[3])
+            x = expPow(x,exp).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1])
+
+            x = x.pow(tmp.explore_eff[3]).pow(simpleETEffect(13)).pow(getSharkRankBonus('prestige'))
 
             if (hasDepthMilestone(0,0)) x = x.pow(1.05)
             if (inExploration(1)) x = x.root(2)
@@ -57,12 +61,42 @@ const CURRENCIES = {
         get amount() { return player.core.fragments },
         set amount(v) { player.core.fragments = v },
 
+        get total() { return player.core.total },
+        set total(v) { player.core.total = v },
+
         get gain() {
             let x = player.prestige.total.div('1e450')
 
             if (x.lt(1)) return E(0)
 
-            x = x.log10().div(10).add(1).mul(getSharkBonus("core")).mul(getCRBoost(1))
+            x = x.log10().div(10).add(1)
+
+            if (hasEvolutionGoal(2)) x = expPow(x,1.25)
+
+            x = x.mul(getSharkBonus("core")).mul(getCRBoost(1)).pow(simpleETEffect(14))
+    
+            return x.floor()
+        },
+
+        get passive() { return hasEvolutionGoal(0) ? 1 : 0 },
+    },
+    humanoid: {
+        next(s=player.humanoid.shark) { return Decimal.pow(10,Decimal.pow(this.base,s).mul(1.5e18)) },
+        get require() { return this.next() },
+
+        get base() { return Decimal.sub(10,simpleETEffect(15,0)) },
+
+        get moreArg() { return [this.next(player.humanoid.shark.add(tmp.currency_gain.humanoid))] },
+
+        get amount() { return player.humanoid.shark },
+        set amount(v) { player.humanoid.shark = v },
+
+        get gain() {
+            let x = player.fish
+
+            if (x.lt("e1.5e18")) return E(0)
+
+            x = x.log10().div(1.5e18).log(this.base).sub(player.humanoid.shark).add(1).max(0)
     
             return x.floor()
         },

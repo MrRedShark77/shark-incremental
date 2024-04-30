@@ -52,7 +52,7 @@ function updatePopup() {
         popup_el.style.transform = 'scale(1)'
 
         el('popup-html').innerHTML = p.html + (p.type == 'prompt' ? '<br><textarea id="popup-input" placeholder="'+lang_text('prompt-placeholder')+'" rows="5"></textarea>' : '')
-        el('popup-btns').innerHTML = p.buttonName.map(b => `<button id="popup-btn${b}">${b}</button>`).join('')
+        el('popup-btns').innerHTML = p.buttonName.map((b,i) => `<button id="popup-btn${i}">${b}</button>`).join('')
 
         var closePopup = () => {
             popups.splice(0,1)
@@ -66,7 +66,7 @@ function updatePopup() {
         }
 
         p.buttonName.forEach((b,i) => {
-            el(`popup-btn${b}`).addEventListener('click', () => {
+            el(`popup-btn${i}`).addEventListener('click', () => {
                 p.buttonFunction?.[i]?.(el("popup-input")?.value)
                 closePopup()
             })

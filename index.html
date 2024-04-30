@@ -40,6 +40,7 @@
     <script src="js/features/core-reactor.js"></script>
     <script src="js/features/core-radiation.js"></script>
     <script src="js/features/core-assembler.js"></script>
+    <script src="js/features/evolution.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -189,7 +190,38 @@
                     </td>
                 </tr>
             </table>
-        </div><div id="options-tab">
+        </div><div id="shark-rank-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div id="shark-elo-div"></div>
+                        <div id="shark-elo-calc"></div>
+                    </td><td style="width: 50%;">
+                        <div id="shark-rank-div"></div>
+                        <subtitle id="shark-rank-note"></subtitle>
+                        <div id="shark-rank-req-div"></div>
+                        <div id="shark-rank-bonus"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="evolution-tree-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <button class="big-btn" id="respec-evolution-tree" onclick="respecEvolutionTree()"></button>
+                        <div id="evolution-tree"></div>
+                    </td><td style="width: 50%;">
+                        <p id="sharkoid-faith-div"></p>
+                        <div id="sharkoid-faith-btns"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="evolution-goal-tab">
+            <button class="big-btn" id="rerun-evolution" onclick="respecEvolutionTree(true)"></button>
+            <div id="evolution-goal-grid"></div>
+        </div>
+
+        <div id="options-tab">
             <div class="option-div">
                 <div>
                     <h2 id="option-title-1">Main Options</h2>
@@ -226,7 +258,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.1.1 by MrRedShark77
+            Shark Incremental v0.2 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>
