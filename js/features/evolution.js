@@ -83,7 +83,10 @@ function respecEvolutionTree(force) {
 function updateEvolutionTreeHTML() {
     var lang_texts = lang_text("evolution-tree-ctn")
     var row_available = []
+    var unl_rows = tmp.evo_tree_rows
     for (let x = 0; x < EVOLUTION_TREE.rows; x++) {
+        el("evolution-tree-available-"+x).style.display = el_display(x < unl_rows)
+        if (x >= unl_rows) continue
         var a = EVOLUTION_TREE.getAvilableSlot(x)
         row_available.push(a)
         el("evolution-tree-available-"+x).innerHTML = lang_text("evolution-tree-row",x+1,a)
@@ -91,7 +94,8 @@ function updateEvolutionTreeHTML() {
     for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
         var row = Math.floor(x/4)
         var tree_el = el("evolution-tree-"+x+"-div")
-
+        tree_el.style.display = el_display(row < unl_rows)
+        if (row >= unl_rows) continue
         el("evolution-tree-"+x+"-desc").innerHTML = lang_texts[x]?.[1]?.(tmp.evolution_tree_effect[x]) ?? "Placeholder"
         tree_el.className = el_classes({locked: !EVOLUTION_TREE.canAfford(x, row_available[row]), bought: player.humanoid.tree.includes(x), "evolution-tree-btn": true})
     }
@@ -115,6 +119,9 @@ function evolutionTreeEffect(x,def=1) { return tmp.evolution_tree_effect[x] ?? d
 function simpleETEffect(x,def=1) { return player.humanoid.tree.includes(x) ? evolutionTreeEffect(x,def) : def }
 
 function updateEvolutionTreeTemp() {
+    tmp.evo_tree_rows = 5
+    if (player.feature>=12) tmp.evo_tree_rows++
+
     tmp.total_faith = E(0)
     for (let i = 0; i < player.humanoid.faith.length; i++) {
         tmp.total_faith = tmp.total_faith.add(player.humanoid.faith[i]??0)
