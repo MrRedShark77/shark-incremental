@@ -25,13 +25,13 @@ const CORE_RAD = {
 
         if (hasDepthMilestone(4,0)) x = x.mul(1e3)
 
-        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(10,2,'P',true).floor().add(1)
+        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(10,2,'P',true).scale(30,2,'P',true).floor().add(1)
 
         return x
     },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(10,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
+        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(30,2,'P').scale(10,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
 
         return x
     },
