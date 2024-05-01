@@ -360,7 +360,7 @@ LANGUAGES.ZH = {
             ["太阳能鲨", x=>`<b>氮</b>的等级额外加 <b>${format(x,0)}</b>.`],
             ["海上飞鲨", x=>`<b>氦</b>的等级额外加 <b>${format(x,0)}</b>.`],
 
-            ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>完美之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
+            ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>鱼之躯体</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["超然之躯", x=>`${toTextStyle('岩浆','core')}碎片使<b>辐射之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["永恒之躯", x=>`<b>完美之躯</b>的效果是原来的<b>平方</b>。`],
