@@ -31,14 +31,22 @@ LANGUAGES.ZH = {
 
         'core-name': "岩浆碎片",
         'core-costName': toTextStyle('岩浆','core') + '碎片',
+
+        'humanoid-name': "类人鲨鱼",
+        'humanoid-costName': toTextStyle('类人','humanoid') + '鲨鱼',
 		
 		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
+		
+		'sharkoid-faith': toTextStyle('鲨之信念','humanoid'),
 
         'curr-top-0-req': x => `${toTextStyle('鱼','fish')}的总量达到 <b>${format(x)}</b>`, 
         'curr-top-0-reset': x => `获得 <b>${x.format(0)}</b> ${toTextStyle('重生','prestige')}碎片`,
 
         'curr-top-1-req': x => `${toTextStyle('重生','prestige')}碎片的总量达到 <b>${format(x)}</b>`, 
         'curr-top-1-reset': x => `进入地核，获得 <b>${x.format(0)}</b> ${toTextStyle('岩浆','core')}碎片`,
+
+        'curr-top-2-req': x => `${toTextStyle('鱼','fish')}的数量达到 <b>${format(x)}</b>`, 
+        'curr-top-2-reset': (x,next) => `将你的${toTextStyle('鲨鱼','shark')}进化成为 <b>${format(x,0)}</b> ${toTextStyle('类人','humanoid')}鲨鱼（下一个需要 <b>${format(next)}</b> ${toTextStyle('鱼','fish')})`,
 
         'radioactive-name': toTextStyle('辐射'+icon("radioactive"),'core'),
         
@@ -49,15 +57,26 @@ LANGUAGES.ZH = {
         'tab-auto': "自动化",
         'tab-research': toTextStyle('研究','prestige'),
         'tab-explore': "探索",
+
         'tab-core': toTextStyle('地核','core'),
         'tab-core-reactor': toTextStyle('地核','core')+"反应堆",
         'tab-core-radiation': toTextStyle('地核','core')+"辐射",
 		'tab-core-assembler': toTextStyle('地核','core')+"生产线",
 
+        'tab-evolution': toTextStyle('进化','humanoid'),
+        'tab-shark-rank': toTextStyle('鲨鱼','shark') + "段位",
+        'tab-evolution-tree': toTextStyle('进化','humanoid') + "树",
+        'tab-evolution-goal': toTextStyle('进化','humanoid') + "目标",
+
         // Elements
 
         'fish-div': `你的${toTextStyle('鲨鱼','shark')}已经吃了 <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> 条鱼`,
         'shark-stats': `${toTextStyle('鲨鱼','shark')}状态<br>等级：<h4 id="shark-level">???</h4><br>段位：<h4 id="shark-tier">???</h4>`,
+
+        'shark-elo-div': `${toTextStyle('鲨鱼','shark')}的战力为 <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
+        'shark-rank-div': `${toTextStyle('鲨鱼','shark')}的段位为 <h3 id="shark-rank">0</h3>.`,
+        'shark-rank-req-div': `${toTextStyle('鲨鱼','shark')}的战力达到 <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4> 后升段。`,
+        'shark-rank-note': `注意：鲨鱼段位在鲨鱼进化后重置。`,
 
         'option-title-1': "主要选项",
         'option-title-2': "记数法",
@@ -82,6 +101,10 @@ LANGUAGES.ZH = {
 		
 		'core-temp-div': `${toTextStyle('地核','core')}温度：<h3>${toTextStyle('6,150','core','core-temperature')}</h3>，辐射加成的效果提升 <h4 id="core-temp-effect">100%</h4>.`,
         'core-temp-after-div': `（进行${toTextStyle('地核','core')}重置后，${toTextStyle('地核','core')}温度为 <span id="core-temp-after">???</span>）`,
+
+        'sharkoid-faith-div': `你拥有 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('鲨之信念','humanoid')}.`,
+        'respec-evolution-tree': `重置${toTextStyle('进化','humanoid')}树`,
+        'rerun-evolution': `重置进化树，重新开始本次${toTextStyle('进化','humanoid')}`,
 
         // Upgrades
 
@@ -191,6 +214,9 @@ LANGUAGES.ZH = {
 
         'research-c11-name': "更好的辐射防护",
         'research-c11-desc': `提升“辐射防护”的效果。`,
+
+        'research-c12-name': "绝佳的辐射防护",
+        'research-c12-desc': `大幅度降低地核辐射的上限。`,
 
         // Exploration
 
@@ -302,6 +328,74 @@ LANGUAGES.ZH = {
             x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('岩浆','core')}碎片加成的基数 <h4>+${format(x,3)}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('鱼','fish')}的加成，其指数是原来的 <h4>${formatPow(x,3)}</h4>.`,
             x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
+			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
+        ],
+
+        // Evolution Tree
+
+        'evolution-tree-row': (r,a) => `<b>第 ${r} 行</b><br>可购买 ${a} 个`,
+        'evolution-tree-ctn': [
+            ["鱼之躯体", x=>`${toTextStyle('鱼','fish')}使${toTextStyle('鲨鱼','shark')}战力 <b>${formatMult(x)}</b>.`],
+            ["重生之躯", x=>`${toTextStyle('重生','prestige')}碎片使${toTextStyle('鲨鱼','shark')}战力 <b>${formatMult(x)}</b>.`],
+            ["辐射之躯", x=>`${toTextStyle('岩浆','core')}碎片使${toTextStyle('鲨鱼','shark')}战力 <b>${formatMult(x)}</b>.`],
+            ["完美之躯", x=>`${toTextStyle('鲨鱼','shark')}战力 <b>${formatMult(x,0)}</b>.`],
+
+            ["钢铁之鲨", x=>`<b>铁</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["无价之鲨", x=>`<b>镍</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["氧气之鲨", x=>`<b>氧</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["霓虹之鲨", x=>`<b>氖</b>的等级额外加 <b>${format(x,0)}</b>.`],
+
+            ["马里亚纳海沟", x=>`移除在<b>太平洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
+            ["里特克深渊", x=>`移除在<b>北冰洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
+            ["密尔沃基深渊", x=>`移除在<b>大西洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
+            ["南桑威奇海沟", x=>`移除在<b>南冰洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
+
+            ["暴胀的鱼", x=>`${toTextStyle('鱼','fish')}的数量是原来的 <b>${format(x)}th</b> 次幂。`],
+            ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}th</b> 次幂。`],
+            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}th</b> 次幂。`],
+            ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`],
+
+            ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["鲨之铠甲", x=>`<b>硅</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["太阳能鲨", x=>`<b>氮</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["海上飞鲨", x=>`<b>氦</b>的等级额外加 <b>${format(x,0)}</b>.`],
+
+            ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>完美之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
+            ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
+            ["超然之躯", x=>`${toTextStyle('岩浆','core')}碎片使<b>辐射之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
+            ["永恒之躯", x=>`<b>完美之躯</b>的效果是原来的<b>平方</b>。`],
+        ],
+
+        'evolution-goal-status': (x,y)=>x?"成功":y?"失败":"正在进行",
+        'evolution-goal-ctn': [
+            [
+                x=>`第一次进入${toTextStyle("地核",'core')}时，获得至少 <b>${format(x,0)}</b> ${toTextStyle("岩浆",'core')}碎片。`,
+                `每秒获得此时进入地核后获得的 <b>所有</b> ${toTextStyle("岩浆",'core')}碎片。`
+            ],[
+                x=>`不购买${toTextStyle("地核",'core')}生产线时，${toTextStyle("岩浆",'core')}碎片的总量达到 <b>${format(x,0)}</b>.`,
+                `${toTextStyle('进化','humanoid')}后保留${toTextStyle("地核",'core')}生产线。`
+            ],[
+                x=>`${toTextStyle("岩浆",'core')}碎片的总量达到 <b>${format(x,0)}</b>.`,
+                `进一步提升通过${toTextStyle('重生','prestige')}碎片获得${toTextStyle("岩浆",'core')}碎片的公式。`
+            ],[
+                x=>`在没有${toTextStyle('褐藻','kelp')}时，${toTextStyle('重生','prestige')}碎片的总量达到 <b>${format(x,0)}</b>.`,
+                `任何重置开始时，所有海洋中的下潜深度均为最大值。`,
+            ],[
+                x=>`在没有任何海洋中的资源时，${toTextStyle('重生','prestige')}碎片的总量达到 <b>${format(x,0)}</b>.`,
+                `${toTextStyle('进化','humanoid')}后保留研究。`,
+            ],[
+                x=>`${toTextStyle('重生','prestige')}碎片的总量达到 <b>${format(x,0)}</b>.`,
+                `进一步提升获得${toTextStyle('重生','prestige')}碎片的公式。`,
+            ],[
+                x=>`购买不多于 <b>10</b> 个辐射上限升级时，${toTextStyle('鱼','fish')}的总量达到 <b>${format(x,0)}</b>.`,
+                `购买辐射上限升级后不会重置${toTextStyle('辐射'+icon("radioactive"),'core')}相关的升级。重生开始时，每秒产生 1 辐射，${toTextStyle('辐射'+icon("radioactive"),'core')}的数量可以超过辐射上限。`,
+            ],[
+                x=>`不购买辐射上限升级时，${toTextStyle('鱼','fish')}的总量达到 <b>${format(x,0)}</b>.`,
+                `购买辐射上限升级后不会重置辐射的数量，同时解锁自动提升辐射上限。`,
+            ],[
+                x=>`吃${toTextStyle('鱼','fish')}总量达到 <b>${format(x,0)}</b>.`,
+                `${toTextStyle('鲨鱼','shark')}段位的第一次价格折算延迟 <b>5</b>.`,
+            ],
         ],
 
         // Automation
@@ -310,6 +404,9 @@ LANGUAGES.ZH = {
         'auto-su-name': `自动购买${toTextStyle("鱼","fish")}升级`,
         'auto-spu-name': `自动购买${toTextStyle("重生","prestige")}升级`,
         'auto-eu-name': `自动购买探索升级`,
+		'auto-core_reactor-name': `自动购买${toTextStyle("地核","core")}反应堆`,
+        'auto-core_radiation-name': `自动购买${toTextStyle("辐射","core")}提升`,
+        'auto-radioactive_boosts-name': `自动提升${toTextStyle("辐射","core")}上限`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
@@ -331,6 +428,11 @@ LANGUAGES.ZH = {
 		'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁新的海洋`, 
 		'progress-8-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁${toTextStyle('地核','core')}的下一个机制`, 
         'progress-9-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)} 解锁新的${toTextStyle('地核','core')}反应堆`, 
+
+		'progress-10-text': r => `吃${toTextStyle('鱼','fish')}总量达到${format(r)}`, 
+        get 'progress-10-cond-text'() { return `${toTextStyle('鲨鱼','shark')}进化` },
+
+        'progress-11-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -356,6 +458,17 @@ LANGUAGES.ZH = {
             你确定要进入地核吗？
             `
         },
+        get 'reset-humanoid-message'() {
+            let e = toTextStyle('进化','humanoid'), c = toTextStyle('地核','core'), m = toTextStyle('岩浆','core'), p = toTextStyle('重生','prestige')
+            return `
+            <h3>${e}</h3><br>
+            <subtitle>“这些变异会让鲨鱼具有野性，它们将变成类人鲨鱼。不过，你需要献祭你曾获得的一切”</subtitle>
+            ${e}是第三层重置。鲨鱼进化除了重置${c}所重置的资源，还重置${m}碎片、${c}反应堆、${c}辐射、${c}生产线，和一些与${toTextStyle('类人','humanoid')}鲨鱼相关的${toTextStyle('研究','prestige')}。
+            第一次进行鲨鱼进化将解锁鲨鱼段位和${e}树。<br>
+            <img src="textures/Evolution.png"><br>
+            你确定要进行鲨鱼进化吗？
+            `
+        },
 
         // Other
 
@@ -365,6 +478,11 @@ LANGUAGES.ZH = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('岩浆','core')}碎片`,
 		//'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('辐射' + icon("radioactive"),'核心')}`,
 
+        'shark-rank-bonuses': {
+            fish: x => `${toTextStyle('鱼','fish')}的数量是原来的${formatPow(x)}`,
+            prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的${formatPow(x)}`,
+        },
+
         'level': "等级",
         'effect': "效果",
         'cost': "价格",
@@ -372,6 +490,7 @@ LANGUAGES.ZH = {
         'require': "需要",
         'next-at': "下一个需要",
         'depth': "深度",
+		'reward': "奖励",
 
         'offline-time-text': x=>`您离线了 <b>${formatTime(x,0)}</b>.`,
 
@@ -410,5 +529,6 @@ LANGUAGES.ZH = {
 
         'confirm-prestige': "重生",
         'confirm-core': "进入地核",
+		'confirm-humanoid': "鲨鱼进化",
     },
 }
