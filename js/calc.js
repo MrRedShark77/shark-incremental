@@ -59,6 +59,8 @@ function calc(dt) {
                 var g = EVOLUTION_GOAL[i]
                 if (!g.locked() && g.goal()) player.humanoid.goal.push(i)
             }
+
+            if (!hasEvolutionGoal(3) && hasEvolutionGoal(4)) player.humanoid.goal.push(3)
         }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)
