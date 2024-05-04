@@ -32,13 +32,21 @@ LANGUAGES.VN = {
         'core-name': "Miếng Mắc Ma",
         'core-costName': 'Miếng ' + toTextStyle('Mắc Ma','core'),
 
+        'humanoid-name': "Cá Mập Người",
+        'humanoid-costName': 'Cá Mập ' + toTextStyle('Người','humanoid'),
+
         'full-shark-level': 'Level '+toTextStyle('Cá Mập','shark'),
 
+        'sharkoid-faith': toTextStyle('Lòng Trung Thành Cá Mập','humanoid'),
+
         'curr-top-0-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> con ${toTextStyle('Cá','fish')}`, 
-        'curr-top-0-reset': x => `Làm uy tín để nhận <b>${x.format(0)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`,
+        'curr-top-0-reset': x => `Làm prestige để nhận <b>${x.format(0)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`,
 
         'curr-top-1-req': x => `Chạm tới tổng cộng <b>${format(x)}</b> Mãnh ${toTextStyle('Prestige','prestige')}`, 
         'curr-top-1-reset': x => `Vào lõi để nhận <b>${x.format(0)}</b> Miếng ${toTextStyle('Mắc Ma','core')}`,
+
+        'curr-top-2-req': x => `Chạm tới <b>${format(x)}</b> con ${toTextStyle('Cá','fish')}`, 
+        'curr-top-2-reset': (x,next) => `Tiến hóa ${toTextStyle('Cá Mập','shark')} của bạn thành <b>${format(x,0)}</b> Cá Mập ${toTextStyle('Người','humanoid')} (Tiếp theo ở <b>${format(next)}</b> con ${toTextStyle('Cá','fish')})`,
 
         'radioactive-name': toTextStyle('Bức Xạ '+icon("radioactive"),'core'),
 
@@ -49,15 +57,26 @@ LANGUAGES.VN = {
         'tab-auto': "Tự Động",
         'tab-research': toTextStyle('Nghiên Cứu','prestige'),
         'tab-explore': "Cuộc thám hiểm",
+
         'tab-core': toTextStyle('Lõi','core'),
-        'tab-core-reactor': "Lò phản ứng " + toTextStyle('Lõi','core'),
+        'tab-core-reactor': "Lò phản ứng "+toTextStyle('Lõi','core'),
         'tab-core-radiation': "Bức Xạ "+toTextStyle('Lõi','core'),
-        'tab-core-asssembler': "Phát triển "+toTextStyle('Lõi','core'),
+        'tab-core-assembler': "Phát triển "+toTextStyle('Lõi','core'),
+
+        'tab-evolution': toTextStyle('Sự Tiến Hóa','humanoid'),
+        'tab-shark-rank': "Rank " + toTextStyle('Cá Mập','shark'),
+        'tab-evolution-tree': "Cây của " + toTextStyle('Sự Tiến Hóa','humanoid'),
+        'tab-evolution-goal': "Mục tiêu của " + toTextStyle('Sự Tiến Hóa','humanoid'),
 
         // Elements
 
         'fish-div': `${toTextStyle('Cá Mập','shark')} của bạn đã ăn <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> con cá.`,
         'shark-stats': `Thông số của ${toTextStyle('Cá Mập','shark')}<br>Level: <h4 id="shark-level">???</h4><br>Rank: <h4 id="shark-tier">???</h4>`,
+
+        'shark-elo-div': `ELO ${toTextStyle('Cá Mập','shark')} của bạn là <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
+        'shark-rank-div': `Rank ${toTextStyle('Cá Mập','shark')} của bạn là <h3 id="shark-rank">0</h3>.`,
+        'shark-rank-req-div': `Rank tiếp theo yêu cầu ELO ${toTextStyle('Cá Mập','shark')} <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
+        'shark-rank-note': `Lưu ý: Rank Cá Mập sẽ reset khi bạn kích hoạt một reset của Sự Tiến Hóa.`,
 
         'option-title-1': "Cài đặt chính",
         'option-title-2': "Kí hiệu",
@@ -73,7 +92,7 @@ LANGUAGES.VN = {
             return `
             <summary>Cuộc Thí Nghiệm Bức Xạ ${c}</summary>
             Thí nghiệm với bức xạ lõi reset từ ${toTextStyle('Lõi','core')} trở xuống.
-            Trong cuộc thí nghiệm, tất cả các lò phản ứng lõi không hoạt động, và căn bậc ba lượng ${toTextStyle('Cá','fish')}, mãnh ${toTextStyle('Prestige','prestige')}, và tài nguyên đầu tiên của bốn đại dương nhận được.
+            Trong cuộc thí nghiệm, tất cả các lò phản ứng lõi không hoạt động. Căn bậc ba lượng ${toTextStyle('Cá','fish')}, mãnh ${toTextStyle('Prestige','prestige')}, và tài nguyên đầu tiên của bốn đại dương nhận được.
             Cuộc thí nghiệm buộc ${toTextStyle('Cá Mập','shark')} của bạn ăn ${rf} phóng xạ.<br>
             Nâng cấp với ${rf} phóng xạ để sản sinh thêm ${toTextStyle('Bức Xạ '+icon("radioactive"),'core')}, cái mà cho bạn thêm boost.
             `
@@ -82,6 +101,10 @@ LANGUAGES.VN = {
 
         'core-temp-div': `Nhiệt độ của ${toTextStyle('Lõi','core')} là <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, cái mà làm boost phóng xạ hiệu quả hơn <h4 id="core-temp-effect">100%</h4>.`,
         'core-temp-after-div': `(Nhiệt độ của ${toTextStyle('Lõi','core')} sẽ là <span id="core-temp-after">???</span> sau reset ${toTextStyle('Lõi','core')})`,
+
+        'sharkoid-faith-div': `Bạn có <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Lòng Trung Thành Cá Mập','humanoid')}.`,
+        'respec-evolution-tree': `Xác định lại Cây của ${toTextStyle('Sự Tiến Hóa','humanoid')}`,
+        'rerun-evolution': `Chạy lại ${toTextStyle('Sự Tiến Hóa','humanoid')}, xác định lại Cây của nó`,
 
         // Upgrades
 
@@ -121,7 +144,7 @@ LANGUAGES.VN = {
         'research-p1-name': "Độ Nhanh Nhẹn của Prestige",
         'research-p1-desc': `'Độ Nhanh Nhẹn của Cá Mập' bây giờ ảnh hưởng tới cơ số phần thưởng Mãnh ${toTextStyle('Prestige','prestige')} của Level ${toTextStyle("Cá Mập",'shark')} ở một tỉ lệ nhỏ.`,
 
-        'research-p2-name': "Nâng Cấp Cá Mập EL",
+        'research-p2-name': "Nâng Cấp Cá Mập Bất Diệt",
         'research-p2-desc': `Nâng cấp ${toTextStyle("Cá",'fish')} của ${toTextStyle("Cá Mập",'shark')} không còn chi tiêu lượng ${toTextStyle("Cá",'fish')} nữa.`,
 
         'research-p3-name': "Level Cá Mập Được Nâng Cấp",
@@ -141,7 +164,7 @@ LANGUAGES.VN = {
         'research-p7-name': "Tài Nguyên I Tốt Hơn",
         'research-p7-desc': `Hiệu ứng của ${toTextStyle("San Hô",'coral')} và ${toTextStyle("Đá",'ice')} tốt hơn.`,
 
-        'research-p8-name': "Level Cá Mập Được Nâng Cấp Xa Hơn",
+        'research-p8-name': "Level Cá Mập Được Nâng Cấp Tốt Hơn",
         'research-p8-desc': `Giảm cơ số yêu cầu của level ${toTextStyle("Cá Mập",'shark')} xa hơn xuống 1.`,
 
         'research-e1-name': "Sự Hiệp Lực Đại Dương I",
@@ -178,7 +201,7 @@ LANGUAGES.VN = {
         'research-c6-desc': `Mãnh ${toTextStyle('Mắc Ma','core')} giảm giới hạn bức xạ ở một tỉ lệ nhỏ.`,
 
         'research-c7-name': "Răng Cá Mập Lớn Hơn",
-        'research-c7-desc': `Hiệu ứng của 'Răng Cá Mập' được nâng lên <b>^2.5</b>.`,
+        'research-c7-desc': `Hiệu ứng của 'Răng Cá Mập' được nâng lên <b>2.5</b>.`,
 
         'research-c8-name': "Sắt & Neon Tốt Hơn",
         'research-c8-desc': `Hiệu ứng của <b>Sắt</b> mạnh hơn hai lần, và mức yêu cầu của <b>Sắt</b> & <b>Neon</b> được giảm xuống một cách quyết liệt.`,
@@ -191,14 +214,17 @@ LANGUAGES.VN = {
 
         'research-c11-name': "Giảm Lượng Bức Xạ Nhiều Hơn",
         'research-c11-desc': `'Giảm Lượng Bức Xạ' mạnh hơn một chút.`,
-      
+
+        'research-c12-name': "Giảm Lượng Bức Xạ Nhiều Hơn Thế Nữa",
+        'research-c12-desc': `Giảm giới hạn của bức xạ một cách quyết liệt.`,
+
         // Exploration
 
         'explore-while': `Trong khi khám phá`,
         'explore-inside': (a,b,c)=>`Cơ số: ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Chạm tới ${format(c,0)} con ${toTextStyle("Cá",'fish')} cao nhất.`,
         'explore-outside': x=>`Cơ số hiện tại của bạn: ${x.format()}/s.<br>Khám phá đại dương!`,
 
-        'explore-next': x=> `Đại Dương tiếp theo ở Level${toTextStyle("Cá Mập",'shark')} <h3>${format(x,0)}</h3>.`,
+        'explore-next': x=> `Đại Dương tiếp theo ở Level ${toTextStyle("Cá Mập",'shark')} <h3>${format(x,0)}</h3>.`,
 
         'explore-doubler-1': x=>`Gấp đôi ${x} nhận được.`,
         'explore-doubler-2': `Gấp đôi tiến trình độ sâu nhận được.`,
@@ -302,6 +328,74 @@ LANGUAGES.VN = {
             x=>`Tăng cơ số phần thưởng miếng ${toTextStyle('Mắc Ma','core')} của level ${toTextStyle('Cá Mập','shark')} lên <h4>+${format(x,3)}</h4>.`,
             x=>`Tăng lũy thừa phần thưởng ${toTextStyle('Cá','fish')} của Level ${toTextStyle('Cá Mập','shark')} lên <h4>${formatPow(x,3)}</h4>.`,
             x=>`Ba nâng cấp ${toTextStyle('Prestige','prestige')} của ${toTextStyle('Cá Mập','shark')} đầu tiên mạnh hơn <h4>${formatPercent(x.sub(1))}</h4>.`,
+            x=>`Level ${toTextStyle('Cá Mập','shark')} tăng cường ELO ${toTextStyle('Cá Mập','shark')} lên <h4>${formatMult(x)}</h4>.`,
+        ],
+
+        // Evolution Tree
+
+        'evolution-tree-row': (r,a) => `<b>Hàng ${r}</b><br>${a} cái khả dụng`,
+        'evolution-tree-ctn': [
+            ["Thân Thể Con Cá", x=>`${toTextStyle('Cá','fish')} tăng cường ELO ${toTextStyle('Cá Mập','shark')} lên <b>${formatMult(x)}</b>.`],
+            ["Thân Thể Prestige", x=>`Mãnh ${toTextStyle('Prestige','prestige')} tăng cường ELO ${toTextStyle('Cá Mập','shark')} lên <b>${formatMult(x)}</b>.`],
+            ["Thân Thể Phóng Xạ", x=>`Miếng ${toTextStyle('Mắc Ma','core')} tăng cường ELO ${toTextStyle('Cá Mập','shark')} lên <b>${formatMult(x)}</b>.`],
+            ["Thân Thể Hoàn Hảo", x=>`ELO ${toTextStyle('Cá Mập','shark')} được nhân lên <b>${formatMult(x,0)}</b>.`],
+
+            ["Cá Mập Thép", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Sắt</b>.`],
+            ["Cá Mập Đáng Giá", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Kẽm</b>.`],
+            ["Cá Mập Thở Không Khí", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Oxy</b>.`],
+            ["Glowing Shark", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Neon</b>.`],
+
+            ["Rãnh Mariana", x=>`Độ sâu của <b>Thái Bình Dương</b> không còn giới hạn nữa, và nó làm cho hiệu ứng của nó mạnh hơn sau đó.`],
+            ["Vực Litke", x=>`Độ sây của <b>Bắc Băng Dương</b> không còn giới hạn nữa, và nó làm cho hiệu ứng của nó mạnh hơn sau đó.`],
+            ["Vực Milwaukee", x=>`Độ sâu của <b>Đại Tây Dương</b> không còn giới hạn nữa, và nó làm cho hiệu ứng của nó mạnh hơn sau đó.`],
+            ["Rãnh Nam Sandwich", x=>`Độ sâu của <b>Nam Đại Dương</b> không còn giới hạn nữa, và nó làm cho hiệu ứng của nó mạnh hơn sau đó.`],
+
+            ["Cá Lạm Phát", x=>`${toTextStyle('Cá','fish')} được nâng lên <b>${format(x)}</b>.`],
+            ["Quá nhiều Prestige", x=>`Mãnh ${toTextStyle('Prestige','prestige')} được nâng lên <b>${format(x)}</b>.`],
+            ["Lõi Nén", x=>`Miếng ${toTextStyle("Mắc Ma",'core')} được nâng lên <b>${format(x)}</b>.`],
+            ["Cá Mập Nhà Làm", x=>`Giảm cơ số yêu cầu của Cá Mập ${toTextStyle('Người','humanoid')} xuống <b>${format(x,0)}</b>.`],
+
+            ["Sự Chuyển Đổi Cá Mập", x=>`Nhận thên <b>${format(x,0)}</b> cấp <b>Sulfur</b>.`],
+            ["Vỏ Cá Mập", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Silicon</b>.`],
+            ["Cá Mập Mặt Trời", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Nitrogen</b>.`],
+            ["Cá Mập Bay", x=>`Nhận thêm <b>${format(x,0)}</b> cấp <b>Helium</b>.`],
+
+            ["Thân Thể Cá Mập Lớn", x=>`${toTextStyle('Cá','fish')} tăng cường <b>'Thân Thể Hoàn Hảo'</b> lên <b>${formatPow(x)}</b>.`],
+            ["Tái Sinh Thân Thể", x=>`Mãnh ${toTextStyle('Prestige','prestige')} tăng cường <b>'Thân Thể Prestige'</b> lên <b>${formatPow(x)}</b>.`],
+            ["Thân Thể Siêu Nhiên", x=>`Miếng ${toTextStyle('Mắc Ma','core')} tăng cường <b>'Thân Thể Phóng Xạ'</b> lên <b>${formatPow(x)}</b>.`],
+            ["Thân Thể Bất Tử", x=>`<b>'Bình phương Thân Thể Hoàn Hảo'</b>.`],
+        ],
+
+        'evolution-goal-status': (x,y)=>x?"ĐÃ MỞ KHÓA":y?"ĐÃ KHÓA":"ĐANG TRONG TIẾN TRÌNH",
+        'evolution-goal-ctn': [
+            [
+                x=>`Nhận ít nhất <b>${format(x,0)}</b> Miếng ${toTextStyle("Mắc Ma",'core')} trong lần bước vào ${toTextStyle("Lõi",'core')} đầu tiên.`,
+                `Tự động sản sinh <b>100%</b> Miếng ${toTextStyle("Mắc Ma",'core')} nhận được trong ${toTextStyle("Lõi",'core')}.`
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> Miếng ${toTextStyle("Mắc Ma",'core')} mà không mua nguyên tố phát triển ${toTextStyle("Lõi",'core')}.`,
+                `Giữ lại các thứ phát triển ${toTextStyle("Mắc Ma",'core')} trong ${toTextStyle('Sự Tiến Hóa','humanoid')}.`
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> Miếng ${toTextStyle("Mắc Ma",'core')}.`,
+                `Cải thiện công thức của Mãnh ${toTextStyle('Prestige','prestige')} để nhận Miếng ${toTextStyle("Mắc Ma",'core')}.`
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> Mãnh ${toTextStyle('Prestige','prestige')} mà không sản sinh ${toTextStyle('Tảo','kelp')}.`,
+                `Bắt đầu với mỗi đại dương được giới hạn độ sâu.`,
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> Mãnh ${toTextStyle('Prestige','prestige')} mà không sản sinh các tài nguyên của mỗi biển.`,
+                `Giữ nghiên cứu trong ${toTextStyle('Sự Tiến Hóa','humanoid')}.`,
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> Mãnh ${toTextStyle('Prestige','prestige')}.`,
+                `Cải thiện công thức của lượng Mãnh ${toTextStyle('Prestige','prestige')} nhận được tốt hơn.`,
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> con ${toTextStyle('Cá','fish')} với <b>10</b> boost phóng xạ.`,
+                `Boost phóng xạ không còn reset nâng cấp liên quan đến ${toTextStyle('Bức Xạ '+icon("radioactive"),'core')} nữa. Bạn bắt đầu với một máy sản xuất, và ${toTextStyle('Bức Xạ '+icon("radioactive"),'core')} có thể đi qua giới hạn của nó.`,
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> con ${toTextStyle('Fish','fish')} mà không có boost phóng xạ.`,
+                `Boost phóng xạ không còn reset bất kì thứ gì nữa. Mở khóa Tự Động Boost Phóng Xạ.`,
+            ],[
+                x=>`Chạm tới tổng cộng <b>${format(x,0)}</b> con ${toTextStyle('Fish','fish')}.`,
+                `Sự mở rộng của Rank ${toTextStyle('Cá Mập','shark')} đầu tiên bị trì hoãn lên <b>+5</b>.`,
+            ],
         ],
 
         // Automation
@@ -310,6 +404,9 @@ LANGUAGES.VN = {
         'auto-su-name': `Tự động nâng cấp ${toTextStyle("Cá",'fish')} của ${toTextStyle("Cá Mập","shark")}`,
         'auto-spu-name': `Tự động nâng cấp ${toTextStyle("Prestige",'prestige')} của ${toTextStyle("Cá Mập","shark")}`,
         'auto-eu-name': `Tự động nâng cấp các cuộc thám hiểm`,
+        'auto-core_reactor-name': `Tự Động Lò Phản Ứng ${toTextStyle("Lõi","core")}`,
+        'auto-core_radiation-name': `Tự Động Bức Xạ ${toTextStyle("Lõi","core")}`,
+        'auto-radioactive_boosts-name': `Tự Động Boost Phóng Xạ`,
 
         'auto-cost': (D,cost,name) => `Giảm khoảng thời gian xuống ${formatReduction(D,0)}.<br>Giá: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Khoảng thời gian: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -317,7 +414,7 @@ LANGUAGES.VN = {
         // Progress
 
         'progress-0-text': r => `Chạm tới tổng cộng ${format(r)} ${toTextStyle('Cá','fish')}`, 
-        get 'progress-0-cond-text'() { return `Làm một ${toTextStyle('Prestige','prestige')}` },
+        get 'progress-0-cond-text'() { return `Làm ${toTextStyle('Prestige','prestige')}` },
 
         'progress-1-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Prestige','prestige')} để mở khóa Tự Động`,
         'progress-2-text': r => `Chạm tới ${format(r)} mãnh ${toTextStyle('Prestige','prestige')} để mở khóa Nghiên Cứu`,
@@ -331,6 +428,11 @@ LANGUAGES.VN = {
         'progress-7-text': r => `Chạm tới level ${toTextStyle('Cá Mập','shark')} ${format(r,0)} để mở khóa loại đại dương mới`,
         'progress-8-text': r => `Chạm tới ${format(r)} miếng ${toTextStyle('Mắc Ma','core')} để mở khóa tính năng ${toTextStyle('Lõi','core')} tiếp theo`, 
         'progress-9-text': r => `Chạm tới tổng cộng ${format(r)} con ${toTextStyle('Cá','fish')} để mở khóa các lò phản ứng ${toTextStyle('Lõi','core')} mới`,
+
+        'progress-10-text': r => `Chạm tới tổng cộng ${format(r)} con ${toTextStyle('Fish','fish')}`, 
+        get 'progress-10-cond-text'() { return `Tiến hóa ${toTextStyle('Cá Mập','shark')} của bạn` },
+
+        'progress-11-text': r => `Chạm tới ${format(r,0)} cá mập ${toTextStyle('Người','humanoid')} để mở khóa tính năng của ${toTextStyle('Sự Tiến Hóa','humanoid')} tiếp theo`, 
       
         'maxed-progress': "Các tính năng đã được mở khóa!",
 
@@ -356,6 +458,17 @@ LANGUAGES.VN = {
             Bạn có chắc chắn rằng bạn muốn bước vào lõi không?
             `
         },
+        get 'reset-humanoid-message'() {
+            let e = toTextStyle('Sự Tiến Hóa','humanoid'), c = toTextStyle('Lõi','core'), m = toTextStyle('Mắc Ma','core'), p = toTextStyle('Prestige','prestige')
+            return `
+            <h3>The ${e}</h3><br>
+            <subtitle>“Làm đột biến sẽ làm cho cá mập điên cuồng lên, biến chúng thành cá mập người. Tuy với một cái giá của mọi thứ mà bạn đã làm ở thời điểm này.”</subtitle>
+            ${e} là tầng reset thứ ba. Tiến hóa cá mập sẽ reset mọi thứ mà ${c} làm, cũng như Miếng ${m}, lò phản ứng ${c}, bức xạ ${c}, phát triển ${c}, và một số ${toTextStyle('Nghiên Cứu','prestige')} để nhận cá mập ${toTextStyle('Người','humanoid')}.
+            Nó cũng mở khóa Rank và cây của ${e}.<br>
+            <img src="textures/Evolution.png"><br>
+            Bạn có chắc chắn rằng bạn muốn tiến hóa cá mập của bạn không?
+            `
+        },
         
         // Other
 
@@ -365,6 +478,11 @@ LANGUAGES.VN = {
         'shark-bonus-core': x => `${formatMult(x)} miếng ${toTextStyle('Mắc Ma','core')}`,
         // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Bức Xạ ' + icon("radioactive"),'core')}`,
 
+        'shark-rank-bonuses': {
+            fish: x => `${formatPow(x)} con ${toTextStyle('Cá','fish')}`,
+            prestige: x => `${formatPow(x)} Mãnh ${toTextStyle('Prestige','prestige')}`,
+        },
+
         'level': "Level",
         'effect': "Hiệu ứng",
         'cost': "Giá",
@@ -372,6 +490,7 @@ LANGUAGES.VN = {
         'require': "Yêu cầu",
         'next-at': "Tiếp theo ở",
         'depth': "Độ sâu",
+        'reward': "Phần thưởng",
 
         'offline-time-text': x=>`Bạn đã off trong <b>${formatTime(x,0)}</b>.`,
 
@@ -388,6 +507,7 @@ LANGUAGES.VN = {
         'popup-desc' : {
             import: `Dán vào trò chơi của bạn. LƯU Ý: NÓ SẼ GHI ĐÈ LÊN TRÒ CHƠI HIỆN TẠI CỦA BẠN!`,
             wipe: `Bạn có chắc chắn rằng bạn muốn xóa đi dữ liệu trò chơi của bạn không? Để xóa, nhập "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
+            "evolution-tree-respec": `Bạn có chắc chắn rằng bạn muốn xác định lại cây của ${toTextStyle('Sự Tiến Hóa','humanoid')} không? Nó sẽ kích hoạt một reset ${toTextStyle('Sự Tiến Hóa','humanoid')}, không có nhận cá mập ${toTextStyle('Người','humanoid')}.`,
         },
 
         'notify-desc' : {
@@ -410,5 +530,6 @@ LANGUAGES.VN = {
 
         'confirm-prestige': "Prestige",
         'confirm-core': "Vào lõi",
+        'confirm-humanoid': "Tiến hóa cá mập"
     },
 }
