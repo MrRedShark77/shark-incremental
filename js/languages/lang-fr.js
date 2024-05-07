@@ -4,7 +4,7 @@ LANGUAGES.FR = {
 	icon: "lang-fr",
 
 	text: {
-		// Currencies
+		// Devises
 
 		'fish-name': "Poissons",
 		'fish-costName': toTextStyle('Poissons','fish'),
@@ -30,13 +30,21 @@ LANGUAGES.FR = {
 		'core-name': "Fragments Magmatique",
 		'core-costName': ' Fragments' + toTextStyle('Magmatique','core'),
 
+		'humanoid-name': "Requins Humanoïdes",
+        'humanoid-costName':  'Requins ' + toTextStyle('Humanoïdes','humanoid'),
+
         'full-shark-level': 'Niveau du ' + toTextStyle('Requin','shark'),
+
+		'sharkoid-faith': toTextStyle('Foi sharkoïde','humanoid'),
 
 		'curr-top-0-req': x => `Atteignez un total de <b>${format(x)}</b> ${toTextStyle('Poissons','fish')}`, 
 		'curr-top-0-reset': x => `Prestige pour <b>${x.format(0)}</b> Éclats de ${toTextStyle('Prestige','prestige')}`,
 
 		'curr-top-1-req': x => `Atteignez un total de <b>${format(x)}</b> éclats de ${toTextStyle('Prestige','prestige')}`, 
 		'curr-top-1-reset': x => `Entrez dans le noyau pour <b>${x.format(0)}</b> Fragments ${toTextStyle('Magmatique','core')}`,
+
+		'curr-top-2-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('poissons','fish')}`, 
+        'curr-top-2-reset': (x,next) => `Evoluez vos ${toTextStyle('Requins','shark')} en <b>${format(x,0)}</b> Requins ${toTextStyle('Humanoïdes','humanoid')}  (Prochain à <b>${format(next)}</b> ${toTextStyle('poissons','fish')})`,
 
 		'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -52,10 +60,20 @@ LANGUAGES.FR = {
 		'tab-core-radiation': "Radiation du " + toTextStyle('Noyau','core'),
         'tab-core-assembler': "Assembleur du " + toTextStyle('Noyau','core'),
 
+		'tab-evolution': toTextStyle('Évolution','humanoid'),
+        'tab-shark-rank': toTextStyle('Requin','shark') + " Rank",
+        'tab-evolution-tree':  "Arbre d'" + toTextStyle('Évolution','humanoid'),
+        'tab-evolution-goal':  "Objectifs d'" + toTextStyle('Évolution','humanoid'),
+
 		// Elements
 
 		'fish-div': `Votre ${toTextStyle('Requin','shark')} a mangé <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> poissons.`,
-		'shark-stats': `Statistiques du ${toTextStyle('Requin','shark')} <br>Niveau: <h4 id="shark-level">???</h4><br>Rang: <h4 id="shark-tier">???</h4>`,
+		'shark-stats': `Statistiques du ${toTextStyle('Requin','shark')} <br>Niveau: <h4 id="shark-level">???</h4><br>Rang: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
+
+		'shark-elo-div': `L'ELO de votre ${toTextStyle('Requin','shark')} est de <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
+        'shark-rank-div': `Le rang de votre ${toTextStyle('Requin','shark')} est de <h3 id="shark-rank">0</h3>.`,
+        'shark-rank-req-div': `Le prochain rang nécessite ${toTextStyle('Requin','shark')} ELO de <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
+        'shark-rank-note': `Note: Le rang de requin est réinitialisé lorsque vous déclenchez une réinitialisation de l'évolution.`,
 
 		'option-title-1': "Options principales",
 		'option-title-2': "Notations",
@@ -80,6 +98,10 @@ LANGUAGES.FR = {
 
         'core-temp-div': `La température du ${toTextStyle('Noyau','core')} est de <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, ce qui rend les boosts radioactifs <h4 id="core-temp-effect">100%</h4> plus efficace.`,
         'core-temp-after-div': `(La température du ${toTextStyle('Noyau','core')} va être <span id="core-temp-after">???</span> après la réinitialisation du ${toTextStyle('Noyau','core')})`,
+
+		'sharkoid-faith-div': `Vous avez <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Foi sharkoïde','humanoid')}.`,
+        'respec-evolution-tree': `Réinitialiser l'arbre d'${toTextStyle('Évolution','humanoid')}`,
+        'rerun-evolution': `Recommencer l'${toTextStyle('Évolution','humanoid')}, réinitialise l'arbre`,
 
 		// Upgrades
 
@@ -190,6 +212,9 @@ LANGUAGES.FR = {
         'research-c11-name': "Meilleure réduction des Radiations",
         'research-c11-desc': `'La réduction des Radiations est légèrement plus forte.`,
 
+		'research-c12-name': "Mega réduction des Radiations",
+        'research-c12-desc': `La limite des Radiations est grandement réduite.`,
+
 		// Exploration
 
 		'explore-while': `En explorant`,
@@ -270,12 +295,12 @@ LANGUAGES.FR = {
         'core-6-desc': `Le ${toTextStyle("Varech",'kelp')} renforce l'<b>Oxygène</b> basé sur le niveau d'<b>Azote</b>.`,
 
         'core-7-name': `Hélium`,
-        'core-7-desc': `Lea niveau de ${toTextStyle("Requin",'shark')} renforce le <b>Néon</b> basé sur le niveau d'<b>Hélium</b>.`,
+        'core-7-desc': `Le niveau de ${toTextStyle("Requin",'shark')} renforce le <b>Néon</b> basé sur le niveau d'<b>Hélium</b>.`,
 		
 		'core-bonus': x => `Le produit des réacteurs du noyau vont booster vos ${toTextStyle("Poissons",'fish')} de <h4>${formatMult(x)}</h4>.`,
 
         'core-assembler-erase': `Effacer`,
-        'core-assembler-choose': `You're choosing`,
+        'core-assembler-choose': `Vous choisissez`,
         'core-assembler-building-stats': (s,p,m) => `Puissance <b>${s}</b> | Placé <b>${p} / ${m}</b>`,
         'core-assembler-building-limit': (m,x,mm) => `Élements Max: ${mm} / ${m}<br>Requis: ${format(x)} Fragments ${toTextStyle("Magmatique",'core')}`, 
         'ca-building-base': b => `[Base: ${b}]`,
@@ -300,7 +325,75 @@ LANGUAGES.FR = {
 			x=>`Augmente le base du niveau du ${toTextStyle('Requin','shark')} pour le bonus de Fragments ${toTextStyle('Magmatique','core')} de <h4>+${format(x,3)}</h4>.`,
             x=>`Augmente le bonus du niveau du ${toTextStyle('Requin','shark')} pour les ${toTextStyle('Poissons','fish')} de <h4>${formatPow(x,3)}</h4> à l'éxposant.`,
             x=>`Les 3 premières améliorations de ${toTextStyle('Prestige','prestige')} sont <h4>${formatPercent(x.sub(1))}</h4> plus puissant.`,
+			x=>`Le niveau du ${toTextStyle('Requin','shark')} booste l'ELO de <h4>${formatMult(x)}</h4>.`,
 		],
+
+		// Evolution Tree
+
+        'evolution-tree-row': (r,a) => `<b>Rangée ${r}</b><br>${a} disponibles`,
+        'evolution-tree-ctn': [
+            ["Corps de poisson", x=>`${toTextStyle('Poisson','fish')} booste l'ELO du ${toTextStyle('Requin','shark')} de <b>${formatMult(x)}</b>.`],
+            ["Corps prestigieux", x=>`Les Éclats de ${toTextStyle('Prestige','prestige')} booste l'ELO du ${toTextStyle('Requin','shark')} de <b>${formatMult(x)}</b>.`],
+            ["Corps radioactif", x=>`Les Fragments ${toTextStyle('Magmatique','core')} booste l'ELO du ${toTextStyle('Requin','shark')} de <b>${formatMult(x)}</b>.`],
+            ["Corps parfait", x=>`L'ELO du ${toTextStyle('Requin','shark')} et multiplié par <b>${formatMult(x,0)}</b>.`],
+
+            ["Requin d'acier", x=>`Gagnez <b>${format(x,0)}</b> niveaux bonus de <b>Fer</b>.`],
+            ["Requin précieux", x=>`Gagnez <b>${format(x,0)}</b> niveaux bonus de <b>Nickel</b>.`],
+            ["Requin respirant", x=>`Gagnez <b>${format(x,0)}</b> niveaux bonus d'<b>Oxygène</b>.`],
+            ["Requin lumineux", x=>`Gagnez <b>${format(x,0)}</b> niveaux bonus de <b>Néon</b>.`],
+
+            ["Fosse des Mariannes", x=>`La profondeur de l'<b>Océan Pacifique</b> n'a plus de limite, and rend l'effet plus puissant après.`],
+            ["Fosse de Litke", x=>`La profondeur de l'<b>Océan Arctique</b> n'a plus de limite, and rend l'effet plus puissant après.`],
+            ["Fosse de Milwaukee", x=>`La profondeur de l'<b>Océan Atlantique</b> n'a plus de limite, and rend l'effet plus puissant après.`],
+            ["Fosse des Sandwich du Sud", x=>`La profondeur de l'<b>Océan Austral</b> n'a plus de limite, and rend l'effet plus puissant après.`],
+
+            ["Poisson gonflé", x=>`Le ${toTextStyle('Poisson','fish')} est élevé à la puissance <b>${format(x)}</b>.`],
+            ["Surprestige", x=>`Les Éclats de ${toTextStyle('Prestige','prestige')} sont élevés à la puissance <b>${format(x)}</b>.`],
+            ["Noyau compressé", x=>`Les Fragments ${toTextStyle("Magmatique",'core')} sont élevés à la puissance <b>${format(x)}</b>.`],
+            ["Requin fait maison", x=>`Réduit la base nécessaire du Requin ${toTextStyle('Humanoïde','humanoid')} de <b>${format(x,0)}</b>.`],
+
+            ["Conversion du Requin", x=>`Gagnez <b>${format(x,0)}</b> niveau bonus de <b>Soufre</b>.`],
+            ["Requin exosquelette", x=>`Gagnez <b>${format(x,0)}</b> niveau bonus de <b>Silicone</b>.`],
+            ["Requin solaire", x=>`Gagnez <b>${format(x,0)}</b> niveau bonus d'<b>Azote</b>.`],
+            ["Requin volant (weeeeee)", x=>`Gagnez <b>${format(x,0)}</b> niveau bonus d'<b>Hélium</b>.`],
+
+            ["Super corps de Requin", x=>`Les ${toTextStyle('Poissons','fish')} booste <b>'Corps parfait'</b> de <b>${formatPow(x)}</b>.`],
+            ["Corps de renaissance", x=>`Les Éclats de ${toTextStyle('Prestige','prestige')} booste <b>'Corps prestigieux'</b> de <b>${formatPow(x)}</b>.`],
+            ["Corps surnaturel", x=>`Les Fragments ${toTextStyle('Magmatique','core')} booste <b>'Corps radioactif'</b> de <b>${formatPow(x)}</b>.`],
+            ["Corps immortel", x=>`<b>'Corps parfait'</b> est mis au <b>carré</b>.`],
+        ],
+
+        'evolution-goal-status': (x,y)=>x?"DÉBLOQUÉ":y?"BLOQUÉ":"EN PROGRESSION",
+        'evolution-goal-ctn': [
+            [
+                x=>`Obtiens au moins <b>${format(x,0)}</b> Fragments ${toTextStyle("Magmatique",'core')} en entrant pour la première fois dans le ${toTextStyle("Noyau",'core')}.`,
+                `Génère passivement <b>100%</b> des Fragments ${toTextStyle("Magmatique",'core')} gagnés en entrant dans le ${toTextStyle("Noyau",'core')}.`
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> Fragments ${toTextStyle("Magmatique",'core')} sans acheter les batiments de l'assembleur du ${toTextStyle("Noyau",'core')}.`,
+                `Garde l'assembleur du ${toTextStyle("Noyau",'core')} en faisant une ${toTextStyle('Évolution','humanoid')}.`
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> Fragments ${toTextStyle("Magmatique",'core')}.`,
+                `Améliore la formule des Éclats de ${toTextStyle('Prestige','prestige')} par Fragments ${toTextStyle("Magmatique",'core')}.`
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> Éclats de ${toTextStyle('Prestige','prestige')} sans générer du ${toTextStyle('Varech','kelp')}.`,
+                `Commence avec toutes les profondeurs atteintes à chaque océan.`,
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> Éclats de ${toTextStyle('Prestige','prestige')} sans générer des ressources dans chaque océan.`,
+                `Garde les recherches en faisant une ${toTextStyle('Évolution','humanoid')}.`,
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> Éclats de ${toTextStyle('Prestige','prestige')}.`,
+                `Améliore la formule des Éclats de ${toTextStyle('Prestige','prestige')} gagnés.`,
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> ${toTextStyle('Poissons','fish')} avec un maximum de <b>10</b> boosts radioactifs.`,
+                `Les boosts radioactifs ne réinitialise plus les améliorations liés à la ${toTextStyle('Radiation '+icon("radioactive"),'core')}. Vous commencez avec un générateur, et la ${toTextStyle('Radiation '+icon("radioactive"),'core')} peut aller au-delà de ses limites.`,
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> ${toTextStyle('Poissons','fish')} sans boosts radioactifs.`,
+                `Les boosts radioactifs ne réinitialise plus rien. Débloque les boosts radioactifs automatiques.`,
+            ],[
+                x=>`Atteindre un total de <b>${format(x,0)}</b> ${toTextStyle('Poissons','fish')}.`,
+                `Le premier rang de ${toTextStyle('Requin','shark')} commence <b>+5</b> fois plus tôt.`,
+            ],
+        ],
 
 		// Automation
 
@@ -308,6 +401,9 @@ LANGUAGES.FR = {
 		'auto-su-name': `Auto-Améliorations de ${toTextStyle("Poissons","fish")}`,
 		'auto-spu-name': `Auto-Améliorations de ${toTextStyle("Prestige","prestige")}`,
 		'auto-eu-name': `Auto-Améliorations d'Éxploration`,
+		'auto-core_reactor-name': `Auto-Améliorations du Réacteur du ${toTextStyle("Noyau","core")}`,
+        'auto-core_radiation-name': `Auto-Améliorations de Radiation du ${toTextStyle("Noyau","core")}`,
+        'auto-radioactive_boosts-name': `Auto-Améliorations des boosts radioactifs`,
 
 		'auto-cost': (D,cost,name) => `Réduit l'intervale de ${formatReduction(D,0)}.<br>Coût: ${format(cost,0)} ${name}`,
 		'auto-interval': (a,b,maxed) => `Intervale: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -320,7 +416,7 @@ LANGUAGES.FR = {
 		'progress-1-text': r => `Atteignez ${format(r)} Éclats de ${toTextStyle('Prestige','prestige')} pour débloquer Automatisation`,
 		'progress-2-text': r => `Atteignez ${format(r)} Éclats de ${toTextStyle('Prestige','prestige')} pour débloquer la Recherche`,
 		'progress-3-text': r => `Atteignez le niveau ${format(r,0)} du ${toTextStyle('Requin','shark')} pour débloquer l'Exploration`,
-		'progress-4-text': r => `Atteignez une profonder de ${format(r)}m dans l'océan Pacifique pour débloquer le ${toTextStyle('Noyau','core')}`,
+		'progress-4-text': r => `Atteignez une profondeur de ${format(r)}m dans l'océan Pacifique pour débloquer le ${toTextStyle('Noyau','core')}`,
 
 		'progress-5-text': r => `Atteignez un total de  ${format(r)} Éclats de ${toTextStyle('Prestige','prestige')}`, 
 		get 'progress-5-cond-text'() { return `Entrer dans le ${toTextStyle('Noyau','core')}` },
@@ -329,6 +425,11 @@ LANGUAGES.FR = {
 		'progress-7-text': r => `Atteignez le niveau du ${toTextStyle('Requin','shark')} ${format(r,0)} pour débloquer un nouvel océan`,
         'progress-8-text': r => `Atteignez ${format(r)} Fragments ${toTextStyle('Magmatique','core')} pour débloquer la nouvelle fonctionnalitée du ${toTextStyle('Noyau','core')}`,
         'progress-9-text': r => `Atteignez un total de ${format(r)} ${toTextStyle('Poissons','fish')} pour débloquer de nouveaux réacteurs du ${toTextStyle('Noyau','core')}`,
+
+		'progress-10-text': r => `Atteignez un total de ${format(r)} ${toTextStyle('Poissons','fish')}`, 
+        get 'progress-10-cond-text'() { return `Evoluez votre ${toTextStyle('Requin','shark')}` },
+
+        'progress-11-text': r => `Atteignez ${format(r,0)} Requins ${toTextStyle('Humanoïdes','humanoid')} pour débloquer la nouvelle fonctionnalité d'${toTextStyle('Évolution','humanoid')}`, 
 
 		'maxed-progress': "Toutes les fonctionnalités sont acquises!",
 
@@ -354,6 +455,17 @@ LANGUAGES.FR = {
 			Êtes-vous sûr de vouloir entrer dans le Noyau?
 			`
 		},
+		get 'reset-humanoid-message'() {
+            let e = toTextStyle('Évolution','humanoid'), c = toTextStyle('Noyau','core'), m = toTextStyle('Magmatique','core'), p = toTextStyle('Prestige','prestige')
+            return `
+            <h3>L'${e}</h3><br>
+            <subtitle>“La mutation rendra les requins sauvages et les transformera en requins humanoïdes. Cependant, il vous en coûtera tout ce que vous aviez jusqu'à présent.”</subtitle>
+            L'${e} est la troisième couche de réinitialisation. Évoluer les requins va réinitialiser tout ce que fait le ${c}, ainsi que les Fragments ${m}, les réacteurs de ${c}, les radiations du ${c}, l'assembleur du ${c}, et quelques ${toTextStyle('Recherches','prestige')} pour les Requins ${toTextStyle('Humanoïdes','humanoid')}.
+            Il débloque également le rang et l'arbre d'${e}.<br>
+            <img src="textures/Evolution.png"><br>
+            Êtes-vous sûr de vouloir faire évoluer vos requins ?
+            `
+        },
 		
 		// Other
 
@@ -363,6 +475,11 @@ LANGUAGES.FR = {
 		'shark-bonus-core': x => `${formatMult(x)} Fragments ${toTextStyle('Magmatique','core')}`,
 		// 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
+		'shark-rank-bonuses': {
+            fish: x => `${formatPow(x)} ${toTextStyle('Poissons','fish')}`,
+            prestige: x => `${formatPow(x)} Éclats de ${toTextStyle('Prestige','prestige')}`,
+        },
+
 		'level': "Niveau",
 		'effect': "Effet",
 		'cost': "Coût",
@@ -370,6 +487,7 @@ LANGUAGES.FR = {
 		'require': "Exige",
 		'next-at': "Suivant à",
 		'depth': "Profondeur",
+		'reward': "Récompense",
 		
 		'offline-time-text': x=>`Vous avez été hors-ligne depuis <b>${formatTime(x,0)}</b>.`,
 
@@ -386,6 +504,7 @@ LANGUAGES.FR = {
 		'popup-desc' : {
 			import: `Coller le code de votre sauvegarde. ATTENTION: ÉCRASERA VOTRE SAUVEGARDE ACTUELLE!`,
 			wipe: `Êtes-vous sûr de vouloir réinitialiser votre sauvegarde ? Pour effacer, taper "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
+			"evolution-tree-respec": `Êtes-vous sûr de vouloir réinitialiser votre arbre d'${toTextStyle('Évolution','humanoid')}? Vous allez faire une ${toTextStyle('Évolution','humanoid')}, sans gagner de Requins ${toTextStyle('Humanoïdes','humanoid')}.`,
 		},
 
 		'notify-desc' : {
@@ -404,9 +523,10 @@ LANGUAGES.FR = {
 
 		'prompt-placeholder': "Entrer du texte ici...",
 
-		'option-buttons-text': ["Sauvegarder","Exporter via le presse-papier","Exporter via un fichier","Importer via code","Importer via un fichier","RÉINITIALISER!!!"],
+		'option-buttons-text': ["Sauvegarder","Exporter via le presse-papier","Exporter via un fichier","Importer via code","Importer via un fichier","RÉINITIALISER!!!","Rejoindre la communauté (Discord)","Supporter le créateur (Boosty)"],
 
 		'confirm-prestige': "Prestige",
 		'confirm-core': "Entrer dans le Noyau",
+		'confirm-humanoid': "Évoluer vos Requins",
 	},
 }
