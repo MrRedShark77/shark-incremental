@@ -27,7 +27,7 @@ const ORES = {
     'bismuth': {
         color: `linear-gradient(0deg, rgb(255,74,220) 0%, rgb(223,177,79) 25%, rgb(239,241,122) 50%, rgb(120,203,109) 75%, rgb(24,247,255) 100%)`,
         textColor: 'rgb(255,74,220)',
-        dense: 1e5,
+        dense: 5e5,
     },
     'diamond': {
         color: '#b9f2ff',
