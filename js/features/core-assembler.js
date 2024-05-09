@@ -6,7 +6,9 @@ const CORE_ASSEMBLER = [
         get base() { return CURRENCIES.core.amount },
 
         temperature(x) {
-            return this.base.max(0).add(1).log10().div(4).mul(x)
+            var y = this.base.max(0).add(1).log10().div(4).mul(x)
+            if (hasEvolutionTree(28)) y = y.mul(2)
+            return y
         },
     },{
         color: ['#FFE400','#ffa500'],
@@ -15,7 +17,9 @@ const CORE_ASSEMBLER = [
         get base() { return CURRENCIES.fish.amount },
 
         temperature(x) {
-            return this.base.max(0).add(10).log10().log10().mul(1.5).mul(x)
+            var y = this.base.max(0).add(10).log10().log10()
+            y = hasEvolutionTree(29) ? y.pow(2).div(1.5) : y.mul(1.5)
+            return y.mul(x)
         },
     },{
         color: ['#fff','#00ffff'],
@@ -24,7 +28,9 @@ const CORE_ASSEMBLER = [
         get base() { return CURRENCIES.prestige.amount },
 
         temperature(x) {
-            return this.base.max(0).add(10).log10().log10().mul(2).mul(x)
+            var y = this.base.max(0).add(10).log10().log10()
+            y = hasEvolutionTree(30) ? y.pow(2) : y.mul(2)
+            return y.mul(x)
         },
     },{
         color: ['#BFC8CD','#93a3ac'],
@@ -33,7 +39,7 @@ const CORE_ASSEMBLER = [
         get base() { return player.shark_level },
 
         temperature(x) {
-            return this.base.root(2.5).mul(x)
+            return this.base.root(hasEvolutionTree(31) ? 1.39 : 2.5).mul(x)
         },
     },
 ]

@@ -149,7 +149,7 @@ function getBonusReactor() {
             x = x.mul(v)
         }
 
-        return Decimal.pow10(x.sub(1))
+        x = Decimal.pow10(x.sub(1))
     } else {
         for (let i = 0; i < CORE_REACTOR.length; i++) {
             x = x.mul(player.core.reactor[i].add(1))
@@ -157,8 +157,10 @@ function getBonusReactor() {
     
         if (hasResearch('c5')) x = x.mul(getCRBoost(0,0).div(50).add(1))
 
-        return Decimal.pow10(x.pow(0.8).sub(1))
+        x = Decimal.pow10(x.pow(0.8).sub(1))
     }
+
+    return x
 }
 
 function upgradeCoreReactor(i) {

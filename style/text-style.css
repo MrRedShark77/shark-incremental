@@ -43,6 +43,9 @@ text-style {
     &[text="green"] {
         color: limegreen;
     };
+    &[text="gold"] {
+        color: gold;
+    };
 
     @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
         &[text="core"],

@@ -1,11 +1,11 @@
 const SHARK = {
-    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(1e3,3,'P').scale(tmp.scale_shark2,3,'E2').scale(tmp.scale_shark1,2,'P')).root(coreReactorEffect(3)) },
-    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,'P',true).scale(tmp.scale_shark2,3,'E2',true).scale(1e3,3,'P',true).div(tmp.shark_scale_str).floor().add(1) },
+    cost(l=player.shark_level) { return Decimal.pow(tmp.shark_req_base,l.mul(tmp.shark_scale_str).scale(tmp.scale_shark3,3,'P').scale(tmp.scale_shark2,3,'E2').scale(tmp.scale_shark1,2,'P')).root(coreReactorEffect(3)) },
+    bulk(x=player.fish) { return x.pow(coreReactorEffect(3)).log(tmp.shark_req_base).scale(tmp.scale_shark1,2,'P',true).scale(tmp.scale_shark2,3,'E2',true).scale(tmp.scale_shark3,3,'P',true).div(tmp.shark_scale_str).floor().add(1) },
 
     bonuses: {
         fish: [()=>player.shark_level.gte(1),l=>expPow(Decimal.pow(tmp.shark_base,l).mul(l),getCRBoost(5)),E(0)],
         prestige: [()=>player.shark_level.gte(20),l=>Decimal.add(1.25,simpleResearchEffect('p1',0)).pow(l.sub(19)),E(1)],
-        core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)),E(1)],
+        core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)).overflow('ee3',0.5),E(1)],
         // rad: [()=>player.shark_level.gte(600),l=>Decimal.pow(1.01,l.sub(599)),E(1)],
     },
 
@@ -40,8 +40,14 @@ const SHARK = {
         bonuses: {
             fish: [()=>player.shark_rank.gte(1),l=>Decimal.pow(1.1,l),E(1)],
             prestige: [()=>player.shark_rank.gte(50),l=>Decimal.pow(1.05,l.sub(49)),E(1)],
+            mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)),E(1)],
         },
     },
+}
+
+const SU_TABS = {
+    'shark': ['s1','s2','s3','s4','s5','p1','p2','p3'],
+    'cultivation': ['m1','m2','m3','m4','m5'],
 }
 
 const SHARK_UPGRADES = {
@@ -118,9 +124,13 @@ const SHARK_UPGRADES = {
 
         curr: "fish",
 
-        effect: l=>Decimal.pow(2,l),
+        effect: l=>{
+            if (hasResearch('c13')) l = l.mul(1.5)
+            return Decimal.pow(2,l)
+        },
         effDesc: x=>formatMult(x),
     },
+
     p1: {
         req: ()=>player.prestige.times>0,
 
@@ -135,8 +145,8 @@ const SHARK_UPGRADES = {
     p2: {
         req: ()=>player.prestige.times>0,
 
-        cost: l => Decimal.pow(10,l.pow(1.25)).mul(1e3),
-        bulk: x => x.div(1e3).log(10).root(1.25).floor().add(1),
+        cost: l => Decimal.pow(10,l.pow(Decimal.sub(1.25,researchEffect('p9',0)))).mul(1e3),
+        bulk: x => x.div(1e3).log(10).root(Decimal.sub(1.25,researchEffect('p9',0))).floor().add(1),
 
         curr: "prestige",
 
@@ -160,6 +170,83 @@ const SHARK_UPGRADES = {
 
         effect: l=>l.mul(hasResearch("p6")?2:1),
         effDesc: x=>"+"+format(x,0),
+    },
+
+    m1: {
+        cost: l => {
+            let x = Decimal.pow(3,l.scale(15,2,'L')).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(3).scale(15,2,'L',true).floor().add(1)
+        },
+
+        curr: "stone",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x,0),
+    },
+    m2: {
+        cost: l => {
+            let x = Decimal.pow(2,l).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(2).floor().add(1)
+        },
+
+        curr: "coal",
+
+        effect: l=>l.div(10).add(1),
+        effDesc: x=>formatMult(x),
+    },
+    m3: {
+        req: ()=>player.humanoid.mining_tier.gte(3),
+
+        cost: l => {
+            let x = Decimal.pow(3,l.scale(10,2,'L')).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(3).scale(10,2,'L',true).floor().add(1)
+        },
+
+        curr: "iron",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x,0),
+    },
+    m4: {
+        req: ()=>player.humanoid.mining_tier.gte(6),
+
+        cost: l => {
+            let x = Decimal.pow(2,l).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(2).floor().add(1)
+        },
+
+        curr: "gold",
+
+        effect: l=>l.mul(5),
+        effDesc: x=>"+"+format(x,0),
+    },
+    m5: {
+        req: ()=>player.humanoid.mining_tier.gte(9),
+
+        cost: l => {
+            let x = Decimal.pow(4,l).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(4).floor().add(1)
+        },
+
+        curr: "platinum",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x,0),
     },
 }
 
@@ -226,6 +313,7 @@ function updateSharkTemp() {
 
     tmp.scale_shark1 = Decimal.add(10,sharkUpgEffect('p3',0)).add(hasDepthMilestone(2,2)?player.explore.depth[2].div(500).overflow(1e6,0.5).floor():0)
     tmp.scale_shark2 = Decimal.add(100,getCRBoost(3,0)).add(simpleResearchEffect('c10',0))
+    tmp.scale_shark3 = Decimal.mul(1e3,hasResearch('m2')?2:1)
 
     for (let [i,v] of Object.entries(SHARK.bonuses)) tmp.shark_bonus[i] = v[0]() ? v[1](player.shark_level) : v[2]
     for (let [i,v] of Object.entries(SHARK.rank.bonuses)) tmp.shark_rank_bonus[i] = v[0]() ? v[1](player.shark_rank) : v[2]
@@ -244,11 +332,14 @@ function updateSharkHTML() {
     el('shark-button').className = el_classes({locked: player.fish.lt(cost)})
 
     el('shark-bonus').innerHTML = Object.keys(SHARK.bonuses).filter(x=>SHARK.bonuses[x][0]()).map(x=>lang_text("shark-bonus-"+x,getSharkBonus(x))).join(", ")
+}
 
+function updateSharkUpgradesHTML() {
     var cost_text = lang_text('cost'), effect_text = lang_text('effect')
+    var t = SU_TABS[tab_name]
 
     for (let [i,v] of Object.entries(SHARK_UPGRADES)) {
-        let unl = !v.unl || v.unl()
+        let unl = t && t.includes(i) && (!v.unl || v.unl())
         el('shark-upgrade'+i+'-div').style.display = el_display(unl)
 
         if (!unl) continue;

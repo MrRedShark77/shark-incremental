@@ -1,7 +1,8 @@
 const el = id => document.getElementById(id);
 const FPS = 30;
 
-function toTextStyle(text,style,id) { return `<text-style text="${style}" ${id ? `id="${id}"` : ""}>${text}</text-style>` }
+function toTextStyle(text,style="",id) { return `<text-style text="${style}" ${id ? `id="${id}"` : ""}>${text}</text-style>` }
+function toColoredText(text,color="") { return `<text-style style="color:${color}">${text}</text-style>` }
 function compareStyle(text,x,y) { return Decimal.eq(x,y)?toTextStyle(text):Decimal.gte(x,y)?toTextStyle(icon("up-arrow")+text,"green"):toTextStyle(icon("down-arrow")+text,"red") }
 
 var player = {}, date = Date.now(), diff = 0;
@@ -90,6 +91,14 @@ const PROGRESS = [
         auto: true,
         get amount() { return CURRENCIES.humanoid.amount },
         require: 10,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.humanoid.amount },
+        require: 20,
+    },{
+        auto: true,
+        get amount() { return player.humanoid.mining_tier },
+        require: 6,
     },
 ]
 

@@ -31,12 +31,13 @@ function calc(dt) {
             if (player.explore.active > -1) player.explore.best_fish = player.explore.best_fish.max(player.fish)
     
             var auto_e = player.research.e3.toNumber() + (hasResearch('e5') ? 1 : 0)
+            var research_e6 = hasResearch('e6')
     
             for (let i in EXPLORE) {
                 i = parseInt(i)
                 if (u > i) {
                     var c = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt))
-                    if (i >= 4 || !hasEvolutionTree(i+8)) c = c.min(EXPLORE[i].maxDepth)
+                    if (i >= 4 || !hasEvolutionTree(i+8)) if (i < 4 || !research_e6) c = c.min(EXPLORE[i].maxDepth)
                     player.explore.depth[i] = c
                 }
                 if (auto_e > i) player.explore.base[i] = player.explore.base[i].max(getBaseExploration(i,player.fish))
@@ -61,6 +62,24 @@ function calc(dt) {
             }
 
             if (!hasEvolutionGoal(3) && hasEvolutionGoal(4)) player.humanoid.goal.push(3)
+        }
+
+        if (player.feature >= 13) {
+            var m = mine_time.add(tmp.mining_speed.mul(dt))
+
+            if (m.gte(1)) {
+                var dmg = m.floor().mul(tmp.mining_damage), o = ores_grid[0]
+
+                o.health = o.health.sub(dmg)
+                if (o.health.round().lte(0)) {
+                    gainCurrency(o.name,o.value)
+                    ores_grid.splice(0,1)
+                }
+
+                m = m.mod(1)
+            }
+
+            mine_time = m
         }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)

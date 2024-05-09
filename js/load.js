@@ -11,6 +11,11 @@ function loadGame(start=true, gotNaN=false) {
 
         createCanvasGraph("offline",{axis_name: ["Time","Fish"], color: "orange"})
 
+        el("research-page").onchange = function () {
+            this.value = research_page = Math.max(1,Math.round(this.value))
+            updateResearchHTML()
+        }
+
         setupCurrencies()
         setupHTML()
 
@@ -52,6 +57,14 @@ function setupOptions() {
     
     createRadio(...getLangRadio('offline'), {
         start_position: 1,
+    })
+
+    createRadio(...getLangRadio('max-research-amt'), {
+        start_position: 2,
+        width: 40,
+    })
+    createRadio(...getLangRadio('visible-research'), {
+        start_position: 0,
     })
 
     // Confirmations

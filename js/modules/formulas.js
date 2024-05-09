@@ -39,6 +39,9 @@ Decimal.prototype.scale = function (s, p, mode, rev=false) {
     if (Decimal.lte(x,s)) return x
 
     switch (mode) {
+        case 'L':
+            // (x-s)*p+s
+            return rev ? x.sub(s).div(p).add(s) : x.sub(s).mul(p).add(s)
         case 'P':
             // (x/s)^p*s
             return rev ? x.div(s).root(p).mul(s) : x.div(s).pow(p).mul(s)
@@ -108,4 +111,12 @@ function tetraflow(number,start,power) { // EXPERIMENTAL FUNCTION - x => 10^^((s
 Decimal.prototype.addTP = function (val) {
     var e = this.clone()
     return Decimal.tetrate(10, e.slog(10).add(val))
+}
+
+function preventNaNDecimal(x) {
+    return isNaN(x.mag) ? new Decimal(0) : x
+}
+
+Math.logBase = function (x, base) {
+    return Math.log(x) / Math.log(base)
 }

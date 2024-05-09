@@ -2,12 +2,12 @@ const EVOLUTION_TREE = {
     faith_cost: [
         ["fish",x=>Decimal.pow(10,Decimal.pow(1e4,x.add(1))),x=>x.log10().log(1e4).floor()],
         ["prestige",x=>Decimal.pow(10,Decimal.pow(1e3,x.add(1))),x=>x.log10().log(1e3).floor()],
-        ["core",x=>Decimal.pow(1e60,x.add(1)),x=>x.log(1e60).floor()],
+        ["core",x=>Decimal.pow(1e60,x.add(1).scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).floor()],
     ],
 
     getCost: i => 1 + Math.floor(i/4),
 
-    rows: 6,
+    rows: 8,
 
     effect: [
         ()=>CURRENCIES.fish.total.add(10).log10().log10().add(1).pow(simpleETEffect(20)),
@@ -39,6 +39,16 @@ const EVOLUTION_TREE = {
         ()=>CURRENCIES.prestige.total.add(10).log10().log10().div(45).add(1),
         ()=>CURRENCIES.core.total.add(1).log10().root(2).div(60).add(1),
         ()=>2,
+
+        ()=>CURRENCIES.fish.total.add(10).log10().log10().div(2),
+        ()=>CURRENCIES.stone.amount.add(1).log10().mul(5),
+        ()=>CURRENCIES.humanoid.amount,
+        ()=>30,
+
+        ()=>1,
+        ()=>1,
+        ()=>1,
+        ()=>1,
     ],
 
     getAvilableSlot(row) {
@@ -121,6 +131,8 @@ function simpleETEffect(x,def=1) { return player.humanoid.tree.includes(x) ? evo
 function updateEvolutionTreeTemp() {
     tmp.evo_tree_rows = 5
     if (player.feature>=12) tmp.evo_tree_rows++
+    if (player.feature>=13) tmp.evo_tree_rows++
+    if (player.feature>=14) tmp.evo_tree_rows++
 
     tmp.total_faith = E(0)
     for (let i = 0; i < player.humanoid.faith.length; i++) {
@@ -133,6 +145,8 @@ function updateEvolutionTreeTemp() {
         if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x))
     }
     tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
+
+    updateCultivationTemp()
 }
 
 // Evolution Goal
@@ -200,6 +214,119 @@ function updateEvolutionGoalHTML() {
     }
 }
 
+function loadEvolutionTree(tree,index) {
+    var o = (index?tree:tree.map(x => convertTreeToIndex(x))).sort((a,b) => b-a)
+    o.forEach(x => purchaseEvolutionTree(x))
+}
+
+function convertTreeToIndex(n) {
+    var row = Math.floor(n/10)
+
+    return n - 6*row - 5
+}
+
+function convertIndexToTree(n) {
+    var row = Math.floor(n/4)
+
+    return n%4 + 10*row + 11
+}
+
+function convertTreeToString(tree) {
+    return tree.map(x=>convertIndexToTree(x)).join(",")
+}
+
+function convertStringToTree(str) {
+    return str.split(",").map(x=>convertTreeToIndex(x))
+}
+
+function importEvolutionTree() {
+    createPromptPopup(lang_text('popup-desc')["evolution-tree-import"],x=>{
+        loadEvolutionTree(x.split(",").map(y=>parseInt(y)).filter(y=>!isNaN(y)))
+    })
+}
+
+function exportEvolutionTree() {
+    copyToClipboard(convertTreeToString(player.humanoid.tree))
+    addNotify(lang_text("notify-desc")["copy_to_clipboard"])
+}
+
+function calculateEvolutionTreeCost(tree) {
+    var sum = 0, a = []
+    for (let x of tree) if (!a.includes(x)) {
+        var cost = EVOLUTION_TREE.getCost(x)
+        sum += isNaN(cost) ? 0 : cost
+        a.push(x)
+    }
+    return sum
+}
+
+function openEvolutionTreePreset() {
+    var reload = function () {
+        el("presets-temp").innerHTML = ""
+        player.humanoid.tree_preset.forEach((x,i) => {
+            var h = `
+            <div class="tree-preset">
+                <input type="text" class="popup-input" id="preset-${i}-name" value="${x[0]}" style="font-weight:bold; font-size: 20px; text-align: center">
+                <input type="text" class="popup-input" id="preset-${i}-tree" value="${x[1]}">
+                <div id="preset-${i}-tree-cost"></div>
+                <button id="remove-preset-${i}">${lang_text("remove")}</button>
+                <button id="overwrite-preset-${i}">${lang_text("overwrite-current")}</button>
+                <button id="load-preset-${i}">${lang_text("load")}</button>
+                <button id="force-preset-${i}">${lang_text("force-load")}</button>
+            </div>
+            `
+            el("presets-temp").innerHTML += h
+        })
+        player.humanoid.tree_preset.forEach((x,i) => {
+            var update_cost = function () {
+                var cost = calculateEvolutionTreeCost(convertStringToTree(player.humanoid.tree_preset[i][1]))
+                el("preset-" + i + "-tree-cost").innerHTML = `${lang_text("cost")}: ${format(cost,0)} ${lang_text("sharkoid-faith")}`
+            }
+
+            el("preset-" + i + "-name").onchange = function () {
+                player.humanoid.tree_preset[i][0] = this.value
+            }
+            el("preset-" + i + "-tree").onchange = function () {
+                player.humanoid.tree_preset[i][1] = this.value
+                update_cost()
+            }
+
+            el("remove-preset-" + i).onclick = function () {
+                player.humanoid.tree_preset.splice(i,1)
+                reload()
+            }
+            el("overwrite-preset-" + i).onclick = function () {
+                var o = convertTreeToString(player.humanoid.tree)
+                player.humanoid.tree_preset[i][1] = o
+                el("preset-" + i + "-tree").value = o
+                update_cost()
+            }
+            el("load-preset-" + i).onclick = function () {
+                loadEvolutionTree(convertStringToTree(player.humanoid.tree_preset[i][1]),true)
+            }
+            el("force-preset-" + i).onclick = function () {
+                respecEvolutionTree(true)
+                updateEvolutionTreeTemp()
+                loadEvolutionTree(convertStringToTree(player.humanoid.tree_preset[i][1]),true)
+            }
+
+            update_cost()
+        })
+    }
+
+    createNormalPopup(`
+        <button id="new-preset-temp" class="big-btn">${lang_text("new-preset")}</button>
+        <div id="presets-temp"></div>
+    `)
+
+    el("new-preset-temp").onclick = function () {
+        player.humanoid.tree_preset.push(["Preset",convertTreeToString(player.humanoid.tree)])
+        reload()
+    }
+
+    reload()
+}
+
 // Setup HTML
 
 function setupEvolutionHTML() {
@@ -226,4 +353,6 @@ function setupEvolutionHTML() {
     h = ""
     for (let x = 0; x < EVOLUTION_GOAL.length; x++) h += `<button class="evolution-goal-ctn" id="evolution-goal-${x}">ARGH</button>`
     el("evolution-goal-grid").innerHTML = h
+
+    setupCultivationHTML()
 }

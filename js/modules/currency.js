@@ -15,11 +15,20 @@ const CURRENCIES = {
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
-
             if (tmp.cr_active) x = x.root(3)
+            
+            if (hasResearch('c14')) x = x.pow(researchEffect('c14'))
 
             if (inExploration(4)) x = expPow(x,0.75)
-    
+
+            var s = E('ee40'), pre_s = x
+            tmp.shark_op_start = s
+
+            if (x.gte(s)) {
+                x = x.overflow(s,0.5)
+                tmp.shark_op = pre_s.log10().div(x.log10())
+            } else tmp.shark_op = E(1)
+
             return x
         },
     },
@@ -127,6 +136,24 @@ function setupCurrencies() {
     for (let [i,v] of Object.entries(CURRENCIES)) {
         v.name ??= lang_text(i+"-name")
         v.costName ??= lang_text(i+"-costName") ?? v.name
+    }
+
+    var lang = lang_text("ore-names")
+
+    for (let [i,k] of Object.entries(ORE_KEYS)) {
+        i = parseInt(i)
+        var o = ORES[k]
+        CURRENCIES[k] = {
+            get amount() { return player.humanoid.ores[k] },
+            set amount(v) { player.humanoid.ores[k] = v },
+
+            get gain() { return Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1) },
+
+            get passive() { return tmp.ore_generator > i ? 1 : 0 },
+
+            name: lang[k],
+            costName: toColoredText(lang[k],o.textColor ?? o.color),
+        }
     }
 }
 
