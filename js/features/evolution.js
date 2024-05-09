@@ -10,9 +10,9 @@ const EVOLUTION_TREE = {
     rows: 8,
 
     effect: [
-        ()=>CURRENCIES.fish.total.add(10).log10().log10().add(1).pow(simpleETEffect(20)),
-        ()=>CURRENCIES.prestige.total.add(10).log10().log10().mul(1.5).add(1).pow(simpleETEffect(21)),
-        ()=>CURRENCIES.core.total.add(10).log10().root(2).pow(simpleETEffect(22)),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().mul(1.5).add(1).pow(simpleETEffect(21)),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().root(2).pow(simpleETEffect(22)),
         ()=>Decimal.pow(10,simpleETEffect(23)),
 
         ()=>10,
@@ -35,13 +35,13 @@ const EVOLUTION_TREE = {
         ()=>1,
         ()=>1,
 
-        ()=>CURRENCIES.fish.total.add(10).log10().log10().div(60).add(1),
-        ()=>CURRENCIES.prestige.total.add(10).log10().log10().div(45).add(1),
-        ()=>CURRENCIES.core.total.add(1).log10().root(2).div(60).add(1),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1),
+        ()=>CURRENCIES.core.total.max(0).add(1).log10().root(2).div(60).add(1),
         ()=>2,
 
-        ()=>CURRENCIES.fish.total.add(10).log10().log10().div(2),
-        ()=>CURRENCIES.stone.amount.add(1).log10().mul(5),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2),
+        ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5),
         ()=>CURRENCIES.humanoid.amount,
         ()=>30,
 
