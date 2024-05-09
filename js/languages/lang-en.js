@@ -574,7 +574,7 @@ LANGUAGES.EN = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
         // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
-        'shark-overpopulation': x => `Due to ${toTextStyle('Shark','shark')} overpopulation, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
+        'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${format(y)}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
 
         'shark-rank-bonuses': {
             fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,

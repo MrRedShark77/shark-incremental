@@ -375,7 +375,7 @@ function updateSharkRankHTML() {
     var rank_text = lang_text("shark-rank-bonuses")
     el('shark-rank-bonus').innerHTML = Object.keys(SHARK.rank.bonuses).filter(x=>SHARK.rank.bonuses[x][0]()).map(x=>rank_text[x](getSharkRankBonus(x))).join(", ")
 
-    el("shark-overpopulation").innerHTML = tmp.shark_op.gt(1) ? lang_text("shark-overpopulation",tmp.shark_op) : ""
+    el("shark-overpopulation").innerHTML = tmp.shark_op.gt(1) ? lang_text("shark-overpopulation",tmp.shark_op,tmp.shark_op_start) : ""
 }
 
 function upgradeShark(auto) {
