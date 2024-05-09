@@ -41,6 +41,7 @@
     <script src="js/features/core-radiation.js"></script>
     <script src="js/features/core-assembler.js"></script>
     <script src="js/features/evolution.js"></script>
+    <script src="js/features/cultivation.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -85,15 +86,6 @@
                 <div id="shark-stats"></div>
                 <button class="locked" id="shark-button" onclick="upgradeShark()"></button>
                 <div id="shark-bonus"></div>
-            </div><div id="shark-upgrades">
-                <div class="shark-upgrade">
-                    <div class="shark-upgrade-div">
-                        <div><h2>Upgrade Name</h2><br>Level: 0</div>
-                        <div>x???</div>
-                        <div><button class="shark-upgrade-button">Cost: ???</button></div>
-                    </div>
-                    <div class="shark-upgrade-requirement"><div>???</div></div>
-                </div>
             </div>
         </div><div id="auto-tab">
             <div id="auto-table">
@@ -105,6 +97,18 @@
                 </div>
             </div>
         </div><div id="research-tab">
+            <div class="table-center" style="align-items: center;">
+                <div id="radio-max-research-amt" class="input-radio"></div>
+                <div style="margin: 10px; align-items: center;" class="table-center" id="research-page-div">
+                    <button style="height: 40px; width: 40px;" onclick="changeResearchPage(-1)">◀</button>
+                    <div>
+                        <input type="number" value="1" min="1" step="1" id="research-page" class="no-arrows">
+                        <div id="research-total-pages"></div>
+                    </div>
+                    <button style="height: 40px; width: 40px;" onclick="changeResearchPage(1)">▶</button>
+                </div>
+                <div id="radio-visible-research" class="input-radio"></div>
+            </div>
             <div id="research-table">
                 <div class="research-div">
                     <div class="research-name">Prestigious Agility</div>
@@ -196,6 +200,7 @@
                     <td style="width: 50%;">
                         <div id="shark-elo-div"></div>
                         <div id="shark-elo-calc"></div>
+                        <p id="shark-overpopulation"></p>
                     </td><td style="width: 50%;">
                         <div id="shark-rank-div"></div>
                         <subtitle id="shark-rank-note"></subtitle>
@@ -208,7 +213,12 @@
             <table class="table">
                 <tr>
                     <td style="width: 50%;">
-                        <button class="big-btn" id="respec-evolution-tree" onclick="respecEvolutionTree()"></button>
+                        <div class="table-center">
+                            <button class="big-btn" id="import-evolution-tree" onclick="importEvolutionTree()"></button>
+                            <button class="big-btn" id="export-evolution-tree" onclick="exportEvolutionTree()"></button>
+                            <button class="big-btn" id="respec-evolution-tree" onclick="respecEvolutionTree()"></button>
+                            <button class="big-btn" id="evolution-tree-preset" onclick="openEvolutionTreePreset()"></button>
+                        </div>
                         <div id="evolution-tree"></div>
                     </td><td style="width: 50%;">
                         <p id="sharkoid-faith-div"></p>
@@ -219,6 +229,22 @@
         </div><div id="evolution-goal-tab">
             <button class="big-btn" id="rerun-evolution" onclick="respecEvolutionTree(true)"></button>
             <div id="evolution-goal-grid"></div>
+        </div><div id="cultivation-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 30%;">
+                        <div id="mining-tier-div"></div>
+                        <button id="mining-tier-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.upgrade()"></button>
+                        <div id="mining-tier-bonus"></div>
+                    </td><td style="width: 40%;">
+                        <p id="mining-text"></p>
+                        <div id="ores-grid"></div>
+                    </td><td style="width: 30%;">
+                        <h3 id="mined-resources-text"></h3>
+                        <div id="ores-list"></div>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <div id="options-tab">
@@ -256,9 +282,20 @@
             </div>
         </div>
 
+        <div id="shark-upgrades">
+            <div class="shark-upgrade">
+                <div class="shark-upgrade-div">
+                    <div><h2>Upgrade Name</h2><br>Level: 0</div>
+                    <div>x???</div>
+                    <div><button class="shark-upgrade-button">Cost: ???</button></div>
+                </div>
+                <div class="shark-upgrade-requirement"><div>???</div></div>
+            </div>
+        </div>
+
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.2 by MrRedShark77
+            Shark Incremental v0.2.1 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

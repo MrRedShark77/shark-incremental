@@ -141,6 +141,19 @@ button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
 	background-color: #075551;
 }
 
+input.no-arrows {
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+	}
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	&[type=number] {
+		-moz-appearance: textfield;
+	}
+}
+
 .locked {
 	background-color: #043d3a;
 	border-color: #02302d;
@@ -350,7 +363,7 @@ button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
 	width: 100%;
 }
 
-#popup-input {
+.popup-input, #popup-input {
 	width: 100%;
 	height: auto;
 	font-family: 'Courier New', Courier, monospace;
@@ -494,6 +507,20 @@ button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
 	& > button {
 		width: 100%;
 	}
+}
+
+#research-page {
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	height: 30px;
+	font-size: 28px;
+	width: 120px;
+	margin: 2px;
+}
+
+#research-total-pages {
+	font-size: 14px;
+	font-weight: bold;
 }
 
 .graph {
@@ -722,4 +749,40 @@ subtitle {
 
 #rerun-evolution {
 	width: 240px;
+}
+
+.tree-preset {
+	margin: 5px 0px;
+}
+
+#ores-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 150px);
+	grid-auto-rows: 120px;
+	justify-content: center;
+}
+
+.ore-grid {
+	position: relative;
+	background: black;
+	border: solid 1px black;
+
+	& > div {
+		font-size: 14px;
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		transform: translateY(-50%);
+	}
+}
+
+#ores-list {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+.ore-list {
+	width: 240px;
+	margin: 2px;
 }

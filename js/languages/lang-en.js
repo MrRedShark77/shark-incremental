@@ -67,6 +67,7 @@ LANGUAGES.EN = {
         'tab-shark-rank': toTextStyle('Shark','shark') + " Rank",
         'tab-evolution-tree': toTextStyle('Evolution','humanoid') + " Tree",
         'tab-evolution-goal': toTextStyle('Evolution','humanoid') + " Goals",
+        'tab-cultivation': "Cultivation",
 
         // Elements
 
@@ -104,7 +105,14 @@ LANGUAGES.EN = {
 
         'sharkoid-faith-div': `You have <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Sharkoid Faith','humanoid')}.`,
         'respec-evolution-tree': `Respec ${toTextStyle('Evolution','humanoid')} Tree`,
+        'export-evolution-tree': `Export ${toTextStyle('Evolution','humanoid')} Tree`,
+        'import-evolution-tree': `Import ${toTextStyle('Evolution','humanoid')} Tree`,
+        'evolution-tree-preset': `${toTextStyle('Evolution','humanoid')} Tree Presets`,
+
         'rerun-evolution': `Re-run ${toTextStyle('Evolution','humanoid')}, respecing its Tree`,
+
+        'mining-text': `Mining... <b id="mining-progress">???</b> | Damage <b id="mining-damage">???</b> | ${toTextStyle(`Mining Fortune <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
 
         // Upgrades
 
@@ -139,6 +147,24 @@ LANGUAGES.EN = {
         'su-p3-name': 'Scaled Shark',
         'su-p3-desc': `Delays the first ${toTextStyle('Shark','shark')} Level scaling by <b>+1</b> per level.`,
 
+        'su-m1-name': 'Mining Damage',
+        'su-m1-desc': `Increases the mining damage by <b>×2</b> per level.`,
+
+        'su-m2-name': 'Mining Speed',
+        'su-m2-desc': `Increases the mining speed by <b>+10%</b> per level.`,
+
+        'su-m3-req': 'Mining Tier 3',
+        'su-m3-name': 'Compressed Stone',
+        'su-m3-desc': `Increases <b>Stone</b> mined by <b>×2</b> per level.`,
+
+        'su-m4-req': 'Mining Tier 6',
+        'su-m4-name': 'Mining Fortune',
+        'su-m4-desc': `Increases the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+5</b> per level.`,
+
+        'su-m5-req': 'Mining Tier 9',
+        'su-m5-name': 'Basic Ores',
+        'su-m5-desc': `Increases the first 4 ores mined by <b>×2</b> per level.`,
+
         // Researches
 
         'research-p1-name': "Prestigious Agility",
@@ -167,6 +193,9 @@ LANGUAGES.EN = {
         'research-p8-name': "Further Upgraded Shark Level",
         'research-p8-desc': `Further reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by 1.`,
 
+        'research-p9-name': "Cheap Prestige Booster",
+        'research-p9-desc': `Reduce the dilation scaling of 'Prestige Booster' by <b>-0.05</b> per level.`,
+
         'research-e1-name': "Ocean Synergism I",
         'research-e1-desc': `${toTextStyle("Salt",'salt')} boosts ${toTextStyle("Corals",'coral')} generated.`,
 
@@ -181,6 +210,9 @@ LANGUAGES.EN = {
 
         'research-e5-name': "Exploration Automation MK2",
         'research-e5-desc': `Automatically gain base in the Indian Ocean without exploring. Improve ${toTextStyle('Kelp','kelp')}'s effect again.`,
+
+        'research-e6-name': "Sunda Trench",
+        'research-e6-desc': `The <b>Indian Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`,
 
         'research-c1-name': "Research C-Keeper",
         'research-c1-desc': `Keep ${toTextStyle("Research",'prestige')} when entering the ${toTextStyle('Core','core')}.`,
@@ -217,6 +249,24 @@ LANGUAGES.EN = {
 
         'research-c12-name': "Mega Radiation Reduction",
         'research-c12-desc': `Drastically reduce radiation's limit.`,
+
+        'research-c13-name': "Super Radioactive Shark",
+        'research-c13-desc': `'Radioactive Shark' is <b>50%</b> stronger.`,
+
+        'research-c14-name': "Exponential Core Boost",
+        'research-c14-desc': `Core reactors now provide an exponential boost to ${toTextStyle('Fish','fish')}.`,
+
+        'research-c15-name': "Self-Radiation",
+        'research-c15-desc': `You can buy a radiation upgrade, costing regular ${toTextStyle('Fish','fish')} instead of radioactive ${toTextStyle('Fish '+icon('radioactive'),'fish')}, but at a <b>^0.0001</b> rate. Then increase the rate by <b>×10</b> per level.`,
+
+        'research-m1-name': "Magmatic Fortune",
+        'research-m1-desc': `Increase the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+5</b> per level.`,
+
+        'research-m2-name': "Hyper-Scaled Shark",
+        'research-m2-desc': `The third ${toTextStyle("Shark",'shark')} level scaling is delayed by <b>+1000</b>.`,
+
+        'research-m3-name': "Scaled Radioactive Boost",
+        'research-m3-desc': `Delay the first 2 radioactive boost scalings by <b>+1</b> per level.`,
 
         // Exploration
 
@@ -329,6 +379,7 @@ LANGUAGES.EN = {
             x=>`Increase ${toTextStyle('Shark','shark')} Level's ${toTextStyle('Fish','fish')} bonus by <h4>${formatPow(x,3)}</h4> to the exponent.`,
             x=>`The first three ${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
             x=>`${toTextStyle('Shark','shark')} Level boosts ${toTextStyle('Shark','shark')} ELO by <h4>${formatMult(x)}</h4>.`,
+            x=>`Boost <b>Stone</b> amount by <h4>${formatMult(x)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -364,6 +415,16 @@ LANGUAGES.EN = {
             ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Supernatural Body", x=>`${toTextStyle('Magmatic','core')} fragments boost <b>'Radioactive Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Immortal Body", x=>`<b>'Perfect Body'</b> is <b>squared</b>.`],
+
+            ['Luck of the Sea', x=>`${toTextStyle('Fish','fish')} boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
+            ['Luck of the Earth', x=>`<b>Stone</b> boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
+            ['Luck of the Shark', x=>`${toTextStyle('Humanoid','humanoid')} Sharks boost the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
+            ['Pure Luck', x=>`The ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} is increased by <b>+${format(x)}</b>`],
+
+            ["Better Iron", x=>`Improve <b>Iron</b> building better.`],
+            ["Better Nickel", x=>`Improve <b>Nickel</b> building better.`],
+            ["Better Oxygen", x=>`Improve <b>Oxygen</b> building better.`],
+            ["Better Neon", x=>`Improve <b>Neon</b> building better.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
@@ -388,7 +449,7 @@ LANGUAGES.EN = {
                 `Further improve the formula of ${toTextStyle('Prestige','prestige')} shards gain.`,
             ],[
                 x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} with at most <b>10</b> radioactive boosts.`,
-                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limits.`,
+                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limit.`,
             ],[
                 x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} without radioactive boosts.`,
                 `Radioactive boosts no longer reset anything. Unlock Auto-Radioactive Boosts.`,
@@ -396,6 +457,39 @@ LANGUAGES.EN = {
                 x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')}.`,
                 `First ${toTextStyle('Shark','shark')} Rank scaling is delayed by <b>+5</b>.`,
             ],
+        ],
+
+        // Cultivation
+
+        'ore-names': {
+            'stone': "Stone",
+            'coal': "Coal",
+            'iron': "Iron",
+            'gold': "Gold",
+            'platinum': "Platinum",
+            'diamond': "Diamond",
+            'bismuth': "Bismuth",
+            'obsidian': "Obsidian",
+            'vibranium': "Vibrantium",
+            'radium': "Radium-223",
+            'uranium': "Uranium-235",
+            'berkelium': "Berkelium-247",
+            'californium': "Californium-252",
+            'oganesson': "Oganesson-294",
+            'sharkium': "Sharkium",
+        },
+
+        'mined-resources-text': `Mined Resources`,
+        'mining-tier-reset': `Increase the <b>Mining Tier</b>, but it will multiply each ore's health and amount.`,
+        'mining-tier-ore-unlock': x=>`Unlock ${x} ore.`,
+        'mining-tier-ore-generation': x=>`You will no longer mine ${x} ore, but will generate it based on mining speed & fortune instead.`,
+
+        'mining-tier-bonus': [
+            x=>`Ore's health is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Stone</b> & <b>Coal</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Iron</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Gold</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Platinum</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
         // Automation
@@ -433,6 +527,8 @@ LANGUAGES.EN = {
         get 'progress-10-cond-text'() { return `Evolve your ${toTextStyle('Sharks','shark')}` },
 
         'progress-11-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+        'progress-12-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+        'progress-13-text': r => `Reach Mining Tier ${format(r,0)} to unlock a new row of ${toTextStyle('Evolution','humanoid')} tree`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -478,9 +574,12 @@ LANGUAGES.EN = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
         // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
+        'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${format(y)}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
+
         'shark-rank-bonuses': {
             fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,
             prestige: x => `${formatPow(x)} ${toTextStyle('Prestige','prestige')} shard`,
+            mining_damage: x => `${formatMult(x)} Mining Damage`,
         },
 
         'level': "Level",
@@ -491,11 +590,18 @@ LANGUAGES.EN = {
         'next-at': "Next at",
         'depth': "Depth",
         'reward': "Reward",
+        'new-preset': "New Preset",
+
+        'remove': "Remove",
+        'overwrite-current': "Overwrite Current",
+        'load': "Load",
+        'force-load': "Force Load",
 
         'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "Purchase" : "Can't Afford",
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
+        'research-pages': x => `${x} pages`,
 
         'off-on': bool => bool ? "ON" : "OFF",
 
@@ -508,10 +614,12 @@ LANGUAGES.EN = {
             import: `Paste in your save. WARNING: WILL OVERWRITE YOUR CURRENT SAVE!`,
             wipe: `Are you sure you want to wipe your save? To wipe, type "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
             "evolution-tree-respec": `Are you sure you want to respec ${toTextStyle('Evolution','humanoid')} tree? It will trigger an ${toTextStyle('Evolution','humanoid')} reset, not gaining ${toTextStyle('Humanoid','humanoid')} sharks.`,
+            "evolution-tree-import": `Paste in your evolution tree.`,
         },
 
         'notify-desc' : {
             save: "Game Saved!",
+            copy_to_clipboard: "Copied to Clipboard!",
         },
 
         'radio-desc' : {
@@ -520,6 +628,8 @@ LANGUAGES.EN = {
             'autosave': ['Autosaving',['Disabled','Enabled']],
             'autosave-time': ['Autosave Interval',['15s','30s','60s','120s']],
             'offline': ['Offline Progress',['Disabled','Enabled']],
+            'max-research-amt': ['Maximum research upgrades per page',['∞','15','20','25','30']],
+            'visible-research': [`Purchased research's visibility`,["Shown","Hidden"]],
         },
 
         'radio-desc-default' : ['Disabled','Enabled'],

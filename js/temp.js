@@ -34,6 +34,17 @@ function reloadTemp() {
         ca_building_strength: [],
 
         evolution_tree_effect: [],
+
+        mining_fortune: E(0),
+        ore_spawn_base: 1,
+        ore_generator: 0,
+        mining_speed: E(1),
+        mining_damage: E(1),
+
+        mining_tier_bonus: [],
+
+        shark_op: E(1),
+        shark_op_start: E('ee40'),
     }
 
     for (let x in EXPLORE) {
@@ -51,7 +62,9 @@ function updateTemp() {
     updateExplorationTemp()
     updateSharkTemp()
 
-    for (let [i,v] of Object.entries(CURRENCIES)) tmp.currency_gain[i] = v.gain??E(0)
+    for (let [i,v] of Object.entries(CURRENCIES)) tmp.currency_gain[i] = preventNaNDecimal(v.gain??E(0))
+
+    reloadOres()
 }
 
 function updateOptions() {

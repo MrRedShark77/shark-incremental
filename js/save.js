@@ -53,8 +53,12 @@ function getPlayerData() {
 
             faith: [E(0), E(0), E(0)],
             tree: [],
+            tree_preset: [],
 
             goal: [],
+
+            mining_tier: E(0),
+            ores: {},
         },
 
         radios: {},
@@ -79,6 +83,7 @@ function getPlayerData() {
         s.core.assembler_strength[x] = 0
     }
     for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
+    for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0)
 
     return s
 }
@@ -172,15 +177,17 @@ function exporty() {
     a.click()
 }
 
-function export_copy() {
-    let str = btoa(JSON.stringify(player))
-
+function copyToClipboard(text) {
     let copyText = document.getElementById('copy')
-    copyText.value = str
+    copyText.value = text
     copyText.style.visibility = "visible"
     copyText.select();
     document.execCommand("copy");
     copyText.style.visibility = "hidden"
+}
+
+function export_copy() {
+    copyToClipboard(btoa(JSON.stringify(player)))
 }
 
 function importy() {

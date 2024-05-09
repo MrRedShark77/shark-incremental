@@ -38,6 +38,9 @@ const TAB_IDS = {
     'evolution-goal': {
         html: updateEvolutionGoalHTML,
     },
+    'cultivation': {
+        html: updateCultivationHTML,
+    }
 }
 
 const TABS = [
@@ -69,6 +72,7 @@ const TABS = [
             ["shark-rank"],
             ["evolution-tree"],
             ["evolution-goal",()=>player.feature>=12],
+            ["cultivation",()=>player.feature>=13],
         ],
     },
 ]

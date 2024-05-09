@@ -4,7 +4,14 @@ function el_classes(data) { return Object.keys(data).filter(x => data[x]).join("
 function updateHTML() {
     updateTabs()
 
-    el('fish-amount').innerHTML = CURRENCIES.fish.amount.format(0) + (tmp.cr_active ? " " + icon("radioactive") : "")
+    updateSharkUpgradesHTML()
+
+    var f = CURRENCIES.fish.amount, ff = []
+
+    if (f.gte(tmp.shark_op_start)) ff.push(icon("biohazard"))
+    if (tmp.cr_active) ff.push(icon("radioactive"))
+
+    el('fish-amount').innerHTML = f.format(0) + (ff.length > 0 ? " " + ff.join("") : "")
     el('fish-gain').textContent = tmp.currency_gain.fish.gt(0) ? CURRENCIES.fish.amount.formatGain(tmp.currency_gain.fish) : ""
 
     updateTopCurrenciesHTML()

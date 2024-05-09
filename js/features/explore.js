@@ -93,6 +93,7 @@ const EXPLORE = [
         effect(r,d) {
             let x = expPow(r.add(1),hasDepthMilestone(4,3) ? 0.75 : 0.5)
             if (hasResearch('e5')) x = x.max(r.add(1).root(2))
+            x = x.pow(d.div(this.maxDepth).max(1).log10().root(2).div(8).add(1))
             return x
         },
         effDesc: x => formatMult(x) + " " + lang_text("radioactive-name"),

@@ -71,6 +71,18 @@ const RESEARCH = {
             ['prestige',false,'e14000'],
         ],
     },
+    p9: {
+        max: 3,
+        unl: ()=>player.feature>=13,
+        require: [
+            ['stone',false,l=>Decimal.pow(10,l).mul(100),x=>x.div(100).log(10).add(1).floor()]
+        ],
+        effect(r) {
+            return r.mul(0.05)
+        },
+        effDesc: x => "^"+format(Decimal.sub(1.25,x)),
+    },
+
     e1: {
         unl: ()=>player.explore.unl>=3 || player.core.times>0,
         require: [
@@ -114,6 +126,13 @@ const RESEARCH = {
             ['kelp',false,1e78],
         ],
     },
+    e6: {
+        unl: ()=>player.feature>=14,
+        require: [
+            ['kelp',false,'e700'],
+        ],
+    },
+
     c1: {
         unl: ()=>player.core.times>0,
         require: [
@@ -196,7 +215,74 @@ const RESEARCH = {
             ['core',false,'1e675'],
         ],
     },
+    c13: {
+        unl: ()=>player.feature>=13,
+        require: [
+            ['coal',false,1e3],
+        ],
+    },
+    c14: {
+        unl: ()=>player.humanoid.mining_tier.gte(3),
+        require: [
+            ['iron',false,1e3],
+        ],
+        effect(r) {
+            var x = E(1)
+
+            for (let i = 0; i < CORE_REACTOR.length; i++) {
+                x = x.mul(player.core.reactor[i].add(10).log10())
+            }
+
+            return x
+        },
+        effDesc: x => formatPow(x),
+    },
+    c15: {
+        max: 5,
+        unl: ()=>player.humanoid.mining_tier.gte(9),
+        require: [
+            ['platinum',false,l=>Decimal.pow(10,l).mul(100),x=>x.div(100).log(10).add(1).floor()],
+        ],
+        effect(r) {
+            return r.gt(0) ? Decimal.pow(10,r.sub(5)) : 0
+        },
+        effDesc: x => formatPow(x,4),
+    },
+
+    m1: {
+        max: 10,
+        unl: ()=>player.feature>=13,
+        require: [
+            ['core',false,l=>Decimal.pow('e100',l).mul('e1200'),x=>x.div('e1200').log('e100').add(1).floor()],
+        ],
+        effect(r) {
+            return r.mul(5)
+        },
+        effDesc: x => "+"+format(x,0),
+    },
+    m2: {
+        unl: ()=>player.feature>=13,
+        require: [
+            ['coal',false,1e6],
+        ],
+    },
+    m3: {
+        max: 5,
+        unl: ()=>player.humanoid.mining_tier.gte(6),
+        require: [
+            ['gold',false,l=>Decimal.pow(10,l).mul(1e3),x=>x.div(1e3).log(10).add(1).floor()],
+        ],
+        effect(r) {
+            return r
+        },
+        effDesc: x => "+"+format(x,0),
+    },
 }
+
+const RESEARCH_KEYS = Object.keys(RESEARCH)
+const MAX_RESEARCH = [null,15,20,25,30]
+
+var research_page = 1
 
 function setupResearchHTML() {
     el('research-table').innerHTML = Object.entries(RESEARCH).map(
@@ -221,6 +307,7 @@ function setupResearchHTML() {
 }
 
 function hasResearch(id) { return player.research[id].gte(1) }
+function isResearchMaxed(id) { return player.research[id].gte(RESEARCH[id].max??1) }
 function researchEffect(id,def=E(1)) { return tmp.research_eff[id]??def }
 function simpleResearchEffect(id,def=E(1)) { return player.research[id].gte(1)?tmp.research_eff[id]??def:def }
 
@@ -256,11 +343,35 @@ function purchaseResearch(id,bulking=false) {
     }
 }
 
+function changeResearchPage(diff) {
+    research_page = Math.max(1,research_page+diff)
+    el("research-page").value = research_page
+    updateResearchHTML()
+}
+
 function updateResearchHTML() {
     let text = [lang_text('effect'),lang_text('level'),lang_text('require')]
 
+    var hidden = player.radios['visible-research']
+    var visible_research = hidden ? RESEARCH_KEYS.filter(x => !isResearchMaxed(x)) : RESEARCH_KEYS
+
+    var m = MAX_RESEARCH[player.radios['max-research-amt']]
+    var unl = player.radios['max-research-amt'] != 0 && visible_research.length > m
+    el("research-page-div").style.display = el_display(unl)
+    if (unl) {
+        var c = Math.max(1,Math.ceil(visible_research.length/m))
+
+        el("research-total-pages").innerHTML = lang_text('research-pages',c)
+
+        if (research_page > c) {
+            el("research-page").value = research_page = c
+        }
+
+        visible_research = [...visible_research].splice(m*(research_page-1),m)
+    }
+
     for (let [i,x] of Object.entries(RESEARCH)) {
-        let unl = x.unl(), el_id = "research-"+i
+        let unl = visible_research.includes(i) && x.unl(), el_id = "research-"+i
         el(el_id+"-div").style.display = el_display(unl)
         if (unl) {
             let amt = player.research[i], max = x.max??1, bought = amt.gte(max), afford = true

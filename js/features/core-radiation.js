@@ -25,13 +25,13 @@ const CORE_RAD = {
 
         if (hasDepthMilestone(4,0)) x = x.mul(1e3)
 
-        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(10,2,'P',true).scale(30,2,'P',true).floor().add(1)
+        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(tmp.cr_scale1,2,'P',true).scale(tmp.cr_scale2,2,'P',true).floor().add(1)
 
         return x
     },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(30,2,'P').scale(10,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
+        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(tmp.cr_scale2,2,'P').scale(tmp.cr_scale1,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
 
         return x
     },
@@ -59,8 +59,9 @@ const CORE_RAD = {
     genValue: l => Decimal.pow(2,l.sub(1)).mul(l),
 
     purchaseGeneration() {
-        if (!tmp.cr_active) return
-        let x = player.core.radiation.gen, amt = CURRENCIES.fish.amount
+        var r_c15 = hasResearch('c15'), active = tmp.cr_active
+        if (!r_c15 && !active) return
+        let x = player.core.radiation.gen, amt = CURRENCIES.fish.amount.pow(!active && r_c15 ? researchEffect('c15',0) : 1)
         if (amt.gte(this.genCost(x))) {
             player.core.radiation.gen = this.genBulk(amt).max(x.add(1))
         }
@@ -123,6 +124,13 @@ const CORE_RAD = {
 
                 return x
             },
+        },{
+            req: 35,
+            effect: (r,b)=>{
+                let x = r.add(1).log10().div(1e3).add(1).pow(b.add(1).root(2))
+
+                return x
+            },
         },
     ],
 }
@@ -143,7 +151,7 @@ function getCoreTemperatureEffect() {
     if (x.gte(6150)) {
         x = x.sub(6050).div(100).root(2)
 
-        return x
+        return x.softcap(10,1/3,0)
     } else return x.div(6150).max(0)
 }
 
@@ -155,9 +163,10 @@ function updateCoreRadiation() {
 
     el('start-cr-experiment').innerHTML = lang_text('cr-start',rad.active)
 
+    var r_c15 = hasResearch('c15'), active = tmp.cr_active
     var cost = CORE_RAD.genCost(rad.gen)
     el('upgrade-cr-btn').innerHTML = lang_text('upgrade-cr',CORE_RAD.genValue(rad.gen),cost)
-    el('upgrade-cr-btn').className = el_classes({locked: !tmp.cr_active || CURRENCIES.fish.amount.lt(cost), 'huge-btn': true})
+    el('upgrade-cr-btn').className = el_classes({locked: !r_c15 && !active || CURRENCIES.fish.amount.pow(!active && r_c15 ? researchEffect('c15',0) : 1).lt(cost), 'huge-btn': true})
 
     el('reset-cr-btn').innerHTML = lang_text('reset-cr',CORE_RAD.limitIncrease())
     el('reset-cr-btn').className = el_classes({locked: rad.amount.lt(tmp.cr_limit), 'huge-btn': true})
@@ -180,6 +189,9 @@ function updateCoreRadiation() {
 function updateCoreRadiationTemp() {
     tmp.cr_gain = CORE_RAD.gain()
     tmp.cr_limit = CORE_RAD.limit()
+
+    tmp.cr_scale1 = Decimal.add(10,researchEffect('m3',0))
+    tmp.cr_scale2 = Decimal.add(30,researchEffect('m3',0))
 
     var temp_eff = tmp.core_temp_eff = getCoreTemperatureEffect()
 
