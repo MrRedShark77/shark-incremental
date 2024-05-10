@@ -631,7 +631,7 @@ LANGUAGES.EN = {
             'offline': ['Offline Progress',['Disabled','Enabled']],
             'max-research-amt': ['Maximum research upgrades per page',['∞','15','20','25','30']],
             'visible-research': [`Purchased research's visibility`,["Shown","Hidden"]],
-            'notify': ['Notification',['Disabled','Enabled']],
+            'notify': ['Tab Notification',['Disabled','Enabled']],
         },
 
         'radio-desc-default' : ['Disabled','Enabled'],
