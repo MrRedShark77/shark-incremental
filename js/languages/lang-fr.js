@@ -55,15 +55,17 @@ LANGUAGES.FR = {
 		'tab-auto': "Automatisation",
 		'tab-research': toTextStyle('Recherche','prestige'),
 		'tab-explore': "Exploration",
+
 		'tab-core': "Le " + toTextStyle('Noyau','core'),
 		'tab-core-reactor': "Réacteur du " + toTextStyle('Noyau','core'),
 		'tab-core-radiation': "Radiation du " + toTextStyle('Noyau','core'),
         'tab-core-assembler': "Assembleur du " + toTextStyle('Noyau','core'),
 
 		'tab-evolution': toTextStyle('Évolution','humanoid'),
-        'tab-shark-rank': toTextStyle('Requin','shark') + " Rank",
+        'tab-shark-rank': "Rang de " + toTextStyle('Requin','shark'),
         'tab-evolution-tree':  "Arbre d'" + toTextStyle('Évolution','humanoid'),
         'tab-evolution-goal':  "Objectifs d'" + toTextStyle('Évolution','humanoid'),
+		'tab-cultivation': "Culture",
 
 		// Elements
 
@@ -101,7 +103,14 @@ LANGUAGES.FR = {
 
 		'sharkoid-faith-div': `Vous avez <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Foi sharkoïde','humanoid')}.`,
         'respec-evolution-tree': `Réinitialiser l'arbre d'${toTextStyle('Évolution','humanoid')}`,
+		'export-evolution-tree': `Exporter l'arbre d'${toTextStyle('Évolution','humanoid')} Tree`,
+        'import-evolution-tree': `Importer l'arbre d'${toTextStyle('Évolution','humanoid')} Tree`,
+        'evolution-tree-preset': `Préréglages de l'arbre d'${toTextStyle('Évolution','humanoid')}`,
+
         'rerun-evolution': `Recommencer l'${toTextStyle('Évolution','humanoid')}, réinitialise l'arbre`,
+
+		'mining-text': `Minage en cours... <b id="mining-progress">???</b> | Dégâts <b id="mining-damage">???</b> | ${toTextStyle(`Fortune de minage <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'mining-tier-div': `Niveau du minage: <h3 id="mining-tier">0</h3>`,
 
 		// Upgrades
 
@@ -136,6 +145,24 @@ LANGUAGES.FR = {
 		'su-p3-name': 'Barème du Requin',
 		'su-p3-desc': `Augmentre le premier barème du niveau du ${toTextStyle('Requin','shark')} commençant de <b>+1</b> par niveau.`,
 
+		'su-m1-name': 'Dégâts de Minage',
+        'su-m1-desc': `Augmente les dégâts de minage de <b>×2</b> par niveau.`,
+
+        'su-m2-name': 'Mining Speed',
+        'su-m2-desc': `Augmente la vitesse de minage de <b>+10%</b> par niveau.`,
+
+        'su-m3-req': 'Niveau de minage 3',
+        'su-m3-name': 'Pierre concentrée',
+        'su-m3-desc': `Augmente la <b>Pierre</b> extraite de <b>×2</b> par niveau.`,
+
+        'su-m4-req': 'Niveau de minage 6',
+        'su-m4-name': 'Fortune de minage',
+        'su-m4-desc': `Augmente la ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} de <b>+5</b> par niveau.`,
+
+        'su-m5-req': 'Niveau de minage 9',
+        'su-m5-name': 'Minerais de base',
+        'su-m5-desc': `Augmente les 4 premiers minérais minés de <b>×2</b> par niveau.`,
+
 		// Researches
 
 		'research-p1-name': "Agilité Prestigieuse",
@@ -164,6 +191,9 @@ LANGUAGES.FR = {
 		'research-p8-name': "Niveau du Requin amélioré II",
 		'research-p8-desc': `Réduit encore la base du requis pour le niveau du ${toTextStyle("Requin",'shark')} de 1.`,
 
+		'research-p9-name': "Booster de prestige économique",
+        'research-p9-desc': `Reduce the dilation scaling of 'Prestige Booster' by <b>-0.05</b> per level.`,
+
 		'research-e1-name': "Synérgie de l'Océan I",
 		'research-e1-desc': `${toTextStyle("Sels",'salt')} augmente les ${toTextStyle("Coraux",'coral')} généré.`,
 
@@ -178,6 +208,9 @@ LANGUAGES.FR = {
 
         'research-e5-name': "Automatisation de l'Éxploration MK2",
         'research-e5-desc': `Améliore automatiquement la meilleure base de l'océan Indien sans éxplorer. Améliore l'effet du ${toTextStyle('Varech','kelp')} à nouveau.`,
+
+		'research-e6-name': "Fosse de la Sonde",
+        'research-e6-desc': `L'<b>Océan Indien</b> n'a plus de limite, and rend l'effet plus puissant après.`,
 
 		'research-c1-name': "C-Gardien de la Recherche",
 		'research-c1-desc': `Garder les ${toTextStyle("Recherche",'prestige')} à l'entrée du ${toTextStyle('Noyau','core')}.`,
@@ -214,6 +247,24 @@ LANGUAGES.FR = {
 
 		'research-c12-name': "Mega réduction des Radiations",
         'research-c12-desc': `La limite des Radiations est grandement réduite.`,
+
+		'research-c13-name': "Super Requin Radioactif",
+        'research-c13-desc': `'Requin Radioactif' est <b>50%</b> plus puissant.`,
+
+        'research-c14-name': "Booste exponentiel du Noyau",
+        'research-c14-desc': `Les réacteurs du Noyau donne maintenant un boost exponentiel au ${toTextStyle('Poisson','fish')}.`,
+
+        'research-c15-name': "Auto-radiation",
+        'research-c15-desc': `Vous pouvez acheter une amélioration de radiation, qui coûte du ${toTextStyle('Poisson','fish')} au lieu de ${toTextStyle('Poisson '+icon('radioactive'),'fish')} radioactif, mais à la puissance <b>^0.0001</b>. Après, augmente le taux de <b>×10</b> par niveau.`,
+
+		'research-m1-name': "Fortune Magmatique",
+        'research-m1-desc': `Augmente la ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} de <b>+5</b> par niveau.`,
+
+        'research-m2-name': "Requin à hyper-échelle",
+        'research-m2-desc': `Le troisième niveau d'échelle du ${toTextStyle("Requin",'shark')} est retardée de <b>+1000</b>.`,
+
+        'research-m3-name': "Boost radioactif à grande échelle",
+        'research-m3-desc': `Retarde les 2 premières augmentations radioactives de <b>+1</b> par niveau.`,
 
 		// Exploration
 
@@ -326,6 +377,7 @@ LANGUAGES.FR = {
             x=>`Augmente le bonus du niveau du ${toTextStyle('Requin','shark')} pour les ${toTextStyle('Poissons','fish')} de <h4>${formatPow(x,3)}</h4> à l'éxposant.`,
             x=>`Les 3 premières améliorations de ${toTextStyle('Prestige','prestige')} sont <h4>${formatPercent(x.sub(1))}</h4> plus puissant.`,
 			x=>`Le niveau du ${toTextStyle('Requin','shark')} booste l'ELO de <h4>${formatMult(x)}</h4>.`,
+			x=>`Augmente le nombre de <b>Pierre</b> minée de <h4>${formatMult(x)}</h4>.`,
 		],
 
 		// Evolution Tree
@@ -361,6 +413,16 @@ LANGUAGES.FR = {
             ["Corps de renaissance", x=>`Les Éclats de ${toTextStyle('Prestige','prestige')} booste <b>'Corps prestigieux'</b> de <b>${formatPow(x)}</b>.`],
             ["Corps surnaturel", x=>`Les Fragments ${toTextStyle('Magmatique','core')} booste <b>'Corps radioactif'</b> de <b>${formatPow(x)}</b>.`],
             ["Corps immortel", x=>`<b>'Corps parfait'</b> est mis au <b>carré</b>.`],
+
+			['Chance de la mer', x=>`Les ${toTextStyle('Poissons','fish')} booste la ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} par <b>+${format(x)}</b>`],
+            ['Chance de la terre', x=>`Les <b>Pierres</b> booste la ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} par <b>+${format(x)}</b>`],
+            ['Chance du Requin', x=>`Les Requins ${toTextStyle('Humanoïdes','humanoid')} booste la ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} par <b>+${format(x)}</b>`],
+            ['Pure chance', x=>`La ${toTextStyle('Fortune de minage '+icon('luck'),'gold')} est augmenté de <b>+${format(x)}</b>`],
+
+            ["Meilleur Fer", x=>`Améliore le bâtiment du <b>Fer</b>.`],
+            ["Meilleur Nickel", x=>`Améliore le bâtiment du <b>Nickel</b>.`],
+            ["Meilleur Oxygène", x=>`Améliore le bâtiment de l'<b>Oxygène</b>.`],
+            ["Meilleur Néon", x=>`Améliore le bâtiment du <b>Néon</b>.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"DÉBLOQUÉ":y?"BLOQUÉ":"EN PROGRESSION",
@@ -393,6 +455,39 @@ LANGUAGES.FR = {
                 x=>`Atteindre un total de <b>${format(x,0)}</b> ${toTextStyle('Poissons','fish')}.`,
                 `Le premier rang de ${toTextStyle('Requin','shark')} commence <b>+5</b> fois plus tôt.`,
             ],
+        ],
+
+		// Cultivation
+
+        'ore-names': {
+            'stone': "Pierre",
+            'coal': "Charbon",
+            'iron': "Fer",
+            'gold': "Or",
+            'platinum': "Platine",
+            'diamond': "Diamant",
+            'bismuth': "Bismuth",
+            'obsidian': "Obsidienne",
+            'vibranium': "Vibrantium",
+            'radium': "Radium-223",
+            'uranium': "Uranium-235",
+            'berkelium': "Berkelium-247",
+            'californium': "Californium-252",
+            'oganesson': "Oganesson-294",
+            'sharkium': "Requinum",
+        },
+
+        'mined-resources-text': `Ressources minées`,
+        'mining-tier-reset': `Augmente le <b>Niveau de Minage</b>, mais multiplie la santé et la quantité de chaque minerai.`,
+        'mining-tier-ore-unlock': x=>`Débloque ${x}.`,
+        'mining-tier-ore-generation': x=>`Vous ne minerez plus ${x}, mais il va être généré en fonction de la vitesse et de la fortune de minage.`,
+
+        'mining-tier-bonus': [
+            x=>`La santé du minerai est augmentée de <b>${formatMult(x)}</b>.`,
+            x=>`La quantité de <b>Pierre</b> et de <b>Charbon</b> est augmentée de <b>${formatMult(x)}</b>.`,
+            x=>`La quantité de <b>Fer</b> est augmentée de <b>${formatMult(x)}</b>.`,
+            x=>`La quantité d'<b>Or</b> est augmentée de <b>${formatMult(x)}</b>.`,
+            x=>`La quantité de <b>Platine</b> est augmenté de <b>${formatMult(x)}</b>.`,
         ],
 
 		// Automation
@@ -429,7 +524,9 @@ LANGUAGES.FR = {
 		'progress-10-text': r => `Atteignez un total de ${format(r)} ${toTextStyle('Poissons','fish')}`, 
         get 'progress-10-cond-text'() { return `Evoluez votre ${toTextStyle('Requin','shark')}` },
 
-        'progress-11-text': r => `Atteignez ${format(r,0)} Requins ${toTextStyle('Humanoïdes','humanoid')} pour débloquer la nouvelle fonctionnalité d'${toTextStyle('Évolution','humanoid')}`, 
+        'progress-11-text': r => `Atteignez ${format(r,0)} Requins ${toTextStyle('Humanoïdes','humanoid')} pour débloquer la nouvelle fonctionnalité d'${toTextStyle('Évolution','humanoid')}`,
+		'progress-12-text': r => `Atteignez ${format(r,0)} Requins ${toTextStyle('Humanoïdes','humanoid')} pour débloquer la nouvelle fonctionnalité d'${toTextStyle('Évolution','humanoid')}`, 
+        'progress-13-text': r => `Atteignez le niveau ${format(r,0)} de minage pour débloquer une nouvelle rangée dans l'arbre d'${toTextStyle('Évolution','humanoid')}`, 
 
 		'maxed-progress': "Toutes les fonctionnalités sont acquises!",
 
@@ -475,9 +572,12 @@ LANGUAGES.FR = {
 		'shark-bonus-core': x => `${formatMult(x)} Fragments ${toTextStyle('Magmatique','core')}`,
 		// 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
+		'shark-overpopulation': (x,y) => `En raison de la surpopulation de ${toTextStyle('Requin','shark')} à <h4>${format(y)}</h4>, les ${toTextStyle('Poissons','fish')} consommés sont réduits de <h4>${format(x,3)}√</h4>.`,
+
 		'shark-rank-bonuses': {
             fish: x => `${formatPow(x)} ${toTextStyle('Poissons','fish')}`,
             prestige: x => `${formatPow(x)} Éclats de ${toTextStyle('Prestige','prestige')}`,
+			mining_damage: x => `${formatMult(x)} dégâts de minage`,
         },
 
 		'level': "Niveau",
@@ -488,11 +588,18 @@ LANGUAGES.FR = {
 		'next-at': "Suivant à",
 		'depth': "Profondeur",
 		'reward': "Récompense",
+		'new-preset': "Nouveau préréglage",
+
+		'remove': "Supprimer",
+        'overwrite-current': "Remplacer l'actuel",
+        'load': "Charger",
+        'force-load': "Forcer le chargement",
 		
 		'offline-time-text': x=>`Vous avez été hors-ligne depuis <b>${formatTime(x,0)}</b>.`,
 
 		'research-afford': bool => bool ? "Acheter" : "Pas assez",
 		'research-bought': bool => bool ? `<b>Acheté</b>` : `<b>Non acheté</b>`,
+		'research-pages': x => `${x} pages`,
 
 		'off-on': bool => bool ? "ON" : "OFF",
 
@@ -505,10 +612,12 @@ LANGUAGES.FR = {
 			import: `Coller le code de votre sauvegarde. ATTENTION: ÉCRASERA VOTRE SAUVEGARDE ACTUELLE!`,
 			wipe: `Êtes-vous sûr de vouloir réinitialiser votre sauvegarde ? Pour effacer, taper "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
 			"evolution-tree-respec": `Êtes-vous sûr de vouloir réinitialiser votre arbre d'${toTextStyle('Évolution','humanoid')}? Vous allez faire une ${toTextStyle('Évolution','humanoid')}, sans gagner de Requins ${toTextStyle('Humanoïdes','humanoid')}.`,
+			"evolution-tree-import": `Copiez votre arbre d'évolution.`,
 		},
 
 		'notify-desc' : {
 			save: "Jeu sauvegardé!",
+			copy_to_clipboard: "Copié dans le presse-papier !",
 		},
 
 		'radio-desc' : {
@@ -517,6 +626,8 @@ LANGUAGES.FR = {
 			'autosave': ['Sauvegarde automatique',['Désactiver','Activer']],
 			'autosave-time': ['Intervalle de la sauvegarde automatique',['15s','30s','60s','120s']],
 			'offline': ['Progression Hors-ligne',['Désactiver','Activer']],
+			'max-research-amt': ['Nombres de recherches maximales par page',['∞','15','20','25','30']],
+            'visible-research': [`Visibilité de la recherche achetée`,["Affiché","Masquée"]],
 		},
 
 		'radio-desc-default' : ['Désactiver','Activer'],
