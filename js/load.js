@@ -58,6 +58,9 @@ function setupOptions() {
     createRadio(...getLangRadio('offline'), {
         start_position: 1,
     })
+    createRadio(...getLangRadio('notify'), {
+        start_position: 1,
+    })
 
     createRadio(...getLangRadio('max-research-amt'), {
         start_position: 2,

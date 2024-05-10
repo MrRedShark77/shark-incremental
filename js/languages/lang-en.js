@@ -113,6 +113,7 @@ LANGUAGES.EN = {
 
         'mining-text': `Mining... <b id="mining-progress">???</b> | Damage <b id="mining-damage">???</b> | ${toTextStyle(`Mining Fortune <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
+        'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
 
         // Upgrades
 
@@ -574,7 +575,7 @@ LANGUAGES.EN = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
         // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
 
-        'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${format(y)}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
+        'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${toTextStyle(format(y),'fish')}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
 
         'shark-rank-bonuses': {
             fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,
@@ -630,6 +631,7 @@ LANGUAGES.EN = {
             'offline': ['Offline Progress',['Disabled','Enabled']],
             'max-research-amt': ['Maximum research upgrades per page',['∞','15','20','25','30']],
             'visible-research': [`Purchased research's visibility`,["Shown","Hidden"]],
+            'notify': ['Notification',['Disabled','Enabled']],
         },
 
         'radio-desc-default' : ['Disabled','Enabled'],

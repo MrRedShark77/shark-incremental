@@ -250,6 +250,14 @@ const SHARK_UPGRADES = {
     },
 }
 
+function canAffordSharkUpgrade(i) {
+    const u = SHARK_UPGRADES[i]
+
+    if (tmp.su_locked[u.curr] || u.unl && !u.unl() || u.req && !u.req()) return false;
+
+    return CURRENCIES[u.curr].amount.gte(u.cost(player.shark_upg[i]))
+}
+
 function buySharkUpgrade(i) {
     const u = SHARK_UPGRADES[i]
 
