@@ -113,6 +113,7 @@ LANGUAGES.ZH = {
 
 		'mining-text': `正在挖矿…… <b id="mining-progress">???</b> | 伤害 <b id="mining-damage">???</b> | ${toTextStyle(`幸运草 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `挖矿等级：<h3 id="mining-tier">0</h3>`,
+		'mining-note': `注意：如果在血量极高的矿坑处卡住（需要很长时间才能获得矿物），按 F5 刷新页面。`,
 
         // Upgrades
 
@@ -592,7 +593,7 @@ LANGUAGES.ZH = {
 		'reward': "奖励",
 		'new-preset': "新预设",
 
-        'remove': "移除",
+        'remove': "删除",
         'overwrite-current': "覆盖",
         'load': "导入",
         'force-load': "强制导入",
@@ -630,6 +631,7 @@ LANGUAGES.ZH = {
             'offline': ['离线进度',['禁用','启用']],
 			'max-research-amt': ['每页研究个数',['∞','15','20','25','30']],
             'visible-research': [`显示已购买的研究`,["显示","隐藏"]],
+			'notify': ['标签高亮提示',['禁用','启用']],
         },
 
         'radio-desc-default' : ['禁用','启用'],
