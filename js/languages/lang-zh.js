@@ -67,6 +67,7 @@ LANGUAGES.ZH = {
         'tab-shark-rank': toTextStyle('鲨鱼','shark') + "段位",
         'tab-evolution-tree': toTextStyle('进化','humanoid') + "树",
         'tab-evolution-goal': toTextStyle('进化','humanoid') + "目标",
+		'tab-cultivation': "挖矿",
 
         // Elements
 
@@ -104,7 +105,15 @@ LANGUAGES.ZH = {
 
         'sharkoid-faith-div': `你拥有 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('鲨之信念','humanoid')}.`,
         'respec-evolution-tree': `重置${toTextStyle('进化','humanoid')}树`,
+		'export-evolution-tree': `导出${toTextStyle('进化','humanoid')}树`,
+        'import-evolution-tree': `导入${toTextStyle('进化','humanoid')}树`,
+        'evolution-tree-preset': `${toTextStyle('进化','humanoid')}树预设`,
+
         'rerun-evolution': `重置进化树，重新开始本次${toTextStyle('进化','humanoid')}`,
+
+		'mining-text': `正在挖矿…… <b id="mining-progress">???</b> | 伤害 <b id="mining-damage">???</b> | ${toTextStyle(`幸运草 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'mining-tier-div': `挖矿等级：<h3 id="mining-tier">0</h3>`,
+		'mining-note': `注意：如果在血量极高的矿坑处卡住（需要很长时间才能获得矿物），按 F5 刷新页面。`,
 
         // Upgrades
 
@@ -137,7 +146,25 @@ LANGUAGES.ZH = {
         'su-p2-desc': `每升一级，吃${toTextStyle('鱼','fish')}的数量<b>×lg(${toTextStyle('鱼','fish')})</b>.`,
 
         'su-p3-name': '鲨鱼鱼鳞',
-        'su-p3-desc': `每升一级，第一个${toTextStyle('鲨鱼','shark')}升级价格折算的延迟 <b>+1</b>.`,
+        'su-p3-desc': `每升一级，第一个${toTextStyle('鲨鱼','shark')}等级的价格折算延迟 <b>+1</b>.`,
+
+        'su-m1-name': '强力挖矿',
+        'su-m1-desc': `每升一级，对矿坑的伤害 <b>×2</b>.`,
+
+        'su-m2-name': '快速挖矿',
+        'su-m2-desc': `每升一级，挖矿的速度 <b>+10%</b>.`,
+
+        'su-m3-req': '挖矿等级为 3',
+        'su-m3-name': '压缩石头',
+        'su-m3-desc': `每升一级，<b>石头</b>的产量 <b>×2</b>.`,
+
+        'su-m4-req': '挖矿等级为 6',
+        'su-m4-name': '幸运挖矿',
+        'su-m4-desc': `每升一级，${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+5</b>.`,
+
+        'su-m5-req': '挖矿等级为 9',
+        'su-m5-name': '矿坑基数',
+        'su-m5-desc': `每升一级，前 4 种矿物的产量 <b>×2</b>.`,
 
         // Researches
 
@@ -167,6 +194,9 @@ LANGUAGES.ZH = {
 		'research-p8-name': "超强鲨鱼等级",
         'research-p8-desc': `再次将${toTextStyle("鲨鱼",'shark')}等级的价格基数继续减 1.`,
 
+		'research-p9-name': "廉价重生强化",
+        'research-p9-desc': `每升一级，'重生强化'的价格折算 <b>-0.05</b>.`,
+
         'research-e1-name': "海洋协同 I",
         'research-e1-desc': `${toTextStyle("盐",'salt')}提升${toTextStyle("珊瑚",'coral')}的产量。`,
 
@@ -181,6 +211,9 @@ LANGUAGES.ZH = {
 		
 		'research-e5-name': "自动探索 MK2",
         'research-e5-desc': `无需进行探索，自动更新印度洋的基数，进一步提升${toTextStyle('褐藻','kelp')}的效果。`,
+
+		'research-e6-name': "巽他海沟",
+        'research-e6-desc': `移除在<b>印度洋</b>中下潜深度的上限，并增强<b>印度洋</b>的效果。`,
 
         'research-c1-name': "研究保持",
         'research-c1-desc': `进入${toTextStyle('地核','core')}后保留${toTextStyle("研究",'prestige')}。`,
@@ -210,13 +243,31 @@ LANGUAGES.ZH = {
         'research-c9-desc': `提升地核反应堆对${toTextStyle('鱼','fish')}的加成。`,
 
         'research-c10-name': "高硬度鱼鳞",
-        'research-c10-desc': `“鲨鱼鱼鳞”延迟第二个${toTextStyle('鲨鱼','shark')}升级的价格折算。`,
+        'research-c10-desc': `“鲨鱼鱼鳞”延迟第二个${toTextStyle('鲨鱼','shark')}等级的价格折算。`,
 
         'research-c11-name': "更好的辐射防护",
         'research-c11-desc': `提升“辐射防护”的效果。`,
 
         'research-c12-name': "绝佳的辐射防护",
         'research-c12-desc': `大幅度降低地核辐射的上限。`,
+
+        'research-c13-name': "鲨鱼高能辐射",
+        'research-c13-desc': `'鲨鱼辐射'的效果增加 <b>50%</b>.`,
+
+        'research-c14-name': "地核指数加成",
+        'research-c14-desc': `地核反应堆为${toTextStyle('鱼','fish')}提供指数加成。`,
+
+        'research-c15-name': "自发辐射",
+        'research-c15-desc': `你可以用正常的${toTextStyle('鱼','fish')}而不是被辐射污染的${toTextStyle('鱼'+icon('radioactive'),'fish')}以 <b>^0.0001</b> 的价格购买辐射升级。每升一级，该指数将 <b>×10</b>.`,
+
+        'research-m1-name': "岩浆之幸",
+        'research-m1-desc': `每升一级，${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+5</b>.`,
+
+        'research-m2-name': "超高硬度鱼鳞",
+        'research-m2-desc': `${toTextStyle("鲨鱼",'shark')}等级的价格折算延迟 <b>+1000</b>.`,
+
+        'research-m3-name': "辐射折算",
+        'research-m3-desc': `每升一级，前两次提升辐射上限的价格折算延迟 <b>+1</b>.`,
 
         // Exploration
 
@@ -329,6 +380,7 @@ LANGUAGES.ZH = {
 			x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('鱼','fish')}的加成，其指数是原来的 <h4>${formatPow(x,3)}</h4>.`,
             x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
+			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -346,13 +398,13 @@ LANGUAGES.ZH = {
             ["霓虹之鲨", x=>`<b>氖</b>的等级额外加 <b>${format(x,0)}</b>.`],
 
             ["马里亚纳海沟", x=>`移除在<b>太平洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
-            ["里特克深渊", x=>`移除在<b>北冰洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
-            ["密尔沃基深渊", x=>`移除在<b>大西洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
-            ["南桑威奇海沟", x=>`移除在<b>南冰洋</b>中下潜深度的上限，并增强<b>太平洋</b>的效果。`],
+            ["里特克深渊", x=>`移除在<b>北冰洋</b>中下潜深度的上限，并增强<b>北冰洋</b>的效果。`],
+            ["密尔沃基深渊", x=>`移除在<b>大西洋</b>中下潜深度的上限，并增强<b>大西洋</b>的效果。`],
+            ["南桑威奇海沟", x=>`移除在<b>南冰洋</b>中下潜深度的上限，并增强<b>南冰洋</b>的效果。`],
 
-            ["暴胀的鱼", x=>`${toTextStyle('鱼','fish')}的数量是原来的 <b>${format(x)}th</b> 次幂。`],
-            ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}th</b> 次幂。`],
-            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}th</b> 次幂。`],
+            ["暴胀的鱼", x=>`${toTextStyle('鱼','fish')}的数量是原来的 <b>${format(x)}</b> 次幂。`],
+            ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`],
+            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`],
             ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`],
 
             ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`],
@@ -364,6 +416,16 @@ LANGUAGES.ZH = {
             ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["超然之躯", x=>`${toTextStyle('岩浆','core')}碎片使<b>辐射之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["永恒之躯", x=>`<b>完美之躯</b>的效果是原来的<b>平方</b>。`],
+
+            ['海洋之幸', x=>`${toTextStyle('鱼','fish')} 使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
+            ['土地之幸', x=>`<b>石头</b>使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
+            ['鲨鱼之幸', x=>`${toTextStyle('类人','humanoid')}鲨鱼使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
+            ['纯靠幸运', x=>`${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
+
+            ["更好的铁", x=>`提升<b>铁</b>的效果。`],
+            ["更好的镍", x=>`提升<b>镍</b>的效果。`],
+            ["更好的氧", x=>`提升<b>氧</b>的效果。`],
+            ["更好的氖", x=>`提升<b>氖</b>的效果。`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"成功":y?"失败":"正在进行",
@@ -398,6 +460,39 @@ LANGUAGES.ZH = {
             ],
         ],
 
+        // Cultivation
+
+        'ore-names': {
+            'stone': "石头",
+            'coal': "煤",
+            'iron': "铁",
+            'gold': "金",
+            'platinum': "铂",
+            'diamond': "钻石",
+            'bismuth': "铋",
+            'obsidian': "黑曜石",
+            'vibranium': "振金",
+            'radium': "镭-223",
+            'uranium': "铀-235",
+            'berkelium': "锫-247",
+            'californium': "锎-252",
+            'oganesson': "鿫-294",
+            'sharkium': "鲨元素",
+        },
+
+        'mined-resources-text': `已获得的矿物`,
+        'mining-tier-reset': `提升<b>挖矿等级</b>，增加矿坑的血量和资源产量。`,
+        'mining-tier-ore-unlock': x=>`解锁${x}矿坑`,
+        'mining-tier-ore-generation': x=>`你无法直接在矿坑中获得${x}，但是你获得它的速度由挖矿速度和幸运草的数量决定。`,
+
+        'mining-tier-bonus': [
+            x=>`矿坑的血量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>石头</b>和<b>煤炭</b>的产量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>铁</b>的产量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>金</b>的产量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>铂</b>的产量 <b>${formatMult(x)}</b>.`,
+        ],
+
         // Automation
 
         'auto-shark-name': `自动升级${toTextStyle("鲨鱼","shark")}`,
@@ -416,23 +511,25 @@ LANGUAGES.ZH = {
         'progress-0-text': r => `${toTextStyle('鱼','fish')}的总量达到 ${format(r)}`, 
         get 'progress-0-cond-text'() { return `进行一次${toTextStyle('重生','prestige')}` },
 
-        'progress-1-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 解锁自动化`,
-        'progress-2-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 解锁研究`,
-        'progress-3-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁探索`,
+        'progress-1-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 时，解锁自动化`,
+        'progress-2-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 时，解锁研究`,
+        'progress-3-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 时，解锁探索`,
         'progress-4-text': r => `在太平洋中下潜 ${format(r)} 米解锁${toTextStyle('地核','core')}`,
 
         'progress-5-text': r => `${toTextStyle('重生','prestige')}碎片的总量达到 ${format(r)}`, 
         get 'progress-5-cond-text'() { return `进入${toTextStyle('地核','core')}` },
 		
-		'progress-6-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁${toTextStyle('地核','core')}的下一个机制`, 
-		'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 解锁新的海洋`, 
-		'progress-8-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 解锁${toTextStyle('地核','core')}的下一个机制`, 
-        'progress-9-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)} 解锁新的${toTextStyle('地核','core')}反应堆`, 
+		'progress-6-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 时，解锁${toTextStyle('地核','core')}的下一个机制`, 
+		'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 时，解锁新的海洋`, 
+		'progress-8-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 时，解锁${toTextStyle('地核','core')}的下一个机制`, 
+        'progress-9-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)} 时，解锁新的${toTextStyle('地核','core')}反应堆`, 
 
 		'progress-10-text': r => `吃${toTextStyle('鱼','fish')}总量达到${format(r)}`, 
         get 'progress-10-cond-text'() { return `${toTextStyle('鲨鱼','shark')}进化` },
 
-        'progress-11-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
+        'progress-11-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
+        'progress-12-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
+        'progress-13-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁下一行${toTextStyle('进化','humanoid')}树`, 
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -478,9 +575,12 @@ LANGUAGES.ZH = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('岩浆','core')}碎片`,
 		//'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('辐射' + icon("radioactive"),'核心')}`,
 
+        'shark-overpopulation': (x,y) => `因${toTextStyle('鲨鱼','shark')}过大，你的${toTextStyle('鲨鱼','shark')}在吃了 <h4>${format(y)}</h4> 条鱼之后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>.`,
+
         'shark-rank-bonuses': {
             fish: x => `${toTextStyle('鱼','fish')}的数量是原来的${formatPow(x)}`,
             prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的${formatPow(x)}`,
+			mining_damage: x => `对矿坑的伤害 ${formatMult(x)}`,
         },
 
         'level': "等级",
@@ -491,11 +591,18 @@ LANGUAGES.ZH = {
         'next-at': "下一个需要",
         'depth': "深度",
 		'reward': "奖励",
+		'new-preset': "新预设",
+
+        'remove': "删除",
+        'overwrite-current': "覆盖",
+        'load': "导入",
+        'force-load': "强制导入",
 
         'offline-time-text': x=>`您离线了 <b>${formatTime(x,0)}</b>.`,
 
         'research-afford': bool => bool ? "购买" : "无法购买",
         'research-bought': bool => bool ? `<b>已购买</b>` : `<b>未购买</b>`,
+		'research-pages': x => `共 ${x} 页`,
 
         'off-on': bool => bool ? "开" : "关",
 
@@ -507,10 +614,13 @@ LANGUAGES.ZH = {
         'popup-desc' : {
             import: `在此粘贴你的存档。警告：这将覆盖你当前的存档！`,
             wipe: `你确定要删除存档吗？请输入 "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
+			"evolution-tree-respec": `你确定要重置${toTextStyle('进化','humanoid')}树吗？这将触发一次不获得${toTextStyle('类人','humanoid')}鲨鱼的${toTextStyle('进化','humanoid')}重置。`,
+            "evolution-tree-import": `输入进化树。`,
         },
 
         'notify-desc' : {
             save: "游戏已保存",
+			copy_to_clipboard: "已导出到剪贴板",
         },
 
         'radio-desc' : {
@@ -519,6 +629,9 @@ LANGUAGES.ZH = {
             'autosave': ['自动存档',['禁用','启用']],
             'autosave-time': ['自动存档时间',['15 秒','30 秒','60 秒','120 秒']],
             'offline': ['离线进度',['禁用','启用']],
+			'max-research-amt': ['每页研究个数',['∞','15','20','25','30']],
+            'visible-research': [`显示已购买的研究`,["显示","隐藏"]],
+			'notify': ['标签高亮提示',['禁用','启用']],
         },
 
         'radio-desc-default' : ['禁用','启用'],
