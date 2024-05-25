@@ -19,6 +19,7 @@ function reloadTemp() {
 
         su_el: {},
         su_locked: {},
+        su_automated: [],
 
         depth_gain: [],
         explore_mult: [],
@@ -43,6 +44,10 @@ function reloadTemp() {
 
         mining_tier_bonus: [],
 
+        forge_speed: E(1),
+        forge_affords: {},
+        forge_effect: {},
+
         shark_op: E(1),
         shark_op_start: E('ee40'),
     }
@@ -62,12 +67,16 @@ function updateTemp() {
     updateExplorationTemp()
     updateSharkTemp()
 
+    var asu = []
+    for (let [i,v] of Object.entries(AUTOMATION)) if ('su' in v && isAutoEnabled(i)) asu.push(...v.su)
+    tmp.su_automated = asu
+
     for (let [i,v] of Object.entries(CURRENCIES)) tmp.currency_gain[i] = preventNaNDecimal(v.gain??E(0))
 
     reloadOres()
 }
 
 function updateOptions() {
-    options.notation = ['sc','st','mixed_sc'][player.radios["notation"]]
+    options.notation = ['sc','st','mixed_sc','log'][player.radios["notation"]]
     options.max_range = [3,6,9,12,15][player.radios["comma-format"]]
 }

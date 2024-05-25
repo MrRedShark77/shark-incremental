@@ -99,6 +99,10 @@ const PROGRESS = [
         auto: true,
         get amount() { return player.humanoid.mining_tier },
         require: 6,
+    },{
+        auto: true,
+        get amount() { return player.humanoid.mining_tier },
+        require: 16,
     },
 ]
 

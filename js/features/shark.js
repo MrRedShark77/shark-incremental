@@ -22,6 +22,8 @@ const SHARK = {
 
         mult = mult.mul(simpleETEffect(0)).mul(simpleETEffect(1)).mul(simpleETEffect(2)).mul(simpleETEffect(3)).mul(getCRBoost(7))
 
+        exp = exp.add(researchEffect('f1',0))
+
         tmp.shark_elo_mult = mult, tmp.shark_elo_exp = exp
 
         return x.mul(mult).pow(exp).floor()
@@ -29,7 +31,7 @@ const SHARK = {
 
     get ELO_calculation() {
         var h = `${lang_text("full-shark-level")} × ${CURRENCIES.humanoid.costName} × ${tmp.shark_elo_mult.format()}`
-        if (tmp.shark_elo_exp.neq(1)) h += `<sup>${tmp.shark_elo_exp.format()}</sup>`
+        if (tmp.shark_elo_exp.neq(1)) h = `(${h})<sup>${tmp.shark_elo_exp.format()}</sup>`
         return `[${h}]`
     },
 
@@ -40,7 +42,8 @@ const SHARK = {
         bonuses: {
             fish: [()=>player.shark_rank.gte(1),l=>Decimal.pow(1.1,l),E(1)],
             prestige: [()=>player.shark_rank.gte(50),l=>Decimal.pow(1.05,l.sub(49)),E(1)],
-            mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)),E(1)],
+            mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)).min(1e4),E(1)],
+            so: [()=>player.shark_rank.gte(100),l=>Decimal.pow(1.5,l.sub(99)),E(1)],
         },
     },
 }
@@ -174,11 +177,11 @@ const SHARK_UPGRADES = {
 
     m1: {
         cost: l => {
-            let x = Decimal.pow(3,l.scale(15,2,'L')).mul(10)
+            let x = Decimal.pow(3,l.scale(50,1.5,'P').scale(15,2,'L')).mul(10)
             return x
         },
         bulk: x => {
-            return x.div(10).log(3).scale(15,2,'L',true).floor().add(1)
+            return x.div(10).log(3).scale(15,2,'L',true).scale(50,1.5,'P',true).floor().add(1)
         },
 
         curr: "stone",
@@ -204,11 +207,11 @@ const SHARK_UPGRADES = {
         req: ()=>player.humanoid.mining_tier.gte(3),
 
         cost: l => {
-            let x = Decimal.pow(3,l.scale(10,2,'L')).mul(10)
+            let x = Decimal.pow(3,l.scale(25,1.5,'P').scale(10,2,'L')).mul(10)
             return x
         },
         bulk: x => {
-            return x.div(10).log(3).scale(10,2,'L',true).floor().add(1)
+            return x.div(10).log(3).scale(10,2,'L',true).scale(25,1.5,'P',true).floor().add(1)
         },
 
         curr: "iron",
@@ -236,11 +239,11 @@ const SHARK_UPGRADES = {
         req: ()=>player.humanoid.mining_tier.gte(9),
 
         cost: l => {
-            let x = Decimal.pow(4,l).mul(10)
+            let x = Decimal.pow(4,l.scale(25,1.5,'P').scale(10,2,'L')).mul(10)
             return x
         },
         bulk: x => {
-            return x.div(10).log(4).floor().add(1)
+            return x.div(10).log(4).scale(10,2,'L',true).scale(25,1.5,'P',true).floor().add(1)
         },
 
         curr: "platinum",
@@ -305,6 +308,14 @@ function updateSharkTemp() {
 
     tmp.su_el.fish = hasResearch('p2')
     tmp.su_el.prestige = hasDepthMilestone(1,2)
+
+    if (hasForgeUpgrade('auto')) {
+        tmp.su_el.stone = true
+        tmp.su_el.coal = true
+        tmp.su_el.iron = true
+        tmp.su_el.gold = true
+        tmp.su_el.platinum = true
+    }
 
     for (let [i,v] of Object.entries(SHARK_UPGRADES)) {
         var lvl = player.shark_upg[i]

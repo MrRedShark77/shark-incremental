@@ -308,7 +308,7 @@ function toSuperscript(value) {
 function format(ex, acc=2, max=options.max_range, type=options.notation) {
     ex = E(ex)
 
-    neg = ex.lt(0)?"-":""
+    var neg = ex.lt(0)?"-":""
     if (ex.mag == Infinity) return neg + '∞'
     if (Number.isNaN(ex.mag)) return neg + 'NaN'
     if (ex.lt(0)) ex = ex.mul(-1)
@@ -334,7 +334,7 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
                 return neg+(be?'':m.toFixed(2))+'e'+format(e, 0, max, "sc")
             }
         case "st":
-            if (e.lt(max)) return format(ex, acc, max, "sc")
+            if (e.lt(max) || ex.gte("eeee10")) return format(ex, acc, max, "sc")
 
             let e3 = ex.log(1e3).floor()
             if (e3.lt(1)) {
@@ -366,6 +366,9 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
               let m = ex.div(E(10).pow(e3_mul))
               return neg+(ee.gte(10)?'':(m.toFixed(E(3).sub(e.sub(e3_mul)).toNumber())))+final
             }
+        case "log":
+          if (e.lt(max) || ex.gte("eeee10")) return format(ex, acc, max, "sc")
+          return neg+"e"+format(ex.log10(), 3, max, "log")
         default:
             return neg+FORMATS[type].format(ex, acc, max)
     }
@@ -409,11 +412,22 @@ function formatGain(a,e) {
 function formatTime(ex,acc=0,type="s") {
   ex = E(ex)
   if (ex.mag == Infinity) return 'Forever'
-  if (ex.gte(31536000)) return format(ex.div(31536000).floor(),0)+" years"+(ex.div(31536000).gte(1e9) ? "" : " " + formatTime(ex.mod(31536000),acc,'y'))
-  if (ex.gte(86400)) return format(ex.div(86400).floor(),0)+" days "+formatTime(ex.mod(86400),acc,'d')
-  if (ex.gte(3600)) return format(ex.div(3600).floor(),0)+":"+formatTime(ex.mod(3600),acc,'h')
-  if (ex.gte(60)||type=="h") return (ex.div(60).gte(10)||type!="h"?"":"0")+format(ex.div(60).floor(),0)+":"+formatTime(ex.mod(60),acc,'m')
-  return (ex.gte(10)||type!="m" ?"":"0")+format(ex,acc)+(type=='s'?"s":"")
+  if (ex.gte(31536000)) {
+    return format(ex.div(31536000).floor(),0)+"y"+(ex.div(31536000).gte(1e9) ? "" : " " + formatTime(ex.mod(31536000),acc,'y'))
+  }
+  if (ex.gte(86400)) {
+    var n = ex.div(86400).floor()
+    return (n.gt(0) || type == "d"?format(ex.div(86400).floor(),0)+"d ":"")+formatTime(ex.mod(86400),acc,'d')
+  }
+  if (ex.gte(3600)) {
+    var n = ex.div(3600).floor()
+    return (n.gt(0) || type == "h"?format(ex.div(3600).floor(),0)+"h ":"")+formatTime(ex.mod(3600),acc,'h')
+  }
+  if (ex.gte(60)) {
+    var n = ex.div(60).floor()
+    return (n.gt(0) || type == "m"?format(n,0)+"m ":"")+formatTime(ex.mod(60),acc,'m')
+  }
+  return ex.gt(0) || type == "s"?format(ex,acc)+"s":""
 }
 
 function formatReduction(ex,acc) { return format(Decimal.sub(1,ex).mul(100),acc)+"%" }

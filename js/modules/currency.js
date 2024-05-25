@@ -22,6 +22,9 @@ const CURRENCIES = {
             if (inExploration(4)) x = expPow(x,0.75)
 
             var s = E('ee40'), pre_s = x
+
+            s = s.pow(getSharkRankBonus('so'))
+            
             tmp.shark_op_start = s
 
             if (x.gte(s)) {
@@ -52,7 +55,7 @@ const CURRENCIES = {
 
             x = expPow(x,exp).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1])
 
-            x = x.pow(tmp.explore_eff[3]).pow(simpleETEffect(13)).pow(getSharkRankBonus('prestige'))
+            x = x.pow(tmp.explore_eff[3]).pow(simpleETEffect(13)).pow(getSharkRankBonus('prestige')).pow(forgeUpgradeEffect('shard'))
 
             if (hasDepthMilestone(0,0)) x = x.pow(1.05)
             if (inExploration(1)) x = x.root(2)

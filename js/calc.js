@@ -1,6 +1,8 @@
 function calc(dt) {
     if (tmp.pass > 0) tmp.pass--
     else {
+        let OA = offline.active
+
         for (let [i,v] of Object.entries(CURRENCIES)) {
             var passive = v.passive ?? 1
             gainCurrency(i, tmp.currency_gain[i].mul(dt*passive))
@@ -65,21 +67,48 @@ function calc(dt) {
         }
 
         if (player.feature >= 13) {
-            var m = mine_time.add(tmp.mining_speed.mul(dt))
+            if (OA) {
+                var ms = tmp.mining_speed, md = tmp.mining_damage, mf = tmp.mining_fortune, hb = tmp.mining_tier_bonus[0]
 
-            if (m.gte(1)) {
-                var dmg = m.floor().mul(tmp.mining_damage), o = ores_grid[0]
+                for (let i = tmp.ore_generator; i < tmp.ore_spawn_base+1; i++) {
+                    var ok = ORE_KEYS[i], o = ORES[ok]
+                    var health = Decimal.mul(10, o.dense??1).mul(hb)
+                    var value = Decimal.pow(2,mf.div(100).mul(o.luck_penalty??1)).mul(md.div(health).min(1)).mul(ms).mul(o.mult??1).div(2**(i-1))
 
-                o.health = o.health.sub(dmg)
-                if (o.health.round().lte(0)) {
-                    gainCurrency(o.name,o.value)
-                    ores_grid.splice(0,1)
+                    gainCurrency(ok,value.mul(dt))
+                }
+            } else {
+                var m = mine_time.add(tmp.mining_speed.mul(dt))
+
+                if (m.gte(1)) {
+                    var dmg = m.floor().mul(tmp.mining_damage), o = ores_grid[0]
+
+                    o.health = o.health.sub(dmg)
+                    if (o.health.round().lte(0)) {
+                        gainCurrency(o.name,o.value)
+                        ores_grid.splice(0,1)
+                    }
+
+                    m = m.mod(1)
                 }
 
-                m = m.mod(1)
+                mine_time = m
             }
+        }
 
-            mine_time = m
+        if (player.feature >= 15) {
+            var forge = player.humanoid.forge
+            if (forge.queue != "") {
+                forge.time = forge.time.add(tmp.forge_speed.mul(dt))
+                if (forge.time.gte(FORGE[forge.queue].time[forge.level[forge.queue]])) {
+                    forge.time = new Decimal(0)
+                    forge.level[forge.queue]++
+
+                    addNotify(lang_text("notify-desc").forge_completed(lang_text('forge')[forge.queue][0]))
+
+                    forge.queue = ""
+                }
+            }
         }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)

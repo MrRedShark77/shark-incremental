@@ -68,6 +68,7 @@ LANGUAGES.EN = {
         'tab-evolution-tree': toTextStyle('Evolution','humanoid') + " Tree",
         'tab-evolution-goal': toTextStyle('Evolution','humanoid') + " Goals",
         'tab-cultivation': "Cultivation",
+        'tab-forge': "Forge",
 
         // Elements
 
@@ -269,6 +270,15 @@ LANGUAGES.EN = {
         'research-m3-name': "Scaled Radioactive Boost",
         'research-m3-desc': `Delay the first 2 radioactive boost scalings by <b>+1</b> per level.`,
 
+        'research-m4-name': "Better Mining Tier",
+        'research-m4-desc': `The second, third, fourth, and fifth effects of the mining tier are <b>+25%</b> stronger per level.`,
+
+        'research-f1-name': "Basic Rank Exponent",
+        'research-f1-desc': `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>+25%</b> per level.`,
+
+        'research-f2-name': "More Sharkoid Faith",
+        'research-f2-desc': `Gain more ${toTextStyle('Sharkoid Faith','humanoid')} from ${toTextStyle('Fish','fish')} & ${toTextStyle("Prestige",'prestige')} shards.`,
+
         // Exploration
 
         'explore-while': `While exploring`,
@@ -381,6 +391,7 @@ LANGUAGES.EN = {
             x=>`The first three ${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
             x=>`${toTextStyle('Shark','shark')} Level boosts ${toTextStyle('Shark','shark')} ELO by <h4>${formatMult(x)}</h4>.`,
             x=>`Boost <b>Stone</b> amount by <h4>${formatMult(x)}</h4>.`,
+            x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
         ],
 
         // Evolution Tree
@@ -426,6 +437,16 @@ LANGUAGES.EN = {
             ["Better Nickel", x=>`Improve <b>Nickel</b> building better.`],
             ["Better Oxygen", x=>`Improve <b>Oxygen</b> building better.`],
             ["Better Neon", x=>`Improve <b>Neon</b> building better.`],
+
+            ["Ironic Iron", x=>`Improve <b>Iron</b> reactor better.`],
+            ["Piggy Bank", x=>`Improve <b>Nickel</b> reactor better.`],
+            ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`],
+            ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`],
+
+            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatMult(x)}</b> stronger.`],
+            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatMult(x)}</b> stronger.`],
+            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatMult(x)}</b> stronger.`],
+            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatMult(x)}</b> stronger.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
@@ -491,7 +512,23 @@ LANGUAGES.EN = {
             x=>`<b>Iron</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Gold</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Platinum</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Bismuth</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Diamond</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
+
+        // Forge
+
+        'forge': {
+            'anvil': ['Anvil Tier','Unlocks new forge upgrades.'],
+            'drill': ['Drill Tier','Increases the exponent of <b>Stone</b> mined.'],
+            'shard': ['Refined Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
+            'tree': ['Extraordinary Tree',`Unlocks new row of the ${toTextStyle('Evolution','humanoid')} tree.`],
+            'adv_research': ['Advanced Research',`Unlocks new research.`],
+            'auto': ['Advanced Automation',`Unlocks new automation.`],
+        },
+        'forge-progress': (x,s) => x ? `Forging <b>${x}</b>... <b>${s}</b>` : `Forge is empty`,
+        'forge-speed': x => `Forging Speed: <b>${x}</b>`,
+        'forge-button': ['Cancel Forging','Start Forging','Not enough materials to forge'],
 
         // Automation
 
@@ -502,6 +539,7 @@ LANGUAGES.EN = {
         'auto-core_reactor-name': `Auto-${toTextStyle("Core","core")} Reactor`,
         'auto-core_radiation-name': `Auto-${toTextStyle("Core","core")} Radiation`,
         'auto-radioactive_boosts-name': `Auto-Radioactive Boosts`,
+        'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -530,6 +568,7 @@ LANGUAGES.EN = {
         'progress-11-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
         'progress-12-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
         'progress-13-text': r => `Reach Mining Tier ${format(r,0)} to unlock a new row of ${toTextStyle('Evolution','humanoid')} tree`, 
+        'progress-14-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -581,6 +620,7 @@ LANGUAGES.EN = {
             fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,
             prestige: x => `${formatPow(x)} ${toTextStyle('Prestige','prestige')} shard`,
             mining_damage: x => `${formatMult(x)} Mining Damage`,
+            so: x => `${formatPow(x)} ${toTextStyle('Shark','shark')} overpopulation delay`,
         },
 
         'level': "Level",
@@ -592,6 +632,7 @@ LANGUAGES.EN = {
         'depth': "Depth",
         'reward': "Reward",
         'new-preset': "New Preset",
+        'maxed': "Maxed",
 
         'remove': "Remove",
         'overwrite-current': "Overwrite Current",
@@ -621,10 +662,11 @@ LANGUAGES.EN = {
         'notify-desc' : {
             save: "Game Saved!",
             copy_to_clipboard: "Copied to Clipboard!",
+            forge_completed: x => `Forged <b>${x}</b> successfully!`,
         },
 
         'radio-desc' : {
-            'notation': ['Formatting Notation',['Scientific','Standard','Mixed Scientific']],
+            'notation': ['Formatting Notation',['Scientific','Standard','Mixed Scientific','Logarithm']],
             'comma-format': ['Maximum OoMs of Number Commas',['3','6','9','12','15']],
             'autosave': ['Autosaving',['Disabled','Enabled']],
             'autosave-time': ['Autosave Interval',['15s','30s','60s','120s']],

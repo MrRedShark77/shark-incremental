@@ -28,6 +28,7 @@ function setupHTML() {
     setupExplorationHTML()
     setupCoreHTML()
     setupEvolutionHTML()
+    setupForgeHTML()
 
     setupLanguageHTML()
 

@@ -11,8 +11,8 @@ const EXPLORE = [
         effDesc: x => formatMult(x) + " " + CURRENCIES.fish.costName,
 
         cost: [
-            [l=>Decimal.pow('1e700', Decimal.pow(1.015, l)), x=>x.log('1e700').log(1.015).floor().add(1),"fish"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow('1e700', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e700').log(1.015).mul(tmp.explore_MP).floor().add(1),"fish"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e135'),
@@ -32,8 +32,8 @@ const EXPLORE = [
         effDesc: x => formatMult(x) + " " + CURRENCIES.prestige.costName,
 
         cost: [
-            [l=>Decimal.pow('1e120', Decimal.pow(1.015, l)), x=>x.log('1e120').log(1.015).floor().add(1),"prestige"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow('1e120', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e120').log(1.015).mul(tmp.explore_MP).floor().add(1),"prestige"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e440'),
@@ -54,8 +54,8 @@ const EXPLORE = [
         effDesc: x => formatPow(x,3) + " " + CURRENCIES.fish.costName,
 
         cost: [
-            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).floor().add(1),"coral"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"coral"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e170'),
@@ -76,8 +76,8 @@ const EXPLORE = [
         effDesc: x => formatPow(x,3) + " " + CURRENCIES.prestige.costName,
 
         cost: [
-            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).floor().add(1),"ice"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"ice"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e200'),
@@ -99,8 +99,8 @@ const EXPLORE = [
         effDesc: x => formatMult(x) + " " + lang_text("radioactive-name"),
 
         cost: [
-            [l=>Decimal.pow(10, l.pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).floor().add(1),"core"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).mul(tmp.explore_MP).floor().add(1),"core"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e6000'),
@@ -261,6 +261,8 @@ function updateExplorationHTML() {
 }
 
 function updateExplorationTemp() {
+    tmp.explore_MP = getCRBoost(9)
+
     EXPLORE.forEach((x,i)=>{
         tmp.explore_eff[i] = x.effect(player.explore.unl > i ? player.explore.res[i] : E(0), player.explore.depth[i])
 

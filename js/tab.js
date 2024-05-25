@@ -5,7 +5,7 @@ const TAB_IDS = {
         html: updateSharkHTML,
 
         notify() {
-            return CURRENCIES.fish.amount.gte(SHARK.cost())
+            return !isAutoEnabled('shark') && CURRENCIES.fish.amount.gte(SHARK.cost())
         },
     },
     'options': {
@@ -54,6 +54,7 @@ const TAB_IDS = {
         html: updateExplorationHTML,
 
         notify() {
+            if (isAutoEnabled('eu')) return false
             for (let i = 0; i < EXPLORE.length; i++) if (i < player.explore.unl) {
                 var e = EXPLORE[i]
 
@@ -68,6 +69,7 @@ const TAB_IDS = {
         html: updateCoreHTML,
 
         notify() {
+            if (isAutoEnabled('core_reactor')) return false
             for (let i = 0; i < tmp.core_reactor_unl; i++) {
                 if (CORE_REACTOR[i].resource.gte(getCoreReactorCost(i))) return true
             }
@@ -79,10 +81,10 @@ const TAB_IDS = {
 
         notify() {
             var rad = player.core.radiation
-            if (rad.amount.gte(CORE_RAD.limit())) return true
+            if (!isAutoEnabled('radioactive_boosts') && rad.amount.gte(CORE_RAD.limit())) return true
 
             var active = rad.active, r_c15 = hasResearch('c15')
-            return (active || r_c15) && CURRENCIES.fish.amount.pow(!active && r_c15 ? researchEffect('c15',0) : 1).gte(CORE_RAD.genCost(rad.gen))
+            return !isAutoEnabled('core_radiation') && (active || r_c15) && CURRENCIES.fish.amount.pow(!active && r_c15 ? researchEffect('c15',0) : 1).gte(CORE_RAD.genCost(rad.gen))
         },
     },
     'core-assembler': {
@@ -120,7 +122,16 @@ const TAB_IDS = {
         notify() {
             return CURRENCIES.stone.amount.gte(MINING_TIER.require)
         },
-    }
+    },
+    'forge': {
+        html: updateForgeHTML,
+
+        notify() {
+            if (player.humanoid.forge.queue != '') return false
+            for (let i of FORGE_KEYS) if (tmp.forge_affords[i]) return true
+            return false
+        },
+    },
 }
 
 const TABS = [
@@ -153,6 +164,7 @@ const TABS = [
             ["evolution-tree"],
             ["evolution-goal",()=>player.feature>=12],
             ["cultivation",()=>player.feature>=13],
+            ["forge",()=>player.feature>=15],
         ],
     },
 ]
@@ -168,7 +180,7 @@ function switchTab(t,st) {
 }
 
 function getTabNotification(id) {
-    return TAB_IDS[id].notify?.() || id in SU_TABS && SU_TABS[id].filter(x => canAffordSharkUpgrade(x)).length > 0
+    return TAB_IDS[id].notify?.() || id in SU_TABS && SU_TABS[id].filter(x => !tmp.su_automated.includes(x) && canAffordSharkUpgrade(x)).length > 0
 }
 
 function updateTabs() {

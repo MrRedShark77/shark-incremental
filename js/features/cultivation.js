@@ -2,7 +2,7 @@ const ORES = {
     'stone': {
         color: '#888c8d',
         dense: 1,
-        get mult() { return Decimal.mul(tmp.mining_tier_bonus[1],sharkUpgEffect('m3')).mul(getCRBoost(8)).mul(sharkUpgEffect('m5')) },
+        get mult() { return Decimal.mul(tmp.mining_tier_bonus[1],sharkUpgEffect('m3')).mul(getCRBoost(8)).mul(sharkUpgEffect('m5')).pow(forgeUpgradeEffect('drill')) },
     },
     'coal': {
         color: '#343735',
@@ -27,13 +27,18 @@ const ORES = {
     'bismuth': {
         color: `linear-gradient(0deg, rgb(255,74,220) 0%, rgb(223,177,79) 25%, rgb(239,241,122) 50%, rgb(120,203,109) 75%, rgb(24,247,255) 100%)`,
         textColor: 'rgb(255,74,220)',
-        dense: 5e5,
+        dense: 1e8,
+        get mult() { return tmp.mining_tier_bonus[5]??1 },
     },
     'diamond': {
         color: '#b9f2ff',
+        dense: 1e11,
+        get mult() { return tmp.mining_tier_bonus[6]??1 },
     },
     'obsidian': {
         color: '#441269',
+        dense: 1e13,
+        luck_penalty: 0.1,
     },
     'vibranium': {
         color: '#4AE07B',
@@ -67,22 +72,29 @@ const ORE_KEYS = Object.keys(ORES)
 
 const MINING_TIER = {
     get require() {
-        var x = Decimal.pow(10,player.humanoid.mining_tier.scale(10,1.5,'L').pow(1.25)).mul(100)
+        var x = Decimal.pow(10,player.humanoid.mining_tier.scale(15,1.5,'P').scale(10,1.5,'L').pow(1.25)).mul(100)
 
         return x.ceil()
     },
     get bulk() {
-        var x = CURRENCIES.stone.amount.div(100).log(10).root(1.25).scale(10,1.5,'L',true)
+        var x = CURRENCIES.stone.amount.div(100).log(10).root(1.25).scale(10,1.5,'L',true).scale(15,1.5,'P',true)
 
         return x.floor().add(1)
     },
 
     get bonus() {
-        var t = player.humanoid.mining_tier, x = [Decimal.pow(4,t),Decimal.pow(5,t)]
 
-        if (t.gte(4)) x.push(Decimal.pow(3,t.sub(3)))
-        if (t.gte(7)) x.push(Decimal.pow(4,t.sub(6)))
-        if (t.gte(10)) x.push(Decimal.pow(3,t.sub(9)))
+        var t = player.humanoid.mining_tier
+
+         var res_m4 = researchEffect('m4'), t_m4 = t.mul(res_m4)
+        
+        var x = [Decimal.pow(4,t.scale(20,2,'P')),Decimal.pow(5,t_m4)]
+
+        if (t.gte(4)) x.push(Decimal.pow(3,t_m4.sub(3)))
+        if (t.gte(7)) x.push(Decimal.pow(4,t_m4.sub(6)))
+        if (t.gte(10)) x.push(Decimal.pow(3,t_m4.sub(9)))
+        if (t.gte(17)) x.push(Decimal.pow(3,t.sub(16)))
+        if (t.gte(21)) x.push(Decimal.pow(3,t.sub(20)))
 
         return x
     },
@@ -99,8 +111,8 @@ const MINING_TIER = {
         }
     },
 
-    base_milestone: [0,3,6,9,13],
-    gen_milestone: [8,11],
+    base_milestone: [0,3,6,9,16,20,24],
+    gen_milestone: [8,11,18,23],
 
     get base() {
         var b = this.base_milestone.filter(x => player.humanoid.mining_tier.gte(x)).length
@@ -129,7 +141,7 @@ function reloadOres() {
         var name = ORE_KEYS[Math.min(ORE_KEYS.length-1, tmp.ore_spawn_base, tmp.ore_generator+Math.floor(Math.logBase(Math.random(), 1/3)))]
         var oo = ORES[name]
 
-        var fortune = mf.floor()
+        var fortune = mf.mul(oo.luck_penalty??1).floor()
         if (mf.mod(1).gt(Math.random())) fortune = fortune.add(1)
 
         var p = Math.random()**-0.5
@@ -179,7 +191,7 @@ function updateCultivationHTML() {
         e.innerHTML = `<div>${h}</div>`
     }
 
-    el("mining-progress").innerHTML = formatTime(Decimal.sub(1,mine_time).div(tmp.mining_speed).max(0),1)
+    el("mining-progress").innerHTML = tmp.mining_speed.gte(10) ? format(tmp.mining_damage.mul(tmp.mining_speed))+"/s" : formatTime(Decimal.sub(1,mine_time).div(tmp.mining_speed).max(0),1)
     el("mining-damage").innerHTML = tmp.mining_damage.format(0)
     el("mining-fortune").innerHTML = tmp.mining_fortune.format(0)
     

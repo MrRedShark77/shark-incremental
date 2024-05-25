@@ -42,6 +42,7 @@
     <script src="js/features/core-assembler.js"></script>
     <script src="js/features/evolution.js"></script>
     <script src="js/features/cultivation.js"></script>
+    <script src="js/features/forge.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -246,6 +247,18 @@
                     </td>
                 </tr>
             </table>
+        </div><div id="forge-tab">
+            <div id="forge-status"></div><div style="width: 100%; min-height: 209px; margin-bottom: 3px; padding-bottom: 3px; border-bottom: solid 2px #075551;">
+                <div id="forge-description-div">
+                    <div id="forge-description">
+                        
+                    </div><div class="table-center">
+                        <button class="big-btn" id="forge-btn" onclick="doForge()">Forge</button>
+                    </div>
+                </div>
+            </div><div class="table-center" id="forge-table">
+                
+            </div>
         </div>
 
         <div id="options-tab">
@@ -297,7 +310,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.2.1 by MrRedShark77
+            Shark Incremental v0.2.2 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

@@ -59,6 +59,12 @@ function getPlayerData() {
 
             mining_tier: E(0),
             ores: {},
+
+            forge: {
+                level: {},
+                queue: '',
+                time: E(0),
+            },
         },
 
         radios: {},
@@ -84,6 +90,7 @@ function getPlayerData() {
     }
     for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
     for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0)
+    for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0
 
     return s
 }

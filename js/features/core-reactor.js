@@ -11,7 +11,9 @@ const CORE_REACTOR = [
         effect: l=>{
             let x = player.fish.max(10).log10().log10().div(100).mul(l).mul(coreReactorEffect(4))
             if (hasResearch('c8')) x = x.mul(2)
-            return x.add(1)
+            x = x.add(1)
+            if (hasEvolutionTree(32)) x = x.pow(1.75)
+            return x
         },
         effDesc: x => formatPow(x,3),
     },{
@@ -26,7 +28,9 @@ const CORE_REACTOR = [
         effect: l=>{
             let x = player.prestige.shards.max(10).log10().log10().div(100).mul(l).mul(coreReactorEffect(5))
             if (hasResearch('c4')) x = x.mul(2)
-            return x.add(1)
+            x = x.add(1)
+            if (hasEvolutionTree(33)) x = x.pow(5.6)
+            return x
         },
         effDesc: x => formatPow(x,3),
     },{
@@ -45,7 +49,11 @@ const CORE_REACTOR = [
                 x = x.mul(player.explore.res[i].add(10).log10())
             }
 
-            return Decimal.pow(expPow(x,0.5),l).pow(coreReactorEffect(6))
+            x = Decimal.pow(expPow(x,0.5),l).pow(coreReactorEffect(6))
+
+            if (hasEvolutionTree(34)) x = x.pow(1.06)
+
+            return x
         },
         effDesc: x => formatMult(x),
     },{
@@ -57,7 +65,11 @@ const CORE_REACTOR = [
         require: l => Decimal.pow(10,l.pow(hasResearch('c8') ? 1.5 : 2.5)).mul('e60'),
         bulk: x => x.div('e60').log(10).root(hasResearch('c8') ? 1.5 : 2.5),
 
-        effect: l=>player.shark_level.max(0).sqrt().div(100).mul(l).mul(coreReactorEffect(7)).add(1),
+        effect: l=>{
+            let x = player.shark_level.max(0).sqrt().div(100).mul(l).mul(coreReactorEffect(7)).add(1)
+            if (hasEvolutionTree(35)) x = x.pow(3)
+            return x
+        },
         effDesc: x => format(x,3)+"√",
     },
     

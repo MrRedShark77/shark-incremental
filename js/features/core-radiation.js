@@ -131,6 +131,13 @@ const CORE_RAD = {
 
                 return x
             },
+        },{
+            req: 45,
+            effect: (r,b)=>{
+                let x = r.add(1).log10().mul(b.add(1)).add(1).log10().div(100).add(1)
+
+                return x
+            },
         },
     ],
 }

@@ -277,6 +277,35 @@ const RESEARCH = {
         },
         effDesc: x => "+"+format(x,0),
     },
+    m4: {
+        max: 10,
+        unl: ()=>player.humanoid.mining_tier.gte(12),
+        require: [
+            ['stone',false,l=>Decimal.pow(1e4,l.pow(1.5)).mul(1e24),x=>x.div(1e24).log(1e4).root(1.5).add(1).floor()],
+        ],
+        effect(r) {
+            return r.mul(0.25).add(1)
+        },
+        effDesc: x => "+"+formatPercent(x.sub(1),0),
+    },
+
+    f1: {
+        max: 10,
+        unl: ()=>hasForgeUpgrade('adv_research'),
+        require: [
+            ['diamond',false,l=>Decimal.pow(1e3,l).mul(1e5),x=>x.div(1e5).log(1e3).add(1).floor()],
+        ],
+        effect(r) {
+            return r.mul(0.25)
+        },
+        effDesc: x => "+"+format(x),
+    },
+    f2: {
+        unl: ()=>hasForgeUpgrade('adv_research'),
+        require: [
+            ['bismuth',false,1e8],
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)

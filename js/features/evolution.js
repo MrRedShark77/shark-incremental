@@ -1,54 +1,64 @@
 const EVOLUTION_TREE = {
     faith_cost: [
-        ["fish",x=>Decimal.pow(10,Decimal.pow(1e4,x.add(1))),x=>x.log10().log(1e4).floor()],
-        ["prestige",x=>Decimal.pow(10,Decimal.pow(1e3,x.add(1))),x=>x.log10().log(1e3).floor()],
+        ["fish",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e3 : 1e4,x.add(1))),x=>x.log10().log(hasResearch('f2') ? 1e3 : 1e4).floor()],
+        ["prestige",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e2 : 1e3,x.add(1))),x=>x.log10().log(hasResearch('f2') ? 1e2 : 1e3).floor()],
         ["core",x=>Decimal.pow(1e60,x.add(1).scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).floor()],
     ],
 
     getCost: i => 1 + Math.floor(i/4),
 
-    rows: 8,
+    rows: 10,
 
     effect: [
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().mul(1.5).add(1).pow(simpleETEffect(21)),
-        ()=>CURRENCIES.core.total.max(0).add(10).log10().root(2).pow(simpleETEffect(22)),
-        ()=>Decimal.pow(10,simpleETEffect(23)),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)).pow(simpleETEffect(36)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().mul(1.5).add(1).pow(simpleETEffect(21)).pow(simpleETEffect(37)),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().root(2).pow(simpleETEffect(22)).pow(simpleETEffect(38)),
+        ()=>Decimal.pow(10,simpleETEffect(23)).pow(simpleETEffect(39)),
 
-        ()=>10,
-        ()=>10,
-        ()=>10,
-        ()=>10,
+        ()=>10 ** simpleETEffect(36),
+        ()=>10 ** simpleETEffect(37),
+        ()=>10 ** simpleETEffect(38),
+        ()=>10 ** simpleETEffect(39),
 
         null,
         null,
         null,
         null,
 
-        ()=>1.5,
-        ()=>1.5,
-        ()=>1.1,
-        ()=>1,
+        ()=>1.5 ** simpleETEffect(36),
+        ()=>1.5 ** simpleETEffect(37),
+        ()=>1.1 ** simpleETEffect(38),
+        ()=>1 * simpleETEffect(39),
 
-        ()=>1,
-        ()=>1,
-        ()=>1,
-        ()=>1,
+        ()=>1 * simpleETEffect(36),
+        ()=>1 * simpleETEffect(37),
+        ()=>1 * simpleETEffect(38),
+        ()=>1 * simpleETEffect(39),
 
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1),
-        ()=>CURRENCIES.core.total.max(0).add(1).log10().root(2).div(60).add(1),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1).mul(simpleETEffect(36)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1).mul(simpleETEffect(37)),
+        ()=>CURRENCIES.core.total.max(0).add(1).log10().root(2).div(60).add(1).mul(simpleETEffect(38)),
+        ()=>2 * simpleETEffect(39),
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2).mul(simpleETEffect(36)),
+        ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5).mul(simpleETEffect(37)),
+        ()=>CURRENCIES.humanoid.amount.mul(simpleETEffect(38)),
+        ()=>30 * simpleETEffect(39),
+
+        null,
+        null,
+        null,
+        null,
+
+        null,
+        null,
+        null,
+        null,
+
         ()=>2,
-
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2),
-        ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5),
-        ()=>CURRENCIES.humanoid.amount,
-        ()=>30,
-
-        ()=>1,
-        ()=>1,
-        ()=>1,
-        ()=>1,
+        ()=>2,
+        ()=>2,
+        ()=>2,
     ],
 
     getAvilableSlot(row) {
@@ -129,7 +139,7 @@ function evolutionTreeEffect(x,def=1) { return tmp.evolution_tree_effect[x] ?? d
 function simpleETEffect(x,def=1) { return player.humanoid.tree.includes(x) ? evolutionTreeEffect(x,def) : def }
 
 function updateEvolutionTreeTemp() {
-    tmp.evo_tree_rows = 5
+    tmp.evo_tree_rows = 5 + player.humanoid.forge.level.tree
     if (player.feature>=12) tmp.evo_tree_rows++
     if (player.feature>=13) tmp.evo_tree_rows++
     if (player.feature>=14) tmp.evo_tree_rows++
@@ -147,6 +157,7 @@ function updateEvolutionTreeTemp() {
     tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
 
     updateCultivationTemp()
+    updateForgeTemp()
 }
 
 // Evolution Goal

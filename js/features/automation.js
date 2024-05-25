@@ -24,8 +24,10 @@ const AUTOMATION = {
 
         curr: "prestige",
 
+        su: ['s5','s4','s3','s2','s1'],
+
         trigger() {
-            buyAllSharkUpgrades(['s5','s4','s3','s2','s1'])
+            buyAllSharkUpgrades(this.su)
         },
     },
     spu: {
@@ -37,8 +39,10 @@ const AUTOMATION = {
 
         curr: "prestige",
 
+        su: ['p3','p2','p1'],
+
         trigger() {
-            buyAllSharkUpgrades(['p3','p2','p1'])
+            buyAllSharkUpgrades(this.su)
         },
     },
     eu: {
@@ -95,6 +99,21 @@ const AUTOMATION = {
             CORE_RAD.purchaseBoost()
         },
     },
+    mining_upgs: {
+        unl: ()=>hasForgeUpgrade('auto'),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(100,x+1).mul(1e70),
+        bulk: x=>x.div(1e70).log(100).floor(),
+
+        curr: "stone",
+
+        su: ['m1','m2','m3','m4','m5'],
+
+        trigger() {
+            buyAllSharkUpgrades(this.su)
+        },
+    },
 }
 
 for (let [i,x] of Object.entries(AUTOMATION)) {
@@ -104,6 +123,10 @@ for (let [i,x] of Object.entries(AUTOMATION)) {
 
 function toggleAutomation(i) {
     if (AUTOMATION[i].unl()) player.auto[i][1] = !player.auto[i][1]
+}
+
+function isAutoEnabled(i) {
+    return AUTOMATION[i].unl() && player.auto[i][1]
 }
 
 function buyAutomation(i) {
