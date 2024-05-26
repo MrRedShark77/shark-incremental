@@ -391,7 +391,7 @@ LANGUAGES.ZH = {
             x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
 			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
-			x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
+			x=>`探索升级的购买次数额外 <h4>${formatMult(x,3)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -542,7 +542,7 @@ LANGUAGES.ZH = {
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
-		'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
+		'auto-mining_upgs-name': `自动购买${toTextStyle("挖矿","humanoid")}升级`,
 
         // Progress
 
