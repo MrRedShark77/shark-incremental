@@ -68,6 +68,7 @@ LANGUAGES.ZH = {
         'tab-evolution-tree': toTextStyle('进化','humanoid') + "树",
         'tab-evolution-goal': toTextStyle('进化','humanoid') + "目标",
 		'tab-cultivation': "挖矿",
+		'tab-forge': "锻造",
 
         // Elements
 
@@ -268,6 +269,15 @@ LANGUAGES.ZH = {
 
         'research-m3-name': "辐射折算",
         'research-m3-desc': `每升一级，前两次提升辐射上限的价格折算延迟 <b>+1</b>.`,
+		
+		'research-m4-name': "更强的挖矿等级",
+        'research-m4-desc': `每升一级，挖矿等级的第二、第三、第四、第五项加成 <b>+25%</b>.`,
+
+        'research-f1-name': "初阶段位提升",
+        'research-f1-desc': `每升一级，${toTextStyle("鲨鱼",'shark')}战力的指数 <b>+25%</b>.`,
+
+        'research-f2-name': "更多的鲨之信念",
+        'research-f2-desc': `基于${toTextStyle('鱼','fish')}和${toTextStyle("重生",'prestige')}碎片的数量，获得更多的${toTextStyle('鲨之信念','humanoid')}。`,
 
         // Exploration
 
@@ -381,6 +391,7 @@ LANGUAGES.ZH = {
             x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
 			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
+			x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
         ],
 
         // Evolution Tree
@@ -426,6 +437,16 @@ LANGUAGES.ZH = {
             ["更好的镍", x=>`提升<b>镍</b>的效果。`],
             ["更好的氧", x=>`提升<b>氧</b>的效果。`],
             ["更好的氖", x=>`提升<b>氖</b>的效果。`],
+
+            ["铁离子", x=>`提升<b>铁</b>反应堆的效果。`],
+            ["存钱罐", x=>`提升<b>镍</b>反应堆的效果。`],
+            ["臭氧层", x=>`提升<b>氧</b>反应堆的效果。`],
+            ["霓虹灯", x=>`提升<b>氖</b>反应堆的效果。`],
+
+            ["第 1 列强化", x=>`除此升级之外，第一列所有升级的效果 <b>${formatMult(x)}</b>.`],
+            ["第 2 列强化", x=>`除此升级之外，第一列所有升级的效果 <b>${formatMult(x)}</b>.`],
+            ["第 3 列强化", x=>`除此升级之外，第一列所有升级的效果 <b>${formatMult(x)}</b>.`],
+            ["第 4 列强化", x=>`除此升级之外，第一列所有升级的效果 <b>${formatMult(x)}</b>.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"成功":y?"失败":"正在进行",
@@ -477,7 +498,7 @@ LANGUAGES.ZH = {
             'berkelium': "锫-247",
             'californium': "锎-252",
             'oganesson': "鿫-294",
-            'sharkium': "鲨元素",
+            'sharkium': "䤬",
         },
 
         'mined-resources-text': `已获得的矿物`,
@@ -487,11 +508,27 @@ LANGUAGES.ZH = {
 
         'mining-tier-bonus': [
             x=>`矿坑的血量 <b>${formatMult(x)}</b>.`,
-            x=>`<b>石头</b>和<b>煤炭</b>的产量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>石头</b>和<b>煤</b>的产量 <b>${formatMult(x)}</b>.`,
             x=>`<b>铁</b>的产量 <b>${formatMult(x)}</b>.`,
             x=>`<b>金</b>的产量 <b>${formatMult(x)}</b>.`,
             x=>`<b>铂</b>的产量 <b>${formatMult(x)}</b>.`,
+			x=>`<b>铋</b>的产量 <b>${formatMult(x)}</b>.`,
+			x=>`<b>钻石</b>的产量 <b>${formatMult(x)}</b>.`,
         ],
+
+        // Forge
+
+        'forge': {
+            'anvil': ['铁砧','解锁新的锻造'],
+            'drill': ['钻头','提升<b>石头</b>数量的指数'],
+            'shard': ['纯化碎片',`提升${toTextStyle('重生','prestige')}碎片数量的指数`],
+            'tree': ['超凡之树',`解锁下一行${toTextStyle('进化','humanoid')}树`],
+            'adv_research': ['尖端研究',`解锁新的研究`],
+            'auto': ['高级自动化',`解锁新的自动化`],
+        },
+        'forge-progress': (x,s) => x ? `正在锻造<b>${x}</b>... <b>${s}</b>` : `未进行锻造`,
+        'forge-speed': x => `锻造速度：<b>${x}</b>`,
+        'forge-button': ['取消锻造','开始锻造','锻造材料不足'],
 
         // Automation
 
@@ -505,6 +542,7 @@ LANGUAGES.ZH = {
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
+		'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
 
         // Progress
 
@@ -530,6 +568,7 @@ LANGUAGES.ZH = {
         'progress-11-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
         'progress-12-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
         'progress-13-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁下一行${toTextStyle('进化','humanoid')}树`, 
+		'progress-14-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁${toTextStyle('进化','humanoid')}的下一个机制`,
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -575,12 +614,13 @@ LANGUAGES.ZH = {
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('岩浆','core')}碎片`,
 		//'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('辐射' + icon("radioactive"),'核心')}`,
 
-        'shark-overpopulation': (x,y) => `因${toTextStyle('鲨鱼','shark')}过大，你的${toTextStyle('鲨鱼','shark')}在吃了 <h4>${format(y)}</h4> 条鱼之后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>.`,
+        'shark-overpopulation': (x,y) => `你的${toTextStyle('鲨鱼','shark')}太大了，在吃了 <h4>${format(y)}</h4> 条鱼后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>。`,
 
         'shark-rank-bonuses': {
             fish: x => `${toTextStyle('鱼','fish')}的数量是原来的${formatPow(x)}`,
             prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的${formatPow(x)}`,
 			mining_damage: x => `对矿坑的伤害 ${formatMult(x)}`,
+			so: x => `${toTextStyle('鲨鱼','shark')}大小的软上限${formatPow(x)}`,
         },
 
         'level': "等级",
@@ -592,6 +632,7 @@ LANGUAGES.ZH = {
         'depth': "深度",
 		'reward': "奖励",
 		'new-preset': "新预设",
+		'maxed': "已达最大值",
 
         'remove': "删除",
         'overwrite-current': "覆盖",
@@ -621,10 +662,11 @@ LANGUAGES.ZH = {
         'notify-desc' : {
             save: "游戏已保存",
 			copy_to_clipboard: "已导出到剪贴板",
+			forge_completed: x => `<b>${x}</b>锻造成功！`,
         },
 
         'radio-desc' : {
-            'notation': ['记数法',['科学','标准','混合科学']],
+            'notation': ['记数法',['科学','标准','混合科学','对数']],
             'comma-format': ['使用逗号表示的最大位数',['3','6','9','12','15']],
             'autosave': ['自动存档',['禁用','启用']],
             'autosave-time': ['自动存档时间',['15 秒','30 秒','60 秒','120 秒']],
