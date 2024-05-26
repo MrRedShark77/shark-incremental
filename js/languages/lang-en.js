@@ -423,7 +423,7 @@ LANGUAGES.EN = {
             ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`],
             ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`],
 
-            ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Perfect Body'</b> by <b>${formatPow(x)}</b>.`],
+            ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Fish Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Supernatural Body", x=>`${toTextStyle('Magmatic','core')} fragments boost <b>'Radioactive Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Immortal Body", x=>`<b>'Perfect Body'</b> is <b>squared</b>.`],
