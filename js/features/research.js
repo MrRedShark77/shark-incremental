@@ -306,6 +306,34 @@ const RESEARCH = {
             ['bismuth',false,1e8],
         ],
     },
+    f3: {
+        max: 10,
+        unl: ()=>hasForgeUpgrade('adv_research',2),
+        require: [
+            ['obsidian',false,l=>Decimal.pow(100,l).mul(1e3),x=>x.div(1e3).log(100).add(1).floor()],
+        ],
+        effect(r) {
+            return r.toNumber()
+        },
+        effDesc: x => "+"+format(x,0),
+    },
+    f4: {
+        unl: ()=>hasForgeUpgrade('adv_research',2),
+        require: [
+            ['diamond',false,1e16],
+            ['obsidian',false,1e5],
+        ],
+    },
+    f5: {
+        unl: ()=>hasForgeUpgrade('adv_research',2),
+        require: [
+            ['vibranium',false,100],
+        ],
+        effect(r) {
+            return expPow(CURRENCIES.vibranium.amount.add(1),0.5)
+        },
+        effDesc: x => formatMult(x),
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)

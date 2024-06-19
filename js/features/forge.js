@@ -1,23 +1,27 @@
 const FORGE = {
     anvil: {
-        max: 2,
+        max: 3,
         unl: ()=>true,
 
-        time: [10,300],
+        time: [10,300,6000],
         cost: [
             [
                 ['bismuth',1e3],
             ],[
-                ['diamond',1e4],
                 ['bismuth',1e7],
+                ['diamond',1e4],
+            ],[
+                ['diamond',1e17],
+                ['obsidian',1e5],
+                ['vibranium',1000],
             ],
         ],
     },
     drill: {
-        max: 3,
+        max: 6,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150, 300, 600],
+        time: [150, 300, 600, 900, 3000, 6000],
         cost: [
             [
                 ['stone',1e47],
@@ -29,6 +33,16 @@ const FORGE = {
                 ['stone',1e78],
                 ['bismuth',1e9],
                 ['diamond',1e7],
+            ],[
+                ['obsidian',100],
+            ],[
+                ['stone',1e128],
+                ['diamond',1e12],
+                ['obsidian',1e4],
+            ],[
+                ['stone',1e155],
+                ['obsidian',1e5],
+                ['vibranium',1000],
             ],
         ],
 
@@ -40,10 +54,10 @@ const FORGE = {
         effDesc: x => formatPow(x),
     },
     shard: {
-        max: 3,
+        max: 4,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150,300,600],
+        time: [150,300,600,1800],
         cost: [
             [
                 ['prestige','ee50',true],
@@ -54,6 +68,9 @@ const FORGE = {
             ],[
                 ['prestige','e3e63',true],
                 ['diamond',1e6],
+            ],[
+                ['prestige','e4.8e92',true],
+                ['obsidian',1e4],
             ],
         ],
 
@@ -65,10 +82,10 @@ const FORGE = {
         effDesc: x => formatPow(x),
     },
     tree: {
-        max: 2,
+        max: 4,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150,600],
+        time: [150,600,900,6000],
         cost: [
             [
                 ['humanoid',36,true],
@@ -77,18 +94,30 @@ const FORGE = {
                 ['humanoid',45,true],
                 ['bismuth',1e8],
                 ['diamond',1e6],
+            ],[
+                ['humanoid',62,true],
+                ['diamond',1e11],
+                ['obsidian',1e2],
+            ],[
+                ['humanoid',81,true],
+                ['obsidian',1e6],
+                ['vibranium',5e3],
             ],
         ],
     },
     adv_research: {
-        max: 1,
+        max: 2,
         unl: ()=>hasForgeUpgrade('anvil',2),
 
-        time: [300],
+        time: [300, 1800],
         cost: [
             [
                 ['prestige','ee63',true],
                 ['diamond',1e5],
+            ],[
+                ['prestige','e2e85',true],
+                ['diamond',2e11],
+                ['obsidian',1e3],
             ],
         ],
     },
@@ -103,6 +132,44 @@ const FORGE = {
                 ['diamond',1e5],
             ],
         ],
+    },
+    shark: {
+        max: 1,
+        unl: ()=>hasForgeUpgrade('anvil',3),
+
+        time: [6000],
+        cost: [
+            [
+                ['fish','ee91',true],
+                ['vibranium',1e3],
+            ],
+        ],
+
+        effect(l) {
+            var x = Decimal.pow(2,l)
+
+            return x
+        },
+        effDesc: x => formatMult(x),
+    },
+    refined_shard: {
+        max: 1,
+        unl: ()=>hasForgeUpgrade('anvil',3),
+
+        time: [6000],
+        cost: [
+            [
+                ['prestige','e2.5e105',true],
+                ['vibranium',1e3],
+            ],
+        ],
+
+        effect(l) {
+            var x = Decimal.mul(l,0.01).add(1)
+
+            return x
+        },
+        effDesc: x => formatPow(x),
     },
 }
 
@@ -205,6 +272,12 @@ function updateForgeTemp() {
 
         if (f15) tmp.forge_affords[i] = f.unl() && lvl < f.max && f.cost[lvl].filter(x => CURRENCIES[x[0]].amount.lt(x[1])).length == 0
     }
+
+    var fs = E(1)
+
+    fs = fs.mul(simpleETEffect(40)).mul(simpleETEffect(41)).mul(simpleETEffect(42)).mul(simpleETEffect(43))
+
+    tmp.forge_speed = fs
 }
 
 function setupForgeHTML() {

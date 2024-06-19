@@ -39,9 +39,12 @@ const ORES = {
         color: '#441269',
         dense: 1e13,
         luck_penalty: 0.1,
+        get mult() { return tmp.mining_tier_bonus[7]??1 },
     },
     'vibranium': {
         color: '#4AE07B',
+        dense: 1e14,
+        luck_penalty: 0.1,
     },
     'radium': {
         color: `radial-gradient(circle, rgb(194,238,174) 0%, rgb(84,255,57) 100%);`,
@@ -90,11 +93,12 @@ const MINING_TIER = {
         
         var x = [Decimal.pow(4,t.scale(20,2,'P')),Decimal.pow(5,t_m4)]
 
-        if (t.gte(4)) x.push(Decimal.pow(3,t_m4.sub(3)))
-        if (t.gte(7)) x.push(Decimal.pow(4,t_m4.sub(6)))
-        if (t.gte(10)) x.push(Decimal.pow(3,t_m4.sub(9)))
-        if (t.gte(17)) x.push(Decimal.pow(3,t.sub(16)))
-        if (t.gte(21)) x.push(Decimal.pow(3,t.sub(20)))
+        if (t.gte(4)) x.push(Decimal.pow(3,t_m4.sub(3)));
+        if (t.gte(7)) x.push(Decimal.pow(4,t_m4.sub(6)));
+        if (t.gte(10)) x.push(Decimal.pow(3,t_m4.sub(9)));
+        if (t.gte(17)) x.push(Decimal.pow(3,t.sub(16)));
+        if (t.gte(21)) x.push(Decimal.pow(3,t.sub(20)));
+        if (t.gte(25)) x.push(Decimal.pow(2,t.sub(24)));
 
         return x
     },
@@ -111,8 +115,8 @@ const MINING_TIER = {
         }
     },
 
-    base_milestone: [0,3,6,9,16,20,24],
-    gen_milestone: [8,11,18,23],
+    base_milestone: [0,3,6,9,16,20,24,30],
+    gen_milestone: [8,11,18,23,27,32],
 
     get base() {
         var b = this.base_milestone.filter(x => player.humanoid.mining_tier.gte(x)).length
@@ -223,6 +227,7 @@ function updateCultivationHTML() {
 
 function getMiningDamage() {
     var x = Decimal.mul(sharkUpgEffect('m1'),getSharkRankBonus('mining_damage'))
+    if (hasResearch('f5')) x = x.mul(researchEffect('f5'))
     return x
 }
 
