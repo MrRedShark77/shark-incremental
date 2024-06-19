@@ -443,10 +443,10 @@ LANGUAGES.EN = {
             ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`],
             ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`],
 
-            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatMult(x)}</b> stronger.`],
+            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",

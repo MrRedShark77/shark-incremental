@@ -5,7 +5,7 @@ const EVOLUTION_TREE = {
         ["core",x=>Decimal.pow(1e60,x.add(1).scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).floor()],
     ],
 
-    getCost: i => 1 + Math.floor(i/4),
+    getCost: i => Math.max(0,1 + Math.floor(i/4)),
 
     rows: 10,
 
@@ -70,7 +70,7 @@ const EVOLUTION_TREE = {
         return Math.max(0,Math.min(1+Math.max(0,sum-2),4)-spent)
     },
     canAfford(i, slot) {
-        return !player.humanoid.tree.includes(i) && tmp.unspent_faith.gte(this.getCost(i)) && (slot ?? this.getAvilableSlot(Math.floor(i/4))) > 0
+        return i >= 0 && !player.humanoid.tree.includes(i) && tmp.unspent_faith.gte(this.getCost(i)) && (slot ?? this.getAvilableSlot(Math.floor(i/4))) > 0
     },
 }
 
@@ -87,6 +87,7 @@ function purchaseSharkoidFaith(i) {
 function purchaseEvolutionTree(i) {
     if (EVOLUTION_TREE.canAfford(i)) {
         player.humanoid.tree.push(i)
+        updateUnspentFaith()
     }
 }
 
@@ -138,6 +139,15 @@ function hasEvolutionTree(x) { return player.humanoid.tree.includes(x) }
 function evolutionTreeEffect(x,def=1) { return tmp.evolution_tree_effect[x] ?? def }
 function simpleETEffect(x,def=1) { return player.humanoid.tree.includes(x) ? evolutionTreeEffect(x,def) : def }
 
+function updateUnspentFaith() {
+    var spent = E(0)
+    for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
+        tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
+        if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x))
+    }
+    tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
+}
+
 function updateEvolutionTreeTemp() {
     tmp.evo_tree_rows = 5 + player.humanoid.forge.level.tree
     if (player.feature>=12) tmp.evo_tree_rows++
@@ -149,12 +159,7 @@ function updateEvolutionTreeTemp() {
         tmp.total_faith = tmp.total_faith.add(player.humanoid.faith[i]??0)
     }
 
-    var spent = E(0)
-    for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
-        tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
-        if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x))
-    }
-    tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
+    updateUnspentFaith()
 
     updateCultivationTemp()
     updateForgeTemp()
