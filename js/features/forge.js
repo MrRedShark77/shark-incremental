@@ -253,9 +253,11 @@ function doForge() {
 
         FORGE[forge_tab].cost[player.humanoid.forge.level[forge_tab]].filter(x => !x[2]).forEach(x => CURRENCIES[x[0]].amount = CURRENCIES[x[0]].amount.sub(x[1]))
     } else {
+        var q = player.humanoid.forge.queue
+
         player.humanoid.forge.queue = ""
 
-        FORGE[forge_tab].cost[player.humanoid.forge.level[forge_tab]].filter(x => !x[2]).forEach(x => CURRENCIES[x[0]].amount = CURRENCIES[x[0]].amount.add(x[1]))
+        FORGE[q].cost[player.humanoid.forge.level[q]].filter(x => !x[2]).forEach(x => CURRENCIES[x[0]].amount = CURRENCIES[x[0]].amount.add(x[1]))
     }
 
     player.humanoid.forge.time = E(0)
