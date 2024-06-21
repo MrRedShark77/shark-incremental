@@ -42,7 +42,7 @@ const SHARK = {
         bonuses: {
             fish: [()=>player.shark_rank.gte(1),l=>Decimal.pow(1.1,l),E(1)],
             prestige: [()=>player.shark_rank.gte(50),l=>Decimal.pow(1.05,l.sub(49)),E(1)],
-            mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)).min(1e4),E(1)],
+            mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)).softcap(1e4,3,3),E(1)],
             so: [()=>player.shark_rank.gte(100),l=>Decimal.pow(1.5,l.sub(99)),E(1)],
         },
     },
@@ -332,7 +332,7 @@ function updateSharkTemp() {
 
     tmp.scale_shark1 = Decimal.add(10,sharkUpgEffect('p3',0)).add(hasDepthMilestone(2,2)?player.explore.depth[2].div(500).overflow(1e6,0.5).floor():0)
     tmp.scale_shark2 = Decimal.add(100,getCRBoost(3,0)).add(simpleResearchEffect('c10',0))
-    tmp.scale_shark3 = Decimal.mul(1e3,hasResearch('m2')?2:1)
+    tmp.scale_shark3 = Decimal.mul(1e3,hasResearch('m2')?2:1).mul(forgeUpgradeEffect('shark'))
 
     for (let [i,v] of Object.entries(SHARK.bonuses)) tmp.shark_bonus[i] = v[0]() ? v[1](player.shark_level) : v[2]
     for (let [i,v] of Object.entries(SHARK.rank.bonuses)) tmp.shark_rank_bonus[i] = v[0]() ? v[1](player.shark_rank) : v[2]

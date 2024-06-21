@@ -1,10 +1,10 @@
 const CURRENCIES = {
     fish: {
         get amount() { return player.fish },
-        set amount(v) { player.fish = v },
+        set amount(v) { player.fish = v.max(0) },
 
         get total() { return player.total_fish },
-        set total(v) { player.total_fish = v },
+        set total(v) { player.total_fish = v.max(0) },
     
         get gain() {
             let x = getSharkBonus("fish").mul(sharkUpgEffect('s1')).mul(sharkUpgEffect('p1')).mul(sharkUpgEffect('p2'))
@@ -39,10 +39,10 @@ const CURRENCIES = {
         get require() { return E(1e36) },
 
         get amount() { return player.prestige.shards },
-        set amount(v) { player.prestige.shards = v },
+        set amount(v) { player.prestige.shards = v.max(0) },
 
         get total() { return player.prestige.total },
-        set total(v) { player.prestige.total = v },
+        set total(v) { player.prestige.total = v.max(0) },
     
         get gain() {
             let x = player.total_fish.div(1e36)
@@ -60,7 +60,9 @@ const CURRENCIES = {
             if (hasDepthMilestone(0,0)) x = x.pow(1.05)
             if (inExploration(1)) x = x.root(2)
 
-            if (tmp.cr_active) x = x.root(3)
+            if (tmp.cr_active) x = x.root(3);
+
+            x = expPow(x,forgeUpgradeEffect('refined_shard'))
     
             return x.floor()
         },
@@ -71,10 +73,10 @@ const CURRENCIES = {
         get require() { return E('1e450') },
 
         get amount() { return player.core.fragments },
-        set amount(v) { player.core.fragments = v },
+        set amount(v) { player.core.fragments = v.max(0) },
 
         get total() { return player.core.total },
-        set total(v) { player.core.total = v },
+        set total(v) { player.core.total = v.max(0) },
 
         get gain() {
             let x = player.prestige.total.div('1e450')
@@ -101,7 +103,7 @@ const CURRENCIES = {
         get moreArg() { return [this.next(player.humanoid.shark.add(tmp.currency_gain.humanoid))] },
 
         get amount() { return player.humanoid.shark },
-        set amount(v) { player.humanoid.shark = v },
+        set amount(v) { player.humanoid.shark = v.max(0) },
 
         get gain() {
             let x = player.fish
@@ -122,7 +124,7 @@ function setupCurrencies() {
         var e = EXPLORE[i]
         CURRENCIES[e.resource] = {
             get amount() { return player.explore.res[i] },
-            set amount(v) { player.explore.res[i] = v },
+            set amount(v) { player.explore.res[i] = v.max(0) },
         
             get gain() {
                 if (player.explore.unl <= i) return E(0)
@@ -148,7 +150,7 @@ function setupCurrencies() {
         var o = ORES[k]
         CURRENCIES[k] = {
             get amount() { return player.humanoid.ores[k] },
-            set amount(v) { player.humanoid.ores[k] = v },
+            set amount(v) { player.humanoid.ores[k] = v.max(0) },
 
             get gain() { return Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1) },
 

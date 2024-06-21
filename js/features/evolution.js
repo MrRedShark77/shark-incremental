@@ -5,9 +5,9 @@ const EVOLUTION_TREE = {
         ["core",x=>Decimal.pow(1e60,x.add(1).scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).floor()],
     ],
 
-    getCost: i => 1 + Math.floor(i/4),
+    getCost: i => Math.max(0,1 + Math.floor(i/4)),
 
-    rows: 10,
+    rows: 12,
 
     effect: [
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)).pow(simpleETEffect(36)),
@@ -59,18 +59,38 @@ const EVOLUTION_TREE = {
         ()=>2,
         ()=>2,
         ()=>2,
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(6).add(1),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(6).add(1),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().root(2).div(6).add(1),
+        ()=>20,
+
+        null,
+        null,
+        null,
+        null,
     ],
 
     getAvilableSlot(row) {
         var spent = 0
-        for (let i = row*4; i < (row+1)*4; i++) spent += player.humanoid.tree.includes(i)
-        if (row+1 == this.rows) return Math.max(1-spent,0)
+        for (let i = 0; i < 4; i++) {
+            if (player.humanoid.tree.includes(row*4+i)) spent += 1;
+        }
+        if (row+1 == this.rows) return Math.max(4-spent,0);
         var sum = 0
-        for (let i = (row+1)*4; i < this.rows*4; i++) sum += player.humanoid.tree.includes(i)
-        return Math.max(0,Math.min(1+Math.max(0,sum-2),4)-spent)
+        for (let i = (row+1)*4; i < this.rows*4; i++) sum += player.humanoid.tree.includes(i);
+        var bonus = 0
+        if (row < 11) for (let i = 0; i < 4; i++) if (player.humanoid.tree.includes(44+i)) bonus++;
+        return Math.max(0,Math.min(1+bonus+Math.max(0,sum-2)-spent,4))
     },
     canAfford(i, slot) {
-        return !player.humanoid.tree.includes(i) && tmp.unspent_faith.gte(this.getCost(i)) && (slot ?? this.getAvilableSlot(Math.floor(i/4))) > 0
+        let row = Math.floor(i/4), s = (slot ?? this.getAvilableSlot(row)), only = [], bonus = []
+        for (let i = 0; i < 4; i++) {
+            only.push(row*4+i)
+            if (player.humanoid.tree.includes(44+i) && !player.humanoid.tree.includes(row*4+i)) bonus.push(row*4+i);
+        }
+        if (s <= bonus.length) only = bonus
+        return i >= 0 && !player.humanoid.tree.includes(i) && tmp.unspent_faith.gte(this.getCost(i)) && only.includes(i) && s > 0
     },
 }
 
@@ -87,6 +107,7 @@ function purchaseSharkoidFaith(i) {
 function purchaseEvolutionTree(i) {
     if (EVOLUTION_TREE.canAfford(i)) {
         player.humanoid.tree.push(i)
+        updateUnspentFaith()
     }
 }
 
@@ -138,6 +159,15 @@ function hasEvolutionTree(x) { return player.humanoid.tree.includes(x) }
 function evolutionTreeEffect(x,def=1) { return tmp.evolution_tree_effect[x] ?? def }
 function simpleETEffect(x,def=1) { return player.humanoid.tree.includes(x) ? evolutionTreeEffect(x,def) : def }
 
+function updateUnspentFaith() {
+    var spent = E(0)
+    for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
+        tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
+        if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x))
+    }
+    tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
+}
+
 function updateEvolutionTreeTemp() {
     tmp.evo_tree_rows = 5 + player.humanoid.forge.level.tree
     if (player.feature>=12) tmp.evo_tree_rows++
@@ -149,12 +179,7 @@ function updateEvolutionTreeTemp() {
         tmp.total_faith = tmp.total_faith.add(player.humanoid.faith[i]??0)
     }
 
-    var spent = E(0)
-    for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
-        tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
-        if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x))
-    }
-    tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
+    updateUnspentFaith()
 
     updateCultivationTemp()
     updateForgeTemp()

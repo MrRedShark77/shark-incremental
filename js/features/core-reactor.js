@@ -263,7 +263,7 @@ function updateCoreTemp() {
 
     tmp.core_bonus = getBonusReactor()
 
-    var scale = 10
+    var scale = 10 + simpleResearchEffect('f3',0)
     if (hasDepthMilestone(4,2)) scale += 5
     tmp.core_scale1 = scale
 }

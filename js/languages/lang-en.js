@@ -279,6 +279,15 @@ LANGUAGES.EN = {
         'research-f2-name': "More Sharkoid Faith",
         'research-f2-desc': `Gain more ${toTextStyle('Sharkoid Faith','humanoid')} from ${toTextStyle('Fish','fish')} & ${toTextStyle("Prestige",'prestige')} shards.`,
 
+        'research-f3-name': "Scaled Core Reactors",
+        'research-f3-desc': `Delay the first scaling of the core reactors by <b>+1</b> per level.`,
+
+        'research-f4-name': "Less Core Temperature Softcap",
+        'research-f4-desc': `The softcap of the ${toTextStyle('Core','core')}'s temperature is weaker.`,
+
+        'research-f5-name': "Vibranium Boost",
+        'research-f5-desc': `<b>Vibranium</b> boosts mining damage at a reduced rate.`,
+
         // Exploration
 
         'explore-while': `While exploring`,
@@ -443,10 +452,20 @@ LANGUAGES.EN = {
             ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`],
             ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`],
 
-            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatMult(x)}</b> stronger.`],
-            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatMult(x)}</b> stronger.`],
+            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
+
+            ["Fish Forge", x=>`${toTextStyle('Fish','fish')} speeds forging by <b>${formatMult(x)}</b>.`],
+            ["Prestigious Forge", x=>`${toTextStyle('Prestige','prestige')} shards speed forging by <b>${formatMult(x)}</b>.`],
+            ["Magmatic Forge", x=>`${toTextStyle('Magmatic','core')} fragments speed forging by <b>${formatMult(x)}</b>.`],
+            ["Faster Forge", x=>`Forging is <b>${formatMult(x)}</b> faster.`],
+
+            ["True Column 1", x=>`You are allowed to purchase the first column of tree evolution.`],
+            ["True Column 2", x=>`You are allowed to purchase the second column of tree evolution.`],
+            ["True Column 3", x=>`You are allowed to purchase the third column of tree evolution.`],
+            ["True Column 4", x=>`You are allowed to purchase the fourth column of tree evolution.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
@@ -492,7 +511,7 @@ LANGUAGES.EN = {
             'diamond': "Diamond",
             'bismuth': "Bismuth",
             'obsidian': "Obsidian",
-            'vibranium': "Vibrantium",
+            'vibranium': "Vibranium",
             'radium': "Radium-223",
             'uranium': "Uranium-235",
             'berkelium': "Berkelium-247",
@@ -514,17 +533,20 @@ LANGUAGES.EN = {
             x=>`<b>Platinum</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Bismuth</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Diamond</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Obsidian</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
         // Forge
 
         'forge': {
             'anvil': ['Anvil Tier','Unlocks new forge upgrades.'],
-            'drill': ['Drill Tier','Increases the exponent of <b>Stone</b> mined.'],
-            'shard': ['Refined Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
+            'drill': ['Drill Tier','Increases the multiplier of <b>Stone</b> mined.'],
+            'shard': ['Refined Shard',`Increases the multiplier of ${toTextStyle('Prestige','prestige')} shards.`],
             'tree': ['Extraordinary Tree',`Unlocks new row of the ${toTextStyle('Evolution','humanoid')} tree.`],
             'adv_research': ['Advanced Research',`Unlocks new research.`],
             'auto': ['Advanced Automation',`Unlocks new automation.`],
+            'shark': ['Distant Shark Level',`Delays the third scaling of ${toTextStyle('Shark','shark')} Level.`],
+            'refined_shard': ['Energized Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
         },
         'forge-progress': (x,s) => x ? `Forging <b>${x}</b>... <b>${s}</b>` : `Forge is empty`,
         'forge-speed': x => `Forging Speed: <b>${x}</b>`,

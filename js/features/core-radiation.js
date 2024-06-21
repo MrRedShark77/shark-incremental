@@ -158,7 +158,7 @@ function getCoreTemperatureEffect() {
     if (x.gte(6150)) {
         x = x.sub(6050).div(100).root(2)
 
-        return x.softcap(10,1/3,0)
+        return x.softcap(10,hasResearch('f4') ? 0.5 : 1/3,0)
     } else return x.div(6150).max(0)
 }
 

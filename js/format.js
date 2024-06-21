@@ -232,8 +232,10 @@ const FORMATS = {
                     let slog = ex.slog()
                     return (slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(),0,max)
                 }
-                let m = ex.div(E(10).pow(e))
-                return e.gte(1e3) ? (e.gte(1e9)?"":m.toFixed(2))+"e"+this.format(e,0,max) : format(ex,acc,max,"sc")
+                let ee = e.log10().floor(), f = Decimal.sub(5, ee).max(0).min(2).toNumber()
+                let m = ex.div(E(10).pow(e)).min(10-10**-f)
+                let be = ee.gte(6)
+                return e.gte(1e3) ? (be?"":m.toFixed(f))+"e"+this.format(e,0,max) : format(ex,acc,max,"sc")
             }
         }
     },
@@ -329,9 +331,10 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
                     let slog = ex.slog()
                     return neg+(slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(), 0)
                 }
-                let m = ex.div(E(10).pow(e))
-                let be = e.log10().gte(9)
-                return neg+(be?'':m.toFixed(2))+'e'+format(e, 0, max, "sc")
+                let ee = e.log10().floor(), f = Decimal.sub(5, ee).max(0).min(2).toNumber()
+                let m = ex.div(E(10).pow(e)).min(10-10**-f)
+                let be = ee.gte(6)
+                return neg+(be?'':m.toFixed(f))+'e'+format(e, 0, max, "sc")
             }
         case "st":
             if (e.lt(max) || ex.gte("eeee10")) return format(ex, acc, max, "sc")

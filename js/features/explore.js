@@ -149,7 +149,27 @@ function calcNextDepth(x,gain) {
             x = E(10)
         } else return g
     }
-    return Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
+
+    let b = E(2)
+
+    if (x.gte(10)) {
+        // x = Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
+
+        x = x.log10().pow(2).pow10()
+
+        let rss1 = E('ee4')
+
+        let rs1 = x.gte(rss1)
+        if (rs1) x = x.scale(rss1,b,"D")
+
+        x = x.add(gain)
+
+        rs1 ||= x.gte(rss1)
+        if (rs1) x = x.scale(rss1,b,"D",true)
+
+        x = x.log10().root(2).pow10()
+    }
+    return x
 }
 
 function enterExploration(i) {
