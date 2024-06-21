@@ -279,6 +279,15 @@ LANGUAGES.ZH = {
         'research-f2-name': "更多的鲨之信念",
         'research-f2-desc': `基于${toTextStyle('鱼','fish')}和${toTextStyle("重生",'prestige')}碎片的数量，获得更多的${toTextStyle('鲨之信念','humanoid')}。`,
 
+		'research-f3-name': "地核反应堆折算",
+        'research-f3-desc': `每升一级，地核反应堆的第一次价格折算延迟 <b>+1</b>.`,
+
+        'research-f4-name': "软化温度软上限",
+        'research-f4-desc': `削弱${toTextStyle('地核','core')}温度的软上限。`,
+
+        'research-f5-name': "振金钻头",
+        'research-f5-desc': `<b>振金</b>能增强对矿坑的伤害。`,
+
         // Exploration
 
         'explore-while': `探索时`,
@@ -447,6 +456,16 @@ LANGUAGES.ZH = {
             ["第 2 列强化", x=>`除此升级之外，第二列所有升级的效果 <b>${formatMult(x)}</b>.`],
             ["第 3 列强化", x=>`除此升级之外，第三列所有升级的效果 <b>${formatMult(x)}</b>.`],
             ["第 4 列强化", x=>`除此升级之外，第四列所有升级的效果 <b>${formatMult(x)}</b>.`],
+
+			["鱼之锻造", x=>`${toTextStyle('鱼','fish')}使锻造速度 <b>${formatMult(x)}</b>.`],
+            ["重生锻造", x=>`${toTextStyle('重生','prestige')}碎片使锻造速度 <b>${formatMult(x)}</b>.`],
+            ["岩浆锻造", x=>`${toTextStyle('岩浆','core')}碎片使锻造速度 <b>${formatMult(x)}</b>.`],
+            ["加速锻造", x=>`锻造速度 <b>${formatMult(x)}</b>.`],
+
+            ["真·第 1 列", x=>`你可以购买第一列的任意升级。`],
+            ["真·第 2 列", x=>`你可以购买第二列的任意升级。`],
+            ["真·第 3 列", x=>`你可以购买第三列的任意升级。`],
+            ["真·第 4 列", x=>`你可以购买第四列的任意升级。`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"成功":y?"失败":"正在进行",
@@ -514,6 +533,7 @@ LANGUAGES.ZH = {
             x=>`<b>铂</b>的产量 <b>${formatMult(x)}</b>.`,
 			x=>`<b>铋</b>的产量 <b>${formatMult(x)}</b>.`,
 			x=>`<b>钻石</b>的产量 <b>${formatMult(x)}</b>.`,
+			x=>`<b>黑曜石</b>的产量 <b>${formatMult(x)}</b>.`,
         ],
 
         // Forge
@@ -525,6 +545,8 @@ LANGUAGES.ZH = {
             'tree': ['超凡之树',`解锁下一行${toTextStyle('进化','humanoid')}树`],
             'adv_research': ['尖端研究',`解锁新的研究`],
             'auto': ['高级自动化',`解锁新的自动化`],
+			'shark': ['鲨鱼等级折算',`延迟${toTextStyle('鲨鱼','shark')}等级的第三次价格折算`],
+            'refined_shard': ['碎片充能',`提升${toTextStyle('重生','prestige')}碎片的指数`],
         },
         'forge-progress': (x,s) => x ? `正在锻造<b>${x}</b>... <b>${s}</b>` : `未进行锻造`,
         'forge-speed': x => `锻造速度：<b>${x}</b>`,
