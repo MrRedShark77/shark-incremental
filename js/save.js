@@ -65,6 +65,11 @@ function getPlayerData() {
                 queue: '',
                 time: E(0),
             },
+
+            particle_accel: {
+                active: -1,
+                percent: [],
+            },
         },
 
         radios: {},
@@ -91,6 +96,8 @@ function getPlayerData() {
     for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
     for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0)
     for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0
+
+    for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0)
 
     return s
 }

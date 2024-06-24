@@ -132,6 +132,9 @@ const TAB_IDS = {
             return false
         },
     },
+    'particle-accel': {
+        html: updatePAHtml,
+    },
 }
 
 const TABS = [
@@ -165,6 +168,7 @@ const TABS = [
             ["evolution-goal",()=>player.feature>=12],
             ["cultivation",()=>player.feature>=13],
             ["forge",()=>player.feature>=15],
+            ["particle-accel",()=>player.feature>=16],
         ],
     },
 ]

@@ -334,6 +334,29 @@ const RESEARCH = {
         },
         effDesc: x => formatMult(x),
     },
+    f6: {
+        unl: ()=>hasForgeUpgrade('adv_research',3),
+        require: [
+            ['vibranium',false,10000],
+        ],
+        effect(r) {
+            return Decimal.pow(1.15,player.humanoid.mining_tier)
+        },
+        effDesc: x => formatMult(x),
+    },
+    f7: {
+        unl: ()=>hasForgeUpgrade('adv_research',3),
+        require: [
+            ['fish',true,'e3e115'],
+            ['vibranium',false,2.5e5],
+        ],
+    },
+    f8: {
+        unl: ()=>hasForgeUpgrade('adv_research',3),
+        require: [
+            ['vibranium',false,1e10],
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
