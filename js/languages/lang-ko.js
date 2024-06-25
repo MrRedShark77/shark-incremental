@@ -3,7 +3,7 @@
 LANGUAGES.EN = {
     name: "Korean",
     inter_name: "한국어",
-    icon: "lang-en",
+    icon: "lang-ko",
 
     text: {
         // Currencies
@@ -11,44 +11,44 @@ LANGUAGES.EN = {
         'fish-name': "물고기",
         'fish-costName': toTextStyle('물고기','fish'),
 
-        'prestige-name': "Prestige Shards",
-        'prestige-costName': toTextStyle('Prestige','prestige') + " Shards",
+        'prestige-name': "환생 파편",
+        'prestige-costName': toTextStyle('환생','prestige') + " 파편",
 
-        'coral-name': "Coral",
-        'coral-costName': toTextStyle('Coral','coral'),
+        'coral-name': "산호",
+        'coral-costName': toTextStyle('산호','coral'),
 
-        'ice-name': "Ice",
-        'ice-costName': toTextStyle('Ice','ice'),
+        'ice-name': "얼음",
+        'ice-costName': toTextStyle('얼음','ice'),
 
-        'salt-name': "Salt",
-        'salt-costName': toTextStyle('Salt','salt'),
+        'salt-name': "소금",
+        'salt-costName': toTextStyle('소금','salt'),
 
-        'snow-name': "Compressed Snow",
-        'snow-costName': toTextStyle('Compressed Snow','snow'),
+        'snow-name': "압축된 눈",
+        'snow-costName': toTextStyle('압축된 눈','snow'),
 
-        'kelp-name': "Kelp",
-        'kelp-costName': toTextStyle('Kelp','kelp'),
+        'kelp-name': "켈프",
+        'kelp-costName': toTextStyle('켈프','kelp'),
 
-        'core-name': "Magmatic Fragments",
-        'core-costName': toTextStyle('Magmatic','core') + ' Fragments',
+        'core-name': "마그마 조각",
+        'core-costName': toTextStyle('마그마','core') + ' 조각',
 
-        'humanoid-name': "Humanoid Sharks",
-        'humanoid-costName': toTextStyle('Humanoid','humanoid') + ' Sharks',
+        'humanoid-name': "상어 인간",
+        'humanoid-costName': toTextStyle('상어','humanoid') + ' 인간',
 
-        'full-shark-level': toTextStyle('Shark','shark') + ' Level',
+        'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
 
-        'sharkoid-faith': toTextStyle('Sharkoid Faith','humanoid'),
+        'sharkoid-faith': toTextStyle('상어 인간의 신앙','humanoid'),
 
-        'curr-top-0-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Fish','fish')}`, 
-        'curr-top-0-reset': x => `Prestige for <b>${x.format(0)}</b> ${toTextStyle('Prestige','prestige')} Shards`,
+        'curr-top-0-req': x => `총 <b>${format(x)}</b> ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        'curr-top-0-reset': x => `환생을 해 <b>${x.format(0)}</b> ${toTextStyle('환생','prestige')} 파편을 획득`,
 
-        'curr-top-1-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Prestige','prestige')} Shards`, 
-        'curr-top-1-reset': x => `Enter the core for <b>${x.format(0)}</b> ${toTextStyle('Magmatic','core')} Fragments`,
+        'curr-top-1-req': x => `총 <b>${format(x)}</b> ${toTextStyle('환생','prestige')} 파편에 도달하세요`, 
+        'curr-top-1-reset': x => `핵으로 들어가 <b>${x.format(0)}</b> ${toTextStyle('마그마','core')} 파편을 획득`,
 
-        'curr-top-2-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')}`, 
-        'curr-top-2-reset': (x,next) => `Evolve your ${toTextStyle('Sharks','shark')} into <b>${format(x,0)}</b> ${toTextStyle('Humanoid','humanoid')} Sharks (Next at <b>${format(next)}</b> ${toTextStyle('Fish','fish')})`,
+        'curr-top-2-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} 도달`, 
+        'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를  <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화 ( <b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
 
-        'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
+        'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
         // Tabs
 

@@ -8,8 +8,8 @@ LANGUAGES.ZH = {
     text: {
         // Currencies
 
-        'fish-name': "물고기",
-        'fish-costName': toTextStyle('물고기','fish'), // test
+        'fish-name': "鱼",
+        'fish-costName': toTextStyle('鱼','fish'),
 
         'prestige-name': "重生碎片",
         'prestige-costName': toTextStyle('重生','prestige') + "碎片",
