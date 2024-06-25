@@ -59,7 +59,7 @@ LANGUAGES.PT = {
         'tab-explore': "탐험",
 
         'tab-core': toTextStyle('핵','core'),
-        'tab-core-reactor': toTextStyle('핵','core')+" 반응로",
+        'tab-core-reactor': toTextStyle('핵','core')+" 원자로",
         'tab-core-radiation': toTextStyle('핵','core')+" 방사능",
         'tab-core-assembler': toTextStyle('핵','core')+" 조립기",
 
@@ -95,7 +95,7 @@ LANGUAGES.PT = {
             return `
             <summary>${c} 방사선 실험</summary>
             핵의 방사선을 통한 실험은 강제로 ${toTextStyle('핵','core')} 환생을 합니다.
-            실험 도중에는 핵 반응로는 작동하지 않습니다. ${toTextStyle('물고기','fish')}, ${toTextStyle('환생','prestige')} 파편들, 그리고 첫 네개의 바다 자원들이 세제곱근으로 나눠집니다.
+            실험 도중에는 핵 원자로는 작동하지 않습니다. ${toTextStyle('물고기','fish')}, ${toTextStyle('환생','prestige')} 파편들, 그리고 첫 네개의 바다 자원들이 세제곱근으로 나눠집니다.
             실험의 힘은 당신의 ${toTextStyle('상어','shark')}가 방사선 ${rf}을 먹게 합니다.<br>
             방사선 ${rf}로 업그레이드 해 추가적인 부스트를 주는 ${toTextStyle('방사능 '+icon("radioactive"),'core')}을 더 획득하세요.
             `
@@ -154,149 +154,149 @@ LANGUAGES.PT = {
         'su-m1-desc': `채광 대미지를 레벨 당 <b>×2</b> 올립니다.`,
 
         'su-m2-name': '채광 속도',
-        'su-m2-desc': `Increases the mining speed by <b>+10%</b> per level.`,
+        'su-m2-desc': `채광 속도를 레벨 당 <b>+10%</b> 올립니다.`,
 
         'su-m3-req': '채광 티어 3',
-        'su-m3-name': 'Compressed Stone',
-        'su-m3-desc': `Increases <b>Stone</b> mined by <b>×2</b> per level.`,
+        'su-m3-name': '압축된 돌',
+        'su-m3-desc': `채광시 획득하는 <b>돌</b>을 레벨 당 <b>×2</b> 올립니다.`,
 
         'su-m4-req': '채광 티어 6',
-        'su-m4-name': 'Mining Fortune',
-        'su-m4-desc': `Increases the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+5</b> per level.`,
+        'su-m4-name': '채광 행운',
+        'su-m4-desc': `${toTextStyle('채광 행운 '+icon('luck'),'gold')}을 레벨 당 <b>+5</b> 올립니다.`,
 
         'su-m5-req': '채광 티어 9',
-        'su-m5-name': 'Basic Ores',
-        'su-m5-desc': `Increases the first 4 ores mined by <b>×2</b> per level.`,
+        'su-m5-name': '기본 광석들',
+        'su-m5-desc': `처음 네 광석들을 채광시 획득하는 량이 레벨 당 <b>×2</b> 올라갑니다.`,
 
         // Researches
 
-        'research-p1-name': "Prestigious Agility",
-        'research-p1-desc': `'Shark Agility' now affects the base of ${toTextStyle("Shark",'shark')} Level's ${toTextStyle("Prestige",'prestige')} Shard bonus at a reduced rate.`,
+        'research-p1-name': "뛰어난 민첩성",
+        'research-p1-desc': `'상어 민첩성 강화'는 이제 ${toTextStyle("상어",'shark')} 레벨의 ${toTextStyle("환생",'prestige')} 파편 보너스의 베이스에 감소된 상태로 강화합니다.`,
 
-        'research-p2-name': "Shark Upgrade EL",
-        'research-p2-desc': `${toTextStyle("Shark",'shark')} ${toTextStyle("Fish",'fish')} upgrades no longer spend ${toTextStyle("Fish",'fish')}.`,
+        'research-p2-name': "상어 업그레이드 EL",
+        'research-p2-desc': `${toTextStyle("상어",'shark')} ${toTextStyle("물고기",'fish')} 업그레이드는 더 이상 ${toTextStyle("물고기",'fish')}를 소모하지 않습니다.`,
 
-        'research-p3-name': "Upgraded Shark Level",
-        'research-p3-desc': `Reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by <b>1</b>,
-        but force a ${toTextStyle("Prestige",'prestige')} reset, resetting your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades.
-        Unlock new ${toTextStyle("Shark",'shark')} upgrades.`,
+        'research-p3-name': "강화된 상어 레벨",
+        'research-p3-desc': `${toTextStyle("상어",'shark')} 레벨 업의 요구량의 베이스를 <b>1</b> 줄이는 대신,
+        강제로 ${toTextStyle("환생",'prestige')}을 하며 ${toTextStyle("환생",'prestige')} 파편 과 ${toTextStyle("환생",'prestige')} 업그레이드들을 초기화 합니다.
+        새로운 ${toTextStyle("상어",'shark')} 업그레이드를 해금합니다.`,
 
-        'research-p4-name': "Better Prestige",
-        'research-p4-desc': `Slightly improve the formula of ${toTextStyle("Prestige",'prestige')} shards gain.`,
+        'research-p4-name': "더 나은 환생",
+        'research-p4-desc': `${toTextStyle("환생",'prestige')} 파편 획득 공식을 조금 개선합니다.`,
 
-        'research-p5-name': "Mega Strength",
-        'research-p5-desc': `'Super Shark Strength' is <b>1%</b> stronger for every ${toTextStyle("Shark",'shark')} Level, starting at 100.`,
+        'research-p5-name': "엄청난 힘",
+        'research-p5-desc': `'상어 힘 슈퍼 강화'가 매 ${toTextStyle("상어",'shark')} 레벨 마다 <b>1%</b> 강해집니다.(100부터 시작합니다)`,
 
-        'research-p6-name': "Super Scaled Shark",
-        'research-p6-desc': `'Scaled Shark' is <b>twice</b> as strong.`,
+        'research-p6-name': "엄청 느려진 상어",
+        'research-p6-desc': `'느려진 상어'가 <b>두배</b> 강해집니다.`,
 
-        'research-p7-name': "Better Resources I",
-        'research-p7-desc': `${toTextStyle("Coral",'coral')} and ${toTextStyle("Ice",'ice')}' effect is better.`,
+        'research-p7-name': "더 나은 자원 I",
+        'research-p7-desc': `${toTextStyle("산호",'coral')}와 ${toTextStyle("얼음",'ice')}'의 효과가 개선됩니다.`,
 
-        'research-p8-name': "Further Upgraded Shark Level",
-        'research-p8-desc': `Further reduce the base of ${toTextStyle("Shark",'shark')} level's requirement by 1.`,
+        'research-p8-name': "더욱 강화된 상어 레벨",
+        'research-p8-desc': `${toTextStyle("상어",'shark')} 레벨의 요구량을 1만큼 더 줄입니다.`,
 
-        'research-p9-name': "Cheap Prestige Booster",
-        'research-p9-desc': `Reduce the dilation scaling of 'Prestige Booster' by <b>-0.05</b> per level.`,
+        'research-p9-name': "싼 환생 부스터",
+        'research-p9-desc': `레벨 당 '환생 부스터'의 가격 증가를 <b>-0.05</b>씩 줄입니다.`,
 
-        'research-e1-name': "Ocean Synergism I",
-        'research-e1-desc': `${toTextStyle("Salt",'salt')} boosts ${toTextStyle("Corals",'coral')} generated.`,
+        'research-e1-name': "바다 시너지즘I",
+        'research-e1-desc': `${toTextStyle("소금",'salt')}이 ${toTextStyle("산호",'coral')}의 생산량을 증가시킵니다.`,
 
-        'research-e2-name': "Ocean Synergism II",
-        'research-e2-desc': `${toTextStyle("Compressed Snow",'snow')} boosts ${toTextStyle("Ice",'ice')} generated.`,
+        'research-e2-name': "바다 시너지즘 II",
+        'research-e2-desc': `${toTextStyle("압축된 눈",'snow')}이 ${toTextStyle("얼음",'ice')}의 생산량을 증가시킵니다.`,
 
-        'research-e3-name': "Exploration Automation",
-        'research-e3-desc': `Automatically gain base of the first <b>X</b> oceans without exploring.`,
+        'research-e3-name': "탑험 자동화",
+        'research-e3-desc': `자동으로 <b>X</b> 번째 바다의 베이스를 탐험하지 않고도 획득합니다.`,
 
-        'research-e4-name': "Kelp Oxidation",
-        'research-e4-desc': `<b>Oxygen</b> now affects ${toTextStyle("Kelp",'kelp')} production at a reduced rate.`,
+        'research-e4-name': "산화 켈프",
+        'research-e4-desc': `<b>산소</b>가 ${toTextStyle("켈프",'kelp')}의 생산량을 감소된 상태로 증가시킵니다.`,
 
-        'research-e5-name': "Exploration Automation MK2",
-        'research-e5-desc': `Automatically gain base in the Indian Ocean without exploring. Improve ${toTextStyle('Kelp','kelp')}'s effect again.`,
+        'research-e5-name': "탐험 자동화 MK2",
+        'research-e5-desc': `자동으로 인도양의 베이스를 탐험하지 않고도 획득합니다. ${toTextStyle('켈프','kelp')} 효과를 강화시킵니다.`,
 
-        'research-e6-name': "Sunda Trench",
-        'research-e6-desc': `The <b>Indian Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`,
+        'research-e6-name': "자바 해구",
+        'research-e6-desc': `<b>인도양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`,
 
-        'research-c1-name': "Research C-Keeper",
-        'research-c1-desc': `Keep ${toTextStyle("Research",'prestige')} when entering the ${toTextStyle('Core','core')}.`,
+        'research-c1-name': "연구 핵 유지기",
+        'research-c1-desc': `${toTextStyle('핵','core')}에 들어가도 ${toTextStyle("연구",'prestige')}가 초기화 되지 않습니다.`,
 
-        'research-c2-name': "Exploration C-Keeper",
-        'research-c2-desc': `Keep first <b>X</b> oceans unlocked and their depth on entering the ${toTextStyle('Core','core')}.`,
+        'research-c2-name': "탐험 핵 유지기",
+        'research-c2-desc': `${toTextStyle('핵','core')}에 들어가도 <b>X</b> 번째 바다의 해금과 깊이가 유지됩니다.`,
 
-        'research-c3-name': "Neon's Affection I",
-        'research-c3-desc': `<b>Neon</b> now affects 'Shark Teeth', 'Shark Exponent', and 'Scaled Shark'.`,
+        'research-c3-name': "네온의 영향력 I",
+        'research-c3-desc': `<b>네온</b>이 '상어 이빨 강화', '상어 지수 강화', 그리고 '느려진 상어'에도 영향을 줍니다.`,
 
-        'research-c4-name': "Better Nickel",
-        'research-c4-desc': `<b>Nickel</b>'s effect is <b>twice</b> as powerful.`,
+        'research-c4-name': "더 나은 니켈",
+        'research-c4-desc': `<b>니켈</b>의 효과가 <b>두 배</b> 강해집니다.`,
 
-        'research-c5-name': "Additional Core Boost",
-        'research-c5-desc': `The core radiation's bonus reactors now affect the core reactor's boost to ${toTextStyle('Fish','fish')} at a reduced rate.`,
+        'research-c5-name': "추가적인 핵 부스트",
+        'research-c5-desc': `이제 핵 방사선의 보너스 원자로가 핵 원자로의 부스트에 감소된 비율로 ${toTextStyle('물고기','fish')}에 영향을 미칩니다.`,
 
-        'research-c6-name': "Radiation Reduction",
-        'research-c6-desc': `${toTextStyle('Magmatic','core')} fragments reduce radiation's limit at a reduced rate.`,
+        'research-c6-name': "방사선 감소",
+        'research-c6-desc': `${toTextStyle('마그마','core')} 파편이 방사선의 한계치를 감소된 상태로 줄입니다.`,
 
-        'research-c7-name': "Greater Shark Teeth",
-        'research-c7-desc': `The effect of 'Shark Teeth' is raised to the <b>2.5th</b> power.`,
+        'research-c7-name': "엄청난 상어의 이빨",
+        'research-c7-desc': `'상어 이빨 강화'의 효과가 <b>^2.5</b>만큼 증가합니다.`,
 
-        'research-c8-name': "Better Iron & Neon",
-        'research-c8-desc': `<b>Iron</b>'s effect is twice as powerful, and <b>Iron</b>'s & <b>Neon</b>'s requirements are reduced drastically.`,
+        'research-c8-name': "더 나은 철 & 네온",
+        'research-c8-desc': `<b>철</b>의 효과가 2배 강해지며, <b>철</b> 과 <b>네온</b>의 요구량이 엄청나게 줄어듭니다.`,
 
-        'research-c9-name': "Better Core Boost",
-        'research-c9-desc': `Improve the core reactor's boost to ${toTextStyle('Fish','fish')}.`,
+        'research-c9-name': "더 나은 핵 부스트",
+        'research-c9-desc': `핵 원자로의 ${toTextStyle('물고기','fish')} 부스트가 강화됩니다.`, // need to fix, need more info
 
-        'research-c10-name': "Super-Scaled Shark",
-        'research-c10-desc': `'Scaled Shark' now delays the second ${toTextStyle('Shark','shark')} Level scaling at a reduced rate.`,
+        'research-c10-name': "엄청 느려진 상어",
+        'research-c10-desc': `'느려진 상어' 두 번째 ${toTextStyle('상어','shark')} 레벨 증가량을 감소된 상태로 줄입니다.`,
 
-        'research-c11-name': "Better Radiation Reduction",
-        'research-c11-desc': `'Radiation Reduction' is stronger slightly.`,
+        'research-c11-name': "더 나은 방사선 감소",
+        'research-c11-desc': `'방사선 감소'가 조금 더 강해집니다.`,
 
-        'research-c12-name': "Mega Radiation Reduction",
-        'research-c12-desc': `Drastically reduce radiation's limit.`,
+        'research-c12-name': "메가 방사선 감소",
+        'research-c12-desc': `방사선의 한계를 엄청나게 줄입니다.`,
 
-        'research-c13-name': "Super Radioactive Shark",
-        'research-c13-desc': `'Radioactive Shark' is <b>50%</b> stronger.`,
+        'research-c13-name': "슈퍼 방사선 상어",
+        'research-c13-desc': `'방사선 상어'가 <b>50%</b> 강해집니다.`,
 
-        'research-c14-name': "Exponential Core Boost",
-        'research-c14-desc': `Core reactors now provide an exponential boost to ${toTextStyle('Fish','fish')}.`,
+        'research-c14-name': "핵 지수 부스트",
+        'research-c14-desc': `핵 원자로가 ${toTextStyle('물고기','fish')}에 지수 부스트를 제공합니다.`,
 
-        'research-c15-name': "Self-Radiation",
-        'research-c15-desc': `You can buy a radiation upgrade, costing regular ${toTextStyle('Fish','fish')} instead of radioactive ${toTextStyle('Fish '+icon('radioactive'),'fish')}, but at a <b>^0.0001</b> rate. Then increase the rate by <b>×10</b> per level.`,
+        'research-c15-name': "자가-방사성",
+        'research-c15-desc': `이제 방사선 업그레이드를 ${toTextStyle('물고기 '+icon('radioactive'),'fish')} 대신 일반 ${toTextStyle('물고기','fish')}로 구매 할 수 있습니다, 대신 수치가 <b>^0.0001</b>로 감소합니다. 수치가 레벨 당 <b>×10</b> 증가합니다.`,
 
-        'research-m1-name': "Magmatic Fortune",
-        'research-m1-desc': `Increase the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+5</b> per level.`,
+        'research-m1-name': "마그마 행운",
+        'research-m1-desc': `${toTextStyle('채광 행운 '+icon('luck'),'gold')}을 레벨 당 <b>+5</b> 올립니다.`,
 
-        'research-m2-name': "Hyper-Scaled Shark",
-        'research-m2-desc': `The third ${toTextStyle("Shark",'shark')} level scaling is delayed by <b>+1000</b>.`,
+        'research-m2-name': "하이퍼 느려진 상어",
+        'research-m2-desc': `세 번째 ${toTextStyle("상어",'shark')} 레벨 증가량이 <b>+1000</b>만큼 미뤄집니다.`,
 
-        'research-m3-name': "Scaled Radioactive Boost",
-        'research-m3-desc': `Delay the first 2 radioactive boost scalings by <b>+1</b> per level.`,
+        'research-m3-name': "느려진 방사선 부스트",
+        'research-m3-desc': `레벨 당 첫 두 개의 방사선 부스트의 수치 증가가 <b>+1</b> 미뤄집니다.`,
 
-        'research-m4-name': "Better Mining Tier",
-        'research-m4-desc': `The second, third, fourth, and fifth effects of mining tier are <b>+25%</b> stronger per level.`,
+        'research-m4-name': "더 나은 채광 티어",
+        'research-m4-desc': `채광 티어의 2 ~ 5 번재 효과가 레벨 당 <b>+25%</b> 강해집니다.`,
 
-        'research-f1-name': "Basic Rank Exponent",
-        'research-f1-desc': `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>+25%</b> per level.`,
+        'research-f1-name': "기본 랭크 지수",
+        'research-f1-desc': `레벨 당 ${toTextStyle("상어",'shark')} ELO 의 지수를 <b>+25%</b> 올립니다.`,
 
-        'research-f2-name': "More Sharkoid Faith",
-        'research-f2-desc': `Gain more ${toTextStyle('Sharkoid Faith','humanoid')} from ${toTextStyle('Fish','fish')} & ${toTextStyle("Prestige",'prestige')} shards.`,
+        'research-f2-name': "더 많은 신앙",
+        'research-f2-desc': `${toTextStyle('물고기','fish')} & ${toTextStyle("환생",'prestige')} 파편을 통해 더 많은 ${toTextStyle('상어 인간의 신앙','humanoid')}을 획득합니다.`,
 
-        'research-f3-name': "Scaled Core Reactors",
-        'research-f3-desc': `Delay the first scaling of the core reactors by <b>+1</b> per level.`,
+        'research-f3-name': "느려진 핵 원자로",
+        'research-f3-desc': `첫 번째 핵 원자로의 증가를 레벨 당 <b>+1</b> 미룹니다.`, //need to fix, need more info
 
-        'research-f4-name': "Less Core Temperature Softcap",
-        'research-f4-desc': `The softcap of the ${toTextStyle('Core','core')}'s temperature is weaker.`,
+        'research-f4-name': "감소된 핵 온도 소프트캡",
+        'research-f4-desc': `${toTextStyle('핵','core')} 온도의 소프트 캡이 약해집니다.`,
 
-        'research-f5-name': "Vibranium Boost",
-        'research-f5-desc': `<b>Vibranium</b> boosts mining damage at a reduced rate.`,
+        'research-f5-name': "비브라늄 부스트",
+        'research-f5-desc': `<b>비브라늄</b>이 채광 대미지를 감소된 상태로 강화합니다.`,
 
-        'research-f6-name': "Universal Mining Tier",
-        'research-f6-desc': `The first 9 ores are boosted by the mining tier.`,
+        'research-f6-name': "우주적 채광 티어",
+        'research-f6-desc': `첫 9 종류의 광석들이 채광 티어에 의해 획득량이 증가됩니다.`,
 
-        'research-f7-name': "Better Shark ELO",
-        'research-f7-desc': `The base of humanoid sharks in the formula for ${toTextStyle("Shark",'shark')} ELO is improved from <b>x</b> to <b>2<sup>x</sup>-1</b>.`,
+        'research-f7-name': "더 나은 상어 ELO",
+        'research-f7-desc': `상어 인간에서의 ${toTextStyle("상어",'shark')} ELO의 베이스 공식이 <b>x</b> 에서 <b>2<sup>x</sup>-1</b>으로 개선됩니다.`,
 
-        'research-f8-name': "Weak Ore Health",
-        'research-f8-desc': `The first effect of mining tier is reduced.`,
+        'research-f8-name': "약해진 광석 체력",
+        'research-f8-desc': `채광 티어의 첫 번재 효과가 감소됩니다.`,
 
         // Exploration
 
