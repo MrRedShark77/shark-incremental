@@ -52,24 +52,24 @@ LANGUAGES.EN = {
 
         // Tabs
 
-        'tab-shark': toTextStyle('Shark','shark'),
-        'tab-options': "Options",
-        'tab-auto': "Automation",
-        'tab-research': toTextStyle('Research','prestige'),
-        'tab-explore': "Exploration",
+        'tab-shark': toTextStyle('상어','shark'),
+        'tab-options': "옵션들",
+        'tab-auto': "자동화",
+        'tab-research': toTextStyle('연구','prestige'),
+        'tab-explore': "탐험",
 
-        'tab-core': toTextStyle('Core','core'),
-        'tab-core-reactor': toTextStyle('Core','core')+" Reactor",
-        'tab-core-radiation': toTextStyle('Core','core')+" Radiation",
-        'tab-core-assembler': toTextStyle('Core','core')+" Assembler",
+        'tab-core': toTextStyle('핵','core'),
+        'tab-core-reactor': toTextStyle('핵','core')+" 반응로",
+        'tab-core-radiation': toTextStyle('핵','core')+" 방사능",
+        'tab-core-assembler': toTextStyle('핵','core')+" 조립기",
 
-        'tab-evolution': toTextStyle('Evolution','humanoid'),
-        'tab-shark-rank': toTextStyle('Shark','shark') + " Rank",
-        'tab-evolution-tree': toTextStyle('Evolution','humanoid') + " Tree",
-        'tab-evolution-goal': toTextStyle('Evolution','humanoid') + " Goals",
-        'tab-cultivation': "Cultivation",
-        'tab-forge': "Forge",
-        'tab-particle-accel': "Particle Accelerator",
+        'tab-evolution': toTextStyle('진화','humanoid'),
+        'tab-shark-rank': toTextStyle('상어','shark') + " 랭크",
+        'tab-evolution-tree': toTextStyle('진화','humanoid') + " 트리",
+        'tab-evolution-goal': toTextStyle('진화','humanoid') + " 목표",
+        'tab-cultivation': "채굴",
+        'tab-forge': "용광로",
+        'tab-particle-accel': "입자 가속기",
 
         // Elements
 
