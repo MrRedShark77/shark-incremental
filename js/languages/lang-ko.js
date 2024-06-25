@@ -1,6 +1,6 @@
 // This is Korean!
 
-LANGUAGES.EN = {
+LANGUAGES.KO = {
     name: "Korean",
     inter_name: "한국어",
     icon: "lang-ko",
@@ -73,37 +73,37 @@ LANGUAGES.EN = {
 
         // Elements
 
-        'fish-div': `Your ${toTextStyle('Shark','shark')} has eaten <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> fish.`,
-        'shark-stats': `${toTextStyle('Shark','shark')} Stats<br>Level: <h4 id="shark-level">???</h4><br>Rank: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
+        'fish-div': `당신의 ${toTextStyle('상어','shark')}가 <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> 마리의 물고기를 먹었습니다.`,
+        'shark-stats': `${toTextStyle('상어','shark')} 상태<br>레벨: <h4 id="shark-level">???</h4><br>랭크: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
 
-        'shark-elo-div': `Your ${toTextStyle('Shark','shark')} ELO is <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
-        'shark-rank-div': `Your ${toTextStyle('Shark','shark')} Rank is <h3 id="shark-rank">0</h3>.`,
-        'shark-rank-req-div': `The next rank requires ${toTextStyle('Shark','shark')} ELO <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
-        'shark-rank-note': `Note: Shark Rank gets reset when you trigger an Evolution reset.`,
+        'shark-elo-div': `당신의 ${toTextStyle('상어','shark')} ELO는 <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>입니다.`,
+        'shark-rank-div': `당신의 ${toTextStyle('상어','shark')} 랭크는 <h3 id="shark-rank">0</h3>입니다.`,
+        'shark-rank-req-div': `다음 랭크는 ${toTextStyle('상어','shark')} ELO을 요구합니다. <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`, // need more info, fix later
+        'shark-rank-note': `노트: 진화 환생을 할 때 상어 랭크는 초기화 됩니다.`,
 
-        'option-title-1': "Main Options",
-        'option-title-2': "Notations",
-        'option-title-3': "Confirmations",
-        'option-title-4': "Languages",
+        'option-title-1': "메인 옵션들",
+        'option-title-2': "표기법",
+        'option-title-3': "환생 확인",
+        'option-title-4': "언어들",
 
-        'offline-speed': "Speed up Offline time",
-        'offline-done': "Done",
+        'offline-speed': "오프라인 시간 계산을 가속하기",
+        'offline-done': "완료함",
 
-        'radioactive-div': `The ${toTextStyle('Core','core')} has produced <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+        'radioactive-div': `${toTextStyle('핵','core')}은  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 을 생산함 <span id="radioactive-gain"></span>.`,
         get 'radioactive-summary'() {
-            var c = toTextStyle('Core','core'), rf = toTextStyle('Fish '+icon("radioactive"),'fish')
+            var c = toTextStyle('핵','core'), rf = toTextStyle('생선'+icon("radioactive"),'fish')
             return `
-            <summary>The ${c} Radiation Experiment</summary>
-            Experimenting with the core radiation forces a ${toTextStyle('Core','core')} reset.
-            While in the experiment, core reactors don't work. ${toTextStyle('Fish','fish')}, ${toTextStyle('Prestige','prestige')} shards, and the first four oceans' resources are cube-rooted.
-            The experiment forces your ${toTextStyle('Shark','shark')} to eat radioactive ${rf}.<br>
-            Upgrade with radioactive ${rf} to generate more ${toTextStyle('Radiation '+icon("radioactive"),'core')}, which gives you additional boosts.
+            <summary>${c} 방사선 실험</summary>
+            핵의 방사선을 통한 실험은 강제로 ${toTextStyle('핵','core')} 환생을 합니다.
+            실험 도중에는 핵 반응로는 작동하지 않습니다. ${toTextStyle('물고기','fish')}, ${toTextStyle('환생','prestige')} 파편들, 그리고 첫 네개의 바다 자원들이 세제곱근으로 나눠집니다.
+            실험의 힘은 당신의 ${toTextStyle('상어','shark')}가 방사선 ${rf}을 먹게 합니다.<br>
+            방사선 ${rf}로 업그레이드 해 추가적인 부스트를 주는 ${toTextStyle('방사능 '+icon("radioactive"),'core')}을 더 획득하세요.
             `
         },
-        'radioboost-div': `You have <h3 id="radioactive-boost">0</h3> radioactive boosts.`,
+        'radioboost-div': `당신은 <h3 id="radioactive-boost">0</h3> 개의 방사능 부스트를 가지고 있습니다.`,
 
-        'core-temp-div': `The ${toTextStyle('Core','core')}'s temperature is <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, which makes radioactive boosts <h4 id="core-temp-effect">100%</h4> effective.`,
-        'core-temp-after-div': `(The ${toTextStyle('Core','core')}'s temperature will be <span id="core-temp-after">???</span> after a ${toTextStyle('Core','core')} reset)`,
+        'core-temp-div': `${toTextStyle('핵','core')}의 온도는 <h3>${toTextStyle('6,150','core','core-temperature')}</h3>이며, 이는 방사선 부스트를 <h4 id="core-temp-effect">100%</h4> 더 강하게 만듭니다.`,
+        'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>도가 됩니다.)`,
 
         'sharkoid-faith-div': `You have <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Sharkoid Faith','humanoid')}.`,
         'respec-evolution-tree': `Respec ${toTextStyle('Evolution','humanoid')} Tree`,
