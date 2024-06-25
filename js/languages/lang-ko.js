@@ -119,54 +119,54 @@ LANGUAGES.KO = {
 
         // Upgrades
 
-        'su-s1-req': "Level 3",
-        'su-s1-name': 'Shark Strength',
-        'su-s1-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>+1</b> per level.`,
+        'su-s1-req': "레벨 3",
+        'su-s1-name': '상어 힘 강화',
+        'su-s1-desc': `${toTextStyle('물고기','fish')} 섭취량을 레벨 당 <b>+1</b> 올립니다.`,
 
-        'su-s2-req': "Level 7",
-        'su-s2-name': 'Shark Agility',
-        'su-s2-desc': `Increases the base of ${toTextStyle('Shark','shark')} Level's ${toTextStyle('Fish','fish')} bonus by <b>+1</b> per level.`,
+        'su-s2-req': "레벨 7",
+        'su-s2-name': '상어 민첩성 강화',
+        'su-s2-desc': `${toTextStyle('상어','shark')} 레벨의 기본 ${toTextStyle('물고기','fish')} 보너스를 레벨 당 <b>+1</b> 올립니다.`,
 
-        'su-s3-req': "Level 15",
-        'su-s3-name': 'Shark Teeth',
-        'su-s3-desc': `Increases the exponent of 1st ${toTextStyle('Shark','shark')} Upgrade by <b>+50%</b> per level.`,
+        'su-s3-req': "레벨 15",
+        'su-s3-name': '상어 이빨 강화',
+        'su-s3-desc': `첫 번째 ${toTextStyle('상어','shark')} 업그레이드의 지수를 레벨 당 <b>+50%</b> 올립니다.`,
 
-        'su-s4-req': "Level 38",
-        'su-s4-name': 'Shark Exponent',
-        'su-s4-desc': `Increases the exponent of ${toTextStyle('Fish','fish')} by <b>+1%</b> per level.`,
+        'su-s4-req': "레벨 38",
+        'su-s4-name': '상어 지수 강화',
+        'su-s4-desc': `${toTextStyle('물고기','fish')} 획득의 지수를 레벨 당 <b>+1%</b> 올립니다.`,
 
-        'su-s5-req': "Level 640",
-        'su-s5-name': 'Radioactive Shark',
-        'su-s5-desc': `Increase ${toTextStyle('Radiation '+icon("radioactive"),'core')} production by <b>x2</b> per level.`,
+        'su-s5-req': "레벨 640",
+        'su-s5-name': '방사성 상어',
+        'su-s5-desc': `${toTextStyle('방사선 '+icon("radioactive"),'core')} 생산량을 레벨 당 <b>x2</b> 올립니다.`,
 
-        'su-p1-req': "First Prestige",
-        'su-p1-name': 'Super Shark Strength',
-        'su-p1-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×3</b> per level.`,
+        'su-p1-req': "환생 한 번 하기",
+        'su-p1-name': '상어 힘 슈퍼 강화',
+        'su-p1-desc': `${toTextStyle('물고기','fish')} 섭취량을 레벨 당 <b>×3</b> 올립니다.`,
 
-        'su-p2-req': "First Prestige",
-        'su-p2-name': 'Prestige Booster',
-        'su-p2-desc': `Increases ${toTextStyle('Fish','fish')} eaten by <b>×lg(${toTextStyle('Fish','fish')})</b> per level.`,
+        'su-p2-req': "환생 한 번 하기",
+        'su-p2-name': '환생 부스터',
+        'su-p2-desc': `${toTextStyle('Fish','fish')} 섭취량을 레벨 당<b>×lg(${toTextStyle('물고기','fish')})</b> 올립니다.`,
 
-        'su-p3-name': 'Scaled Shark',
-        'su-p3-desc': `Delays the first ${toTextStyle('Shark','shark')} Level scaling by <b>+1</b> per level.`,
+        'su-p3-name': '느려진 상어',
+        'su-p3-desc': `첫 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 레벨 당 <b>+1</b> 느려집니다.`,
 
-        'su-m1-name': 'Mining Damage',
-        'su-m1-desc': `Increases the mining damage by <b>×2</b> per level.`,
+        'su-m1-name': '채광 대미지',
+        'su-m1-desc': `채광 대미지를 레벨 당 <b>×2</b> 올립니다.`,
 
-        'su-m2-name': 'Mining Speed',
-        'su-m2-desc': `Increases the mining speed by <b>+10%</b> per level.`,
+        'su-m2-name': '채광 속도',
+        'su-m2-desc': `채광 속도를 레벨 당 <b>+10%</b> 올립니다.`,
 
-        'su-m3-req': 'Mining Tier 3',
-        'su-m3-name': 'Compressed Stone',
-        'su-m3-desc': `Increases <b>Stone</b> mined by <b>×2</b> per level.`,
+        'su-m3-req': '채광 티어 3',
+        'su-m3-name': '압축된 돌',
+        'su-m3-desc': `채광시 획득하는 <b>돌</b>을 레벨 당 <b>×2</b> 올립니다.`,
 
-        'su-m4-req': 'Mining Tier 6',
-        'su-m4-name': 'Mining Fortune',
-        'su-m4-desc': `Increases the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+5</b> per level.`,
+        'su-m4-req': '채광 티어 6',
+        'su-m4-name': '채광 행운',
+        'su-m4-desc': `${toTextStyle('채광 행운 '+icon('luck'),'gold')}을 레벨 당 <b>+5</b> 올립니다.`,
 
-        'su-m5-req': 'Mining Tier 9',
-        'su-m5-name': 'Basic Ores',
-        'su-m5-desc': `Increases the first 4 ores mined by <b>×2</b> per level.`,
+        'su-m5-req': '채광 티어 9',
+        'su-m5-name': '기본 광석들',
+        'su-m5-desc': `처음 네 광석들을 채광시 획득하는 량이 레벨 당 <b>×2</b> 올라갑니다.`,
 
         // Researches
 
