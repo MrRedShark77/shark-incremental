@@ -69,6 +69,7 @@ LANGUAGES.ZH = {
         'tab-evolution-goal': toTextStyle('进化','humanoid') + "目标",
 		'tab-cultivation': "挖矿",
 		'tab-forge': "锻造",
+		'tab-particle-accel': "粒子加速器",
 
         // Elements
 
@@ -288,6 +289,15 @@ LANGUAGES.ZH = {
         'research-f5-name': "振金钻头",
         'research-f5-desc': `<b>振金</b>能增强对矿坑的伤害。`,
 
+        'research-f6-name': "通用钻头",
+        'research-f6-desc': `前 9 种矿物的产量获得矿坑等级的加成。`,
+
+        'research-f7-name': "鲨鱼战力提升",
+        'research-f7-desc': `${toTextStyle("鲨鱼",'shark')}战力公式的底数从 <b>x</b> 提升到 <b>2<sup>x</sup>-1</b>.`,
+
+        'research-f8-name': "脆弱的矿坑",
+        'research-f8-desc': `削弱挖矿等级的第一个效果。`,
+
         // Exploration
 
         'explore-while': `探索时`,
@@ -401,6 +411,7 @@ LANGUAGES.ZH = {
 			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
 			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
 			x=>`探索升级的购买次数额外 <h4>${formatMult(x,3)}</h4>.`,
+			x=>`第二行地核反应堆的个数额外增加 <h4>+${format(x)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -547,10 +558,23 @@ LANGUAGES.ZH = {
             'auto': ['高级自动化',`解锁新的自动化`],
 			'shark': ['鲨鱼等级折算',`延迟${toTextStyle('鲨鱼','shark')}等级的第三次价格折算`],
             'refined_shard': ['碎片充能',`提升${toTextStyle('重生','prestige')}碎片的指数`],
+			'wormhole': ['虫洞',`解锁新的粒子加速器`],
         },
         'forge-progress': (x,s) => x ? `正在锻造<b>${x}</b>... <b>${s}</b>` : `未进行锻造`,
         'forge-speed': x => `锻造速度：<b>${x}</b>`,
         'forge-button': ['取消锻造','开始锻造','锻造材料不足'],
+
+		// Particle Accelerator
+
+        'particle-accel-condense': x => `凝聚所有的${x}，`,
+        'particle-accel-boost': [
+            x => `${toTextStyle('地核辐射'+icon("radioactive"),'core')}产量 <b>${x}</b>.`,
+            x => `所有海洋的下潜深度 <b>${x}</b>.`,
+            x => `获得<b>石头</b>的数量和挖矿伤害 <b>${x}</b>.`,
+            x => `多获得 <b>${x}</b> 的${toTextStyle('类人','humanoid')}鲨鱼。`,
+            x => `地核反应堆的第一次价格折算延迟 <b>${x}</b>.`,
+            x => `${toTextStyle("鲨鱼",'shark')}战力的指数 <b>${x}</b>.`,
+        ],
 
         // Automation
 
@@ -565,6 +589,7 @@ LANGUAGES.ZH = {
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
 		'auto-mining_upgs-name': `自动购买${toTextStyle("挖矿","humanoid")}升级`,
+		'auto-humanoid-name': `自动获得${toTextStyle("类人","humanoid")}鲨鱼`,
 
         // Progress
 
@@ -591,6 +616,7 @@ LANGUAGES.ZH = {
         'progress-12-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
         'progress-13-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁下一行${toTextStyle('进化','humanoid')}树`, 
 		'progress-14-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁${toTextStyle('进化','humanoid')}的下一个机制`,
+		'progress-15-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁${toTextStyle('进化','humanoid')}的下一个机制`,
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -643,6 +669,7 @@ LANGUAGES.ZH = {
             prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的${formatPow(x)}`,
 			mining_damage: x => `对矿坑的伤害 ${formatMult(x)}`,
 			so: x => `${toTextStyle('鲨鱼','shark')}大小的软上限${formatPow(x)}`,
+			vibranium: x => `<b>振金</b>${formatMult(x)} `,
         },
 
         'level': "等级",
