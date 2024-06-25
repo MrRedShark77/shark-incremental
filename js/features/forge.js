@@ -18,10 +18,10 @@ const FORGE = {
         ],
     },
     drill: {
-        max: 6,
+        max: 7,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150, 300, 600, 900, 3000, 6000],
+        time: [150, 300, 600, 900, 3000, 6000, 2e7],
         cost: [
             [
                 ['stone',1e47],
@@ -43,6 +43,10 @@ const FORGE = {
                 ['stone',1e155],
                 ['obsidian',1e5],
                 ['vibranium',1000],
+            ],[
+                ['stone',1e195],
+                ['obsidian',1e9],
+                ['vibranium',1e6],
             ],
         ],
 
@@ -106,10 +110,10 @@ const FORGE = {
         ],
     },
     adv_research: {
-        max: 2,
+        max: 3,
         unl: ()=>hasForgeUpgrade('anvil',2),
 
-        time: [300, 1800],
+        time: [300, 1800, 1e7],
         cost: [
             [
                 ['prestige','ee63',true],
@@ -118,30 +122,45 @@ const FORGE = {
                 ['prestige','e2e85',true],
                 ['diamond',2e11],
                 ['obsidian',1e3],
+            ],[
+                ['prestige','e2e115',true],
+                ['obsidian',1e6],
+                ['vibranium',1e4],
             ],
         ],
     },
     auto: {
-        max: 1,
+        max: 2,
         unl: ()=>hasForgeUpgrade('anvil',2),
 
-        time: [300],
+        time: [300, 1800],
         cost: [
             [
                 ['core','e5400',true],
                 ['diamond',1e5],
+            ],[
+                ['obsidian',1e3],
             ],
         ],
     },
     shark: {
-        max: 1,
+        max: 4,
         unl: ()=>hasForgeUpgrade('anvil',3),
 
-        time: [6000],
+        time: [6000, 1e7, 1e8,1e10],
         cost: [
             [
                 ['fish','ee91',true],
                 ['vibranium',1e3],
+            ],[
+                ['fish','ee110',true],
+                ['vibranium',1e5],
+            ],[
+                ['fish','ee159',true],
+                ['vibranium',1e7],
+            ],[
+                ['fish','e2e520',true],
+                ['vibranium',1e18],
             ],
         ],
 
@@ -153,14 +172,20 @@ const FORGE = {
         effDesc: x => formatMult(x),
     },
     refined_shard: {
-        max: 1,
+        max: 3,
         unl: ()=>hasForgeUpgrade('anvil',3),
 
-        time: [6000],
+        time: [6000, 2e7, 3e9],
         cost: [
             [
                 ['prestige','e2.5e105',true],
                 ['vibranium',1e3],
+            ],[
+                ['prestige','e5e127',true],
+                ['vibranium',1e6],
+            ],[
+                ['prestige','e1e428',true],
+                ['vibranium',1e12],
             ],
         ],
 
@@ -170,6 +195,27 @@ const FORGE = {
             return x
         },
         effDesc: x => formatPow(x),
+    },
+    wormhole: {
+        max: 4,
+        unl: ()=>player.feature >= 16,
+
+        time: [1e8,3e8,6e8,5e9],
+        cost: [
+            [
+                ['stone','e243'],
+                ['vibranium',1e7],
+            ],[
+                ['humanoid',178,true],
+                ['vibranium',1e8],
+            ],[
+                ['core','e16e4',true],
+                ['vibranium',1e9],
+            ],[
+                ['fish','e8e369',true],
+                ['vibranium',1e12],
+            ],
+        ],
     },
 }
 

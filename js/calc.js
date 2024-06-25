@@ -110,6 +110,25 @@ function calc(dt) {
                 }
             }
         }
+
+        if (player.feature >= 16) {
+            let p = player.humanoid.particle_accel, a = p.active
+            if (a > -1) {
+                if (p.percent[a].lt(1)) {
+                    let PA = PARTICLE_ACCELERATOR[a]
+    
+                    let pg = PA.percent(CURRENCIES[PA.curr].amount)
+                    let s = p.percent[a].add(dt/100)
+    
+                    if (s.lt(pg)) {
+                        p.percent[a] = s.min(1)
+                    } else {
+                        p.percent[a] = pg.min(1)
+                        p.active = -1
+                    }
+                } else p.active = -1;
+            }
+        }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)
     }

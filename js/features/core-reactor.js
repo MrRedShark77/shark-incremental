@@ -246,13 +246,13 @@ function updateCoreTemp() {
 
     if (player.feature >= 10) tmp.core_reactor_unl += 4
 
-    var bonus1 = getCRBoost(0,0)
+    var bonus1 = getCRBoost(0,0), bonus2 = getCRBoost(10,0)
     
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
 
         if (i < 4) bonus = bonus.add(bonus1).add(simpleETEffect(i+4,0))
-        else if (i < 8) bonus = bonus.add(simpleETEffect(i+12,0))
+        else if (i < 8) bonus = bonus.add(bonus2).add(simpleETEffect(i+12,0))
 
         tmp.core_bonus_level[i] = bonus
 
@@ -265,5 +265,5 @@ function updateCoreTemp() {
 
     var scale = 10 + simpleResearchEffect('f3',0)
     if (hasDepthMilestone(4,2)) scale += 5
-    tmp.core_scale1 = scale
+    tmp.core_scale1 = Decimal.add(scale, getPAEffect(4,0))
 }

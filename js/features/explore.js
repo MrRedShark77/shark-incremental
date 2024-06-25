@@ -291,7 +291,7 @@ function updateExplorationTemp() {
 
         let d = player.explore.base[i].mul(tmp.explore_upg_boost[i][1])
         if (hasDepthMilestone(i,1)) d = d.mul(Decimal.pow(1.25,player.shark_level.root(2)))
-        tmp.depth_gain[i] = d
+        tmp.depth_gain[i] = d.pow(getPAEffect(1))
 
         tmp.explore_mil_reached[i] = x.milestone.map((p) => player.explore.depth[i].round().gte(Decimal.round(p)))
 

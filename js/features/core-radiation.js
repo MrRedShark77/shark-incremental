@@ -8,7 +8,7 @@ const CORE_RAD = {
     },
 
     gain() {
-        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(tmp.explore_eff[4]??1)
+        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(tmp.explore_eff[4]??1).pow(getPAEffect(0))
 
         return x
     },
@@ -135,6 +135,13 @@ const CORE_RAD = {
             req: 45,
             effect: (r,b)=>{
                 let x = r.add(1).log10().mul(b.add(1)).add(1).log10().div(100).add(1)
+
+                return x
+            },
+        },{
+            req: 64,
+            effect: (r,b)=>{
+                let x = r.add(1).log10().mul(b.add(1)).add(1).log10().add(1)
 
                 return x
             },

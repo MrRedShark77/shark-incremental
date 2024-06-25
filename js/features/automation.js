@@ -114,6 +114,19 @@ const AUTOMATION = {
             buyAllSharkUpgrades(this.su)
         },
     },
+    humanoid: {
+        unl: ()=>hasForgeUpgrade('auto',2),
+        interval: [10,0.9],
+
+        cost: x=>Decimal.pow(10,x+1).mul(1e2),
+        bulk: x=>x.div(1e2).log(10).floor(),
+
+        curr: "obsidian",
+
+        trigger() {
+            CURRENCIES.humanoid.amount = CURRENCIES.humanoid.amount.add(tmp.currency_gain.humanoid)
+        },
+    },
 }
 
 for (let [i,x] of Object.entries(AUTOMATION)) {

@@ -95,10 +95,11 @@ const CURRENCIES = {
         get passive() { return hasEvolutionGoal(0) ? 1 : 0 },
     },
     humanoid: {
-        next(s=player.humanoid.shark) { return Decimal.pow(10,Decimal.pow(this.base,s).mul(1.5e18)) },
+        next(s=player.humanoid.shark) { return Decimal.pow(10,Decimal.pow(this.base,s.div(this.mult)).mul(1.5e18)) },
         get require() { return this.next() },
 
         get base() { return Decimal.sub(10,simpleETEffect(15,0)) },
+        get mult() { return getPAEffect(3) },
 
         get moreArg() { return [this.next(player.humanoid.shark.add(tmp.currency_gain.humanoid))] },
 
@@ -110,7 +111,7 @@ const CURRENCIES = {
 
             if (x.lt("e1.5e18")) return E(0)
 
-            x = x.log10().div(1.5e18).log(this.base).sub(player.humanoid.shark).add(1).max(0)
+            x = x.log10().div(1.5e18).log(this.base).mul(this.mult).sub(player.humanoid.shark).add(1).max(0)
     
             return x.floor()
         },
@@ -133,7 +134,7 @@ function setupCurrencies() {
 
                 if (i < 4 && tmp.cr_active) x = x.root(3)
         
-                return x
+                return x//.pow(getPAEffect(1))
             },
         }
     }

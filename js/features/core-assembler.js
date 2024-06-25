@@ -97,7 +97,7 @@ function chooseCABuilding(i) {
     ca_builder = ca_builder == i ? -1 : i
 }
 
-const CA_MAX_BUILDINGS_COST = [1e72,1e76,1e101,1e109,1e196,1e300,'1e650','1e800','1e10000','1e11000','1e16000','1e25000']
+const CA_MAX_BUILDINGS_COST = [1e72,1e76,1e101,1e109,1e196,1e300,'1e650','1e800','1e10000','1e11000','1e16000','1e25000','e38000','e52000','e69000','ee5']
 
 function purchaseCAMaxBuildings() {
     if (CURRENCIES.core.amount.gte(CA_MAX_BUILDINGS_COST[player.core.max_buildings]??EINF)) {

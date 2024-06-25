@@ -816,3 +816,70 @@ subtitle {
 #forge-description {
 	min-height: 150px;
 }
+
+#particle-accel-table {
+	display: grid;
+	grid-template-columns: repeat(3, 250px);
+	grid-auto-rows: 150px;
+	justify-content: center;
+}
+
+.particle-accel-button {
+	width: calc(100% - 4px);
+	height: calc(100% - 44px);
+}
+
+.particle-accel-button.active {
+	background-color: #303;
+	border-color: black;
+	animation: pab-glow 1s infinite;
+}
+
+.particle-accel-bar {
+	position: relative;
+	margin: 2px;
+	width: calc(100% - 8px);
+	height: 30px;
+	border: solid 2px black;
+	border-radius: 10px;
+	background-color: #222;
+	overflow: hidden;
+}
+
+.particle-accel-bar-proj,
+.particle-accel-bar-inner,
+.particle-accel-bar-outer {
+	position: absolute;
+	top: 0px; left: 0px;
+	height: 100%;
+}
+
+.particle-accel-bar-proj {
+	background-color: #444;
+	width: 67%;
+}
+
+.particle-accel-bar-inner {
+	background-color: #303;
+	width: 33%;
+
+	animation: pab-glow 1s infinite;
+}
+
+@keyframes pab-glow {
+	from, to {
+		background-color: #303;
+	}
+	50% {
+		background-color: #525;
+	}
+}
+
+.particle-accel-bar-outer {
+	top: 50%;
+	width: 100%;
+	height: auto;
+	transform: translateY(-50%);
+	color: white;
+	filter: drop-shadow(1px 1px 0px black) drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 2px black);
+}

@@ -69,6 +69,7 @@ LANGUAGES.EN = {
         'tab-evolution-goal': toTextStyle('Evolution','humanoid') + " Goals",
         'tab-cultivation': "Cultivation",
         'tab-forge': "Forge",
+        'tab-particle-accel': "Particle Accelerator",
 
         // Elements
 
@@ -271,7 +272,7 @@ LANGUAGES.EN = {
         'research-m3-desc': `Delay the first 2 radioactive boost scalings by <b>+1</b> per level.`,
 
         'research-m4-name': "Better Mining Tier",
-        'research-m4-desc': `The second, third, fourth, and fifth effects of the mining tier are <b>+25%</b> stronger per level.`,
+        'research-m4-desc': `The second, third, fourth, and fifth effects of mining tier are <b>+25%</b> stronger per level.`,
 
         'research-f1-name': "Basic Rank Exponent",
         'research-f1-desc': `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>+25%</b> per level.`,
@@ -287,6 +288,15 @@ LANGUAGES.EN = {
 
         'research-f5-name': "Vibranium Boost",
         'research-f5-desc': `<b>Vibranium</b> boosts mining damage at a reduced rate.`,
+
+        'research-f6-name': "Universal Mining Tier",
+        'research-f6-desc': `The first 9 ores are boosted by the mining tier.`,
+
+        'research-f7-name': "Better Shark ELO",
+        'research-f7-desc': `The base of humanoid sharks in the formula for ${toTextStyle("Shark",'shark')} ELO is improved from <b>x</b> to <b>2<sup>x</sup>-1</b>.`,
+
+        'research-f8-name': "Weak Ore Health",
+        'research-f8-desc': `The first effect of mining tier is reduced.`,
 
         // Exploration
 
@@ -401,6 +411,7 @@ LANGUAGES.EN = {
             x=>`${toTextStyle('Shark','shark')} Level boosts ${toTextStyle('Shark','shark')} ELO by <h4>${formatMult(x)}</h4>.`,
             x=>`Boost <b>Stone</b> amount by <h4>${formatMult(x)}</h4>.`,
             x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
+            x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the second row.`,
         ],
 
         // Evolution Tree
@@ -547,10 +558,23 @@ LANGUAGES.EN = {
             'auto': ['Advanced Automation',`Unlocks new automation.`],
             'shark': ['Distant Shark Level',`Delays the third scaling of ${toTextStyle('Shark','shark')} Level.`],
             'refined_shard': ['Energized Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
+            'wormhole': ['Wormhole',`Unlocks new Particle Accelerator.`],
         },
         'forge-progress': (x,s) => x ? `Forging <b>${x}</b>... <b>${s}</b>` : `Forge is empty`,
         'forge-speed': x => `Forging Speed: <b>${x}</b>`,
         'forge-button': ['Cancel Forging','Start Forging','Not enough materials to forge'],
+
+        // Particle Accelerator
+
+        'particle-accel-condense': x => `Condense over ${x} to:`,
+        'particle-accel-boost': [
+            x => `Increase the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production by <b>${x}</b>.`,
+            x => `Increase every ocean's depth progression by <b>${x}</b>.`,
+            x => `Increase <b>Stone</b> amount and mining damage by <b>${x}</b>.`,
+            x => `Gain <b>${x}</b> more ${toTextStyle('Humanoid','humanoid')} Sharks.`,
+            x => `Delay the first scaling of the core reactors by <b>${x}</b>.`,
+            x => `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>${x}</b>.`,
+        ],
 
         // Automation
 
@@ -562,6 +586,7 @@ LANGUAGES.EN = {
         'auto-core_radiation-name': `Auto-${toTextStyle("Core","core")} Radiation`,
         'auto-radioactive_boosts-name': `Auto-Radioactive Boosts`,
         'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
+        'auto-humanoid-name': `Auto-${toTextStyle("Humanoid","humanoid")} Shark`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -591,6 +616,7 @@ LANGUAGES.EN = {
         'progress-12-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
         'progress-13-text': r => `Reach Mining Tier ${format(r,0)} to unlock a new row of ${toTextStyle('Evolution','humanoid')} tree`, 
         'progress-14-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+        'progress-15-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -643,6 +669,7 @@ LANGUAGES.EN = {
             prestige: x => `${formatPow(x)} ${toTextStyle('Prestige','prestige')} shard`,
             mining_damage: x => `${formatMult(x)} Mining Damage`,
             so: x => `${formatPow(x)} ${toTextStyle('Shark','shark')} overpopulation delay`,
+            vibranium: x => `${formatMult(x)} <b>Vibranium</b>`,
         },
 
         'level': "Level",

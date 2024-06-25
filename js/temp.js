@@ -50,6 +50,8 @@ function reloadTemp() {
 
         shark_op: E(1),
         shark_op_start: E('ee40'),
+
+        particle_accel_eff: [],
     }
 
     for (let x in EXPLORE) {
@@ -62,6 +64,7 @@ function updateTemp() {
     tmp.cr_active = player.core.radiation.active
 
     updateResearchTemp()
+    updatePATemp()
     updateEvolutionTreeTemp()
     updateCoreTemp()
     updateExplorationTemp()
