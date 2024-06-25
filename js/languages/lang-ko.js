@@ -87,7 +87,7 @@ LANGUAGES.KO = {
         'option-title-4': "언어들",
 
         'offline-speed': "오프라인 시간 계산을 가속하기",
-        'offline-done': "완료함",
+        'offline-done': "완료됨",
 
         'radioactive-div': `${toTextStyle('핵','core')}은  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 을 생산함 <span id="radioactive-gain"></span>.`,
         get 'radioactive-summary'() {
@@ -105,17 +105,17 @@ LANGUAGES.KO = {
         'core-temp-div': `${toTextStyle('핵','core')}의 온도는 <h3>${toTextStyle('6,150','core','core-temperature')}</h3>이며, 이는 방사선 부스트를 <h4 id="core-temp-effect">100%</h4> 더 강하게 만듭니다.`,
         'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>도가 됩니다.)`,
 
-        'sharkoid-faith-div': `You have <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Sharkoid Faith','humanoid')}.`,
-        'respec-evolution-tree': `Respec ${toTextStyle('Evolution','humanoid')} Tree`,
-        'export-evolution-tree': `Export ${toTextStyle('Evolution','humanoid')} Tree`,
-        'import-evolution-tree': `Import ${toTextStyle('Evolution','humanoid')} Tree`,
-        'evolution-tree-preset': `${toTextStyle('Evolution','humanoid')} Tree Presets`,
+        'sharkoid-faith-div': `당신은 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('상어 인간의 신앙','humanoid')}을 가지고 있습니다.`,
+        'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 초기화하기`,
+        'export-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 내보내기`,
+        'import-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 불러오기`,
+        'evolution-tree-preset': `${toTextStyle('진화','humanoid')} 트리 프리셋`,
 
-        'rerun-evolution': `Re-run ${toTextStyle('Evolution','humanoid')}, respecing its Tree`,
+        'rerun-evolution': `진화 트리를 초기화하면서 강제로 ${toTextStyle('진화','humanoid')} 환생을 진행`,
 
-        'mining-text': `Mining... <b id="mining-progress">???</b> | Damage <b id="mining-damage">???</b> | ${toTextStyle(`Mining Fortune <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
-        'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
-        'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
+        'mining-text': `채광 중... <b id="mining-progress">???</b> | 대미지 <b id="mining-damage">???</b> | ${toTextStyle(`채광 행운 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'mining-tier-div': `채광 티어: <h3 id="mining-tier">0</h3>`,
+        'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
 
         // Upgrades
 
