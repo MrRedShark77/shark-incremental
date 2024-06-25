@@ -116,6 +116,7 @@ LANGUAGES.ZH = {
 		'mining-text': `正在挖矿…… <b id="mining-progress">???</b> | 伤害 <b id="mining-damage">???</b> | ${toTextStyle(`幸运草 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `挖矿等级：<h3 id="mining-tier">0</h3>`,
 		'mining-note': `注意：如果在血量极高的矿坑处卡住（需要很长时间才能获得矿物），按 F5 刷新页面。`,
+		'mining-tier-undo-btn': `如果无法获得矿物，点击这里使矿坑等级减 1.`,
 
         // Upgrades
 
