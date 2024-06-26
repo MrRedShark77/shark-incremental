@@ -106,9 +106,9 @@ LANGUAGES.PT = {
         'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>도가 됩니다.)`,
 
         'sharkoid-faith-div': `당신은 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('상어 인간의 신앙','humanoid')}을 가지고 있습니다.`,
-        'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 초기화하기`,
-        'export-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 내보내기`,
-        'import-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를 불러오기`,
+        'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>초기화하기`,
+        'export-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>내보내기`,
+        'import-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>불러오기`,
         'evolution-tree-preset': `${toTextStyle('진화','humanoid')} 트리 프리셋`,
 
         'rerun-evolution': `진화 트리를 초기화하면서 강제로 ${toTextStyle('진화','humanoid')} 환생을 진행`,
@@ -116,6 +116,8 @@ LANGUAGES.PT = {
         'mining-text': `채광 중... <b id="mining-progress">???</b> | 대미지 <b id="mining-damage">???</b> | ${toTextStyle(`채광 행운 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `채광 티어: <h3 id="mining-tier">0</h3>`,
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
+        'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러 채광 티어를 1 내리세요`,
+
 
         // Upgrades / 업그레이드 들
 
