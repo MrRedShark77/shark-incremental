@@ -6,7 +6,7 @@ LANGUAGES.PT = {
     icon: "lang-ko",
 
     text: {
-        // Currencies
+        // Currencies / 재화들
 
         'fish-name': "물고기",
         'fish-costName': toTextStyle('물고기','fish'),
@@ -46,11 +46,11 @@ LANGUAGES.PT = {
         'curr-top-1-reset': x => `핵으로 들어가 <b>${x.format(0)}</b> ${toTextStyle('마그마','core')} 파편을 획득`,
 
         'curr-top-2-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} 도달`, 
-        'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를  <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화 ( <b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
+        'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를  <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화   (<b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
 
         'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
-        // Tabs
+        // Tabs / 탭들
 
         'tab-shark': toTextStyle('상어','shark'),
         'tab-options': "옵션들",
@@ -71,7 +71,7 @@ LANGUAGES.PT = {
         'tab-forge': "용광로",
         'tab-particle-accel': "입자 가속기",
 
-        // Elements
+        // Elements / 원소들
 
         'fish-div': `당신의 ${toTextStyle('상어','shark')}가 <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> 마리의 물고기를 먹었습니다.`,
         'shark-stats': `${toTextStyle('상어','shark')} 상태<br>레벨: <h4 id="shark-level">???</h4><br>랭크: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
@@ -117,7 +117,7 @@ LANGUAGES.PT = {
         'mining-tier-div': `채광 티어: <h3 id="mining-tier">0</h3>`,
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
 
-        // Upgrades
+        // Upgrades / 업그레이드 들
 
         'su-s1-req': "레벨 3",
         'su-s1-name': '상어 힘 강화',
@@ -168,7 +168,7 @@ LANGUAGES.PT = {
         'su-m5-name': '기본 광석들',
         'su-m5-desc': `처음 네 광석들을 채광시 획득하는 량이 레벨 당 <b>×2</b> 올라갑니다.`,
 
-        // Researches
+        // Researches / 연구들
 
         'research-p1-name': "뛰어난 민첩성",
         'research-p1-desc': `'상어 민첩성 강화'는 이제 ${toTextStyle("상어",'shark')} 레벨의 ${toTextStyle("환생",'prestige')} 파편 보너스의 베이스에 감소된 상태로 강화합니다.`,
@@ -298,86 +298,86 @@ LANGUAGES.PT = {
         'research-f8-name': "약해진 광석 체력",
         'research-f8-desc': `채광 티어의 첫 번재 효과가 감소됩니다.`,
 
-        // Exploration
+        // Exploration / 탐험들
 
-        'explore-while': `While exploring`,
-        'explore-inside': (a,b,c)=>`Base ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>Reach ${format(c,0)} best ${toTextStyle("Fish",'fish')}.`,
-        'explore-outside': x=>`Your current base is ${x.format()}/s.<br>Explore the ocean!`,
+        'explore-while': `탐험 중 받는 효과`,
+        'explore-inside': (a,b,c)=>`베이스 ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("Fish",'fish')}에 도달하세요.`,
+        'explore-outside': x=>`현재 베이스는 ${x.format()}/s 입니다.<br>바다를 탐험하세요!`,
 
-        'explore-next': x=>`New Ocean at ${toTextStyle("Shark",'shark')} Level <h3>${format(x,0)}</h3>.`,
+        'explore-next': x=>`${toTextStyle("상어",'shark')} 레벨 <h3>${format(x,0)}</h3>에서 새로운 바다가 열립니다.`,
 
-        'explore-doubler-1': x=>`Double ${x} gained.`,
-        'explore-doubler-2': `Double depth progression gain.`,
+        'explore-doubler-1': x=>`${x} 획득 두 배.`,
+        'explore-doubler-2': `깊이 진행 두 배.`,
 
-        'explore-0-name': `Pacific Ocean`,
-        'explore-0-desc': `${toTextStyle('Fish','fish')} gain is rooted by 2.`,
+        'explore-0-name': `태평양`,
+        'explore-0-desc': `${toTextStyle('물고기','fish')} 획득이 제곱근이 됩니다.`,
         'explore-0-milestone': [
-            `Raise ${toTextStyle('Prestige','prestige')} shards gained to the 1.05th power.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `Leveling ${toTextStyle('Shark','shark')} will no longer spend ${toTextStyle('Fish','fish')}.`,
-            `Raise ${toTextStyle('Fish','fish')} eaten to the 1.05th power.`,
-            `Unlock the ${toTextStyle('Core','core')}.`,
+            `${toTextStyle('환생','prestige')} 파편 획득량이 ^1.05 올라갑니다.`,
+            `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
+            `${toTextStyle('상어','shark')} 레벨 업에 ${toTextStyle('물고기','fish')}를 소모하지 않습니다.`,
+            `${toTextStyle('물고기','fish')} 섭취량이 ^1.05 올라갑니다.`,
+            `${toTextStyle('핵','core')}을 해금합니다.`,
         ],
 
-        'explore-1-name': `Arctic Ocean`,
-        'explore-1-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Prestige','prestige')} Shards gain is rooted by 2.`,
+        'explore-1-name': `북극해`,
+        'explore-1-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. ${toTextStyle('환생','prestige')} 파편 획득량이 제곱근이 됩니다.`,
         'explore-1-milestone': [
-            `Unlock Auto-${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades will no longer spend ${toTextStyle('Prestige','prestige')} shards.`,
-            `Passively generate 100% of ${toTextStyle('Prestige','prestige')} shards earned on ${toTextStyle('Prestige','prestige')}.`,
+            `${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드 자동화를 해금합니다.`,
+            `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
+            `${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드가 ${toTextStyle('환생','prestige')} 파편을 소모하지 않습니다.`,
+            `${toTextStyle('환생','prestige')}시 얻는  ${toTextStyle('환생','prestige')} 파편의 100%를 자동으로 획득합니다.`,
         ],
 
-        'explore-2-name': `Atlantic Ocean`,
-        'explore-2-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. ${toTextStyle('Shark','shark')} Level scales 10x as strong.` ,
+        'explore-2-name': `대서양`,
+        'explore-2-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. ${toTextStyle('상어','shark')} 레벨 스케일링이 10배 강해집니다.` ,
         'explore-2-milestone': [
-            `'Shark Teeth' and 'Shark Exponent' scalings are weaker slightly.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Shark','shark')} Level's first scaling starts +1 later per 500m of depth.`,
-            `${toTextStyle("Salt",'salt')}'s effect is 50% more powerful.`,
+            `'상어 이빨 강화'와 '상어 지수 강화' 가격 증가량이 조금 약해집니다.`,
+            `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
+            `첫 번째 ${toTextStyle('상어','shark')} 레벨의 가격 증가가 깊이 500m마다 +1 늦게 시작합니다.`,
+            `${toTextStyle("소금",'salt')}의 효과가 50% 강해집니다.`,
         ],
 
-        'explore-3-name': `Southern Ocean`,
-        'explore-3-desc': `Reset your ${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle("Prestige",'prestige')} upgrades. You cannot buy ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} & ${toTextStyle('Prestige','prestige')} upgrades.`,
+        'explore-3-name': `남극해`,
+        'explore-3-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. You cannot buy ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} & ${toTextStyle('Prestige','prestige')} upgrades.`,
         'explore-3-milestone': [
-            `Increase the base of exploration by 10x.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `${toTextStyle('Compressed Snow','snow')}'s effect is 50% more powerful.`,
+            `탐험의 베이스가 10배 증가합니다.`,
+            `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
+            `${toTextStyle('압축된 눈','snow')}의 효과가 50% 강해집니다.`,
         ],
 
-        'explore-4-name': `Indian Ocean`,
+        'explore-4-name': `인도양`,
         'explore-4-desc': `You are trapped in the first four active oceans, and your ${toTextStyle('Fish','fish')} exponent is raised to the 0.75th power.`,
         'explore-4-milestone': [
-            `Decrease radiation's limit by /1,000.`,
-            `Increase the resource and depth progression by 25% compounding per square-rooted ${toTextStyle('Shark','shark')} level.`,
-            `Core reactors scale +5 later.`,
-            `Improve ${toTextStyle('Kelp','kelp')}'s effect.`,
+            `방사능 한계치가 /1000으로 나눠집니다.`,
+            `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
+            `핵 원자로의 가격 증가가 +5 늦게 시작합니다.`,
+            `${toTextStyle('켈프','kelp')}의 효과를 개선합니다.`,
         ],
 
-        // Core Reactor
+        // Core Reactor / 핵 원자로
 
-        'core-0-name': `Iron`,
-        'core-0-desc': `${toTextStyle("Fish",'fish')} raises itself based on <b>Iron</b>'s tier.`,
+        'core-0-name': `철`,
+        'core-0-desc': `${toTextStyle("물고기",'fish')} 섭취량이 <b>철</b>의 티어에 기반해 증가합니다.`,
 
-        'core-1-name': `Nickel`,
-        'core-1-desc': `${toTextStyle("Prestige",'prestige')} shards raise their base based on <b>Nickel</b>'s tier.`,
+        'core-1-name': `니켈`,
+        'core-1-desc': `${toTextStyle("Prestige",'prestige')} 파편의 획득량이 <b>니켈</b>의 티어에 기반해 증가합니다.`,
 
-        'core-2-name': `Oxygen`,
-        'core-2-desc': `Product of the first four oceans' resources boosts their production based on <b>Oxygen</b>'s tier.`,
+        'core-2-name': `산소`,
+        'core-2-desc': `첫 4 바다 자원의 생산량이 <b>산소</b>의 티어에 기반해 증가합니다.`,
 
-        'core-3-name': `Neon`,
+        'core-3-name': `네온`,
         'core-3-desc': `${toTextStyle("Shark",'shark')} Level reduces its requirement based on <b>Neon</b>'s tier.`,
 
-        'core-4-name': `Sulfur`,
+        'core-4-name': `황`,
         'core-4-desc': `${toTextStyle("Fish",'fish')} strengthens <b>Iron</b> based on <b>Sulfur</b>'s tier.`,
 
-        'core-5-name': `Silicon`,
+        'core-5-name': `실리콘`,
         'core-5-desc': `${toTextStyle("Prestige",'prestige')} shard strengthen <b>Nickel</b> based on <b>Silicon</b>'s tier.`,
 
-        'core-6-name': `Nitrogen`,
+        'core-6-name': `질소`,
         'core-6-desc': `${toTextStyle("Kelp",'kelp')} strengthens <b>Oxygen</b> based on <b>Nitrogen</b>'s tier.`,
 
-        'core-7-name': `Helium`,
+        'core-7-name': `헬륨`,
         'core-7-desc': `${toTextStyle("Shark",'shark')} Level strengthens <b>Neon</b> based on <b>Helium</b>'s tier.`,
 
         'core-bonus': x => `Product of core reactors will boost ${toTextStyle("Fish",'fish')} by <h4>${formatMult(x)}</h4>.`,
@@ -389,7 +389,7 @@ LANGUAGES.PT = {
         'ca-building-base': b => `[Base: ${b}]`,
         'ca-building-temp': t => `Increase the core's temperature by ${t}.`,
 
-        // Core Radiation
+        // Core Radiation / 핵 방사능
 
         'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
 
@@ -414,7 +414,7 @@ LANGUAGES.PT = {
             x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the second row.`,
         ],
 
-        // Evolution Tree
+        // Evolution Tree  진화 트리
 
         'evolution-tree-row': (r,a) => `<b>Row ${r}</b><br>${a} available`,
         'evolution-tree-ctn': [
@@ -511,7 +511,7 @@ LANGUAGES.PT = {
             ],
         ],
 
-        // Cultivation
+        // Cultivation / 채광
 
         'ore-names': {
             'stone': "Stone",
@@ -547,7 +547,7 @@ LANGUAGES.PT = {
             x=>`<b>Obsidian</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
-        // Forge
+        // Forge / 용광로
 
         'forge': {
             'anvil': ['Anvil Tier','Unlocks new forge upgrades.'],
@@ -564,7 +564,7 @@ LANGUAGES.PT = {
         'forge-speed': x => `Forging Speed: <b>${x}</b>`,
         'forge-button': ['Cancel Forging','Start Forging','Not enough materials to forge'],
 
-        // Particle Accelerator
+        // Particle Accelerator / 입자 가속시
 
         'particle-accel-condense': x => `Condense over ${x} to:`,
         'particle-accel-boost': [
@@ -576,7 +576,7 @@ LANGUAGES.PT = {
             x => `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>${x}</b>.`,
         ],
 
-        // Automation
+        // Automation / 자동화
 
         'auto-shark-name': `Auto-${toTextStyle("Shark","shark")} Level`,
         'auto-su-name': `Auto-${toTextStyle("Shark","shark")} ${toTextStyle("Fish","fish")} Upgrade`,
@@ -591,7 +591,7 @@ LANGUAGES.PT = {
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
 
-        // Progress
+        // Progress / 진행
 
         'progress-0-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
         get 'progress-0-cond-text'() { return `Do a ${toTextStyle('Prestige','prestige')}` },
@@ -620,7 +620,7 @@ LANGUAGES.PT = {
 
         'maxed-progress': "All features unlocked!",
 
-        // Reset
+        // Reset / 환생
 
         get 'reset-prestige-message'() {
             let p = toTextStyle('Prestige','prestige'), s = toTextStyle('Shark','shark'), f = toTextStyle('Fish','fish')
@@ -654,7 +654,7 @@ LANGUAGES.PT = {
             `
         },
         
-        // Other
+        // Other / 기타
 
         'upgrade-shark': x => `Upgrade ${toTextStyle('Shark','shark')} Level<br>Cost: ${x.format(0)} ${toTextStyle('Fish','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('Fish','fish')}'s base`,
