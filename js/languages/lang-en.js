@@ -487,7 +487,7 @@ LANGUAGES.EN = {
                 `Passively generate <b>100%</b> of ${toTextStyle("Magmatic",'core')} fragments earned on entering ${toTextStyle("Core",'core')}.`
             ],[
                 x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments without purchasing the ${toTextStyle("Core",'core')} assembler's building.`,
-                `Keep the ${toTextStyle("Magmatic",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
+                `Keep the ${toTextStyle("Core",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
             ],[
                 x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments.`,
                 `Improve the formula of ${toTextStyle('Prestige','prestige')} shards for ${toTextStyle("Magmatic",'core')} fragments.`
