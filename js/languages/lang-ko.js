@@ -368,28 +368,28 @@ LANGUAGES.KO = {
         'core-2-desc': `첫 4 바다 자원의 생산량이 <b>산소</b>의 티어에 기반해 증가합니다.`,
 
         'core-3-name': `네온`,
-        'core-3-desc': `${toTextStyle("Shark",'shark')} Level reduces its requirement based on <b>Neon</b>'s tier.`,
+        'core-3-desc': `${toTextStyle("상어",'shark')} 레벨의 요구량을 <b>네온</b>의 티어에 기반해 줄입니다.`,
 
         'core-4-name': `황`,
-        'core-4-desc': `${toTextStyle("Fish",'fish')} strengthens <b>Iron</b> based on <b>Sulfur</b>'s tier.`,
+        'core-4-desc': `${toTextStyle("물고기",'fish')}가 <b>철</b>의 효과를 <b>황</b>의 티어에 기반해 강화합니다.`,
 
         'core-5-name': `실리콘`,
-        'core-5-desc': `${toTextStyle("Prestige",'prestige')} shard strengthen <b>Nickel</b> based on <b>Silicon</b>'s tier.`,
+        'core-5-desc': `${toTextStyle("환생",'prestige')} 파편이 <b>니켈</b>의 효과를 <b>실리콘</b>의 티어에 기반해 강화합니다.`,
 
         'core-6-name': `질소`,
-        'core-6-desc': `${toTextStyle("Kelp",'kelp')} strengthens <b>Oxygen</b> based on <b>Nitrogen</b>'s tier.`,
+        'core-6-desc': `${toTextStyle("켈프",'kelp')}가 <b>산소</b>의 효과를 <b>질소</b>의 티어에 기반해 강화합니다.`,
 
         'core-7-name': `헬륨`,
-        'core-7-desc': `${toTextStyle("Shark",'shark')} Level strengthens <b>Neon</b> based on <b>Helium</b>'s tier.`,
+        'core-7-desc': `${toTextStyle("상어",'shark')} 레벨이 <b>네온</b>의 효과를 <b>헬륨</b>의 티어에 기반해 강화합니다.`,
 
-        'core-bonus': x => `Product of core reactors will boost ${toTextStyle("Fish",'fish')} by <h4>${formatMult(x)}</h4>.`,
+        'core-bonus': x => `핵 원자로의 생성물이 ${toTextStyle("물고기",'fish')}를 <h4>${formatMult(x)}</h4>만큼 강화합니다.`,
 
-        'core-assembler-erase': `Erase Mode`,
-        'core-assembler-choose': `You're choosing`,
-        'core-assembler-building-stats': (s,p,m) => `Strength <b>${s}</b> | Placed <b>${p} / ${m}</b>`,
-        'core-assembler-building-limit': (m,x,mm) => `Max buildings: ${mm} / ${m}<br>Require: ${format(x)} ${toTextStyle("Magmatic",'core')} fragments`, 
-        'ca-building-base': b => `[Base: ${b}]`,
-        'ca-building-temp': t => `Increase the core's temperature by ${t}.`,
+        'core-assembler-erase': `삭제 모드`,
+        'core-assembler-choose': `현재 선택 중`,
+        'core-assembler-building-stats': (s,p,m) => `배수 <b>${s}</b> | 설치 현황 <b>${p} / ${m}</b>`,
+        'core-assembler-building-limit': (m,x,mm) => `최대 개수: ${mm} / ${m}<br>요구: ${format(x)} ${toTextStyle("마그마",'core')} 파편`, 
+        'ca-building-base': b => `[베이스: ${b}]`,
+        'ca-building-temp': t => `핵의 온도를 ${t}만큼 올립니다.`,
 
         // Core Radiation / 핵 방사능
 
