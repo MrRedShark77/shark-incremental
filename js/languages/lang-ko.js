@@ -71,7 +71,7 @@ LANGUAGES.KO = {
         'tab-forge': "용광로",
         'tab-particle-accel': "입자 가속기",
 
-        // Elements / 원소들
+        // Elements / 기초적인 것들
 
         'fish-div': `당신의 ${toTextStyle('상어','shark')}가 <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> 마리의 물고기를 먹었습니다.`,
         'shark-stats': `${toTextStyle('상어','shark')} 상태<br>레벨: <h4 id="shark-level">???</h4><br>랭크: <h4 id="shark-tier">???</h4> <span id="shark-next-rank"></span>`,
@@ -119,7 +119,7 @@ LANGUAGES.KO = {
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러 채광 티어를 1 내리세요`,
 
 
-        // Upgrades / 업그레이드 들
+        // Upgrades / 업그레이드들
 
         'su-s1-req': "레벨 3",
         'su-s1-name': '상어 힘 강화',
@@ -393,32 +393,32 @@ LANGUAGES.KO = {
 
         // Core Radiation / 핵 방사능
 
-        'cr-start': x=>x?"Stop the experiment.":"Start the experiment.",
+        'cr-start': x=>x?"실험을 중지하기":"실험을 시작하기",
 
         'upgrade-cr': (gen,cost)=>`
-        Upgrade ${toTextStyle('Radiation '+icon("radioactive"),'core')} production.<br>
-        Producing <b>${format(gen,0)}</b> per second.<br>
-        Cost: ${format(cost,0)} ${toTextStyle('Fish '+icon("radioactive"),'fish')}`,
+        ${toTextStyle('방사능 '+icon("radioactive"),'core')} 생산을 업그레이드 하기.<br>
+        초 당 <b>${format(gen,0)}</b> 생산 중.<br>
+        비용: ${format(cost,0)} ${toTextStyle('생선 '+icon("radioactive"),'fish')}`,
 
-        'reset-cr': (inc)=>`Reset ${toTextStyle('Radiation '+icon("radioactive"),'core')}, but increase its limit by <b>${formatMult(inc,0)}</b>, and upgrades radioactive boosts and sometimes adds new effects. You need to reach the limit to reset.`,
+        'reset-cr': (inc)=>`${toTextStyle('방사능 '+icon("radioactive"),'core')} 환생을 하는 대신, 방사능의 한계치가 <b>${formatMult(inc,0)}</b> 만큼 늘어나며, 방사능 부스트가 강화되며 가끔 새 능력이 추가 될 수 있음. 한계치에 도달해야 환생이 가능함.`,
 
         'cr-boosts': [
-            x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the first row.`,
-            x=>`Boost ${toTextStyle('Magmatic','core')} fragments by <h4>${formatMult(x)}</h4>.`,
-            x=>`The first four ${toTextStyle('Shark','shark')} ${toTextStyle('Fish','fish')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
-            x=>`Second ${toTextStyle('Shark','shark')} level scaling is delayed by <h4>+${format(x)}</h4>.`,
-            x=>`Increase the base of ${toTextStyle('Shark','shark')} level's ${toTextStyle('Magmatic','core')} fragment bonus by <h4>+${format(x,3)}</h4>.`,
-            x=>`Increase ${toTextStyle('Shark','shark')} Level's ${toTextStyle('Fish','fish')} bonus by <h4>${formatPow(x,3)}</h4> to the exponent.`,
-            x=>`The first three ${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades are <h4>${formatPercent(x.sub(1))}</h4> more powerful.`,
-            x=>`${toTextStyle('Shark','shark')} Level boosts ${toTextStyle('Shark','shark')} ELO by <h4>${formatMult(x)}</h4>.`,
-            x=>`Boost <b>Stone</b> amount by <h4>${formatMult(x)}</h4>.`,
-            x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
-            x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the second row.`,
+            x=>`핵 반응로의 첫 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
+            x=>`${toTextStyle('마그마','core')} 파편을 <h4>${formatMult(x)}</h4> 만큼 부스트됩니다`,
+            x=>`첫 네개의 ${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
+            x=>`두 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 <h4>+${format(x)}</h4> 만큼 늦춰집니다`,
+            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('마그마','core')} 파편 보너스의 베이스가 <h4>+${format(x,3)}</h4> 만큼 증가합니다`,
+            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('물고기','fish')} 보너스가 <h4>${formatPow(x,3)}</h4>만큼 증가합니다`,
+            x=>`첫 세개의 ${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
+            x=>`${toTextStyle('상어','shark')} 레벨이 ${toTextStyle('상어','shark')} ELO를 <h4>${formatMult(x)}</h4>만큼 부스트 합니다`,
+            x=>`<b>돌</b>의 획득량이 <h4>${formatMult(x)}</h4> 증가됩니다`,
+            x=>`<h4>${formatMult(x,3)}</h4>만큼의 탐험 업그레이드 추가 업그레이드를 획득합니다`,
+            x=>`핵 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
         ],
 
         // Evolution Tree  진화 트리
 
-        'evolution-tree-row': (r,a) => `<b>Row ${r}</b><br>${a} available`,
+        'evolution-tree-row': (r,a) => `<b>${r} 열</b><br>${a}개 더 가능`,
         'evolution-tree-ctn': [
             ["Fish Body", x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
             ["Prestigious Body", x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
