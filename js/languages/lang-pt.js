@@ -1,6 +1,6 @@
 // This is Korean!
 
-LANGUAGES.PT = {
+LANGUAGES.KO = {
     name: "Korean",
     inter_name: "한국어",
     icon: "lang-ko",
@@ -78,7 +78,7 @@ LANGUAGES.PT = {
 
         'shark-elo-div': `당신의 ${toTextStyle('상어','shark')} ELO는 <h3>${toTextStyle('0','humanoid','shark-elo')}</h3>입니다.`,
         'shark-rank-div': `당신의 ${toTextStyle('상어','shark')} 랭크는 <h3 id="shark-rank">0</h3>입니다.`,
-        'shark-rank-req-div': `다음 랭크는 ${toTextStyle('상어','shark')} ELO을 요구합니다. <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`, // need more info, fix later
+        'shark-rank-req-div': `다음 랭크는 ${toTextStyle('상어','shark')} ELO <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>을 더 요구합니다.`,
         'shark-rank-note': `노트: 진화 환생을 할 때 상어 랭크는 초기화 됩니다.`,
 
         'option-title-1': "메인 옵션들",
@@ -86,7 +86,7 @@ LANGUAGES.PT = {
         'option-title-3': "환생 확인",
         'option-title-4': "언어들",
 
-        'offline-speed': "오프라인 시간 계산을 가속하기",
+        'offline-speed': "오프라인 시간<br>계산을 가속하기",
         'offline-done': "완료됨",
 
         'radioactive-div': `${toTextStyle('핵','core')}은  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 을 생산함 <span id="radioactive-gain"></span>.`,
@@ -303,8 +303,8 @@ LANGUAGES.PT = {
         // Exploration / 탐험들
 
         'explore-while': `탐험 중 받는 효과`,
-        'explore-inside': (a,b,c)=>`베이스 ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("Fish",'fish')}에 도달하세요.`,
-        'explore-outside': x=>`현재 베이스는 ${x.format()}/s 입니다.<br>바다를 탐험하세요!`,
+        'explore-inside': (a,b,c)=>`베이스 <br> ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("Fish",'fish')}에 도달하세요.`,
+        'explore-outside': x=>`현재 베이스는 <br>${x.format()}/s 입니다.<br>바다를 탐험하세요!`,
 
         'explore-next': x=>`${toTextStyle("상어",'shark')} 레벨 <h3>${format(x,0)}</h3>에서 새로운 바다가 열립니다.`,
 
@@ -420,96 +420,96 @@ LANGUAGES.PT = {
 
         'evolution-tree-row': (r,a) => `<b>${r} 열</b><br>${a}개 더 가능`,
         'evolution-tree-ctn': [
-            ["Fish Body", x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Prestigious Body", x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Radioactive Body", x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Perfect Body", x=>`${toTextStyle('Shark','shark')} ELO is multiplied by <b>${formatMult(x,0)}</b>.`],
+            ["물고기의 몸체", x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('상어','shark')} ELO를<b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["환생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('Shark','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('Shark','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["완벽한 몸체", x=>`${toTextStyle('상어','shark')} ELO가 <b>${formatMult(x,0)}</b>만큼 증가합니다.`],
 
-            ["Steel Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Iron</b> tiers.`],
-            ["Priceful Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nickel</b> tiers.`],
-            ["Air-breathing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Oxygen</b> tiers.`],
-            ["Glowing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Neon</b> tiers.`],
+            ["강철 상어", x=>`추가 <b>철</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["비싼 상어", x=>`추가 <b>니켈</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
 
-            ["Mariana Trench", x=>`The <b>Pacific Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["Litke Deep", x=>`The <b>Arctic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["Milwaukee Deep", x=>`The <b>Atlantic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["South Sandwich Trench", x=>`The <b>Southern Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+            ["마리아나 해구", x=>`<b>태평양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
+            ["Litke 딥", x=>`T<b>북극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
+            ["Milwaukee 딥", x=>`<b>대서양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
+            ["사우스샌드위치 해구", x=>`<b>남극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
 
-            ["Inflated Fish", x=>`${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`],
-            ["Overprestige", x=>`${toTextStyle('Prestige','prestige')} shards are raised to the <b>${format(x)}th</b> power.`],
-            ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`],
-            ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`],
+            ["물고기 인플레이션", x=>`${toTextStyle('물고기','fish')} 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["오버프레스티지", x=>`${toTextStyle('환생','prestige')} 파편 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["압축된 핵", x=>`${toTextStyle("마그마",'core')} 조각 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["홈메이드 상어", x=>`${toTextStyle('상어 인간','humanoid')}의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`],
 
-            ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`],
-            ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`],
-            ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`],
-            ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`],
+            ["상어 전환", x=>`<b>${format(x,0)}</b> 개의 추가 <b>황</b> 티어 획득합니다.`],
+            ["엑소스켈레톤 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>실리콘</b> 티어 획득합니다.`],
+            ["태양 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>질소</b> 티어 획득합니다.`],
+            ["나는 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>헬륨</b> 티어 획득합니다.`],
 
-            ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Fish Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Supernatural Body", x=>`${toTextStyle('Magmatic','core')} fragments boost <b>'Radioactive Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Immortal Body", x=>`<b>'Perfect Body'</b> is <b>squared</b>.`],
+            ["엄청난 상어 몸체", x=>`${toTextStyle('물고기','fish')}가 <b>'물고기의 몸체'</b>를 <b>${formatPow(x)}</b>만큼 강화시킵니다.`],
+            ["재탄생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 <b>'환생의 몸체'</b>를 <b>${formatPow(x)}</b>만큼 강화시킵니다.`],
+            ["초 자연적 몸체", x=>`${toTextStyle('마그마','core')} 조각이 <b>'방사성 몸체'</b>를 <b>${formatPow(x)}</b>만큼 강화시킵니다.`],
+            ["불멸의 몸체", x=>`<b>'완벽한 몸체'</b>의 효과가 <b>제곱</b>이 됩니다.`],
 
-            ['Luck of the Sea', x=>`${toTextStyle('Fish','fish')} boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Luck of the Earth', x=>`<b>Stone</b> boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Luck of the Shark', x=>`${toTextStyle('Humanoid','humanoid')} Sharks boost the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Pure Luck', x=>`The ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} is increased by <b>+${format(x)}</b>`],
+            ['바다의 행운', x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을 <b>+${format(x)}</b>만큼 부스트시킵니다`],
+            ['지구의 행운', x=>`<b>돌</b>이 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을 <b>+${format(x)}</b>만큼 부스트시킵니다`],
+            ['상어의 행운', x=>`${toTextStyle('상어 인간','humanoid')} 이 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을<b>+${format(x)}</b>만큼 부스트시킵니다`],
+            ['순수한 행운', x=>`${toTextStyle('채광 행운 '+icon('luck'),'gold')} 이 <b>+${format(x)}</b>만큼 상승합니다.`],
 
-            ["Better Iron", x=>`Improve <b>Iron</b> building better.`],
-            ["Better Nickel", x=>`Improve <b>Nickel</b> building better.`],
-            ["Better Oxygen", x=>`Improve <b>Oxygen</b> building better.`],
-            ["Better Neon", x=>`Improve <b>Neon</b> building better.`],
+            ["더 나은 철", x=>`<b>철</b> 조립기를 개선합니다.`],
+            ["더 나은 니켈", x=>`<b>니켈</b> 조립기를 개선합니다.`],
+            ["더 나은 산소", x=>`<b>산소</b> 조립기를 개선합니다.`],
+            ["더 나은 네온", x=>`<b>네온</b> 조립기를 개선합니다.`],
 
-            ["Ironic Iron", x=>`Improve <b>Iron</b> reactor better.`],
-            ["Piggy Bank", x=>`Improve <b>Nickel</b> reactor better.`],
-            ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`],
-            ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`],
+            ["아이러니한 아이언", x=>`<b>철</b> 원자로를 개선합니다.`],
+            ["돼지 저금통", x=>`<b>니켈</b> 원자로를 개선합니다.`],
+            ["오존", x=>`<b>산소</b> 원자로를 개선합니다.`],
+            ["가짜 방사성 폐기뮬", x=>`<b>네온</b> 원자로를 개선합니다.`],
 
-            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["강해진 열 1", x=>`첫 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`],
+            ["강해진 열 2", x=>`두 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`],
+            ["강해진 열 3", x=>`세 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`],
+            ["강해진 열 4", x=>`네 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`],
 
-            ["Fish Forge", x=>`${toTextStyle('Fish','fish')} speeds forging by <b>${formatMult(x)}</b>.`],
-            ["Prestigious Forge", x=>`${toTextStyle('Prestige','prestige')} shards speed forging by <b>${formatMult(x)}</b>.`],
-            ["Magmatic Forge", x=>`${toTextStyle('Magmatic','core')} fragments speed forging by <b>${formatMult(x)}</b>.`],
-            ["Faster Forge", x=>`Forging is <b>${formatMult(x)}</b> faster.`],
+            ["물고기 용광로", x=>`${toTextStyle('물고기','fish')}가 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`],
+            ["환생 용광로", x=>`${toTextStyle('환생','prestige')} 파편이 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`],
+            ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`],
+            ["빠른 용광로", x=>`재련이 <b>${formatMult(x)}</b> 만큼 빨라집니다.`],
 
-            ["True Column 1", x=>`You are allowed to purchase the first column of tree evolution.`],
-            ["True Column 2", x=>`You are allowed to purchase the second column of tree evolution.`],
-            ["True Column 3", x=>`You are allowed to purchase the third column of tree evolution.`],
-            ["True Column 4", x=>`You are allowed to purchase the fourth column of tree evolution.`],
+            ["진정한 열 1", x=>`진화 트리의 첫 번째 열을 구매 할 수 있습니다.`], // need to fix, need more info
+            ["진정한 열 2", x=>`진화 트리의 두 번째 열을 구매 할 수 있습니다.`],
+            ["진정한 열 3", x=>`진화 트리의 세 번째 열을 구매 할 수 있습니다.`],
+            ["진정한 열 4", x=>`진화 트리의 네 번째 열을 구매 할 수 있습니다.`],
         ],
 
-        'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
+        'evolution-goal-status': (x,y)=>x?"완료":y?"달성 못 함":"현재 진행 중",
         'evolution-goal-ctn': [
             [
-                x=>`Earn at least <b>${format(x,0)}</b> ${toTextStyle("Magmatic",'core')} fragments on the first entering ${toTextStyle("Core",'core')}.`,
-                `Passively generate <b>100%</b> of ${toTextStyle("Magmatic",'core')} fragments earned on entering ${toTextStyle("Core",'core')}.`
+                x=>`첫 번째 ${toTextStyle("핵",'core')} 환생에서 최소 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 파편을 획득하세요.`,
+                `${toTextStyle("핵",'core')} 진입 시 획득하는 ${toTextStyle("마그마",'core')} 조각의 <b>100%</b>를 매 초마다 획득합니다.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments without purchasing the ${toTextStyle("Core",'core')} assembler's building.`,
-                `Keep the ${toTextStyle("Magmatic",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
+                x=>`${toTextStyle("핵",'core')} 조립기를 구매 하지 않고 총 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 조각을 획득하세요.`,
+                ` ${toTextStyle('진화','humanoid')} 환생을 해도 ${toTextStyle("핵",'core')} 조립기를 유지합니다.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments.`,
-                `Improve the formula of ${toTextStyle('Prestige','prestige')} shards for ${toTextStyle("Magmatic",'core')} fragments.`
+                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 조각 획득.`,
+                `${toTextStyle("마그마",'core')} 조각의 획득 공식을 개선합니다.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating ${toTextStyle('Kelp','kelp')}.`,
-                `Start with capped depth in every ocean.`,
+                x=>`${toTextStyle('켈프','kelp')} 생산 없이 총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
+                `환생 시작 시 모든 바다가 최대 깊이 상태로 시작합니다.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating resources in each ocean.`,
-                `Keep research on ${toTextStyle('Evolution','humanoid')}.`,
+                x=>`각 바다에서 자원을 생산하지 않고 총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
+                `${toTextStyle('진화','humanoid')} 환생을 해도 연구가 유지됩니다.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards.`,
-                `Further improve the formula of ${toTextStyle('Prestige','prestige')} shards gain.`,
+                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
+                `${toTextStyle('환생','prestige')} 파편의 획득 공식을 개선합니다.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} with at most <b>10</b> radioactive boosts.`,
-                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limit.`,
+                x=>`<b>10</b>개 이하의 방사선 부스트를 가진 채 총 <b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}을 획득하세요.`,
+                `방사선 부스트는 더 이상 ${toTextStyle('방사선 '+icon("radioactive"),'core')}과 관련한 업그레이드를 초기화 하지 않습니다. 항상 하나의 발전기를 가지고 시작하며, ${toTextStyle('방사선 '+icon("radioactive"),'core')}을 한계 이상으로 소지가 가능합니다.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} without radioactive boosts.`,
-                `Radioactive boosts no longer reset anything. Unlock Auto-Radioactive Boosts.`,
+                x=>`방사선 부스트 없이 총<b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
+                `방사선 부스트가 이제 아무것도 초기화 하지 않습니다. 자동 방사선 부스트를 해금합니다.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')}.`,
-                `First ${toTextStyle('Shark','shark')} Rank scaling is delayed by <b>+5</b>.`,
+                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
+                `첫 번째 ${toTextStyle('상어','shark')} 랭크 스케일링이 <b>+5</b>만큼 미뤄집니다.`,
             ],
         ],
 
@@ -566,7 +566,7 @@ LANGUAGES.PT = {
         'forge-speed': x => `Forging Speed: <b>${x}</b>`,
         'forge-button': ['Cancel Forging','Start Forging','Not enough materials to forge'],
 
-        // Particle Accelerator / 입자 가속시
+        // Particle Accelerator / 입자 가속기
 
         'particle-accel-condense': x => `Condense over ${x} to:`,
         'particle-accel-boost': [
@@ -681,7 +681,7 @@ LANGUAGES.PT = {
         'require': "Require",
         'next-at': "Next at",
         'depth': "Depth",
-        'reward': "Reward",
+        'reward': "보상",
         'new-preset': "New Preset",
         'maxed': "Maxed",
 
