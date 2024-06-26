@@ -32,8 +32,8 @@ LANGUAGES.KO = {
         'core-name': "마그마 조각",
         'core-costName': toTextStyle('마그마','core') + ' 조각',
 
-        'humanoid-name': "상어 인간",
-        'humanoid-costName': toTextStyle('상어','humanoid') + ' 인간',
+        'humanoid-name': "휴머노이드 상어",
+        'humanoid-costName': toTextStyle('휴머노이드','humanoid') + ' 상어',
 
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
 
@@ -295,7 +295,7 @@ LANGUAGES.KO = {
         'research-f6-desc': `첫 9 종류의 광석들이 채광 티어에 의해 획득량이 증가됩니다.`,
 
         'research-f7-name': "더 나은 상어 ELO",
-        'research-f7-desc': `상어 인간에서의 ${toTextStyle("상어",'shark')} ELO의 베이스 공식이 <b>x</b> 에서 <b>2<sup>x</sup>-1</b>으로 개선됩니다.`,
+        'research-f7-desc': `휴머노이드 상어에서의 ${toTextStyle("상어",'shark')} ELO의 베이스 공식이 <b>x</b> 에서 <b>2<sup>x</sup>-1</b>으로 개선됩니다.`,
 
         'research-f8-name': "약해진 광석 체력",
         'research-f8-desc': `채광 티어의 첫 번재 효과가 감소됩니다.`,
@@ -438,7 +438,7 @@ LANGUAGES.KO = {
             ["물고기 인플레이션", x=>`${toTextStyle('물고기','fish')} 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
             ["오버프레스티지", x=>`${toTextStyle('환생','prestige')} 파편 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
             ["압축된 핵", x=>`${toTextStyle("마그마",'core')} 조각 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
-            ["홈메이드 상어", x=>`${toTextStyle('상어 인간','humanoid')}의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`],
+            ["홈메이드 상어", x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`],
 
             ["상어 전환", x=>`<b>${format(x,0)}</b> 개의 추가 <b>황</b> 티어 획득합니다.`],
             ["엑소스켈레톤 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>실리콘</b> 티어 획득합니다.`],
@@ -452,7 +452,7 @@ LANGUAGES.KO = {
 
             ['바다의 행운', x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을 <b>+${format(x)}</b>만큼 부스트시킵니다`],
             ['지구의 행운', x=>`<b>돌</b>이 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을 <b>+${format(x)}</b>만큼 부스트시킵니다`],
-            ['상어의 행운', x=>`${toTextStyle('상어 인간','humanoid')} 이 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을<b>+${format(x)}</b>만큼 부스트시킵니다`],
+            ['상어의 행운', x=>`${toTextStyle('휴머노이드','humanoid')} 상어가 ${toTextStyle('채광 행운 '+icon('luck'),'gold')} 을<b>+${format(x)}</b>만큼 부스트시킵니다`],
             ['순수한 행운', x=>`${toTextStyle('채광 행운 '+icon('luck'),'gold')} 이 <b>+${format(x)}</b>만큼 상승합니다.`],
 
             ["더 나은 철", x=>`<b>철</b> 조립기를 개선합니다.`],
@@ -568,14 +568,14 @@ LANGUAGES.KO = {
 
         // Particle Accelerator / 입자 가속기
 
-        'particle-accel-condense': x => `Condense over ${x} to:`,
+        'particle-accel-condense': x => `${x}을 다음으로 변환:<br>`,
         'particle-accel-boost': [
-            x => `Increase the ${toTextStyle('Radiation '+icon("radioactive"),'core')} production by <b>${x}</b>.`,
-            x => `Increase every ocean's depth progression by <b>${x}</b>.`,
-            x => `Increase <b>Stone</b> amount and mining damage by <b>${x}</b>.`,
-            x => `Gain <b>${x}</b> more ${toTextStyle('Humanoid','humanoid')} Sharks.`,
-            x => `Delay the first scaling of the core reactors by <b>${x}</b>.`,
-            x => `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>${x}</b>.`,
+            x => `${toTextStyle('방사선 '+icon("radioactive"),'core')} 생산량이 <b>${x}</b> 만큼 증가함.`,
+            x => `모든 바다의 진행이 <b>${x}</b> 만큼 증가함.`,
+            x => `<b>돌</b> 획득량과 채광 대미지가 <b>${x}</b> 만큼 증가함.`,
+            x => `<b>${x}</b> 배 더 많은 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득함.`,
+            x => `첫 번째 ${toTextStyle('핵','core')} 원자로의 스케일링이 <b>${x}</b> 만큼 미뤄짐.`,
+            x => `${toTextStyle("상어",'shark')} ELO의 지수가 <b>${x}</b> 만큼 증가함.`,
         ],
 
         // Automation / 자동화
