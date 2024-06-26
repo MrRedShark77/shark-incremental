@@ -116,6 +116,7 @@ LANGUAGES.EN = {
         'mining-text': `Mining... <b id="mining-progress">???</b> | Damage <b id="mining-damage">???</b> | ${toTextStyle(`Mining Fortune <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
         'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
+        'mining-tier-undo-btn': `Decrease Mining Tier by 1 if you're stuck while mining.`,
 
         // Upgrades
 

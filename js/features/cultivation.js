@@ -115,6 +115,17 @@ const MINING_TIER = {
             reloadOres()
         }
     },
+    undo() {
+        if (player.humanoid.mining_tier.gte(1)) {
+            player.humanoid.mining_tier = player.humanoid.mining_tier.sub(1)
+
+            updateCultivationTemp()
+
+            ores_grid = []
+            mine_time = E(0)
+            reloadOres()
+        }
+    },
 
     base_milestone: [0,3,6,9,16,20,24,30],
     gen_milestone: [8,11,18,23,27,32],
@@ -212,6 +223,8 @@ function updateCultivationHTML() {
     var tier = player.humanoid.mining_tier
 
     el('mining-tier').innerHTML = tier.format(0)
+
+    el('mining-tier-undo-btn').className = el_classes({locked: tier.eq(0)})
 
     var req = MINING_TIER.require, next_tier = MINING_TIER.base_milestone[tmp.ore_spawn_base], next_gen = MINING_TIER.gen_milestone[tmp.ore_generator]
 
