@@ -1,6 +1,6 @@
 // This is Korean!
 
-LANGUAGES.KO = {
+LANGUAGES.PT = {
     name: "Korean",
     inter_name: "한국어",
     icon: "lang-ko",
@@ -481,7 +481,7 @@ LANGUAGES.KO = {
             ["진정한 열 4", x=>`진화 트리의 네 번째 열을 구매 할 수 있습니다.`],
         ],
 
-        'evolution-goal-status': (x,y)=>x?"완료":y?"달성 못 함":"현재 진행 중",
+        'evolution-goal-status': (x,y)=>x?"완료":y?"달성 못 함":"현재 진행 중", // need more info
         'evolution-goal-ctn': [
             [
                 x=>`첫 번째 ${toTextStyle("핵",'core')} 환생에서 최소 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 파편을 획득하세요.`,
@@ -552,19 +552,19 @@ LANGUAGES.KO = {
         // Forge / 용광로
 
         'forge': {
-            'anvil': ['Anvil Tier','Unlocks new forge upgrades.'],
-            'drill': ['Drill Tier','Increases the multiplier of <b>Stone</b> mined.'],
-            'shard': ['Refined Shard',`Increases the multiplier of ${toTextStyle('Prestige','prestige')} shards.`],
-            'tree': ['Extraordinary Tree',`Unlocks new row of the ${toTextStyle('Evolution','humanoid')} tree.`],
-            'adv_research': ['Advanced Research',`Unlocks new research.`],
-            'auto': ['Advanced Automation',`Unlocks new automation.`],
-            'shark': ['Distant Shark Level',`Delays the third scaling of ${toTextStyle('Shark','shark')} Level.`],
-            'refined_shard': ['Energized Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
-            'wormhole': ['Wormhole',`Unlocks new Particle Accelerator.`],
+            'anvil': ['모루 티어','새로운 용광로 업그레이드를 해금합니다.'],
+            'drill': ['드릴 티어','채광하는 <b>돌</b>의 배수가 증가합니다.'],
+            'shard': ['정제된 파편',`${toTextStyle('환생','prestige')} 파편 배수가 증가합니다.`],
+            'tree': ['특별한 나무',`새로운 ${toTextStyle('진화','humanoid')} 트리의 행을 해금합니다.`],
+            'adv_research': ['고급 연구',`새로운 연구를 해금합니다.`],
+            'auto': ['고급 자동화',`새로운 자동화를 해금합니다.`],
+            'shark': ['더 멀은 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
+            'refined_shard': ['충전된 파편',`${toTextStyle('환생','prestige')} 파편의 지수를 증가시킵니다.`],
+            'wormhole': ['웜홀',`새로운 콘텐츠인 입자 가속기를 해금합니다.`],
         },
-        'forge-progress': (x,s) => x ? `Forging <b>${x}</b>... <b>${s}</b>` : `Forge is empty`,
-        'forge-speed': x => `Forging Speed: <b>${x}</b>`,
-        'forge-button': ['Cancel Forging','Start Forging','Not enough materials to forge'],
+        'forge-progress': (x,s) => x ? `<b>${x}</b> 재련 중... <b>${s}</b>` : `용광로에서 제작을 하고 있지 않습니다.`,
+        'forge-speed': x => `재련 속도: <b>${x}</b>`,
+        'forge-button': ['재련 취소','재련 시작','자원이 부족해 재련할 수 없습니다!'], // need more info
 
         // Particle Accelerator / 입자 가속기
 
