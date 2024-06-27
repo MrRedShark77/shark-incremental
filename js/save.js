@@ -7,6 +7,7 @@ function getPlayerData() {
         fish: E(1),
         total_fish: E(0),
         shark_level: E(0),
+        shark_rank: E(0),
         shark_upg: {},
 
         prestige: {
@@ -40,6 +41,35 @@ function getPlayerData() {
                 gen: E(0),
                 boost: E(0),
             },
+
+            assembler: [],
+            assembler_strength: [],
+            max_buildings: 0,
+        },
+
+        humanoid: {
+            shark: E(0),
+            times: 0,
+
+            faith: [E(0), E(0), E(0)],
+            tree: [],
+            tree_preset: [],
+
+            goal: [],
+
+            mining_tier: E(0),
+            ores: {},
+
+            forge: {
+                level: {},
+                queue: '',
+                time: E(0),
+            },
+
+            particle_accel: {
+                active: -1,
+                percent: [],
+            },
         },
 
         radios: {},
@@ -59,7 +89,15 @@ function getPlayerData() {
         s.explore.res[x] = s.explore.depth[x] = s.explore.base[x] = E(0)
         s.explore.upg[x] = [E(0), E(0)]
     }
-    for (let x in CORE_REACTOR) s.core.reactor[x] = E(0)
+    for (let x in CORE_REACTOR) {
+        s.core.reactor[x] = E(0)
+        s.core.assembler_strength[x] = 0
+    }
+    for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
+    for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0)
+    for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0
+
+    for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0)
 
     return s
 }
@@ -153,15 +191,17 @@ function exporty() {
     a.click()
 }
 
-function export_copy() {
-    let str = btoa(JSON.stringify(player))
-
+function copyToClipboard(text) {
     let copyText = document.getElementById('copy')
-    copyText.value = str
+    copyText.value = text
     copyText.style.visibility = "visible"
     copyText.select();
     document.execCommand("copy");
     copyText.style.visibility = "hidden"
+}
+
+function export_copy() {
+    copyToClipboard(btoa(JSON.stringify(player)))
 }
 
 function importy() {

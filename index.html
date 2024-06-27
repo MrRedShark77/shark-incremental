@@ -21,12 +21,12 @@
     <script src="js/modules/icon.js"></script>
 
     <script src="js/modules/break_eternity.js"></script>
-    <script src="js/modules/formulas.js"></script>
     <script src="js/modules/radio.js"></script>
     <script src="js/modules/graph.js"></script>
     <script src="js/modules/popup.js"></script>
     <script src="js/modules/notify.js"></script>
     <script src="js/format.js"></script>
+    <script src="js/modules/formulas.js"></script>
     <script src="js/main.js"></script>
 
     <script src="js/modules/currency.js"></script>
@@ -39,6 +39,11 @@
     <script src="js/features/explore.js"></script>
     <script src="js/features/core-reactor.js"></script>
     <script src="js/features/core-radiation.js"></script>
+    <script src="js/features/core-assembler.js"></script>
+    <script src="js/features/evolution.js"></script>
+    <script src="js/features/cultivation.js"></script>
+    <script src="js/features/forge.js"></script>
+    <script src="js/features/particle-accel.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -83,15 +88,6 @@
                 <div id="shark-stats"></div>
                 <button class="locked" id="shark-button" onclick="upgradeShark()"></button>
                 <div id="shark-bonus"></div>
-            </div><div id="shark-upgrades">
-                <div class="shark-upgrade">
-                    <div class="shark-upgrade-div">
-                        <div><h2>Upgrade Name</h2><br>Level: 0</div>
-                        <div>x???</div>
-                        <div><button class="shark-upgrade-button">Cost: ???</button></div>
-                    </div>
-                    <div class="shark-upgrade-requirement"><div>???</div></div>
-                </div>
             </div>
         </div><div id="auto-tab">
             <div id="auto-table">
@@ -103,6 +99,18 @@
                 </div>
             </div>
         </div><div id="research-tab">
+            <div class="table-center" style="align-items: center;">
+                <div id="radio-max-research-amt" class="input-radio"></div>
+                <div style="margin: 10px; align-items: center;" class="table-center" id="research-page-div">
+                    <button style="height: 40px; width: 40px;" onclick="changeResearchPage(-1)">◀</button>
+                    <div>
+                        <input type="number" value="1" min="1" step="1" id="research-page" class="no-arrows">
+                        <div id="research-total-pages"></div>
+                    </div>
+                    <button style="height: 40px; width: 40px;" onclick="changeResearchPage(1)">▶</button>
+                </div>
+                <div id="radio-visible-research" class="input-radio"></div>
+            </div>
             <div id="research-table">
                 <div class="research-div">
                     <div class="research-name">Prestigious Agility</div>
@@ -165,13 +173,108 @@
                             <button class="huge-btn" id="upgrade-cr-btn" onclick="CORE_RAD.purchaseGeneration()">Upgrade the radiation generation.</button>
                             <button class="huge-btn" id="reset-cr-btn" onclick="CORE_RAD.purchaseBoost()" style="font-size: 12px;">Reset the radiation, but increase its limit by <b>???</b>, and sometimes add a new boost or upgrade the boosts.</button>
                         </div>
+                        <p id="core-temp-div"></p>
                     </td><td style="width: 50%;">
                         <p id="radioboost-div"></p>
                         <div id="cr-boosts-div"></div>
                     </td>
                 </tr>
             </table>
-        </div><div id="options-tab">
+        </div><div id="core-assembler-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="table-center">
+                            <button id="ca-building-limit" class="huge-btn" onclick="purchaseCAMaxBuildings()"></button>
+                            <button class="huge-btn" id="core-assembler-erase" onclick="chooseCABuilding(-1)"></button>
+                        </div>
+                        <div id="core-assembler-grid"></div>
+                        <div id="core-assembler-choose-div" class="table-center"></div>
+                    </td><td style="width: 50%;">
+                        <p id="core-temp-after-div"></p>
+                        <div id="core-assembler-buildings" class="table-center"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="shark-rank-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div id="shark-elo-div"></div>
+                        <div id="shark-elo-calc"></div>
+                        <p id="shark-overpopulation"></p>
+                    </td><td style="width: 50%;">
+                        <div id="shark-rank-div"></div>
+                        <subtitle id="shark-rank-note"></subtitle>
+                        <div id="shark-rank-req-div"></div>
+                        <div id="shark-rank-bonus"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="evolution-tree-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="table-center">
+                            <button class="big-btn" id="import-evolution-tree" onclick="importEvolutionTree()"></button>
+                            <button class="big-btn" id="export-evolution-tree" onclick="exportEvolutionTree()"></button>
+                            <button class="big-btn" id="respec-evolution-tree" onclick="respecEvolutionTree()"></button>
+                            <button class="big-btn" id="evolution-tree-preset" onclick="openEvolutionTreePreset()"></button>
+                        </div>
+                        <div id="evolution-tree"></div>
+                    </td><td style="width: 50%;">
+                        <p id="sharkoid-faith-div"></p>
+                        <div id="sharkoid-faith-btns"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="evolution-goal-tab">
+            <button class="big-btn" id="rerun-evolution" onclick="respecEvolutionTree(true)"></button>
+            <div id="evolution-goal-grid"></div>
+        </div><div id="cultivation-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 30%;">
+                        <div id="mining-tier-div"></div>
+                        <button id="mining-tier-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.upgrade()"></button><br>
+                        <button id="mining-tier-undo-btn" class="huge-btn" style="font-size: 12px; min-height: 30px; height: auto; width: 250px;" onclick="MINING_TIER.undo()"></button>
+                        <div id="mining-tier-bonus"></div>
+                    </td><td style="width: 40%;">
+                        <p id="mining-text"></p>
+                        <div id="ores-grid"></div>
+                        <subtitle id="mining-note"></subtitle>
+                    </td><td style="width: 30%;">
+                        <h3 id="mined-resources-text"></h3>
+                        <div id="ores-list"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="forge-tab">
+            <div id="forge-status"></div><div style="width: 100%; min-height: 209px; margin-bottom: 3px; padding-bottom: 3px; border-bottom: solid 2px #075551;">
+                <div id="forge-description-div">
+                    <div id="forge-description">
+                        
+                    </div><div class="table-center">
+                        <button class="big-btn" id="forge-btn" onclick="doForge()">Forge</button>
+                    </div>
+                </div>
+            </div><div class="table-center" id="forge-table">
+                
+            </div>
+        </div><div id="particle-accel-tab">
+            <div id="particle-accel-table">
+                <div>
+                    <button class="particle-accel-button"></button>
+                    <div class="particle-accel-bar">
+                        <div class="particle-accel-bar-proj"></div>
+                        <div class="particle-accel-bar-inner"></div>
+                        <div class="particle-accel-bar-outer">12.3%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="options-tab">
             <div class="option-div">
                 <div>
                     <h2 id="option-title-1">Main Options</h2>
@@ -187,6 +290,7 @@
                         <div id="radio-autosave" class="input-radio"></div>
                         <br><div id="radio-autosave-time" class="input-radio"></div>
                         <br><div id="radio-offline" class="input-radio"></div>
+                        <br><div id="radio-notify" class="input-radio"></div>
                     </div>
                 </div><div>
                     <h2 id="option-title-2">Notations</h2>
@@ -201,19 +305,25 @@
                     <div class="item-left" id="confirmations-table"></div>
                 </div><div>
                     <h2 id="option-title-4">Languages</h2>
-                    <div class="table-left" id="languages">
-                        
-                        
-                        
-                        
-                    </div>
+                    <div class="table-left" id="languages"></div>
                 </div>
+            </div>
+        </div>
+
+        <div id="shark-upgrades">
+            <div class="shark-upgrade">
+                <div class="shark-upgrade-div">
+                    <div><h2>Upgrade Name</h2><br>Level: 0</div>
+                    <div>x???</div>
+                    <div><button class="shark-upgrade-button">Cost: ???</button></div>
+                </div>
+                <div class="shark-upgrade-requirement"><div>???</div></div>
             </div>
         </div>
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.1 by MrRedShark77
+            Shark Incremental v0.2.3 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

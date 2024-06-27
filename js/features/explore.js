@@ -4,15 +4,15 @@ const EXPLORE = [
         level_req: 110,
         maxDepth: 10935,
 
-        effect(r) {
-            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3)
+        effect(r,d) {
+            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3).pow(d.div(this.maxDepth).max(1).pow(.85))
             return x
         },
         effDesc: x => formatMult(x) + " " + CURRENCIES.fish.costName,
 
         cost: [
-            [l=>Decimal.pow('1e700', Decimal.pow(1.015, l)), x=>x.log('1e700').log(1.015).floor().add(1),"fish"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow('1e700', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e700').log(1.015).mul(tmp.explore_MP).floor().add(1),"fish"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e135'),
@@ -25,15 +25,15 @@ const EXPLORE = [
         level_req: 130,
         maxDepth: 5450,
 
-        effect(r) {
-            let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5)
+        effect(r,d) {
+            let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5).pow(d.div(this.maxDepth).max(1).pow(.8))
             return x
         },
         effDesc: x => formatMult(x) + " " + CURRENCIES.prestige.costName,
 
         cost: [
-            [l=>Decimal.pow('1e120', Decimal.pow(1.015, l)), x=>x.log('1e120').log(1.015).floor().add(1),"prestige"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow('1e120', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e120').log(1.015).mul(tmp.explore_MP).floor().add(1),"prestige"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e440'),
@@ -46,16 +46,16 @@ const EXPLORE = [
         level_req: 175,
         maxDepth: 8605,
 
-        effect(r) {
-            let x = r.add(1).log10().div(100)
+        effect(r,d) {
+            let x = r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(2,3)) x = x.mul(1.5)
             return x.add(1)
         },
         effDesc: x => formatPow(x,3) + " " + CURRENCIES.fish.costName,
 
         cost: [
-            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).floor().add(1),"coral"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"coral"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e170'),
@@ -68,16 +68,16 @@ const EXPLORE = [
         level_req: 210,
         maxDepth: 7236,
 
-        effect(r) {
-            let x = r.add(1).log10().div(100)
+        effect(r,d) {
+            let x = r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(3,2)) x = x.mul(1.5)
             return x.add(1)
         },
         effDesc: x => formatPow(x,3) + " " + CURRENCIES.prestige.costName,
 
         cost: [
-            [l=>Decimal.pow(100, l.pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).floor().add(1),"ice"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"ice"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e200'),
@@ -90,15 +90,17 @@ const EXPLORE = [
         level_req: 1000,
         maxDepth: 7290,
 
-        effect(r) {
+        effect(r,d) {
             let x = expPow(r.add(1),hasDepthMilestone(4,3) ? 0.75 : 0.5)
+            if (hasResearch('e5')) x = x.max(r.add(1).root(2))
+            x = x.pow(d.div(this.maxDepth).max(1).log10().root(2).div(8).add(1))
             return x
         },
         effDesc: x => formatMult(x) + " " + lang_text("radioactive-name"),
 
         cost: [
-            [l=>Decimal.pow(10, l.pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).floor().add(1),"core"],
-            [l=>Decimal.pow(10, l.pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).floor().add(1)]
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).mul(tmp.explore_MP).floor().add(1),"core"],
+            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
         ],
 
         fish_req: E('1e6000'),
@@ -147,7 +149,27 @@ function calcNextDepth(x,gain) {
             x = E(10)
         } else return g
     }
-    return Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
+
+    let b = E(2)
+
+    if (x.gte(10)) {
+        // x = Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
+
+        x = x.log10().pow(2).pow10()
+
+        let rss1 = E('ee4')
+
+        let rs1 = x.gte(rss1)
+        if (rs1) x = x.scale(rss1,b,"D")
+
+        x = x.add(gain)
+
+        rs1 ||= x.gte(rss1)
+        if (rs1) x = x.scale(rss1,b,"D",true)
+
+        x = x.log10().root(2).pow10()
+    }
+    return x
 }
 
 function enterExploration(i) {
@@ -259,15 +281,17 @@ function updateExplorationHTML() {
 }
 
 function updateExplorationTemp() {
+    tmp.explore_MP = getCRBoost(9)
+
     EXPLORE.forEach((x,i)=>{
-        tmp.explore_eff[i] = x.effect(player.explore.unl > i ? player.explore.res[i] : E(0))
+        tmp.explore_eff[i] = x.effect(player.explore.unl > i ? player.explore.res[i] : E(0), player.explore.depth[i])
 
         let upg = player.explore.upg[i]
         tmp.explore_upg_boost[i] = [Decimal.pow(2,upg[0]), Decimal.pow(2,upg[1])]
 
         let d = player.explore.base[i].mul(tmp.explore_upg_boost[i][1])
         if (hasDepthMilestone(i,1)) d = d.mul(Decimal.pow(1.25,player.shark_level.root(2)))
-        tmp.depth_gain[i] = d
+        tmp.depth_gain[i] = d.pow(getPAEffect(1))
 
         tmp.explore_mil_reached[i] = x.milestone.map((p) => player.explore.depth[i].round().gte(Decimal.round(p)))
 

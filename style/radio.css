@@ -1,8 +1,11 @@
 .input-radio {
-    margin: 5px 0px;
+    margin: 5px;
+    padding: 5px;
     display: inline-flex;
     height: 40px;
     align-items: center;
+    background-color: #189791;
+    border-radius: 10px;
 }
 
 .input-radio-list {

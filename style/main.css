@@ -116,7 +116,7 @@ button * {
 	pointer-events: none;
 }
 
-button:not(.locked,.selected,#wipe):hover {
+button:not(.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn):hover {
 	background-color: #0b6965;
 	border-color: #043f3c;
 }
@@ -131,9 +131,27 @@ button.huge-btn {
 	height: 100px;
 }
 
+button.half-huge-btn {
+	width: 250px;
+	height: 50px;
+}
+
 .tab-button.selected,
-button:not(.locked):active {
+button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
 	background-color: #075551;
+}
+
+input.no-arrows {
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+	}
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+
+	&[type=number] {
+		-moz-appearance: textfield;
+	}
 }
 
 .locked {
@@ -141,6 +159,13 @@ button:not(.locked):active {
 	border-color: #02302d;
 	cursor: default;
 	color: #f44;
+}
+
+.bought {
+	background-color: #11853e;
+	border: solid 2px #07552e;
+	cursor: default;
+	color: #8f8;
 }
 
 .tab-button {
@@ -155,6 +180,11 @@ button:not(.locked):active {
 
 .tab-button.selected {
 	cursor: default;
+}
+
+.tab-button.notify,
+.forge-btn.notify {
+	box-shadow: 0px 0px 3px 3px #f44;
 }
 
 #tabs {
@@ -269,6 +299,7 @@ button:not(.locked):active {
 .curr-top > button {
 	width: calc(100% - 80px);
 	height: calc(100% - 36px);
+	font-size: 12px;
 }
 
 .option-div {
@@ -322,6 +353,7 @@ button:not(.locked):active {
 #popup-html {
 	min-height: 100px;
 	max-height: 400px;
+	padding: 5px;
 	overflow-y: auto;
 }
 
@@ -336,7 +368,7 @@ button:not(.locked):active {
 	width: 100%;
 }
 
-#popup-input {
+.popup-input, #popup-input {
 	width: 100%;
 	height: auto;
 	font-family: 'Courier New', Courier, monospace;
@@ -390,11 +422,17 @@ button:not(.locked):active {
 	}
 }
 
-#auto-table, #research-table, #core-reactor-table {
+#auto-table, #research-table {
 	display: flex;
 	justify-content: center;
 	align-items: start;
 	flex-wrap: wrap;
+}
+
+#core-reactor-table {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	justify-content: center;
 }
 
 .auto-div {
@@ -474,6 +512,20 @@ button:not(.locked):active {
 	& > button {
 		width: 100%;
 	}
+}
+
+#research-page {
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	height: 30px;
+	font-size: 28px;
+	width: 120px;
+	margin: 2px;
+}
+
+#research-total-pages {
+	font-size: 14px;
+	font-weight: bold;
 }
 
 .graph {
@@ -577,4 +629,257 @@ button:not(.locked):active {
 	width: 80px;
 	height: 80px;
 	margin-bottom: 5px;
+}
+
+#core-assembler-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 80px);
+	grid-auto-rows: 80px;
+	justify-content: center;
+}
+
+.ca-grid-btn {
+	background-color: #075551;
+	border: solid 2px #02302d;
+	margin: 2px;
+	padding: 0px;
+
+	text-shadow: 1px 1px 0px black, 0px 0px 2px black;
+	box-shadow: 2px 2px 0px black;
+	font-weight: bold;
+
+	& > div {
+		font-size: 36px;
+	}
+
+	&.active {
+		border-color: var(--color1);
+		box-shadow: inset 0px 0px 20px var(--color1), inset 0px 0px 20px var(--color1), 2px 2px 0px black;
+		background-color: var(--color2);
+	}
+}
+
+#core-assembler-choose-div {
+	align-items: center;
+}
+
+.ca-building {
+	width: 300px;
+	height: 150px;
+
+	& > .table-center {
+		align-items: center;
+
+		font-weight: bold;
+		font-size: 20px;
+	}
+}
+
+.ca-building-symbol {
+	content: "";
+	margin: 4px;
+	width: 20px;
+	height: 20px;
+	box-shadow: inset 0px 0px 4px var(--color1), inset 0px 0px 4px var(--color1), 2px 2px 0px black;
+	background-color: var(--color2);
+}
+
+subtitle {
+	display: block;
+	font-size: 14px;
+	margin: 5px 0px;
+	font-style: italic;
+}
+
+#evolution-tree {
+	display: grid;
+	grid-template-columns: repeat(5, 150px);
+	grid-auto-rows: 150px;
+	justify-content: center;
+}
+
+#evolution-tree > div {
+	position: relative;
+}
+
+.evolution-tree-avilable {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+	font-size: 14px;
+}
+
+.evolution-tree-btn {
+	position: relative;
+	margin: 2px;
+	padding: 25px 4px;
+	font-size: 12px;
+}
+
+.etb-name, .etb-cost {
+	position: absolute;
+	color: black;
+	font-weight: bold;
+	width: 100%;
+	text-align: left;
+	font-size: 12px;
+}
+
+.etb-name {
+	top: 0px; left: 0px;
+}
+
+.etb-cost {
+	bottom: 0px; left: 0px;
+}
+
+#sharkoid-faith-btns {
+	display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+#evolution-goal-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 300px);
+	grid-auto-rows: 160px;
+	justify-content: center;
+}
+
+.evolution-goal-ctn {
+	font-size: 13px;
+	cursor: default !important;
+}
+
+#rerun-evolution {
+	width: 240px;
+}
+
+.tree-preset {
+	margin: 5px 0px;
+}
+
+#ores-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 150px);
+	grid-auto-rows: 120px;
+	justify-content: center;
+}
+
+.ore-grid {
+	position: relative;
+	background: black;
+	border: solid 1px black;
+
+	& > div {
+		font-size: 14px;
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		transform: translateY(-50%);
+	}
+}
+
+#ores-list {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+.ore-list {
+	width: 240px;
+	margin: 2px;
+}
+
+.forge-btn {
+	position: relative;
+
+	width: 120px;
+	height: 120px;
+
+	background-size: 100%;
+
+	cursor: pointer;
+}
+
+.forge-btn > div {
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+	font-size: 30px;
+	font-weight: bold;
+
+	text-shadow: 1px 1px 0px black, 0px 0px 1px black, 1px 1px 1px black, 0px 0px 2px black, 1px 1px 2px black;
+}
+
+#forge-description {
+	min-height: 150px;
+}
+
+#particle-accel-table {
+	display: grid;
+	grid-template-columns: repeat(3, 250px);
+	grid-auto-rows: 150px;
+	justify-content: center;
+}
+
+.particle-accel-button {
+	width: calc(100% - 4px);
+	height: calc(100% - 44px);
+}
+
+.particle-accel-button.active {
+	background-color: #303;
+	border-color: black;
+	animation: pab-glow 1s infinite;
+}
+
+.particle-accel-bar {
+	position: relative;
+	margin: 2px;
+	width: calc(100% - 8px);
+	height: 30px;
+	border: solid 2px black;
+	border-radius: 10px;
+	background-color: #222;
+	overflow: hidden;
+}
+
+.particle-accel-bar-proj,
+.particle-accel-bar-inner,
+.particle-accel-bar-outer {
+	position: absolute;
+	top: 0px; left: 0px;
+	height: 100%;
+}
+
+.particle-accel-bar-proj {
+	background-color: #444;
+	width: 67%;
+}
+
+.particle-accel-bar-inner {
+	background-color: #303;
+	width: 33%;
+
+	animation: pab-glow 1s infinite;
+}
+
+@keyframes pab-glow {
+	from, to {
+		background-color: #303;
+	}
+	50% {
+		background-color: #525;
+	}
+}
+
+.particle-accel-bar-outer {
+	top: 50%;
+	width: 100%;
+	height: auto;
+	transform: translateY(-50%);
+	color: white;
+	filter: drop-shadow(1px 1px 0px black) drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 2px black);
 }

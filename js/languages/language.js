@@ -57,7 +57,8 @@ function calculateTotalLanguageTexts(obj,s=0) {
 function deepCheckLanguage(obj,data) {
     for (let [i,v] of Object.entries(data)) {
         // console.log(i,v)
-        if (Object.getOwnPropertyDescriptor(obj, i).get) {
+        var opd = Object.getOwnPropertyDescriptor(obj, i)
+        if (opd && opd.get) {
             Object.defineProperty(obj, i, {
                 get: Object.getOwnPropertyDescriptor(data, i).get
             })
@@ -70,3 +71,10 @@ function lang_text(id,...arg) {
     const L = lang_data[id]
     return typeof L == 'function' ? L(...arg) : L
 }
+
+const ALLOWED_LANG_KEY_TO_ELEMENT_ID = [
+    `fish-div`,'shark-stats','shark-elo-div','option-title-1','option-title-2','option-title-3','option-title-4','offline-speed','offline-done',
+    'radioactive-div','radioactive-summary','radioboost-div','core-temp-div','core-temp-after-div','shark-rank-div','shark-rank-req-div','core-assembler-erase',
+    'sharkoid-faith-div','shark-rank-note','respec-evolution-tree','rerun-evolution','import-evolution-tree','export-evolution-tree','evolution-tree-preset',
+    'mining-text','mined-resources-text','mining-tier-div','mining-note','mining-tier-undo-btn',
+]

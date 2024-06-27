@@ -4,7 +4,14 @@ function el_classes(data) { return Object.keys(data).filter(x => data[x]).join("
 function updateHTML() {
     updateTabs()
 
-    el('fish-amount').innerHTML = CURRENCIES.fish.amount.format(0) + (tmp.cr_active ? " " + icon("radioactive") : "")
+    updateSharkUpgradesHTML()
+
+    var f = CURRENCIES.fish.amount, ff = []
+
+    if (f.gte(tmp.shark_op_start)) ff.push(icon("biohazard"))
+    if (tmp.cr_active) ff.push(icon("radioactive"))
+
+    el('fish-amount').innerHTML = f.format(0) + (ff.length > 0 ? " " + ff.join("") : "")
     el('fish-gain').textContent = tmp.currency_gain.fish.gt(0) ? CURRENCIES.fish.amount.formatGain(tmp.currency_gain.fish) : ""
 
     updateTopCurrenciesHTML()
@@ -20,6 +27,9 @@ function setupHTML() {
     setupResearchHTML()
     setupExplorationHTML()
     setupCoreHTML()
+    setupEvolutionHTML()
+    setupForgeHTML()
+    setupPAHtml()
 
     setupLanguageHTML()
 
@@ -35,7 +45,7 @@ function setupHTML() {
     <button class="big-btn" onclick="window.open('https://boosty.to/mrredshark77/donate')">${text[7]}</button>
     `
 
-    for (let x of document.getElementsByTagName('*')) if (x.id in lang_data) x.innerHTML = lang_text(x.id)
+    for (let x of document.getElementsByTagName('*')) if (x.id in lang_data && ALLOWED_LANG_KEY_TO_ELEMENT_ID.includes(x.id)) x.innerHTML = lang_text(x.id)
 }
 
 function setupTopCurrenciesHTML() {
@@ -62,7 +72,7 @@ function updateTopCurrenciesHTML() {
         el(`curr-top-${i}-amt2`).textContent = c.amount.format(0) + ((c.passive??1)>0?" "+c.amount.formatGain(tmp.currency_gain[x.curr].mul(c.passive)):"")
 
         let req = !x.req || x.req()
-        el(`curr-top-${i}-btn`).innerHTML = req ? lang_text('curr-top-'+i+'-reset',tmp.currency_gain[x.curr]) : lang_text('curr-top-'+i+'-req',c.require)
+        el(`curr-top-${i}-btn`).innerHTML = req ? lang_text('curr-top-'+i+'-reset',tmp.currency_gain[x.curr],...c.moreArg??[]) : lang_text('curr-top-'+i+'-req',c.require)
         el(`curr-top-${i}-btn`).className = el_classes({locked: !req})
     }
 }
