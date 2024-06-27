@@ -580,49 +580,49 @@ LANGUAGES.KO = {
 
         // Automation / 자동화
 
-        'auto-shark-name': `Auto-${toTextStyle("Shark","shark")} Level`,
-        'auto-su-name': `Auto-${toTextStyle("Shark","shark")} ${toTextStyle("Fish","fish")} Upgrade`,
-        'auto-spu-name': `Auto-${toTextStyle("Shark","shark")} ${toTextStyle("Prestige","prestige")} Upgrade`,
-        'auto-eu-name': `Auto-Exploration Upgrade`,
-        'auto-core_reactor-name': `Auto-${toTextStyle("Core","core")} Reactor`,
-        'auto-core_radiation-name': `Auto-${toTextStyle("Core","core")} Radiation`,
-        'auto-radioactive_boosts-name': `Auto-Radioactive Boosts`,
-        'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
-        'auto-humanoid-name': `Auto-${toTextStyle("Humanoid","humanoid")} Shark`,
+        'auto-shark-name': `자동-${toTextStyle("상어","shark")} 레벨`,
+        'auto-su-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("물고기","fish")} 업그레이드`,
+        'auto-spu-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("환생","prestige")} 업그레이드`,
+        'auto-eu-name': `자동-탐험 업그레이드`,
+        'auto-core_reactor-name': `자동-${toTextStyle("핵","core")} 원자로`,
+        'auto-core_radiation-name': `자동-${toTextStyle("핵","core")} 방사선`,
+        'auto-radioactive_boosts-name': `자동-방사선 부스트`,
+        'auto-mining_upgs-name': `자동-${toTextStyle("상어","shark")} 채광 업그레이드`,
+        'auto-humanoid-name': `자동-${toTextStyle("휴머노이드","humanoid")} 상어`,
 
-        'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
-        'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
+        'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
+        'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
 
         // Progress / 진행
 
-        'progress-0-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
-        get 'progress-0-cond-text'() { return `Do a ${toTextStyle('Prestige','prestige')}` },
+        'progress-0-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        get 'progress-0-cond-text'() { return `${toTextStyle('환생','prestige')}을 하세요` },
 
-        'progress-1-text': r => `Reach ${format(r)} ${toTextStyle('Prestige','prestige')} shards to unlock Automation`,
-        'progress-2-text': r => `Reach ${format(r)} ${toTextStyle('Prestige','prestige')} shards to unlock Research`,
-        'progress-3-text': r => `Reach ${toTextStyle('Shark','shark')} Level ${format(r,0)} to unlock Exploration`,
-        'progress-4-text': r => `Reach ${format(r)}m of Pacific ocean's depth to unlock the ${toTextStyle('Core','core')}`,
+        'progress-1-text': r => `${format(r)} 개의 ${toTextStyle('환생','prestige')} 파편을 모아 자동화를 해금하세요`,
+        'progress-2-text': r => `${format(r)} 개의 ${toTextStyle('환생','prestige')} 파편을 모아 연구를 해금하세요`,
+        'progress-3-text': r => `${toTextStyle('상어','shark')} 레벨 ${format(r,0)} 에 도달해 탐험을 해금하세요`,
+        'progress-4-text': r => `태평양에서 ${format(r)}m 에 도달해 ${toTextStyle('핵','core')}을 해금하세요`,
 
-        'progress-5-text': r => `Reach ${format(r)} total ${toTextStyle('Prestige','prestige')} shards`, 
-        get 'progress-5-cond-text'() { return `Enter the ${toTextStyle('Core','core')}` },
+        'progress-5-text': r => `총 ${format(r)} 개의 ${toTextStyle('환생','prestige')} 파편에 도달하세요`, 
+        get 'progress-5-cond-text'() { return `${toTextStyle('핵','core')}에 들어가세요` },
 
-        'progress-6-text': r => `Reach ${format(r)} ${toTextStyle('Magmatic','core')} fragments to unlock the next ${toTextStyle('Core','core')} feature`, 
-        'progress-7-text': r => `Reach ${toTextStyle('Shark','shark')} Level ${format(r,0)} to unlock new ocean type`, 
-        'progress-8-text': r => `Reach ${format(r)} ${toTextStyle('Magmatic','core')} fragments to unlock the next ${toTextStyle('Core','core')} feature`, 
-        'progress-9-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')} to unlock new ${toTextStyle('Core','core')} reactors`, 
+        'progress-6-text': r => `${format(r)} 개의 ${toTextStyle('마그마','core')} 파편을 모아 다음 ${toTextStyle('핵','core')} 콘텐츠를 해금하세요`, 
+        'progress-7-text': r => `${toTextStyle('상어','shark')} 레벨 ${format(r,0)} 에 도달해 새로운 바다를 해금하세요`, 
+        'progress-8-text': r => `${format(r)} 개의 ${toTextStyle('마그마','core')} 파편을 모아 다음 ${toTextStyle('핵','core')} 콘텐츠를 해금하세요`, 
+        'progress-9-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요 새로운 ${toTextStyle('핵','core')} 원자로를 해금하세요`, 
 
-        'progress-10-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
-        get 'progress-10-cond-text'() { return `Evolve your ${toTextStyle('Sharks','shark')}` },
+        'progress-10-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        get 'progress-10-cond-text'() { return `당신의 ${toTextStyle('상어','shark')}를 진화시키세요` },
 
-        'progress-11-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
-        'progress-12-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
-        'progress-13-text': r => `Reach Mining Tier ${format(r,0)} to unlock a new row of ${toTextStyle('Evolution','humanoid')} tree`, 
-        'progress-14-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
-        'progress-15-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+        'progress-11-text': r => `${format(r,0)} 게의 ${toTextStyle('휴머노이드','humanoid')} 상어에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
+        'progress-12-text': r => `${format(r,0)} 개의 ${toTextStyle('휴머노이드','humanoid')} 상어에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
+        'progress-13-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 트리의 열을 해금하세요`, 
+        'progress-14-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
+        'progress-15-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
 
-        'maxed-progress': "All features unlocked!",
+        'maxed-progress': "모든 콘텐츠를 해금함!",
 
-        // Reset / 환생
+        // Reset / 환생 메시지
 
         get 'reset-prestige-message'() {
             let p = toTextStyle('Prestige','prestige'), s = toTextStyle('Shark','shark'), f = toTextStyle('Fish','fish')
