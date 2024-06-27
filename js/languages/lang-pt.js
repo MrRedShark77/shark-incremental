@@ -502,13 +502,13 @@ LANGUAGES.PT = {
                 x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
                 `${toTextStyle('환생','prestige')} 파편의 획득 공식을 개선합니다.`,
             ],[
-                x=>`<b>10</b>개 이하의 방사선 부스트를 가진 채 총 <b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}을 획득하세요.`,
+                x=>`<b>10</b>개 이하의 방사선 부스트를 가진 채 총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}을 획득하세요.`,
                 `방사선 부스트는 더 이상 ${toTextStyle('방사선 '+icon("radioactive"),'core')}과 관련한 업그레이드를 초기화 하지 않습니다. 항상 하나의 발전기를 가지고 시작하며, ${toTextStyle('방사선 '+icon("radioactive"),'core')}을 한계 이상으로 소지가 가능합니다.`,
             ],[
-                x=>`방사선 부스트 없이 총<b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
+                x=>`방사선 부스트 없이 총<b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
                 `방사선 부스트가 이제 아무것도 초기화 하지 않습니다. 자동 방사선 부스트를 해금합니다.`,
             ],[
-                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
+                x=>`총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
                 `첫 번째 ${toTextStyle('상어','shark')} 랭크 스케일링이 <b>+5</b>만큼 미뤄집니다.`,
             ],
         ],
@@ -595,7 +595,7 @@ LANGUAGES.PT = {
 
         // Progress / 진행
 
-        'progress-0-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        'progress-0-text': r => `총 ${format(r)} 마리의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
         get 'progress-0-cond-text'() { return `${toTextStyle('환생','prestige')}을 하세요` },
 
         'progress-1-text': r => `${format(r)} 개의 ${toTextStyle('환생','prestige')} 파편을 모아 자동화를 해금하세요`,
@@ -611,7 +611,7 @@ LANGUAGES.PT = {
         'progress-8-text': r => `${format(r)} 개의 ${toTextStyle('마그마','core')} 파편을 모아 다음 ${toTextStyle('핵','core')} 콘텐츠를 해금하세요`, 
         'progress-9-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요 새로운 ${toTextStyle('핵','core')} 원자로를 해금하세요`, 
 
-        'progress-10-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        'progress-10-text': r => `총 ${format(r)} 마리의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
         get 'progress-10-cond-text'() { return `당신의 ${toTextStyle('상어','shark')}를 진화시키세요` },
 
         'progress-11-text': r => `${format(r,0)} 게의 ${toTextStyle('휴머노이드','humanoid')} 상어에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
@@ -625,116 +625,116 @@ LANGUAGES.PT = {
         // Reset / 환생 메시지
 
         get 'reset-prestige-message'() {
-            let p = toTextStyle('Prestige','prestige'), s = toTextStyle('Shark','shark'), f = toTextStyle('Fish','fish')
+            let p = toTextStyle('환생','prestige'), s = toTextStyle('상어','shark'), f = toTextStyle('물고기','fish')
             return `
             <h3>${p}</h3><br>
-            ${p} is the first reset layer. Prestiging resets your ${s}, ${s} upgrades, and ${f} for ${p} shards.
-            First ${p} unlocks new ${s} upgrades.<br>
+            ${p} 은 첫 번째 환생 레이어 입니다. 환생은 당신의 ${s} 와 ${s} 업그레이드, 그리고 ${f} 를 초기화 하는 대신 ${p} 파편을 획득합니다.
+            첫 번째 ${p} 은 새로운 ${s} 업그레이드를 해금합니다.<br>
             <img src="textures/PrestigeShard.png"><br>
-            Are you sure you want to prestige?
+            정말로 환생을 하시겠습니까?
             `
         },
         get 'reset-core-message'() {
-            let c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
+            let c = toTextStyle('핵','core'), m = toTextStyle('마그마','core'), p = toTextStyle('환생','prestige')
             return `
-            <h3>The ${c}</h3><br>
-            The ${c} is the second reset layer. Entering the core resets everything ${p} does, as well as ${p} shards, ${p} upgrades, some ${toTextStyle('Research','prestige')}, and Exploration for ${m} fragments.
-            It also unlocks the ${c} reactor.<br>
+            <h3>${c}</h3><br>
+            ${c} 은 두 번째 환생 레이어 입니다. 핵에 진입하는 것은 ${p} 파편과 ${p} 업그레이드 같은 ${p} 에 관련한 모든것을 초기화 시키며, 몇몇 ${toTextStyle('연구','prestige')} 와 탐험도 초기화 되는 대신 ${m} 조각을 획득합니다.
+            또한 ${c} 원자로를 해금합니다.<br>
             <img src="textures/Magmatic.png"><br>
-            Are you sure you want to enter the core?
+            정말로 핵에 들어가시겠습니까?
             `
         },
         get 'reset-humanoid-message'() {
-            let e = toTextStyle('Evolution','humanoid'), c = toTextStyle('Core','core'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
+            let e = toTextStyle('진화','humanoid'), c = toTextStyle('핵','core'), m = toTextStyle('마그마','core'), p = toTextStyle('환생','prestige')
             return `
-            <h3>The ${e}</h3><br>
-            <subtitle>“Mutating will make sharks wild, turning them into humanoid sharks. However with a cost of everything you had up to this point.”</subtitle>
-            The ${e} is the third reset layer. Evolving sharks will reset everything the ${c} does, as well as ${m} fragments, ${c} reactors, ${c} radiation, ${c} assembler, and some ${toTextStyle('Research','prestige')} for ${toTextStyle('Humanoid','humanoid')} sharks.
-            It also unlocks the Rank and the ${e} tree.<br>
+            <h3>${e}</h3><br>
+            <subtitle>“상어가 야생을 깨우쳐 상어 인간으로 변합니다. 하지만 지금까지 모은 것을 전부 초기화 해야 합니다.”</subtitle>
+            ${e} 는 세 번째 환생 레이어 입니다. 상어를 진화 시키는 것은 ${c} 관련한 ${m} 조각들, ${c} 원자로, ${c} 방사선, ${c} 조립기, 그리고 몇몇 ${toTextStyle('환생','prestige')} 을 초기화 시키는 대신 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득합니다.
+            또한 랭크와 ${e} 트리를 해금합니다.<br>
             <img src="textures/Evolution.png"><br>
-            Are you sure you want to evolve your sharks?
+            정말로 당신의 상어를 진화시키겠습니까?
             `
         },
         
         // Other / 기타
 
-        'upgrade-shark': x => `Upgrade ${toTextStyle('Shark','shark')} Level<br>Cost: ${x.format(0)} ${toTextStyle('Fish','fish')}`,
-        'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('Fish','fish')}'s base`,
-        'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('Prestige','prestige')} shard`,
-        'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
-        // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
+        'upgrade-shark': x => `${toTextStyle('상어','shark')} 레벨 올리기<br>비용: ${x.format(0)} ${toTextStyle('물고기','fish')}`,
+        'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
+        'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('환생','prestige')} 파편`,
+        'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('마그마','core')} 조각`,
+        // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('방사선 ' + icon("radioactive"),'core')}`,
 
-        'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${toTextStyle(format(y),'fish')}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
+        'shark-overpopulation': (x,y) => `${toTextStyle('Shark','shark')}가 너무 많아 <h4>${toTextStyle(format(y),'fish')}</h4>마리 이상의 ${toTextStyle('물고기','fish')}가 <h4>${format(x,3)}√</h4>만큼 줄어듭니다.`,
 
         'shark-rank-bonuses': {
-            fish: x => `${formatPow(x)} ${toTextStyle('Fish','fish')}`,
-            prestige: x => `${formatPow(x)} ${toTextStyle('Prestige','prestige')} shard`,
-            mining_damage: x => `${formatMult(x)} Mining Damage`,
-            so: x => `${formatPow(x)} ${toTextStyle('Shark','shark')} overpopulation delay`,
-            vibranium: x => `${formatMult(x)} <b>Vibranium</b>`,
+            fish: x => `${toTextStyle('물고기','fish')} ${formatPow(x)}`,
+            prestige: x => `${toTextStyle('환생','prestige')} 파편 ${formatPow(x)}`,
+            mining_damage: x => `채광 대미지 ${formatMult(x)}`,
+            so: x => `${toTextStyle('상어','shark')} 과잉 문제를 ${formatPow(x)} 만큼 미룹니다`,
+            vibranium: x => `<b>비브라늄</b> ${formatMult(x)}`,
         },
 
-        'level': "Level",
-        'effect': "Effect",
-        'cost': "Cost",
-        'buyMax': "Buy Max",
-        'require': "Require",
-        'next-at': "Next at",
-        'depth': "Depth",
+        'level': "레벨",
+        'effect': "효과",
+        'cost': "비용",
+        'buyMax': "최대 구매",
+        'require': "요구",
+        'next-at': "다음", // need to fix
+        'depth': "깊이",
         'reward': "보상",
-        'new-preset': "New Preset",
-        'maxed': "Maxed",
+        'new-preset': "새로운 프리셋",
+        'maxed': "최대",
 
-        'remove': "Remove",
-        'overwrite-current': "Overwrite Current",
-        'load': "Load",
-        'force-load': "Force Load",
+        'remove': "삭제",
+        'overwrite-current': "현재 트리 불러오기",
+        'load': "사용하기",
+        'force-load': "트리를 초기화하고 사용하기",
 
-        'offline-time-text': x=>`You have been offline for <b>${formatTime(x,0)}</b>.`,
+        'offline-time-text': x=>`<b>${formatTime(x,0)}</b> 동안 오프라인이었습니다.`,
 
-        'research-afford': bool => bool ? "Purchase" : "Can't Afford",
-        'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
-        'research-pages': x => `${x} pages`,
+        'research-afford': bool => bool ? "구매" : "구매 불가능",
+        'research-bought': bool => bool ? `<b>구매함</b>` : `<b>구매하지 않음</b>`,
+        'research-pages': x => `${x} 페이지`,
 
-        'off-on': bool => bool ? "ON" : "OFF",
+        'off-on': bool => bool ? "온" : "오프",
 
         'popup-buttons': [
-            ["Yes","No"],
-            ["Ok","Cancel"],
+            ["예","아니오"],
+            ["확인","취소"],
         ],
 
         'popup-desc' : {
-            import: `Paste in your save. WARNING: WILL OVERWRITE YOUR CURRENT SAVE!`,
-            wipe: `Are you sure you want to wipe your save? To wipe, type "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
-            "evolution-tree-respec": `Are you sure you want to respec ${toTextStyle('Evolution','humanoid')} tree? It will trigger an ${toTextStyle('Evolution','humanoid')} reset, not gaining ${toTextStyle('Humanoid','humanoid')} sharks.`,
-            "evolution-tree-import": `Paste in your evolution tree.`,
+            import: `아래에 붙여넣기. 주위: 현재 게임 진행 상태는 사라집니다!`,
+            wipe: `정말로 게임 진행 상태를 초기화 하겠습니까? 초기화 하기 위해선 아래에<br>"<span class="free-select">I'm sorry what I don't want sharks!</span>"를 입력하세요`,
+            "evolution-tree-respec": `정말로 ${toTextStyle('진화','humanoid')} 트리를 재설정 하시겠습니까? 재설정은 ${toTextStyle('진화','humanoid')} 환생을 강제로 진행하며, 어떠한 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득할 수 없습니다.`,
+            "evolution-tree-import": `아래에 트리 프리셋을 넣으세요.`,
         },
 
         'notify-desc' : {
-            save: "Game Saved!",
-            copy_to_clipboard: "Copied to Clipboard!",
-            forge_completed: x => `Forged <b>${x}</b> successfully!`,
+            save: "게임 저장됨!",
+            copy_to_clipboard: "클립보드로 복사함!",
+            forge_completed: x => `<b>${x}</b> 을 성공적으로 제작함!`,
         },
 
         'radio-desc' : {
-            'notation': ['Formatting Notation',['Scientific','Standard','Mixed Scientific','Logarithm']],
-            'comma-format': ['Maximum OoMs of Number Commas',['3','6','9','12','15']],
-            'autosave': ['Autosaving',['Disabled','Enabled']],
-            'autosave-time': ['Autosave Interval',['15s','30s','60s','120s']],
-            'offline': ['Offline Progress',['Disabled','Enabled']],
-            'max-research-amt': ['Maximum research upgrades per page',['∞','15','20','25','30']],
-            'visible-research': [`Purchased research's visibility`,["Shown","Hidden"]],
-            'notify': ['Tab Notification',['Disabled','Enabled']],
+            'notation': ['표기법',['과학적','스텐다드','복합적 과학','로그']],
+            'comma-format': ['최대 OoM 표기 자릿수',['3','6','9','12','15']],
+            'autosave': ['자동 저장',['꺼짐','켜짐']],
+            'autosave-time': ['자동 저장 간격',['15초','30초','60초','120초']],
+            'offline': ['오프라인 진행',['꺼짐','켜짐']],
+            'max-research-amt': ['페이지에 표시되는 최대 연구 개수',['∞','15','20','25','30']],
+            'visible-research': [`구매한 연구 보이기`,["보이기","숨기기"]],
+            'notify': ['탭 알림',['꺼짐','켜짐']],
         },
 
-        'radio-desc-default' : ['Disabled','Enabled'],
+        'radio-desc-default' : ['꺼짐','켜짐'],
 
-        'prompt-placeholder': "Type text here...",
+        'prompt-placeholder': "아래에 입력하세요...",
 
-        'option-buttons-text': ["Save","Export to clipboard","Export as file","Import from prompt","Import from file","WIPE!!!",'Join the community (Discord)','Support the creator (Boosty)'],
+        'option-buttons-text': ["저장","클립보드에 내보내기","파일로 내보내기","프롬포트로 불러오기","파일로 불러오기","초기화!!!",'커뮤니티에 가입하기 (Discord)','제작자를 지원하기 (Boosty)'],
 
-        'confirm-prestige': "Prestige",
-        'confirm-core': "Enter the Core",
-        'confirm-humanoid': "Evolve Sharks",
+        'confirm-prestige': "환생",
+        'confirm-core': "핵 진입",
+        'confirm-humanoid': "상어 진화",
     },
 }
