@@ -88,7 +88,7 @@ const PARTICLE_ACCELERATOR = [
             return x
         },
         percent(c) {
-            let x = c.max(1).log10().sub(1e5).div(2.5e4).root(2).div(10)
+            let x = c.max(1).log10().sub(1e5).div(2.5e4).max(0).root(2).div(10)
 
             return x
         },
