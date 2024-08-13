@@ -192,6 +192,8 @@ function updateCoreHTML() {
         lang_text(`next-at`),
     ]
 
+    var strong = remnantUpgEffect(2)
+
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var CR = CORE_REACTOR[i], el_id = `core-reactor-${i}-`
 
@@ -207,7 +209,7 @@ function updateCoreHTML() {
             el(el_id+"div").className = el_classes({"core-reactor-button": true, locked: !afford})
             el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "") + (bonus.gt(0) ? " + " + format(bonus) : "")
             el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(getCoreReactorCost(i,bulk),0).bold()+")" : "")
-            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus))).bold() : "")
+            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus).mul(strong))).bold() : "")
         }
     }
 
