@@ -176,6 +176,8 @@ function getBonusReactor() {
 }
 
 function upgradeCoreReactor(i) {
+    if (player.core.times==0) return;
+
     var CR = CORE_REACTOR[i]
 
     if (CR.resource.gte(getCoreReactorCost(i))) {
@@ -247,6 +249,7 @@ function updateCoreTemp() {
     if (player.feature >= 10) tmp.core_reactor_unl += 4
 
     var bonus1 = getCRBoost(0,0), bonus2 = getCRBoost(10,0)
+    var strong = remnantUpgEffect(2)
     
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
@@ -258,7 +261,7 @@ function updateCoreTemp() {
 
         var CR = CORE_REACTOR[i], level = tmp.cr_active ? Decimal.dZero : player.core.reactor[i].add(bonus)
 
-        tmp.core_effect[i] = CR.effect(level)
+        tmp.core_effect[i] = CR.effect(level.mul(strong))
     }
 
     tmp.core_bonus = getBonusReactor()

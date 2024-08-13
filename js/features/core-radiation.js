@@ -25,18 +25,19 @@ const CORE_RAD = {
 
         if (hasDepthMilestone(4,0)) x = x.mul(1e3)
 
-        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scale(tmp.cr_scale1,2,'P',true).scale(tmp.cr_scale2,2,'P',true).floor().add(1)
+        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scaleAll("cr_boost",true).floor().add(1)
 
         return x
     },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scale(tmp.cr_scale2,2,'P').scale(tmp.cr_scale1,2,'P').pow(hasResearch('c12') ? 1.2 : 1.25))
+        let x = Decimal.pow(1e3,player.core.radiation.boost.scaleAll("cr_boost").pow(hasResearch('c12') ? 1.2 : 1.25))
 
         return x
     },
 
     purchaseBoost() {
+        if (player.feature<7) return;
         var rad = player.core.radiation
         if (rad.amount.gte(this.limit())) {
             rad.boost = rad.boost.add(1).max(this.boostBulk())
@@ -59,6 +60,7 @@ const CORE_RAD = {
     genValue: l => Decimal.pow(2,l.sub(1)).mul(l),
 
     purchaseGeneration() {
+        if (player.feature<7) return;
         var r_c15 = hasResearch('c15'), active = tmp.cr_active
         if (!r_c15 && !active) return
         let x = player.core.radiation.gen, amt = CURRENCIES.fish.amount.pow(!active && r_c15 ? researchEffect('c15',0) : 1)
@@ -203,9 +205,6 @@ function updateCoreRadiation() {
 function updateCoreRadiationTemp() {
     tmp.cr_gain = CORE_RAD.gain()
     tmp.cr_limit = CORE_RAD.limit()
-
-    tmp.cr_scale1 = Decimal.add(10,researchEffect('m3',0))
-    tmp.cr_scale2 = Decimal.add(30,researchEffect('m3',0))
 
     var temp_eff = tmp.core_temp_eff = getCoreTemperatureEffect()
 

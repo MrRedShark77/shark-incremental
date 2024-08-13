@@ -25,6 +25,7 @@ const RESEARCH = {
             ['prestige',false,l=>[1e13,1e15,1e24,1e30,1e48][l.round().toNumber()]??EINF,x=>0],
         ],
         onBuy() {
+            if (player.singularity.best_bh.gte(5)) return;
             CURRENCIES.prestige.amount = E(0)
             resetSharkUpgrades('p1','p2')
             doReset('prestige',true)
@@ -357,10 +358,31 @@ const RESEARCH = {
             ['vibranium',false,1e10],
         ],
     },
+
+    s1: {
+        bh: true,
+        unl: ()=>player.singularity.best_bh.gte(3),
+        require: [
+            ['remnants',false,1e3],
+        ],
+        effect(r) {
+            return expPow(CURRENCIES.fish.amount.add(1).log10().add(1).log10().mul(2).add(1),2)
+        },
+        effDesc: x => formatMult(x),
+    },
+    s2: {
+        bh: true,
+        unl: ()=>player.singularity.best_bh.gte(7),
+        require: [
+            ['remnants',false,1e30],
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
 const MAX_RESEARCH = [null,15,20,25,30]
+
+const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => !('bh' in RESEARCH[x]))
 
 var research_page = 1
 
@@ -433,7 +455,7 @@ function updateResearchHTML() {
     let text = [lang_text('effect'),lang_text('level'),lang_text('require')]
 
     var hidden = player.radios['visible-research']
-    var visible_research = hidden ? RESEARCH_KEYS.filter(x => !isResearchMaxed(x)) : RESEARCH_KEYS
+    var visible_research = (hidden ? RESEARCH_KEYS.filter(x => !isResearchMaxed(x)) : RESEARCH_KEYS).filter(x => RESEARCH[x].unl())
 
     var m = MAX_RESEARCH[player.radios['max-research-amt']]
     var unl = player.radios['max-research-amt'] != 0 && visible_research.length > m

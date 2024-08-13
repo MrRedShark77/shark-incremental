@@ -76,12 +76,12 @@ const ORE_KEYS = Object.keys(ORES)
 
 const MINING_TIER = {
     get require() {
-        var x = Decimal.pow(10,player.humanoid.mining_tier.scale(15,1.5,'P').scale(10,1.5,'L').pow(1.25)).mul(100)
+        var x = Decimal.pow(10,player.humanoid.mining_tier.scaleAll("mining_tier").pow(1.25)).mul(100)
 
         return x.ceil()
     },
     get bulk() {
-        var x = CURRENCIES.stone.amount.div(100).log(10).root(1.25).scale(10,1.5,'L',true).scale(15,1.5,'P',true)
+        var x = CURRENCIES.stone.amount.div(100).log(10).root(1.25).scaleAll("mining_tier",true)
 
         return x.floor().add(1)
     },
@@ -92,7 +92,7 @@ const MINING_TIER = {
 
          var res_m4 = researchEffect('m4'), t_m4 = t.mul(res_m4)
         
-        var x = [Decimal.pow(4,t.scale(20,hasResearch("f8") ? 1.8 : 2,'P')),Decimal.pow(5,t_m4)]
+        var x = [Decimal.pow(4,player.singularity.best_bh.gte(5)?t:t.scale(20,hasResearch("f8") ? 1.8 : 2,'P')),Decimal.pow(5,t_m4)]
 
         if (t.gte(4)) x.push(Decimal.pow(3,t_m4.sub(3)));
         if (t.gte(7)) x.push(Decimal.pow(4,t_m4.sub(6)));
@@ -104,9 +104,12 @@ const MINING_TIER = {
         return x
     },
 
-    upgrade() {
+    upgrade(bulking=false) {
         if (CURRENCIES.stone.amount.gte(this.require)) {
-            player.humanoid.mining_tier = player.humanoid.mining_tier.add(1)
+            let bulk = player.humanoid.mining_tier.add(1)
+            if (bulking) bulk = bulk.max(this.bulk)
+
+            player.humanoid.mining_tier = bulk
 
             updateCultivationTemp()
 

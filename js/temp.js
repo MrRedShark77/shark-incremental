@@ -52,11 +52,27 @@ function reloadTemp() {
         shark_op_start: E('ee40'),
 
         particle_accel_eff: [],
+
+        scalings: {},
+
+        bh_pause: false,
+
+        bh_reduction: E(1),
+        remnant_upg_effects: [],
     }
 
     for (let x in EXPLORE) {
         tmp.explore_mil_reached[x] = []
         tmp.explore_upg_boost[x] = [E(1),E(1)]
+    }
+
+    for (let x in SCALINGS) {
+        tmp.scalings[x] = []
+        for (let y in SCALINGS[x].base) {
+            let b = []
+            for (let z of SCALINGS[x].base[y]) b.push(z)
+            tmp.scalings[x].push(b)
+        }
     }
 }
 
@@ -64,6 +80,8 @@ function updateTemp() {
     tmp.cr_active = player.core.radiation.active
 
     updateResearchTemp()
+    updateScalingsTemp()
+    updateSingularityTemp()
     updatePATemp()
     updateEvolutionTreeTemp()
     updateCoreTemp()

@@ -27,6 +27,7 @@
     <script src="js/modules/notify.js"></script>
     <script src="js/format.js"></script>
     <script src="js/modules/formulas.js"></script>
+    <script src="js/modules/scalings.js"></script>
     <script src="js/main.js"></script>
 
     <script src="js/modules/currency.js"></script>
@@ -44,6 +45,7 @@
     <script src="js/features/cultivation.js"></script>
     <script src="js/features/forge.js"></script>
     <script src="js/features/particle-accel.js"></script>
+    <script src="js/features/singularity.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -75,14 +77,17 @@
 <body onload="loadGame()">
     <input id="copy" style="position: absolute; top: 0; left: 0; user-select: all; visibility: hidden;">
     <div id="app" style="display: none;">
-        <div id="currs-top">
-            <div class="curr-top">
-                <div>1.23e123,456,789 <text-style text="prestige">Prestige</text-style> Shards</div><button>Reset</button>
+        <div style="position: relative; color: black;">
+            <div id="main-background"></div>
+            <div id="currs-top">
+                <div class="curr-top">
+                    <div>1.23e123,456,789 <text-style text="prestige">Prestige</text-style> Shards</div><button>Reset</button>
+                </div>
             </div>
+            <div id="fish-div">Your <text-style text="shark">Shark</text-style> has eaten <h2><text-style text="fish" id="fish-amount">38.14SpDc</text-style></h2> (108.9SxDc/s) fish.</div>
+            <div class="main-line"></div>
+            <div id="tabs"></div>
         </div>
-        <div id="fish-div">Your <text-style text="shark">Shark</text-style> has eaten <h2><text-style text="fish" id="fish-amount">38.14SpDc</text-style></h2> (108.9SxDc/s) fish.</div>
-        <div class="main-line"></div>
-        <div id="tabs"></div>
 
         <div id="shark-tab">
             <div id="shark-div" class="table-center">
@@ -273,6 +278,21 @@
                     </div>
                 </div>
             </div>
+            <button id="black-hole-button" onclick="doReset('black-hole')"></button>
+        </div>
+        
+        <div id="black-hole-tab">
+            <p id="black-hole-html"></p>
+            <p id="remnant-html"></p>
+            <div id="remnant-upgs">
+                <button class="remnant-upg">
+                    <b>Welcome</b> [0]<br>Shark Level Bonuses are <b style="color: lime;">???</b> stronger.<br>Cost: ???
+                </button>
+            </div>
+        </div><div id="singularity-milestones-tab">
+            <div id="singularity-milestones">
+                <div class="singularity-milestone">AAA</div>
+            </div>
         </div>
 
         <div id="options-tab">
@@ -311,6 +331,11 @@
             </div>
         </div>
 
+        <div id="scalings-tab">
+            <subtitle id="scaling-info">Scalings will be added as soon as you reach them.</subtitle>
+            <table align="center" id="scalings-table"></table>
+        </div>
+
         <div id="shark-upgrades">
             <div class="shark-upgrade">
                 <div class="shark-upgrade-div">
@@ -324,12 +349,15 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.2.3 by MrRedShark77
+            Shark Incremental v0.3 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>
             </div>
         </div>
+
+        <div id="black-hole"></div>
+        <div id="title-center"></div>
 
         <div id="popup">
             <div id="popup-ctn">

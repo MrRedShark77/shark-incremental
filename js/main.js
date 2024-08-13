@@ -107,6 +107,15 @@ const PROGRESS = [
         auto: true,
         get amount() { return player.humanoid.mining_tier },
         require: 34,
+    },{
+        get auto() { return player.singularity.first },
+        cond_text: true,
+        get amount() { return player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)) },
+        require: 6,
+    },{
+        auto: true,
+        get amount() { return player.singularity.best_bh },
+        require: 8,
     },
 ]
 
@@ -118,4 +127,5 @@ const CONFIRMATIONS = {
     prestige: [()=>player.prestige.times>0],
     core: [()=>player.core.times>0],
     humanoid: [()=>player.humanoid.times>0],
+    'black-hole': [()=>player.singularity.first],
 }
