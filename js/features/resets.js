@@ -93,6 +93,7 @@ const RESETS = {
             }
 
             player.shark_rank = E(0)
+            player.humanoid.particle_accel.active = -1
 
             tmp.pass = 1
 
