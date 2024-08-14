@@ -127,6 +127,8 @@ function loadPlayer(load) {
     const DATA = getPlayerData()
     player = deepNaN(load, DATA)
     player = deepUndefinedAndDecimal(player, DATA)
+
+    if (player.singularity.best_bh.gte(4)) player.humanoid.goal = [0,1,2,3,4,5,6,7,8];
 }
 
 function clonePlayer(obj,data) {
