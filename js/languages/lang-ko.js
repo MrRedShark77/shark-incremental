@@ -646,6 +646,7 @@ LANGUAGES.KO = {
         'auto-radioactive_boosts-name': `자동-방사선 부스트`,
         'auto-mining_upgs-name': `자동-${toTextStyle("상어","shark")} 채광 업그레이드`,
         'auto-humanoid-name': `자동-${toTextStyle("휴머노이드","humanoid")} 상어`,
+        'auto-research-name': `${toTextStyle("특이점","black-hole")} 이전의 연구`,
         'auto-mining_tier-name': `자동 채광 티어`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
