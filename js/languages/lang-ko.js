@@ -103,7 +103,7 @@ LANGUAGES.KO = {
         'radioboost-div': `당신은 <h3 id="radioactive-boost">0</h3> 개의 방사능 부스트를 가지고 있습니다.`,
 
         'core-temp-div': `${toTextStyle('핵','core')}의 온도는 <h3>${toTextStyle('6,150','core','core-temperature')}</h3>이며, 이는 방사선 부스트를 <h4 id="core-temp-effect">100%</h4> 더 강하게 만듭니다.`,
-        'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>도가 됩니다.)`,
+        'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>가 됩니다.)`,
 
         'sharkoid-faith-div': `당신은 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('상어 인간의 신앙','humanoid')}을 가지고 있습니다.`,
         'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>초기화하기`,
@@ -696,7 +696,7 @@ LANGUAGES.KO = {
         'research-bought': bool => bool ? `<b>구매함</b>` : `<b>구매하지 않음</b>`,
         'research-pages': x => `${x} 페이지`,
 
-        'off-on': bool => bool ? "온" : "오프",
+        'off-on': bool => bool ? "켜짐" : "꺼짐",
 
         'popup-buttons': [
             ["예","아니오"],
