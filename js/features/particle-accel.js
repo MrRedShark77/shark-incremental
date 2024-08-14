@@ -88,7 +88,7 @@ const PARTICLE_ACCELERATOR = [
             return x
         },
         percent(c) {
-            let x = c.max(1).log10().sub(1e5).div(2.5e4).root(2).div(10)
+            let x = c.max(1).log10().sub(1e5).div(2.5e4).max(0).root(2).div(10)
 
             return x
         },
@@ -148,23 +148,30 @@ function updatePAHtml() {
         lang_text('particle-accel-boost'),
     ]
 
-    for (let i = 0; i < PARTICLE_ACCELERATOR.length; i++) {
-        var PA = PARTICLE_ACCELERATOR[i], curr = CURRENCIES[PA.curr]
+    let unl = player.feature >= 18 || player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).lt(6)
 
-        let unl = tmp.partcle_accel_unl > i
+    el("particle-accel-table").style.display = el_display(unl)
+    el("black-hole-button").style.display = el_display(!unl)
 
-        el(`particle-accel-${i}-div`).style.display = el_display(unl)
-
-        if (!unl) continue
-
-        el(`particle-accel-${i}-button`).innerHTML = lang_text('particle-accel-condense',curr.costName) + " " + text[0][i](PA.effDesc(tmp.particle_accel_eff[i]))
-        el(`particle-accel-${i}-button`).className = el_classes({ active : player.humanoid.particle_accel.active == i, 'particle-accel-button' : true })
-
-        let proj = PA.percent(curr.amount).max(0).min(1), per = player.humanoid.particle_accel.percent[i].max(0).min(1)
-
-        el(`pab-${i}-proj`).style.width = proj.toNumber() * 100 + "%"
-        el(`pab-${i}-inner`).style.width = per.toNumber() * 100 + "%"
-        el(`pab-${i}-outer`).innerHTML = formatPercent(per) + (proj.sub(per).gt(1e-4) ? " (+" + formatPercent(proj.sub(per)) + ")" : "")
+    if (unl) {
+        for (let i = 0; i < PARTICLE_ACCELERATOR.length; i++) {
+            var PA = PARTICLE_ACCELERATOR[i], curr = CURRENCIES[PA.curr]
+    
+            let unl = tmp.partcle_accel_unl > i
+    
+            el(`particle-accel-${i}-div`).style.display = el_display(unl)
+    
+            if (!unl) continue
+    
+            el(`particle-accel-${i}-button`).innerHTML = lang_text('particle-accel-condense',curr.costName) + " " + text[0][i](PA.effDesc(tmp.particle_accel_eff[i]))
+            el(`particle-accel-${i}-button`).className = el_classes({ active : player.humanoid.particle_accel.active == i, 'particle-accel-button' : true })
+    
+            let proj = PA.percent(curr.amount).max(0).min(1), per = player.humanoid.particle_accel.percent[i].max(0).min(1)
+    
+            el(`pab-${i}-proj`).style.width = proj.toNumber() * 100 + "%"
+            el(`pab-${i}-inner`).style.width = per.toNumber() * 100 + "%"
+            el(`pab-${i}-outer`).innerHTML = formatPercent(per) + (proj.sub(per).gt(1e-4) ? " (+" + formatPercent(proj.sub(per)) + ")" : "")
+        }
     }
 }
 

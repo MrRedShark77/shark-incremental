@@ -15,6 +15,9 @@ const TAB_IDS = {
             }
         },
     },
+    'scalings': {
+        html: updateScalingsTable,
+    },
     'auto': {
         html: updateAutomationHTML,
         
@@ -30,7 +33,10 @@ const TAB_IDS = {
         html: updateResearchHTML,
 
         notify() {
+            let auto = isAutoEnabled('research')
             for (let [i,x] of Object.entries(RESEARCH)) {
+                if (auto && PRE_BH_RESEARCH.includes(i)) continue;
+
                 var max = x.max ?? 1, amt = player.research[i]
 
                 if (!x.unl() || amt.gte(max)) continue
@@ -120,7 +126,7 @@ const TAB_IDS = {
         html: updateCultivationHTML,
 
         notify() {
-            return CURRENCIES.stone.amount.gte(MINING_TIER.require)
+            return !isAutoEnabled('mining_tier') && CURRENCIES.stone.amount.gte(MINING_TIER.require)
         },
     },
     'forge': {
@@ -135,6 +141,21 @@ const TAB_IDS = {
     'particle-accel': {
         html: updatePAHtml,
     },
+    'black-hole': {
+        html: updateBlackHoleHTML,
+
+        notify() {
+            let r = player.singularity.remnants
+            for (let i in REMNANT_UPGS) {
+                let u = REMNANT_UPGS[i]
+                if (u.unl() && r.gte(u.cost(player.singularity.upgs[i]))) return true;
+            }
+            return false
+        },
+    },
+    'singularity-milestones': {
+        html: updateSingularityMilestones,
+    },
 }
 
 const TABS = [
@@ -143,7 +164,9 @@ const TABS = [
     },{
         stab: "options",
     },{
-        unl: ()=>player.feature>=2,
+        stab: "scalings",
+    },{
+        unl: ()=>player.feature>=2 || player.singularity.best_bh.gte(2),
         stab: "auto",
     },{
         unl: ()=>player.feature>=3,
@@ -170,8 +193,26 @@ const TABS = [
             ["forge",()=>player.feature>=15],
             ["particle-accel",()=>player.feature>=16],
         ],
+    },{
+        id: 'singularity',
+        unl: ()=>player.singularity.first,
+        stab: [
+            ["black-hole"],
+            ["singularity-milestones"],
+        ],
+        style: {
+            "background": `black url('textures/cosmic-pattern.png')`,
+            "color": "white",
+            "animation": `cosmic-pattern 20s linear infinite`,
+        },
     },
 ]
+
+const DEFAULT_TAB_STYLE = {
+    "background": "lightseagreen",
+    "color": "black",
+    "animation": "none",
+}
 
 function switchTab(t,st) {
     tab = t
@@ -226,6 +267,8 @@ function updateTabs() {
 
         if (unl) v.html?.()
     }
+
+    for (let [k,v] of Object.entries(TABS[tab]?.style ?? DEFAULT_TAB_STYLE)) document.body.style[k] = v
 }
 
 function setupTabs() {

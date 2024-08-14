@@ -35,6 +35,9 @@ LANGUAGES.EN = {
         'humanoid-name': "Humanoid Sharks",
         'humanoid-costName': toTextStyle('Humanoid','humanoid') + ' Sharks',
 
+        'remnants-name': "Remnants",
+        'remnants-costName': toTextStyle('Remnants','black-hole'),
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
 
         'sharkoid-faith': toTextStyle('Sharkoid Faith','humanoid'),
@@ -54,6 +57,7 @@ LANGUAGES.EN = {
 
         'tab-shark': toTextStyle('Shark','shark'),
         'tab-options': "Options",
+        'tab-scalings': "Scalings",
         'tab-auto': "Automation",
         'tab-research': toTextStyle('Research','prestige'),
         'tab-explore': "Exploration",
@@ -70,6 +74,10 @@ LANGUAGES.EN = {
         'tab-cultivation': "Cultivation",
         'tab-forge': "Forge",
         'tab-particle-accel': "Particle Accelerator",
+
+        'tab-singularity': toTextStyle('Singularity','black-hole'),
+        'tab-black-hole': toTextStyle('Black Hole','black-hole'),
+        'tab-singularity-milestones': toTextStyle('Singularity','black-hole') + " Milestones",
 
         // Elements
 
@@ -117,6 +125,11 @@ LANGUAGES.EN = {
         'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
         'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
         'mining-tier-undo-btn': `Decrease Mining Tier by 1 if you're stuck while mining.`,
+
+        'black-hole-button': `Because you maxed out all the particle accelerators, you need to form a black hole in case you enter another universe.`,
+        'black-hole-html': `You have formed <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> black hole, which reduces the exponents of fish & prestige shards and the multiplier of magmatic fragments by <h3 id="black-hole-effect">^???</h3>.`,
+
+        'remnant-html': `You have <h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> remnants.`,
 
         // Upgrades
 
@@ -298,6 +311,12 @@ LANGUAGES.EN = {
 
         'research-f8-name': "Weak Ore Health",
         'research-f8-desc': `The first effect of mining tier is reduced.`,
+
+        'research-s1-name': "Remnant Fish",
+        'research-s1-desc': `${toTextStyle("Fish",'fish')} boosts ${toTextStyle("Remnants",'black-hole')} generation at a reduced rate.`,
+
+        'research-s2-name': "Better Rank Boost",
+        'research-s2-desc': `Improve ${toTextStyle("Shark",'shark')} rank boost to ${toTextStyle('Prestige','prestige')} shards.`,
 
         // Exploration
 
@@ -577,6 +596,45 @@ LANGUAGES.EN = {
             x => `Increase the exponent of ${toTextStyle("Shark",'shark')} ELO by <b>${x}</b>.`,
         ],
 
+        // Singularity
+
+        'black-hole-texts': [
+            `Have enough matter to form a black hole.... But what are you doing while stuck inside a black hole? No worries, there is a white hole that sends you into another universe, but it's a bit complex.`,
+            `How have you been in a parallel universe? So, you're going to get stuck in another black hole!`,
+            `Wait a minute... How did you get ${toTextStyle("Fish",'fish')} faster, no matter what? I'm going to put you in serious trouble!`,
+            `Seriously...`,
+            `...`,
+            `Please stop it here!`,
+            `THIS IS YOUR LAST CHANCE!`,
+            `Ugh... Fine... You win! Here's without reductions...`,
+        ],
+        get 'singularity-milestones'() {
+            return [
+                [`1 Black Hole`,`Unlock ${toTextStyle("Remnants",'black-hole')}. ${toTextStyle("Shark",'shark')} Level boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
+                [`2 Black Holes`,`Start with automations unlocked on reset, with starting interval. ${toTextStyle("Shark",'shark')} Rank boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
+                [`3 Black Holes`,`Keep automations on reset. Start with pre-cultivation features unlocked and 10 ${toTextStyle("Humanoid",'humanoid')} Sharks. Unlock new more research.`],
+                [`4 Black Holes`,`Keep ${toTextStyle("Evolution",'humanoid')} goals competed on reset. Particle accelerators are ten times faster.`],
+                [`5 Black Holes`,`Ore’s health scales weaker. Unlock more automations.`],
+                [`6 Black Holes`,`Double ${toTextStyle("Remnant",'black-hole')} generation every black hole you formed.`],
+                [`7 Black Holes`,`Start with cultivation unlocked on reset.`],
+                [`8 Black Holes`,`${toTextStyle("Black Hole",'black-hole')}’s penalties are now removed if you have formed 8 current ${toTextStyle("Black Holes",'black-hole')}. Forming it no longer plays animation.`],
+            ]
+        },
+
+        'remnant-upgrades': [
+            [`Welcome`,x=>`${toTextStyle("Shark",'shark')} Level Bonuses are ${x} stronger.`],
+            [`Flowing`,x=>`Exploration base multiplier is boosted by ${x}.`],
+            [`Half-life`,x=>`${toTextStyle("Core",'core')} Reactors are ${x} stronger.`],
+            [`No Wasting Time`,x=>`Forging speed is increased by ${x}.`],
+
+            [`Welcome Again`,x=>`${toTextStyle("Fish",'fish')} boosts itself by ${x}.`],
+            [`Grandmaster`,x=>`${toTextStyle("Shark",'shark')} Rank Bonuses are ${x} stronger.`],
+            
+            [`Galactic Level`,x=>`The first 3 scalings of ${toTextStyle("Shark",'shark')} Level are delayed by ${x}.`],
+
+            [`Shark Master`,x=>`${toTextStyle("Shark",'shark')} ELO is increased by ${x}.`],
+        ],
+
         // Automation
 
         'auto-shark-name': `Auto-${toTextStyle("Shark","shark")} Level`,
@@ -588,6 +646,8 @@ LANGUAGES.EN = {
         'auto-radioactive_boosts-name': `Auto-Radioactive Boosts`,
         'auto-mining_upgs-name': `Auto-${toTextStyle("Shark","shark")} Mining Upgrade`,
         'auto-humanoid-name': `Auto-${toTextStyle("Humanoid","humanoid")} Shark`,
+        'auto-research-name': `Auto-Pre-${toTextStyle("Singularity","black-hole")} Research`,
+        'auto-mining_tier-name': `Auto-Mining Tier`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -617,7 +677,12 @@ LANGUAGES.EN = {
         'progress-12-text': r => `Reach ${format(r,0)} ${toTextStyle('Humanoid','humanoid')} sharks to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
         'progress-13-text': r => `Reach Mining Tier ${format(r,0)} to unlock a new row of ${toTextStyle('Evolution','humanoid')} tree`, 
         'progress-14-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
-        'progress-15-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`, 
+        'progress-15-text': r => `Reach Mining Tier ${format(r,0)} to unlock the next ${toTextStyle('Evolution','humanoid')} feature`,
+
+        'progress-16-text': r => `Fill ${format(r,0)} particle accelerators`, 
+        get 'progress-16-cond-text'() { return `Form ${toTextStyle('Black Hole','black-hole')}` },
+
+        'progress-17-text': r => `Form ${format(r,0)} ${toTextStyle('Black Holes','black-hole')}`,
 
         'maxed-progress': "All features unlocked!",
 
@@ -654,14 +719,43 @@ LANGUAGES.EN = {
             Are you sure you want to evolve your sharks?
             `
         },
+        get 'reset-black-hole-message'() {
+            let e = toTextStyle('Black Hole','black-hole'), c = toTextStyle('Evolution','humanoid'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
+            return `
+            <h3>${e}</h3><br>
+            The ${e} is the fourth and major reset layer.
+            Forming the ${e} resets everything ${c} does, as well as shark rank, humanoid sharks, evolution tree, sharkoid faith, evolution goals, cultivation, forge, particle accelerators, some research, some automations, and some feature progress for a new ${e}.
+            However, every ${e} reduces resources a bit, but it unlocks benefits like milestones.<br>
+            <img src="textures/black-hole.png"><br>
+            Are you sure you want to enter another universe?
+            `
+        },
         
         // Other
+
+        'scalings': {
+            'shark_level' : `Shark Level`,
+            'shark_rank' : `Shark Rank`,
+            'su_s3' : `"Shark Teeth" Upgrade`,
+            'su_s4' : `"Shark Exponent" Upgrade`,
+            'su_m1' : `"Mining Damage" Upgrade`,
+            'su_m3' : `"Compressed Stone" Upgrade`,
+            'su_m5' : `"Basic Ore" Upgrade`,
+            'cr_boost' : `Radioactive Boost`,
+            'mining_tier' : `Mining Tier`,
+        },
+        'scaling-start': "Starts at",
+        'scaling-mode': {
+            "L": x => `<b>${x}</b> linearly`,
+            "D": x => `<b>${x}</b> to exponent`,
+        },
+        'scaling-info': `Scalings will be added as soon as you reach them. <b>N</b> - amount, <b>S</b> - starting`,
 
         'upgrade-shark': x => `Upgrade ${toTextStyle('Shark','shark')} Level<br>Cost: ${x.format(0)} ${toTextStyle('Fish','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('Fish','fish')}'s base`,
         'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('Prestige','prestige')} shard`,
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('Magmatic','core')} fragments`,
-        // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('Radiation ' + icon("radioactive"),'core')}`,
+        'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('Remnants','black-hole')}`,
 
         'shark-overpopulation': (x,y) => `Due to ${toTextStyle('Shark','shark')} overpopulation at <h4>${toTextStyle(format(y),'fish')}</h4>, ${toTextStyle('Fish','fish')} eaten is reduced by <h4>${format(x,3)}√</h4>.`,
 
@@ -671,6 +765,7 @@ LANGUAGES.EN = {
             mining_damage: x => `${formatMult(x)} Mining Damage`,
             so: x => `${formatPow(x)} ${toTextStyle('Shark','shark')} overpopulation delay`,
             vibranium: x => `${formatMult(x)} <b>Vibranium</b>`,
+            remnants: x => `${formatMult(x)} ${toTextStyle('Remnants','black-hole')}`,
         },
 
         'level': "Level",
@@ -735,5 +830,6 @@ LANGUAGES.EN = {
         'confirm-prestige': "Prestige",
         'confirm-core': "Enter the Core",
         'confirm-humanoid': "Evolve Sharks",
+        'confirm-black-hole': "Form the Black Hole",
     },
 }

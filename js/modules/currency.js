@@ -12,6 +12,7 @@ const CURRENCIES = {
             .mul(tmp.explore_eff[0]).mul(tmp.core_bonus)
 
             x = x.pow(sharkUpgEffect('s4')).pow(tmp.explore_eff[2]).pow(coreReactorEffect(0)).pow(getSharkRankBonus('fish')).pow(simpleETEffect(12))
+            .pow(remnantUpgEffect(4))
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
@@ -19,7 +20,9 @@ const CURRENCIES = {
             
             if (hasResearch('c14')) x = x.pow(researchEffect('c14'))
 
-            if (inExploration(4)) x = expPow(x,0.75)
+            if (inExploration(4)) x = expPow(x,0.75);
+
+            x = expPow(x,tmp.bh_reduction)
 
             var s = E('ee40'), pre_s = x
 
@@ -63,6 +66,7 @@ const CURRENCIES = {
             if (tmp.cr_active) x = x.root(3);
 
             x = expPow(x,forgeUpgradeEffect('refined_shard'))
+            x = expPow(x,tmp.bh_reduction)
     
             return x.floor()
         },
@@ -88,6 +92,8 @@ const CURRENCIES = {
             if (hasEvolutionGoal(2)) x = expPow(x,1.25)
 
             x = x.mul(getSharkBonus("core")).mul(getCRBoost(1)).pow(simpleETEffect(14))
+
+            x = x.pow(tmp.bh_reduction)
     
             return x.floor()
         },
@@ -117,6 +123,21 @@ const CURRENCIES = {
         },
 
         passive: 0,
+    },
+    remnants: {
+        get amount() { return player.singularity.remnants },
+        set amount(v) { player.singularity.remnants = v.max(0) },
+    
+        get gain() {
+            if (!S_MILESTONES[0].req()) return E(0)
+
+            let x = E(1).add(getSharkBonus('remnants',0)).mul(getSharkRankBonus('remnants'))
+
+            if (hasResearch('s1')) x = x.mul(researchEffect('s1'));
+            if (player.singularity.best_bh.gte(6)) x = x.mul(player.singularity.bh.pow_base(2));
+
+            return x
+        },
     },
 }
 

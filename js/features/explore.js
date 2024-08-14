@@ -12,7 +12,7 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow('1e700', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e700').log(1.015).mul(tmp.explore_MP).floor().add(1),"fish"],
-            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
+            [l=>Decimal.pow(10, l.scale(1e8,2,"ME2").div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).scale(1e8,2,"ME2",true).floor().add(1)]
         ],
 
         fish_req: E('1e135'),
@@ -33,7 +33,7 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow('1e120', Decimal.pow(1.015, l.div(tmp.explore_MP))), x=>x.log('1e120').log(1.015).mul(tmp.explore_MP).floor().add(1),"prestige"],
-            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
+            [l=>Decimal.pow(10, l.scale(1e8,2,"ME2").div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).scale(1e8,2,"ME2",true).floor().add(1)]
         ],
 
         fish_req: E('1e440'),
@@ -55,7 +55,7 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e30), x=>x.div(1e30).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"coral"],
-            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
+            [l=>Decimal.pow(10, l.scale(1e8,2,"ME2").div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).scale(1e8,2,"ME2",true).floor().add(1)]
         ],
 
         fish_req: E('1e170'),
@@ -77,7 +77,7 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow(100, l.div(tmp.explore_MP).pow(1.25)).mul(1e27), x=>x.div(1e27).log(100).root(1.25).mul(tmp.explore_MP).floor().add(1),"ice"],
-            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
+            [l=>Decimal.pow(10, l.scale(1e8,2,"ME2").div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).scale(1e8,2,"ME2",true).floor().add(1)]
         ],
 
         fish_req: E('1e200'),
@@ -100,7 +100,7 @@ const EXPLORE = [
 
         cost: [
             [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.1)).mul(1e15), x=>x.div(1e15).log(10).root(1.1).mul(tmp.explore_MP).floor().add(1),"core"],
-            [l=>Decimal.pow(10, l.div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).floor().add(1)]
+            [l=>Decimal.pow(10, l.scale(1e5,2,"ME2").div(tmp.explore_MP).pow(1.2)).mul(1e6), x=>x.div(1e6).log10().root(1.2).mul(tmp.explore_MP).scale(1e5,2,"ME2",true).floor().add(1)]
         ],
 
         fish_req: E('1e6000'),
@@ -134,7 +134,8 @@ function getBaseExploration(i=player.explore.active,amt=player.explore.best_fish
     let x = amt.div(req)
     if (x.lt(1)) return E(0)
     x = i == 4 ? x.log10().div(100).add(1).pow(2) : x.log10().add(1).pow(2)
-    if (hasDepthMilestone(3,0)) x = x.mul(10)
+    if (hasDepthMilestone(3,0)) x = x.mul(10);
+    x = x.mul(remnantUpgEffect(1))
     return x
 }
 
@@ -157,15 +158,20 @@ function calcNextDepth(x,gain) {
 
         x = x.log10().pow(2).pow10()
 
-        let rss1 = E('ee4')
+        let rss1 = E('ee4'), rss2 = E('ee6')
 
-        let rs1 = x.gte(rss1)
+        let rs1 = x.gte(rss1), rs2 = x.gte(rss2)
+
+        if (rs2) x = x.log10().log10().div(6).pow(2).mul(6).pow10().pow10()
         if (rs1) x = x.scale(rss1,b,"D")
 
         x = x.add(gain)
 
         rs1 ||= x.gte(rss1)
         if (rs1) x = x.scale(rss1,b,"D",true)
+
+        rs2 ||= x.gte(rss2)
+        if (rs2) x = x.log10().log10().div(6).root(2).mul(6).pow10().pow10()
 
         x = x.log10().root(2).pow10()
     }
@@ -193,6 +199,7 @@ function enterExploration(i) {
 }
 
 function buyExploreUpgrade(i,j) {
+    if (player.feature < 4) return;
     if (player.explore.unl <= i) return
 
     var amt = player.explore.upg[i][j]

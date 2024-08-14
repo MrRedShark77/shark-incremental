@@ -72,6 +72,14 @@ function getPlayerData() {
             },
         },
 
+        singularity: {
+            first: false,
+            bh: E(0),
+            best_bh: E(0),
+            remnants: E(0),
+            upgs: [],
+        },
+
         radios: {},
 
         auto: {},
@@ -82,9 +90,9 @@ function getPlayerData() {
         language: "EN",
     }
 
-    for (let x in SHARK_UPGRADES) s.shark_upg[x] = E(0)
-    for (let x in AUTOMATION) s.auto[x] = [0,false]
-    for (let x in RESEARCH) s.research[x] = E(0)
+    for (let x in SHARK_UPGRADES) s.shark_upg[x] = E(0);
+    for (let x in AUTOMATION) s.auto[x] = [0,false];
+    for (let x in RESEARCH) s.research[x] = E(0);
     for (let x in EXPLORE) {
         s.explore.res[x] = s.explore.depth[x] = s.explore.base[x] = E(0)
         s.explore.upg[x] = [E(0), E(0)]
@@ -93,11 +101,11 @@ function getPlayerData() {
         s.core.reactor[x] = E(0)
         s.core.assembler_strength[x] = 0
     }
-    for (let x = 0; x < 16; x++) s.core.assembler[x] = -1
-    for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0)
-    for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0
-
-    for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0)
+    for (let x = 0; x < 16; x++) s.core.assembler[x] = -1;
+    for (let x of ORE_KEYS) s.humanoid.ores[x] = E(0);
+    for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0;
+    for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0);
+    for (let x in REMNANT_UPGS) s.singularity.upgs[x] = E(0);
 
     return s
 }
@@ -107,7 +115,8 @@ function wipe(reload,start) {
     if (start) return
     setupOptions()
     reloadTemp()
-    tab = 0, stab = [0,0,0,0], tab_name = 'shark'
+    tab = 0, stab = stab.map(x=>0), tab_name = 'shark'
+    ores_grid = []
 	if (reload) {
         save()
         location.reload()
@@ -160,7 +169,7 @@ function deepUndefinedAndDecimal(obj, data) {
     return obj
 }
 
-function preventSaving() { return offline.nosave }
+function preventSaving() { return tmp.bh_pause || offline.nosave }
 
 function save(auto=false) {
     if (auto && !player.radios.autosave) return
@@ -173,7 +182,7 @@ function save(auto=false) {
 }
 
 function load(x){
-    if(typeof x == "string" & x != ''){
+    if(typeof x == "string" && x != ''){
         loadPlayer(JSON.parse(atob(x)))
     } else {
         wipe(false,true)
