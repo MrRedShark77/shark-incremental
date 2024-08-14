@@ -127,7 +127,7 @@ LANGUAGES.KO = {
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러 채광 티어를 1 내리세요`,
 
         'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
-        'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 toTextStyle('물고기','fish')와 toTextStyle('환생','prestige') 파편의 지수, 그리고 toTextStyle('마그마','core') 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
+        'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 물고기와 환생 파편의 지수, 그리고 마그마 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
 
         'remnant-html': `<h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 개의 잔재물을 가지고 있습니다.`,
         
