@@ -610,7 +610,7 @@ LANGUAGES.KO = {
         ],
         get 'singularity-milestones'() {
             return [
-                [`1 Black Hole`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("성어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
+                [`1 Black Hole`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("상어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
                 [`2 Black Holes`,`간격 업그레이드가 안 되어 있는 자동화를 환생 시에도 유지합니다. ${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
                 [`3 Black Holes`,`자동화를 환생 시에도 유지합니다. 채광 이전의 모든 컨텐츠를 해금한 상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')} 상어를 유지합니다. 더 많은 연구를 해금합니다.`],
                 [`4 Black Holes`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도 유지합니다. 입자 가속기가 10배 빨라집니다.`],
