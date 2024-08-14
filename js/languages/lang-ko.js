@@ -679,7 +679,7 @@ LANGUAGES.KO = {
         'progress-14-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
         'progress-15-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
 
-        'progress-16-text': r => `${format(r,0)} 입자 가속기를 채우세요`, 
+        'progress-16-text': r => `${format(r,0)}개의 입자 가속기를 채우세요`, 
         get 'progress-16-cond-text'() { return `${toTextStyle('블랙홀','black-hole')}을 형성하세요` },
 
         'progress-17-text': r => `${format(r,0)} ${toTextStyle('블랙홀','black-hole')}을 형성하세요`,
