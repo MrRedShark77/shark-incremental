@@ -159,7 +159,7 @@ LANGUAGES.KO = {
 
         'su-p2-req': "환생 한 번 하기",
         'su-p2-name': '환생 부스터',
-        'su-p2-desc': `${toTextStyle('Fish','fish')} 섭취량을 레벨 당<b>×lg(${toTextStyle('물고기','fish')})</b> 올립니다.`,
+        'su-p2-desc': `${toTextStyle('물고기','fish')} 섭취량을 레벨 당<b>×lg(${toTextStyle('물고기','fish')})</b> 올립니다.`,
 
         'su-p3-name': '느려진 상어',
         'su-p3-desc': `첫 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 레벨 당 <b>+1</b> 느려집니다.`,
@@ -321,7 +321,7 @@ LANGUAGES.KO = {
         // Exploration / 탐험들
 
         'explore-while': `탐험 중 받는 효과`,
-        'explore-inside': (a,b,c)=>`베이스 <br> ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("Fish",'fish')}에 도달하세요.`,
+        'explore-inside': (a,b,c)=>`베이스 <br> ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("물고기",'fish')}에 도달하세요.`,
         'explore-outside': x=>`현재 베이스는 <br>${x.format()}/s 입니다.<br>바다를 탐험하세요!`,
 
         'explore-next': x=>`${toTextStyle("상어",'shark')} 레벨 <h3>${format(x,0)}</h3>에서 새로운 바다가 열립니다.`,
