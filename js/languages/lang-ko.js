@@ -35,6 +35,9 @@ LANGUAGES.KO = {
         'humanoid-name': "휴머노이드 상어",
         'humanoid-costName': toTextStyle('휴머노이드','humanoid') + ' 상어',
 
+        'remnants-name': "잔재물",
+        'remnants-costName': toTextStyle('잔재물','black-hole'),
+
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
 
         'sharkoid-faith': toTextStyle('상어 인간의 신앙','humanoid'),
@@ -54,6 +57,7 @@ LANGUAGES.KO = {
 
         'tab-shark': toTextStyle('상어','shark'),
         'tab-options': "옵션들",
+        'tab-scalings': "스케일링",
         'tab-auto': "자동화",
         'tab-research': toTextStyle('연구','prestige'),
         'tab-explore': "탐험",
@@ -70,6 +74,10 @@ LANGUAGES.KO = {
         'tab-cultivation': "채굴",
         'tab-forge': "용광로",
         'tab-particle-accel': "입자 가속기",
+
+        'tab-singularity': toTextStyle('특이점','black-hole'),
+        'tab-black-hole': toTextStyle('블랙홀','black-hole'),
+        'tab-singularity-milestones': toTextStyle('특이점','black-hole') + " 마일스톤",
 
         // Elements / 기초적인 것들
 
@@ -118,7 +126,11 @@ LANGUAGES.KO = {
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러 채광 티어를 1 내리세요`,
 
+        'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
+        'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 toTextStyle('물고기','fish')와 toTextStyle('환생','prestige') 파편의 지수, 그리고 toTextStyle('마그마','core') 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
 
+        'remnant-html': `<h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 개의 잔재물을 가지고 있습니다.`,
+        
         // Upgrades / 업그레이드들
 
         'su-s1-req': "레벨 3",
@@ -299,6 +311,12 @@ LANGUAGES.KO = {
 
         'research-f8-name': "약해진 광석 체력",
         'research-f8-desc': `채광 티어의 첫 번재 효과가 감소됩니다.`,
+
+        'research-s1-name': "잔재물 물고기",
+        'research-s1-desc': `${toTextStyle("물고기",'fish')} 가 ${toTextStyle("잔재물",'black-hole')} 생산을 감소된 상태로 강화합니다.`,
+
+        'research-s2-name': "나은 랭커 부스트",
+        'research-s2-desc': `${toTextStyle("상어",'shark')} 랭크가 주는 ${toTextStyle('환생','prestige')} 파편 부스트를 개선합니다.`,
 
         // Exploration / 탐험들
 
@@ -578,6 +596,45 @@ LANGUAGES.KO = {
             x => `${toTextStyle("상어",'shark')} ELO의 지수가 <b>${x}</b> 만큼 증가함.`,
         ],
 
+        // Singularity / 특이점
+
+        'black-hole-texts': [
+            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... 하지만 당신은 블랙홀 안에 갇혀 무엇을 할 수 있나요? 걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
+            `평행 우주에서는 어떠셨나요? 그래서 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
+            `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요? 이제 당신을 엄청난 고난에 넣을 차례입니다!`,
+            `진짜로..`,
+            `...`,
+            `그만둬!`,
+            `이게 마지막 기회야!`,
+            `아... 그래... 너가 이겼어! 여기 보상이야...`,
+        ],
+        get 'singularity-milestones'() {
+            return [
+                [`1 Black Hole`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("성어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
+                [`2 Black Holes`,`간격 업그레이드가 안 되어 있는 자동화를 환생 시에도 유지합니다. ${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
+                [`3 Black Holes`,`자동화를 환생 시에도 유지합니다. 채광 이전의 모든 컨텐츠를 해금한 상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')} 상어를 유지합니다. 더 많은 연구를 해금합니다.`],
+                [`4 Black Holes`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도 유지합니다. 입자 가속기가 10배 빨라집니다.`],
+                [`5 Black Holes`,`광석 체력 스케일링이 약해집니다. 새로운 자동화를 해금합니다.`],
+                [`6 Black Holes`,`만든 블랙홀 마다 ${toTextStyle("잔재물",'black-hole')} 획득이 2배 늘어납니다.`],
+                [`7 Black Holes`,`채광을 환생시에도 해금한 상태로 유지합니다.`],
+                [`8 Black Holes`,`${toTextStyle("블랙홀",'black-hole')}의 패널티가 8개의 ${toTextStyle("블랙홀",'black-hole')}을 만들면 사라집니다. 블랙홀을 만들 때의 애니메이션이 사라집니다.`],
+            ]
+        },
+
+        'remnant-upgrades': [
+            [`안녕`,x=>`${toTextStyle("상어",'shark')} 레벨 보너스가 ${x} 만큼 강해집니다.`],
+            [`흐름`,x=>`탐험 베이스 배수가 ${x} 만큼 강해집니다.`],
+            [`하프-라이프`,x=>`${toTextStyle("핵",'core')} 원자로가 ${x} 만큼 강해집니다.`],
+            [`낭비할 시간은 없다`,x=>`재련 속도가 ${x} 만큼 빨라집니다.`],
+
+            [`다시 안녕`,x=>`${toTextStyle("물고기",'fish')}가 자기 자신을 ${x} 만큼 강화시킵니다.`],
+            [`그랜드마스터`,x=>`${toTextStyle("상어",'shark')} 랭크 보너스가 ${x} 만큼 강해집니다.`],
+            
+            [`우주적 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 세 스케일링이 ${x} 만큼 늦춰집니다.`],
+
+            [`상어 마스터`,x=>`${toTextStyle("상어",'shark')} ELO가 ${x} 만큼 증가합니다.`],
+        ],
+        
         // Automation / 자동화
 
         'auto-shark-name': `자동-${toTextStyle("상어","shark")} 레벨`,
@@ -589,6 +646,7 @@ LANGUAGES.KO = {
         'auto-radioactive_boosts-name': `자동-방사선 부스트`,
         'auto-mining_upgs-name': `자동-${toTextStyle("상어","shark")} 채광 업그레이드`,
         'auto-humanoid-name': `자동-${toTextStyle("휴머노이드","humanoid")} 상어`,
+        'auto-mining_tier-name': `자동 채광 티어`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -619,6 +677,11 @@ LANGUAGES.KO = {
         'progress-13-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 트리의 열을 해금하세요`, 
         'progress-14-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
         'progress-15-text': r => `채광 티어 ${format(r,0)} 에 도달해 다음 ${toTextStyle('진화','humanoid')} 콘텐츠를 해금하세요`, 
+
+        'progress-16-text': r => `${format(r,0)} 입자 가속기를 채우세요`, 
+        get 'progress-16-cond-text'() { return `${toTextStyle('블랙홀','black-hole')}을 형성하세요` },
+
+        'progress-17-text': r => `${format(r,0)} ${toTextStyle('블랙홀','black-hole')}을 형성하세요`,
 
         'maxed-progress': "모든 콘텐츠를 해금함!",
 
@@ -655,14 +718,43 @@ LANGUAGES.KO = {
             정말로 당신의 상어를 진화시키겠습니까?
             `
         },
+        get 'reset-black-hole-message'() {
+            let e = toTextStyle('블랙홀','black-hole'), c = toTextStyle('진화','humanoid'), m = toTextStyle('마그마','core'), p = toTextStyle('환생','prestige')
+            return `
+            <h3>${e}</h3><br>
+            ${e} 은 네 번째 환생 레이어 입니다.
+            ${e}을 형성하는 것은 ${c} 처럼 모든것을 초기화 시킵니다, 이는 상어 랭크, 휴머노이드 상어, 진화 트리, 신앙, 진화 목표, 채광, 재련, 입자 가속기, 몇몇 연구, 몇몇 자동화, 그리고 조금의 게임 프로그래션을 포함합니다.
+            ${e} 을 만드는 것은 자원 획득을 감소 시키며, 하지만 목표처럼 새로운 이득이 있습니다.<br>
+            <img src="textures/black-hole.png"><br>
+            정말로 다른 우주에 진입하겠습니까?
+            `
+        },
         
         // Other / 기타
+
+        'scalings': {
+            'shark_level' : `상어 레벨`,
+            'shark_rank' : `상어 랭크`,
+            'su_s3' : `"상어 이빨 강화" 업그레이드`,
+            'su_s4' : `"상어 지수 강화" 업그레이드`,
+            'su_m1' : `"채광 대미지" 업그레이드`,
+            'su_m3' : `"압축된 돌" 업그레이드`,
+            'su_m5' : `"기본 광석들" 업그레이드`,
+            'cr_boost' : `방사성 부스트`,
+            'mining_tier' : `채광 티어`,
+        },
+        'scaling-start': "시작: ",
+        'scaling-mode': {
+            "L": x => `<b>${x}</b> 선형적`,
+            "D": x => `<b>${x}</b> 지수적`,
+        },
+        'scaling-info': `스케일링은 일정 수준에 도달할 때 마다 추가됩니다. <b>N</b> - 수, <b>S</b> - 시작`,
 
         'upgrade-shark': x => `${toTextStyle('상어','shark')} 레벨 올리기<br>비용: ${x.format(0)} ${toTextStyle('물고기','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
         'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('환생','prestige')} 파편`,
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('마그마','core')} 조각`,
-        // 'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('방사선 ' + icon("radioactive"),'core')}`,
+        'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('Remnants','black-hole')}`,
 
         'shark-overpopulation': (x,y) => `${toTextStyle('Shark','shark')}가 너무 많아 <h4>${toTextStyle(format(y),'fish')}</h4>마리 이상의 ${toTextStyle('물고기','fish')}가 <h4>${format(x,3)}√</h4>만큼 줄어듭니다.`,
 
@@ -672,6 +764,7 @@ LANGUAGES.KO = {
             mining_damage: x => `채광 대미지 ${formatMult(x)}`,
             so: x => `${toTextStyle('상어','shark')} 과잉 문제를 ${formatPow(x)} 만큼 미룹니다`,
             vibranium: x => `<b>비브라늄</b> ${formatMult(x)}`,
+            remnants: x => `${formatMult(x)} ${toTextStyle('잔재물','black-hole')}`,
         },
 
         'level': "레벨",
@@ -736,5 +829,6 @@ LANGUAGES.KO = {
         'confirm-prestige': "환생",
         'confirm-core': "핵 진입",
         'confirm-humanoid': "상어 진화",
+        'confirm-black-hole': "블랙홀 형성",
     },
 }
