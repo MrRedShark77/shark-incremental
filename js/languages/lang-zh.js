@@ -34,6 +34,9 @@ LANGUAGES.ZH = {
 
         'humanoid-name': "类人鲨鱼",
         'humanoid-costName': toTextStyle('类人','humanoid') + '鲨鱼',
+
+		'remnants-name': "遗物",
+        'remnants-costName': toTextStyle('遗物','black-hole'),
 		
 		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
 		
@@ -54,6 +57,7 @@ LANGUAGES.ZH = {
 
         'tab-shark': toTextStyle('鲨鱼','shark'),
         'tab-options': "选项",
+		'tab-scalings': "折算",
         'tab-auto': "自动化",
         'tab-research': toTextStyle('研究','prestige'),
         'tab-explore': "探索",
@@ -70,6 +74,10 @@ LANGUAGES.ZH = {
 		'tab-cultivation': "挖矿",
 		'tab-forge': "锻造",
 		'tab-particle-accel': "粒子加速器",
+		
+		'tab-singularity': toTextStyle('奇点','black-hole'),
+        'tab-black-hole': toTextStyle('黑洞','black-hole'),
+        'tab-singularity-milestones': toTextStyle('奇点','black-hole') + "里程碑",
 
         // Elements
 
@@ -116,13 +124,18 @@ LANGUAGES.ZH = {
 		'mining-text': `正在挖矿…… <b id="mining-progress">???</b> | 伤害 <b id="mining-damage">???</b> | ${toTextStyle(`幸运草 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `挖矿等级：<h3 id="mining-tier">0</h3>`,
 		'mining-note': `注意：如果在血量极高的矿坑处卡住（需要很长时间才能获得矿物），按 F5 刷新页面。`,
-		'mining-tier-undo-btn': `如果无法获得矿物，点击这里使矿坑等级减 1.`,
+		'mining-tier-undo-btn': `若无法挖矿，点击这里使挖矿等级减 1.`,
+
+		'black-hole-button': `因为你填满了所有的粒子加速器，你需要生成一个黑洞，来进入新的宇宙。`,
+        'black-hole-html': `你已生成 <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 个黑洞，吃鱼数量的指数、重生碎片数量的指数、岩浆碎片的加成倍率变为原来的 <h3 id="black-hole-effect">^???</h3>.`,
+
+        'remnant-html': `你拥有 <h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 遗物。`,
 
         // Upgrades
 
         'su-s1-req': "等级为 3",
         'su-s1-name': '鲨鱼之力',
-        'su-s1-desc': `每升一级，吃${toTextStyle('鱼','fish')}的速度<b>+1</b>.`,
+        'su-s1-desc': `每升一级，吃${toTextStyle('鱼','fish')}的速度 <b>+1</b>.`,
 
         'su-s2-req': "等级为 7",
         'su-s2-name': '敏捷鲨鱼',
@@ -130,7 +143,7 @@ LANGUAGES.ZH = {
 
         'su-s3-req': "等级为 15",
         'su-s3-name': '鲨鱼牙齿',
-        'su-s3-desc': `每升一级，第一个${toTextStyle('鲨鱼','shark')}升级的指数增加<b>+50%</b>.`,
+        'su-s3-desc': `每升一级，第一个${toTextStyle('鲨鱼','shark')}升级的指数增加 <b>+50%</b>.`,
 
         'su-s4-req': "等级为 38",
         'su-s4-name': '鲨鱼指数',
@@ -142,11 +155,11 @@ LANGUAGES.ZH = {
 		
         'su-p1-req': "第一次重生",
         'su-p1-name': '鲨之巨力',
-        'su-p1-desc': `每升一级，吃${toTextStyle('鱼','fish')}的速度<b>×3</b>.`,
+        'su-p1-desc': `每升一级，吃${toTextStyle('鱼','fish')}的速度 <b>×3</b>.`,
 
         'su-p2-req': "第一次重生",
         'su-p2-name': '重生强化',
-        'su-p2-desc': `每升一级，吃${toTextStyle('鱼','fish')}的数量<b>×lg(${toTextStyle('鱼','fish')})</b>.`,
+        'su-p2-desc': `每升一级，吃${toTextStyle('鱼','fish')}的数量 <b>×lg(${toTextStyle('鱼','fish')})</b>.`,
 
         'su-p3-name': '鲨鱼鱼鳞',
         'su-p3-desc': `每升一级，第一个${toTextStyle('鲨鱼','shark')}等级的价格折算延迟 <b>+1</b>.`,
@@ -186,7 +199,7 @@ LANGUAGES.ZH = {
         'research-p4-desc': `小幅提升获得${toTextStyle("重生",'prestige')}碎片的公式。`,
 
         'research-p5-name': "鲨之神力",
-        'research-p5-desc': `${toTextStyle("鲨鱼",'shark')}等级从100起，每升一级，“鲨之巨力”增强 <b>1%</b>.`,
+        'research-p5-desc': `${toTextStyle("鲨鱼",'shark')}等级从 100 起，每升一级，“鲨之巨力”增强 <b>1%</b>.`,
 
         'research-p6-name': "鱼鳞硬化",
         'research-p6-desc': `“鲨鱼鱼鳞”的效果是原来的<b>两倍</b>。`,
@@ -237,7 +250,7 @@ LANGUAGES.ZH = {
         'research-c6-desc': `${toTextStyle('岩浆','core')}碎片降低地核辐射的上限。`,
 
         'research-c7-name': "鲨之巨齿",
-        'research-c7-desc': `'鲨鱼牙齿'的效果是原来的 <b>2.5次幂</b>。`,
+        'research-c7-desc': `'鲨鱼牙齿'的效果是原来的 <b>2.5 次幂</b>。`,
 		
 		'research-c8-name': "更好的铁和氖",
         'research-c8-desc': `<b>铁</b>的效果是原来的两倍，大幅降低<b>铁</b>和<b>氖</b>的价格。`,
@@ -284,7 +297,7 @@ LANGUAGES.ZH = {
 		'research-f3-name': "地核反应堆折算",
         'research-f3-desc': `每升一级，地核反应堆的第一次价格折算延迟 <b>+1</b>.`,
 
-        'research-f4-name': "软化温度软上限",
+        'research-f4-name': "更软的温度软上限",
         'research-f4-desc': `削弱${toTextStyle('地核','core')}温度的软上限。`,
 
         'research-f5-name': "振金钻头",
@@ -298,6 +311,12 @@ LANGUAGES.ZH = {
 
         'research-f8-name': "脆弱的矿坑",
         'research-f8-desc': `削弱挖矿等级的第一个效果。`,
+
+		'research-s1-name': "鱼的遗物",
+        'research-s1-desc': `${toTextStyle("鱼",'fish')}能提升${toTextStyle("遗物",'black-hole')}的产量。`,
+
+        'research-s2-name': "更好的段位加成",
+        'research-s2-desc': `提升${toTextStyle("鲨鱼",'shark')}段位对${toTextStyle('重生','prestige')}碎片的加成效果。`,
 
         // Exploration
 
@@ -408,7 +427,7 @@ LANGUAGES.ZH = {
             x=>`${toTextStyle('鲨鱼','shark')}等级的第二次价格折算延迟 <h4>+${format(x)}</h4>.`,
             x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('岩浆','core')}碎片加成的基数 <h4>+${format(x,3)}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级对${toTextStyle('鱼','fish')}的加成，其指数是原来的 <h4>${formatPow(x,3)}</h4>.`,
-            x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼升级','shark')}，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
+            x=>`前三个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼','shark')}升级，效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
 			x=>`${toTextStyle('鲨鱼','shark')}等级使${toTextStyle('鲨鱼','shark')}战力 <h4>${formatMult(x)}</h4>.`,
 			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
 			x=>`探索升级的购买次数额外 <h4>${formatMult(x,3)}</h4>.`,
@@ -577,6 +596,45 @@ LANGUAGES.ZH = {
             x => `${toTextStyle("鲨鱼",'shark')}战力的指数 <b>${x}</b>.`,
         ],
 
+		// Singularity
+
+        'black-hole-texts': [
+            `收集足以生成一个黑洞的物质……你在黑洞里面能做什么呢？别担心，这是个能把你送到另一个宇宙的白洞，不过那个宇宙有点复杂。`,
+            `觉得平行宇宙怎么样？接下来你还得进一次黑洞！`,
+            `等一下，你真的愿意不惜一切代价，就是为了能吃更多的${toTextStyle("鱼",'fish')}吗？接下来，你要面对的可是更麻烦的东西！`,
+            `我是很认真地跟你说……`,
+            `……`,
+            `停下！别再这样继续下去了！`,
+            `这是你最后一次反悔的机会！`,
+            `呃……好吧……你赢了！黑洞再也不会让你吃更少的鱼了……`,
+        ],
+        get 'singularity-milestones'() {
+            return [
+                [`1 个黑洞`,`解锁${toTextStyle("遗物",'black-hole')}。${toTextStyle("鲨鱼",'shark')}等级提升${toTextStyle("遗物",'black-hole')}产量。`],
+                [`2 个黑洞`,`${toTextStyle("黑洞",'black-hole')}重置开始时，解锁所有自动化，其冷却时间为初始值。${toTextStyle("鲨鱼",'shark')}段位提升${toTextStyle("遗物",'black-hole')}产量。`],
+                [`3 个黑洞`,`${toTextStyle("黑洞",'black-hole')}重置不再重置自动化。重置开始时，解锁挖矿之前的所有机制，并获得 10 个${toTextStyle("类人",'humanoid')}鲨鱼。解锁更多的研究。`],
+                [`4 个黑洞`,`${toTextStyle("黑洞",'black-hole')}重置后，所有的${toTextStyle("进化",'humanoid')}目标始终为完成状态，填充粒子加速器的速度是原来的 10 倍。`],
+                [`5 个黑洞`,`降低矿坑血量的增速，并解锁更多的自动化。`],
+                [`6 个黑洞`,`每生成一个黑洞，${toTextStyle("遗物",'black-hole')}的产量乘 2.`],
+                [`7 个黑洞`,`${toTextStyle("黑洞",'black-hole')}重置开始时，解锁挖矿。`],
+                [`8 个黑洞`,`若${toTextStyle("黑洞",'black-hole')}的数量不小于 8, 移除${toTextStyle("黑洞",'black-hole')}的减益，并移除生成黑洞时的动画。`],
+            ]
+        },
+
+        'remnant-upgrades': [
+            [`欢迎光临`,x=>`${toTextStyle("鲨鱼",'shark')}等级的加成效果 ${x}.`],
+            [`永恒流转`,x=>`探索的基数 ${x}.`],
+            [`战栗时空`,x=>`${toTextStyle("地核",'core')}反应堆的效果 ${x}.`],
+            [`快速锻造`,x=>`锻造速度 ${x}.`],
+
+            [`自我加成`,x=>`${toTextStyle("Fish",'fish')} boosts itself by ${x}.`],
+            [`鲨鱼大师`,x=>`${toTextStyle("鲨鱼",'shark')}段位加成 ${x}.`],
+            
+            [`级限突破`,x=>`${toTextStyle("鲨鱼",'shark')}等级前 3 个软上限的起始数值 ${x}.`],
+
+            [`鲨鱼宗师`,x=>`${toTextStyle("鲨鱼",'shark')}战力 ${x}.`],
+        ],
+
         // Automation
 
         'auto-shark-name': `自动升级${toTextStyle("鲨鱼","shark")}`,
@@ -586,11 +644,13 @@ LANGUAGES.ZH = {
 		'auto-core_reactor-name': `自动购买${toTextStyle("地核","core")}反应堆`,
         'auto-core_radiation-name': `自动购买${toTextStyle("辐射","core")}提升`,
         'auto-radioactive_boosts-name': `自动提升${toTextStyle("辐射","core")}上限`,
+		'auto-mining_upgs-name': `自动购买${toTextStyle("挖矿","humanoid")}升级`,
+		'auto-humanoid-name': `自动获得${toTextStyle("类人","humanoid")}鲨鱼`,
+        'auto-research-name': `自动购买${toTextStyle("黑洞","black-hole")}之前的研究`,
+        'auto-mining_tier-name': `自动提升挖矿等级`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
-		'auto-mining_upgs-name': `自动购买${toTextStyle("挖矿","humanoid")}升级`,
-		'auto-humanoid-name': `自动获得${toTextStyle("类人","humanoid")}鲨鱼`,
 
         // Progress
 
@@ -618,6 +678,11 @@ LANGUAGES.ZH = {
         'progress-13-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁下一行${toTextStyle('进化','humanoid')}树`, 
 		'progress-14-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁${toTextStyle('进化','humanoid')}的下一个机制`,
 		'progress-15-text': r => `挖矿等级达到 ${format(r,0)} 后，解锁${toTextStyle('进化','humanoid')}的下一个机制`,
+
+		'progress-16-text': r => `填满 ${format(r,0)} 个粒子加速器`, 
+        get 'progress-16-cond-text'() { return `生成 ${toTextStyle('黑洞','black-hole')}` },
+
+        'progress-17-text': r => `生成 ${format(r,0)} 个${toTextStyle('黑洞','black-hole')}`,
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -654,14 +719,43 @@ LANGUAGES.ZH = {
             你确定要进行鲨鱼进化吗？
             `
         },
+		get 'reset-black-hole-message'() {
+            let e = toTextStyle('黑洞','black-hole'), c = toTextStyle('进化','humanoid'), m = toTextStyle('岩浆','core'), p = toTextStyle('重生','prestige')
+            return `
+            <h3>${e}</h3><br>
+            ${e}是第四层重置。
+            生成${e}后，除了重置${c}所重置的资源，还重置鲨鱼段位、类人鲨鱼、进化树、鲨之信念、进化目标、挖矿、锻造、粒子加速器、某些研究和自动化，以及其他的一些机制，来生成一个新的${e}。
+            ${e}会降低资源的产量，但它会提供包括里程碑在内的大量增益。<br>
+            <img src="textures/black-hole.png"><br>
+            准备好进入新的宇宙了吗？
+            `
+		},
 
         // Other
 
+		'scalings': {
+            'shark_level' : `鲨鱼等级`,
+            'shark_rank' : `鲨鱼段位`,
+            'su_s3' : `“鲨鱼牙齿”升级`,
+            'su_s4' : `“鲨鱼指数”升级`,
+            'su_m1' : `“强力挖矿”升级`,
+            'su_m3' : `“压缩石头”升级`,
+            'su_m5' : `“矿坑基数”升级`,
+            'cr_boost' : `辐射加成`,
+            'mining_tier' : `挖矿等级`,
+        },
+        'scaling-start': "生效于",
+        'scaling-mode': {
+            "L": x => `<b>${x}</b> 累乘`,
+            "D": x => `指数为原来的 <b>${x}</b>`,
+        },
+        'scaling-info': `当到达每项折算的起始数值后，折算立刻生效。<b>N</b> - 数量, <b>S</b> - 起始`,
+
         'upgrade-shark': x => `提升${toTextStyle('鲨鱼','shark')}等级<br>价格：${x.format(0)} ${toTextStyle('鱼','fish')}`,
-        'shark-bonus-fish': x => `吃${toTextStyle('鱼','fish')}速度的基数+${x.format(0)}`,
+        'shark-bonus-fish': x => `吃${toTextStyle('鱼','fish')}速度的基数 +${x.format(0)}`,
         'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('重生','prestige')}碎片`,
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('岩浆','core')}碎片`,
-		//'shark-bonus-rad': x => `${formatMult(x)} ${toTextStyle('辐射' + icon("radioactive"),'核心')}`,
+		'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('遗物','black-hole')}`,
 
         'shark-overpopulation': (x,y) => `你的${toTextStyle('鲨鱼','shark')}太大了，在吃了 <h4>${format(y)}</h4> 条鱼后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>。`,
 
@@ -671,6 +765,7 @@ LANGUAGES.ZH = {
 			mining_damage: x => `对矿坑的伤害 ${formatMult(x)}`,
 			so: x => `${toTextStyle('鲨鱼','shark')}大小的软上限${formatPow(x)}`,
 			vibranium: x => `<b>振金</b>${formatMult(x)} `,
+			remnants: x => `${toTextStyle('遗物','black-hole')}${formatMult(x)}`,
         },
 
         'level': "等级",
@@ -735,5 +830,6 @@ LANGUAGES.ZH = {
         'confirm-prestige': "重生",
         'confirm-core': "进入地核",
 		'confirm-humanoid': "鲨鱼进化",
+		'confirm-black-hole': "生成黑洞",
     },
 }
