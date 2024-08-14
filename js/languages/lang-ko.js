@@ -749,7 +749,7 @@ LANGUAGES.KO = {
             "L": x => `<b>${x}</b> 선형적`,
             "D": x => `<b>${x}</b> 지수적`,
         },
-        'scaling-info': `스케일링은 일정 수준에 도달할 때 마다 추가됩니다. <b>N</b> - 수, <b>S</b> - 시작`,
+        'scaling-info': `스케일링은 일정 수준에 도달할 때 마다 추가됩니다. <b>N</b> - 개수, <b>S</b> - 시작`,
 
         'upgrade-shark': x => `${toTextStyle('상어','shark')} 레벨 올리기<br>비용: ${x.format(0)} ${toTextStyle('물고기','fish')}`,
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
