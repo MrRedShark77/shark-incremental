@@ -755,7 +755,7 @@ LANGUAGES.KO = {
         'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
         'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('환생','prestige')} 파편`,
         'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('마그마','core')} 조각`,
-        'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('Remnants','black-hole')}`,
+        'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('잔재물','black-hole')}`,
 
         'shark-overpopulation': (x,y) => `${toTextStyle('Shark','shark')}가 너무 많아 <h4>${toTextStyle(format(y),'fish')}</h4>마리 이상의 ${toTextStyle('물고기','fish')}가 <h4>${format(x,3)}√</h4>만큼 줄어듭니다.`,
 
