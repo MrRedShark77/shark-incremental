@@ -85,6 +85,7 @@ const EVOLUTION_TREE = {
     },
     canAfford(i, slot) {
         let row = Math.floor(i/4), s = (slot ?? this.getAvilableSlot(row)), only = [], bonus = []
+        if (row >= tmp.evo_tree_rows) return false;
         for (let i = 0; i < 4; i++) {
             only.push(row*4+i)
             if (player.humanoid.tree.includes(44+i) && !player.humanoid.tree.includes(row*4+i)) bonus.push(row*4+i);

@@ -13,7 +13,7 @@
 body {
     margin: 0px 10px;
     font-size: 16px;
-    background-color: lightseagreen;
+    background: lightseagreen;
     overflow-x: hidden;
 }
 
@@ -116,7 +116,7 @@ button * {
 	pointer-events: none;
 }
 
-button:not(.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn):hover {
+button:not(.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn,#black-hole-button,.remnant-upg):hover {
 	background-color: #0b6965;
 	border-color: #043f3c;
 }
@@ -137,7 +137,7 @@ button.half-huge-btn {
 }
 
 .tab-button.selected,
-button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn):active {
+button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn,#black-hole-button,.remnant-upg):active {
 	background-color: #075551;
 }
 
@@ -154,17 +154,18 @@ input.no-arrows {
 	}
 }
 
-.locked {
+.locked, .bought {
+	cursor: default;
+}
+:not(.remnant-upg,.bought).locked {
 	background-color: #043d3a;
 	border-color: #02302d;
-	cursor: default;
 	color: #f44;
 }
 
 .bought {
 	background-color: #11853e;
 	border: solid 2px #07552e;
-	cursor: default;
 	color: #8f8;
 }
 
@@ -185,6 +186,15 @@ input.no-arrows {
 .tab-button.notify,
 .forge-btn.notify {
 	box-shadow: 0px 0px 3px 3px #f44;
+}
+
+#main-background {
+	position: absolute;
+	top: -10px; left: -10px;
+	width: calc(100% + 20px);
+	height: calc(100% + 10px);
+	background: linear-gradient(0deg, transparent 0px, lightseagreen 80px);
+	z-index: -1;
 }
 
 #tabs {
@@ -882,4 +892,125 @@ subtitle {
 	transform: translateY(-50%);
 	color: white;
 	filter: drop-shadow(1px 1px 0px black) drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 2px black);
+}
+
+#scalings-table {
+	border: solid 1px black;
+	table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+}
+
+#scalings-table td, #scalings-table th {
+	border: solid 1px black;
+	min-width: 200px;
+	min-height: 50px;
+	height: 50px;
+	font-size: 14px;
+}
+
+#scalings-table td {
+	background-color: #0002;
+}
+
+#scalings-table th {
+	background-color: #0006;
+}
+
+#black-hole-button {
+	width: 350px;
+	height: 350px;
+	border-radius: 50%;
+	font-size: 20px;
+
+	border: solid 4px #b465ff;
+	background-color: #18002e;
+
+	animation: black-hole-glow 3s infinite ease-in-out;
+}
+
+@keyframes black-hole-glow {
+	from, to {
+		box-shadow: inset 0px 0px 10px #b465ff;
+	}
+	50% {
+		box-shadow: inset 0px 0px 40px #b465ff;
+	}
+}
+
+#black-hole {
+	position: fixed;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: 0px; height: 0px;
+	content: "";
+
+	border-radius: 50%;
+	background-color: black;
+
+	transition: width linear, height linear;
+	transition-duration: 5s;
+
+	z-index: 1;
+}
+
+#title-center {
+	position: fixed;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+
+	font-size: 3vw;
+	color: white;
+
+	pointer-events: none;
+	opacity: 0;
+
+	transition: opacity linear 5s;
+
+	z-index: 1;
+}
+
+@keyframes cosmic-pattern {
+	from {
+		background-position: 0px 0px;
+	}
+
+	to {
+		background-position: -600px 200px;
+	}
+}
+
+#singularity-milestones {
+	display: grid;
+	grid-template-columns: repeat(4, 300px);
+	grid-auto-rows: auto;
+	justify-content: center;
+	gap: 5px;
+}
+
+.singularity-milestone {
+	border: solid 2px white;
+	background-color: #0004;
+	border-radius: 20px;
+	min-height: 150px;
+	padding: 5px 10px;
+}
+
+#remnant-upgs {
+	display: grid;
+	grid-template-columns: repeat(4, 120px);
+	grid-auto-rows: auto;
+	justify-content: center;
+}
+
+.remnant-upg {
+	padding: 3px;
+	border: solid 2px magenta;
+	background-color: #0004;
+	min-height: 120px;
+	font-size: 11px;
+}
+.remnant-upg.locked {
+	border: solid 2px red;
 }

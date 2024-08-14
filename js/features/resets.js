@@ -76,7 +76,7 @@ const RESETS = {
             c.radiation.gen = E(hasEvolutionGoal(6) ? 1 : 0)
             c.radiation.boost = E(0)
 
-            if (!hasEvolutionGoal(1)) {
+            if (player.singularity.best_bh.lt(4) && !hasEvolutionGoal(1)) {
                 c.max_buildings = 0
                 c.assembler = c.assembler.map(()=>-1)
                 c.assembler_strength = c.assembler_strength.map(()=>0)
@@ -93,10 +93,95 @@ const RESETS = {
             }
 
             player.shark_rank = E(0)
+            player.humanoid.particle_accel.active = -1
 
             tmp.pass = 1
 
             RESETS.core.doReset()
+        },
+    },
+    'black-hole': {
+        get require() { return player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).gte(6) }, 
+        reset(force) {
+            if (!force && !tmp.bh_pause && player.feature < 18) {
+                tmp.bh_pause = true
+
+                el('black-hole').style.width = el('black-hole').style.height = "200vmax"
+
+                setTimeout(() => {
+                    el('title-center').style.opacity = 1
+                    el('title-center').innerHTML = lang_text('black-hole-texts')[player.singularity.bh.toNumber()] ?? "???"
+
+                    setTimeout(() => {
+                        el('title-center').style.opacity = 0
+    
+                        setTimeout(() => {
+                            el('title-center').style.innerHTML = ""
+                            el('black-hole').style.width = el('black-hole').style.height = "0px"
+
+                            tmp.bh_pause = false
+                            player.singularity.best_bh = player.singularity.best_bh.max(player.singularity.bh = player.singularity.bh.add(1))
+                            player.singularity.first = true
+
+                            updateTemp()
+                            this.doReset()
+                        }, 5000);
+                    }, 10000);
+                }, 5000);
+            }
+        },
+        doReset() {
+            var h = player.humanoid, data = getPlayerData(), bh = player.singularity.best_bh
+
+            if (bh.lt(3)) {
+                player.prestige.times = 0
+                player.core.times = 0
+                h.times = 0
+                for (let x in AUTOMATION) player.auto[x][0] = 0;
+                h.shark = E(0)
+                player.feature = 0
+            } else {
+                h.shark = E(10)
+                if (bh.lt(8)) player.feature = bh.gte(7) ? 13 : 12;
+            }
+
+            if (bh.lt(4)) {
+                h.goal = []
+            }
+
+            h.faith = [E(0), E(0), E(0)],
+            h.tree = []
+            h.mining_tier = E(0)
+
+            h.forge.queue = ''
+            h.forge.time = E(0)
+
+            h.particle_accel.active = -1
+
+            for (let x of PRE_BH_RESEARCH) player.research[x] = E(0);
+
+            for (let x of ORE_KEYS) h.ores[x] = E(0);
+            for (let x of FORGE_KEYS) h.forge.level[x] = 0;
+            for (let x in PARTICLE_ACCELERATOR) h.particle_accel.percent[x] = E(0);
+
+            resetSharkUpgrades('m1','m2','m3','m4','m5')
+
+            RESETS.humanoid.doReset()
+
+            tab = 0, tab_name = 'shark', stab = stab.map(x=>0)
+
+            player.singularity.remnants = E(0)
+            for (let i = 0; i < REMNANT_UPGS.length; i++) player.singularity.upgs[i] = E(0);
+
+            if (bh.gte(4)) {
+                for (let x = 0; x < 5; x++) {
+                    player.explore.depth[x] = E(EXPLORE[x].maxDepth)
+                }
+            }
+
+            ores_grid = []
+
+            tmp.pass = 2
         },
     },
 }

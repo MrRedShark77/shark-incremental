@@ -21,6 +21,7 @@ function updateHTML() {
 function setupHTML() {
     setupTabs()
 
+    setupScalingsTable()
     setupSharkHTML()
     setupTopCurrenciesHTML()
     setupAutomationHTML()
@@ -30,6 +31,7 @@ function setupHTML() {
     setupEvolutionHTML()
     setupForgeHTML()
     setupPAHtml()
+    setupSingularityHTML()
 
     setupLanguageHTML()
 

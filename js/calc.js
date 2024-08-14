@@ -112,18 +112,18 @@ function calc(dt) {
         }
 
         if (player.feature >= 16) {
-            let p = player.humanoid.particle_accel, a = p.active
+            let p = player.humanoid.particle_accel, a = p.active, b4 = player.singularity.best_bh.gte(4)
             if (a > -1) {
                 if (p.percent[a].lt(1)) {
                     let PA = PARTICLE_ACCELERATOR[a]
     
-                    let pg = PA.percent(CURRENCIES[PA.curr].amount)
-                    let s = p.percent[a].add(dt/100)
+                    let pg = PA.percent(CURRENCIES[PA.curr].amount).max(0)
+                    let s = p.percent[a].add(b4?dt/10:dt/100).max(0)
     
                     if (s.lt(pg)) {
-                        p.percent[a] = s.min(1)
+                        p.percent[a] = s.max(p.percent[a]).min(1)
                     } else {
-                        p.percent[a] = pg.min(1)
+                        p.percent[a] = pg.max(p.percent[a]).min(1)
                         p.active = -1
                     }
                 } else p.active = -1;

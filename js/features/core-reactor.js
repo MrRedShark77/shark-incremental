@@ -176,6 +176,8 @@ function getBonusReactor() {
 }
 
 function upgradeCoreReactor(i) {
+    if (player.core.times==0) return;
+
     var CR = CORE_REACTOR[i]
 
     if (CR.resource.gte(getCoreReactorCost(i))) {
@@ -189,6 +191,8 @@ function updateCoreHTML() {
         lang_text(`effect`),
         lang_text(`next-at`),
     ]
+
+    var strong = remnantUpgEffect(2)
 
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var CR = CORE_REACTOR[i], el_id = `core-reactor-${i}-`
@@ -205,7 +209,7 @@ function updateCoreHTML() {
             el(el_id+"div").className = el_classes({"core-reactor-button": true, locked: !afford})
             el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "") + (bonus.gt(0) ? " + " + format(bonus) : "")
             el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(getCoreReactorCost(i,bulk),0).bold()+")" : "")
-            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus))).bold() : "")
+            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus).mul(strong))).bold() : "")
         }
     }
 
@@ -247,6 +251,7 @@ function updateCoreTemp() {
     if (player.feature >= 10) tmp.core_reactor_unl += 4
 
     var bonus1 = getCRBoost(0,0), bonus2 = getCRBoost(10,0)
+    var strong = remnantUpgEffect(2)
     
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
@@ -258,7 +263,7 @@ function updateCoreTemp() {
 
         var CR = CORE_REACTOR[i], level = tmp.cr_active ? Decimal.dZero : player.core.reactor[i].add(bonus)
 
-        tmp.core_effect[i] = CR.effect(level)
+        tmp.core_effect[i] = CR.effect(level.mul(strong))
     }
 
     tmp.core_bonus = getBonusReactor()
