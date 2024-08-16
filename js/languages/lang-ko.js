@@ -111,7 +111,7 @@ LANGUAGES.KO = {
         'radioboost-div': `당신은 <h3 id="radioactive-boost">0</h3> 개의 방사능 부스트를 가지고 있습니다.`,
 
         'core-temp-div': `${toTextStyle('핵','core')}의 온도는 <h3>${toTextStyle('6,150','core','core-temperature')}</h3>이며, 이는 방사선 부스트를 <h4 id="core-temp-effect">100%</h4> 더 강하게 만듭니다.`,
-        'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>가 됩니다.)`,
+        'core-temp-after-div': `(${toTextStyle('핵','core')}의 온도는 ${toTextStyle('핵','core')} 환생 이후 <span id="core-temp-after">???</span>가 됩니다.<br><b>꼭, 무조건 환생을 해야 적용이 되니 ${toTextStyle('핵','core')} 환생을 한 번 해주세요<b>)`,
 
         'sharkoid-faith-div': `당신은 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('상어 인간의 신앙','humanoid')}을 가지고 있습니다.`,
         'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>초기화하기`,
@@ -124,7 +124,7 @@ LANGUAGES.KO = {
         'mining-text': `채광 중... <b id="mining-progress">???</b> | 대미지 <b id="mining-damage">???</b> | ${toTextStyle(`채광 행운 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
         'mining-tier-div': `채광 티어: <h3 id="mining-tier">0</h3>`,
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
-        'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러 채광 티어를 1 내리세요`,
+        'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 티어를 1 내리세요`,
 
         'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
         'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 물고기와 환생 파편의 지수, 그리고 마그마 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
@@ -162,7 +162,7 @@ LANGUAGES.KO = {
         'su-p2-desc': `${toTextStyle('물고기','fish')} 섭취량을 레벨 당<b>×lg(${toTextStyle('물고기','fish')})</b> 올립니다.`,
 
         'su-p3-name': '느려진 상어',
-        'su-p3-desc': `첫 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 레벨 당 <b>+1</b> 느려집니다.`,
+        'su-p3-desc': `첫 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이<br>레벨 당 <b>+1</b> 느려집니다.`,
 
         'su-m1-name': '채광 대미지',
         'su-m1-desc': `채광 대미지를 레벨 당 <b>×2</b> 올립니다.`,
@@ -191,15 +191,15 @@ LANGUAGES.KO = {
         'research-p2-desc': `${toTextStyle("상어",'shark')} ${toTextStyle("물고기",'fish')} 업그레이드는 더 이상 ${toTextStyle("물고기",'fish')}를 소모하지 않습니다.`,
 
         'research-p3-name': "강화된 상어 레벨",
-        'research-p3-desc': `${toTextStyle("상어",'shark')} 레벨 업의 요구량의 베이스를 <b>1</b> 줄이는 대신,
-        강제로 ${toTextStyle("환생",'prestige')}을 하며 ${toTextStyle("환생",'prestige')} 파편 과 ${toTextStyle("환생",'prestige')} 업그레이드들을 초기화 합니다.
-        새로운 ${toTextStyle("상어",'shark')} 업그레이드를 해금합니다.`,
+        'research-p3-desc': `${toTextStyle("상어",'shark')} 레벨 업의 요구량의 베이스를 <b>1</b> 줄이는 대신,<br>
+        강제로 ${toTextStyle("환생",'prestige')}을 하며 ${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드를<br>전부 초기화 합니다.
+        새로운 ${toTextStyle("상어",'shark')} 업그레이드를<br>해금합니다.`,
 
         'research-p4-name': "더 나은 환생",
         'research-p4-desc': `${toTextStyle("환생",'prestige')} 파편 획득 공식을 조금 개선합니다.`,
 
         'research-p5-name': "엄청난 힘",
-        'research-p5-desc': `'상어 힘 슈퍼 강화'가 매 ${toTextStyle("상어",'shark')} 레벨 마다 <b>1%</b> 강해집니다.(100부터 시작합니다)`,
+        'research-p5-desc': `'상어 힘 슈퍼 강화'가 매 ${toTextStyle("상어",'shark')} 레벨 마다<br><b>1%</b> 강해집니다.(100부터 시작합니다)`,
 
         'research-p6-name': "엄청 느려진 상어",
         'research-p6-desc': `'느려진 상어'가 <b>두배</b> 강해집니다.`,
@@ -211,7 +211,7 @@ LANGUAGES.KO = {
         'research-p8-desc': `${toTextStyle("상어",'shark')} 레벨의 요구량을 1만큼 더 줄입니다.`,
 
         'research-p9-name': "싼 환생 부스터",
-        'research-p9-desc': `레벨 당 '환생 부스터'의 가격 증가를 <b>-0.05</b>씩 줄입니다.`,
+        'research-p9-desc': `레벨 당 '환생 부스터'의 가격 증가를<br><b>-0.05</b>씩 줄입니다.`,
 
         'research-e1-name': "바다 시너지즘I",
         'research-e1-desc': `${toTextStyle("소금",'salt')}이 ${toTextStyle("산호",'coral')}의 생산량을 증가시킵니다.`,
@@ -220,22 +220,22 @@ LANGUAGES.KO = {
         'research-e2-desc': `${toTextStyle("압축된 눈",'snow')}이 ${toTextStyle("얼음",'ice')}의 생산량을 증가시킵니다.`,
 
         'research-e3-name': "탑험 자동화",
-        'research-e3-desc': `자동으로 <b>X</b> 번째 바다의 베이스를 탐험하지 않고도 획득합니다.`,
+        'research-e3-desc': `자동으로 <b>X</b> 번째 바다의 베이스를<br>자동으로 획득합니다.`,
 
         'research-e4-name': "산화 켈프",
-        'research-e4-desc': `<b>산소</b>가 ${toTextStyle("켈프",'kelp')}의 생산량을 감소된 상태로 증가시킵니다.`,
+        'research-e4-desc': `<b>산소</b>가 ${toTextStyle("켈프",'kelp')}의 생산량을 감소된 상태로<br>증가시킵니다.`,
 
         'research-e5-name': "탐험 자동화 MK2",
-        'research-e5-desc': `자동으로 인도양의 베이스를 탐험하지 않고도 획득합니다. ${toTextStyle('켈프','kelp')} 효과를 강화시킵니다.`,
+        'research-e5-desc': `자동으로 인도양의 베이스를 탐험하지 않고도<br>획득합니다. ${toTextStyle('켈프','kelp')} 효과를 강화시킵니다.`,
 
         'research-e6-name': "자바 해구",
-        'research-e6-desc': `<b>인도양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`,
+        'research-e6-desc': `<b>인도양</b>의 깊이 제한이 사라지며,<br>그 이후의 효과를 강화시킵니다.`,
 
         'research-c1-name': "연구 핵 유지기",
         'research-c1-desc': `${toTextStyle('핵','core')}에 들어가도 ${toTextStyle("연구",'prestige')}가 초기화 되지 않습니다.`,
 
         'research-c2-name': "탐험 핵 유지기",
-        'research-c2-desc': `${toTextStyle('핵','core')}에 들어가도 <b>X</b> 번째 바다의 해금과 깊이가 유지됩니다.`,
+        'research-c2-desc': `${toTextStyle('핵','core')}에 들어가도 <b>X</b> 번째 바다의<br>마일스톤과 깊이가 유지됩니다.`,
 
         'research-c3-name': "네온의 영향력 I",
         'research-c3-desc': `<b>네온</b>이 '상어 이빨 강화', '상어 지수 강화', 그리고 '느려진 상어'에도 영향을 줍니다.`,
@@ -259,7 +259,7 @@ LANGUAGES.KO = {
         'research-c9-desc': `핵 원자로의 ${toTextStyle('물고기','fish')} 부스트가 강화됩니다.`, // need to fix, need more info
 
         'research-c10-name': "엄청 느려진 상어",
-        'research-c10-desc': `'느려진 상어' 두 번째 ${toTextStyle('상어','shark')} 레벨 증가량을 감소된 상태로 줄입니다.`,
+        'research-c10-desc': `'느려진 상어' 두 번째 ${toTextStyle('상어','shark')} 레벨 증가량을<br>감소된 상태로 줄입니다.`,
 
         'research-c11-name': "더 나은 방사선 감소",
         'research-c11-desc': `'방사선 감소'가 조금 더 강해집니다.`,
@@ -271,22 +271,22 @@ LANGUAGES.KO = {
         'research-c13-desc': `'방사선 상어'가 <b>50%</b> 강해집니다.`,
 
         'research-c14-name': "핵 지수 부스트",
-        'research-c14-desc': `핵 원자로가 ${toTextStyle('물고기','fish')}에 지수 부스트를 제공합니다.`,
+        'research-c14-desc': `핵 원자로가 ${toTextStyle('물고기','fish')}에 지수<br>부스트를 제공합니다.`,
 
         'research-c15-name': "자가-방사성",
-        'research-c15-desc': `이제 방사선 업그레이드를 ${toTextStyle('물고기 '+icon('radioactive'),'fish')} 대신 일반 ${toTextStyle('물고기','fish')}로 구매 할 수 있습니다, 대신 수치가 <b>^0.0001</b>로 감소합니다. 수치가 레벨 당 <b>×10</b> 증가합니다.`,
+        'research-c15-desc': `이제 방사선 업그레이드를 ${toTextStyle('물고기 '+icon('radioactive'),'fish')} 대신 일반 ${toTextStyle('물고기','fish')}로 구매 할 수 있습니다, 대신 수치가<br><b>^0.0001</b>로 감소합니다. 수치가 레벨 당<br><b>×10</b> 증가합니다.`,
 
         'research-m1-name': "마그마 행운",
         'research-m1-desc': `${toTextStyle('채광 행운 '+icon('luck'),'gold')}을 레벨 당 <b>+5</b> 올립니다.`,
 
         'research-m2-name': "하이퍼 느려진 상어",
-        'research-m2-desc': `세 번째 ${toTextStyle("상어",'shark')} 레벨 증가량이 <b>+1000</b>만큼 미뤄집니다.`,
+        'research-m2-desc': `세 번째 ${toTextStyle("상어",'shark')} 레벨 증가량이<br><b>+1000</b>만큼 미뤄집니다.`,
 
         'research-m3-name': "느려진 방사선 부스트",
         'research-m3-desc': `레벨 당 첫 두 개의 방사선 부스트의 수치 증가가 <b>+1</b> 미뤄집니다.`,
 
         'research-m4-name': "더 나은 채광 티어",
-        'research-m4-desc': `채광 티어의 2 ~ 5 번재 효과가 레벨 당 <b>+25%</b> 강해집니다.`,
+        'research-m4-desc': `채광 티어의 2 ~ 5 번재 효과가 레벨 당 <b>+25%</b><br>강해집니다.`,
 
         'research-f1-name': "기본 랭크 지수",
         'research-f1-desc': `레벨 당 ${toTextStyle("상어",'shark')} ELO 의 지수를 <b>+25%</b> 올립니다.`,
@@ -301,28 +301,28 @@ LANGUAGES.KO = {
         'research-f4-desc': `${toTextStyle('핵','core')} 온도의 소프트 캡이 약해집니다.`,
 
         'research-f5-name': "비브라늄 부스트",
-        'research-f5-desc': `<b>비브라늄</b>이 채광 대미지를 감소된 상태로 강화합니다.`,
+        'research-f5-desc': `<b>비브라늄</b>이 채광 대미지를 감소된 상태로<br>강화합니다.`,
 
         'research-f6-name': "우주적 채광 티어",
         'research-f6-desc': `첫 9 종류의 광석들이 채광 티어에 의해 획득량이 증가됩니다.`,
 
         'research-f7-name': "더 나은 상어 ELO",
-        'research-f7-desc': `휴머노이드 상어에서의 ${toTextStyle("상어",'shark')} ELO의 베이스 공식이 <b>x</b> 에서 <b>2<sup>x</sup>-1</b>으로 개선됩니다.`,
+        'research-f7-desc': `휴머노이드 상어에서의 ${toTextStyle("상어",'shark')} ELO의 베이스<br>공식이 <b>x</b> 에서 <b>2<sup>x</sup>-1</b>으로 개선됩니다.`,
 
         'research-f8-name': "약해진 광석 체력",
         'research-f8-desc': `채광 티어의 첫 번재 효과가 감소됩니다.`,
 
         'research-s1-name': "잔재물 물고기",
-        'research-s1-desc': `${toTextStyle("물고기",'fish')} 가 ${toTextStyle("잔재물",'black-hole')} 생산을 감소된 상태로 강화합니다.`,
+        'research-s1-desc': `${toTextStyle("물고기",'fish')} 가 ${toTextStyle("잔재물",'black-hole')} 생산을 감소된 상태로<br>강화합니다.`,
 
         'research-s2-name': "나은 랭커 부스트",
-        'research-s2-desc': `${toTextStyle("상어",'shark')} 랭크가 주는 ${toTextStyle('환생','prestige')} 파편 부스트를 개선합니다.`,
+        'research-s2-desc': `${toTextStyle("상어",'shark')} 랭크가 주는 ${toTextStyle('환생','prestige')} 파편 부스트를<br>개선합니다.`,
 
         // Exploration / 탐험들
 
         'explore-while': `탐험 중 받는 효과`,
-        'explore-inside': (a,b,c)=>`베이스 <br> ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("물고기",'fish')}에 도달하세요.`,
-        'explore-outside': x=>`현재 베이스는 <br>${x.format()}/s 입니다.<br>바다를 탐험하세요!`,
+        'explore-inside': (a,b,c)=>`베이스 <br> ${a.format()}/s`+(b.gt(a) ? " ➜ " : " ➜ ")+`${b.format()}/s`+`.<br>${format(c,0)} ${toTextStyle("물고기",'fish')}에 도달해<br>베이스를 획득하세요.`,
+        'explore-outside': x=>`현재 베이스는 <br>${x.format()}/s 입니다.<br> 클릭해 바다를 탐험하세요!`,
 
         'explore-next': x=>`${toTextStyle("상어",'shark')} 레벨 <h3>${format(x,0)}</h3>에서 새로운 바다가 열립니다.`,
 
@@ -340,7 +340,7 @@ LANGUAGES.KO = {
         ],
 
         'explore-1-name': `북극해`,
-        'explore-1-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. ${toTextStyle('환생','prestige')} 파편 획득량이 제곱근이 됩니다.`,
+        'explore-1-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다.<br>${toTextStyle('환생','prestige')} 파편 획득량이 제곱근이 됩니다.`,
         'explore-1-milestone': [
             `${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드 자동화를 해금합니다.`,
             `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
@@ -349,7 +349,7 @@ LANGUAGES.KO = {
         ],
 
         'explore-2-name': `대서양`,
-        'explore-2-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. ${toTextStyle('상어','shark')} 레벨 스케일링이 10배 강해집니다.` ,
+        'explore-2-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다.<br>${toTextStyle('상어','shark')} 레벨 스케일링이 10배 강해집니다.` ,
         'explore-2-milestone': [
             `'상어 이빨 강화'와 '상어 지수 강화' 가격 증가량이 조금 약해집니다.`,
             `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
@@ -358,7 +358,7 @@ LANGUAGES.KO = {
         ],
 
         'explore-3-name': `남극해`,
-        'explore-3-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다. ${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} & ${toTextStyle('환생','prestige')} 업그레이드들을 구매 할 수 없습니다.`,
+        'explore-3-desc': `${toTextStyle("환생",'prestige')} 파편과 ${toTextStyle("환생",'prestige')} 업그레이드가 초기화 됩니다.<br>${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} & ${toTextStyle('환생','prestige')} 업그레이드들을 구매 할 수 없습니다.`,
         'explore-3-milestone': [
             `탐험의 베이스가 10배 증가합니다.`,
             `자원과 깊이 진행률이 ${toTextStyle('상어','shark')} 레벨의 제곱근 마다 25% 복리로 증가합니다.`,
@@ -377,30 +377,30 @@ LANGUAGES.KO = {
         // Core Reactor / 핵 원자로
 
         'core-0-name': `철`,
-        'core-0-desc': `${toTextStyle("물고기",'fish')} 섭취량이 <b>철</b>의 티어에 기반해 증가합니다.`,
+        'core-0-desc': `${toTextStyle("물고기",'fish')} 섭취량이<br><b>철</b>의 티어에 기반해 증가합니다.`,
 
         'core-1-name': `니켈`,
-        'core-1-desc': `${toTextStyle("Prestige",'prestige')} 파편의 획득량이 <b>니켈</b>의 티어에 기반해 증가합니다.`,
+        'core-1-desc': `${toTextStyle("환생",'prestige')} 파편의 획득량이<br><b>니켈</b>의 티어에 기반해 증가합니다.`,
 
         'core-2-name': `산소`,
-        'core-2-desc': `첫 4 바다 자원의 생산량이 <b>산소</b>의 티어에 기반해 증가합니다.`,
+        'core-2-desc': `첫 4 바다 자원의 생산량이<br><b>산소</b>의 티어에 기반해 증가합니다.`,
 
         'core-3-name': `네온`,
-        'core-3-desc': `${toTextStyle("상어",'shark')} 레벨의 요구량을 <b>네온</b>의 티어에 기반해 줄입니다.`,
+        'core-3-desc': `${toTextStyle("상어",'shark')} 레벨의 요구량을<br><b>네온</b>의 티어에 기반해 줄입니다.`,
 
         'core-4-name': `황`,
-        'core-4-desc': `${toTextStyle("물고기",'fish')}가 <b>철</b>의 효과를 <b>황</b>의 티어에 기반해 강화합니다.`,
+        'core-4-desc': `${toTextStyle("물고기",'fish')}가 <b>철</b>의 효과를<br><b>황</b>의 티어에 기반해 강화합니다.`,
 
         'core-5-name': `실리콘`,
-        'core-5-desc': `${toTextStyle("환생",'prestige')} 파편이 <b>니켈</b>의 효과를 <b>실리콘</b>의 티어에 기반해 강화합니다.`,
+        'core-5-desc': `${toTextStyle("환생",'prestige')} 파편이 <b>니켈</b>의 효과를<br><b>실리콘</b>의 티어에 기반해 강화합니다.`,
 
         'core-6-name': `질소`,
-        'core-6-desc': `${toTextStyle("켈프",'kelp')}가 <b>산소</b>의 효과를 <b>질소</b>의 티어에 기반해 강화합니다.`,
+        'core-6-desc': `${toTextStyle("켈프",'kelp')}가 <b>산소</b>의 효과를<br><b>질소</b>의 티어에 기반해 강화합니다.`,
 
         'core-7-name': `헬륨`,
-        'core-7-desc': `${toTextStyle("상어",'shark')} 레벨이 <b>네온</b>의 효과를 <b>헬륨</b>의 티어에 기반해 강화합니다.`,
+        'core-7-desc': `${toTextStyle("상어",'shark')} 레벨이 <b>네온</b>의 효과를<br><b>헬륨</b>의 티어에 기반해 강화합니다.`,
 
-        'core-bonus': x => `핵 원자로의 생성물이 ${toTextStyle("물고기",'fish')}를 <h4>${formatMult(x)}</h4>만큼 강화합니다.`,
+        'core-bonus': x => `핵 원자로의 생성물이 ${toTextStyle("물고기",'fish')} 획득량을 <h4>${formatMult(x)}</h4>만큼 강화합니다.`,
 
         'core-assembler-erase': `삭제 모드`,
         'core-assembler-choose': `현재 선택 중`,
@@ -418,10 +418,10 @@ LANGUAGES.KO = {
         초 당 <b>${format(gen,0)}</b> 생산 중.<br>
         비용: ${format(cost,0)} ${toTextStyle('생선 '+icon("radioactive"),'fish')}`,
 
-        'reset-cr': (inc)=>`${toTextStyle('방사능 '+icon("radioactive"),'core')} 환생을 하는 대신, 방사능의 한계치가 <b>${formatMult(inc,0)}</b> 만큼 늘어나며, 방사능 부스트가 강화되며 가끔 새 능력이 추가 될 수 있음. 한계치에 도달해야 환생이 가능함.`,
+        'reset-cr': (inc)=>`${toTextStyle('방사능 '+icon("radioactive"),'core')} 환생을 하는 대신, 방사능의<br>한계치가 <b>${formatMult(inc,0)}</b> 만큼 늘어나며,<br>방사능 부스트가 강화되며 가끔 새 능력이 추가 될 수 있습니다.<br>한계치에 도달해야 환생이 가능합니다.`,
 
         'cr-boosts': [
-            x=>`핵 반응로의 첫 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
+            x=>`${toTextStyle('핵','core')} 반응로의 첫 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
             x=>`${toTextStyle('마그마','core')} 파편을 <h4>${formatMult(x)}</h4> 만큼 부스트됩니다`,
             x=>`첫 네개의 ${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
             x=>`두 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 <h4>+${format(x)}</h4> 만큼 늦춰집니다`,
@@ -430,8 +430,8 @@ LANGUAGES.KO = {
             x=>`첫 세개의 ${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
             x=>`${toTextStyle('상어','shark')} 레벨이 ${toTextStyle('상어','shark')} ELO를 <h4>${formatMult(x)}</h4>만큼 부스트 합니다`,
             x=>`<b>돌</b>의 획득량이 <h4>${formatMult(x)}</h4> 증가됩니다`,
-            x=>`<h4>${formatMult(x,3)}</h4>만큼의 탐험 업그레이드 추가 업그레이드를 획득합니다`,
-            x=>`핵 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
+            x=>`<h4>${formatMult(x,3)}</h4>만큼의 <b>탐험 업그레이드 추가 업그레이드</b>를 획득합니다`,
+            x=>`${toTextStyle('핵','core')} 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
         ],
 
         // Evolution Tree  진화 트리
@@ -439,14 +439,14 @@ LANGUAGES.KO = {
         'evolution-tree-row': (r,a) => `<b>${r} 열</b><br>${a}개 더 가능`,
         'evolution-tree-ctn': [
             ["물고기의 몸체", x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('상어','shark')} ELO를<b>${formatMult(x)}</b>만큼 증가시킵니다.`],
-            ["환생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('Shark','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
-            ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('Shark','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["환생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
             ["완벽한 몸체", x=>`${toTextStyle('상어','shark')} ELO가 <b>${formatMult(x,0)}</b>만큼 증가합니다.`],
 
-            ["강철 상어", x=>`추가 <b>철</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["비싼 상어", x=>`추가 <b>니켈</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["강철 상어", x=>`추가 <b>철</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["비싼 상어", x=>`추가 <b>니켈</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
 
             ["마리아나 해구", x=>`<b>태평양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
             ["Litke 딥", x=>`<b>북극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
@@ -502,32 +502,32 @@ LANGUAGES.KO = {
         'evolution-goal-status': (x,y)=>x?"완료":y?"달성 못 함":"현재 진행 중", // need more info
         'evolution-goal-ctn': [
             [
-                x=>`첫 번째 ${toTextStyle("핵",'core')} 환생에서 최소 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 파편을 획득하세요.`,
-                `${toTextStyle("핵",'core')} 진입 시 획득하는 ${toTextStyle("마그마",'core')} 조각의 <b>100%</b>를 매 초마다 획득합니다.`
+                x=>`첫 번째 ${toTextStyle("핵",'core')} 환생에서<br>최소 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 파편을 획득하세요.`,
+                `${toTextStyle("핵",'core')} 진입 시 획득하는<br>${toTextStyle("마그마",'core')} 조각의 <b>100%</b>를 매 초마다 획득합니다.`
             ],[
                 x=>`${toTextStyle("핵",'core')} 조립기를 구매 하지 않고 총 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 조각을 획득하세요.`,
                 ` ${toTextStyle('진화','humanoid')} 환생을 해도 ${toTextStyle("핵",'core')} 조립기를 유지합니다.`
             ],[
-                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 조각 획득.`,
+                x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle("마그마",'core')} 조각 획득하세요.`,
                 `${toTextStyle("마그마",'core')} 조각의 획득 공식을 개선합니다.`
             ],[
-                x=>`${toTextStyle('켈프','kelp')} 생산 없이 총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
+                x=>`${toTextStyle('켈프','kelp')} 생산 없이 총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을<br>획득하세요.`,
                 `환생 시작 시 모든 바다가 최대 깊이 상태로 시작합니다.`,
             ],[
-                x=>`각 바다에서 자원을 생산하지 않고 총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
+                x=>`각 바다에서 자원을 생산하지 않고<br>총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
                 `${toTextStyle('진화','humanoid')} 환생을 해도 연구가 유지됩니다.`,
             ],[
                 x=>`총 <b>${format(x,0)}</b>개의 ${toTextStyle('환생','prestige')} 파편을 획득하세요.`,
                 `${toTextStyle('환생','prestige')} 파편의 획득 공식을 개선합니다.`,
             ],[
-                x=>`<b>10</b>개 이하의 방사선 부스트를 가진 채 총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}을 획득하세요.`,
-                `방사선 부스트는 더 이상 ${toTextStyle('방사선 '+icon("radioactive"),'core')}과 관련한 업그레이드를 초기화 하지 않습니다. 항상 하나의 발전기를 가지고 시작하며, ${toTextStyle('방사선 '+icon("radioactive"),'core')}을 한계 이상으로 소지가 가능합니다.`,
+                x=>`<b>10</b>개 이하의 방사선 부스트를 가진 채<br>총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}을 획득하세요.`,
+                `방사선 부스트는 더 이상 ${toTextStyle('방사선 '+icon("radioactive"),'core')}과<br>관련한 업그레이드를 초기화 하지 않습니다.<br>항상 하나의 발전기를 가지고 시작하며,<br>${toTextStyle('방사선 '+icon("radioactive"),'core')}을 한계 이상으로 소지가 가능합니다.`,
             ],[
-                x=>`방사선 부스트 없이 총<b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
-                `방사선 부스트가 이제 아무것도 초기화 하지 않습니다. 자동 방사선 부스트를 해금합니다.`,
+                x=>`방사선 부스트 없이<br>총<b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득하세요.`,
+                `방사선 부스트가 이제 아무것도 초기화<br>하지 않습니다. 자동 방사선 부스트를<br>해금합니다.`,
             ],[
-                x=>`총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득합니다.`,
-                `첫 번째 ${toTextStyle('상어','shark')} 랭크 스케일링이 <b>+5</b>만큼 미뤄집니다.`,
+                x=>`총 <b>${format(x,0)}</b>마리의 ${toTextStyle('물고기','fish')}를 획득하세요.`,
+                `첫 번째 ${toTextStyle('상어','shark')} 랭크 스케일링이 <b>+5</b> 만큼<br>미뤄집니다.`,
             ],
         ],
 
@@ -586,21 +586,21 @@ LANGUAGES.KO = {
 
         // Particle Accelerator / 입자 가속기
 
-        'particle-accel-condense': x => `${x}을 다음으로 변환:<br>`,
+        'particle-accel-condense': x => `${x}을(를)<br>다음으로 변환:<br>`,
         'particle-accel-boost': [
-            x => `${toTextStyle('방사선 '+icon("radioactive"),'core')} 생산량이 <b>${x}</b> 만큼 증가함.`,
-            x => `모든 바다의 진행이 <b>${x}</b> 만큼 증가함.`,
-            x => `<b>돌</b> 획득량과 채광 대미지가 <b>${x}</b> 만큼 증가함.`,
-            x => `<b>${x}</b> 배 더 많은 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득함.`,
-            x => `첫 번째 ${toTextStyle('핵','core')} 원자로의 스케일링이 <b>${x}</b> 만큼 미뤄짐.`,
-            x => `${toTextStyle("상어",'shark')} ELO의 지수가 <b>${x}</b> 만큼 증가함.`,
+            x => `${toTextStyle('방사선 '+icon("radioactive"),'core')} 생산량이<br><b>${x}</b>만큼 증가함.`,
+            x => `모든 바다의 진행이<br><b>${x}</b> 만큼 증가함.`,
+            x => `<b>돌</b> 획득량과 채광 대미지가<br><b>${x}</b> 만큼 증가함.`,
+            x => `<b>${x}</b> 배<br>더 많은 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득함.`,
+            x => `첫 번째 ${toTextStyle('핵','core')} 원자로의 스케일링이<br><b>${x}</b> 만큼 미뤄짐.`,
+            x => `${toTextStyle("상어",'shark')} ELO의 지수가<br><b>${x}</b> 만큼 증가함.`,
         ],
 
         // Singularity / 특이점
 
         'black-hole-texts': [
             `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을 할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
-            `평행 우주에서는 어떠셨나요? 그래서 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
+            `평행 우주에서는 어떠셨나요? 아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
             `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요? 이제 당신을 엄청난 고난에 넣을 차례입니다!`,
             `진짜로..`,
             `...`,
@@ -610,44 +610,44 @@ LANGUAGES.KO = {
         ],
         get 'singularity-milestones'() {
             return [
-                [`1 Black Hole`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("상어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
-                [`2 Black Holes`,`간격 업그레이드가 안 되어 있는 자동화를 환생 시에도 유지합니다. ${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
-                [`3 Black Holes`,`자동화를 환생 시에도 유지합니다. 채광 이전의 모든 컨텐츠를 해금한 상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')} 상어를 유지합니다. 더 많은 연구를 해금합니다.`],
-                [`4 Black Holes`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도 유지합니다. 입자 가속기가 10배 빨라집니다.`],
-                [`5 Black Holes`,`광석 체력 스케일링이 약해집니다. 새로운 자동화를 해금합니다.`],
-                [`6 Black Holes`,`만든 블랙홀 마다 ${toTextStyle("잔재물",'black-hole')} 획득이 2배 늘어납니다.`],
-                [`7 Black Holes`,`채광을 환생시에도 해금한 상태로 유지합니다.`],
-                [`8 Black Holes`,`${toTextStyle("블랙홀",'black-hole')}의 패널티가 8개의 ${toTextStyle("블랙홀",'black-hole')}을 만들면 사라집니다. 블랙홀을 만들 때의 애니메이션이 사라집니다.`],
+                [`블랙홀 1개`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("상어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
+                [`블랙홀 2개`,`간격 업그레이드가 안 되어 있는 자동화를 환생 시에도 유지합니다. ${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
+                [`블랙홀 3개`,`자동화를 환생 시에도 유지합니다. 채광 이전의 모든 컨텐츠를 해금한 상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')} 상어를 유지합니다. 더 많은 연구를 해금합니다.`],
+                [`블랙홀 4개`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도 유지합니다. 입자 가속기가 10배 빨라집니다.`],
+                [`블랙홀 5개`,`광석 체력 스케일링이 약해집니다. 새로운 자동화를 해금합니다.`],
+                [`블랙홀 6개`,`만든 블랙홀 마다 ${toTextStyle("잔재물",'black-hole')} 획득이 2배 늘어납니다.`],
+                [`블랙홀 7개`,`채광을 환생시에도 해금한 상태로 유지합니다.`],
+                [`블랙홀 8개`,`${toTextStyle("블랙홀",'black-hole')}의 패널티가 8개의 ${toTextStyle("블랙홀",'black-hole')}을 만들면 사라집니다. 블랙홀을 만들 때의 애니메이션이 사라집니다.`],
             ]
         },
 
         'remnant-upgrades': [
-            [`안녕`,x=>`${toTextStyle("상어",'shark')} 레벨 보너스가 ${x} 만큼 강해집니다.`],
-            [`흐름`,x=>`탐험 베이스 배수가 ${x} 만큼 강해집니다.`],
-            [`하프-라이프`,x=>`${toTextStyle("핵",'core')} 원자로가 ${x} 만큼 강해집니다.`],
-            [`낭비할 시간은 없다`,x=>`재련 속도가 ${x} 만큼 빨라집니다.`],
+            [`안녕`,x=>`${toTextStyle("상어",'shark')} 레벨 보너스가<br>${x} 만큼<br>강해집니다.`],
+            [`흐름`,x=>`탐험 베이스 배수가<br>${x} 만큼<br>강해집니다.`],
+            [`하프-라이프`,x=>`${toTextStyle("핵",'core')} 원자로가<br>${x} 만큼<br>강해집니다.`],
+            [`낭비할 시간은 없다`,x=>`재련 속도가<br>${x} 만큼<br>빨라집니다.`],
 
-            [`다시 안녕`,x=>`${toTextStyle("물고기",'fish')}가 자기 자신을 ${x} 만큼 강화시킵니다.`],
-            [`그랜드마스터`,x=>`${toTextStyle("상어",'shark')} 랭크 보너스가 ${x} 만큼 강해집니다.`],
+            [`다시 안녕`,x=>`${toTextStyle("물고기",'fish')}가 자기 자신을<br>${x} 만큼<br>강화시킵니다.`],
+            [`그랜드마스터`,x=>`${toTextStyle("상어",'shark')} 랭크 보너스가<br>${x} 만큼<br>강해집니다.`],
             
-            [`우주적 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 세 스케일링이 ${x} 만큼 늦춰집니다.`],
+            [`우주적 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 세<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
 
-            [`상어 마스터`,x=>`${toTextStyle("상어",'shark')} ELO가 ${x} 만큼 증가합니다.`],
+            [`상어 마스터`,x=>`${toTextStyle("상어",'shark')} ELO가<br>${x} 만큼<br>증가합니다.`],
         ],
         
         // Automation / 자동화
 
         'auto-shark-name': `자동-${toTextStyle("상어","shark")} 레벨`,
-        'auto-su-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("물고기","fish")} 업그레이드`,
-        'auto-spu-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("환생","prestige")} 업그레이드`,
+        'auto-su-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("물고기","fish")}<br>업그레이드`,
+        'auto-spu-name': `자동-${toTextStyle("상어","shark")} ${toTextStyle("환생","prestige")}<br>업그레이드`,
         'auto-eu-name': `자동-탐험 업그레이드`,
         'auto-core_reactor-name': `자동-${toTextStyle("핵","core")} 원자로`,
         'auto-core_radiation-name': `자동-${toTextStyle("핵","core")} 방사선`,
         'auto-radioactive_boosts-name': `자동-방사선 부스트`,
-        'auto-mining_upgs-name': `자동-${toTextStyle("상어","shark")} 채광 업그레이드`,
+        'auto-mining_upgs-name': `자동-${toTextStyle("상어","shark")} 채광<br>업그레이드`,
         'auto-humanoid-name': `자동-${toTextStyle("휴머노이드","humanoid")} 상어`,
-        'auto-research-name': `${toTextStyle("특이점","black-hole")} 이전의 연구`,
-        'auto-mining_tier-name': `자동 채광 티어`,
+        'auto-research-name': `자동-${toTextStyle("특이점","black-hole")}-이전의 연구`,
+        'auto-mining_tier-name': `자동-채광 티어`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -668,7 +668,7 @@ LANGUAGES.KO = {
         'progress-6-text': r => `${format(r)} 개의 ${toTextStyle('마그마','core')} 파편을 모아 다음 ${toTextStyle('핵','core')} 콘텐츠를 해금하세요`, 
         'progress-7-text': r => `${toTextStyle('상어','shark')} 레벨 ${format(r,0)} 에 도달해 새로운 바다를 해금하세요`, 
         'progress-8-text': r => `${format(r)} 개의 ${toTextStyle('마그마','core')} 파편을 모아 다음 ${toTextStyle('핵','core')} 콘텐츠를 해금하세요`, 
-        'progress-9-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요 새로운 ${toTextStyle('핵','core')} 원자로를 해금하세요`, 
+        'progress-9-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달해 새로운 ${toTextStyle('핵','core')} 원자로를 해금하세요`, 
 
         'progress-10-text': r => `총 ${format(r)} 마리의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
         get 'progress-10-cond-text'() { return `당신의 ${toTextStyle('상어','shark')}를 진화시키세요` },
@@ -752,10 +752,10 @@ LANGUAGES.KO = {
         'scaling-info': `스케일링은 일정 수준에 도달할 때 마다 추가됩니다. <b>N</b> - 개수, <b>S</b> - 시작`,
 
         'upgrade-shark': x => `${toTextStyle('상어','shark')} 레벨 올리기<br>비용: ${x.format(0)} ${toTextStyle('물고기','fish')}`,
-        'shark-bonus-fish': x => `+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
-        'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('환생','prestige')} 파편`,
-        'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('마그마','core')} 조각`,
-        'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('잔재물','black-hole')}`,
+        'shark-bonus-fish': x => `<br>+${x.format(0)} ${toTextStyle('물고기','fish')} 베이스`,
+        'shark-bonus-prestige': x => `<br>${formatMult(x)} ${toTextStyle('환생','prestige')} 파편`,
+        'shark-bonus-core': x => `<br>${formatMult(x)} ${toTextStyle('마그마','core')} 조각`,
+        'shark-bonus-remnants': x => `<br>+${x.format(0)} ${toTextStyle('잔재물','black-hole')}`,
 
         'shark-overpopulation': (x,y) => `${toTextStyle('Shark','shark')}가 너무 많아 <h4>${toTextStyle(format(y),'fish')}</h4>마리 이상의 ${toTextStyle('물고기','fish')}가 <h4>${format(x,3)}√</h4>만큼 줄어듭니다.`,
 
@@ -773,7 +773,7 @@ LANGUAGES.KO = {
         'cost': "비용",
         'buyMax': "최대 구매",
         'require': "요구",
-        'next-at': "다음", // need to fix
+        'next-at': "다음: ", // need to fix
         'depth': "깊이",
         'reward': "보상",
         'new-preset': "새로운 프리셋",
