@@ -103,31 +103,37 @@ const RESETS = {
     'black-hole': {
         get require() { return player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).gte(6) }, 
         reset(force) {
-            if (!force && !tmp.bh_pause && player.feature < 18) {
-                tmp.bh_pause = true
+            if (!force && !tmp.bh_pause) {
+                if (player.singularity.best_bh.lt(8)) {
+                    tmp.bh_pause = true
 
-                el('black-hole').style.width = el('black-hole').style.height = "200vmax"
-
-                setTimeout(() => {
-                    el('title-center').style.opacity = 1
-                    el('title-center').innerHTML = lang_text('black-hole-texts')[player.singularity.bh.toNumber()] ?? "???"
+                    el('black-hole').style.width = el('black-hole').style.height = "200vmax"
 
                     setTimeout(() => {
-                        el('title-center').style.opacity = 0
-    
+                        el('title-center').style.opacity = 1
+                        el('title-center').innerHTML = lang_text('black-hole-texts')[player.singularity.bh.toNumber()] ?? "???"
+
                         setTimeout(() => {
-                            el('title-center').style.innerHTML = ""
-                            el('black-hole').style.width = el('black-hole').style.height = "0px"
+                            el('title-center').style.opacity = 0
+        
+                            setTimeout(() => {
+                                el('title-center').style.innerHTML = ""
+                                el('black-hole').style.width = el('black-hole').style.height = "0px"
 
-                            tmp.bh_pause = false
-                            player.singularity.best_bh = player.singularity.best_bh.max(player.singularity.bh = player.singularity.bh.add(1))
-                            player.singularity.first = true
+                                tmp.bh_pause = false
+                                player.singularity.best_bh = player.singularity.best_bh.max(player.singularity.bh = player.singularity.bh.add(1).min(8))
+                                player.singularity.first = true
 
-                            updateTemp()
-                            this.doReset()
-                        }, 5000);
-                    }, 10000);
-                }, 5000);
+                                updateTemp()
+                                this.doReset()
+                            }, 5000);
+                        }, 10000);
+                    }, 5000);
+                } else {
+                    player.singularity.bh = player.singularity.bh.add(1).min(8)
+                    updateTemp()
+                    this.doReset()
+                }
             }
         },
         doReset() {
@@ -147,10 +153,10 @@ const RESETS = {
 
             if (bh.lt(4)) {
                 h.goal = []
+            } else {
+                h.goal = [0,1,2,3,4,5,6,7,8]
             }
 
-            h.faith = [E(0), E(0), E(0)],
-            h.tree = []
             h.mining_tier = E(0)
 
             h.forge.queue = ''
@@ -158,17 +164,20 @@ const RESETS = {
 
             h.particle_accel.active = -1
 
-            for (let x of PRE_BH_RESEARCH) player.research[x] = E(0);
-
             for (let x of ORE_KEYS) h.ores[x] = E(0);
-            for (let x of FORGE_KEYS) h.forge.level[x] = 0;
+            if (!hasSMilestone(8)) {
+                h.faith = [E(0), E(0), E(0)],
+                h.tree = []
+                for (let x of FORGE_KEYS) h.forge.level[x] = 0;
+                for (let x of PRE_BH_RESEARCH) player.research[x] = E(0);
+            }
             for (let x in PARTICLE_ACCELERATOR) h.particle_accel.percent[x] = E(0);
 
             resetSharkUpgrades('m1','m2','m3','m4','m5')
 
             RESETS.humanoid.doReset()
 
-            tab = 0, tab_name = 'shark', stab = stab.map(x=>0)
+            if (player.singularity.sac_times == 0) tab = 0, tab_name = 'shark', stab = stab.map(x=>0);
 
             player.singularity.remnants = E(0)
             for (let i = 0; i < REMNANT_UPGS.length; i++) player.singularity.upgs[i] = E(0);
@@ -182,6 +191,25 @@ const RESETS = {
             ores_grid = []
 
             tmp.pass = 2
+        },
+    },
+    sacrifice: {
+        get require() { return player.fish.gte(CURRENCIES['dark-matter'].require) && player.singularity.bh.gte(8) },
+        reset(force) {
+            if (!force) {
+                gainCurrency('dark-matter',tmp.currency_gain['dark-matter'])
+                player.singularity.sac_times++
+                increaseFeature(19)
+            }
+
+            this.doReset()
+        },
+        doReset() {
+            player.singularity.bh = player.research.dm1
+
+            if (!hasSMilestone(10)) resetResearch('s1','s2','s3');
+
+            RESETS["black-hole"].doReset()
         },
     },
 }

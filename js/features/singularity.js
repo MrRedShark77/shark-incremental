@@ -24,6 +24,20 @@ const S_MILESTONES = [
         unl:()=>true,
         req:()=>player.singularity.bh.gte(8),
     },
+
+    {
+        unl:()=>player.feature>=18,
+        req:()=>CURRENCIES["dark-matter"].total.gte(1),
+    },{
+        unl:()=>player.feature>=18,
+        req:()=>CURRENCIES["dark-matter"].total.gte(10),
+    },{
+        unl:()=>player.feature>=18,
+        req:()=>CURRENCIES["dark-matter"].total.gte(1e6),
+    },{
+        unl:()=>false,
+        req:()=>CURRENCIES["dark-matter"].total.gte(1e12),
+    },
 ]
 
 const REMNANT_UPGS = [
@@ -70,6 +84,7 @@ const REMNANT_UPGS = [
         cost:a=>a.add(1).pow(1.25).pow_base(100),
         bulk:a=>a.log(100).root(1.25).floor(),
         effect(a) {
+            if (hasResearch('dm2')) a = a.sqr();
             let x = player.fish.add(1).log10().add(1).log10().add(1).pow(a)
             return x
         },
@@ -83,9 +98,7 @@ const REMNANT_UPGS = [
             return x
         },
         effDesc: x=>"+"+formatPercent(x.sub(1)),
-    },
-
-    {
+    },{
         unl:()=>player.singularity.best_bh.gte(4),
         cost:a=>a.add(1).pow(1.25).pow_base(100).mul(1e4),
         bulk:a=>a.div(1e4).log(100).root(1.25).floor(),
@@ -94,17 +107,45 @@ const REMNANT_UPGS = [
             return x
         },
         effDesc: x=>formatMult(x),
-    },
-
-    {
+    },{
         unl:()=>player.singularity.best_bh.gte(5),
         cost:a=>a.add(1).pow(1.25).pow_base(5).mul(20),
         bulk:a=>a.div(20).log(5).root(1.25).floor(),
         effect(a) {
+            if (hasResearch('dm3')) a = a.pow(3.5);
             let x = a.pow_base(10)
             return x
         },
         effDesc: x=>formatMult(x),
+    },
+
+    {
+        unl:()=>player.feature>=19,
+        cost:a=>a.add(1).pow(1.25).pow_base(1e5).mul(1e55),
+        bulk:a=>a.div(1e55).log(1e5).root(1.25).floor(),
+        effect(a) {
+            let x = a.add(1).pow(2)
+            return x
+        },
+        effDesc: x=>formatPow(x,0),
+    },{
+        unl:()=>player.feature>=19,
+        cost:a=>a.add(1).sumBase(1.1).pow_base(1e5).mul(1e65),
+        bulk:a=>a.div(1e65).log(1e5).sumBase(1.1,true).floor(),
+        effect(a) {
+            let x = a.pow_base(2)
+            return x
+        },
+        effDesc: x=>formatMult(x,0),
+    },{
+        unl:()=>player.feature>=19,
+        cost:a=>a.add(1).pow(1.25).pow_base(1e5).mul(1e95),
+        bulk:a=>a.div(1e95).log(1e5).root(1.25).floor(),
+        effect(a) {
+            let x = a.add(1).pow(2)
+            return x
+        },
+        effDesc: x=>formatMult(x,0),
     },
 ]
 
@@ -113,7 +154,7 @@ function buyRemnantUpg(i) {
     if (u.unl() && amt.gte(cost = u.cost(lvl = player.singularity.upgs[i]))) {
         let bulk = lvl.add(1).max(u.bulk(amt))
         player.singularity.upgs[i] = bulk
-        player.singularity.remnants = amt.sub(u.cost(bulk.sub(1))).max(0)
+        if (!hasSMilestone(10)) player.singularity.remnants = amt.sub(u.cost(bulk.sub(1))).max(0)
     }
 }
 
@@ -121,7 +162,7 @@ function hasSMilestone(i) { return S_MILESTONES[i].req() }
 function remnantUpgEffect(i,def=1) { return tmp.remnant_upg_effects[i]??def }
 
 function updateSingularityTemp() {
-    tmp.bh_reduction = player.singularity.bh.gte(8) ? E(1) : Decimal.div(1,player.singularity.bh.pow(2).div(20).add(1))
+    tmp.bh_reduction = player.singularity.bh.gte(8) ? E(1) : Decimal.div(1,player.singularity.bh.sub(player.research.dm1).max(0).pow(2).div(20).add(1))
 
     for (let i = 0; i < REMNANT_UPGS.length; i++) {
         let u = REMNANT_UPGS[i]

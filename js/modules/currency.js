@@ -9,10 +9,10 @@ const CURRENCIES = {
         get gain() {
             let x = getSharkBonus("fish").mul(sharkUpgEffect('s1')).mul(sharkUpgEffect('p1')).mul(sharkUpgEffect('p2'))
 
-            .mul(tmp.explore_eff[0]).mul(tmp.core_bonus)
+            .mul(tmp.explore_eff[0][0]).mul(tmp.core_bonus)
 
             x = x.pow(sharkUpgEffect('s4')).pow(tmp.explore_eff[2]).pow(coreReactorEffect(0)).pow(getSharkRankBonus('fish')).pow(simpleETEffect(12))
-            .pow(remnantUpgEffect(4))
+            .pow(remnantUpgEffect(4)).pow(tmp.explore_eff[0][1])
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
@@ -56,13 +56,15 @@ const CURRENCIES = {
             if (hasResearch('p4')) exp += 0.05
             if (hasEvolutionGoal(5)) exp += 0.0125
 
-            x = expPow(x,exp).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1])
+            x = expPow(x,exp).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1][0])
 
             x = x.pow(tmp.explore_eff[3]).pow(simpleETEffect(13)).pow(getSharkRankBonus('prestige')).pow(forgeUpgradeEffect('shard'))
+            .pow(tmp.explore_eff[1][1])
+
+            if (hasResearch('dm2')) x = x.pow(remnantUpgEffect(4))
 
             if (hasDepthMilestone(0,0)) x = x.pow(1.05)
             if (inExploration(1)) x = x.root(2)
-
             if (tmp.cr_active) x = x.root(3);
 
             x = expPow(x,forgeUpgradeEffect('refined_shard'))
@@ -131,13 +133,37 @@ const CURRENCIES = {
         get gain() {
             if (!S_MILESTONES[0].req()) return E(0)
 
-            let x = E(1).add(getSharkBonus('remnants',0)).mul(getSharkRankBonus('remnants'))
+            let x = E(1).add(getSharkBonus('remnants',0)).mul(getSharkRankBonus('remnants')).mul(getCRBoost(12))
 
             if (hasResearch('s1')) x = x.mul(researchEffect('s1'));
+            if (hasResearch('dm7')) x = x.mul(researchEffect('dm7'));
             if (player.singularity.best_bh.gte(6)) x = x.mul(player.singularity.bh.pow_base(2));
 
             return x
         },
+    },
+    'dark-matter': {
+        get require() { return E('ee10000') },
+
+        get amount() { return player.singularity.dm },
+        set amount(v) { player.singularity.dm = v.max(0) },
+
+        get total() { return player.singularity.total_dm },
+        set total(v) { player.singularity.total_dm = v.max(0) },
+
+        get gain() {
+            let x = player.fish.max(10).log10().log10().sub(1e4)
+
+            if (x.lt(0) || player.singularity.bh.lt(8)) return E(0)
+
+            x = x.div(2e3).add(1).pow(.5).sub(1).pow_base(100)
+
+            x = x.mul(getCRBoost(11))
+    
+            return x.floor()
+        },
+
+        get passive() { return 0 },
     },
 }
 

@@ -49,7 +49,7 @@ const CORE_REACTOR = [
                 x = x.mul(player.explore.res[i].add(10).log10())
             }
 
-            x = Decimal.pow(expPow(x,0.5),l).pow(coreReactorEffect(6))
+            x = Decimal.pow(expPow(x,0.5),l.mul(coreReactorEffect(6)).overflow(1e25,0.5))
 
             if (hasEvolutionTree(34)) x = x.pow(1.06)
 
@@ -132,6 +132,8 @@ const CORE_REACTOR = [
 function getCoreReactorCost(i,l) {
     let CR = CORE_REACTOR[i], x = l??player.core.reactor[i]
 
+    x = x.scale(1e15,3,"P")
+
     if (i < 4) x = (i==0 || i==3) && hasResearch('c8') ? x.scale(tmp.core_scale1,1.5,'P') : x.scale(tmp.core_scale1,3,'E2')
     else x = x.scale(10,2,'P')
 
@@ -143,6 +145,8 @@ function getCoreReactorBulk(i,res) {
 
     if (i < 4) y = (i==0 || i==3) && hasResearch('c8') ? y.scale(tmp.core_scale1,1.5,'P',true) : y.scale(tmp.core_scale1,3,'E2',true)
     else y = y.scale(10,2,'P',true)
+
+    x = x.scale(1e15,3,"P",true)
 
     return y.floor().add(1)
 }

@@ -162,6 +162,19 @@ const AUTOMATION = {
             MINING_TIER.upgrade(true)
         },
     },
+    remnant: {
+        unl: ()=>hasSMilestone(10),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e6,x+1).mul(1e60),
+        bulk: x=>x.div(1e60).log(1e6).floor(),
+
+        curr: "remnants",
+
+        trigger() {
+            for (let i = 0; i < REMNANT_UPGS.length; i++) buyRemnantUpg(i);
+        },
+    },
 }
 
 for (let [i,x] of Object.entries(AUTOMATION)) {

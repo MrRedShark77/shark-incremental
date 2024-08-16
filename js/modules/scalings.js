@@ -15,7 +15,7 @@ const SCALINGS = {
         base: [
             [25,2,"P"],
             [1250,3,"E2"],
-            [4000,3,"P"],
+            [5000,3,"P"],
         ],
     },
     su_s3: {
@@ -62,6 +62,7 @@ const SCALINGS = {
         base: [
             [10,2,"P"],
             [30,2,"P"],
+            [1500,2,"ME2"],
         ],
     },
     mining_tier: {
@@ -86,6 +87,8 @@ function getScalingStarts(id) {
 
             let r = remnantUpgEffect(6)
             for (let i = 0; i < 3; i++) b[i] = Decimal.mul(b[i],r);
+
+            b[3] = Decimal.mul(b[3],remnantUpgEffect(10))
 
             break
         }

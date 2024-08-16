@@ -377,6 +377,89 @@ const RESEARCH = {
             ['remnants',false,1e30],
         ],
     },
+    s3: {
+        bh: true,
+        unl: ()=>player.singularity.best_bh.gte(8),
+        require: [
+            ['remnants',false,1e48],
+        ],
+    },
+    s4: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',true,1e4],
+            ['remnants',false,1e70],
+        ],
+    },
+    s5: {
+        max: 6,
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['remnants',false,a=>a.pow_base(1e15).mul(1e75),a=>a.div(1e75).log(1e15).add(1).floor()],
+        ],
+    },
+    
+    dm1: {
+        max: 8,
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',true,a=>a.pow_base(10).ceil(),a=>a.log(10).add(1).floor()],
+        ],
+        onBuy() {
+            player.singularity.bh = player.singularity.bh.max(player.research.dm1)
+        },
+    },
+    dm2: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,1],
+        ],
+    },
+    dm3: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,10],
+        ],
+    },
+    dm4: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,100],
+        ],
+    },
+    dm5: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,1e6],
+        ],
+    },
+    dm6: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,1e8],
+            ['core',false,'e5e17'],
+        ],
+    },
+    dm7: {
+        bh: true,
+        unl: ()=>player.feature>=19,
+        require: [
+            ['dark-matter',false,1e10],
+            ['remnants',false,'1e110'],
+        ],
+        effect(r) {
+            return CURRENCIES['dark-matter'].total.add(1)
+        },
+        effDesc: x => formatMult(x),
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
@@ -387,12 +470,13 @@ const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => !('bh' in RESEARCH[x]))
 var research_page = 1
 
 function setupResearchHTML() {
+    let text = lang_text('all-research')
     el('research-table').innerHTML = Object.entries(RESEARCH).map(
         ([i,x]) => {
             return `
             <div class="research-div" id="research-${i}-div">
-                <div class="research-name">${lang_text('research-'+i+'-name')}</div>
-                <div class="research-desc" id="research-${i}-desc">${x.desc}</div>
+                <div class="research-name">${text[i]?.[0] ?? lang_text('research-'+i+'-name')}</div>
+                <div class="research-desc" id="research-${i}-desc">???</div>
                 <div class="research-short-text" id="research-${i}-require"></div>
                 <div class="research-status" id="research-${i}-status">
                     <div><b>Not Purchased</b></div>
@@ -452,7 +536,7 @@ function changeResearchPage(diff) {
 }
 
 function updateResearchHTML() {
-    let text = [lang_text('effect'),lang_text('level'),lang_text('require')]
+    let text = [lang_text('effect'),lang_text('level'),lang_text('require'),lang_text('all-research')]
 
     var hidden = player.radios['visible-research']
     var visible_research = (hidden ? RESEARCH_KEYS.filter(x => !isResearchMaxed(x)) : RESEARCH_KEYS).filter(x => RESEARCH[x].unl())
@@ -478,7 +562,7 @@ function updateResearchHTML() {
         if (unl) {
             let amt = player.research[i], max = x.max??1, bought = amt.gte(max), afford = true
 
-            el(el_id+"-desc").innerHTML = `<b style="font-size:12px">[${i}]</b> ` + lang_text(el_id+"-desc")
+            el(el_id+"-desc").innerHTML = `<b style="font-size:12px">[${i}]</b> ` + (text[3][i]?.[1] ?? lang_text(el_id+"-desc"))
             el(el_id+"-require").style.display = el_display(!bought)
             el(el_id+"-button").style.display = el_display(!bought)
             if ((x.max??1)>1&&!x.noBuyMax) el(el_id+"-max-button").style.display = el_display(!bought)

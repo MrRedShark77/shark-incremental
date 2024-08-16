@@ -1,6 +1,28 @@
-function sumBase(x,a,b) {
-    return Decimal.div(Decimal.pow(a,x).sub(1),Decimal.sub(a,1)).mul(b)
+function sumBase(x,a) {
+    return Decimal.pow(a,x).sub(1).div(Decimal.sub(a,1))
 }
+function revSumBase(x,a) {
+    return Decimal.mul(x,Decimal.sub(a,1)).add(1).log(a).floor()
+}
+
+Decimal.prototype.sumBase = function(a,rev=false) { return rev ? revSumBase(this,a) : sumBase(this,a) }
+
+function powPO(x,b,rev=false) {
+    if (Decimal.lt(b,1.4285714287176406e-8)) {
+        return rev ? Decimal.ln(x).div(b) : Decimal.mul(x,b).exp();
+    } else {
+        return rev ? Decimal.log(x,Decimal.add(b,1)) : Decimal.add(b,1).pow(x);
+    }
+}
+
+Decimal.prototype.powPO = function(x,rev) { return powPO(this,x,rev) }
+
+function sumBasePO(x,a,rev=false) {
+    if (Decimal.lte(a,0)) return x
+    return rev ? Decimal.mul(x,a).add(1).powPO(a,true) : powPO(x,a).sub(1).div(a)
+}
+
+Decimal.prototype.sumBasePO = function(x,rev) { return sumBasePO(this,x,rev) }
 
 function calcLevelBonus(l,l0,b) {
     var r = Decimal.div(l,l0).floor(), c = Decimal.sub(l,r.mul(l0))

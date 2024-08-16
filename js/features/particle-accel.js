@@ -148,7 +148,7 @@ function updatePAHtml() {
         lang_text('particle-accel-boost'),
     ]
 
-    let unl = player.feature >= 18 || player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).lt(6)
+    let unl = player.singularity.bh.gte(8) || player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).lt(6)
 
     el("particle-accel-table").style.display = el_display(unl)
     el("black-hole-button").style.display = el_display(!unl)

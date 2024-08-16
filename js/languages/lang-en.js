@@ -38,6 +38,9 @@ LANGUAGES.EN = {
         'remnants-name': "Remnants",
         'remnants-costName': toTextStyle('Remnants','black-hole'),
 
+        'dark-matter-name': "Dark Matter",
+        'dark-matter-costName': toTextStyle('Dark Matter','black-hole'),
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
 
         'sharkoid-faith': toTextStyle('Sharkoid Faith','humanoid'),
@@ -51,6 +54,9 @@ LANGUAGES.EN = {
         'curr-top-2-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')}`, 
         'curr-top-2-reset': (x,next) => `Evolve your ${toTextStyle('Sharks','shark')} into <b>${format(x,0)}</b> ${toTextStyle('Humanoid','humanoid')} Sharks (Next at <b>${format(next)}</b> ${toTextStyle('Fish','fish')})`,
 
+        'curr-top-3-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')} & <b>8</b> ${toTextStyle('Black Holes','black-hole')}`, 
+        'curr-top-3-reset': x => `Sacrifice your ${toTextStyle('Sharks','shark')} for <b>${format(x,0)}</b> ${toTextStyle('Dark Matter','black-hole')}`,
+        
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
         // Tabs
@@ -318,6 +324,22 @@ LANGUAGES.EN = {
         'research-s2-name': "Better Rank Boost",
         'research-s2-desc': `Improve ${toTextStyle("Shark",'shark')} rank boost to ${toTextStyle('Prestige','prestige')} shards.`,
 
+        'research-s3-name': "Pure Oceans",
+        'research-s3-desc': `The <b>Pacific & Arctic oceans</b> provide an exponential boost, and improve the <b>Atlantic & Southern oceans</b>.`,
+
+        'all-research': {
+            's4': ["Pure Oceans II",`The <b>Indian Ocean</b> provides an exponential boost at a reduced rate.`],
+            's5': ["Pure Oceans III",`The first <b>N</b> Oceans' depth progress reductions are removed until the <b>Indian Ocean</b>. The 6th level improves the 10th radioactive bonus.`],
+
+            'dm1': ["Starting Black Hole",`Start with a <b>+1</b> ${toTextStyle("Black Hole",'black-hole')} formed on sacrifice per level. Every starting black hole delays reduction.`],
+            'dm2': ["Better Remnant I",`Improve the ${toTextStyle("Remnant",'black-hole')} upgrade "Welcome Again", it affects ${toTextStyle("Prestige",'prestige')} shards.`],
+            'dm3': ["Better Remnant II",`Improve the ${toTextStyle("Remnant",'black-hole')} upgrade "Shark Master".`],
+            'dm4': ["Better Remnant III",`Improve the ${toTextStyle("Shark",'shark')} level & rank boosts for ${toTextStyle("Remnant",'black-hole')} generation.`],
+            'dm5': ["Softcapless Core Temperature",`Remove the softcap of the ${toTextStyle('Core','core')}'s temperature.`],
+            'dm6': ["Better Radiation Generator",`${toTextStyle('Radiation '+icon('radioactive'),'core')} generator raises itself to the exponent at a reduced rate.`],
+            'dm7': ["Dark Remnants",`Total ${toTextStyle("Dark Matter",'black-hole')} boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
+        },
+
         // Exploration
 
         'explore-while': `While exploring`,
@@ -432,6 +454,8 @@ LANGUAGES.EN = {
             x=>`Boost <b>Stone</b> amount by <h4>${formatMult(x)}</h4>.`,
             x=>`Provide a <h4>${formatMult(x,3)}</h4> bonus purchase for exploration upgrades.`,
             x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the second row.`,
+            x=>`Boost ${toTextStyle('Dark Matter','black-hole')} by <h4>${formatMult(x)}</h4>.`,
+            x=>`Boost ${toTextStyle('Remnant','black-hole')} generation by <h4>${formatMult(x)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -612,12 +636,17 @@ LANGUAGES.EN = {
             return [
                 [`1 Black Hole`,`Unlock ${toTextStyle("Remnants",'black-hole')}. ${toTextStyle("Shark",'shark')} Level boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
                 [`2 Black Holes`,`Start with automations unlocked on reset, with starting interval. ${toTextStyle("Shark",'shark')} Rank boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
-                [`3 Black Holes`,`Keep automations on reset. Start with pre-cultivation features unlocked and 10 ${toTextStyle("Humanoid",'humanoid')} Sharks. Unlock new more research.`],
+                [`3 Black Holes`,`Keep automations on reset. Start with pre-cultivation features unlocked and 10 ${toTextStyle("Humanoid",'humanoid')} Sharks. Unlock more new research.`],
                 [`4 Black Holes`,`Keep ${toTextStyle("Evolution",'humanoid')} goals competed on reset. Particle accelerators are ten times faster.`],
                 [`5 Black Holes`,`Ore’s health scales weaker. Unlock more automations.`],
                 [`6 Black Holes`,`Double ${toTextStyle("Remnant",'black-hole')} generation every black hole you formed.`],
                 [`7 Black Holes`,`Start with cultivation unlocked on reset.`],
-                [`8 Black Holes`,`${toTextStyle("Black Hole",'black-hole')}’s penalties are now removed if you have formed 8 current ${toTextStyle("Black Holes",'black-hole')}. Forming it no longer plays animation.`],
+                [`8 Black Holes`,`${toTextStyle("Black Hole",'black-hole')}’s penalties are now removed if you have formed 8 current ${toTextStyle("Black Holes",'black-hole')}. Forming it no longer plays animation. Unlock next feature.`],
+            
+                [`1 Total Dark Matter`,`Keep pre-${toTextStyle("Singularity",'black-hole')} research, ${toTextStyle("Evolution",'humanoid')} tree, and forges on reset. Unlock more research.`],
+                [`10 Total Dark Matter`,`Automatically activate all particle accelerators at once.`],
+                [`${format(1e6)} Total Dark Matter`,`Keep research <b>s1-s3</b> on sacrifice. Unlock new automation. Remnant upgrades no longer spend remnants.`],
+                [`${format(1e12)} Total Dark Matter`,`Unlock next feature.`],
             ]
         },
 
@@ -629,10 +658,12 @@ LANGUAGES.EN = {
 
             [`Welcome Again`,x=>`${toTextStyle("Fish",'fish')} boosts itself by ${x}.`],
             [`Grandmaster`,x=>`${toTextStyle("Shark",'shark')} Rank Bonuses are ${x} stronger.`],
-            
             [`Galactic Level`,x=>`The first 3 scalings of ${toTextStyle("Shark",'shark')} Level are delayed by ${x}.`],
-
             [`Shark Master`,x=>`${toTextStyle("Shark",'shark')} ELO is increased by ${x}.`],
+
+            [`Bottomless Depth`,x=>`Each ocean's depth progress is boosted by ${x}.`],
+            [`Hot Potato`,x=>`Radioactive boosts are ${x} stronger.`],
+            [`Mega Level`,x=>`The fourth scaling of ${toTextStyle("Shark",'shark')} Level is delayed by ${x}.`],
         ],
 
         // Automation
@@ -648,6 +679,7 @@ LANGUAGES.EN = {
         'auto-humanoid-name': `Auto-${toTextStyle("Humanoid","humanoid")} Shark`,
         'auto-research-name': `Auto-Pre-${toTextStyle("Singularity","black-hole")} Research`,
         'auto-mining_tier-name': `Auto-Mining Tier`,
+        'auto-remnant-name': `Auto-${toTextStyle("Remnant","black-hole")} Upgrades`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -683,6 +715,11 @@ LANGUAGES.EN = {
         get 'progress-16-cond-text'() { return `Form ${toTextStyle('Black Hole','black-hole')}` },
 
         'progress-17-text': r => `Form ${format(r,0)} ${toTextStyle('Black Holes','black-hole')}`,
+
+        'progress-18-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
+        get 'progress-18-cond-text'() { return `Do a ${toTextStyle('Sacrifice','black-hole')}` },
+
+        'progress-19-text': r => `Reach ${format(r)} total ${toTextStyle('Dark Matter','black-hole')}`,
 
         'maxed-progress': "All features unlocked!",
 
@@ -720,14 +757,24 @@ LANGUAGES.EN = {
             `
         },
         get 'reset-black-hole-message'() {
-            let e = toTextStyle('Black Hole','black-hole'), c = toTextStyle('Evolution','humanoid'), m = toTextStyle('Magmatic','core'), p = toTextStyle('Prestige','prestige')
+            let e = toTextStyle('Black Hole','black-hole'), c = toTextStyle('Evolution','humanoid')
             return `
-            <h3>${e}</h3><br>
+            <h3>The ${e}</h3><br>
             The ${e} is the fourth and major reset layer.
             Forming the ${e} resets everything ${c} does, as well as shark rank, humanoid sharks, evolution tree, sharkoid faith, evolution goals, cultivation, forge, particle accelerators, some research, some automations, and some feature progress for a new ${e}.
             However, every ${e} reduces resources a bit, but it unlocks benefits like milestones.<br>
             <img src="textures/black-hole.png"><br>
             Are you sure you want to enter another universe?
+            `
+        },
+        get 'reset-sacrifice-message'() {
+            let e = toTextStyle('Sacrifice','black-hole'), c = toTextStyle('Black Hole','black-hole')
+            return `
+            <h3>The ${e}</h3><br>
+            The ${e} is the reset mini-layer.
+            Sacrificing your sharks resets everything the ${c} does, as well as current black holes (except the first 7 milestones), remnants, remnant upgrades, and some research for ${toTextStyle('Dark Matter','black-hole')}.<br>
+            <img src="textures/sacrifice.png"><br>
+            Are you sure you want to sacrifice your sharks?
             `
         },
         
@@ -831,5 +878,6 @@ LANGUAGES.EN = {
         'confirm-core': "Enter the Core",
         'confirm-humanoid': "Evolve Sharks",
         'confirm-black-hole': "Form the Black Hole",
+        'confirm-sacrifice': "Sacrifice Sharks",
     },
 }

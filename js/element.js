@@ -56,7 +56,7 @@ function setupTopCurrenciesHTML() {
     for (let [i,x] of Object.entries(TOP_CURR)) {
         h += `
         <div class="curr-top" id="curr-top-${i}-div">
-            <div id="curr-top-${i}-amt1"><span id="curr-top-${i}-amt2">???</span> ${CURRENCIES[x.curr].costName}</div><button onclick="doReset('${x.curr}')" id="curr-top-${i}-btn">Reset</button>
+            <div id="curr-top-${i}-amt1"><span id="curr-top-${i}-amt2">???</span> ${CURRENCIES[x.curr].costName}</div><button onclick="doReset('${x.reset ?? x.curr}')" id="curr-top-${i}-btn">Reset</button>
         </div>
         `
     }

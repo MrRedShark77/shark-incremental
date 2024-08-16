@@ -41,7 +41,7 @@ const EVOLUTION_TREE = {
         ()=>2 * simpleETEffect(39),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2).mul(simpleETEffect(36)),
-        ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5).mul(simpleETEffect(37)),
+        ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5).mul(simpleETEffect(37)).overflow(1e9,0.5),
         ()=>CURRENCIES.humanoid.amount.mul(simpleETEffect(38)),
         ()=>30 * simpleETEffect(39),
 

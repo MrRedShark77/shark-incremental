@@ -6,7 +6,11 @@ const SHARK = {
         fish: [()=>player.shark_level.gte(1),l=>expPow(Decimal.pow(tmp.shark_base,l).mul(l),getCRBoost(5)),E(0)],
         prestige: [()=>player.shark_level.gte(20),l=>Decimal.add(1.25,simpleResearchEffect('p1',0)).pow(l.sub(19)),E(1)],
         core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)).overflow('ee3',0.5),E(1)],
-        remnants: [()=>player.shark_level.gte(1)&&hasSMilestone(0),l=>l,E(0)],
+        remnants: [()=>player.shark_level.gte(1)&&hasSMilestone(0),l=>{
+            let x = l
+            if (hasResearch('dm4')) x = x.mul(expPow(l,0.25).pow_base(2));
+            return x
+        },E(0)],
     },
 
     bonus() {
@@ -47,7 +51,11 @@ const SHARK = {
             mining_damage: [()=>player.shark_rank.gte(70),l=>Decimal.pow(1.25,l.sub(69)).softcap(1e4,3,3),E(1)],
             so: [()=>player.shark_rank.gte(100),l=>Decimal.pow(1.5,l.sub(99)),E(1)],
             vibranium: [()=>player.shark_rank.gte(1000),l=>Decimal.pow(1.1,l.sub(999).root(1.5)),E(1)],
-            remnants: [()=>player.shark_rank.gte(1)&&hasSMilestone(1),l=>l.add(1),E(1)],
+            remnants: [()=>player.shark_rank.gte(1)&&hasSMilestone(1),l=>{
+                let x = l.add(1)
+                if (hasResearch('dm4')) x = x.mul(expPow(l,0.5).pow_base(4));
+                return x
+            },E(1)],
         },
     },
 }

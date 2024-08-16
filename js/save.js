@@ -78,6 +78,10 @@ function getPlayerData() {
             best_bh: E(0),
             remnants: E(0),
             upgs: [],
+
+            dm: E(0),
+            total_dm: E(0),
+            sac_times: 0,
         },
 
         radios: {},
@@ -88,6 +92,8 @@ function getPlayerData() {
         latest_time: Date.now(),
 
         language: "EN",
+
+        VERSION: VERSION,
     }
 
     for (let x in SHARK_UPGRADES) s.shark_upg[x] = E(0);

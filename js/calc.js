@@ -38,7 +38,7 @@ function calc(dt) {
             for (let i in EXPLORE) {
                 i = parseInt(i)
                 if (u > i) {
-                    var c = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt))
+                    var c = calcNextDepth(player.explore.depth[i], tmp.depth_gain[i].mul(dt), i)
                     if (i >= 4 || !hasEvolutionTree(i+8)) if (i < 4 || !research_e6) c = c.min(EXPLORE[i].maxDepth)
                     player.explore.depth[i] = c
                 }
@@ -113,20 +113,30 @@ function calc(dt) {
 
         if (player.feature >= 16) {
             let p = player.humanoid.particle_accel, a = p.active, b4 = player.singularity.best_bh.gte(4)
-            if (a > -1) {
-                if (p.percent[a].lt(1)) {
-                    let PA = PARTICLE_ACCELERATOR[a]
-    
-                    let pg = PA.percent(CURRENCIES[PA.curr].amount).max(0)
-                    let s = p.percent[a].add(b4?dt/10:dt/100).max(0)
-    
-                    if (s.lt(pg)) {
-                        p.percent[a] = s.max(p.percent[a]).min(1)
-                    } else {
-                        p.percent[a] = pg.max(p.percent[a]).min(1)
-                        p.active = -1
-                    }
-                } else p.active = -1;
+            if (hasSMilestone(9)) {
+                for (let i = 0; i < PARTICLE_ACCELERATOR.length; i++) {
+                    let PA = PARTICLE_ACCELERATOR[i], pp = p.percent[i]
+
+                    if (pp.gte(1)) continue;
+
+                    p.percent[i] = pp.max(pp.add(b4?dt/10:dt/100).min(PA.percent(CURRENCIES[PA.curr].amount))).max(0).min(1)
+                }
+            } else {
+                if (a > -1) {
+                    if (p.percent[a].lt(1)) {
+                        let PA = PARTICLE_ACCELERATOR[a]
+        
+                        let pg = PA.percent(CURRENCIES[PA.curr].amount).max(0)
+                        let s = p.percent[a].add(b4?dt/10:dt/100).max(0)
+        
+                        if (s.lt(pg)) {
+                            p.percent[a] = s.max(p.percent[a]).min(1)
+                        } else {
+                            p.percent[a] = pg.max(p.percent[a]).min(1)
+                            p.active = -1
+                        }
+                    } else p.active = -1;
+                }
             }
         }
     

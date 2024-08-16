@@ -8,9 +8,11 @@ const CORE_RAD = {
     },
 
     gain() {
-        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(tmp.explore_eff[4]??1).pow(getPAEffect(0))
+        let m = tmp.explore_eff[4] ?? [1,1]
 
-        return x
+        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).pow(getPAEffect(0)).pow(m[1])
+
+        return x.overflow('ee18',0.5)
     },
 
     limit() {
@@ -57,7 +59,11 @@ const CORE_RAD = {
     genCost: l => Decimal.pow('e850', Decimal.pow(1.05, l)),
     genBulk: x => x.log('e850').log(1.05).floor().add(1),
 
-    genValue: l => Decimal.pow(2,l.sub(1)).mul(l),
+    genValue: l => {
+        let x = Decimal.pow(2,l.sub(1)).mul(l)
+        if (hasResearch('dm6')) x = expPow(x,l.add(10).log10().root(2));
+        return x
+    },
 
     purchaseGeneration() {
         if (player.feature<7) return;
@@ -105,10 +111,10 @@ const CORE_RAD = {
 
                 return x
             },
-        },{
+        },{ // 5
             req: 17,
             effect: (r,b)=>{
-                let x = r.add(10).log10().log10().mul(b.root(2).div(10).add(1)).add(1).root(2).mul(1.25)
+                let x = r.add(10).log10().log10().mul(b.root(2).div(10).add(1).min(1e3)).add(1).root(2).mul(1.25) // .min(1e3)
 
                 return x
             },
@@ -140,10 +146,24 @@ const CORE_RAD = {
 
                 return x
             },
-        },{
+        },{ // 10
             req: 64,
             effect: (r,b)=>{
                 let x = r.add(1).log10().mul(b.add(1)).add(1).log10().add(1)
+
+                return x
+            },
+        },{
+            req: 1500,
+            effect: (r,b)=>{
+                let x = r.add(10).log10().log10().add(1).mul(b.add(10).log10())
+
+                return x
+            },
+        },{
+            req: 2000,
+            effect: (r,b)=>{
+                let x = r.add(10).log10().pow(expPow(b.add(1),0.25).div(10))
 
                 return x
             },
@@ -167,8 +187,10 @@ function getCoreTemperatureEffect() {
     if (x.gte(6150)) {
         x = x.sub(6050).div(100).root(2)
 
-        return x.softcap(10,hasResearch('f4') ? 0.5 : 1/3,0)
-    } else return x.div(6150).max(0)
+        x = x.softcap(10,hasResearch('f4') ? 0.5 : 1/3,0,hasResearch('dm5'))
+    } else x = x.div(6150).max(0)
+
+    return x.mul(remnantUpgEffect(9))
 }
 
 function updateCoreRadiation() {

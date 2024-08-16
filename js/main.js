@@ -34,6 +34,12 @@ const TOP_CURR = [
         curr: "humanoid",
         req: ()=>player.fish.gte(CURRENCIES.humanoid.require),
     },
+    {
+        unl: ()=>player.feature >= 18,
+        reset: "sacrifice",
+        curr: "dark-matter",
+        req: ()=>player.fish.gte(CURRENCIES['dark-matter'].require) && player.singularity.bh.gte(8),
+    },
 ]
 
 const PROGRESS = [
@@ -116,6 +122,16 @@ const PROGRESS = [
         auto: true,
         get amount() { return player.singularity.best_bh },
         require: 8,
+    },{
+        cond_text: true,
+        get amount() { return CURRENCIES.fish.total },
+        require: 'ee10000',
+        logHeight: 2,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES["dark-matter"].total },
+        require: 1e12,
+        logHeight: 1,
     },
 ]
 
@@ -128,4 +144,5 @@ const CONFIRMATIONS = {
     core: [()=>player.core.times>0],
     humanoid: [()=>player.humanoid.times>0],
     'black-hole': [()=>player.singularity.first],
+    sacrifice: [()=>player.singularity.sac_times>0],
 }
