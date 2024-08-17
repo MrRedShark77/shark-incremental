@@ -38,6 +38,9 @@ LANGUAGES.KO = {
         'remnants-name': "잔재물",
         'remnants-costName': toTextStyle('잔재물','black-hole'),
 
+        'dark-matter-name': "암흑물질",
+        'dark-matter-costName': toTextStyle('암흑물질','black-hole'),
+
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
 
         'sharkoid-faith': toTextStyle('상어 인간의 신앙','humanoid'),
@@ -50,6 +53,9 @@ LANGUAGES.KO = {
 
         'curr-top-2-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} 도달`, 
         'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를  <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화   (<b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
+
+        'curr-top-3-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} & <b>8</b> ${toTextStyle('블랙홀','black-hole')} 도달`, 
+        'curr-top-3-reset': x => `${toTextStyle('상어','shark')}를 희생해 <b>${format(x,0)}</b>개의 ${toTextStyle('암흑물질','black-hole')} 획득`,
 
         'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
@@ -318,6 +324,22 @@ LANGUAGES.KO = {
         'research-s2-name': "나은 랭커 부스트",
         'research-s2-desc': `${toTextStyle("상어",'shark')} 랭크가 주는 ${toTextStyle('환생','prestige')} 파편 부스트를<br>개선합니다.`,
 
+        'research-s3-name': "순수한 바다",
+        'research-s3-desc': `<b>태평양과 북극해</b>가 추가적인 지수 부스트를<br>제공하며, <b>대서양과 남극해</b>를 개선합니다.`,
+
+        'all-research': {
+            's4': ["순수한 바다 II",`<b>인도양</b>이 추가적인 지수 부스트를 감소된 상태로<br>제공합니다.`],
+            's5': ["순수한 바다 III",`첫 <b>N</b> 번째 바다의 깊이 진행의 감소가<br>삭제됩니다. 이는 <b>인도양</b>까지 적용 됩니다.<br>6번째 레벨이 10 번째 방사선 부스트를<br>개선합니다.`], // need more info to "6th leval"
+
+            'dm1': ["시작 블랙홀",`희생 시에 레벨 당 <b>+1</b>개의 ${toTextStyle("블랙홀",'black-hole')}을 형성한<br>상태로 시작합니다. 블랙홀의 자원 감소를<br>늦춥니다.`],
+            'dm2': ["나은 잔재물 I",`${toTextStyle("잔재물",'black-hole')} 업그레이드 "다시 안녕"을 개선합니다,<br>${toTextStyle("환생",'prestige')} 파편에도 영향을 줍니다.`],
+            'dm3': ["나은 잔재물 II",`${toTextStyle("잔재물",'black-hole')} 업그레이드 "상어 마스터"를<br>개선합니다.`],
+            'dm4': ["나은 잔재물 III",`${toTextStyle("상어",'shark')} 레벨 & 랭크로 인한 ${toTextStyle("잔재물",'black-hole')} 생산 부스트를<br>개선합니다.`],
+            'dm5': ["소프트캡 없는 핵 온도",`${toTextStyle('핵','core')} 온도의 소프트캡을 삭제합니다.`],
+            'dm6': ["나은 방사선 생산기",`${toTextStyle('방사선 '+icon('radioactive'),'core')} 생산기가 자기 자신의 지수를 감소된<br>상태로 부스트합니다.`],
+            'dm7': ["암흑 잔재물",`총 ${toTextStyle("암흑물질",'black-hole')}이 ${toTextStyle("잔재물",'black-hole')} 생산을 부스트합니다.`],
+        },
+
         // Exploration / 탐험들
 
         'explore-while': `탐험 중 받는 효과`,
@@ -421,17 +443,19 @@ LANGUAGES.KO = {
         'reset-cr': (inc)=>`${toTextStyle('방사능 '+icon("radioactive"),'core')} 환생을 하는 대신, 방사능의<br>한계치가 <b>${formatMult(inc,0)}</b> 만큼 늘어나며,<br>방사능 부스트가 강화되며 가끔 새 능력이 추가 될 수 있습니다.<br>한계치에 도달해야 환생이 가능합니다.`,
 
         'cr-boosts': [
-            x=>`${toTextStyle('핵','core')} 반응로의 첫 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
-            x=>`${toTextStyle('마그마','core')} 파편을 <h4>${formatMult(x)}</h4> 만큼 부스트됩니다`,
-            x=>`첫 네개의 ${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
-            x=>`두 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 <h4>+${format(x)}</h4> 만큼 늦춰집니다`,
-            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('마그마','core')} 파편 보너스의 베이스가 <h4>+${format(x,3)}</h4> 만큼 증가합니다`,
-            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('물고기','fish')} 보너스가 <h4>${formatPow(x,3)}</h4>만큼 증가합니다`,
-            x=>`첫 세개의 ${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다`,
-            x=>`${toTextStyle('상어','shark')} 레벨이 ${toTextStyle('상어','shark')} ELO를 <h4>${formatMult(x)}</h4>만큼 부스트 합니다`,
-            x=>`<b>돌</b>의 획득량이 <h4>${formatMult(x)}</h4> 증가됩니다`,
-            x=>`<h4>${formatMult(x,3)}</h4>만큼의 <b>탐험 업그레이드 추가 업그레이드</b>를 획득합니다`,
-            x=>`${toTextStyle('핵','core')} 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다`,
+            x=>`${toTextStyle('핵','core')} 반응로의 첫 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다.`,
+            x=>`${toTextStyle('마그마','core')} 파편을 <h4>${formatMult(x)}</h4> 만큼 부스트됩니다.`,
+            x=>`첫 네개의 ${toTextStyle('상어','shark')} ${toTextStyle('물고기','fish')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다.`,
+            x=>`두 번째 ${toTextStyle('상어','shark')} 레벨 스케일링이 <h4>+${format(x)}</h4> 만큼 늦춰집니다.`,
+            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('마그마','core')} 파편 보너스의 베이스가 <h4>+${format(x,3)}</h4> 만큼 증가합니다.`,
+            x=>`${toTextStyle('상어','shark')} 레벨의 ${toTextStyle('물고기','fish')} 보너스가 <h4>${formatPow(x,3)}</h4>만큼 증가합니다.`,
+            x=>`첫 세개의 ${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 더 강해집니다.`,
+            x=>`${toTextStyle('상어','shark')} 레벨이 ${toTextStyle('상어','shark')} ELO를 <h4>${formatMult(x)}</h4>만큼 부스트 합니다.`,
+            x=>`<b>돌</b>의 획득량이 <h4>${formatMult(x)}</h4> 증가됩니다.`,
+            x=>`<h4>${formatMult(x,3)}</h4>만큼의 <b>탐험 업그레이드 추가 업그레이드</b>를 획득합니다.`,
+            x=>`${toTextStyle('핵','core')} 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다.`,
+            x=>`${toTextStyle('암흑물질','black-hole')}이 <h4>${formatMult(x)}</h4>만큼 부스트됩니다.`,
+            x=>`${toTextStyle('잔재물','black-hole')} 생산이 <h4>${formatMult(x)}</h4>만큼 부스트됩니다.`,
         ],
 
         // Evolution Tree  진화 트리
@@ -611,13 +635,18 @@ LANGUAGES.KO = {
         get 'singularity-milestones'() {
             return [
                 [`블랙홀 1개`,`${toTextStyle("잔재물",'black-hole')}을 해금합니다. ${toTextStyle("상어",'shark')} 레벨이 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
-                [`블랙홀 2개`,`간격 업그레이드가 안 되어 있는 자동화를 환생 시에도 유지합니다. ${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을 강화합니다.`],
-                [`블랙홀 3개`,`자동화를 환생 시에도 유지합니다. 채광 이전의 모든 컨텐츠를 해금한 상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')} 상어를 유지합니다. 더 많은 연구를 해금합니다.`],
-                [`블랙홀 4개`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도 유지합니다. 입자 가속기가 10배 빨라집니다.`],
-                [`블랙홀 5개`,`광석 체력 스케일링이 약해집니다. 새로운 자동화를 해금합니다.`],
-                [`블랙홀 6개`,`만든 블랙홀 마다 ${toTextStyle("잔재물",'black-hole')} 획득이 2배 늘어납니다.`],
-                [`블랙홀 7개`,`채광을 환생시에도 해금한 상태로 유지합니다.`],
-                [`블랙홀 8개`,`${toTextStyle("블랙홀",'black-hole')}의 패널티가 8개의 ${toTextStyle("블랙홀",'black-hole')}을 만들면 사라집니다. 블랙홀을 만들 때의 애니메이션이 사라집니다.`],
+                [`블랙홀 2개`,`간격 업그레이드가 안 되어 있는<br>자동화를 환생 시에도 유지합니다.<br>${toTextStyle("상어",'shark')} 랭크가 ${toTextStyle("잔재물",'black-hole')} 획득을<br>강화합니다.`],
+                [`블랙홀 3개`,`자동화를 환생 시에도 유지합니다.<br>채광 이전의 모든 컨텐츠를 해금한<br>상태를 유지하며 그리고 10 ${toTextStyle("휴머노이드",'humanoid')}<br>상어를 유지합니다. 더 많은 연구를<br>해금합니다.`],
+                [`블랙홀 4개`,`${toTextStyle("진화",'humanoid')} 목표 완료를 환생 시에도<br>유지합니다. 입자 가속기가 10배 빨라집니다.`],
+                [`블랙홀 5개`,`광석 체력 스케일링이 약해집니다.<br>새로운 자동화를 해금합니다.`],
+                [`블랙홀 6개`,`만든 블랙홀 마다 ${toTextStyle("잔재물",'black-hole')} 획득이<br>2배 늘어납니다.`],
+                [`블랙홀 7개`,`채광을 환생시에도 해금한 상태로<br>유지합니다.`],
+                [`블랙홀 8개`,`${toTextStyle("블랙홀",'black-hole')}의 패널티가 8개의 ${toTextStyle("블랙홀",'black-hole')}을<br>만들면 사라집니다. 블랙홀을<br>만들 때의 애니메이션이 사라집니다.`],
+
+                [`총 암흑물질 1개`,`${toTextStyle("특이점",'black-hole')}-이전의 연구를 유지합니다,<br>${toTextStyle("진화",'humanoid')} 트리, 그리고 용광로를 환생시에도<br>유지합니다. 더 많은 연구를<br>해금합니다.`],
+                [`총 암흑물질 10개`,`자동으로 모든 입자 가속기를<br>활성화합니다.`],
+                [`총 암흑물질 ${format(1e6)}개`,`연구 <b>s1-s3</b> 을 환생 시에도 유지합니다.<br>새로운 자동화를 해금합니다.<br>잔재물 업그레이드가 더 이상 잔재물을<br>사용하지 않습니다.`],
+                [`총 암흑물질 ${format(1e12)}개`,`다음 콘텐츠를 해금합니다.`],
             ]
         },
 
@@ -629,10 +658,12 @@ LANGUAGES.KO = {
 
             [`다시 안녕`,x=>`${toTextStyle("물고기",'fish')}가 자기 자신을<br>${x} 만큼<br>강화시킵니다.`],
             [`그랜드마스터`,x=>`${toTextStyle("상어",'shark')} 랭크 보너스가<br>${x} 만큼<br>강해집니다.`],
-            
             [`우주적 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 세<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
-
             [`상어 마스터`,x=>`${toTextStyle("상어",'shark')} ELO가<br>${x} 만큼<br>증가합니다.`],
+
+            [`끝없는 깊이`,x=>`각 바다의 깊이 진행이<br>${x} 만큼<br>부스트 됩니다.`],
+            [`뜨거운 감자`,x=>`방사선 부스트가<br>${x} 만큼<br>강해집니다.`],
+            [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 네 개의<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
         ],
         
         // Automation / 자동화
@@ -648,6 +679,7 @@ LANGUAGES.KO = {
         'auto-humanoid-name': `자동-${toTextStyle("휴머노이드","humanoid")} 상어`,
         'auto-research-name': `자동-${toTextStyle("특이점","black-hole")}-이전의 연구`,
         'auto-mining_tier-name': `자동-채광 티어`,
+        'auto-remnant-name': `자동-${toTextStyle("잔재물","black-hole")} 업그레이드`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -683,6 +715,11 @@ LANGUAGES.KO = {
         get 'progress-16-cond-text'() { return `${toTextStyle('블랙홀','black-hole')}을 형성하세요` },
 
         'progress-17-text': r => `${format(r,0)} ${toTextStyle('블랙홀','black-hole')}을 형성하세요`,
+
+        'progress-18-text': r => `총 ${format(r)} 마리의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        get 'progress-18-cond-text'() { return `${toTextStyle('희생','black-hole')}을 하세요` },
+
+        'progress-19-text': r => `총 ${format(r)} 개의 ${toTextStyle('암흑물질','black-hole')}에 도달하세요`,
 
         'maxed-progress': "모든 콘텐츠를 해금함!",
 
@@ -730,6 +767,16 @@ LANGUAGES.KO = {
             정말로 다른 우주에 진입하겠습니까?
             `
         },
+        get 'reset-sacrifice-message'() {
+            let e = toTextStyle('희생','black-hole'), c = toTextStyle('블랙홀','black-hole')
+            return `
+            <h3>${e}</h3><br>
+            ${e}은 미니 환생 레이어입니다.
+            희생을 하는 것은 ${c} 처럼 모든것을 초기화 시킵니다, 이는 현재 가진 블랙홀 (첫 7개의 블랙홀 마일스톤을 제외한), 잔재물, 잔재물 업그레이드, 그리고 몇몇 연구를 초기화하는 대신 ${toTextStyle('암흑물질','black-hole')}을 획득합니다.<br>
+            <img src="textures/sacrifice.png"><br>
+            정말로 당신의 상어를 희생시키겠습니까?
+            `
+        },
         
         // Other / 기타
 
@@ -768,6 +815,7 @@ LANGUAGES.KO = {
             remnants: x => `${formatMult(x)} ${toTextStyle('잔재물','black-hole')}`,
         },
 
+        'total': "총",
         'level': "레벨",
         'effect': "효과",
         'cost': "비용",
@@ -831,5 +879,6 @@ LANGUAGES.KO = {
         'confirm-core': "핵 진입",
         'confirm-humanoid': "상어 진화",
         'confirm-black-hole': "블랙홀 형성",
+        'confirm-sacrifice': "상어 희생",
     },
 }
