@@ -815,6 +815,7 @@ LANGUAGES.KO = {
             remnants: x => `${formatMult(x)} ${toTextStyle('잔재물','black-hole')}`,
         },
 
+        'total': "총",
         'level': "레벨",
         'effect': "효과",
         'cost': "비용",
