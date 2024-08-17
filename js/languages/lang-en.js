@@ -815,6 +815,7 @@ LANGUAGES.EN = {
             remnants: x => `${formatMult(x)} ${toTextStyle('Remnants','black-hole')}`,
         },
 
+        'total': "total",
         'level': "Level",
         'effect': "Effect",
         'cost': "Cost",
