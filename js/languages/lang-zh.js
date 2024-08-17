@@ -37,9 +37,12 @@ LANGUAGES.ZH = {
 
 		'remnants-name': "遗物",
         'remnants-costName': toTextStyle('遗物','black-hole'),
-		
+
+		'dark-matter-name': "暗物质",
+        'dark-matter-costName': toTextStyle('暗物质','black-hole'),
+
 		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
-		
+
 		'sharkoid-faith': toTextStyle('鲨之信念','humanoid'),
 
         'curr-top-0-req': x => `${toTextStyle('鱼','fish')}的总量达到 <b>${format(x)}</b>`, 
@@ -51,7 +54,10 @@ LANGUAGES.ZH = {
         'curr-top-2-req': x => `${toTextStyle('鱼','fish')}的数量达到 <b>${format(x)}</b>`, 
         'curr-top-2-reset': (x,next) => `将你的${toTextStyle('鲨鱼','shark')}进化成为 <b>${format(x,0)}</b> ${toTextStyle('类人','humanoid')}鲨鱼（下一个需要 <b>${format(next)}</b> ${toTextStyle('鱼','fish')})`,
 
-        'radioactive-name': toTextStyle('辐射'+icon("radioactive"),'core'),
+		'curr-top-3-req': x => `达到 <b>${format(x)}</b> ${toTextStyle('鱼','fish')}和 <b>8</b> 个${toTextStyle('黑洞','black-hole')}`, 
+        'curr-top-3-reset': x => `献祭你的${toTextStyle('鲨鱼','shark')}，获得 <b>${format(x,0)}</b> ${toTextStyle('暗物质','black-hole')}`,
+
+		'radioactive-name': toTextStyle('辐射'+icon("radioactive"),'core'),
         
         // Tabs
 
@@ -317,6 +323,22 @@ LANGUAGES.ZH = {
 
         'research-s2-name': "更好的段位加成",
         'research-s2-desc': `提升${toTextStyle("鲨鱼",'shark')}段位对${toTextStyle('重生','prestige')}碎片的加成效果。`,
+		
+		'research-s3-name': "海洋纯化",
+        'research-s3-desc': `<b>太平洋和北冰洋</b>提供指数加成，提升<b>大西洋和南冰洋</b>的效果。`,
+
+		'all-research': {
+            's4': ["海洋纯化 II",`<b>印度洋</b>提供指数加成。`],
+            's5': ["海洋纯化 III",`除<b>印度洋</b>外，移除前 <b>N</b> 个海洋的深度减益，该研究达到 6 级后，提升第 10 项辐射加成。`],
+
+            'dm1': ["原初黑洞",`每升一级，献祭鲨鱼后保留的${toTextStyle("黑洞",'black-hole')}个数 <b>+1</b>. 别忘了，${toTextStyle("黑洞",'black-hole')}会降低资源的产量！`],
+            'dm2': ["更好的遗物 I",`提升${toTextStyle("遗物",'black-hole')}升级“自我加成”的效果，这个${toTextStyle("遗物",'black-hole')}升级也能为${toTextStyle("重生",'prestige')}碎片提供加成。`],
+            'dm3': ["更好的遗物 II",`提升${toTextStyle("遗物",'black-hole')}升级“鲨鱼宗师”的效果。`],
+            'dm4': ["更好的遗物 III",`提升${toTextStyle("鲨鱼",'shark')}等级和段位对${toTextStyle("遗物",'black-hole')}产量的加成。`],
+            'dm5': ["地核温度无软上限",`移除${toTextStyle('地核','core')}温度的软上限。`],
+            'dm6': ["更好的辐射生成器",`${toTextStyle('辐射'+icon('radioactive'),'core')}发生器对其自身提供指数加成。`],
+            'dm7': ["黑暗遗物",`${toTextStyle("暗物质",'black-hole')}的总量提升${toTextStyle("遗物",'black-hole')}的产量。`],
+        },
 
         // Exploration
 
@@ -432,6 +454,8 @@ LANGUAGES.ZH = {
 			x=>`<b>石头</b>的产量 <h4>${formatMult(x)}</h4>.`,
 			x=>`探索升级的购买次数额外 <h4>${formatMult(x,3)}</h4>.`,
 			x=>`第二行地核反应堆的个数额外增加 <h4>+${format(x)}</h4>.`,
+			x=>`获得的${toTextStyle('暗物质','black-hole')} <h4>${formatMult(x)}</h4>.`,
+            x=>`${toTextStyle('遗物','black-hole')}产量 <h4>${formatMult(x)}</h4>.`,
         ],
 
         // Evolution Tree
@@ -618,6 +642,11 @@ LANGUAGES.ZH = {
                 [`6 个黑洞`,`每生成一个黑洞，${toTextStyle("遗物",'black-hole')}的产量乘 2.`],
                 [`7 个黑洞`,`${toTextStyle("黑洞",'black-hole')}重置开始时，解锁挖矿。`],
                 [`8 个黑洞`,`若${toTextStyle("黑洞",'black-hole')}的数量不小于 8, 移除${toTextStyle("黑洞",'black-hole')}的减益，并移除生成黑洞时的动画。`],
+
+				[`暗物质总量为 1`,`${toTextStyle("黑洞",'black-hole')}重置时保留${toTextStyle("黑洞",'black-hole')}之前的研究、${toTextStyle("进化",'humanoid')}树和锻造进度。解锁更多的研究。`],
+                [`暗物质总量为 10`,`你可以一次性填充所有的粒子加速器。`],
+                [`暗物质总量为 ${format(1e6)}`,`献祭时保留研究 <b>s1-s3</b>. 解锁新的自动化。购买遗物升级不再消耗遗物。`],
+                [`暗物质总量为 ${format(1e12)}`,`解锁下一个游戏机制。`],
             ]
         },
 
@@ -627,12 +656,14 @@ LANGUAGES.ZH = {
             [`战栗时空`,x=>`${toTextStyle("地核",'core')}反应堆的效果 ${x}.`],
             [`快速锻造`,x=>`锻造速度 ${x}.`],
 
-            [`自我加成`,x=>`${toTextStyle("Fish",'fish')} boosts itself by ${x}.`],
+            [`自我加成`,x=>`${toTextStyle("鱼",'fish')}以其 ${x} 的倍率加成自身。`],
             [`鲨鱼大师`,x=>`${toTextStyle("鲨鱼",'shark')}段位加成 ${x}.`],
-            
             [`级限突破`,x=>`${toTextStyle("鲨鱼",'shark')}等级前 3 个软上限的起始数值 ${x}.`],
-
             [`鲨鱼宗师`,x=>`${toTextStyle("鲨鱼",'shark')}战力 ${x}.`],
+
+			[`无底深渊`,x=>`Each ocean's depth progress is boosted by ${x}.`],
+            [`土豆辐射`,x=>`辐射加成 ${x}.`],
+            [`Mega Level`,x=>`第四次${toTextStyle("鲨鱼",'shark')}等级折算的起始等级 ${x}.`],
         ],
 
         // Automation
@@ -648,6 +679,7 @@ LANGUAGES.ZH = {
 		'auto-humanoid-name': `自动获得${toTextStyle("类人","humanoid")}鲨鱼`,
         'auto-research-name': `自动购买${toTextStyle("黑洞","black-hole")}之前的研究`,
         'auto-mining_tier-name': `自动提升挖矿等级`,
+		'auto-remnant-name': `自动购买${toTextStyle("遗物","black-hole")}升级`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
@@ -683,6 +715,11 @@ LANGUAGES.ZH = {
         get 'progress-16-cond-text'() { return `生成 ${toTextStyle('黑洞','black-hole')}` },
 
         'progress-17-text': r => `生成 ${format(r,0)} 个${toTextStyle('黑洞','black-hole')}`,
+
+		'progress-18-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)}`, 
+        get 'progress-18-cond-text'() { return `进行一次${toTextStyle('献祭','black-hole')}` },
+
+        'progress-19-text': r => `${toTextStyle('暗物质','black-hole')}总量达到 ${format(r)}`,
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -730,6 +767,16 @@ LANGUAGES.ZH = {
             准备好进入新的宇宙了吗？
             `
 		},
+		get 'reset-sacrifice-message'() {
+            let e = toTextStyle('献祭','black-hole'), c = toTextStyle('黑洞','black-hole')
+            return `
+            <h3>${e}</h3><br>
+            ${e}是一个小重置。
+            献祭鲨鱼后，除了重置${c}所重置的资源，还重置黑洞的数量（前 7 个奇点里程碑不会重置）、遗物数量、遗物升级，和一些与${toTextStyle('暗物质','black-hole')}相关的研究。<br>
+            <img src="textures/sacrifice.png"><br>
+            你确定要献祭你的鲨鱼吗？
+            `
+        },
 
         // Other
 
@@ -760,12 +807,12 @@ LANGUAGES.ZH = {
         'shark-overpopulation': (x,y) => `你的${toTextStyle('鲨鱼','shark')}太大了，在吃了 <h4>${format(y)}</h4> 条鱼后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>。`,
 
         'shark-rank-bonuses': {
-            fish: x => `${toTextStyle('鱼','fish')}的数量是原来的${formatPow(x)}`,
-            prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的${formatPow(x)}`,
+            fish: x => `${toTextStyle('鱼','fish')}的数量是原来的 ${formatPow(x)}`,
+            prestige: x => `${toTextStyle('重生','prestige')}碎片的数量是原来的 ${formatPow(x)}`,
 			mining_damage: x => `对矿坑的伤害 ${formatMult(x)}`,
-			so: x => `${toTextStyle('鲨鱼','shark')}大小的软上限${formatPow(x)}`,
-			vibranium: x => `<b>振金</b>${formatMult(x)} `,
-			remnants: x => `${toTextStyle('遗物','black-hole')}${formatMult(x)}`,
+			so: x => `${toTextStyle('鲨鱼','shark')}大小的软上限 ${formatPow(x)}`,
+			vibranium: x => `<b>振金</b> ${formatMult(x)} `,
+			remnants: x => `${toTextStyle('遗物','black-hole')} ${formatMult(x)}`,
         },
 
         'level': "等级",
@@ -831,5 +878,6 @@ LANGUAGES.ZH = {
         'confirm-core': "进入地核",
 		'confirm-humanoid': "鲨鱼进化",
 		'confirm-black-hole': "生成黑洞",
+		'confirm-sacrifice': "献祭鲨鱼",
     },
 }
