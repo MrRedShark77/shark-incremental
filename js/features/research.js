@@ -570,7 +570,7 @@ function updateResearchHTML() {
                 el(el_id+"-require").innerHTML = `<b>${text[2]}:</b> ` + x.require.map(r => {
                     let curr = CURRENCIES[r[0]], cost = max>1?r[2](amt):r[2], a = (r[1]?curr.total:curr.amount).gte(cost)
                     if (afford) afford &&= a
-                    return `<span ${a ? "" : `style="color: #800"`}>${format(cost,0)}</span>`+" "+(r[1]?"total ":"")+curr.costName
+                    return `<span ${a ? "" : `style="color: #800"`}>${format(cost,0)}</span>`+" "+(r[1]?lang_text("total")+" ":"")+curr.costName
                 }).join(", ")
                 el(el_id+"-button").className = el_classes({locked: !afford})
                 el(el_id+"-button").textContent = lang_text('research-afford',afford)
