@@ -128,7 +128,7 @@ const CORE_RAD = {
         },{
             req: 25,
             effect: (r,b)=>{
-                let x = player.shark_level.add(1).pow(r.add(1).log10().mul(b.add(1)).root(2).div(100)).overflow(1e3,0.5)
+                let x = player.shark_level.add(1).pow(r.add(1).log10().mul(b.add(1)).root(2).div(100)).overflow(1e3,0.5).overflow('ee10',0.5,2)
 
                 return x
             },
@@ -142,7 +142,10 @@ const CORE_RAD = {
         },{
             req: 45,
             effect: (r,b)=>{
-                let x = r.add(1).log10().mul(b.add(1)).add(1).log10().div(100).add(1)
+                let x = r.add(1).log10().mul(b.add(1)).add(1).log10()
+
+                if (!hasResearch('s5',6)) x = x.div(100).add(1)
+                else x = x.pow(2)
 
                 return x
             },

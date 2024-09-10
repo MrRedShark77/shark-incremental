@@ -10,9 +10,10 @@ const CORE_REACTOR = [
 
         effect: l=>{
             let x = player.fish.max(10).log10().log10().div(100).mul(l).mul(coreReactorEffect(4))
-            if (hasResearch('c8')) x = x.mul(2)
+            if (hasResearch('c8')) x = x.mul(2);
             x = x.add(1)
-            if (hasEvolutionTree(32)) x = x.pow(1.75)
+            if (hasEvolutionTree(32)) x = x.pow(1.75);
+            if (hasEvolutionTree(4,true)) x = expPow(x,2.5);
             return x
         },
         effDesc: x => formatPow(x,3),
@@ -27,9 +28,10 @@ const CORE_REACTOR = [
 
         effect: l=>{
             let x = player.prestige.shards.max(10).log10().log10().div(100).mul(l).mul(coreReactorEffect(5))
-            if (hasResearch('c4')) x = x.mul(2)
+            if (hasResearch('c4')) x = x.mul(2);
             x = x.add(1)
-            if (hasEvolutionTree(33)) x = x.pow(5.6)
+            if (hasEvolutionTree(33)) x = x.pow(5.6);
+            if (hasEvolutionTree(5,true)) x = expPow(x,2);
             return x
         },
         effDesc: x => formatPow(x,3),
@@ -51,7 +53,8 @@ const CORE_REACTOR = [
 
             x = Decimal.pow(expPow(x,0.5),l.mul(coreReactorEffect(6)).overflow(1e25,0.5))
 
-            if (hasEvolutionTree(34)) x = x.pow(1.06)
+            if (hasEvolutionTree(34)) x = x.pow(1.06);
+            if (hasEvolutionTree(6,true)) x = expPow(x,1.5);
 
             return x
         },
@@ -67,7 +70,8 @@ const CORE_REACTOR = [
 
         effect: l=>{
             let x = player.shark_level.max(0).sqrt().div(100).mul(l).mul(coreReactorEffect(7)).add(1)
-            if (hasEvolutionTree(35)) x = x.pow(3)
+            if (hasEvolutionTree(35)) x = x.pow(3);
+            if (hasEvolutionTree(7,true)) x = expPow(x,2.25);
             return x
         },
         effDesc: x => format(x,3)+"√",

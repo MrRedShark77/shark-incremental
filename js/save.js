@@ -1,4 +1,4 @@
-const VERSION = 1
+const VERSION = 2
 const SAVE_ID = "shark_inc_save"
 var prevSave = "", autosave
 
@@ -54,10 +54,12 @@ function getPlayerData() {
             faith: [E(0), E(0), E(0)],
             tree: [],
             tree_preset: [],
+            transform: false,
 
             goal: [],
 
             mining_tier: E(0),
+            mining_ascend: E(0),
             ores: {},
 
             forge: {
@@ -82,6 +84,21 @@ function getPlayerData() {
             dm: E(0),
             total_dm: E(0),
             sac_times: 0,
+        },
+
+        solar_system: {
+            rocket_parts: [E(0), E(0), E(0)],
+
+            active: "",
+            completion: {},
+            evo_save: [[],[E(0), E(0), E(0)]],
+
+            observ: E(0),
+            total_observ: E(0),
+
+            reserv: E(0),
+
+            sb_upgs: {},
         },
 
         radios: {},
@@ -112,6 +129,7 @@ function getPlayerData() {
     for (let x of FORGE_KEYS) s.humanoid.forge.level[x] = 0;
     for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0);
     for (let x in REMNANT_UPGS) s.singularity.upgs[x] = E(0);
+    for (let x in SPACEBASE_UPGS) s.solar_system.sb_upgs[x] = E(0);
 
     return s
 }
@@ -135,6 +153,16 @@ function loadPlayer(load) {
     player = deepUndefinedAndDecimal(player, DATA)
 
     if (player.singularity.best_bh.gte(4)) player.humanoid.goal = [0,1,2,3,4,5,6,7,8];
+
+    checkVersion()
+}
+
+function checkVersion() {
+    if (player.VERSION < 2) {
+        player.humanoid.faith[2] = E(0)
+    }
+
+    player.VERSION = Math.max(player.VERSION, VERSION)
 }
 
 function clonePlayer(obj,data) {

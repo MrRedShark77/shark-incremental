@@ -116,7 +116,7 @@ button * {
 	pointer-events: none;
 }
 
-button:not(.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn,#black-hole-button,.remnant-upg):hover {
+button:not(.pre-charged,.locked,.bought,.selected,#wipe,.ca-grid-btn,:active,.evolution-goal-ctn,#black-hole-button,.remnant-upg,.small-upg):hover {
 	background-color: #0b6965;
 	border-color: #043f3c;
 }
@@ -137,7 +137,7 @@ button.half-huge-btn {
 }
 
 .tab-button.selected,
-button:not(.locked,.bought,.ca-grid-btn,.evolution-goal-ctn,#black-hole-button,.remnant-upg):active {
+button:not(.pre-charged,.locked,.bought,.ca-grid-btn,.evolution-goal-ctn,#black-hole-button,.remnant-upg,.small-upg):active {
 	background-color: #075551;
 }
 
@@ -154,10 +154,10 @@ input.no-arrows {
 	}
 }
 
-.locked, .bought {
+.locked, .bought, .required {
 	cursor: default;
 }
-:not(.remnant-upg,.bought).locked {
+:not(.remnant-upg,.small-upg,.bought).locked {
 	background-color: #043d3a;
 	border-color: #02302d;
 	color: #f44;
@@ -412,6 +412,9 @@ input.no-arrows {
 	width: 0%;
 	height: 100%;
 	background-color: green;
+}
+#fp-bar.observ {
+	background: repeating-linear-gradient(-45deg, cyan, #00aeff 20px, cyan 40px);
 }
 
 #fp-text {
@@ -704,7 +707,7 @@ subtitle {
 #evolution-tree {
 	display: grid;
 	grid-template-columns: repeat(5, 150px);
-	grid-auto-rows: 150px;
+	grid-auto-rows: auto;
 	justify-content: center;
 }
 
@@ -725,6 +728,27 @@ subtitle {
 	margin: 2px;
 	padding: 25px 4px;
 	font-size: 12px;
+	min-height: 150px;
+}
+
+.evolution-tree-btn .line {
+	border-color: black;
+}
+
+.evolution-tree-btn.pre-charged:not(.locked,.charged) {
+	border-color: #00ac95;
+	background-color: #00ffea;
+	color: black;
+	box-shadow: 0px 0px 10px cyan;
+	cursor: pointer;
+}
+
+.evolution-tree-btn.pre-charged:not(.locked):hover,
+.evolution-tree-btn.charged {
+	border-color: #0089ac;
+	background-color: #00aeff;
+	box-shadow: 0px 0px 10px #0011ff;
+	color: black;
 }
 
 .etb-name, .etb-cost {
@@ -997,20 +1021,68 @@ subtitle {
 	padding: 5px 10px;
 }
 
-#remnant-upgs {
+#remnant-upgs, .spacebase-upgs {
 	display: grid;
 	grid-template-columns: repeat(4, 120px);
 	grid-auto-rows: auto;
 	justify-content: center;
 }
 
-.remnant-upg {
+.remnant-upg, .small-upg {
 	padding: 3px;
 	border: solid 2px magenta;
 	background-color: #0004;
 	min-height: 120px;
 	font-size: 11px;
 }
-.remnant-upg.locked {
+.small-upg {
+	border-color: white;
+}
+.remnant-upg.locked, .small-upg.locked {
 	border: solid 2px red;
+}
+
+#solar-system {
+	display: grid;
+	grid-template-columns: repeat(2, 100px);
+	grid-auto-rows: auto;
+	justify-content: center;
+}
+#solar-system > button {
+	font-size: 12px;
+	padding: 0px;
+	min-height: 80px;
+}
+#solar-system > button.bought {
+	cursor: pointer;
+}
+
+#rocket-part-btns {
+	display: grid;
+	grid-template-columns: repeat(3, 120px);
+	grid-auto-rows: auto;
+	justify-content: center;
+}
+
+#observ-button {
+	font-size: 16px;
+	min-width: 300px;
+	padding: 5px 10px;
+}
+
+.sb-upg-req {
+	color: red;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px black, 1px 1px 1px black;
+}
+.small-upg.required .sb-upg-desc, .small-upg:not(.required) .sb-upg-req {
+	display: none;
+}
+.small-upg.required .sb-upg-req, .small-upg:not(.required) .sb-upg-desc {
+	display: block;
+}
+
+#mining-tier-btn, #mining-ascend-btn {
+	height: auto;
+	min-height: 150px;
 }

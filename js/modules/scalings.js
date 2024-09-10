@@ -74,6 +74,17 @@ const SCALINGS = {
             [100,2,"ME2"],
         ],
     },
+    remnant_upg: {
+        get amount() {
+            let x = E(0)
+            for (let i = 0; i < REMNANT_UPGS.length; i++) x = x.max(player.singularity.upgs[i])
+            return x
+        },
+
+        base: [
+            [100,1.1,"ME2"],
+        ],
+    },
 }
 
 function getScalingStarts(id) {
@@ -94,11 +105,16 @@ function getScalingStarts(id) {
         }
         case "shark_rank": {
             if (hasEvolutionGoal(8)) b[0] = 30
+            if (isSSObserved('venus')) b[2] *= 2
             break
         }
         case "cr_boost": {
             b[0] = Decimal.add(b[0],researchEffect('m3',0))
             b[1] = Decimal.add(b[1],researchEffect('m3',0))
+            break
+        }
+        case "mining_tier": {
+            b[2] = Decimal.add(b[2],remnantUpgEffect(11,0))
             break
         }
     }

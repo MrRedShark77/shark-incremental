@@ -41,7 +41,14 @@ LANGUAGES.EN = {
         'dark-matter-name': "Dark Matter",
         'dark-matter-costName': toTextStyle('Dark Matter','black-hole'),
 
+        'observ-name': "Observatories",
+        'observ-costName': toTextStyle('Observatories','observ'),
+
+        'reserv-name': "Reservatories",
+        'reserv-costName': toTextStyle('Reservatories','reserv'),
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
+        'full-shark-rank': toTextStyle('Shark','shark') + ' Rank',
 
         'sharkoid-faith': toTextStyle('Sharkoid Faith','humanoid'),
 
@@ -56,6 +63,9 @@ LANGUAGES.EN = {
 
         'curr-top-3-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')} & <b>8</b> ${toTextStyle('Black Holes','black-hole')}`, 
         'curr-top-3-reset': x => `Sacrifice your ${toTextStyle('Sharks','shark')} for <b>${format(x,0)}</b> ${toTextStyle('Dark Matter','black-hole')}`,
+
+        'curr-top-4-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Observatories','observ')}`, 
+        'curr-top-4-reset': x => `Reserve for <b>${format(x,0)}</b> ${toTextStyle('Reservatories','reserv')}`,
         
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -67,6 +77,7 @@ LANGUAGES.EN = {
         'tab-auto': "Automation",
         'tab-research': toTextStyle('Research','prestige'),
         'tab-explore': "Exploration",
+        'tab-space-base': toTextStyle('Space Base','observ'),
 
         'tab-core': toTextStyle('Core','core'),
         'tab-core-reactor': toTextStyle('Core','core')+" Reactor",
@@ -84,6 +95,7 @@ LANGUAGES.EN = {
         'tab-singularity': toTextStyle('Singularity','black-hole'),
         'tab-black-hole': toTextStyle('Black Hole','black-hole'),
         'tab-singularity-milestones': toTextStyle('Singularity','black-hole') + " Milestones",
+        'tab-solar-system': "Solar System",
 
         // Elements
 
@@ -128,7 +140,9 @@ LANGUAGES.EN = {
         'rerun-evolution': `Re-run ${toTextStyle('Evolution','humanoid')}, respecing its Tree`,
 
         'mining-text': `Mining... <b id="mining-progress">???</b> | Damage <b id="mining-damage">???</b> | ${toTextStyle(`Mining Fortune <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'super-mining-text': `Super Damage <b id="super-mining-damage">???</b> | ${toColoredText(`Super Mining Fortune <span id="super-mining-fortune">0</span>`+icon("luck"),'orange')}`,
         'mining-tier-div': `Mining Tier: <h3 id="mining-tier">0</h3>`,
+        'mining-ascend-div': `Mining Ascension: <h3 id="mining-ascend">0</h3>`,
         'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
         'mining-tier-undo-btn': `Decrease Mining Tier by 1 if you're stuck while mining.`,
 
@@ -136,6 +150,10 @@ LANGUAGES.EN = {
         'black-hole-html': `You have formed <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> black hole, which reduces the exponents of fish & prestige shards and the multiplier of magmatic fragments by <h3 id="black-hole-effect">^???</h3>.`,
 
         'remnant-html': `You have <h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> remnants.`,
+
+        'rocket-part-div': `You have created <h3 id="total-rocket-part">0</h3> total Rocket Parts.`,
+        'observ-div': `You have <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observations. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
+        'reserv-div': `You have <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> reservations.`,
 
         // Upgrades
 
@@ -187,6 +205,14 @@ LANGUAGES.EN = {
         'su-m5-req': 'Mining Tier 9',
         'su-m5-name': 'Basic Ores',
         'su-m5-desc': `Increases the first 4 ores mined by <b>×2</b> per level.`,
+
+        'su-m6-req': 'Mining Ascension 1',
+        'su-m6-name': 'Super Mining Damage',
+        'su-m6-desc': `Increases the super mining damage by <b>×2</b> per level.`,
+
+        'su-m7-req': 'Mining Ascension 3',
+        'su-m7-name': 'Super Mining Speed',
+        'su-m7-desc': `Increases the normal and super mining speed by <b>+25%</b> per level.`,
 
         // Researches
 
@@ -338,6 +364,9 @@ LANGUAGES.EN = {
             'dm5': ["Softcapless Core Temperature",`Remove the softcap of the ${toTextStyle('Core','core')}'s temperature.`],
             'dm6': ["Better Radiation Generator",`${toTextStyle('Radiation '+icon('radioactive'),'core')} generator raises itself to the exponent at a reduced rate.`],
             'dm7': ["Dark Remnants",`Total ${toTextStyle("Dark Matter",'black-hole')} boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
+
+            'm5': ["Shark Rank 'onto' Super Mining",`${toTextStyle("Shark",'shark')} Rank boost to mining damage affects super mining damage at a reduced rate.`],
+            'm6': ["The Uranium Shark",`'Shark Exponent' is overpowered.`],
         },
 
         // Exploration
@@ -462,25 +491,25 @@ LANGUAGES.EN = {
 
         'evolution-tree-row': (r,a) => `<b>Row ${r}</b><br>${a} available`,
         'evolution-tree-ctn': [
-            ["Fish Body", x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Prestigious Body", x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Radioactive Body", x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`],
-            ["Perfect Body", x=>`${toTextStyle('Shark','shark')} ELO is multiplied by <b>${formatMult(x,0)}</b>.`],
+            ["Fish Body", x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle('Shark','shark')} ELO's exponent by <b>${formatMult(x)}</b>.`],
+            ["Prestigious Body", x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle('Shark','shark')} ELO's exponent by <b>${formatMult(x)}</b>.`],
+            ["Radioactive Body", x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle('Shark','shark')} ELO by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle('Shark','shark')} ELO's exponent by <b>${formatMult(x)}</b>.`],
+            ["Perfect Body", x=>`${toTextStyle('Shark','shark')} ELO is multiplied by <b>${formatMult(x,0)}</b>.`, x=>`The ${toTextStyle('Shark','shark')} ELO's exponent is multiplied by <b>${formatMult(x,0)}</b>.`],
 
-            ["Steel Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Iron</b> tiers.`],
-            ["Priceful Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nickel</b> tiers.`],
-            ["Air-breathing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Oxygen</b> tiers.`],
-            ["Glowing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Neon</b> tiers.`],
+            ["Steel Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Iron</b> tiers.`, x=>`Improve <b>Iron</b> significantly.`],
+            ["Priceful Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nickel</b> tiers.`, x=>`Improve <b>Nickel</b> significantly.`],
+            ["Air-breathing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Oxygen</b> tiers.`, x=>`Improve <b>Oxygen</b> significantly.`],
+            ["Glowing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Neon</b> tiers.`, x=>`Improve <b>Neon</b> significantly.`],
 
-            ["Mariana Trench", x=>`The <b>Pacific Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["Litke Deep", x=>`The <b>Arctic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["Milwaukee Deep", x=>`The <b>Atlantic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
-            ["South Sandwich Trench", x=>`The <b>Southern Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`],
+            ["Mariana Trench", x=>`The <b>Pacific Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Pacific Ocean</b>’s depth progress significantly.`],
+            ["Litke Deep", x=>`The <b>Arctic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Arctic Ocean</b>’s depth progress significantly.`],
+            ["Milwaukee Deep", x=>`The <b>Atlantic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Atlantic Ocean</b>’s depth progress significantly.`],
+            ["South Sandwich Trench", x=>`The <b>Southern Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Southern Ocean</b>’s depth progress significantly.`],
 
-            ["Inflated Fish", x=>`${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`],
-            ["Overprestige", x=>`${toTextStyle('Prestige','prestige')} shards are raised to the <b>${format(x)}th</b> power.`],
-            ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`],
-            ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`],
+            ["Inflated Fish", x=>`${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`, x=>`The exponent of ${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`],
+            ["Overprestige", x=>`${toTextStyle('Prestige','prestige')} shards are raised to the <b>${format(x)}th</b> power.`, x=>`The exponent of ${toTextStyle('Prestige','prestige')} is raised to the <b>${format(x)}th</b> power.`],
+            ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`, x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power again.`],
+            ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`, x=>`The exponent of ${toTextStyle('Humanoid','humanoid')} sharks is increased by <b>+${format(x)}</b>.`],
 
             ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`],
             ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`],
@@ -576,9 +605,15 @@ LANGUAGES.EN = {
         },
 
         'mined-resources-text': `Mined Resources`,
+        'mining-tier': `Mining Tier`,
+        'next-mining-tier': `At <b>Mining Tier</b>`,
         'mining-tier-reset': `Increase the <b>Mining Tier</b>, but it will multiply each ore's health and amount.`,
         'mining-tier-ore-unlock': x=>`Unlock ${x} ore.`,
         'mining-tier-ore-generation': x=>`You will no longer mine ${x} ore, but will generate it based on mining speed & fortune instead.`,
+
+        'mining-ascend': `Mining Ascension`,
+        'next-mining-ascend': `At <b>Mining Ascension</b>`,
+        'mining-ascend-reset': `Increase the <b>Mining Ascension</b>, but it forces a singularity reset for powerful boosts.`,
 
         'mining-tier-bonus': [
             x=>`Ore's health is increased by <b>${formatMult(x)}</b>.`,
@@ -589,6 +624,10 @@ LANGUAGES.EN = {
             x=>`<b>Bismuth</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Diamond</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Obsidian</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`The first 9 ores are increased by <b>${formatPow(x)}</b>.`,
+            x=>`Super Ore's health is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Radium-223</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Uranium-235</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
         // Forge
@@ -603,6 +642,7 @@ LANGUAGES.EN = {
             'shark': ['Distant Shark Level',`Delays the third scaling of ${toTextStyle('Shark','shark')} Level.`],
             'refined_shard': ['Energized Shard',`Increases the exponent of ${toTextStyle('Prestige','prestige')} shards.`],
             'wormhole': ['Wormhole',`Unlocks new Particle Accelerator.`],
+            'matter': ['Matter Condenser',`Increases ${toTextStyle('Remnant','black-hole')} generation.`],
         },
         'forge-progress': (x,s) => x ? `Forging <b>${x}</b>... <b>${s}</b>` : `Forge is empty`,
         'forge-speed': x => `Forging Speed: <b>${x}</b>`,
@@ -664,7 +704,42 @@ LANGUAGES.EN = {
             [`Bottomless Depth`,x=>`Each ocean's depth progress is boosted by ${x}.`],
             [`Hot Potato`,x=>`Radioactive boosts are ${x} stronger.`],
             [`Mega Level`,x=>`The fourth scaling of ${toTextStyle("Shark",'shark')} Level is delayed by ${x}.`],
+            [`Elite Miner`,x=>`The third scaling of mining tier is delayed by ${x}.`],
         ],
+
+        'solar-system-list': {
+            'sun':     ["Sun",`???`,`???`],
+            'mercury': ["Mercury",`???`,`???`],
+            'venus':   ["Venus",`Venus is the second farthest from the Sun and the sixth-largest planet in the Solar System. It is named after the ancient Roman goddess of love. Venus has a dense atmosphere consisting of more than 96% carbon dioxide. Venus has an average surface temperature of 735 K (462 °C), making it the hottest planet in the solar system. Venus has no natural satellites. In the Earth's sky, it is the third-brightest luminary, after the Sun and the Moon.`,`Passively generate 100% of current ${toTextStyle('Humanoid','humanoid')} sharks as bonus ${toTextStyle('Humanoid','humanoid')} sharks, but auto-${toTextStyle('Humanoid','humanoid')} shark no longer works. Improve ${toTextStyle('Humanoid','humanoid')} shark drastically, and the third scaling of ${toTextStyle('Shark','shark')} rank is delayed by ×2. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
+            'earth':   ["Earth",`???`,`???`],
+            'moon':    ["Moon",`Welcome to the Solar System! So, you are free to explore some planet, but it requires observing for powerful rewards. Force a singularity reset, resetting some research and evolution tree (it returns after), but black hole’s reduction is forced to ^0.5, nearly post-cultivation features are disabled, and you cannot explore any ocean. You can generate ${toTextStyle('Observatories','observ')} in the space-base, which helps you progress faster with their upgrades. There is difficulty, it affects not progress, but the space-base features to make progress further. Let’s start with Moon of the Earth! It’s called Luna, but Theta, originally before the collision.`,`Unlock the Mining Ascension and new ${toTextStyle('Remnant','black-hole')} upgrade. Mining ascension forces a singularity reset for powerful bonus and various ores.`],
+            'mars':    ["Mars",`Mars is the fourth most distant planet from the Sun in the Solar System. It belongs to the planets of the Earth group, as it has a solid surface and a size comparable to Earth. The terrain of Mars has unique features, including impact craters, volcanoes, valleys, deserts, and polar ice caps. Mars has geologic formations that resemble water erosion and minerals that could only have been formed by prolonged exposure to water. The question of the existence of life on Mars has interested scientists for centuries.`,`Earn the ability to terraform any purchased ${toTextStyle('Evolution','humanoid')} tree for powerful bonuses, but the cost grows faster. Unlock new automation. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
+            'jupiter': ["Jupiter",`???`,`???`],
+            'saturn':  ["Saturn",`???`,`???`],
+            'uranus':  ["Uranus",`???`,`???`],
+            'neptune': ["Neptune",`???`,`???`],
+            'pluto':   ["Pluto",`???`,`???`],
+        },
+        'build-rocket-part': x => `Build ${x} Rocket Parts.`,
+        'total-rp': "total RP",
+        'solar-system-lock-reward': `You must complete ${toTextStyle('observing','observ')} to reveal the reward.`,
+        'solar-system-goal': x => `Total ${toTextStyle('Observatories','observ')} goal: <h4>${x}</h4>`,
+        'solar-system-status': x => [`Start Observing`,`Give up Observing`,`Complete Observing`][x],
+        'observ-progress': x => `Reach <b>${x}</b> total ${toTextStyle('Observatories','observ')}`,
+        'observ-cond': `Complete ${toTextStyle('observing','observ')}`,
+
+        'space-base-upgrades': {
+            'o1': [`The Space`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            'o2': [`Space Fish`,x=>`${toTextStyle('Fish','fish')} is boosted by ${x}.`],
+            'o3': [`Space Prestige`,x=>`${toTextStyle('Prestige shards','prestige')} are boosted by ${x}.`],
+            
+            'e1': [`Fish Exchanger`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            'e2': [`Prestige Exchanger`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+
+            'r1': [`The Relative`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            'r2': [`Observable`,x=>`${toTextStyle('Reservatories','reserv')} are boosted by ${x}.`],
+            'r3': [`Space Fish II`,x=>`${toTextStyle('Fish','fish')} is boosted by ${x}.`],
+        },
 
         // Automation
 
@@ -680,6 +755,7 @@ LANGUAGES.EN = {
         'auto-research-name': `Auto-Pre-${toTextStyle("Singularity","black-hole")} Research`,
         'auto-mining_tier-name': `Auto-Mining Tier`,
         'auto-remnant-name': `Auto-${toTextStyle("Remnant","black-hole")} Upgrades`,
+        'auto-faith-name': `Auto-${toTextStyle("Sharkoid Faith","humanoid")}`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -790,6 +866,7 @@ LANGUAGES.EN = {
             'su_m5' : `"Basic Ore" Upgrade`,
             'cr_boost' : `Radioactive Boost`,
             'mining_tier' : `Mining Tier`,
+            'remnant_upg' : `Remnant Upgrades`,
         },
         'scaling-start': "Starts at",
         'scaling-mode': {
@@ -826,6 +903,7 @@ LANGUAGES.EN = {
         'reward': "Reward",
         'new-preset': "New Preset",
         'maxed': "Maxed",
+        'difficulty': "Difficulty",
 
         'remove': "Remove",
         'overwrite-current': "Overwrite Current",

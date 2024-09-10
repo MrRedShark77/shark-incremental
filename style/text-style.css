@@ -50,7 +50,9 @@ text-style {
     @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
         &[text="core"],
         &[text="humanoid"],
-        &[text="black-hole"] {
+        &[text="black-hole"],
+        &[text="observ"],
+        &[text="reserv"] {
             filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
             text-shadow: none;
         };
@@ -67,6 +69,16 @@ text-style {
         };
         &[text="black-hole"] {
             background: linear-gradient(magenta, magenta, purple, magenta, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="observ"] {
+            background: repeating-linear-gradient(-45deg, cyan, #00aeff 20px, cyan 40px);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="reserv"] {
+            background: repeating-linear-gradient(-45deg, #00aeff, #0051ff 20px, #00aeff 40px);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         };

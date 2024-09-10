@@ -46,6 +46,7 @@
     <script src="js/features/forge.js"></script>
     <script src="js/features/particle-accel.js"></script>
     <script src="js/features/singularity.js"></script>
+    <script src="js/features/solar-system.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -242,12 +243,20 @@
             <table class="table">
                 <tr>
                     <td style="width: 30%;">
-                        <div id="mining-tier-div"></div>
-                        <button id="mining-tier-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.upgrade()"></button><br>
-                        <button id="mining-tier-undo-btn" class="huge-btn" style="font-size: 12px; min-height: 30px; height: auto; width: 250px;" onclick="MINING_TIER.undo()"></button>
+                        <div class="table-center">
+                            <div>
+                                <div id="mining-tier-div"></div>
+                                <button id="mining-tier-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.upgrade()"></button><br>
+                                <button id="mining-tier-undo-btn" class="huge-btn" style="font-size: 12px; min-height: 30px; height: auto; width: 250px;" onclick="MINING_TIER.undo()"></button>
+                            </div><div id="mining-ascend-unlock">
+                                <div id="mining-ascend-div"></div>
+                                <button id="mining-ascend-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.ascend()"></button>
+                            </div>
+                        </div>
                         <div id="mining-tier-bonus"></div>
                     </td><td style="width: 40%;">
                         <p id="mining-text"></p>
+                        <p id="super-mining-text"></p>
                         <div id="ores-grid"></div>
                         <subtitle id="mining-note"></subtitle>
                     </td><td style="width: 30%;">
@@ -293,6 +302,46 @@
         </div><div id="singularity-milestones-tab">
             <div id="singularity-milestones">
                 <div class="singularity-milestone">AAA</div>
+            </div>
+        </div><div id="solar-system-tab">
+            <div class="table-center" style="align-items: start;">
+                <div id="solar-system">
+                    <button id="ss-moon" style="grid-column: 1 / 3;"><img src="textures/solar-system/hidden.png"><br>Moon</button>
+                    <button id="ss-venus"><img src="textures/solar-system/hidden.png"><br>Venus</button>
+                    <button id="ss-mars"><img src="textures/solar-system/hidden.png"><br>Mars</button>
+                    <button id="ss-mercury"><img src="textures/solar-system/hidden.png"><br>Mercury</button>
+                    <button id="ss-jupiter"><img src="textures/solar-system/hidden.png"><br>Jupiter</button>
+                    <button id="ss-saturn"><img src="textures/solar-system/hidden.png"><br>Saturn</button>
+                    <button id="ss-uranus"><img src="textures/solar-system/hidden.png"><br>Uranus</button>
+                    <button id="ss-neptune"><img src="textures/solar-system/hidden.png"><br>Neptune</button>
+                    <button id="ss-pluto"><img src="textures/solar-system/hidden.png"><br>Pluto</button>
+                    <button id="ss-sun" style="grid-column: 1 / 3;"><img src="textures/solar-system/hidden.png"><br>Sun</button>
+                </div><div style="width: 600px; margin-left: 10px;">
+                    <p id="rocket-part-div"></p>
+                    <div id="rocket-part-btns"></div>
+                    <div id="solar-system-desc-div">
+                        <p id="ss-title">???</p>
+                        <div id="ss-desc" style="min-height: 120px; font-size: 14px;">
+                            Welcome to the Solar System! So, you are free to explore some planet, but it requires observing for powerful rewards. Force a singularity reset, resetting evolution tree (it returns after), but black hole’s reduction is forced to ^0.5, post-singularity features will not work, and you cannot explore any ocean. You can generate observatories in the space-base, which helps you progress faster with their upgrades. There is difficulty, it affects not progress, but the space-base features to make progress further. Let’s start with Moon of the Earth! It’s called Luna, but Theta, originally before the collision.
+                        </div><div id="ss-reward" style="min-height: 50px; font-size: 14px; margin: 5px 0px;">
+                            You must complete observing to reveal the reward.
+                        </div><div id="ss-goal" style="min-height: 30px;">
+                            Total Observatories Goal: ???
+                        </div><button id="observ-button" onclick="observeSolarSystem()">Start Observing</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="space-base-tab">
+            <div class="table-center">
+                <div style="width: 50%; min-width: 500px;">
+                    <p id="observ-div"></p>
+                    <div id="spacebase-upgs-o" class="spacebase-upgs"></div>
+                </div><div style="width: 50%; min-width: 500px;" id="reserv-content">
+                    <p id="reserv-div"></p>
+                    <div id="spacebase-upgs-r" class="spacebase-upgs"></div>
+                </div>
             </div>
         </div>
 
@@ -350,7 +399,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.3.1 by MrRedShark77
+            Shark Incremental v0.3.2 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

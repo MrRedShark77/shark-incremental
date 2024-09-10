@@ -107,14 +107,24 @@ const TAB_IDS = {
         html: updateEvolutionTreeHTML,
 
         notify() {
-            for (let i = 0; i < EVOLUTION_TREE.faith_cost.length; i++) {
+            if (!isAutoEnabled('faith')) for (let i = 0; i < EVOLUTION_TREE.faith_cost.length; i++) {
                 var x = EVOLUTION_TREE.faith_cost[i]
                 if (CURRENCIES[x[0]].amount.gte(x[1](player.humanoid.faith[i]))) return true
             }
 
-            var row_available = []
-            for (let i = 0; i < tmp.evo_tree_rows; i++) row_available.push(EVOLUTION_TREE.getAvilableSlot(i))
-            for (let i = 0; i < tmp.evo_tree_rows * 4; i++) if (EVOLUTION_TREE.canAfford(i, row_available[Math.floor(i / 4)])) return true
+            var row_available = [], charged_row_available = [], tf_unl = isSSObserved('mars'), maxed_row = []
+            for (let i = 0; i < tmp.evo_tree_rows; i++) {
+                row_available.push(EVOLUTION_TREE.getAvilableSlot(i))
+                if (tf_unl) {
+                    charged_row_available.push(EVOLUTION_TREE.getAvilableSlot(i,true))
+                    if (hasEvolutionTree(4*i) && hasEvolutionTree(4*i+1) && hasEvolutionTree(4*i+2) && hasEvolutionTree(4*i+3)) maxed_row[i] = true;
+                }
+            }
+            for (let i = 0; i < tmp.evo_tree_rows * 4; i++) {
+                let row = Math.floor(i / 4)
+                if (EVOLUTION_TREE.canAfford(i, row_available[row])) return true;
+                if (tf_unl && row < EVOLUTION_TREE.charged_rows && maxed_row[row] && EVOLUTION_TREE.canAfford(i, charged_row_available[row], true)) return true;
+            }
 
             return false
         },
@@ -126,7 +136,7 @@ const TAB_IDS = {
         html: updateCultivationHTML,
 
         notify() {
-            return !isAutoEnabled('mining_tier') && CURRENCIES.stone.amount.gte(MINING_TIER.require)
+            return !isAutoEnabled('mining_tier') && CURRENCIES.stone.amount.gte(MINING_TIER.require) || isSSObserved('moon') && player.humanoid.mining_tier.gte(MINING_TIER.ascend_require)
         },
     },
     'forge': {
@@ -145,6 +155,7 @@ const TAB_IDS = {
         html: updateBlackHoleHTML,
 
         notify() {
+            if (isAutoEnabled('remnant')) return false;
             let r = player.singularity.remnants
             for (let i in REMNANT_UPGS) {
                 let u = REMNANT_UPGS[i]
@@ -155,6 +166,27 @@ const TAB_IDS = {
     },
     'singularity-milestones': {
         html: updateSingularityMilestones,
+    },
+    'solar-system': {
+        html: updateSolarSystemHTML,
+
+        notify() {
+            for (let i = 0; i < ROCKET_PARTS.costs.length; i++) {
+                var x = ROCKET_PARTS.costs[i]
+                if (x[0]().gte(x[2](player.solar_system.rocket_parts[i]))) return true
+            }
+        },
+    },
+    'space-base': {
+        html: updateSpaceBaseHTML,
+
+        notify() {
+            if (tmp.ss_difficulty===0) return false;
+            for (let i of SPACEBASE_UPG_KEYS) {
+                let u = SPACEBASE_UPGS[i]
+                if (u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true
+            }
+        },
     },
 }
 
@@ -172,8 +204,14 @@ const TABS = [
         unl: ()=>player.feature>=3,
         stab: "research",
     },{
-        unl: ()=>player.feature>=4,
+        unl: ()=>!tmp.ss_difficulty && player.feature>=4,
         stab: "explore",
+    },{
+        unl: ()=>tmp.ss_difficulty,
+        stab: "space-base",
+        style: {
+            "background": `#006c9e`,
+        },
     },{
         id: 'core',
         unl: ()=>player.core.times>0,
@@ -199,6 +237,7 @@ const TABS = [
         stab: [
             ["black-hole"],
             ["singularity-milestones"],
+            ["solar-system",()=>player.feature>=20],
         ],
         style: {
             "background": `black url('textures/cosmic-pattern.png')`,
@@ -268,7 +307,8 @@ function updateTabs() {
         if (unl) v.html?.()
     }
 
-    for (let [k,v] of Object.entries(TABS[tab]?.style ?? DEFAULT_TAB_STYLE)) document.body.style[k] = v
+    let s = TABS[tab]?.style ?? {}
+    for (let [k,v] of Object.entries(DEFAULT_TAB_STYLE)) document.body.style[k] = s[k] ?? v
 }
 
 function setupTabs() {

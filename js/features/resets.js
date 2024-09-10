@@ -164,7 +164,7 @@ const RESETS = {
 
             h.particle_accel.active = -1
 
-            for (let x of ORE_KEYS) h.ores[x] = E(0);
+            for (let x = 0; x < ORE_KEYS.length; x++) if (x < 9) h.ores[ORE_KEYS[x]] = E(0);
             if (!hasSMilestone(8)) {
                 h.faith = [E(0), E(0), E(0)],
                 h.tree = []
@@ -210,6 +210,20 @@ const RESETS = {
             if (!hasSMilestone(10)) resetResearch('s1','s2','s3');
 
             RESETS["black-hole"].doReset()
+        },
+    },
+    reserv: {
+        get require() { return player.solar_system.observ.gte(CURRENCIES.reserv.require) },
+        reset(force) {
+            if (!force) {
+                gainCurrency('reserv',tmp.currency_gain.reserv)
+            }
+
+            this.doReset()
+        },
+        doReset() {
+            player.solar_system.observ = E(0)
+            resetSpaceBaseUpgs(['o1','o2','o3','o4'])
         },
     },
 }

@@ -1,5 +1,8 @@
 function calc(dt) {
-    if (tmp.pass > 0) tmp.pass--
+    if (tmp.pass > 0) {
+        tmp.pass--
+        ores_grid = []
+    }
     else {
         let OA = offline.active
 
@@ -78,10 +81,12 @@ function calc(dt) {
                     gainCurrency(ok,value.mul(dt))
                 }
             } else {
-                var m = mine_time.add(tmp.mining_speed.mul(dt))
+                var o = ores_grid[0], s = o.super
+
+                var m = mine_time.add((s ? tmp.super_mining_speed : tmp.mining_speed).mul(dt))
 
                 if (m.gte(1)) {
-                    var dmg = m.floor().mul(tmp.mining_damage), o = ores_grid[0]
+                    var dmg = m.floor().mul(s ? tmp.super_mining_damage : tmp.mining_damage)
 
                     o.health = o.health.sub(dmg)
                     if (o.health.round().lte(0)) {

@@ -28,7 +28,7 @@ const SHARK = {
 
         mult = mult.mul(simpleETEffect(0)).mul(simpleETEffect(1)).mul(simpleETEffect(2)).mul(simpleETEffect(3)).mul(getCRBoost(7)).mul(remnantUpgEffect(7))
 
-        exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0))
+        exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0)).mul(simpleCETEffect(0)).mul(simpleCETEffect(1)).mul(simpleCETEffect(2)).mul(simpleCETEffect(3))
 
         tmp.shark_elo_mult = mult, tmp.shark_elo_exp = exp
 
@@ -62,7 +62,7 @@ const SHARK = {
 
 const SU_TABS = {
     'shark': ['s1','s2','s3','s4','s5','p1','p2','p3'],
-    'cultivation': ['m1','m2','m3','m4','m5'],
+    'cultivation': ['m1','m2','m3','m4','m5','m6','m7'],
 }
 
 const SHARK_UPGRADES = {
@@ -122,7 +122,11 @@ const SHARK_UPGRADES = {
 
         curr: "fish",
 
-        effect: l=>l.div(100).add(1),
+        effect: l=>{
+            let x = l.div(100).add(1)
+            if (hasResearch('m6')) x = x.pow(l.add(10).log10().pow(2))
+            return x
+        },
         effDesc: x=>formatPow(x),
     },
     s5: {
@@ -262,6 +266,40 @@ const SHARK_UPGRADES = {
 
         effect: l=>Decimal.pow(2,l),
         effDesc: x=>formatMult(x,0),
+    },
+    m6: {
+        unl: ()=>isSSObserved('moon'),
+        req: ()=>player.humanoid.mining_ascend.gte(1),
+        
+        cost: l => {
+            let x = Decimal.pow(3,l.scaleAll('su_m1')).mul(100)
+            return x
+        },
+        bulk: x => {
+            return x.div(100).log(3).scaleAll('su_m1',true).floor().add(1)
+        },
+
+        curr: "radium",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x,0),
+    },
+    m7: {
+        unl: ()=>isSSObserved('moon'),
+        req: ()=>player.humanoid.mining_ascend.gte(3),
+
+        cost: l => {
+            let x = Decimal.pow(2,l).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(2).floor().add(1)
+        },
+
+        curr: "uranium",
+
+        effect: l=>l.div(4).add(1),
+        effDesc: x=>formatMult(x),
     },
 }
 
