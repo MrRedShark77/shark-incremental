@@ -342,7 +342,7 @@ function getMiningFortune() {
 }
 
 function getSuperMiningDamage() {
-    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleETEffect('m5'))
+    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleResearchEffect('m5'))
     return x
 }
 function getSuperMiningSpeed() {
