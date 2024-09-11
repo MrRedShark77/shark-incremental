@@ -41,7 +41,14 @@ LANGUAGES.KO = {
         'dark-matter-name': "암흑물질",
         'dark-matter-costName': toTextStyle('암흑물질','black-hole'),
 
+        'observ-name': "천체", // quick note: translating into 2 word, '천체' and '관측'.
+        'observ-costName': toTextStyle('천체','observ'),
+
+        'reserv-name': "비축량",
+        'reserv-costName': toTextStyle('비축량','reserv'),
+
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
+        'full-shark-rank': toTextStyle('상어','shark') + ' 랭크',
 
         'sharkoid-faith': toTextStyle('상어 인간의 신앙','humanoid'),
 
@@ -52,10 +59,13 @@ LANGUAGES.KO = {
         'curr-top-1-reset': x => `핵으로 들어가 <b>${x.format(0)}</b> ${toTextStyle('마그마','core')} 파편을 획득`,
 
         'curr-top-2-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} 도달`, 
-        'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를  <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화   (<b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
+        'curr-top-2-reset': (x,next) => `당신의 ${toTextStyle('상어','shark')}를 <b>${format(x,0)}</b> ${toTextStyle('상어','humanoid')} 인간으로 진화(<b>${format(next)}</b> ${toTextStyle('물고기','fish')}에서 다음 진화 가능)`,
 
         'curr-top-3-req': x => `<b>${format(x)}</b> ${toTextStyle('물고기','fish')} & <b>8</b> ${toTextStyle('블랙홀','black-hole')} 도달`, 
         'curr-top-3-reset': x => `${toTextStyle('상어','shark')}를 희생해 <b>${format(x,0)}</b>개의 ${toTextStyle('암흑물질','black-hole')} 획득`,
+
+        'curr-top-4-req': x => `총 <b>${format(x)}</b> 개의 ${toTextStyle('천체','observ')}에 도달`, 
+        'curr-top-4-reset': x => `총 <b>${format(x,0)}</b> 개의 ${toTextStyle('비축량','reserv')}에 도달`,
 
         'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
@@ -67,6 +77,7 @@ LANGUAGES.KO = {
         'tab-auto': "자동화",
         'tab-research': toTextStyle('연구','prestige'),
         'tab-explore': "탐험",
+        'tab-space-base': toTextStyle('우주 기지','observ'),
 
         'tab-core': toTextStyle('핵','core'),
         'tab-core-reactor': toTextStyle('핵','core')+" 원자로",
@@ -84,6 +95,7 @@ LANGUAGES.KO = {
         'tab-singularity': toTextStyle('특이점','black-hole'),
         'tab-black-hole': toTextStyle('블랙홀','black-hole'),
         'tab-singularity-milestones': toTextStyle('특이점','black-hole') + " 마일스톤",
+        'tab-solar-system': "태양계",
 
         // Elements / 기초적인 것들
 
@@ -123,12 +135,14 @@ LANGUAGES.KO = {
         'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>초기화하기`,
         'export-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>내보내기`,
         'import-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>불러오기`,
-        'evolution-tree-preset': `${toTextStyle('진화','humanoid')} 트리 프리셋`,
+        'evolution-tree-preset': `${toTextStyle('진화','humanoid')} 트리<br><b>한국어는 안됩니다!</b>`,
 
         'rerun-evolution': `진화 트리를 초기화하면서 강제로 ${toTextStyle('진화','humanoid')} 환생을 진행`,
 
         'mining-text': `채광 중... <b id="mining-progress">???</b> | 대미지 <b id="mining-damage">???</b> | ${toTextStyle(`채광 행운 <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
+        'super-mining-text': `슈퍼 대미지 <b id="super-mining-damage">???</b> | ${toColoredText(`슈퍼 채광 행운 <span id="super-mining-fortune">0</span>`+icon("luck"),'orange')}`,
         'mining-tier-div': `채광 티어: <h3 id="mining-tier">0</h3>`,
+        'mining-ascend-div': `채광 승천: <h3 id="mining-ascend">0</h3>`,
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 티어를 1 내리세요`,
 
@@ -137,6 +151,10 @@ LANGUAGES.KO = {
 
         'remnant-html': `<h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 개의 잔재물을 가지고 있습니다.`,
         
+        'rocket-part-div': `총 <h3 id="total-rocket-part">0</h3> 개의 로켓 부품을 만들었습니다.`,
+        'observ-div': `<h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> 개의 천체를 가지고 있습니다. (총 <h3>${toTextStyle('0','observ','observ-total')}</h3>)`,
+        'reserv-div': `<h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> 개의 비축량을 가지고 있습니다.`,
+
         // Upgrades / 업그레이드들
 
         'su-s1-req': "레벨 3",
@@ -186,7 +204,15 @@ LANGUAGES.KO = {
 
         'su-m5-req': '채광 티어 9',
         'su-m5-name': '기본 광석들',
-        'su-m5-desc': `처음 네 광석들을 채광시 획득하는 량이 레벨 당 <b>×2</b> 올라갑니다.`,
+        'su-m5-desc': `처음 네 광석들을 채광시 획득하는 량이 레벨 당 <b>×2</b> 만큼 올라갑니다.`,
+
+        'su-m6-req': '채광 승천 1',
+        'su-m6-name': '슈퍼 채광 대미지',
+        'su-m6-desc': `슈퍼 채광 대미지를 레벨 당 <b>×2</b> 만큼 올립니다.`,
+
+        'su-m7-req': '채광 승천 3',
+        'su-m7-name': '슈퍼 채광 속도',
+        'su-m7-desc': `일반 채광 속도와 슈퍼 채광 속도를 레벨 당 <b>+25%</b> 만큼 올립니다.`,
 
         // Researches / 연구들
 
@@ -329,7 +355,7 @@ LANGUAGES.KO = {
 
         'all-research': {
             's4': ["순수한 바다 II",`<b>인도양</b>이 추가적인 지수 부스트를 감소된 상태로<br>제공합니다.`],
-            's5': ["순수한 바다 III",`첫 <b>N</b> 번째 바다의 깊이 진행의 감소가<br>삭제됩니다. 이는 <b>인도양</b>까지 적용 됩니다.<br>6번째 레벨이 10 번째 방사선 부스트를<br>개선합니다.`], // need more info to "6th leval"
+            's5': ["순수한 바다 III",`첫 <b>N</b> 번째 바다의 깊이 진행의 감소가<br>삭제됩니다. 이는 <b>인도양</b>까지 적용 됩니다.<br>6번째 레벨에서는 10 번째 방사선 부스트를<br>개선합니다.`], // need more info to "6th leval"
 
             'dm1': ["시작 블랙홀",`희생 시에 레벨 당 <b>+1</b>개의 ${toTextStyle("블랙홀",'black-hole')}을 형성한<br>상태로 시작합니다. 블랙홀의 자원 감소를<br>늦춥니다.`],
             'dm2': ["나은 잔재물 I",`${toTextStyle("잔재물",'black-hole')} 업그레이드 "다시 안녕"을 개선합니다,<br>${toTextStyle("환생",'prestige')} 파편에도 영향을 줍니다.`],
@@ -338,6 +364,9 @@ LANGUAGES.KO = {
             'dm5': ["소프트캡 없는 핵 온도",`${toTextStyle('핵','core')} 온도의 소프트캡을 삭제합니다.`],
             'dm6': ["나은 방사선 생산기",`${toTextStyle('방사선 '+icon('radioactive'),'core')} 생산기가 자기 자신의 지수를 감소된<br>상태로 부스트합니다.`],
             'dm7': ["암흑 잔재물",`총 ${toTextStyle("암흑물질",'black-hole')}이 ${toTextStyle("잔재물",'black-hole')} 생산을 부스트합니다.`],
+
+            'm5': ["상어 랭크가 슈퍼 채광에게",`${toTextStyle("상어",'shark')} 랭크의 채광 대미지 부스트가 슈퍼 채광에도 감소된 상태로 부스트를 제공합니다.`],
+            'm6': ["우라늄 상어",`'상어 지수 강화'가 강화됩니다.`],
         },
 
         // Exploration / 탐험들
@@ -462,25 +491,25 @@ LANGUAGES.KO = {
 
         'evolution-tree-row': (r,a) => `<b>${r} 열</b><br>${a}개 더 가능`,
         'evolution-tree-ctn': [
-            ["물고기의 몸체", x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('상어','shark')} ELO를<b>${formatMult(x)}</b>만큼 증가시킵니다.`],
-            ["환생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
-            ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
-            ["완벽한 몸체", x=>`${toTextStyle('상어','shark')} ELO가 <b>${formatMult(x,0)}</b>만큼 증가합니다.`],
+            ["물고기의 몸체", x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('상어','shark')} ELO를<b>${formatMult(x)}</b>만큼 증가시킵니다.`, x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle('상어','shark')} ELO의 지수를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["환생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`, x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle('상어','shark')} ELO의 지수를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`, x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO의 지수를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
+            ["완벽한 몸체", x=>`${toTextStyle('상어','shark')} ELO가 <b>${formatMult(x,0)}</b>만큼 증가합니다.`, x=>`${toTextStyle('상어','shark')} ELO의 지수가 <b>${formatMult(x,0)}</b> 만큼 늘어납니다.`],
 
-            ["강철 상어", x=>`추가 <b>철</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["비싼 상어", x=>`추가 <b>니켈</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
-            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`],
+            ["강철 상어", x=>`추가 <b>철</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>철</b>를 약간 개선합니다.`],
+            ["비싼 상어", x=>`추가 <b>니켈</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>니켈</b>를 약간 개선합니다.`],
+            ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>산소</b>를 약간 개선합니다.`],
+            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>네온</b>를 약간 개선합니다.`],
 
-            ["마리아나 해구", x=>`<b>태평양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
-            ["Litke 딥", x=>`<b>북극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
-            ["Milwaukee 딥", x=>`<b>대서양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
-            ["사우스샌드위치 해구", x=>`<b>남극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`],
+            ["마리아나 해구", x=>`<b>태평양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>태평양</b>의 깊이 진행을 약간 개선합니다.`],
+            ["Litke 딥", x=>`<b>북극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>북극해</b>의 깊이 진행을 약간 개선합니다.`],
+            ["Milwaukee 딥", x=>`<b>대서양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>대서양</b>의 깊이 진행을 약간 개선합니다.`],
+            ["사우스샌드위치 해구", x=>`<b>남극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>남극해</b>의 깊이 진행을 약간 개선합니다.`],
 
-            ["물고기 인플레이션", x=>`${toTextStyle('물고기','fish')} 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
-            ["오버프레스티지", x=>`${toTextStyle('환생','prestige')} 파편 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
-            ["압축된 핵", x=>`${toTextStyle("마그마",'core')} 조각 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`],
-            ["홈메이드 상어", x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`],
+            ["물고기 인플레이션", x=>`${toTextStyle('물고기','fish')} 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`, x=>`${toTextStyle('물고기','fish')} 획득 지수가 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["오버프레스티지", x=>`${toTextStyle('환생','prestige')} 파편 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`, x=>`${toTextStyle('환생','prestige')} 파편 획득 지수가 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["압축된 핵", x=>`${toTextStyle("마그마",'core')} 조각 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`, x=>`${toTextStyle("마그마",'core')} 조각 획득 지수가 <b>${format(x)}</b> 제곱 증가합니다.`],
+            ["홈메이드 상어", x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`, x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 지수가 <b>+${format(x)}</b> 만큼 증가합니다.`],
 
             ["상어 전환", x=>`<b>${format(x,0)}</b> 개의 추가 <b>황</b> 티어 획득합니다.`],
             ["엑소스켈레톤 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>실리콘</b> 티어 획득합니다.`],
@@ -517,10 +546,10 @@ LANGUAGES.KO = {
             ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`],
             ["빠른 용광로", x=>`재련이 <b>${formatMult(x)}</b> 만큼 빨라집니다.`],
 
-            ["진정한 열 1", x=>`진화 트리의 첫 번째 열을 구매 할 수 있습니다.`], // need to fix, need more info
-            ["진정한 열 2", x=>`진화 트리의 두 번째 열을 구매 할 수 있습니다.`],
-            ["진정한 열 3", x=>`진화 트리의 세 번째 열을 구매 할 수 있습니다.`],
-            ["진정한 열 4", x=>`진화 트리의 네 번째 열을 구매 할 수 있습니다.`],
+            ["진정한 열 1", x=>`진화 트리의 첫 번째 열을 구매할 수 있습니다.`],
+            ["진정한 열 2", x=>`진화 트리의 두 번째 열을 구매할 수 있습니다.`],
+            ["진정한 열 3", x=>`진화 트리의 세 번째 열을 구매할 수 있습니다.`],
+            ["진정한 열 4", x=>`진화 트리의 네 번째 열을 구매할 수 있습니다.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"완료":y?"달성 못 함":"현재 진행 중", // need more info
@@ -576,9 +605,15 @@ LANGUAGES.KO = {
         },
 
         'mined-resources-text': `채굴한 자원들`,
+        'mining-tier': `채광 티어`,
+        'next-mining-tier': `<b>채광 티어</b>에서`,
         'mining-tier-reset': `<b>채광 티어</b>를 올리는 대신 광석의 체력과 양이 증가합니다.`,
         'mining-tier-ore-unlock': x=>`${x} 광석을 해금합니다.`,
         'mining-tier-ore-generation': x=>`더 이상 ${x} 광석이 나타나지 않습니다, 대신 해당 광석을 채광 속도와 행운에 기반해 자동으로 생성됩니다.`,
+
+        'mining-ascend': `채광 승천`,
+        'next-mining-ascend': `<b>채광 승천</b>에서`,
+        'mining-ascend-reset': `<b>채광 승천</b>을 증가시킵니다, 강력한 부스트를 제공하는 대신 강제로 특이점 환생을 하게 됩니다.`,
 
         'mining-tier-bonus': [
             x=>`모든 광석의 체력이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
@@ -589,6 +624,10 @@ LANGUAGES.KO = {
             x=>`<b>비스무트</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
             x=>`<b>다이아몬드</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
             x=>`<b>흑요석</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
+            x=>`첫 9 종류의 광석 획득량이 <b>${formatPow(x)}</b>만큼 증가합니다.`,
+            x=>`슈퍼 광석의 체력이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
+            x=>`<b>라듐-223</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
+            x=>`<b>우라늄-235</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
         ],
 
         // Forge / 용광로
@@ -603,6 +642,7 @@ LANGUAGES.KO = {
             'shark': ['더 멀은 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
             'refined_shard': ['충전된 파편',`${toTextStyle('환생','prestige')} 파편의 지수를 증가시킵니다.`],
             'wormhole': ['웜홀',`새로운 콘텐츠인 입자 가속기를 해금합니다.`],
+            'matter': ['물질 변환기',`${toTextStyle('잔재물','black-hole')} 획득량을 늘립니다.`],
         },
         'forge-progress': (x,s) => x ? `<b>${x}</b> 재련 중... <b>${s}</b>` : `용광로에서 제작을 하고 있지 않습니다.`,
         'forge-speed': x => `재련 속도: <b>${x}</b>`,
@@ -623,7 +663,7 @@ LANGUAGES.KO = {
         // Singularity / 특이점
 
         'black-hole-texts': [
-            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을 할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
+            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
             `평행 우주에서는 어떠셨나요? 아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
             `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요? 이제 당신을 엄청난 고난에 넣을 차례입니다!`,
             `진짜로..`,
@@ -663,9 +703,44 @@ LANGUAGES.KO = {
 
             [`끝없는 깊이`,x=>`각 바다의 깊이 진행이<br>${x} 만큼<br>부스트 됩니다.`],
             [`뜨거운 감자`,x=>`방사선 부스트가<br>${x} 만큼<br>강해집니다.`],
-            [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 네 개의<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
+            [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫<br>네 개의 스케일링이 ${x} 만큼<br>늦춰집니다.`],
+            [`엘리트 마이너`,x=>`채광 티어의 세 번째<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
         ],
         
+        'solar-system-list': {
+            'sun':     ["태양",`???`,`???`],
+            'mercury': ["수성",`???`,`???`],
+            'venus':   ["금성",`금성은 태양계의 두 번째 행성으로 태양계에서 6번째로 큰 행성입니다. 금성의 이름은 로마 신화의<br>미를 상징하는 여신의 이름을 따 비너스(Venus)라고 부릅니다. 금성은 96% 이상이 이산화탄소로<br>이루어져 있으며 밀도가 높은 대기를 가지고 있습니다. 금성의 평균 표면 온도는 735 K (462 °C)으로<br>태양계에서 가장 뜨거운 행성이며 위성이 없습니다. 태양과 달에 이어 지구의 하늘에서 볼 수 있는<br>세 번째로 밝은 천체입니다.`,`현재 ${toTextStyle('휴머노이드','humanoid')} 상어의 100%를 추가 ${toTextStyle('휴머노이드','humanoid')} 상어로 써 획득하는 대신<br>'자동-${toTextStyle('휴머노이드','humanoid')} 상어'가 더 이상 작동하지 않습니다. ${toTextStyle('휴머노이드','humanoid')} 상어를 드라마틱하게 개선하며,<br>${toTextStyle('상어','shark')} 랭크의 세 번째 스케일링이 x2 만큼 미뤄집니다. ${toTextStyle('천체','observ')}의 생산량이 x10 만큼 증가합니다.`],
+            'earth':   ["지구",`???`,`???`],
+            'moon':    ["달",`태양계에 오신 것을 환영합니다! 일부 행성을 자유롭게 탐험할 수 있지만, 강력한 보상을<br>받기 위해서는 관측이 필요합니다. 관측을 시작하면 강제로 특이점 환생이 이루어지며<br>일부 연구 및 진화 트리가 초기화 되며(관측을 끝내면 다시 생깁니다),<br>블랙홀의 감소 효과가 ^0.5 로 고정되며 거의 모든 채광 이후의 기능이 비활성화 되며,<br>마지막으로 어떠한 바다도 탐험할 수 없습니다. 우주 기지에서 ${toTextStyle('천체','observ')}를 생성해<br>업그레이드를 구매하여 진행을 더 빠르게 만들 수 있습니다. 난이도는 게임 진행에는<br>영향을 미치지 않지만 우주 기지의 기능을 더 많이 사용할 수 있도록 만듭니다.<br>자! 먼저 지구의 달부터 시작하겠습니다!<br>달이라고도 부르지만, '거대 충돌 가설'에서는 충돌 이전엔 '테이아' 라고 불렀습니다.`,`채광 승천과 새 ${toTextStyle('잔재물','black-hole')} 업그레이드를 해금합니다. 채광 승천은 강제로 특이점 환생을 진행하는<br>대신 강력한 보너스와 여러 광석을 해금할 수 있습니다.`],
+            'mars':    ["화성",`화성은 태양계의 네 번째 행성으로 표면이 단단하고 크기가 지구와 비슷하기 때문에 지구 행성군에<br>속합니다. 화성의 지형은 충돌 분화구, 화산, 계곡, 사막, 극지방 만년설 등<br>독특한 특징을 가지고 있습니다. 화성은 물의 침식과 유사한 지질 구조와<br>장기간동안 물에 노출되었을 때만 형성될 수 있는 미네랄을 가지고 있습니다.<br>화성에 생명체가 존재하는지에 대한 질문은 수세기 동안 과학자들의 이목을 끌었습니다`,`이미 구매한 ${toTextStyle('진화','humanoid')} 트리를 테라포밍하여 강력한 보너스를 얻을 수 있게 되지만<br>더 많은 비용을 요구합니다. 새로운 자동화를 해금합니다. ${toTextStyle('천체','observ')}의 생산량이 x10 만큼 증가합니다.`],
+            'jupiter': ["목성",`???`,`???`],
+            'saturn':  ["토성",`???`,`???`],
+            'uranus':  ["천왕성",`???`,`???`],
+            'neptune': ["해왕성",`???`,`???`],
+            'pluto':   ["명왕성",`???`,`???`],
+        },
+        'build-rocket-part': x => `${x} 개의 로켓 부품을 제작.`,
+        'total-rp': "개의 총 로켓 부품",
+        'solar-system-lock-reward': `${toTextStyle('관측','observ')}을 완료해 보상을 해금하세요.`,
+        'solar-system-goal': x => `총 ${toTextStyle('천체','observ')} 목표: <h4>${x}</h4>`,
+        'solar-system-status': x => [`관측 시작하기`,`관측 포기하기`,`관측 완료하기`][x],
+        'observ-progress': x => `총 <b>${x}</b> 개의 ${toTextStyle('천체','observ')}에 도달하세요`,
+        'observ-cond': `${toTextStyle('관측','observ')}을 완료하세요`,
+
+        'space-base-upgrades': {
+            'o1': [`우주`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            'o2': [`우주 물고기`,x=>`${toTextStyle('물고기','fish')} 획득량이 ${x} 만큼 증가합니다.`],
+            'o3': [`우주 환생`,x=>`${toTextStyle('환생 파편','prestige')} 획득량이 ${x} 만큼 증가합니다.`],
+            
+            'e1': [`물고기 변환기`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            'e2': [`환생 변환기`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+
+            'r1': [`상대론`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            'r2': [`관측`,x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
+            'r3': [`우주 물고기 II`,x=>`${toTextStyle('물고기','fish')} 획득량이 ${x} 만큼 증가합니다.`],
+        },
+
         // Automation / 자동화
 
         'auto-shark-name': `자동-${toTextStyle("상어","shark")} 레벨`,
@@ -680,6 +755,7 @@ LANGUAGES.KO = {
         'auto-research-name': `자동-${toTextStyle("특이점","black-hole")}-이전의 연구`,
         'auto-mining_tier-name': `자동-채광 티어`,
         'auto-remnant-name': `자동-${toTextStyle("잔재물","black-hole")} 업그레이드`,
+        'auto-faith-name': `자동-${toTextStyle("신앙","humanoid")}`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -790,6 +866,7 @@ LANGUAGES.KO = {
             'su_m5' : `"기본 광석들" 업그레이드`,
             'cr_boost' : `방사성 부스트`,
             'mining_tier' : `채광 티어`,
+            'remnant_upg' : `잔재물 업그레이드`,
         },
         'scaling-start': "시작: ",
         'scaling-mode': {
@@ -826,6 +903,7 @@ LANGUAGES.KO = {
         'reward': "보상",
         'new-preset': "새로운 프리셋",
         'maxed': "최대",
+        'difficulty': "난이도",
 
         'remove': "삭제",
         'overwrite-current': "현재 트리 불러오기",
@@ -834,7 +912,7 @@ LANGUAGES.KO = {
 
         'offline-time-text': x=>`<b>${formatTime(x,0)}</b> 동안 오프라인이었습니다.`,
 
-        'research-afford': bool => bool ? "구매" : "구매 불가능",
+        'research-afford': bool => bool ? "구매" : "구매하지 않음",
         'research-bought': bool => bool ? `<b>구매함</b>` : `<b>구매하지 않음</b>`,
         'research-pages': x => `${x} 페이지`,
 
