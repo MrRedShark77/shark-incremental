@@ -912,7 +912,7 @@ LANGUAGES.KO = {
 
         'offline-time-text': x=>`<b>${formatTime(x,0)}</b> 동안 오프라인이었습니다.`,
 
-        'research-afford': bool => bool ? "구매" : "구매 불가능",
+        'research-afford': bool => bool ? "구매" : "구매하지 않음",
         'research-bought': bool => bool ? `<b>구매함</b>` : `<b>구매하지 않음</b>`,
         'research-pages': x => `${x} 페이지`,
 
