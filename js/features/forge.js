@@ -1,9 +1,9 @@
 const FORGE = {
     anvil: {
-        max: 3,
+        max: 4,
         unl: ()=>true,
 
-        time: [10,300,6000],
+        time: [10,300,6000,1e41],
         cost: [
             [
                 ['bismuth',1e3],
@@ -14,14 +14,16 @@ const FORGE = {
                 ['diamond',1e17],
                 ['obsidian',1e5],
                 ['vibranium',1000],
+            ],[
+                ['radium',100],
             ],
         ],
     },
     drill: {
-        max: 7,
+        max: 8,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150, 300, 600, 900, 3000, 6000, 2e7],
+        time: [150, 300, 600, 900, 3000, 6000, 2e7, 1e45],
         cost: [
             [
                 ['stone',1e47],
@@ -47,6 +49,8 @@ const FORGE = {
                 ['stone',1e195],
                 ['obsidian',1e9],
                 ['vibranium',1e6],
+            ],[
+                ['radium',1e3],
             ],
         ],
 
@@ -58,10 +62,10 @@ const FORGE = {
         effDesc: x => formatPow(x),
     },
     shard: {
-        max: 4,
+        max: 5,
         unl: ()=>hasForgeUpgrade('anvil'),
 
-        time: [150,300,600,1800],
+        time: [150,300,600,1800,1e45],
         cost: [
             [
                 ['prestige','ee50',true],
@@ -75,11 +79,14 @@ const FORGE = {
             ],[
                 ['prestige','e4.8e92',true],
                 ['obsidian',1e4],
+            ],[
+                ['prestige','ee64000',true],
+                ['radium',1e3],
             ],
         ],
 
         effect(l) {
-            var x = Decimal.pow(10,l)
+            var x = Decimal.pow(10,Decimal.sub(l,4).max(0).pow_base(2).mul(l))
 
             return x
         },
@@ -144,10 +151,10 @@ const FORGE = {
         ],
     },
     shark: {
-        max: 4,
+        max: 5,
         unl: ()=>hasForgeUpgrade('anvil',3),
 
-        time: [6000, 1e7, 1e8,1e10],
+        time: [6000, 1e7, 1e8,1e10,1e45],
         cost: [
             [
                 ['fish','ee91',true],
@@ -161,6 +168,9 @@ const FORGE = {
             ],[
                 ['fish','e2e520',true],
                 ['vibranium',1e18],
+            ],[
+                ['fish','ee72000',true],
+                ['radium',1e3],
             ],
         ],
 
@@ -172,10 +182,10 @@ const FORGE = {
         effDesc: x => formatMult(x),
     },
     refined_shard: {
-        max: 3,
+        max: 5,
         unl: ()=>hasForgeUpgrade('anvil',3),
 
-        time: [6000, 2e7, 3e9],
+        time: [6000, 2e7, 3e9, 1e45,1e48],
         cost: [
             [
                 ['prestige','e2.5e105',true],
@@ -186,11 +196,17 @@ const FORGE = {
             ],[
                 ['prestige','e1e428',true],
                 ['vibranium',1e12],
+            ],[
+                ['prestige','e1e80000',true],
+                ['radium',1e3],
+            ],[
+                ['prestige','ee111000',true],
+                ['uranium',100],
             ],
         ],
 
         effect(l) {
-            var x = Decimal.mul(l,0.01).add(1)
+            var x = Decimal.sub(l,3).max(1).mul(l).div(100).add(1)
 
             return x
         },
@@ -216,6 +232,31 @@ const FORGE = {
                 ['vibranium',1e12],
             ],
         ],
+    },
+    matter: {
+        max: 3,
+        unl: ()=>hasForgeUpgrade('anvil',4),
+
+        time: [1e42,1e45,1e51],
+        cost: [
+            [
+                ['remnants',1e135],
+                ['radium',100],
+            ],[
+                ['remnants',1e160],
+                ['uranium',100],
+            ],[
+                ['remnants',1e205],
+                ['berkelium',10],
+            ],
+        ],
+
+        effect(l) {
+            var x = Decimal.mul(l,0.1).add(1)
+
+            return x
+        },
+        effDesc: x => formatPow(x),
     },
 }
 
@@ -316,9 +357,11 @@ function updateForgeTemp() {
     for (let i of FORGE_KEYS) {
         var f = FORGE[i], lvl = player.humanoid.forge.level[i]
 
-        if (f.effect) tmp.forge_effect[i] = f.effect(lvl)
+        if (f15) tmp.forge_affords[i] = f.unl() && lvl < f.max && f.cost[lvl].filter(x => CURRENCIES[x[0]].amount.lt(x[1])).length == 0;
 
-        if (f15) tmp.forge_affords[i] = f.unl() && lvl < f.max && f.cost[lvl].filter(x => CURRENCIES[x[0]].amount.lt(x[1])).length == 0
+        if (tmp.ss_difficulty && ['drill','shard','shark','refined_shard'].includes(i)) lvl = E(0);
+
+        if (f.effect) tmp.forge_effect[i] = f.effect(lvl);
     }
 
     var fs = E(1)

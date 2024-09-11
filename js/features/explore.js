@@ -136,6 +136,7 @@ function getResourceOtherMult(i) {
 }
 
 function getBaseExploration(i=player.explore.active,amt=player.explore.best_fish) {
+    if (tmp.ss_difficulty) return E(0);
     let req = EXPLORE[i]?.fish_req??EINF
     let x = amt.div(req)
     if (x.lt(1)) return E(0)
@@ -157,12 +158,12 @@ function calcNextDepth(x,gain,i) {
         } else return g
     }
 
-    let b = E(2), q = i >= player.research.s5
+    let b = E(2), q = i >= player.research.s5, w = hasEvolutionTree(8+i,true) && i < 4 ? 1.5 : 2
 
     if (x.gte(10)) {
         // x = Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
 
-        x = x.log10().pow(2).pow10()
+        x = x.log10().pow(w).pow10()
 
         let rss1 = E('ee4'), rss2 = E('ee6')
         let rss2_loglog = rss2.log10().log10()
@@ -180,7 +181,7 @@ function calcNextDepth(x,gain,i) {
         rs2 ||= q && x.gte(rss2)
         if (rs2) x = x.log10().log10().div(rss2_loglog).root(2).mul(rss2_loglog).pow10().pow10()
 
-        x = x.log10().root(2).pow10()
+        x = x.log10().root(w).pow10()
     }
     return x
 }

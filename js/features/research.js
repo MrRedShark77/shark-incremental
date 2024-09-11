@@ -289,6 +289,24 @@ const RESEARCH = {
         },
         effDesc: x => "+"+formatPercent(x.sub(1),0),
     },
+    m5: {
+        bh: true,
+        unl: ()=>player.humanoid.mining_ascend.gte(3),
+        require: [
+            ['uranium',false,10],
+        ],
+        effect() {
+            return Decimal.add(getSharkRankBonus('mining_damage'),10).log10()
+        },
+        effDesc: x => formatMult(x),
+    },
+    m6: {
+        bh: true,
+        unl: ()=>player.humanoid.mining_ascend.gte(3),
+        require: [
+            ['uranium',false,500],
+        ],
+    },
 
     f1: {
         max: 10,
@@ -492,7 +510,7 @@ function setupResearchHTML() {
     ).join("")
 }
 
-function hasResearch(id) { return player.research[id].gte(1) }
+function hasResearch(id,l=1) { return player.research[id].gte(l) }
 function isResearchMaxed(id) { return player.research[id].gte(RESEARCH[id].max??1) }
 function researchEffect(id,def=E(1)) { return tmp.research_eff[id]??def }
 function simpleResearchEffect(id,def=E(1)) { return player.research[id].gte(1)?tmp.research_eff[id]??def:def }

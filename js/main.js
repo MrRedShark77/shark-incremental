@@ -35,10 +35,15 @@ const TOP_CURR = [
         req: ()=>player.fish.gte(CURRENCIES.humanoid.require),
     },
     {
-        unl: ()=>player.feature >= 18,
+        unl: ()=>player.feature >= 18 && !tmp.ss_difficulty,
         reset: "sacrifice",
         curr: "dark-matter",
         req: ()=>player.fish.gte(CURRENCIES['dark-matter'].require) && player.singularity.bh.gte(8),
+    },
+    {
+        unl: ()=>tmp.ss_difficulty >= 2,
+        curr: "reserv",
+        req: ()=>player.solar_system.observ.gte(CURRENCIES.reserv.require),
     },
 ]
 

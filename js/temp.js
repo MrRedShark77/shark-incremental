@@ -35,6 +35,7 @@ function reloadTemp() {
         ca_building_strength: [],
 
         evolution_tree_effect: [],
+        charged_et_effect: [],
 
         mining_fortune: E(0),
         ore_spawn_base: 1,
@@ -59,6 +60,9 @@ function reloadTemp() {
 
         bh_reduction: E(1),
         remnant_upg_effects: [],
+
+        ss_difficulty: 0,
+        sb_upg_effects: {},
     }
 
     for (let x in EXPLORE) {
@@ -77,6 +81,7 @@ function reloadTemp() {
 }
 
 function updateTemp() {
+    tmp.ss_difficulty = SOLAR_SYSTEM[player.solar_system.active]?.difficulty ?? 0 
     tmp.cr_active = player.core.radiation.active
 
     updateResearchTemp()

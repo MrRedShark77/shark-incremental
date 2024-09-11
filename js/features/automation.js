@@ -115,7 +115,7 @@ const AUTOMATION = {
         },
     },
     humanoid: {
-        unl: ()=>hasForgeUpgrade('auto',2) || player.singularity.best_bh.gte(2),
+        unl: ()=>!isSSObserved('venus') && (hasForgeUpgrade('auto',2) || player.singularity.best_bh.gte(2)),
         interval: [10,0.9],
 
         cost: x=>Decimal.pow(10,x+1).mul(1e2),
@@ -173,6 +173,19 @@ const AUTOMATION = {
 
         trigger() {
             for (let i = 0; i < REMNANT_UPGS.length; i++) buyRemnantUpg(i);
+        },
+    },
+    faith: {
+        unl: ()=>isSSObserved('mars'),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e3,x+1).mul(1e15),
+        bulk: x=>x.div(1e15).log(1e3).floor(),
+
+        curr: "dark-matter",
+
+        trigger() {
+            for (let i = 0; i < 3; i++) purchaseSharkoidFaith(i);
         },
     },
 }
