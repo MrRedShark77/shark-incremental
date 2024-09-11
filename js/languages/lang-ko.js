@@ -704,7 +704,7 @@ LANGUAGES.KO = {
             [`끝없는 깊이`,x=>`각 바다의 깊이 진행이<br>${x} 만큼<br>부스트 됩니다.`],
             [`뜨거운 감자`,x=>`방사선 부스트가<br>${x} 만큼<br>강해집니다.`],
             [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫<br>네 개의 스케일링이 ${x} 만큼<br>늦춰집니다.`],
-            [`엘리트 마이너`,x=>`채광 티어의 세 번째 스케일링이 ${x} 만큼 늦춰집니다.`],
+            [`엘리트 마이너`,x=>`채광 티어의 세 번째<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
         ],
         
         'solar-system-list': {
@@ -721,7 +721,7 @@ LANGUAGES.KO = {
             'pluto':   ["명왕성",`???`,`???`],
         },
         'build-rocket-part': x => `${x} 개의 로켓 부품을 제작.`,
-        'total-rp': "총 로켓 부품",
+        'total-rp': "개의 총 로켓 부품",
         'solar-system-lock-reward': `${toTextStyle('관측','observ')}을 완료해 보상을 해금하세요.`,
         'solar-system-goal': x => `총 ${toTextStyle('천체','observ')} 목표: <h4>${x}</h4>`,
         'solar-system-status': x => [`관측 시작하기`,`관측 포기하기`,`관측 완료하기`][x],
