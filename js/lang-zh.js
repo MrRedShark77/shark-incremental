@@ -507,9 +507,9 @@ LANGUAGES.ZH = {
             ["南桑威奇海沟", x=>`移除在<b>南冰洋</b>中下潜深度的上限，并增强<b>南冰洋</b>的效果。`, x=>`大幅提升在<b>南冰洋</b>中的下潜速度。`],
 
             ["暴胀的鱼", x=>`${toTextStyle('鱼','fish')}的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('鱼','fish')}的指数是原来的 <b>${format(x)}</b> 次幂。`],
-            ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('重生','fish')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
-            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('岩浆','fish')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
-            ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`, x=>`${toTextStyle('类人','fish')}鲨鱼的指数 <b>+${format(x)}</b>.`],
+            ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('重生','prestige')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
+            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('岩浆','core')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
+            ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`, x=>`${toTextStyle('类人','humanoid')}鲨鱼的指数 <b>+${format(x)}</b>.`],
 
             ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`],
             ["鲨之铠甲", x=>`<b>硅</b>的等级额外加 <b>${format(x,0)}</b>.`],
