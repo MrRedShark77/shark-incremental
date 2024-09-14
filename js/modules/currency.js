@@ -12,7 +12,7 @@ const CURRENCIES = {
             .mul(tmp.explore_eff[0][0]).mul(tmp.core_bonus)
 
             x = x.pow(sharkUpgEffect('s4')).pow(tmp.explore_eff[2]).pow(coreReactorEffect(0)).pow(getSharkRankBonus('fish')).pow(simpleETEffect(12))
-            .pow(remnantUpgEffect(4)).pow(tmp.explore_eff[0][1]).pow(spaceBaseUpgEffect('o2')).pow(spaceBaseUpgEffect('r3'))
+            .pow(remnantUpgEffect(4)).pow(tmp.explore_eff[0][1]).pow(spaceBaseUpgEffect('o2')).pow(spaceBaseUpgEffect('r3')).pow(spaceBaseUpgEffect('t4'))
 
             if (inExploration(0)) x = x.root(2)
             if (hasDepthMilestone(0,3)) x = x.pow(1.05)
@@ -24,6 +24,7 @@ const CURRENCIES = {
 
             x = expPow(x,tmp.bh_reduction)
             x = expPow(x,simpleCETEffect(12))
+            x = expPow(x,coreReactorEffect(8))
 
             var s = E('ee40'), pre_s = x
 
@@ -60,7 +61,7 @@ const CURRENCIES = {
             x = expPow(x,exp).pow(coreReactorEffect(1)).mul(getSharkBonus("prestige")).mul(tmp.explore_eff[1][0])
 
             x = x.pow(tmp.explore_eff[3]).pow(simpleETEffect(13)).pow(getSharkRankBonus('prestige')).pow(forgeUpgradeEffect('shard'))
-            .pow(tmp.explore_eff[1][1]).pow(spaceBaseUpgEffect('o3'))
+            .pow(tmp.explore_eff[1][1]).pow(spaceBaseUpgEffect('o3')).pow(spaceBaseUpgEffect('r4'))
 
             if (hasResearch('dm2')) x = x.pow(remnantUpgEffect(4))
 
@@ -71,6 +72,7 @@ const CURRENCIES = {
             x = expPow(x,forgeUpgradeEffect('refined_shard'))
             x = expPow(x,tmp.bh_reduction)
             x = expPow(x,simpleCETEffect(13))
+            x = expPow(x,coreReactorEffect(9))
     
             return x.floor()
         },
@@ -95,10 +97,12 @@ const CURRENCIES = {
 
             if (hasEvolutionGoal(2)) x = expPow(x,1.25)
 
-            x = x.mul(getSharkBonus("core")).mul(getCRBoost(1)).pow(simpleETEffect(14))
-
+            x = x.mul(getSharkBonus("core")).mul(getCRBoost(1)).mul(spaceBaseUpgEffect('o4'))
+            
+            x = x.pow(simpleETEffect(14))
             x = x.pow(tmp.bh_reduction)
             x = x.pow(simpleCETEffect(14))
+            x = x.pow(coreReactorEffect(10))
     
             return x.floor()
         },
@@ -119,6 +123,7 @@ const CURRENCIES = {
             let x = 1
             if (isSSObserved('venus')) x += 1.25;
             if (hasEvolutionTree(15,true)) x += chargedETreeEffect(15,0);
+            x = Decimal.add(x,remnantUpgEffect(15,0))
             return x
         },
 
@@ -150,7 +155,7 @@ const CURRENCIES = {
         get gain() {
             if (!S_MILESTONES[0].req()) return E(0)
 
-            let x = E(1).add(getSharkBonus('remnants',0)).mul(getSharkRankBonus('remnants')).mul(getCRBoost(12))
+            let x = E(1).add(getSharkBonus('remnants',0)).mul(getSharkRankBonus('remnants')).mul(getCRBoost(12)).mul(remnantUpgEffect(12))
 
             if (hasResearch('s1')) x = x.mul(researchEffect('s1'));
             if (hasResearch('dm7')) x = x.mul(researchEffect('dm7'));
@@ -194,10 +199,14 @@ const CURRENCIES = {
         get gain() {
             if (player.solar_system.active === "") return E(0);
 
-            let x = Decimal.mul(spaceBaseUpgEffect('o1'),spaceBaseUpgEffect('e1')).mul(spaceBaseUpgEffect('e2')).mul(spaceBaseUpgEffect('r1'))
+            let x = Decimal.mul(spaceBaseUpgEffect('o1'),spaceBaseUpgEffect('e1')).mul(spaceBaseUpgEffect('e2')).mul(spaceBaseUpgEffect('e3')).mul(spaceBaseUpgEffect('r1'))
 
             if (isSSObserved('venus')) x = x.mul(10);
             if (isSSObserved('mars')) x = x.mul(10);
+            if (isSSObserved('mercury')) x = x.mul(10);
+            if (isSSObserved('jupiter')) x = x.mul(10);
+
+            x = x.pow(spaceBaseUpgEffect('t1'))
 
             return x
         },
@@ -215,7 +224,27 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0);
 
-            x = expPow(x,0.5).mul(spaceBaseUpgEffect('r2'))
+            x = expPow(x,0.5).mul(spaceBaseUpgEffect('r2')).mul(spaceBaseUpgEffect('e4')).mul(spaceBaseUpgEffect('t2'))
+
+            return x
+        },
+    
+        get passive() { return 0 },
+    },
+    traject: {
+        get require() { return E(1e12) },
+        
+        get amount() { return player.solar_system.traject },
+        set amount(v) { player.solar_system.traject = v.max(0) },
+    
+        get gain() {
+            if (player.solar_system.active === "") return E(0);
+
+            let x = player.solar_system.reserv.div(1e12)
+
+            if (x.lt(1)) return E(0);
+
+            x = expPow(x,0.5).mul(spaceBaseUpgEffect('t3'))
 
             return x
         },
@@ -257,9 +286,9 @@ function setupCurrencies() {
             get amount() { return player.humanoid.ores[k] },
             set amount(v) { player.humanoid.ores[k] = v.max(0) },
 
-            get gain() { return Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1) },
+            get gain() { return i >= 9 ? Decimal.mul(tmp.ascend_ore_generator_mult,ORES[k].mult??1) : Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1) },
 
-            get passive() { return tmp.ore_generator > i ? 1 : 0 },
+            get passive() { return (i >= 9 ? tmp.ascend_ore_generator + 9 > i : tmp.ore_generator > i) ? 1 : 0 },
 
             name: lang[k],
             costName: toColoredText(lang[k],o.textColor ?? o.color),

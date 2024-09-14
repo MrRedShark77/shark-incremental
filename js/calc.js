@@ -144,6 +144,10 @@ function calc(dt) {
                 }
             }
         }
+
+        if (tmp.ss_difficulty) {
+            for (let g_id in SPACEBASE_UPGS_GROUPS) if (SPACEBASE_UPGS_GROUPS_AUTO[g_id]?.()) for (let id of SPACEBASE_UPGS_GROUPS[g_id]) buySpaceBaseUpg(id,true);
+        }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)
     }

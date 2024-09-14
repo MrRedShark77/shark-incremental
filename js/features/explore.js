@@ -7,7 +7,7 @@ const EXPLORE = [
         effect(r,d) {
             let m = d.div(this.maxDepth).max(1)
             let x = r.add(1).pow(hasResearch('p7') ? 4 : 3).pow(m.pow(.85)).min('ee2000'),
-            y = hasResearch('s3') ? r.add(1).log10().add(1).pow(m.log10().add(1).root(2).overflow(100,0.5,2)) : E(1)
+            y = hasResearch('s3') ? r.add(1).log10().add(1).pow(m.log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : E(1)
             return [x,y]
         },
         effDesc: x => formatMult(x[0]) + (x[1].gt(1) ? ", " + formatPow(x[1]) : "") + " " + CURRENCIES.fish.costName,
@@ -30,7 +30,7 @@ const EXPLORE = [
         effect(r,d) {
             let m = d.div(this.maxDepth).max(1)
             let x = r.add(1).pow(hasResearch('p7') ? 2 : 1.5).pow(d.div(this.maxDepth).max(1).pow(.8)).min('ee2000'),
-            y = hasResearch('s3') ? r.add(1).log10().add(1).pow(m.log10().add(1).root(2).overflow(100,0.5,2)) : E(1)
+            y = hasResearch('s3') ? r.add(1).log10().add(1).pow(m.log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : E(1)
             return [x,y]
         },
         effDesc: x => formatMult(x[0]) + (x[1].gt(1) ? ", " + formatPow(x[1]) : "") + " " + CURRENCIES.prestige.costName,
@@ -51,7 +51,7 @@ const EXPLORE = [
         maxDepth: 8605,
 
         effect(r,d) {
-            let x = hasResearch('s3') ? r.add(1).log10().add(1).pow(d.div(this.maxDepth).max(1).log10().add(1).root(2).overflow(100,0.5,2)) : r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
+            let x = hasResearch('s3') ? r.add(1).log10().add(1).pow(d.div(this.maxDepth).max(1).log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(2,3)) x = x.mul(1.5);
             return x.add(1)
         },
@@ -73,7 +73,7 @@ const EXPLORE = [
         maxDepth: 7236,
 
         effect(r,d) {
-            let x = hasResearch('s3') ? r.add(1).log10().add(1).pow(d.div(this.maxDepth).max(1).log10().add(1).root(2).overflow(100,0.5,2)) : r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
+            let x = hasResearch('s3') ? r.add(1).log10().add(1).pow(d.div(this.maxDepth).max(1).log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(3,2)) x = x.mul(1.5);
             return x.add(1)
         },
@@ -147,7 +147,7 @@ function getBaseExploration(i=player.explore.active,amt=player.explore.best_fish
 }
 
 function inExploration(i) { return player.explore.active == i || player.explore.active == 4 && i < 4 }
-function hasDepthMilestone(i,j) { return tmp.explore_mil_reached[i][j] }
+function hasDepthMilestone(i,j) { return i < 5 && hasSMilestone(3) || tmp.explore_mil_reached[i][j] }
 
 function calcNextDepth(x,gain,i) {
     if (x.lt(10)) {

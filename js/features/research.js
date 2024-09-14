@@ -378,7 +378,7 @@ const RESEARCH = {
     },
 
     s1: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.singularity.best_bh.gte(3),
         require: [
             ['remnants',false,1e3],
@@ -389,21 +389,21 @@ const RESEARCH = {
         effDesc: x => formatMult(x),
     },
     s2: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.singularity.best_bh.gte(7),
         require: [
             ['remnants',false,1e30],
         ],
     },
     s3: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.singularity.best_bh.gte(8),
         require: [
             ['remnants',false,1e48],
         ],
     },
     s4: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',true,1e4],
@@ -412,7 +412,7 @@ const RESEARCH = {
     },
     s5: {
         max: 6,
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['remnants',false,a=>a.pow_base(1e15).mul(1e75),a=>a.div(1e75).log(1e15).add(1).floor()],
@@ -421,7 +421,7 @@ const RESEARCH = {
     
     dm1: {
         max: 8,
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',true,a=>a.pow_base(10).ceil(),a=>a.log(10).add(1).floor()],
@@ -431,35 +431,35 @@ const RESEARCH = {
         },
     },
     dm2: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,1],
         ],
     },
     dm3: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,10],
         ],
     },
     dm4: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,100],
         ],
     },
     dm5: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,1e6],
         ],
     },
     dm6: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,1e8],
@@ -467,7 +467,7 @@ const RESEARCH = {
         ],
     },
     dm7: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.feature>=19,
         require: [
             ['dark-matter',false,1e10],
@@ -478,12 +478,20 @@ const RESEARCH = {
         },
         effDesc: x => formatMult(x),
     },
+
+    o1: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 3,
+        require: [
+            ['reserv',false,1e6],
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
 const MAX_RESEARCH = [null,15,20,25,30]
 
-const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => !('bh' in RESEARCH[x]))
+const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => (RESEARCH[x].tier ?? 1) === 1)
 
 var research_page = 1
 

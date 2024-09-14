@@ -182,10 +182,10 @@ const FORGE = {
         effDesc: x => formatMult(x),
     },
     refined_shard: {
-        max: 5,
+        max: 6,
         unl: ()=>hasForgeUpgrade('anvil',3),
 
-        time: [6000, 2e7, 3e9, 1e45,1e48],
+        time: [6000, 2e7, 3e9, 1e45,1e48,1e70],
         cost: [
             [
                 ['prestige','e2.5e105',true],
@@ -202,6 +202,9 @@ const FORGE = {
             ],[
                 ['prestige','ee111000',true],
                 ['uranium',100],
+            ],[
+                ['prestige','ee700000',true],
+                ['californium',1000],
             ],
         ],
 
@@ -234,10 +237,10 @@ const FORGE = {
         ],
     },
     matter: {
-        max: 3,
+        max: 4,
         unl: ()=>hasForgeUpgrade('anvil',4),
 
-        time: [1e42,1e45,1e51],
+        time: [1e42,1e45,1e51,1e66],
         cost: [
             [
                 ['remnants',1e135],
@@ -248,6 +251,9 @@ const FORGE = {
             ],[
                 ['remnants',1e205],
                 ['berkelium',10],
+            ],[
+                ['remnants',1e308],
+                ['californium',100],
             ],
         ],
 

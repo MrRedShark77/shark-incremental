@@ -156,6 +156,44 @@ const REMNANT_UPGS = [
         },
         effDesc: x=>"+"+format(x,0),
     },
+
+    {
+        unl:()=>isSSObserved('jupiter'),
+        cost:a=>a.add(1).pow(1.25).pow_base(1e3).mul(1e247),
+        bulk:a=>a.div(1e247).log(1e3).root(1.25).sub(1),
+        effect(a) {
+            let x = player.singularity.remnants.add(1).log10().add(1).pow(a)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },{
+        unl:()=>isSSObserved('jupiter'),
+        cost:a=>a.add(1).sumBase(1.1).pow_base(1e15).mul(1e50),
+        bulk:a=>a.div(1e250).log(1e15).sumBase(1.1,true).sub(1),
+        effect(a) {
+            let x = a.root(2).mul(.1).add(1)
+            return x
+        },
+        effDesc: x=>"+"+formatPercent(x.sub(1)),
+    },{
+        unl:()=>isSSObserved('jupiter'),
+        cost:a=>a.add(1).pow(1.25).pow_base(1e10).mul('e740'),
+        bulk:a=>a.div('e740').log(1e10).root(1.25).sub(1),
+        effect(a) {
+            let x = a.pow_base(2)
+            return x
+        },
+        effDesc: x=>formatMult(x,0),
+    },{
+        unl:()=>isSSObserved('jupiter'),
+        cost:a=>a.pow_base(1.2).pow_base('e1000'),
+        bulk:a=>a.log('e1000').log(1.2),
+        effect(a) {
+            let x = a
+            return x
+        },
+        effDesc: x=>"+"+format(x,0),
+    },
 ]
 
 function getRemnantUpgradeCost(i,l=player.singularity.upgs[i]) {
@@ -186,9 +224,12 @@ function remnantUpgEffect(i,def=1) { return tmp.remnant_upg_effects[i]??def }
 function updateSingularityTemp() {
     tmp.bh_reduction = tmp.ss_difficulty ? E(.5) : player.singularity.bh.gte(8) ? E(1) : Decimal.div(1,player.singularity.bh.sub(player.research.dm1).max(0).pow(2).div(20).add(1))
 
+    let pow = remnantUpgEffect(13)
+
     for (let i = 0; i < REMNANT_UPGS.length; i++) {
         let u = REMNANT_UPGS[i], l = player.singularity.upgs[i]
         if (tmp.ss_difficulty) l = E(0);
+        if (i !== 3 && i < 12) l = l.mul(pow)
         if ('effect' in u) tmp.remnant_upg_effects[i] = u.effect(l)
     }
 

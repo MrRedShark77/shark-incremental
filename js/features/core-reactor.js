@@ -131,6 +131,72 @@ const CORE_REACTOR = [
         effect: l=>player.shark_level.max(0).cbrt().div(100).mul(l).add(1),
         effDesc: x => formatPercent(x.sub(1)),
     },
+
+    {
+        symbol: "Mg",
+
+        get req_text() { return CURRENCIES.remnants.costName },
+        get resource() { return CURRENCIES.remnants.amount },
+
+        require: l => l.pow_base(1.1).pow_base('e1000'),
+        bulk: x => x.log('e1000').log(1.1),
+
+        effect: l=>{
+            let x = player.fish.iteratedlog(10,3).max(0)
+            if (isNaNed(x)) return E(1);
+            x = x.mul(l).div(250).add(1)
+            return x
+        },
+        effDesc: x => formatPow(x,3),
+    },{
+        symbol: "Na",
+
+        get req_text() { return CURRENCIES.fish.costName },
+        get resource() { return CURRENCIES.fish.amount },
+
+        require: l => l.pow_base(1.1).pow_base('e2.5e6').pow10(),
+        bulk: x => x.log10().log('e2.5e6').log(1.1),
+
+        effect: l=>{
+            let x = player.prestige.shards.iteratedlog(10,3).max(0)
+            if (isNaNed(x)) return E(1);
+            x = x.mul(l).div(250).add(1)
+            return x
+        },
+        effDesc: x => formatPow(x,3),
+    },{
+        symbol: "P",
+
+        get req_text() { return CURRENCIES.humanoid.costName },
+        get resource() { return CURRENCIES.humanoid.amount },
+
+        require: l => l.pow_base(10).mul(1e15),
+        bulk: x => x.div(1e15).log(10),
+
+        effect: l=>{
+            let x = player.core.fragments.iteratedlog(10,2).max(0)
+            if (isNaNed(x)) return E(1);
+            x = x.div(50).add(1).pow(l)
+            return x
+        },
+        effDesc: x => formatPow(x,3),
+    },{
+        symbol: "Cr",
+
+        get req_text() { return CURRENCIES["dark-matter"].costName },
+        get resource() { return CURRENCIES["dark-matter"].amount },
+
+        require: l => l.pow_base(1e5).mul(1e75),
+        bulk: x => x.div(1e75).log(1e5),
+
+        effect: l=>{
+            let x = player.humanoid.shark.iteratedlog(10,1).max(0)
+            if (isNaNed(x)) return E(1);
+            x = x.div(10).add(1).pow(l)
+            return x
+        },
+        effDesc: x => formatMult(x,3),
+    },
 ]
 
 function getCoreReactorCost(i,l) {
@@ -212,12 +278,13 @@ function updateCoreHTML() {
         if (unl) {
             var level = player.core.reactor[i], res = CR.resource
 
-            var req = getCoreReactorCost(i,level), bulk = res.lt(req) ? Decimal.dZero : getCoreReactorBulk(i,res), afford = bulk.gt(level), bonus = tmp.core_bonus_level[i]
+            var req = getCoreReactorCost(i,level), bulk = res.lt(req) ? Decimal.dZero : getCoreReactorBulk(i,res), afford = bulk.gt(level), bonus = tmp.core_bonus_level[i],
+            s = i < 8 ? strong : 1
 
             el(el_id+"div").className = el_classes({"core-reactor-button": true, locked: !afford})
             el(el_id+"level").innerHTML = format(level,0) + (afford ? " ➜ " + format(bulk,0) : "") + (bonus.gt(0) ? " + " + format(bonus) : "")
             el(el_id+"req").innerHTML = texts[0]+": "+format(req,0)+" "+CR.req_text+(afford ? "<br>("+texts[2]+" "+format(getCoreReactorCost(i,bulk),0).bold()+")" : "")
-            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus).mul(strong))).bold() : "")
+            el(el_id+"effect").innerHTML = texts[1]+": "+CR.effDesc(tmp.core_effect[i]).bold() + (afford ? " ➜ " + CR.effDesc(CR.effect(bulk.add(bonus).mul(s))).bold() : "")
         }
     }
 
@@ -256,7 +323,8 @@ function updateCoreTemp() {
 
     tmp.core_reactor_unl = 4
 
-    if (player.feature >= 10) tmp.core_reactor_unl += 4
+    if (player.feature >= 10) tmp.core_reactor_unl = 8
+    if (isSSObserved('saturn')) tmp.core_reactor_unl = 12
 
     var bonus1 = getCRBoost(0,0), bonus2 = getCRBoost(10,0)
     var strong = remnantUpgEffect(2)
@@ -264,14 +332,21 @@ function updateCoreTemp() {
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
 
-        if (i < 4) bonus = bonus.add(bonus1).add(simpleETEffect(i+4,0))
-        else if (i < 8) bonus = bonus.add(bonus2).add(simpleETEffect(i+12,0))
+        if (i < 4) bonus = bonus.add(bonus1).add(simpleETEffect(i+4,0));
+        else if (i < 8) {
+            bonus = bonus.add(bonus2).add(simpleETEffect(i+12,0))
+            if (bonus.gt(1)) bonus = bonus.pow(simpleCETEffect(i+12,1));
+        }
 
         tmp.core_bonus_level[i] = bonus
 
         var CR = CORE_REACTOR[i], level = tmp.cr_active ? Decimal.dZero : player.core.reactor[i].add(bonus)
 
-        tmp.core_effect[i] = CR.effect(level.mul(strong))
+        if (tmp.ss_difficulty && i >= 8) level = E(0);
+
+        if (i < 8) level = level.mul(strong);
+
+        tmp.core_effect[i] = CR.effect(level)
     }
 
     tmp.core_bonus = getBonusReactor()

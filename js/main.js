@@ -45,6 +45,11 @@ const TOP_CURR = [
         curr: "reserv",
         req: ()=>player.solar_system.observ.gte(CURRENCIES.reserv.require),
     },
+    {
+        unl: ()=>tmp.ss_difficulty >= 4,
+        curr: "traject",
+        req: ()=>player.solar_system.reserv.gte(CURRENCIES.traject.require),
+    },
 ]
 
 const PROGRESS = [

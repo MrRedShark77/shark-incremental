@@ -28,7 +28,7 @@ const SHARK = {
 
         mult = mult.mul(simpleETEffect(0)).mul(simpleETEffect(1)).mul(simpleETEffect(2)).mul(simpleETEffect(3)).mul(getCRBoost(7)).mul(remnantUpgEffect(7))
 
-        exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0)).mul(simpleCETEffect(0)).mul(simpleCETEffect(1)).mul(simpleCETEffect(2)).mul(simpleCETEffect(3))
+        exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0)).mul(simpleCETEffect(0)).mul(simpleCETEffect(1)).mul(simpleCETEffect(2)).mul(simpleCETEffect(3)).mul(coreReactorEffect(11))
 
         tmp.shark_elo_mult = mult, tmp.shark_elo_exp = exp
 
@@ -58,11 +58,6 @@ const SHARK = {
             },E(1)],
         },
     },
-}
-
-const SU_TABS = {
-    'shark': ['s1','s2','s3','s4','s5','p1','p2','p3'],
-    'cultivation': ['m1','m2','m3','m4','m5','m6','m7'],
 }
 
 const SHARK_UPGRADES = {
@@ -158,7 +153,7 @@ const SHARK_UPGRADES = {
 
         curr: "prestige",
 
-        effect: l=>Decimal.pow(3,l.mul(simpleResearchEffect('p5'))),
+        effect: l=>Decimal.pow(3,l.mul(simpleResearchEffect('p5'))).min('eee7'),
         effDesc: x=>formatMult(x,0),
     },
     p2: {
@@ -169,7 +164,7 @@ const SHARK_UPGRADES = {
 
         curr: "prestige",
 
-        effect: l=>Decimal.pow(player.fish.add(10).max(10).log10(),l),
+        effect: l=>Decimal.pow(player.fish.add(10).max(10).log10(),l).min('eee7'),
         effDesc: x=>formatMult(x),
     },
     p3: {
@@ -301,6 +296,45 @@ const SHARK_UPGRADES = {
         effect: l=>l.div(4).add(1),
         effDesc: x=>formatMult(x),
     },
+    m8: {
+        unl: ()=>isSSObserved('moon'),
+        req: ()=>player.humanoid.mining_ascend.gte(6),
+
+        cost: l => {
+            let x = Decimal.pow(3,l.scaleAll('su_m3')).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(3).scaleAll('su_m3',true).floor().add(1)
+        },
+
+        curr: "berkelium",
+
+        effect: l=>Decimal.pow(2,l),
+        effDesc: x=>formatMult(x,0),
+    },
+    m9: {
+        unl: ()=>isSSObserved('moon'),
+        req: ()=>player.humanoid.mining_tier.gte(12),
+
+        cost: l => {
+            let x = Decimal.pow(2,l).mul(10)
+            return x
+        },
+        bulk: x => {
+            return x.div(10).log(2).floor().add(1)
+        },
+
+        curr: "californium",
+
+        effect: l=>l.mul(5),
+        effDesc: x=>"+"+format(x,0),
+    },
+}
+
+const SU_TABS = {
+    'shark': ['s1','s2','s3','s4','s5','p1','p2','p3'],
+    'cultivation': ['m1','m2','m3','m4','m5','m6','m7','m8','m9'],
 }
 
 function canAffordSharkUpgrade(i) {

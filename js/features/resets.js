@@ -69,7 +69,7 @@ const RESETS = {
             c.fragments = E(0)
             c.total = E(0)
 
-            c.reactor = c.reactor.map(()=>E(0))
+            for (let i = 0; i < 8; i++) c.reactor[i] = E(0);
 
             c.radiation.active = false
             c.radiation.amount = E(0)
@@ -213,7 +213,7 @@ const RESETS = {
         },
     },
     reserv: {
-        get require() { return player.solar_system.observ.gte(CURRENCIES.reserv.require) },
+        get require() { return tmp.ss_difficulty >= 2 && player.solar_system.observ.gte(CURRENCIES.reserv.require) },
         reset(force) {
             if (!force) {
                 gainCurrency('reserv',tmp.currency_gain.reserv)
@@ -224,6 +224,21 @@ const RESETS = {
         doReset() {
             player.solar_system.observ = E(0)
             resetSpaceBaseUpgs(['o1','o2','o3','o4'])
+        },
+    },
+    traject: {
+        get require() { return tmp.ss_difficulty >= 4 && player.solar_system.reserv.gte(CURRENCIES.traject.require) },
+        reset(force) {
+            if (!force) {
+                gainCurrency('traject',tmp.currency_gain.traject)
+            }
+
+            this.doReset()
+        },
+        doReset() {
+            player.solar_system.reserv = E(0)
+            resetSpaceBaseUpgs(['r1','r2','r3','r4'])
+            RESETS.reserv.doReset()
         },
     },
 }

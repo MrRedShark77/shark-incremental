@@ -32,28 +32,28 @@ const SOLAR_SYSTEM = {
         difficulty: 1,
     },
     'venus': {
-        get rp_req() { return isSSObserved('mars') ? 15 : 7 },
+        get rp_req() { return isSSObserved('mars') ? 14 : 7 },
         goal: 1e24,
         difficulty: 2,
     },
     'mars': {
-        get rp_req() { return isSSObserved('venus') ? 15 : 7 },
+        get rp_req() { return isSSObserved('venus') ? 14 : 7 },
         goal: 1e24,
         difficulty: 2,
     },
     'mercury': {
-        rp_req: EINF,
-        goal: EINF,
+        get rp_req() { return isSSObserved('jupiter') ? 50 : 21 },
+        goal: 1e60,
         difficulty: 3,
     },
     'jupiter': {
-        rp_req: EINF,
-        goal: EINF,
+        get rp_req() { return isSSObserved('mercury') ? 32 : 21 },
+        goal: 1e60,
         difficulty: 3,
     },
     'saturn': {
-        rp_req: EINF,
-        goal: EINF,
+        rp_req: 56,
+        goal: 1e300,
         difficulty: 4,
     },
     'uranus': {
@@ -95,8 +95,10 @@ function observReset() {
     player.solar_system.observ = E(0)
     player.solar_system.total_observ = E(0)
     for (let id of SPACEBASE_UPG_KEYS) player.solar_system.sb_upgs[id] = E(0);
+    for (let id of SPACEBASE_RESEARCH) player.research[id] = E(0);
 
     player.solar_system.reserv = E(0)
+    player.solar_system.traject = E(0)
     
     RESETS["black-hole"].doReset()
 
@@ -117,6 +119,11 @@ function observeSolarSystem() {
         for (let i = 0; i < 3; i++) {
             player.humanoid.faith[i] = E(player.solar_system.evo_save[1][i]);
             player.solar_system.evo_save[1][i] = E(0)
+        }
+
+        if (hasSMilestone(8)) {
+            player.research.e3 = E(4)
+            player.research.e5 = E(1)
         }
 
         return
@@ -183,8 +190,8 @@ const SPACEBASE_UPGS = {
     o2: {
         unl:()=>true,
         diff: 1,
-        cost:a=>a.pow_base(2).mul(100),
-        bulk:a=>a.div(100).log(2).add(1).floor(),
+        cost:a=>a.scale(100,2,"P").pow_base(2).mul(100),
+        bulk:a=>a.div(100).log(2).scale(100,2,"P",true).add(1).floor(),
         res: "observ",
         effect(a) {
             let x = a.pow_base(1.05).mul(a.add(1))
@@ -195,14 +202,26 @@ const SPACEBASE_UPGS = {
     o3: {
         unl:()=>true,
         diff: 1,
-        cost:a=>a.pow_base(5).mul(1e6),
-        bulk:a=>a.div(1e6).log(5).add(1).floor(),
+        cost:a=>a.scale(100,2,"P").pow_base(5).mul(1e6),
+        bulk:a=>a.div(1e6).log(5).add(1).scale(100,2,"P",true).floor(),
         res: "observ",
         effect(a) {
             let x = a.pow_base(1.05).mul(a.add(1))
             return x
         },
         effDesc: x=>formatPow(x),
+    },
+    o4: {
+        unl:()=>true,
+        diff: 3,
+        cost:a=>a.scale(100,2,"P").pow_base(10).mul(1e30),
+        bulk:a=>a.div(1e30).log(10).add(1).scale(100,2,"P",true).floor(),
+        res: "observ",
+        effect(a) {
+            let x = a.pow(2).pow_base(10)
+            return x
+        },
+        effDesc: x=>formatMult(x),
     },
 
     e1: {
@@ -212,7 +231,8 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
         res: "fish",
         effect(a) {
-            let x = a.pow_base(1.5)
+            let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
+            let x = a.pow_base(b)
             return x
         },
         effDesc: x=>formatMult(x),
@@ -224,10 +244,48 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
         res: "prestige",
         effect(a) {
+            let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
+            let x = a.pow_base(b)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },
+    e3: {
+        unl:()=>true,
+        diff: 3,
+        cost:a=>a.pow_base(1.2).pow_base(1e10),
+        bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
+        res: "core",
+        effect(a) {
+            let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
+            let x = a.pow_base(b)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },
+    e4: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.sumBase(1.05).pow_base(10).mul(1e60),
+        bulk:a=>a.div(1e60).log(10).sumBase(1.05,true).add(1).floor(),
+        res: "observ",
+        effect(a) {
             let x = a.pow_base(1.5)
             return x
         },
         effDesc: x=>formatMult(x),
+    },
+    e5: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.sumBase(1.05).pow_base(1e3).mul(1e30),
+        bulk:a=>a.div(1e30).log(1e3).sumBase(1.05,true).add(1).floor(),
+        res: "reserv",
+        effect(a) {
+            let x = a.mul(.05)
+            return x
+        },
+        effDesc: x=>"+"+format(x),
     },
 
     r1: {
@@ -266,24 +324,93 @@ const SPACEBASE_UPGS = {
         },
         effDesc: x=>formatPow(x),
     },
+    r4: {
+        unl:()=>true,
+        diff: 3,
+        cost:a=>a.pow_base(5).mul(1e6),
+        bulk:a=>a.div(1e6).log(5).add(1).floor(),
+        res: "reserv",
+        effect(a) {
+            let x = a.pow_base(1.05).mul(a.add(1))
+            return x
+        },
+        effDesc: x=>formatPow(x),
+    },
+
+    t1: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.sumBase(1.05).pow_base(10).mul(1),
+        bulk:a=>a.div(1).log(10).sumBase(1.05,true).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.mul(.1).add(1)
+            return x
+        },
+        effDesc: x=>formatPow(x),
+    },
+    t2: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.sumBase(1.05).pow_base(3).mul(10),
+        bulk:a=>a.div(10).log(3).sumBase(1.05,true).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.pow_base(2)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },
+    t3: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.sumBase(1.05).pow_base(4).mul(100),
+        bulk:a=>a.div(100).log(4).sumBase(1.05,true).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.pow_base(2)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },
+    t4: {
+        unl:()=>true,
+        diff: 4,
+        cost:a=>a.pow_base(2).mul(10000),
+        bulk:a=>a.div(10000).log(2).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.pow_base(1.05).mul(a.add(1))
+            return x
+        },
+        effDesc: x=>formatPow(x),
+    },
 }
 const SPACEBASE_UPG_KEYS = Object.keys(SPACEBASE_UPGS)
 const SPACEBASE_UPGS_GROUPS = {
     o: [
-        'o1','o2','o3','',
-        'e1','e2',
+        'o1','o2','o3','o4',
+        'e1','e2','e3','e4',
     ],
     r: [
-        'r1','r2','r3'
+        'r1','r2','r3','r4',
+        'e5',
+    ],
+    t: [
+        't1','t2','t3','t4',
     ],
 }
+const SPACEBASE_RESEARCH = []
+const SPACEBASE_UPGS_GROUPS_AUTO = {
+    o: ()=>hasResearch('o1'),
+}
 
-function buySpaceBaseUpg(i) {
+function buySpaceBaseUpg(i,auto) {
     let u = SPACEBASE_UPGS[i], lvl, cost, amt = CURRENCIES[u.res]
     if (u.unl() && tmp.ss_difficulty >= u.diff && amt.amount.gte(cost = u.cost(lvl = player.solar_system.sb_upgs[i]))) {
         let bulk = lvl.add(1).max(u.bulk(amt.amount))
         player.solar_system.sb_upgs[i] = bulk
-        if (["observ","reserv"].includes(u.res)) amt.amount = amt.amount.sub(u.cost(bulk.sub(1))).max(0)
+        if (!auto && ["observ","reserv","traject"].includes(u.res)) amt.amount = amt.amount.sub(u.cost(bulk.sub(1))).max(0)
     }
 }
 function resetSpaceBaseUpgs(l=[]) {
@@ -318,6 +445,9 @@ function updateSpaceBaseHTML() {
 
     el('reserv-content').style.display = el_display(tmp.ss_difficulty >= 2)
     el('reserv-amount').textContent = format(player.solar_system.reserv,0)
+
+    el('traject-content').style.display = el_display(tmp.ss_difficulty >= 4)
+    el('traject-amount').textContent = format(player.solar_system.traject,0)
 
     let d = tmp.ss_difficulty
 
