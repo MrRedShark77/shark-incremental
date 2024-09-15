@@ -47,6 +47,9 @@ LANGUAGES.KO = {
         'reserv-name': "비축량",
         'reserv-costName': toTextStyle('비축량','reserv'),
 
+        'traject-name': "궤도",
+        'traject-costName': toTextStyle('궤도','traject'),
+
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
         'full-shark-rank': toTextStyle('상어','shark') + ' 랭크',
 
@@ -65,7 +68,10 @@ LANGUAGES.KO = {
         'curr-top-3-reset': x => `${toTextStyle('상어','shark')}를 희생해 <b>${format(x,0)}</b>개의 ${toTextStyle('암흑물질','black-hole')} 획득`,
 
         'curr-top-4-req': x => `총 <b>${format(x)}</b> 개의 ${toTextStyle('천체','observ')}에 도달`, 
-        'curr-top-4-reset': x => `총 <b>${format(x,0)}</b> 개의 ${toTextStyle('비축량','reserv')}에 도달`,
+        'curr-top-4-reset': x => `<b>${format(x,0)}</b> 개의 ${toTextStyle('비축량','reserv')} 획득`,
+
+        'curr-top-5-req': x => `총 <b>${format(x)}</b> 개의 ${toTextStyle('비축량','reserv')}에 도달`, 
+        'curr-top-5-reset': x => `<b>${format(x,0)}</b> 개의 ${toTextStyle('궤도','traject')} 획득`,
 
         'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
@@ -133,6 +139,7 @@ LANGUAGES.KO = {
 
         'sharkoid-faith-div': `당신은 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('상어 인간의 신앙','humanoid')}을 가지고 있습니다.`,
         'respec-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>초기화하기`,
+        'respec-evolution-tree-2': `강화된 ${toTextStyle('진화','humanoid')} 트리만<br>초기화하기`,
         'export-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>내보내기`,
         'import-evolution-tree': `${toTextStyle('진화','humanoid')} 트리를<br>불러오기`,
         'evolution-tree-preset': `${toTextStyle('진화','humanoid')} 트리<br><b>한국어는 안됩니다!</b>`,
@@ -145,6 +152,7 @@ LANGUAGES.KO = {
         'mining-ascend-div': `채광 승천: <h3 id="mining-ascend">0</h3>`,
         'mining-note': `노트: 만약 높은 체력의 광석에 의해 채광을 못하는 경우 (매우 오랜 시간이 걸리면), 게임을 재로딩해 해결이 가능합니다(F5).`,
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 티어를 1 내리세요`,
+        'mining-ascend-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 승천을 1 내리세요`,
 
         'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
         'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 물고기와 환생 파편의 지수, 그리고 마그마 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
@@ -154,6 +162,8 @@ LANGUAGES.KO = {
         'rocket-part-div': `총 <h3 id="total-rocket-part">0</h3> 개의 로켓 부품을 만들었습니다.`,
         'observ-div': `<h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> 개의 천체를 가지고 있습니다. (총 <h3>${toTextStyle('0','observ','observ-total')}</h3>)`,
         'reserv-div': `<h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> 개의 비축량을 가지고 있습니다.`,
+        'traject-div': `<h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> 개의 궤도를 가지고 있습니다.`,
+
 
         // Upgrades / 업그레이드들
 
@@ -213,6 +223,14 @@ LANGUAGES.KO = {
         'su-m7-req': '채광 승천 3',
         'su-m7-name': '슈퍼 채광 속도',
         'su-m7-desc': `일반 채광 속도와 슈퍼 채광 속도를 레벨 당 <b>+25%</b> 만큼 올립니다.`,
+
+        'su-m8-req': '채광 승천 6',
+        'su-m8-name': '압축된 라듐',
+        'su-m8-desc': `레벨 당 <b>라듐-223</b> 획득량을 <b>×2</b> 배로 늘립니다.`,
+
+        'su-m9-req': '채광 승천 12',
+        'su-m9-name': '슈퍼 채광 행운',
+        'su-m9-desc': `${toColoredText('슈퍼 채광 행운 '+icon('luck'),'orange')} 을 레벨 당 <b>+5</b> 만큼 올립니다.`,
 
         // Researches / 연구들
 
@@ -367,6 +385,8 @@ LANGUAGES.KO = {
 
             'm5': ["상어 랭크가 슈퍼 채광에게",`${toTextStyle("상어",'shark')} 랭크의 채광 대미지 부스트가 슈퍼 채광에도 감소된 상태로 부스트를 제공합니다.`],
             'm6': ["우라늄 상어",`'상어 지수 강화'가 강화됩니다.`],
+
+            'o1': [`천체 자동화`,`천체 업그레이드를 자동으로 구매하며 천체를<br>소모하지 않습니다.<br><i>이 업그레이드는 초기화 되지 않습니다.</i>`],
         },
 
         // Exploration / 탐험들
@@ -451,6 +471,18 @@ LANGUAGES.KO = {
         'core-7-name': `헬륨`,
         'core-7-desc': `${toTextStyle("상어",'shark')} 레벨이 <b>네온</b>의 효과를<br><b>헬륨</b>의 티어에 기반해 강화합니다.`,
 
+        'core-8-name': `마그네슘`,
+        'core-8-desc': `<b>마그네슘</b>의 티어에 기반해 ${toTextStyle("물고기",'fish')} 자기 자신의 획득량 지수를 올립니다.`,
+
+        'core-9-name': `나트륨`,
+        'core-9-desc': `<b>나트륨</b>의 티어에 기반해 ${toTextStyle("환생",'prestige')} 파편 자기 자신의 획득량 지수를 올립니다.`,
+
+        'core-10-name': `인`,
+        'core-10-desc': `<b>인</b>의 티어에 기반해 ${toTextStyle("마그마",'core')} 조각 자기 자신의 획득량 지수를 올립니다.`,
+
+        'core-11-name': `크로뮴`,
+        'core-11-desc': `<b>크로뮴</b>의 티어에 기반해 ${toTextStyle("휴머노이드",'humanoid')} 상어가 ${toTextStyle("상어",'shark')} ELO의 지수를 올립니다.`,
+
         'core-bonus': x => `핵 원자로의 생성물이 ${toTextStyle("물고기",'fish')} 획득량을 <h4>${formatMult(x)}</h4>만큼 강화합니다.`,
 
         'core-assembler-erase': `삭제 모드`,
@@ -485,6 +517,7 @@ LANGUAGES.KO = {
             x=>`${toTextStyle('핵','core')} 반응로의 두 번째 줄에 <h4>+${format(x)}</h4> 개의 반응로가 추가됩니다.`,
             x=>`${toTextStyle('암흑물질','black-hole')}이 <h4>${formatMult(x)}</h4>만큼 부스트됩니다.`,
             x=>`${toTextStyle('잔재물','black-hole')} 생산이 <h4>${formatMult(x)}</h4>만큼 부스트됩니다.`,
+            x=>`위의 모든 효과가 <h4>${formatPercent(x.sub(1))}</h4> 만큼 강해집니다.(6번째 효과 제외)`,
         ],
 
         // Evolution Tree  진화 트리
@@ -496,10 +529,10 @@ LANGUAGES.KO = {
             ["방사성 몸체", x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`, x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle('상어','shark')} ELO의 지수를 <b>${formatMult(x)}</b>만큼 증가시킵니다.`],
             ["완벽한 몸체", x=>`${toTextStyle('상어','shark')} ELO가 <b>${formatMult(x,0)}</b>만큼 증가합니다.`, x=>`${toTextStyle('상어','shark')} ELO의 지수가 <b>${formatMult(x,0)}</b> 만큼 늘어납니다.`],
 
-            ["강철 상어", x=>`추가 <b>철</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>철</b>를 약간 개선합니다.`],
-            ["비싼 상어", x=>`추가 <b>니켈</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>니켈</b>를 약간 개선합니다.`],
+            ["강철 상어", x=>`추가 <b>철</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>철</b>을 약간 개선합니다.`],
+            ["비싼 상어", x=>`추가 <b>니켈</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>니켈</b>을 약간 개선합니다.`],
             ["수중 호흡 상어", x=>`추가 <b>산소</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>산소</b>를 약간 개선합니다.`],
-            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>네온</b>를 약간 개선합니다.`],
+            ["빛나는 상어", x=>` 추가 <b>네온</b> 티어를 <b>${format(x,0)}</b>만큼 획득합니다.`, x=>`<b>네온</b>을 약간 개선합니다.`],
 
             ["마리아나 해구", x=>`<b>태평양</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>태평양</b>의 깊이 진행을 약간 개선합니다.`],
             ["Litke 딥", x=>`<b>북극해</b>의 깊이 제한이 사라지며, 그 이후의 효과를 강화시킵니다.`, x=>`<b>북극해</b>의 깊이 진행을 약간 개선합니다.`],
@@ -511,10 +544,10 @@ LANGUAGES.KO = {
             ["압축된 핵", x=>`${toTextStyle("마그마",'core')} 조각 획득량이 <b>${format(x)}</b> 제곱 증가합니다.`, x=>`${toTextStyle("마그마",'core')} 조각 획득 지수가 <b>${format(x)}</b> 제곱 증가합니다.`],
             ["홈메이드 상어", x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 상어 요구량 베이스가 <b>${format(x,0)}</b> 감소합니다.`, x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 지수가 <b>+${format(x)}</b> 만큼 증가합니다.`],
 
-            ["상어 전환", x=>`<b>${format(x,0)}</b> 개의 추가 <b>황</b> 티어 획득합니다.`],
-            ["엑소스켈레톤 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>실리콘</b> 티어 획득합니다.`],
-            ["태양 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>질소</b> 티어 획득합니다.`],
-            ["나는 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>헬륨</b> 티어 획득합니다.`],
+            ["상어 전환", x=>`<b>${format(x,0)}</b> 개의 추가 <b>황</b> 티어를 획득합니다.`, x=>`<b>${formatPow(x)}</b> 개의 더 많은 <b>황</b> 티어를 획득합니다.`],
+            ["엑소스켈레톤 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>실리콘</b> 티어를 획득합니다.`, x=>`<b>${formatPow(x)}</b> 개의 더 많은 <b>실리콘</b> 티어를 획득합니다.`],
+            ["태양 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>질소</b> 티어를 획득합니다.`, x=>`<b>${formatPow(x)}</b> 개의 더 많은 <b>질소</b> 티어를 획득합니다.`],
+            ["나는 상어", x=>`<b>${format(x,0)}</b> 개의 추가 <b>헬륨</b> 티어를 획득합니다.`, x=>`<b>${formatPow(x)}</b> 개의 더 많은 <b>헬륨</b> 티어를 획득합니다.`],
 
             ["엄청난 상어 몸체", x=>`${toTextStyle('물고기','fish')}가 <b>'물고기의 몸체'</b>를 <b>${formatPow(x)}</b>만큼 강화시킵니다.`],
             ["재탄생의 몸체", x=>`${toTextStyle('환생','prestige')} 파편이 <b>'환생의 몸체'</b>를 <b>${formatPow(x)}</b>만큼 강화시킵니다.`],
@@ -612,7 +645,7 @@ LANGUAGES.KO = {
         'mining-tier-ore-generation': x=>`더 이상 ${x} 광석이 나타나지 않습니다, 대신 해당 광석을 채광 속도와 행운에 기반해 자동으로 생성됩니다.`,
 
         'mining-ascend': `채광 승천`,
-        'next-mining-ascend': `<b>채광 승천</b>에서`,
+        'next-mining-ascend': `<b>채광 승천</b>`,
         'mining-ascend-reset': `<b>채광 승천</b>을 증가시킵니다, 강력한 부스트를 제공하는 대신 강제로 특이점 환생을 하게 됩니다.`,
 
         'mining-tier-bonus': [
@@ -628,6 +661,8 @@ LANGUAGES.KO = {
             x=>`슈퍼 광석의 체력이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
             x=>`<b>라듐-223</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
             x=>`<b>우라늄-235</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
+            x=>`<b>버클륨-247</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
+            x=>`<b>캘리포늄-252</b>의 양이 <b>${formatMult(x)}</b>만큼 증가합니다.`,
         ],
 
         // Forge / 용광로
@@ -701,21 +736,26 @@ LANGUAGES.KO = {
             [`우주적 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫 세<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
             [`상어 마스터`,x=>`${toTextStyle("상어",'shark')} ELO가<br>${x} 만큼<br>증가합니다.`],
 
-            [`끝없는 깊이`,x=>`각 바다의 깊이 진행이<br>${x} 만큼<br>부스트 됩니다.`],
+            [`끝없는 깊이`,x=>`각 바다의 깊이<br>진행이 ${x} 만큼<br>부스트 됩니다.`],
             [`뜨거운 감자`,x=>`방사선 부스트가<br>${x} 만큼<br>강해집니다.`],
             [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫<br>네 개의 스케일링이 ${x} 만큼<br>늦춰집니다.`],
             [`엘리트 마이너`,x=>`채광 티어의 세 번째<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
+
+            [`셀프-가속기`,x=>`${toTextStyle("잔재물",'black-hole')}이 자기 자신을<br>${x} 만큼<br>강화시킵니다.`],
+            [`궁극의 힘`,x=>`첫 12 개의 ${toTextStyle("잔재물",'black-hole')}<br>업그레이드가 ${x}<br>만큼 강해집니다.<br>(4번째 제외)`],
+            [`효율 VI`,x=>`슈퍼 채광 대미지가<br>${x} 만큼 증가합니다.`],
+            [`슈퍼내츄럴 상어`,x=>`${toTextStyle("휴머노이드",'humanoid')} 상어의<br>지수가 ${x} 만큼<br>증가합니다.`],
         ],
         
         'solar-system-list': {
             'sun':     ["태양",`???`,`???`],
-            'mercury': ["수성",`???`,`???`],
+            'mercury': ["수성",`수성은 태양계에서 가장 작은 행성이며 태양과 제일 가까운 행성입니다.<br>수성은 하늘에서 다른 행성보다 빠르게 움직였기에 로마 신화의 헤르메스의 또 다른 이름인<br>메르쿠리우스(Mercury)에서 따온 머큐리(Mercury)가 되었습니다. 수성은 달과 비슷하게<br>충돌 크레이터가 있으며, 이는 지난 10억 년 동안 내부 지질 활동이 부족했음을 나타내기도 합니다.<br>수성은 또한 거의 대기가 없기에 표면 온도는 태양계의 어떤 다른 행성보다 극과 극을 달립니다.`, `방사선 부스트의 첫 3 스케일링이 x10 늦춰지며 ${toTextStyle('천체','observ')}의 생산량이 다시 10배 늘어납니다.`],
             'venus':   ["금성",`금성은 태양계의 두 번째 행성으로 태양계에서 6번째로 큰 행성입니다. 금성의 이름은 로마 신화의<br>미를 상징하는 여신의 이름을 따 비너스(Venus)라고 부릅니다. 금성은 96% 이상이 이산화탄소로<br>이루어져 있으며 밀도가 높은 대기를 가지고 있습니다. 금성의 평균 표면 온도는 735 K (462 °C)으로<br>태양계에서 가장 뜨거운 행성이며 위성이 없습니다. 태양과 달에 이어 지구의 하늘에서 볼 수 있는<br>세 번째로 밝은 천체입니다.`,`현재 ${toTextStyle('휴머노이드','humanoid')} 상어의 100%를 추가 ${toTextStyle('휴머노이드','humanoid')} 상어로 써 획득하는 대신<br>'자동-${toTextStyle('휴머노이드','humanoid')} 상어'가 더 이상 작동하지 않습니다. ${toTextStyle('휴머노이드','humanoid')} 상어를 드라마틱하게 개선하며,<br>${toTextStyle('상어','shark')} 랭크의 세 번째 스케일링이 x2 만큼 미뤄집니다. ${toTextStyle('천체','observ')}의 생산량이 x10 만큼 증가합니다.`],
             'earth':   ["지구",`???`,`???`],
             'moon':    ["달",`태양계에 오신 것을 환영합니다! 일부 행성을 자유롭게 탐험할 수 있지만, 강력한 보상을<br>받기 위해서는 관측이 필요합니다. 관측을 시작하면 강제로 특이점 환생이 이루어지며<br>일부 연구 및 진화 트리가 초기화 되며(관측을 끝내면 다시 생깁니다),<br>블랙홀의 감소 효과가 ^0.5 로 고정되며 거의 모든 채광 이후의 기능이 비활성화 되며,<br>마지막으로 어떠한 바다도 탐험할 수 없습니다. 우주 기지에서 ${toTextStyle('천체','observ')}를 생성해<br>업그레이드를 구매하여 진행을 더 빠르게 만들 수 있습니다. 난이도는 게임 진행에는<br>영향을 미치지 않지만 우주 기지의 기능을 더 많이 사용할 수 있도록 만듭니다.<br>자! 먼저 지구의 달부터 시작하겠습니다!<br>달이라고도 부르지만, '거대 충돌 가설'에서는 충돌 이전엔 '테이아' 라고 불렀습니다.`,`채광 승천과 새 ${toTextStyle('잔재물','black-hole')} 업그레이드를 해금합니다. 채광 승천은 강제로 특이점 환생을 진행하는<br>대신 강력한 보너스와 여러 광석을 해금할 수 있습니다.`],
             'mars':    ["화성",`화성은 태양계의 네 번째 행성으로 표면이 단단하고 크기가 지구와 비슷하기 때문에 지구 행성군에<br>속합니다. 화성의 지형은 충돌 분화구, 화산, 계곡, 사막, 극지방 만년설 등<br>독특한 특징을 가지고 있습니다. 화성은 물의 침식과 유사한 지질 구조와<br>장기간동안 물에 노출되었을 때만 형성될 수 있는 미네랄을 가지고 있습니다.<br>화성에 생명체가 존재하는지에 대한 질문은 수세기 동안 과학자들의 이목을 끌었습니다`,`이미 구매한 ${toTextStyle('진화','humanoid')} 트리를 테라포밍하여 강력한 보너스를 얻을 수 있게 되지만<br>더 많은 비용을 요구합니다. 새로운 자동화를 해금합니다. ${toTextStyle('천체','observ')}의 생산량이 x10 만큼 증가합니다.`],
-            'jupiter': ["목성",`???`,`???`],
-            'saturn':  ["토성",`???`,`???`],
+            'jupiter': ["목성",`목성은 태양계에서 가장 큰 행성으로, 태양계의 다섯 번째 행성입니다. 거대 기체 행성으로<br>태양계의 다른 행성들을 모두 합한 질량에 약 2.47배에 달하는 질량을 가지고 있습니다.<br>목성은 고대부터 알려져 왔으며 다양한 문화의 신화와 종교적 신념에도 언급되어 있습니다.<br>목성의 현대 이름인 주피터(Jupiter)는 로마 신화의 하늘과 천둥의 신인 유피테르(Jupiter)에서<br>따온 이름입니다. 목성의 대기는 폭풍, 번개, 오로라, 그리고 17세기 부터 관측되어온 거대한 폭풍인<br>'대적점'과 같은 다양한 특징을 가지고 있습니다.`, `더 많은 ${toTextStyle('잔재물','black-hole')} 업그레이드를 해금합니다. ${toTextStyle('천체','observ')}의 생산량이 다시 10배 늘어납니다.`],
+            'saturn':  ["토성",`토성은 태양계에서 목성 다음으로 두 번째로 큰 행성으로 태양계의 여섯 번째 행성입니다.<br>토성은 대부분 수소와 헬륨으로 이루어져 있기 때문에 목성과 같이 거대 기체 행성으로 분류됩니다.<bt>토성의 이름인 새턴(Saturnus)은 로마 신화의 농업의 신인 사투르누스(Saturnus)에서<br>비롯된 이름입니다. 토성은 거대한 고리에 둘려싸여있는데, 이는 얼음 입자, 무거운 입자들,<br>그리고 먼지로 이루어져 있습니다. 토성은 거대한 타이탄과 같은 여러 위성을 146개를 가지고<br>있습니다.`, `새로운 ${toTextStyle('핵','core')} 원자로를 한 줄 해금합니다. <i>이 원자로들은 핵 이후의 환생 레이어의 환생을 통해<br>초기화 되지 않으며, ${toTextStyle('잔재물','black-hole')} 업그레이드인 "하프-라이프"에 영향을 받지 않습니다.`],
             'uranus':  ["천왕성",`???`,`???`],
             'neptune': ["해왕성",`???`,`???`],
             'pluto':   ["명왕성",`???`,`???`],
@@ -731,14 +771,24 @@ LANGUAGES.KO = {
         'space-base-upgrades': {
             'o1': [`우주`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
             'o2': [`우주 물고기`,x=>`${toTextStyle('물고기','fish')} 획득량이 ${x} 만큼 증가합니다.`],
-            'o3': [`우주 환생`,x=>`${toTextStyle('환생 파편','prestige')} 획득량이 ${x} 만큼 증가합니다.`],
+            'o3': [`우주 환생`,x=>`${toTextStyle('환생','prestige')} 파편 획득량이 ${x} 만큼 증가합니다.`],
+            'o4': [`우주 핵`,x=>`${toTextStyle('마그마','core')} 조각 획득량이 ${x} 만큼 증가합니다.`],
             
             'e1': [`물고기 변환기`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
             'e2': [`환생 변환기`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            'e3': [`핵 변환기`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            'e4': [`천체 변환기`,x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
+            'e5': [`유니버셜 변환기`,x=>`천체 "변환기" 업그레이드의 베이스가 ${x} 만큼 증가합니다.`],
 
             'r1': [`상대론`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
             'r2': [`관측`,x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
             'r3': [`우주 물고기 II`,x=>`${toTextStyle('물고기','fish')} 획득량이 ${x} 만큼 증가합니다.`],
+            'r4': [`우주 환생 II`,x=>`${toTextStyle('환생','prestige')} 파편 획득량이 ${x}만큼 증가합니다.`],
+
+            't1': [`트랜스포트`,x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            't2': [`비축 시스템`,x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
+            't3': [`관측 II`,x=>`${toTextStyle('궤도','traject')} 획득량이 ${x} 만큼 증가합니다.`],
+            't4': [`우주 물고기 III`,x=>`${toTextStyle('물고기','fish')} 획득량이 ${x} 만큼 증가합니다.`],
         },
 
         // Automation / 자동화
@@ -866,6 +916,7 @@ LANGUAGES.KO = {
             'su_m5' : `"기본 광석들" 업그레이드`,
             'cr_boost' : `방사성 부스트`,
             'mining_tier' : `채광 티어`,
+            'mining_ascend' : `채광 승천`,
             'remnant_upg' : `잔재물 업그레이드`,
         },
         'scaling-start': "시작: ",
@@ -924,7 +975,7 @@ LANGUAGES.KO = {
         ],
 
         'popup-desc' : {
-            import: `아래에 붙여넣기. 주위: 현재 게임 진행 상태는 사라집니다!`,
+            import: `아래에 붙여넣기. <b>주의: 현재 게임 진행 상태는 사라집니다!</b>`,
             wipe: `정말로 게임 진행 상태를 초기화 하겠습니까? 초기화 하기 위해선 아래에<br>"<span class="free-select">I'm sorry what I don't want sharks!</span>"를 입력하세요`,
             "evolution-tree-respec": `정말로 ${toTextStyle('진화','humanoid')} 트리를 재설정 하시겠습니까? 재설정은 ${toTextStyle('진화','humanoid')} 환생을 강제로 진행하며, 어떠한 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득할 수 없습니다.`,
             "evolution-tree-import": `아래에 트리 프리셋을 넣으세요.`,
@@ -933,7 +984,7 @@ LANGUAGES.KO = {
         'notify-desc' : {
             save: "게임 저장됨!",
             copy_to_clipboard: "클립보드로 복사함!",
-            forge_completed: x => `<b>${x}</b> 을 성공적으로 제작함!`,
+            forge_completed: x => `<b>${x}</b>을(를) 성공적으로 제작함!`,
         },
 
         'radio-desc' : {
