@@ -86,21 +86,21 @@ LANGUAGES.PT = {
         'tab-space-base': toTextStyle('Base Espacial','observ'),
 
         'tab-core': toTextStyle('Núcleo','core'),
-        'tab-core-reactor': "Reator do"+toTextStyle(' Núcleo','core'),
-        'tab-core-radiation': "Radiação do"+toTextStyle(' Núcleo','core'),
-        'tab-core-assembler': "Montador do"+toTextStyle(' Núcleo','core'),
+        'tab-core-reactor': "Reator do "+toTextStyle(' Núcleo','core'),
+        'tab-core-radiation': "Radiação do "+toTextStyle(' Núcleo','core'),
+        'tab-core-assembler': "Montador do "+toTextStyle(' Núcleo','core'),
 
         'tab-evolution': toTextStyle('Evolução','humanoid'),
-        'tab-shark-rank': "Rank do"+toTextStyle(' Tubarão','shark'),
-        'tab-evolution-tree': "Árvore da"+toTextStyle(' Evolução','humanoid'),
-        'tab-evolution-goal': "Objetivos da"+toTextStyle(' Evolução','humanoid'),
+        'tab-shark-rank': "Rank do "+toTextStyle(' Tubarão','shark'),
+        'tab-evolution-tree': "Árvore da "+toTextStyle(' Evolução','humanoid'),
+        'tab-evolution-goal': "Objetivos da "+toTextStyle(' Evolução','humanoid'),
         'tab-cultivation': "Cultivação",
         'tab-forge': "Forja",
         'tab-particle-accel': "Acelerador de Partículas",
 
         'tab-singularity': toTextStyle('Singularidade','black-hole'),
         'tab-black-hole': toTextStyle('Buraco Negro','black-hole'),
-        'tab-singularity-milestones': "Marcos Importantes da"+toTextStyle(' Singularidade','black-hole'),
+        'tab-singularity-milestones': "Marcos Importantes da "+toTextStyle(' Singularidade','black-hole'),
         'tab-solar-system': "Sistema Solar",
 
         // Elements
@@ -160,7 +160,7 @@ LANGUAGES.PT = {
         'rocket-part-div': `Você criou o total de <h3 id="total-rocket-part">0</h3> Partes do Foguete.`,
         'observ-div': `Você tem <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observatórios. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
         'reserv-div': `Você tem <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> reservatórios.`,
-        'traject-div': `You have <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> trajectories.`,
+        'traject-div': `Você tem <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> trajetos.`,
         
         // Upgrades
 
@@ -323,6 +323,42 @@ LANGUAGES.PT = {
         'research-c15-name': "Auto-Radiação",
         'research-c15-desc': `Você consegue comprar uma melhoria de radiação, custando ${toTextStyle('Peixe','fish')} normal em vez de ${toTextStyle('Peixe '+icon('radioactive'),'fish')} radioativo, mas é elevado a potência de <b>^0.0001</b>. Então aumenta o ganho em <b>×10</b> por nível.`,
 
+        'research-m1-name': "Fortuna Magmática",
+        'research-m1-desc': `Aumenta a ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} em <b>+5</b> por nível.`,
+
+        'research-m2-name': "Tubarão Hiperescalado",
+        'research-m2-desc': `A terceira escala do nível do ${toTextStyle("Tubarão",'shark')} é atrasada por <b>+1000</b>.`,
+
+        'research-m3-name': "Impulso Radioativo Escalonado",
+        'research-m3-desc': `Atrasa a escala dos 2 primeiros impulsos radioativos em <b>+1</b> por nível.`,
+
+        'research-m4-name': "Tier da Mineração Melhorado",
+        'research-m4-desc': `O segundo, terceiro, quarto e quinto efeito do tier da mineração são <b>+25%</b> mais forte por nível.`,
+
+        'research-f1-name': "Expoente do Rank Básico",
+        'research-f1-desc': `Aumenta o expoente do ELO do ${toTextStyle("Tubarão",'shark')} por <b>+25%</b> por nível.`,
+
+        'research-f2-name': "Mais Fé Sharkoid",
+        'research-f2-desc': `Ganha mais ${toTextStyle('Fé Sharkoid','humanoid')} a partir de ${toTextStyle('Peixe','fish')} e Fragmentos de ${toTextStyle("Prestígio",'prestige')}.`,
+
+        'research-f3-name': "Reatores do Núcleo Escalonado",
+        'research-f3-desc': `Atrasa a primeira escala dos reatores do núcleo em <b>+1</b> por nível.`,
+
+        'research-f4-name': "Menos Softcap da Temperatura do Núcleo",
+        'research-f4-desc': `O softcap da temperatura do ${toTextStyle('núcleo','core')} é mais fraco.`,
+
+        'research-f5-name': "Impulso de Vibranium",
+        'research-f5-desc': `<b>Vibranium</b> impulsiona dano da mineração de forma reduzida.`,
+
+        'research-f6-name': "Tier da Mineração Universal",
+        'research-f6-desc': `Os primeiros 9 minérios são impulsionados pelo tier da mineração.`,
+
+        'research-f7-name': "Melhor ELO do Tubarão",
+        'research-f7-desc': `A base de homens-tubarões na formula do ELO do ${toTextStyle("Tubarão",'shark')} é melhorado para <b>x</b> to <b>2<sup>x</sup>-1</b>.`,
+
+        'research-f8-name': "Vida do Minério mais Fraco",
+        'research-f8-desc': `O primeiro efeito do tier de mineração é reduzido.`,
+
         // Exploration
 
         'explore-while': `Enquanto se explora`,
@@ -403,8 +439,8 @@ LANGUAGES.PT = {
             x=>`Providência um bonus de compra para melhorias de exploração em <h4>${formatMult(x,3)}</h4>.`,
             x=>`Providência <h4>+${format(x)}</h4> reatores do núcleo a primeira linha.`,
             x=>`Boost ${toTextStyle('Dark Matter','black-hole')} by <h4>${formatMult(x)}</h4>.`,
-            x=>`Boost ${toTextStyle('Remnant','black-hole')} generation by <h4>${formatMult(x)}</h4>.`,
-            x=>`The previous bonuses are <h4>${formatPercent(x.sub(1))}</h4> more powerful, except the sixth.`,
+            // x=>`Boost ${toTextStyle('Remnant','black-hole')} generation by <h4>${formatMult(x)}</h4>.`,
+            // x=>`The previous bonuses are <h4>${formatPercent(x.sub(1))}</h4> more powerful, except the sixth.`,
         ],
 
         // Core Reactor
@@ -452,71 +488,151 @@ LANGUAGES.PT = {
         'ca-building-base': b => `[Base: ${b}]`,
         'ca-building-temp': t => `Aumenta a temperatuda do núcleo em ${t}.`,
 
-        'core-bonus': x => `Produto dos reatores do núcleo Impulsiona a produção de ${toTextStyle("Peixes",'fish')} em <h4>${formatMult(x)}</h4>.`,
+        'core-bonus': x => `Produto dos reatores do núcleo impulsiona a produção de ${toTextStyle("Peixes",'fish')} em <h4>${formatMult(x)}</h4>.`,
 
         // Evolution tree
         
         'evolution-tree-row': (r,a) => `<b>Linha ${r}</b><br>${a} Disponível`,
         'evolution-tree-ctn': [
-            ["Corpo do Peixe", x=>`${toTextStyle('Peixe','fish')} impulsiona ELO do ${toTextStyle('Tubarão','shark')} ELO por <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Peixe','fish')} impulsiona o expoente do ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`],
-            ["Corpo do Prestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`, x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona o expoente do ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`],
+            ["Corpo de Peixe", x=>`${toTextStyle('Peixe','fish')} impulsiona ELO do ${toTextStyle('Tubarão','shark')} ELO por <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Peixe','fish')} impulsiona o expoente do ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`],
+            ["Corpo de Prestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`, x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona o expoente do ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`],
             ["Corpo Radioativo", x=>`Fragmentos ${toTextStyle('Magmáticos','core')} impulsiona ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`, x=>`Fragmentos ${toTextStyle('Magmáticos','core')} impulsiona o expoente do ELO do ${toTextStyle('Tubarão','shark')} por <b>${formatMult(x)}</b>.`],
             ["Corpo Perfeito", x=>`ELO do ${toTextStyle('Tubarão','shark')} é multiplicado por <b>${formatMult(x,0)}</b>.`, x=>`O expoente do ELO do ${toTextStyle('Tubarão','shark')} é multiplicado por <b>${formatMult(x,0)}</b>.`],
 
-            ["Steel Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Iron</b> tiers.`, x=>`Improve <b>Iron</b> significantly.`],
-            ["Priceful Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nickel</b> tiers.`, x=>`Improve <b>Nickel</b> significantly.`],
-            ["Air-breathing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Oxygen</b> tiers.`, x=>`Improve <b>Oxygen</b> significantly.`],
-            ["Glowing Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Neon</b> tiers.`, x=>`Improve <b>Neon</b> significantly.`],
+            ["Tubarão de Aço", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Ferro</b>.`, x=>`Melhora <b>Ferro</b> significativamente.`],
+            ["Tubarão Caro", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Níquel</b>.`, x=>`Melhora <b>Níquel</b> significativamente.`],
+            ["Tubarão que respira ar", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Oxigênio</b>.`, x=>`Melhora <b>Oxigênio</b> significativamente.`],
+            ["Tubarão Brilhante", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Neon</b>.`, x=>`Melhora <b>Neon</b> significativamente.`],
 
-            ["Mariana Trench", x=>`The <b>Pacific Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Pacific Ocean</b>’s depth progress significantly.`],
-            ["Litke Deep", x=>`The <b>Arctic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Arctic Ocean</b>’s depth progress significantly.`],
-            ["Milwaukee Deep", x=>`The <b>Atlantic Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Atlantic Ocean</b>’s depth progress significantly.`],
-            ["South Sandwich Trench", x=>`The <b>Southern Ocean</b>'s depth no longer has cap, and it makes its effect stronger after.`, x=>`Improve the <b>Southern Ocean</b>’s depth progress significantly.`],
+            ["Fossa das Marianas", x=>`A profundidade do <b>Oceano Pacifico</b> não mais tem limite, e faz seu efeito mais forte depois.`, x=>`Melhorar o progresso da profundidade do <b>Oceano Pacifico</b> significativamente.`],
+            ["Um Pouco Profundo", x=>`A profundidade do <b>Oceano Ártico</b> não mais tem limite, e faz seu efeito mais forte depois.`, x=>`Melhorar o progresso da profundidade do <b>Oceano Ártico</b> significativamente.`],
+            ["Milwaukee Profundo", x=>`A profundidade do <b>Oceano Atlântico</b> não mais tem limite, e faz seu efeito mais forte depois.`, x=>`Melhorar o progresso da profundidade do <b>Oceano Atlântico</b> significativamente.`],
+            ["Trincheira Sanduíche do Sul", x=>`A profundidade do <b>Oceano Antártico</b> não mais tem limite, e faz seu efeito mais forte depois.`, x=>`Melhorar o progresso da profundidade do <b>Oceano Antártico</b> significativamente.`],
 
-            ["Inflated Fish", x=>`${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`, x=>`The exponent of ${toTextStyle('Fish','fish')} is raised to the <b>${format(x)}th</b> power.`],
-            ["Overprestige", x=>`${toTextStyle('Prestige','prestige')} shards are raised to the <b>${format(x)}th</b> power.`, x=>`The exponent of ${toTextStyle('Prestige','prestige')} is raised to the <b>${format(x)}th</b> power.`],
-            ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`, x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power again.`],
-            ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`, x=>`The exponent of ${toTextStyle('Humanoid','humanoid')} sharks is increased by <b>+${format(x)}</b>.`],
+            ["Peixe Inflado", x=>`${toTextStyle('Peixe','fish')} é elevado à potência de <b>${format(x)}</b>.`, x=>`O expoente de ${toTextStyle('Peixe','fish')} é elevado à potência de <b>${format(x)}</b>.`],
+            ["Superprestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} é elevado à potência de <b>${format(x)}</b>.`, x=>`O expoente de Fragmento de ${toTextStyle('Prestígio','prestige')} é elevado à potência de <b>${format(x)}</b>.`],
+            ["Núcleo Comprimido", x=>`Fragmentos ${toTextStyle("Magmáticos",'core')} é elevado à potência de <b>${format(x)}</b>.`, x=>`Fragmentos ${toTextStyle("Magmáticos",'core')} é elevado à potência de <b>${format(x)}</b> denovo.`],
+            ["Tubarão Caseiro", x=>`Reduz a base do requerimento de ${toTextStyle('Homens','humanoid')}-Tubarões por <b>${format(x,0)}</b>.`, x=>`O expoente de ${toTextStyle('Homens','humanoid')}-Tubarões é aumentado por <b>+${format(x)}</b>.`],
 
-            ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Sulfur</b> tiers above 1.`],
-            ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Silicon</b> tiers above 1.`],
-            ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Nitrogen</b> tiers above 1.`],
-            ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Helium</b> tiers above 1.`],
+            ["Conversão do Tubarão", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Enxofre</b>.`, x=>`Ganha mais <b>${formatPow(x)}</b> tiers bônus referente ao <b>Enxofre</b> acima de 1.`],
+            ["Tubarão Exoesqueleto", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Silício</b>.`, x=>`Ganha mais <b>${formatPow(x)}</b> tiers bônus referente ao <b>Silício</b> acima de 1.`],
+            ["Tubarão Solar", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Nitrogênio</b>.`, x=>`Ganha mais <b>${formatPow(x)}</b> tiers bônus referente ao <b>Nitrogênio</b> acima de 1.`],
+            ["Tubarão Voador", x=>`Ganha <b>${format(x,0)}</b> tiers bônus referente ao <b>Hélio</b>.`, x=>`Ganha mais <b>${formatPow(x)}</b> tiers bônus referente ao <b>Hélio</b> acima de 1.`],
 
-            ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Fish Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Supernatural Body", x=>`${toTextStyle('Magmatic','core')} fragments boost <b>'Radioactive Body'</b> by <b>${formatPow(x)}</b>.`],
-            ["Immortal Body", x=>`<b>'Perfect Body'</b> is <b>squared</b>.`],
+            ["Corpo de Tubarão Grande", x=>`${toTextStyle('Peixe','fish')} impulsiona <b>'Corpo do Peixe'</b> em <b>${formatPow(x)}</b>.`],
+            ["Corpo Renascido", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona <b>'Corpo do Prestígio'</b> em <b>${formatPow(x)}</b>.`],
+            ["Corpo Sobrenatural", x=>`Fragmentos ${toTextStyle('Magmáticos','core')} impulsiona <b>'Corpo Radioativo'</b> em <b>${formatPow(x)}</b>.`],
+            ["Corpo Imortal", x=>`<b>'Corpo Perfeito'</b> é elevado ao <b>quadrado</b>.`],
 
-            ['Luck of the Sea', x=>`${toTextStyle('Fish','fish')} boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Luck of the Earth', x=>`<b>Stone</b> boosts the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Luck of the Shark', x=>`${toTextStyle('Humanoid','humanoid')} Sharks boost the ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} by <b>+${format(x)}</b>`],
-            ['Pure Luck', x=>`The ${toTextStyle('Mining Fortune '+icon('luck'),'gold')} is increased by <b>+${format(x)}</b>`],
+            ['Sorte do Mar', x=>`${toTextStyle('Peixe','fish')} impulsiona ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} em <b>+${format(x)}</b>`],
+            ['Sorte da Terra', x=>`<b>Pedra</b> impulsiona ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} em <b>+${format(x)}</b>`],
+            ['Sorte do Tubarão', x=>`${toTextStyle('Homens','humanoid')}-Tubarões impulsiona ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} em <b>+${format(x)}</b>`],
+            ['Pura Sorte', x=>`A ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} é aumentada em <b>+${format(x)}</b>`],
 
-            ["Better Iron", x=>`Improve <b>Iron</b> building better.`],
-            ["Better Nickel", x=>`Improve <b>Nickel</b> building better.`],
-            ["Better Oxygen", x=>`Improve <b>Oxygen</b> building better.`],
-            ["Better Neon", x=>`Improve <b>Neon</b> building better.`],
+            ["Ferro Melhorado", x=>`Melhora a construção do <b>Ferro</b>.`],
+            ["Níquel Melhorado", x=>`Melhora a construção do <b>Níquel</b>.`],
+            ["Oxigênio Melhorado", x=>`Melhora a construção do <b>Oxigênio</b>.`],
+            ["Neon Melhorado", x=>`Melhora a construção do <b>Neon</b>.`],
 
-            ["Ironic Iron", x=>`Improve <b>Iron</b> reactor better.`],
-            ["Piggy Bank", x=>`Improve <b>Nickel</b> reactor better.`],
-            ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`],
-            ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`],
+            ["Ferro Irônico", x=>`Melhore o reator de <b>Ferro</b>.`],
+            ["Cofrinho", x=>`Melhore o reator de <b>Níquel</b>.`],
+            ["Ozônio", x=>`Melhore o reator de <b>Oxigênio</b>.`],
+            ["Resíduos Radioativos Falsos", x=>`Melhore o reator de <b>Neon</b>.`],
 
-            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Coluna 1 mais Forte", x=>`As melhorias da primeira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
+            ["Coluna 2 mais Forte", x=>`As melhorias da segunda coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
+            ["Coluna 3 mais Forte", x=>`As melhorias da terceira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
+            ["Coluna 4 mais Forte", x=>`As melhorias da quarta coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
 
-            ["Fish Forge", x=>`${toTextStyle('Fish','fish')} speeds forging by <b>${formatMult(x)}</b>.`],
-            ["Prestigious Forge", x=>`${toTextStyle('Prestige','prestige')} shards speed forging by <b>${formatMult(x)}</b>.`],
-            ["Magmatic Forge", x=>`${toTextStyle('Magmatic','core')} fragments speed forging by <b>${formatMult(x)}</b>.`],
-            ["Faster Forge", x=>`Forging is <b>${formatMult(x)}</b> faster.`],
+            ["Forja de Peixe", x=>`${toTextStyle('Peixe','fish')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
+            ["Forja de Prestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
+            ["Forja Magmática", x=>`Fragmentos ${toTextStyle('Magmáticos','core')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
+            ["Forja Rápida", x=>`Forja é <b>${formatMult(x)}</b> mais rápido.`],
 
-            ["True Column 1", x=>`You are allowed to purchase the first column of tree evolution.`],
-            ["True Column 2", x=>`You are allowed to purchase the second column of tree evolution.`],
-            ["True Column 3", x=>`You are allowed to purchase the third column of tree evolution.`],
-            ["True Column 4", x=>`You are allowed to purchase the fourth column of tree evolution.`],
+            ["Coluna Verdadeira 1", x=>`Você consegue comprar toda a primeira coluna acima.`],
+            ["Coluna Verdadeira 2", x=>`Você consegue comprar toda a segunda coluna acima.`],
+            ["Coluna Verdadeira 3", x=>`Você consegue comprar toda a terceira coluna acima.`],
+            ["Coluna Verdadeira 4", x=>`Você consegue comprar toda a quarta coluna acima.`],
+        ],
+
+        //'evolution-goal-status': (x,y)=>x?"DESBLOQUEADO":y?"BLOQUEADO":"EM PROGRESSO",
+        'evolution-goal-ctn': [
+            [
+                //x=>`Ganhe pelo menos <b>${format(x,0)}</b> Fragmentos ${toTextStyle("Magmáticos",'core')} na primeira vez que entrar no ${toTextStyle("Núcleo",'core')}.`,
+                //`Passivamente gera <b>100%</b> dos seus Fragmentos ${toTextStyle("Magmáticos",'core')} que você pega quando entra no ${toTextStyle("Núcleo",'core')}.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments without purchasing the ${toTextStyle("Core",'core')} assembler's building.`,
+                `Keep the ${toTextStyle("Core",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments.`,
+                `Improve the formula of ${toTextStyle('Prestige','prestige')} shards for ${toTextStyle("Magmatic",'core')} fragments.`
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating ${toTextStyle('Kelp','kelp')}.`,
+                `Start with capped depth in every ocean.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating resources in each ocean.`,
+                `Keep research on ${toTextStyle('Evolution','humanoid')}.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards.`,
+                `Further improve the formula of ${toTextStyle('Prestige','prestige')} shards gain.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} with at most <b>10</b> radioactive boosts.`,
+                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limit.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} without radioactive boosts.`,
+                `Radioactive boosts no longer reset anything. Unlock Auto-Radioactive Boosts.`,
+            ],[
+                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')}.`,
+                `First ${toTextStyle('Shark','shark')} Rank scaling is delayed by <b>+5</b>.`,
+            ],
+        ],
+
+        // Cultivation
+
+        'ore-names': {
+            'stone': "Pedra",
+            'coal': "Carvão",
+            'iron': "Ferro",
+            'gold': "Ouro",
+            'platinum': "Platina",
+            'diamond': "Diamante",
+            'bismuth': "Bismuto",
+            'obsidian': "Obsidiana",
+            'vibranium': "Vibranium",
+            //'radium': "Radium-223",
+            //'uranium': "Uranium-235",
+            //'berkelium': "Berkelium-247",
+            //'californium': "Californium-252",
+            //'oganesson': "Oganesson-294",
+            //'sharkium': "Sharkium",
+        },
+
+        'mined-resources-text': `Recursos Minerados`,
+        'mining-tier': `Tier da Mineração`,
+        'next-mining-tier': `No <b>Tier da Mineração</b>`,
+        'mining-tier-reset': `Aumenta o <b>Tier da Mineração</b>, mas multiplica a vida e a quantidade ganha de cada minério.`,
+        'mining-tier-ore-unlock': x=>`Desbloqueia o mínerio ${x}.`,
+        'mining-tier-ore-generation': x=>`Você não vai mais minerar o minério ${x}, mas vai gerar baseado na velocidade da mineração e fortuna.`,
+
+        //'mining-ascend': `Mining Ascension`,
+        //'next-mining-ascend': `At <b>Mining Ascension</b>`,
+        //'mining-ascend-reset': `Increase the <b>Mining Ascension</b>, but it forces a singularity reset for powerful boosts.`,
+
+        'mining-tier-bonus': [
+            x=>`A vida do minério é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Pedra</b> e <b>Carvão</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Ferro</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Ouro</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Platina</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Bismuto</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Diamante</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Obsidiana</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Os primeiros 9 minéros são aumentados em <b>${formatPow(x)}</b>.`,
+           // x=>`Super Ore's health is increased by <b>${formatMult(x)}</b>.`,
+           // x=>`<b>Radium-223</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            //x=>`<b>Uranium-235</b> amount is increased by <b>${formatMult(x)}</b>.`,
+           // x=>`<b>Berkelium-247</b> amount is increased by <b>${formatMult(x)}</b>.`,
+           // x=>`<b>Californium-252</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
         // Automation
@@ -565,7 +681,7 @@ LANGUAGES.PT = {
         'progress-14-text': r => `Chega ao Tier de Mineração ${format(r,0)} para desbloquear o proximo conteudo da ${toTextStyle('Evolução','humanoid')}`, 
         'progress-15-text': r => `Chega ao Tier de Mineração ${format(r,0)} para desbloquear o proximo conteudo da ${toTextStyle('Evolução','humanoid')}`,
 
-        'progress-16-text': r => `Encha ${format(r,0)} aceleradores de particula`, 
+        'progress-16-text': r => `Completa ${format(r,0)} aceleradores de particula`, 
         get 'progress-16-cond-text'() { return `Forma ${toTextStyle('Buraco Negro','black-hole')}` },
 
         'progress-17-text': r => `Forma ${format(r,0)} ${toTextStyle('Buracos Negros','black-hole')}`,
@@ -597,6 +713,17 @@ LANGUAGES.PT = {
             desbloqueando o reator do ${c} pela primeira vez.<br>
             <img src="textures/Magmatic.png"><br>
             Você tem certeza que gostaria de entrar no núcleo?
+            `
+        },
+        get 'reset-humanoid-message'() {
+            let e = toTextStyle('Evolução','humanoid'), c = toTextStyle('núcleo','core'), m = toTextStyle('Magmáticos','core'), p = toTextStyle('Prestígio','prestige')
+            return `
+            <h3>A ${e}</h3><br>
+            <subtitle>“Mutando vai fazer os tubarões mais selvagens, transformando em homens-tubarões. Pórem com o custo de tudo que você tem nesse ponto.”</subtitle>
+            A ${e} é a terceira camada de reinício. Evoluir os tubarões redefine tudo que ${c} redefine, quanto Fragmentos ${m}, reatores ${c}, radiação do ${c}, montador de ${c}, e algumas ${toTextStyle('Pesquisa','prestige')} para ${toTextStyle('Homens','humanoid')}-tubarões.
+            Também desbloquea o Rank e a árvore da ${e}.<br>
+            <img src="textures/Evolution.png"><br>
+            Você tem certeza que gostaria de evoluir seus tubarões?
             `
         },
         
@@ -658,7 +785,7 @@ LANGUAGES.PT = {
         'next-at': "Próximo em",
         'depth': "Profundidade",
 
-        'research-afford': bool => bool ? "Comprar" : "Não se pode pagar",
+        'research-afford': bool => bool ? "Comprar" : "Não se pode comprarr",
         'research-bought': bool => bool ? `<b>Comprado</b>` : `<b>Não comprado</b>`,
 
         'off-on': bool => bool ? "Ligado" : "Desligado",
