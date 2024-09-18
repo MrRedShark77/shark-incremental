@@ -97,6 +97,7 @@ function getPlayerData() {
             total_observ: E(0),
 
             reserv: E(0),
+            traject: E(0),
 
             sb_upgs: {},
         },

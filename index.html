@@ -227,6 +227,7 @@
                             <button class="big-btn" id="import-evolution-tree" onclick="importEvolutionTree()"></button>
                             <button class="big-btn" id="export-evolution-tree" onclick="exportEvolutionTree()"></button>
                             <button class="big-btn" id="respec-evolution-tree" onclick="respecEvolutionTree()"></button>
+                            <button class="big-btn" id="respec-evolution-tree-2" onclick="respecEvolutionTree(false,true)"></button>
                             <button class="big-btn" id="evolution-tree-preset" onclick="openEvolutionTreePreset()"></button>
                         </div>
                         <div id="evolution-tree"></div>
@@ -250,7 +251,8 @@
                                 <button id="mining-tier-undo-btn" class="huge-btn" style="font-size: 12px; min-height: 30px; height: auto; width: 250px;" onclick="MINING_TIER.undo()"></button>
                             </div><div id="mining-ascend-unlock">
                                 <div id="mining-ascend-div"></div>
-                                <button id="mining-ascend-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.ascend()"></button>
+                                <button id="mining-ascend-btn" class="huge-btn" style="font-size: 12px;" onclick="MINING_TIER.ascend()"></button><br>
+                                <button id="mining-ascend-undo-btn" class="huge-btn" style="font-size: 12px; min-height: 30px; height: auto; width: 250px;" onclick="MINING_TIER.ascend_undo()"></button>
                             </div>
                         </div>
                         <div id="mining-tier-bonus"></div>
@@ -334,13 +336,16 @@
         </div>
 
         <div id="space-base-tab">
-            <div class="table-center">
-                <div style="width: 50%; min-width: 500px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));">
+                <div>
                     <p id="observ-div"></p>
                     <div id="spacebase-upgs-o" class="spacebase-upgs"></div>
-                </div><div style="width: 50%; min-width: 500px;" id="reserv-content">
+                </div><div id="reserv-content">
                     <p id="reserv-div"></p>
                     <div id="spacebase-upgs-r" class="spacebase-upgs"></div>
+                </div><div id="traject-content">
+                    <p id="traject-div"></p>
+                    <div id="spacebase-upgs-t" class="spacebase-upgs"></div>
                 </div>
             </div>
         </div>
@@ -399,7 +404,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.3.2 by MrRedShark77
+            Shark Incremental v0.3.2.1 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

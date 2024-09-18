@@ -72,6 +72,15 @@ const SCALINGS = {
             [10,1.5,"L"],
             [15,1.5,"P"],
             [100,2,"ME2"],
+            [3e3,2,"P"],
+        ],
+    },
+    mining_ascend: {
+        get amount() { return player.humanoid.mining_ascend },
+
+        base: [
+            [15,2,"L"],
+            [25,2,"P"],
         ],
     },
     remnant_upg: {
@@ -109,8 +118,13 @@ function getScalingStarts(id) {
             break
         }
         case "cr_boost": {
+            if (tmp.ss_difficulty) {
+                b[0] = 1, b[1] = 1, b[2] = 1
+                break
+            }
             b[0] = Decimal.add(b[0],researchEffect('m3',0))
             b[1] = Decimal.add(b[1],researchEffect('m3',0))
+            if (isSSObserved('mercury')) for (let i = 0; i < 3; i++) b[i] = Decimal.mul(b[i],10);
             break
         }
         case "mining_tier": {

@@ -70,7 +70,7 @@ const AUTOMATION = {
         curr: "core",
 
         trigger() {
-            for (let i=0; i<tmp.core_reactor_unl; i++) upgradeCoreReactor(i)
+            for (let i=0; i<Math.min(8,tmp.core_reactor_unl); i++) upgradeCoreReactor(i);
         },
     },
     core_radiation: {

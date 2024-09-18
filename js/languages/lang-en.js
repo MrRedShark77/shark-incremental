@@ -47,6 +47,9 @@ LANGUAGES.EN = {
         'reserv-name': "Reservatories",
         'reserv-costName': toTextStyle('Reservatories','reserv'),
 
+        'traject-name': "Trajectories",
+        'traject-costName': toTextStyle('Trajectories','traject'),
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
         'full-shark-rank': toTextStyle('Shark','shark') + ' Rank',
 
@@ -66,6 +69,9 @@ LANGUAGES.EN = {
 
         'curr-top-4-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Observatories','observ')}`, 
         'curr-top-4-reset': x => `Reserve for <b>${format(x,0)}</b> ${toTextStyle('Reservatories','reserv')}`,
+
+        'curr-top-5-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Reservatories','reserv')}`, 
+        'curr-top-5-reset': x => `Traject for <b>${format(x,0)}</b> ${toTextStyle('Trajectories','traject')}`,
         
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -133,6 +139,7 @@ LANGUAGES.EN = {
 
         'sharkoid-faith-div': `You have <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Sharkoid Faith','humanoid')}.`,
         'respec-evolution-tree': `Respec ${toTextStyle('Evolution','humanoid')} Tree`,
+        'respec-evolution-tree-2': `Respec charged-only ${toTextStyle('Evolution','humanoid')} Tree`,
         'export-evolution-tree': `Export ${toTextStyle('Evolution','humanoid')} Tree`,
         'import-evolution-tree': `Import ${toTextStyle('Evolution','humanoid')} Tree`,
         'evolution-tree-preset': `${toTextStyle('Evolution','humanoid')} Tree Presets`,
@@ -145,6 +152,7 @@ LANGUAGES.EN = {
         'mining-ascend-div': `Mining Ascension: <h3 id="mining-ascend">0</h3>`,
         'mining-note': `Note: If you're stuck while mining ore with high health (taking a long time), you should reload the page.`,
         'mining-tier-undo-btn': `Decrease Mining Tier by 1 if you're stuck while mining.`,
+        'mining-ascend-undo-btn': `Decrease Mining Ascension by 1 if you're stuck while mining.`,
 
         'black-hole-button': `Because you maxed out all the particle accelerators, you need to form a black hole in case you enter another universe.`,
         'black-hole-html': `You have formed <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> black hole, which reduces the exponents of fish & prestige shards and the multiplier of magmatic fragments by <h3 id="black-hole-effect">^???</h3>.`,
@@ -154,6 +162,7 @@ LANGUAGES.EN = {
         'rocket-part-div': `You have created <h3 id="total-rocket-part">0</h3> total Rocket Parts.`,
         'observ-div': `You have <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observations. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
         'reserv-div': `You have <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> reservations.`,
+        'traject-div': `You have <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> trajectories.`,
 
         // Upgrades
 
@@ -213,6 +222,14 @@ LANGUAGES.EN = {
         'su-m7-req': 'Mining Ascension 3',
         'su-m7-name': 'Super Mining Speed',
         'su-m7-desc': `Increases the normal and super mining speed by <b>+25%</b> per level.`,
+
+        'su-m8-req': 'Mining Ascension 6',
+        'su-m8-name': 'Compressed Radium',
+        'su-m8-desc': `Increases <b>Radium-223</b> mined by <b>×2</b> per level.`,
+
+        'su-m9-req': 'Mining Ascension 12',
+        'su-m9-name': 'Super Mining Fortune',
+        'su-m9-desc': `Increases the ${toColoredText('Super Mining Fortune '+icon('luck'),'orange')} by <b>+5</b> per level.`,
 
         // Researches
 
@@ -367,6 +384,8 @@ LANGUAGES.EN = {
 
             'm5': ["Shark Rank 'onto' Super Mining",`${toTextStyle("Shark",'shark')} Rank boost to mining damage affects super mining damage at a reduced rate.`],
             'm6': ["The Uranium Shark",`'Shark Exponent' is overpowered.`],
+
+            'o1': [`Observatory Automation`,`Automates all observatory upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
         },
 
         // Exploration
@@ -451,6 +470,18 @@ LANGUAGES.EN = {
         'core-7-name': `Helium`,
         'core-7-desc': `${toTextStyle("Shark",'shark')} Level strengthens <b>Neon</b> based on <b>Helium</b>'s tier.`,
 
+        'core-8-name': `Magnesium`,
+        'core-8-desc': `${toTextStyle("Fish",'fish')} raises itself to the exponent based on <b>Magnesium</b>'s tier.`,
+
+        'core-9-name': `Sodium`,
+        'core-9-desc': `${toTextStyle("Prestige",'prestige')} shards raise themselves to the exponent based on <b>Sodium</b>'s tier.`,
+
+        'core-10-name': `Phosphor`,
+        'core-10-desc': `${toTextStyle("Magmatic",'core')} fragments raise themselves based on <b>Phosphor</b>'s tier.`,
+
+        'core-11-name': `Chromium`,
+        'core-11-desc': `${toTextStyle("Humanoid",'humanoid')} shark increase the exponent of ${toTextStyle("Shark",'shark')} ELO based on <b>Chromium</b>'s tier.`,
+
         'core-bonus': x => `Product of core reactors will boost ${toTextStyle("Fish",'fish')} by <h4>${formatMult(x)}</h4>.`,
 
         'core-assembler-erase': `Erase Mode`,
@@ -485,6 +516,7 @@ LANGUAGES.EN = {
             x=>`Provide <h4>+${format(x)}</h4> bonus core reactors on the second row.`,
             x=>`Boost ${toTextStyle('Dark Matter','black-hole')} by <h4>${formatMult(x)}</h4>.`,
             x=>`Boost ${toTextStyle('Remnant','black-hole')} generation by <h4>${formatMult(x)}</h4>.`,
+            x=>`The previous bonuses are <h4>${formatPercent(x.sub(1))}</h4> more powerful, except the sixth.`,
         ],
 
         // Evolution Tree
@@ -511,10 +543,10 @@ LANGUAGES.EN = {
             ["Compressed Core", x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power.`, x=>`${toTextStyle("Magmatic",'core')} fragments are raised to the <b>${format(x)}th</b> power again.`],
             ["Homemade Shark", x=>`Decrease the base of the ${toTextStyle('Humanoid','humanoid')} shark requirement by <b>${format(x,0)}</b>.`, x=>`The exponent of ${toTextStyle('Humanoid','humanoid')} sharks is increased by <b>+${format(x)}</b>.`],
 
-            ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`],
-            ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`],
-            ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`],
-            ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`],
+            ["Shark Conversion", x=>`Gain <b>${format(x,0)}</b> bonus <b>Sulfur</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Sulfur</b> tiers above 1.`],
+            ["Exoskeleton Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Silicon</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Silicon</b> tiers above 1.`],
+            ["Solar Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Nitrogen</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Nitrogen</b> tiers above 1.`],
+            ["Flying Shark", x=>`Gain <b>${format(x,0)}</b> bonus <b>Helium</b> tiers.`, x=>`Gain <b>${formatPow(x)}</b> more bonus <b>Helium</b> tiers above 1.`],
 
             ["Great Shark Body", x=>`${toTextStyle('Fish','fish')} boosts <b>'Fish Body'</b> by <b>${formatPow(x)}</b>.`],
             ["Rebirth Body", x=>`${toTextStyle('Prestige','prestige')} shards boost <b>'Prestigious Body'</b> by <b>${formatPow(x)}</b>.`],
@@ -628,6 +660,8 @@ LANGUAGES.EN = {
             x=>`Super Ore's health is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Radium-223</b> amount is increased by <b>${formatMult(x)}</b>.`,
             x=>`<b>Uranium-235</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Berkelium-247</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`<b>Californium-252</b> amount is increased by <b>${formatMult(x)}</b>.`,
         ],
 
         // Forge
@@ -705,17 +739,22 @@ LANGUAGES.EN = {
             [`Hot Potato`,x=>`Radioactive boosts are ${x} stronger.`],
             [`Mega Level`,x=>`The fourth scaling of ${toTextStyle("Shark",'shark')} Level is delayed by ${x}.`],
             [`Elite Miner`,x=>`The third scaling of mining tier is delayed by ${x}.`],
+
+            [`Self-Accelerator`,x=>`${toTextStyle("Remnants",'black-hole')} boost themselves by ${x}.`],
+            [`Ultimate Power`,x=>`The first 12 ${toTextStyle("Remnant",'black-hole')} upgrades are ${x} more powerful, except 4th.`],
+            [`Efficiency VI`,x=>`The super mining damage is boosted by ${x}.`],
+            [`Supernatural Shark`,x=>`The exponent of ${toTextStyle("Humanoid",'humanoid')} sharks is increased by ${x}.`],
         ],
 
         'solar-system-list': {
             'sun':     ["Sun",`???`,`???`],
-            'mercury': ["Mercury",`???`,`???`],
+            'mercury': ["Mercury",`Mercury is the smallest planet in the solar system and closest to the Sun. It is named after the ancient Roman god of commerce because it moves across the sky faster than the other planets. Mercury is covered in impact craters and is similar to the Moon in appearance, indicating a lack of internal geologic activity over the past billion years. The planet has almost no atmosphere, so its surface temperature varies more than any other planet in the solar system.`,`The first 3 scalings of radioactive boost are delayed by ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
             'venus':   ["Venus",`Venus is the second farthest from the Sun and the sixth-largest planet in the Solar System. It is named after the ancient Roman goddess of love. Venus has a dense atmosphere consisting of more than 96% carbon dioxide. Venus has an average surface temperature of 735 K (462 °C), making it the hottest planet in the solar system. Venus has no natural satellites. In the Earth's sky, it is the third-brightest luminary, after the Sun and the Moon.`,`Passively generate 100% of current ${toTextStyle('Humanoid','humanoid')} sharks as bonus ${toTextStyle('Humanoid','humanoid')} sharks, but auto-${toTextStyle('Humanoid','humanoid')} shark no longer works. Improve ${toTextStyle('Humanoid','humanoid')} shark drastically, and the third scaling of ${toTextStyle('Shark','shark')} rank is delayed by ×2. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
             'earth':   ["Earth",`???`,`???`],
             'moon':    ["Moon",`Welcome to the Solar System! So, you are free to explore some planet, but it requires observing for powerful rewards. Force a singularity reset, resetting some research and evolution tree (it returns after), but black hole’s reduction is forced to ^0.5, nearly post-cultivation features are disabled, and you cannot explore any ocean. You can generate ${toTextStyle('Observatories','observ')} in the space-base, which helps you progress faster with their upgrades. There is difficulty, it affects not progress, but the space-base features to make progress further. Let’s start with Moon of the Earth! It’s called Luna, but Theta, originally before the collision.`,`Unlock the Mining Ascension and new ${toTextStyle('Remnant','black-hole')} upgrade. Mining ascension forces a singularity reset for powerful bonus and various ores.`],
             'mars':    ["Mars",`Mars is the fourth most distant planet from the Sun in the Solar System. It belongs to the planets of the Earth group, as it has a solid surface and a size comparable to Earth. The terrain of Mars has unique features, including impact craters, volcanoes, valleys, deserts, and polar ice caps. Mars has geologic formations that resemble water erosion and minerals that could only have been formed by prolonged exposure to water. The question of the existence of life on Mars has interested scientists for centuries.`,`Earn the ability to terraform any purchased ${toTextStyle('Evolution','humanoid')} tree for powerful bonuses, but the cost grows faster. Unlock new automation. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
-            'jupiter': ["Jupiter",`???`,`???`],
-            'saturn':  ["Saturn",`???`,`???`],
+            'jupiter': ["Jupiter",`Jupiter is the largest planet in the Solar System and the fifth farthest from the Sun. It is a gas giant with a mass 2.47 times greater than the combined mass of all the other planets in the Solar System. Jupiter has been known since antiquity and is mentioned in mythology and religious beliefs of different cultures. The modern name of the planet comes from the name of the ancient Roman supreme thunder god. Jupiter's atmosphere is characterized by a number of atmospheric phenomena such as storms, lightning, auroras and the Great Red Spot, a giant storm known since the 17th century.`,`Unlock more ${toTextStyle('Remnant','black-hole')} upgrades. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
+            'saturn':  ["Saturn",`Saturn is the sixth planet from the Sun and the second-largest planet in the solar system after Jupiter. Saturn is classified as a gas giant because it is composed mostly of hydrogen and helium. The planet is named after the Roman god of agriculture. Saturn is surrounded by rings made up of ice particles, heavy elements and dust. The planet has 146 known satellites, the largest of which is Titan. Saturn has a planetary magnetic field and a prominent ring system.`,`Unlock a new row of ${toTextStyle('Core','core')} reactors. <i>These reactors don’t get reset by Evolution or later, but they aren’t affected by the ${toTextStyle('Remnant','black-hole')} upgrade “Half-life”.</i>`],
             'uranus':  ["Uranus",`???`,`???`],
             'neptune': ["Neptune",`???`,`???`],
             'pluto':   ["Pluto",`???`,`???`],
@@ -732,13 +771,23 @@ LANGUAGES.EN = {
             'o1': [`The Space`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
             'o2': [`Space Fish`,x=>`${toTextStyle('Fish','fish')} is boosted by ${x}.`],
             'o3': [`Space Prestige`,x=>`${toTextStyle('Prestige shards','prestige')} are boosted by ${x}.`],
+            'o4': [`Space Core`,x=>`${toTextStyle('Magmatic fragments','core')} are boosted by ${x}.`],
             
             'e1': [`Fish Exchanger`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
             'e2': [`Prestige Exchanger`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            'e3': [`Core Exchanger`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            'e4': [`Observe-Reservatory`,x=>`${toTextStyle('Reservatories','reserv')} are boosted by ${x}.`],
+            'e5': [`Universal Exchanger`,x=>`The base of observatory upgrades “Exchanger” is increased by ${x}.`],
 
             'r1': [`The Relative`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
             'r2': [`Observable`,x=>`${toTextStyle('Reservatories','reserv')} are boosted by ${x}.`],
             'r3': [`Space Fish II`,x=>`${toTextStyle('Fish','fish')} is boosted by ${x}.`],
+            'r4': [`Space Prestige II`,x=>`${toTextStyle('Prestige shards','prestige')} are boosted by ${x}.`],
+
+            't1': [`The Transport`,x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`],
+            't2': [`Reservable`,x=>`${toTextStyle('Reservatories','reserv')} are boosted by ${x}.`],
+            't3': [`Observable II`,x=>`${toTextStyle('Trajectories','traject')} are boosted by ${x}.`],
+            't4': [`Space Fish III`,x=>`${toTextStyle('Fish','fish')} is boosted by ${x}.`],
         },
 
         // Automation
@@ -866,6 +915,7 @@ LANGUAGES.EN = {
             'su_m5' : `"Basic Ore" Upgrade`,
             'cr_boost' : `Radioactive Boost`,
             'mining_tier' : `Mining Tier`,
+            'mining_ascend' : `Mining Ascension`,
             'remnant_upg' : `Remnant Upgrades`,
         },
         'scaling-start': "Starts at",

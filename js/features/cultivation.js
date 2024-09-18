@@ -51,7 +51,7 @@ const ORES = {
     'radium': {
         color: `radial-gradient(circle, rgb(194,238,174) 0%, rgb(84,255,57) 100%)`,
         textColor: 'rgb(84,255,57)',
-        get mult() { return Decimal.mul(tmp.mining_tier_bonus[10]??1,1) },
+        get mult() { return Decimal.mul(tmp.mining_tier_bonus[10]??1,sharkUpgEffect('m8')) },
     },
     'uranium': {
         dense: 5,
@@ -63,10 +63,13 @@ const ORES = {
         dense: 15,
         color: `radial-gradient(circle, rgb(255,0,0) 0%, rgb(255,127,0) 20%, rgb(255,255,0) 40%, rgb(127,255,0) 60%, rgb(0,255,0) 80%, rgb(0,255,127) 100%)`,
         textColor: 'rgb(0,255,127)',
+        get mult() { return Decimal.mul(tmp.mining_tier_bonus[12]??1,1) },
     },
     'californium': {
+        dense: 100,
         color: `radial-gradient(circle, rgb(255,222,122) 0%, rgb(235,189,0) 100%)`,
         textColor: 'rgb(255,222,122)',
+        get mult() { return Decimal.mul(tmp.mining_tier_bonus[13]??1,1) },
     },
     'oganesson': {
         color: `radial-gradient(circle, rgb(0,0,0) 0%, rgb(180,180,180) 25%, rgb(0,0,0) 50%, rgb(180,180,180) 75%, rgb(0,0,0) 100%)`,
@@ -92,7 +95,7 @@ const MINING_TIER = {
     },
 
     get ascend_require() {
-        var x = player.humanoid.mining_ascend.mul(5).add(100).pow(2).div(10)
+        var x = player.humanoid.mining_ascend.scaleAll("mining_ascend").mul(5).add(100).pow(2).div(10)
 
         return x.ceil()
     },
@@ -118,6 +121,8 @@ const MINING_TIER = {
         if (a.gte(2)) x[9] = Decimal.pow(4,a.sub(1));
         if (a.gte(2)) x[10] = Decimal.pow(5,a.sub(1));
         if (a.gte(4)) x[11] = Decimal.pow(3,a.sub(3));
+        if (a.gte(7)) x[12] = Decimal.pow(4,a.sub(6));
+        if (a.gte(13)) x[13] = Decimal.pow(3,a.sub(12));
 
         return x
     },
@@ -158,6 +163,13 @@ const MINING_TIER = {
             reloadOres()
         }
     },
+    ascend_undo() {
+        if (player.humanoid.mining_ascend.gte(1)) {
+            player.humanoid.mining_ascend = player.humanoid.mining_ascend.sub(1)
+
+            RESETS["black-hole"].doReset()
+        }
+    },
 
     base_milestone: [0,3,6,9,16,20,24,30],
     gen_milestone: [8,11,18,23,27,32,1250,1500,1750],
@@ -173,10 +185,16 @@ const MINING_TIER = {
         return b
     },
 
-    ascend_base_milestone: [1,3,6],
+    ascend_base_milestone: [1,3,6,12],
+    ascend_gen_milestone: [10,15],
 
     get ascend_base() {
         var b = this.ascend_base_milestone.filter(x => player.humanoid.mining_ascend.gte(x)).length
+
+        return b
+    },
+    get ascend_ore_generator() {
+        var b = this.ascend_gen_milestone.filter(x => player.humanoid.mining_ascend.gte(x)).length
 
         return b
     },
@@ -200,7 +218,7 @@ function reloadOres() {
         var name, oo, fortune, p = Math.random()**-0.5, health, value
 
         if (s) {
-            name = ORE_KEYS[Math.min(ORE_KEYS.length-1, 8+tmp.ascend_ore_spawn_base, 9+Math.floor(Math.logBase(Math.random(), 1/3)))]
+            name = ORE_KEYS[Math.min(ORE_KEYS.length-1, 8+tmp.ascend_ore_spawn_base, 9+tmp.ascend_ore_generator+Math.floor(Math.logBase(Math.random(), 1/3)))]
             oo = ORES[name]
 
             fortune = smf.mul(oo.luck_penalty??1).floor()
@@ -257,7 +275,7 @@ function updateCultivationHTML() {
 
         e.style.background = ORES[o.name].color
 
-        var h = `${toColoredText(lang[o.name])} ${toColoredText('×'+o.value.format(0))}<br>${toTextStyle(o.health.format(0)+txt.heart,'red')}`
+        var h = `${toColoredText(lang[o.name])} ${toColoredText('×'+o.value.format(0))}<br>${toColoredText(o.health.format(0)+txt.heart,s?'orangered':'red')}`
 
         if (o.fortune.gt(0)) h = `${s ? toColoredText(o.fortune.format(0)+txt.luck,'orange') : toTextStyle(o.fortune.format(0)+txt.luck,'gold')}<br>` + h
 
@@ -296,6 +314,7 @@ function updateCultivationHTML() {
     el('mining-tier').innerHTML = tier.format(0)
 
     el('mining-tier-undo-btn').className = el_classes({locked: tier.eq(0)})
+    el('mining-ascend-undo-btn').className = el_classes({locked: ascend.eq(0)})
 
     var req = MINING_TIER.require, next_tier = MINING_TIER.base_milestone[tmp.ore_spawn_base], next_gen = MINING_TIER.gen_milestone[tmp.ore_generator]
 
@@ -314,10 +333,11 @@ function updateCultivationHTML() {
     if (unl) {
         el('mining-ascend').innerHTML = ascend.format(0)
 
-        req = MINING_TIER.ascend_require, next_tier = MINING_TIER.ascend_base_milestone[tmp.ascend_ore_spawn_base]
+        req = MINING_TIER.ascend_require, next_tier = MINING_TIER.ascend_base_milestone[tmp.ascend_ore_spawn_base], next_gen = MINING_TIER.ascend_gen_milestone[tmp.ascend_ore_generator]
 
         r = lang_text('mining-ascend-reset')
-        if (next_tier) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_tier,0) + " - " + lang_text('mining-tier-ore-unlock',CURRENCIES[ORE_KEYS[tmp.ascend_ore_spawn_base+9]].costName)
+        if (next_tier) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_tier,0) + " - " + lang_text('mining-tier-ore-unlock',CURRENCIES[ORE_KEYS[tmp.ascend_ore_spawn_base+9]].costName);
+        if (next_gen) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_gen,0) + " - " + lang_text('mining-tier-ore-generation',CURRENCIES[ORE_KEYS[tmp.ascend_ore_generator+9]].costName);
         r += `<br>${lang_text('require')}: <b>${lang_text('mining-tier')}</b> ${req.format(0)}`
         
         el('mining-ascend-btn').innerHTML = r
@@ -337,12 +357,12 @@ function getMiningSpeed() {
 function getMiningFortune() {
     var x = researchEffect('m1',0)
     for (let i = 0; i < 4; i++) x = x.add(simpleETEffect(24+i,0))
-    x = x.add(sharkUpgEffect('m4'))
+    x = x.add(sharkUpgEffect('m4',0))
     return x.overflow(1e9,0.5)
 }
 
 function getSuperMiningDamage() {
-    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleResearchEffect('m5'))
+    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleResearchEffect('m5')).mul(remnantUpgEffect(14))
     return x
 }
 function getSuperMiningSpeed() {
@@ -350,7 +370,7 @@ function getSuperMiningSpeed() {
     return x
 }
 function getSuperMiningFortune() {
-    var x = tmp.mining_fortune.add(1).log10()
+    var x = tmp.mining_fortune.add(1).log10().add(sharkUpgEffect('m9',0))
     return x
 }
 
@@ -359,6 +379,7 @@ function updateCultivationTemp() {
     tmp.ore_generator = MINING_TIER.ore_generator
 
     tmp.ascend_ore_spawn_base = MINING_TIER.ascend_base
+    tmp.ascend_ore_generator = MINING_TIER.ascend_ore_generator
 
     tmp.mining_tier_bonus = MINING_TIER.bonus
 
@@ -371,4 +392,5 @@ function updateCultivationTemp() {
     tmp.super_mining_fortune = getSuperMiningFortune()
 
     tmp.ore_generator_mult = Decimal.pow(2,tmp.mining_fortune.div(100)).mul(tmp.mining_speed)
+    tmp.ascend_ore_generator_mult = Decimal.pow(2,tmp.super_mining_fortune.div(100)).mul(tmp.super_mining_speed)
 }

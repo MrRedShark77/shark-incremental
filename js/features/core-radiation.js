@@ -61,7 +61,7 @@ const CORE_RAD = {
 
     genValue: l => {
         let x = Decimal.pow(2,l.sub(1)).mul(l)
-        if (hasResearch('dm6')) x = expPow(x,l.add(10).log10().root(2));
+        if (!tmp.ss_difficulty && hasResearch('dm6')) x = expPow(x,l.add(10).log10().root(2));
         return x
     },
 
@@ -79,35 +79,35 @@ const CORE_RAD = {
         {
             req: 0,
             effect: (r,b)=>{
-                let x = r.add(1).log10().mul(b.add(1)).root(2)
+                let x = r.add(1).log10().mul(b.add(1)).root(2).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 1,
             effect: (r,b)=>{
-                let x = expPow(r.add(1),1/3).pow(b.div(4).add(1))
+                let x = expPow(r.add(1),1/3).pow(b.div(4).add(1)).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 2,
             effect: (r,b)=>{
-                let x = r.add(1).log10().root(2).mul(b.add(1)).div(100).add(1)
+                let x = r.add(1).log10().root(2).mul(b.add(1)).div(100).add(1).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 9,
             effect: (r,b)=>{
-                let x = r.add(1).log10().root(2).mul(b.add(10))
+                let x = r.add(1).log10().root(2).mul(b.add(10)).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 13,
             effect: (r,b)=>{
-                let x = r.add(1).log10().mul(b.add(1).root(2)).softcap(250,3,3).div(5000)
+                let x = r.add(1).log10().mul(b.add(1).root(2)).softcap(250,3,3).div(5000).pow(getCRBoost(13))
 
                 return x
             },
@@ -121,21 +121,21 @@ const CORE_RAD = {
         },{
             req: 20,
             effect: (r,b)=>{
-                let x = r.add(1).log10().mul(b.add(1)).root(3).div(100).add(1)
+                let x = r.add(1).log10().mul(b.add(1)).root(3).div(100).add(1).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 25,
             effect: (r,b)=>{
-                let x = player.shark_level.add(1).pow(r.add(1).log10().mul(b.add(1)).root(2).div(100)).overflow(1e3,0.5).overflow('ee10',0.5,2)
+                let x = player.shark_level.add(1).pow(r.add(1).log10().mul(b.add(1)).root(2).div(100)).overflow(1e3,0.5).overflow('ee10',0.5,2).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 35,
             effect: (r,b)=>{
-                let x = r.add(1).log10().div(1e3).add(1).pow(b.add(1).root(2))
+                let x = r.add(1).log10().div(1e3).add(1).pow(b.add(1).root(2)).pow(getCRBoost(13))
 
                 return x
             },
@@ -147,26 +147,33 @@ const CORE_RAD = {
                 if (!hasResearch('s5',6)) x = x.div(100).add(1)
                 else x = x.pow(2)
 
-                return x
+                return x.pow(getCRBoost(13))
             },
         },{ // 10
             req: 64,
             effect: (r,b)=>{
-                let x = r.add(1).log10().mul(b.add(1)).add(1).log10().add(1)
+                let x = r.add(1).log10().mul(b.add(1)).add(1).log10().add(1).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 1500,
             effect: (r,b)=>{
-                let x = r.add(10).log10().log10().add(1).mul(b.add(10).log10())
+                let x = r.add(10).log10().log10().add(1).mul(b.add(10).log10()).pow(getCRBoost(13))
 
                 return x
             },
         },{
             req: 2000,
             effect: (r,b)=>{
-                let x = r.add(10).log10().pow(expPow(b.add(1),0.25).div(10))
+                let x = r.add(10).log10().pow(expPow(b.add(1),0.25).div(10)).pow(getCRBoost(13))
+
+                return x
+            },
+        },{
+            req: 10000,
+            effect: (r,b)=>{
+                let x = r.add(10).log10().log10().add(1).log10().add(b.add(10).log10().log10()).div(10).add(1)
 
                 return x
             },

@@ -75,8 +75,8 @@ const TAB_IDS = {
         html: updateCoreHTML,
 
         notify() {
-            if (isAutoEnabled('core_reactor')) return false
-            for (let i = 0; i < tmp.core_reactor_unl; i++) {
+            let a = isAutoEnabled('core_reactor')
+            for (let i = 0; i < tmp.core_reactor_unl; i++) if (!a || i >= 8) {
                 if (CORE_REACTOR[i].resource.gte(getCoreReactorCost(i))) return true
             }
             return false
@@ -182,9 +182,11 @@ const TAB_IDS = {
 
         notify() {
             if (tmp.ss_difficulty===0) return false;
-            for (let i of SPACEBASE_UPG_KEYS) {
-                let u = SPACEBASE_UPGS[i]
-                if (u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true
+            for (let g_id in SPACEBASE_UPGS_GROUPS) {
+                if (!SPACEBASE_UPGS_GROUPS_AUTO[g_id]?.()) for (let i of SPACEBASE_UPGS_GROUPS[g_id]) {
+                    let u = SPACEBASE_UPGS[i]
+                    if (u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true
+                }
             }
         },
     },

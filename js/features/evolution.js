@@ -1,18 +1,21 @@
 const EVOLUTION_TREE = {
     faith_cost: [
-        ["fish",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e3 : 1e4,x.add(1))),x=>x.log10().log(hasResearch('f2') ? 1e3 : 1e4).floor()],
-        ["prestige",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e2 : 1e3,x.add(1))),x=>x.log10().log(hasResearch('f2') ? 1e2 : 1e3).floor()],
-        ["core",x=>Decimal.pow(1e60,x.add(1).scale(2.5e3,2,"ME2").scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).scale(2.5e3,2,"ME2",true).floor()],
+        ["fish",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e3 : 1e4,x.add(1).scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e3 : 1e4).scale(1e6,2,"P",true).floor()],
+        ["prestige",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e2 : 1e3,x.add(1).scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e2 : 1e3).scale(1e6,2,"P",true).floor()],
+        ["core",x=>Decimal.pow(1e60,x.add(1).scale(1e6,2,"P").scale(2.5e3,2,"ME2").scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).scale(2.5e3,2,"ME2",true).scale(1e6,2,"P",true).floor()],
     ],
 
     getCost: (i,charged) => {
-        let y = Math.max(0,1 + Math.floor(i/4))
-        if (charged) y = y * (y + 1) * 25000;
+        let r = Math.floor(i/4), y = Math.max(0,1 + r)
+        if (charged) {
+            y = y * (y + 1) * 25000;
+            if (r > 4) y *= Math.pow(r-3,r-4);
+        }
         return y
     },
 
     rows: 12,
-    charged_rows: 4,
+    charged_rows: 5,
 
     effect: [
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)).pow(simpleETEffect(36)),
@@ -96,6 +99,11 @@ const EVOLUTION_TREE = {
         ()=>1.1,
         ()=>4,
         ()=>1,
+
+        ()=>2,
+        ()=>2,
+        ()=>2,
+        ()=>2,
     ],
 
     getAvilableSlot(row,charged) {
@@ -136,7 +144,7 @@ function purchaseSharkoidFaith(i) {
 
     if (curr.amount.gte(cost)) {
         var bulk = player.humanoid.faith[i].add(1).max(fc[2](curr.amount))
-        curr.amount = curr.amount.sub(fc[1](bulk.sub(1))).max(0)
+        if (!isSSObserved('mars')) curr.amount = curr.amount.sub(fc[1](bulk.sub(1))).max(0);
         player.humanoid.faith[i] = bulk
     }
 }
@@ -151,9 +159,9 @@ function purchaseEvolutionTree(i) {
     }
 }
 
-function respecEvolutionTree(force) {
+function respecEvolutionTree(force,charged) {
     var f = ()=>{
-        player.humanoid.tree = []
+        player.humanoid.tree = charged ? player.humanoid.tree.filter(x => !String(x).includes("C")) : []
         doReset("humanoid",true)
     }
 
@@ -166,7 +174,7 @@ function updateEvolutionTreeHTML() {
     var row_available = []
     var charged_row_available = []
     var unl_rows = tmp.evo_tree_rows
-    var tf = player.humanoid.transform, tf_unl = isSSObserved('mars')
+    var tf_unl = isSSObserved('mars')
     var maxed_row = []
 
     for (let x = 0; x < EVOLUTION_TREE.rows; x++) {
@@ -205,6 +213,8 @@ function updateEvolutionTreeHTML() {
 
     el("sharkoid-faith-spent").innerHTML = tmp.unspent_faith.format(0)
     el("sharkoid-faith-total").innerHTML = tmp.total_faith.format(0)
+
+    el('respec-evolution-tree-2').style.display = el_display(tf_unl)
 }
 
 function hasEvolutionTree(x,c) { return c ? player.humanoid.tree.includes(x+"C") : player.humanoid.tree.includes(x) }
@@ -343,7 +353,8 @@ function importEvolutionTree() {
     createPromptPopup(lang_text('popup-desc')["evolution-tree-import"],x=>{
         let y = []
         for (let z of x.split(",")) {
-            let c = z.includes("C"), z = parseInt(z.split("C")[0])
+            let c = z.includes("C")
+            z = parseInt(z.split("C")[0])
 
             if (isNaN(z)) y.push(z + (c ? "C" : ""));
         }
