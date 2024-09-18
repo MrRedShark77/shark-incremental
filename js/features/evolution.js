@@ -1,21 +1,21 @@
 const EVOLUTION_TREE = {
     faith_cost: [
-        ["fish",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e3 : 1e4,x.add(1).scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e3 : 1e4).scale(1e6,2,"P",true).floor()],
-        ["prestige",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e2 : 1e3,x.add(1).scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e2 : 1e3).scale(1e6,2,"P",true).floor()],
-        ["core",x=>Decimal.pow(1e60,x.add(1).scale(1e6,2,"P").scale(2.5e3,2,"ME2").scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).scale(2.5e3,2,"ME2",true).scale(1e6,2,"P",true).floor()],
+        ["fish",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e3 : 1e4,x.add(1).div(tmp.faith_mult).scale(1e7,1.1,"ME2").scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e3 : 1e4).scale(1e6,2,"P",true).scale(1e7,1.1,"ME2",true).mul(tmp.faith_mult).floor()],
+        ["prestige",x=>Decimal.pow(10,Decimal.pow(hasResearch('f2') ? 1e2 : 1e3,x.add(1).div(tmp.faith_mult).scale(1e7,1.1,"ME2").scale(1e6,2,"P"))),x=>x.log10().log(hasResearch('f2') ? 1e2 : 1e3).scale(1e6,2,"P",true).scale(1e7,1.1,"ME2",true).mul(tmp.faith_mult).floor()],
+        ["core",x=>Decimal.pow(1e60,x.add(1).div(tmp.faith_mult).scale(1e7,1.1,"ME2").scale(1e6,2,"P").scale(2.5e3,2,"ME2").scale(20,2,'P')),x=>x.log(1e60).scale(20,2,'P',true).scale(2.5e3,2,"ME2",true).scale(1e6,2,"P",true).scale(1e7,1.1,"ME2",true).mul(tmp.faith_mult).floor()],
     ],
 
     getCost: (i,charged) => {
         let r = Math.floor(i/4), y = Math.max(0,1 + r)
         if (charged) {
             y = y * (y + 1) * 25000;
-            if (r > 4) y *= Math.pow(r-3,r-4);
+            if (r > 4) y *= Math.pow(2,r-4);
         }
         return y
     },
 
     rows: 12,
-    charged_rows: 5,
+    charged_rows: 9,
 
     effect: [
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)).pow(simpleETEffect(36)),
@@ -43,10 +43,10 @@ const EVOLUTION_TREE = {
         ()=>1 * simpleETEffect(38),
         ()=>1 * simpleETEffect(39),
 
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1).mul(simpleETEffect(36)),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1).mul(simpleETEffect(37)),
-        ()=>CURRENCIES.core.total.max(0).add(1).log10().root(2).div(60).add(1).mul(simpleETEffect(38)),
-        ()=>2 * simpleETEffect(39),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1).mul(simpleETEffect(36)).pow(simpleCETEffect(20)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1).mul(simpleETEffect(37)).pow(simpleCETEffect(21)),
+        ()=>CURRENCIES.core.total.max(0).add(1).log10().root(2).div(60).add(1).mul(simpleETEffect(38)).pow(simpleCETEffect(22)),
+        ()=>Decimal.pow(2 * simpleETEffect(39),simpleCETEffect(23)),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2).mul(simpleETEffect(36)),
         ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5).mul(simpleETEffect(37)),
@@ -80,10 +80,10 @@ const EVOLUTION_TREE = {
     ],
 
     charged_effect: [
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1),
-        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(20).add(1).pow(2),
-        ()=>10,
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(20)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(21)),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(20).add(1).pow(2).pow(simpleCETEffect(22)),
+        ()=>Decimal.pow(10,simpleCETEffect(23)),
 
         null,
         null,
@@ -104,6 +104,26 @@ const EVOLUTION_TREE = {
         ()=>2,
         ()=>2,
         ()=>2,
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(100).add(1).softcap(10,2,'log'),
+        ()=>2,
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(2),
+        ()=>CURRENCIES.radium.amount.max(0).add(1).log10().mul(3),
+        ()=>CURRENCIES.humanoid.amount.max(0).add(1).log10().mul(2),
+        ()=>100,
+
+        null,
+        null,
+        null,
+        null,
+
+        null,
+        null,
+        null,
+        null,
     ],
 
     getAvilableSlot(row,charged) {
@@ -234,6 +254,11 @@ function updateUnspentFaith() {
     tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
 }
 
+function getFaithMultiplier() {
+    let x = isSSObserved('uranus') ? 2 : 1
+    return x
+}
+
 function updateEvolutionTreeTemp() {
     tmp.evo_tree_rows = 5 + player.humanoid.forge.level.tree
     if (player.feature>=12) tmp.evo_tree_rows++
@@ -244,6 +269,8 @@ function updateEvolutionTreeTemp() {
     for (let i = 0; i < player.humanoid.faith.length; i++) {
         tmp.total_faith = tmp.total_faith.add(player.humanoid.faith[i]??0)
     }
+
+    tmp.faith_mult = getFaithMultiplier()
 
     updateUnspentFaith()
 
@@ -353,7 +380,7 @@ function importEvolutionTree() {
     createPromptPopup(lang_text('popup-desc')["evolution-tree-import"],x=>{
         let y = []
         for (let z of x.split(",")) {
-            let c = z.includes("C")
+            let c = z.includes("C");
             z = parseInt(z.split("C")[0])
 
             if (isNaN(z)) y.push(z + (c ? "C" : ""));

@@ -133,6 +133,12 @@ const RESEARCH = {
             ['kelp',false,'e700'],
         ],
     },
+    e7: {
+        unl: ()=>isSSObserved('uranus'),
+        require: [
+            ['kelp',false,'ee100'],
+        ],
+    },
 
     c1: {
         unl: ()=>player.core.times>0,
@@ -290,7 +296,7 @@ const RESEARCH = {
         effDesc: x => "+"+formatPercent(x.sub(1),0),
     },
     m5: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.humanoid.mining_ascend.gte(3),
         require: [
             ['uranium',false,10],
@@ -301,10 +307,24 @@ const RESEARCH = {
         effDesc: x => formatMult(x),
     },
     m6: {
-        bh: true,
+        tier: 2,
         unl: ()=>player.humanoid.mining_ascend.gte(3),
         require: [
             ['uranium',false,500],
+        ],
+    },
+    m7: {
+        tier: 2,
+        unl: ()=>player.humanoid.mining_ascend.gte(25),
+        require: [
+            ['oganesson',false,1e3],
+        ],
+    },
+    m8: {
+        tier: 2,
+        unl: ()=>player.humanoid.mining_ascend.gte(25),
+        require: [
+            ['oganesson',false,1e4],
         ],
     },
 
@@ -484,6 +504,42 @@ const RESEARCH = {
         unl: ()=>tmp.ss_difficulty >= 3,
         require: [
             ['reserv',false,1e6],
+        ],
+    },
+    o2: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 5,
+        require: [
+            ['reserv',false,1e150],
+        ],
+    },
+    o3: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 6,
+        require: [
+            ['reserv',false,'1e1996'],
+        ],
+    },
+
+    r1: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 5,
+        require: [
+            ['traject',false,1e6],
+        ],
+    },
+    r2: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 5,
+        require: [
+            ['traject',false,1e12],
+        ],
+    },
+    r3: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 6,
+        require: [
+            ['traject',false,1e24],
         ],
     },
 }

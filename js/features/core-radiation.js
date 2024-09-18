@@ -10,7 +10,7 @@ const CORE_RAD = {
     gain() {
         let m = tmp.explore_eff[4] ?? [1,1]
 
-        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).pow(getPAEffect(0)).pow(m[1])
+        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).pow(getPAEffect(0)).pow(m[1]).pow(spaceBaseUpgEffect('o5')).pow(spaceBaseUpgEffect('r5'))
 
         return x.overflow('ee18',0.5)
     },
@@ -20,7 +20,7 @@ const CORE_RAD = {
 
         if (hasDepthMilestone(4,0)) x = x.div(1e3)
 
-        return x
+        return x.max(1)
     },
     boostBulk() {
         let x = player.core.radiation.amount
@@ -175,6 +175,8 @@ const CORE_RAD = {
             effect: (r,b)=>{
                 let x = r.add(10).log10().log10().add(1).log10().add(b.add(10).log10().log10()).div(10).add(1)
 
+                if (hasResearch('m8')) x = x.pow(2);
+
                 return x
             },
         },
@@ -206,7 +208,7 @@ function getCoreTemperatureEffect() {
 function updateCoreRadiation() {
     var rad = player.core.radiation
 
-    el('radioactive-amount').innerHTML = rad.amount.format(0) + " / " + tmp.cr_limit.format(0) + " " + icon("radioactive")
+    el('radioactive-amount').innerHTML = rad.amount.format(0) + (rad.boost.gte(1e5) ? "" : " / " + tmp.cr_limit.format(0)) + " " + icon("radioactive")
     el('radioactive-gain').innerHTML = tmp.cr_gain.gt(0) ? rad.amount.formatGain(tmp.cr_gain) : ""
 
     el('start-cr-experiment').innerHTML = lang_text('cr-start',rad.active)

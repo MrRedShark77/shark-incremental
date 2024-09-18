@@ -394,7 +394,7 @@ input.no-arrows {
 	width: calc(100% - 20px);
 }
 
-#feature-progress {
+#feature-progress, #constellation-progress {
 	position: relative;
 	margin-top: 5px;
 	width: calc(100% - 4px);
@@ -417,7 +417,7 @@ input.no-arrows {
 	background: repeating-linear-gradient(-45deg, cyan, #00aeff 20px, cyan 40px);
 }
 
-#fp-text {
+.p-text {
 	position: absolute;
 	top: 50%;
 	width: 100%;
@@ -1085,4 +1085,24 @@ subtitle {
 #mining-tier-btn, #mining-ascend-btn {
 	height: auto;
 	min-height: 150px;
+}
+
+#cp-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 100%;
+	background: repeating-linear-gradient(90deg, #c5fff7, #edff9e 20px, #c5fff7 40px);
+}
+
+.constellation-boost {
+	border: solid 2px white;
+	background-color: #0004;
+	border-radius: 20px;
+	min-height: 120px;
+	padding: 5px 10px;
+
+	width: 240px;
+	font-size: 14px;
 }

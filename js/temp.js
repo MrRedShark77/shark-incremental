@@ -63,6 +63,9 @@ function reloadTemp() {
 
         ss_difficulty: 0,
         sb_upg_effects: {},
+        experiment_boosts: [],
+
+        constellation_boosts: [],
     }
 
     for (let x in EXPLORE) {
@@ -86,6 +89,7 @@ function updateTemp() {
 
     updateResearchTemp()
     updateScalingsTemp()
+    updateConstellationTemp()
     updateSingularityTemp()
     updatePATemp()
     updateEvolutionTreeTemp()

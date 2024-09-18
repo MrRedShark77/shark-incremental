@@ -47,6 +47,7 @@
     <script src="js/features/particle-accel.js"></script>
     <script src="js/features/singularity.js"></script>
     <script src="js/features/solar-system.js"></script>
+    <script src="js/features/constellation.js"></script>
 
     <script src="js/features/resets.js"></script>
 
@@ -333,6 +334,17 @@
                     </div>
                 </div>
             </div>
+        </div><div id="constellation-tab">
+            <p id="bh-tier-div"></p>
+            <button id="bh-tier-button" class="huge-btn" onclick="CONSTELLATION.upgrade()" style="font-size: 12px;">Reach the requirement to increase the black hole tier.</button>
+            <div id="constellation-progress" style="width: 500px; margin: auto;">
+                <div id="cp-bar"></div>
+                <div id="cp-text" class="p-text">???</div>
+            </div>
+            <p id="constellation-base"></p>
+            <div id="constellation-boosts-table" class="table-center">
+                <div class="constellation-boost"><div style="min-height: 40px;">You have <span>???</span> <span></span> placeholder.</div><br class="line"><div>???</div></div>
+            </div>
         </div>
 
         <div id="space-base-tab">
@@ -346,6 +358,10 @@
                 </div><div id="traject-content">
                     <p id="traject-div"></p>
                     <div id="spacebase-upgs-t" class="spacebase-upgs"></div>
+                </div><div id="experiment-content">
+                    <p id="experiment-div"></p>
+                    <button class="huge-btn" id="experiment-button" onclick="EXPERIMENT_TIER.reset()" style="font-size: 12px;"></button>
+                    <div id="experiment-boosts"></div>
                 </div>
             </div>
         </div>
@@ -404,7 +420,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.3.2.1 by MrRedShark77
+            Shark Incremental v0.3.2.2 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>

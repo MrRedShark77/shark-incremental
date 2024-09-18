@@ -57,13 +57,13 @@ const SOLAR_SYSTEM = {
         difficulty: 4,
     },
     'uranus': {
-        rp_req: EINF,
-        goal: EINF,
+        rp_req: 76,
+        goal: 'ee4',
         difficulty: 5,
     },
     'neptune': {
-        rp_req: EINF,
-        goal: EINF,
+        rp_req: 106,
+        goal: 'ee6',
         difficulty: 6,
     },
     'pluto': {
@@ -99,6 +99,7 @@ function observReset() {
 
     player.solar_system.reserv = E(0)
     player.solar_system.traject = E(0)
+    player.solar_system.experiment = E(0)
     
     RESETS["black-hole"].doReset()
 
@@ -182,7 +183,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(10).log(3).sumBase(1.05,true).add(1).floor(),
         res: "observ",
         effect(a) {
-            let x = a.pow_base(2)
+            let base = 2
+            if (hasResearch('o2')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base)
             return x
         },
         effDesc: x=>formatMult(x),
@@ -194,7 +197,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(100).log(2).scale(100,2,"P",true).add(1).floor(),
         res: "observ",
         effect(a) {
-            let x = a.pow_base(1.05).mul(a.add(1))
+            let base = 1.05
+            if (hasResearch('o2')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base).mul(a.add(1))
             return x
         },
         effDesc: x=>formatPow(x),
@@ -206,7 +211,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(1e6).log(5).add(1).scale(100,2,"P",true).floor(),
         res: "observ",
         effect(a) {
-            let x = a.pow_base(1.05).mul(a.add(1))
+            let base = 1.05
+            if (hasResearch('o2')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base).mul(a.add(1))
             return x
         },
         effDesc: x=>formatPow(x),
@@ -223,12 +230,24 @@ const SPACEBASE_UPGS = {
         },
         effDesc: x=>formatMult(x),
     },
+    o5: {
+        unl:()=>true,
+        diff: 5,
+        cost:a=>a.pow_base(1.05).pow_base(1e100),
+        bulk:a=>a.log(1e100).log(1.05).floor(),
+        res: "observ",
+        effect(a) {
+            let x = a.pow_base(1.05).mul(a.add(1))
+            return x
+        },
+        effDesc: x=>formatPow(x),
+    },
 
     e1: {
         unl:()=>true,
         diff: 1,
-        cost:a=>a.pow_base(1.2).pow_base(1e10),
-        bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
+        cost:a=>a.scale(1000,2,"P").pow_base(1.2).pow_base(1e10),
+        bulk:a=>a.log(1e10).log(1.2).scale(1000,2,"P",true).add(1).floor(),
         res: "fish",
         effect(a) {
             let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
@@ -240,8 +259,8 @@ const SPACEBASE_UPGS = {
     e2: {
         unl:()=>true,
         diff: 1,
-        cost:a=>a.pow_base(1.2).pow_base(1e10),
-        bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
+        cost:a=>a.scale(1000,2,"P").pow_base(1.2).pow_base(1e10),
+        bulk:a=>a.log(1e10).log(1.2).scale(1000,2,"P",true).add(1).floor(),
         res: "prestige",
         effect(a) {
             let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
@@ -253,8 +272,8 @@ const SPACEBASE_UPGS = {
     e3: {
         unl:()=>true,
         diff: 3,
-        cost:a=>a.pow_base(1.2).pow_base(1e10),
-        bulk:a=>a.log(1e10).log(1.2).add(1).floor(),
+        cost:a=>a.scale(1000,2,"P").pow_base(1.2).pow_base(1e10),
+        bulk:a=>a.log(1e10).log(1.2).scale(1000,2,"P",true).add(1).floor(),
         res: "core",
         effect(a) {
             let b = Decimal.add(1.5,spaceBaseUpgEffect('e5',0))
@@ -287,6 +306,18 @@ const SPACEBASE_UPGS = {
         },
         effDesc: x=>"+"+format(x),
     },
+    e6: {
+        unl:()=>true,
+        diff: 6,
+        cost:a=>a.sumBase(1.05).pow_base(10).mul(1e180),
+        bulk:a=>a.div(1e180).log(10).sumBase(1.05,true).add(1).floor(),
+        res: "reserv",
+        effect(a) {
+            let x = a.pow_base(1.5)
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },
 
     r1: {
         unl:()=>true,
@@ -295,7 +326,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(1).log(2).sumBase(1.05,true).add(1).floor(),
         res: "reserv",
         effect(a) {
-            let x = a.pow_base(2)
+            let base = 2
+            if (hasResearch('o3')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base)
             return x
         },
         effDesc: x=>formatMult(x),
@@ -307,7 +340,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(5).log(3).sumBase(1.05,true).add(1).floor(),
         res: "reserv",
         effect(a) {
-            let x = a.pow_base(2)
+            let base = 2
+            if (hasResearch('o3')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base)
             return x
         },
         effDesc: x=>formatMult(x),
@@ -319,7 +354,9 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(1000).log(2).add(1).floor(),
         res: "reserv",
         effect(a) {
-            let x = a.pow_base(1.05).mul(a.add(1))
+            let base = 1.05
+            if (hasResearch('o3')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base).mul(a.add(1))
             return x
         },
         effDesc: x=>formatPow(x),
@@ -329,6 +366,20 @@ const SPACEBASE_UPGS = {
         diff: 3,
         cost:a=>a.pow_base(5).mul(1e6),
         bulk:a=>a.div(1e6).log(5).add(1).floor(),
+        res: "reserv",
+        effect(a) {
+            let base = 1.05
+            if (hasResearch('o3')) base = Decimal.add(base,spaceBaseUpgEffect('e5',0));
+            let x = a.pow_base(base).mul(a.add(1))
+            return x
+        },
+        effDesc: x=>formatPow(x),
+    },
+    r5: {
+        unl:()=>true,
+        diff: 5,
+        cost:a=>a.pow_base(1.05).pow_base(1e100),
+        bulk:a=>a.log(1e100).log(1.05).floor(),
         res: "reserv",
         effect(a) {
             let x = a.pow_base(1.05).mul(a.add(1))
@@ -344,7 +395,8 @@ const SPACEBASE_UPGS = {
         bulk:a=>a.div(1).log(10).sumBase(1.05,true).add(1).floor(),
         res: "traject",
         effect(a) {
-            let x = a.mul(.1).add(1)
+            let base = Decimal.add(.1,spaceBaseUpgEffect('t6',0))
+            let x = a.mul(base).add(1)
             return x
         },
         effDesc: x=>formatPow(x),
@@ -385,25 +437,73 @@ const SPACEBASE_UPGS = {
         },
         effDesc: x=>formatPow(x),
     },
+    t5: {
+        unl:()=>true,
+        diff: 5,
+        cost:a=>a.scale(100,2,"ME2").pow_base(10).mul(1e15),
+        bulk:a=>a.div(1e15).log(10).scale(100,2,"ME2",true).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.pow(2)
+            return x.softcap(1.5e3,0.5,0)
+        },
+        effDesc: x=>"+"+format(x,0),
+    },
+    t6: {
+        unl:()=>true,
+        diff: 6,
+        cost:a=>a.sumBase(1.05).pow_base(1e10).mul(1e90),
+        bulk:a=>a.div(1e90).log(1e10).sumBase(1.05,true).add(1).floor(),
+        res: "traject",
+        effect(a) {
+            let x = a.mul(.01)
+            return x
+        },
+        effDesc: x=>"+"+format(x),
+    },
 }
 const SPACEBASE_UPG_KEYS = Object.keys(SPACEBASE_UPGS)
 const SPACEBASE_UPGS_GROUPS = {
     o: [
         'o1','o2','o3','o4',
+        'o5','','','',
         'e1','e2','e3','e4',
     ],
     r: [
         'r1','r2','r3','r4',
-        'e5',
+        'r5','','','',
+        'e5','e6'
     ],
     t: [
         't1','t2','t3','t4',
+        't5','t6',
     ],
 }
-const SPACEBASE_RESEARCH = []
+const SPACEBASE_RESEARCH = ['o2','o3','r2']
 const SPACEBASE_UPGS_GROUPS_AUTO = {
     o: ()=>hasResearch('o1'),
+    r: ()=>hasResearch('r1'),
 }
+
+const EXPERIMENT_TIER = {
+    get require() { return player.solar_system.experiment.sumBase(1.05).pow_base(3).pow_base('1e15000') },
+
+    reset() {
+        if (player.solar_system.observ.gte(this.require)) {
+            player.solar_system.experiment = player.solar_system.experiment.add(1)
+
+            player.solar_system.traject = E(0)
+            resetSpaceBaseUpgs(['t1','t2','t3','t4','t5','t6'])
+            RESETS.traject.doReset()
+        }
+    },
+
+    boosts: [
+        [1, x => x.pow_base(1.1).mul(x.add(1)).max(1), x => formatPow(x)],
+        [2, x => x.pow_base(1.1).mul(x.div(10).add(1)).max(1), x => formatPow(x)],
+    ],
+}
+function experimentBoostEffect(i,def=1) { return tmp.experiment_boosts[i]??def }
 
 function buySpaceBaseUpg(i,auto) {
     let u = SPACEBASE_UPGS[i], lvl, cost, amt = CURRENCIES[u.res]
@@ -437,19 +537,32 @@ function setupSpaceBaseHTML() {
 }
 
 function updateSpaceBaseHTML() {
-    let texts = [lang_text('space-base-upgrades')]
+    let texts = [lang_text('space-base-upgrades'),lang_text('experiment-boosts')], d = tmp.ss_difficulty
 
     el('observ-amount').textContent = format(player.solar_system.observ,0)
     el('observ-total').textContent = format(player.solar_system.total_observ,0)
     el('observ-gain').textContent = formatGain(player.solar_system.observ,tmp.currency_gain.observ)
 
-    el('reserv-content').style.display = el_display(tmp.ss_difficulty >= 2)
+    el('reserv-content').style.display = el_display(d >= 2)
     el('reserv-amount').textContent = format(player.solar_system.reserv,0)
 
-    el('traject-content').style.display = el_display(tmp.ss_difficulty >= 4)
+    el('traject-content').style.display = el_display(d >= 4)
     el('traject-amount').textContent = format(player.solar_system.traject,0)
 
-    let d = tmp.ss_difficulty
+    el('experiment-content').style.display = el_display(d >= 6)
+    el('experiment-tier').textContent = format(player.solar_system.experiment,0)
+    if (d >= 6) {
+        let req = EXPERIMENT_TIER.require
+        el('experiment-button').innerHTML = `${lang_text('experiment-reset')}<br>${lang_text('require')}: ${format(req)} ${CURRENCIES.observ.costName}`
+        el('experiment-button').className = el_classes({'huge-btn': true, locked: player.solar_system.observ.lt(req)})
+
+        let e = player.solar_system.experiment, h = []
+        for (let i = 0; i < EXPERIMENT_TIER.boosts.length; i++) {
+            let b = EXPERIMENT_TIER.boosts[i]
+            if (e.gte(b[0])) h.push(texts[1][i](toColoredText(b[2](tmp.experiment_boosts[i]),'lime')));
+        }
+        el('experiment-boosts').innerHTML = h.join("<br>")
+    }
 
     for (let gid in SPACEBASE_UPGS_GROUPS) {
         let group = SPACEBASE_UPGS_GROUPS[gid]

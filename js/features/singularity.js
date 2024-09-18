@@ -14,7 +14,7 @@ const S_MILESTONES = [
     },{
         unl:()=>true,
         req:()=>player.singularity.best_bh.gte(5),
-    },{
+    },{ // 5
         unl:()=>true,
         req:()=>player.singularity.best_bh.gte(6),
     },{
@@ -31,12 +31,15 @@ const S_MILESTONES = [
     },{
         unl:()=>player.feature>=18,
         req:()=>CURRENCIES["dark-matter"].total.gte(10),
-    },{
+    },{ // 10
         unl:()=>player.feature>=18,
         req:()=>CURRENCIES["dark-matter"].total.gte(1e6),
     },{
         unl:()=>player.feature>=18,
         req:()=>CURRENCIES["dark-matter"].total.gte(1e12),
+    },{
+        unl:()=>player.feature>=18,
+        req:()=>CURRENCIES["dark-matter"].total.gte(1e100),
     },
 ]
 
@@ -224,7 +227,13 @@ function remnantUpgEffect(i,def=1) { return tmp.remnant_upg_effects[i]??def }
 function updateSingularityTemp() {
     tmp.bh_reduction = tmp.ss_difficulty ? E(.5) : player.singularity.bh.gte(8) ? E(1) : Decimal.div(1,player.singularity.bh.sub(player.research.dm1).max(0).pow(2).div(20).add(1))
 
-    let pow = remnantUpgEffect(13)
+    let pow = remnantUpgEffect(13), experiment = player.solar_system.experiment
+
+    for (let i = 0; i < EXPERIMENT_TIER.boosts.length; i++) {
+        let b = EXPERIMENT_TIER.boosts[i]
+
+        tmp.experiment_boosts[i] = b[1](experiment.gte(b[0]) ? experiment.sub(b[0]).add(1) : E(0))
+    }
 
     for (let i = 0; i < REMNANT_UPGS.length; i++) {
         let u = REMNANT_UPGS[i], l = player.singularity.upgs[i]
@@ -290,6 +299,7 @@ function setupSingularityHTML() {
     el('remnant-upgs').innerHTML = h
 
     setupSolarSystemHTML()
+    setupConstellationHTML()
 }
 
 function updateSingularityMilestones() {

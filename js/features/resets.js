@@ -188,6 +188,8 @@ const RESETS = {
                 }
             }
 
+            for (let i = 0; i < CONSTELLATION.boosts.length; i++) player.singularity.constellation_res[i] = E(0);
+
             ores_grid = []
 
             tmp.pass = 2
@@ -223,7 +225,7 @@ const RESETS = {
         },
         doReset() {
             player.solar_system.observ = E(0)
-            resetSpaceBaseUpgs(['o1','o2','o3','o4'])
+            resetSpaceBaseUpgs(['o1','o2','o3','o4','o5'])
         },
     },
     traject: {
@@ -237,7 +239,7 @@ const RESETS = {
         },
         doReset() {
             player.solar_system.reserv = E(0)
-            resetSpaceBaseUpgs(['r1','r2','r3','r4'])
+            resetSpaceBaseUpgs(['r1','r2','r3','r4','r5'])
             RESETS.reserv.doReset()
         },
     },
