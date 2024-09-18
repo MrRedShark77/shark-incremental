@@ -417,7 +417,7 @@ input.no-arrows {
 	background: repeating-linear-gradient(-45deg, cyan, #00aeff 20px, cyan 40px);
 }
 
-.p-text {
+.p-text, #fp-text {
 	position: absolute;
 	top: 50%;
 	width: 100%;
