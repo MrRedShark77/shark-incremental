@@ -1,4 +1,4 @@
-var tab = 9, stab = [0,0,0,0,0], tab_name = 'constellation'
+var tab = 0, stab = [0,0,0,0,0], tab_name = 'shark'
 
 const TAB_IDS = {
     'shark': {
