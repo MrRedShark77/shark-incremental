@@ -46,6 +46,9 @@ LANGUAGES.ZH = {
 
         'reserv-name': "储存数据",
         'reserv-costName': toTextStyle('储存数据','reserv'),
+		
+		'traject-name': "轨迹",
+        'traject-costName': toTextStyle('轨迹','traject'),
 
 		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
 		'full-shark-rank': toTextStyle('鲨鱼','shark') + '段位',
@@ -65,7 +68,10 @@ LANGUAGES.ZH = {
         'curr-top-3-reset': x => `献祭你的${toTextStyle('鲨鱼','shark')}，获得 <b>${format(x,0)}</b> ${toTextStyle('暗物质','black-hole')}`,
 
 		'curr-top-4-req': x => `${toTextStyle('观测数据','observ')}达到 <b>${format(x)}</b>`, 
-        'curr-top-4-reset': x => `获得<b>${format(x,0)}</b> ${toTextStyle('储存数据','reserv')}`,
+        'curr-top-4-reset': x => `获得 <b>${format(x,0)}</b> ${toTextStyle('储存数据','reserv')}`,
+		
+		'curr-top-5-req': x => `${toTextStyle('储存数据','reserv')}达到  <b>${format(x)}</b>`, 
+        'curr-top-5-reset': x => `绘制 <b>${format(x,0)}</b> ${toTextStyle('轨迹','traject')}`,
 
 		'radioactive-name': toTextStyle('辐射'+icon("radioactive"),'core'),
         
@@ -133,6 +139,7 @@ LANGUAGES.ZH = {
 
         'sharkoid-faith-div': `你拥有 <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('鲨之信念','humanoid')}.`,
         'respec-evolution-tree': `重置${toTextStyle('进化','humanoid')}树`,
+		'respec-evolution-tree-2': `重置已充能的${toTextStyle('进化','humanoid')}树`,
 		'export-evolution-tree': `导出${toTextStyle('进化','humanoid')}树`,
         'import-evolution-tree': `导入${toTextStyle('进化','humanoid')}树`,
         'evolution-tree-preset': `${toTextStyle('进化','humanoid')}树预设`,
@@ -145,6 +152,7 @@ LANGUAGES.ZH = {
 		'mining-ascend-div': `飞升次数：<h3 id="mining-ascend">0</h3>`,
 		'mining-note': `注意：如果在血量极高的矿坑处卡住（需要很长时间才能获得矿物），按 F5 刷新页面。`,
 		'mining-tier-undo-btn': `若无法挖矿，点击这里使挖矿等级减 1.`,
+		'mining-ascend-undo-btn': `若无法挖矿，点击这里使飞升次数减 1.`,
 
 		'black-hole-button': `因为你填满了所有的粒子加速器，你需要生成一个黑洞，来进入新的宇宙。`,
         'black-hole-html': `你已生成 <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 个黑洞，吃鱼数量的指数、重生碎片数量的指数、岩浆碎片的加成倍率变为原来的 <h3 id="black-hole-effect">^???</h3>.`,
@@ -154,6 +162,7 @@ LANGUAGES.ZH = {
 		'rocket-part-div': `你制造了总计 <h3 id="total-rocket-part">0</h3> 个火箭部件。`,
         'observ-div': `你拥有 <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> 观测数据。（总计 <h3>${toTextStyle('0','observ','observ-total')}</h3>）`,
         'reserv-div': `你拥有 <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> 储存数据。`,
+		'traject-div': `你拥有 <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> 轨迹。`,
 
         // Upgrades
 
@@ -213,6 +222,14 @@ LANGUAGES.ZH = {
         'su-m7-req': '飞升次数为 3',
         'su-m7-name': '强化挖矿提速',
         'su-m7-desc': `每升一级，普通和强化挖矿的速度 <b>+25%</b>.`,
+		
+		'su-m8-req': '飞升次数为 6',
+        'su-m8-name': '压缩的镭',
+        'su-m8-desc': `每升一级，<b>镭-223</b> 的产量 <b>×2</b>.`,
+
+        'su-m9-req': '飞升次数为 12',
+        'su-m9-name': '幸运草强化',
+        'su-m9-desc': `每升一级，${toColoredText('强化幸运草 '+icon('luck'),'orange')}的数量 <b>+5</b>.`,
 
         // Researches
 
@@ -367,6 +384,8 @@ LANGUAGES.ZH = {
 
 			'm5': ["高段位鲨鱼挖矿",`${toTextStyle("鲨鱼",'shark')}段位可以提升强化挖矿伤害的提升。`],
             'm6': ["含铀鲨鱼",`大幅提升“鲨鱼指数”升级的效果。`],
+			
+			'o1': [`自动观测`,`自动购买需要消耗观测数据的观测升级，无需消耗任何资源。<i>此升级不会被重置。</i>`],
         },
 
         // Exploration
@@ -450,6 +469,18 @@ LANGUAGES.ZH = {
 
         'core-7-name': `氦`,
         'core-7-desc': `基于<b>氦</b>的等级，${toTextStyle("鲨鱼",'shark')}等级增强<b>氖</b>的效果。`,
+		
+		'core-8-name': `镁`,
+        'core-8-desc': `基于<b>镁</b>的等级，${toTextStyle("鱼",'fish')}提升其自身的指数。`,
+
+        'core-9-name': `钠`,
+        'core-9-desc': `基于<b>钠</b>的等级，${toTextStyle("重生",'prestige')}碎片提升其自身的指数。`,
+
+        'core-10-name': `磷`,
+        'core-10-desc': `基于<b>磷</b>的等级，${toTextStyle("岩浆",'core')}碎片碎片提升其自身的指数。`,
+
+        'core-11-name': `铬`,
+        'core-11-desc': `基于<b>铬</b>的等级，${toTextStyle("类人",'humanoid')}鲨鱼提升${toTextStyle("鲨鱼",'shark')}战力的指数。`,
 
         'core-bonus': x => `反应堆的产物将吃${toTextStyle("鱼",'fish')}的数量<h4>${formatMult(x)}</h4>.`,
 		
@@ -485,6 +516,7 @@ LANGUAGES.ZH = {
 			x=>`第二行地核反应堆的个数额外增加 <h4>+${format(x)}</h4>.`,
 			x=>`获得的${toTextStyle('暗物质','black-hole')} <h4>${formatMult(x)}</h4>.`,
             x=>`${toTextStyle('遗物','black-hole')}产量 <h4>${formatMult(x)}</h4>.`,
+			x=>`除第六个加成外，以上所有加成的效果提升 <h4>${formatPercent(x.sub(1))}</h4>.`,
         ],
 
         // Evolution Tree
@@ -511,10 +543,10 @@ LANGUAGES.ZH = {
             ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('岩浆','core')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
             ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`, x=>`${toTextStyle('类人','humanoid')}鲨鱼的指数 <b>+${format(x)}</b>.`],
 
-            ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`],
-            ["鲨之铠甲", x=>`<b>硅</b>的等级额外加 <b>${format(x,0)}</b>.`],
-            ["太阳能鲨", x=>`<b>氮</b>的等级额外加 <b>${format(x,0)}</b>.`],
-            ["海上飞鲨", x=>`<b>氦</b>的等级额外加 <b>${format(x,0)}</b>.`],
+            ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>硫</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
+            ["鲨之铠甲", x=>`<b>硅</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>硅</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
+            ["太阳能鲨", x=>`<b>氮</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>氮</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
+            ["海上飞鲨", x=>`<b>氦</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>氦</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
 
             ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>鱼之躯体</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
             ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
@@ -627,7 +659,9 @@ LANGUAGES.ZH = {
 			x=>`前 9 种矿物的产量 <b>${formatPow(x)}</b>.`,
             x=>`超级矿坑的血量 <b>${formatMult(x)}</b>.`,
             x=>`<b>镭-223</b> 的产量 <b>${formatMult(x)}</b>.`,
-            x=>`<b>铀-235</b>的 产量 <b>${formatMult(x)}</b>.`,
+            x=>`<b>铀-235</b> 的产量 <b>${formatMult(x)}</b>.`,
+			x=>`<b>锫-247</b> 的产量 <b>${formatMult(x)}</b>.`,
+			x=>`<b>锎-252</b> 的产量 <b>${formatMult(x)}</b>.`,
         ],
 
         // Forge
@@ -705,17 +739,22 @@ LANGUAGES.ZH = {
             [`土豆辐射`,x=>`辐射加成 ${x}.`],
             [`超级鲨鱼`,x=>`第四次${toTextStyle("鲨鱼",'shark')}等级折算的起始等级 ${x}.`],
 			[`精英矿工`,x=>`挖矿等级的第三次价格折算延迟 ${x}.`],
+			
+			[`自发加速`,x=>`${toTextStyle("遗物",'black-hole')}使其自身的产量 ${x}.`],
+            [`神之伟力`,x=>`除第 4 个以外，前 12 个${toTextStyle("遗物",'black-hole')}升级的效果 ${x}.`],
+            [`六阶增效`,x=>`强化挖矿伤害 ${x}.`],
+            [`超然之鲨`,x=>`获得${toTextStyle("类人",'humanoid')}鲨鱼数量的指数 ${x}.`],
         ],
 
 		'solar-system-list': {
             'sun':     ["太阳",`???`,`???`],
-            'mercury': ["水星",`???`,`???`],
+            'mercury': ["水星",`水星是太阳系中最小的行星，也是距离太阳最近的行星。因为它在天空中的移动速度看起来比其他行星快，它以古罗马神话中的商业之神墨丘利命名。水星的外观与月球相似，其表面布满了撞击坑，表明过去十亿年来它的内部没有发生地质活动。这颗行星几乎没有大气层，因此其表面的昼夜温差大于太阳系中的其他行星。`,`辐射加成的前 3 次价格折算 ×10. ${toTextStyle('观测数据','observ')}的产量 ×10. `],
             'venus':   ["金星",`金星是距离太阳第二远的行星，也是太阳系第六大行星。它以古罗马神话中的爱神维纳斯命名。在金星稠密的大气层中，二氧化碳的占比大于 96%. 金星是太阳系中最热的行星，其表面的平均温度是 735 K (462 °C). 金星没有天然卫星。从地球上看，它是第三亮的天体，仅次于太阳和月球。`,`每秒自动获得进化后能获得的所有${toTextStyle('类人','humanoid')}鲨鱼，禁用自动获得${toTextStyle('类人','humanoid')}鲨鱼，大幅提升${toTextStyle('类人','humanoid')}鲨鱼的效果，${toTextStyle('鲨鱼','shark')}段位的第三次折算 ×2. ${toTextStyle('观测数据','observ')}的产量 ×10.`],
             'earth':   ["地球",`???`,`???`],
             'moon':    ["月球",`欢迎来到太阳系！你可以探索太阳系中的一些行星，不过你需要观测它们，以获得强大的奖励。强制进行一次奇点重置，移除部分研究和进化树（但后续你将重获它们）。黑洞使获得部分资源的数量是原来的^0.5, 禁用几乎所有在挖矿之后解锁的游戏机制，你不能探索海洋。你可以在太空基地中获得${toTextStyle('观测数据','observ')}，通过${toTextStyle('观测数据','observ')}购买的升级有助于推进游戏进度。观测不同行星的难度不同，不过太空基地的升级能有助于推进游戏进度。先从地球的天然卫星开始吧！它叫月球，但是在这之前它叫忒伊亚。`,`解锁挖矿飞升和新的${toTextStyle('遗物','black-hole')}升级。进行挖矿飞升后，强制进行一次奇点重置，获得强大的加成，并解锁更多的矿物。`],
             'mars':    ["火星",`火星是距离太阳第四远的行星。它具有岩石表面，且它的大小与地球接近，因此它属于类地行星。火星的地形具有独特的特征，包括撞击坑、火山、山谷、沙漠和极地冰盖。火星上有类似水侵蚀的地质构造和只有长期暴露在水中才能形成的矿物质。几个世纪以来，火星上是否存在生命一直是科学家们感兴趣的问题。`,`你可以对已购买的${toTextStyle('进化树','humanoid')}进行充能，获得更强的加成，不过，充能价格大幅增长。解锁新的自动化，${toTextStyle('观测数据','observ')}的产量 ×10.`],
-            'jupiter': ["木星",`???`,`???`],
-            'saturn':  ["土星",`???`,`???`],
+            'jupiter': ["木星",`木星是太阳系中最大的行星，也是距离太阳第五远的行星。它是一颗气态巨行星，其质量是太阳系中所有其他行星总质量的 2.47 倍。木星自古以来就为人所知，在不同文化的神话和宗教信仰中都有提及。这颗行星的现代名称源于古罗马神话中的至高神朱庇特。木星大气层存在许多独特的大气现象，如风暴、闪电、极光和大红斑。大红斑是自 17 世纪以来就为人所知的巨大风暴。`,`解锁更多的 ${toTextStyle('遗物','black-hole')}升级。${toTextStyle('观测数据','observ')}的产量 ×10.`],
+            'saturn':  ["土星",`土星是距太阳第六远的行星，也是太阳系中仅次于木星的第二大行星。土星被归类为气态巨行星，因为它主要由氢和氦组成。这颗行星以罗马农业之神的名字命名。土星周围环绕着由冰粒、重元素和尘埃组成的环。这颗行星有 146 颗已知的天然卫星，其中最大的是土卫六。土星有一个行星磁场和一个众人皆知的环。`,`解锁下一行${toTextStyle('地核','core')}反应堆，<i>它们并不会被重置，且不受${toTextStyle('遗物','black-hole')}升级“战栗时空”的影响。</i>`],
             'uranus':  ["天王星",`???`,`???`],
             'neptune': ["海王星",`???`,`???`],
             'pluto':   ["冥王星",`???`,`???`],
@@ -732,13 +771,23 @@ LANGUAGES.ZH = {
             'o1': [`无垠太空`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             'o2': [`外空之鱼`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
             'o3': [`空间碎片`,x=>`获得${toTextStyle('重生碎片','prestige')}的数量是原来的 ${x}.`],
+			'o4': [`空之核心`,x=>`${toTextStyle('岩浆碎片','core')} ${x}.`],
             
             'e1': [`鱼之助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             'e2': [`重生助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
+			'e3': [`地核助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
+            'e4': [`观测-存储`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
+            'e5': [`全能助力`,x=>`所有名称带有“助力”的观测升级，底数 ${x}.`],
 
             'r1': [`相对论`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
-            'r2': [`可观测性`,x=>`${toTextStyle('储存数据','observ')} ${x}.`],
+            'r2': [`可观测性`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
             'r3': [`外空之鱼 II`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
+			'r4': [`空间碎片 II`,x=>`获得${toTextStyle('重生碎片','prestige')}的数量是原来的 ${x}.`],
+			
+			't1': [`真空输运`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
+            't2': [`数据储存`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
+            't3': [`可观测性 II`,x=>`${toTextStyle('轨迹','traject')} ${x}.`],
+            't4': [`外空之鱼 III`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
 		},
 
         // Automation
@@ -866,6 +915,7 @@ LANGUAGES.ZH = {
             'su_m5' : `“矿坑基数”升级`,
             'cr_boost' : `辐射加成`,
             'mining_tier' : `挖矿等级`,
+			'mining_ascend' : `挖矿飞升`,
 			'remnant_upg' : `遗物升级`,
         },
         'scaling-start': "生效于",
