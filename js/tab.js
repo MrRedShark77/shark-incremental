@@ -186,7 +186,7 @@ const TAB_IDS = {
             for (let g_id in SPACEBASE_UPGS_GROUPS) {
                 if (!SPACEBASE_UPGS_GROUPS_AUTO[g_id]?.()) for (let i of SPACEBASE_UPGS_GROUPS[g_id]) {
                     let u = SPACEBASE_UPGS[i]
-                    if (u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true;
+                    if (u && u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true;
                 }
             }
         },
