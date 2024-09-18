@@ -11,7 +11,7 @@ const CONSTELLATION = {
     },
 
     get require() {
-        return player.singularity.bh_tier.pow(1.25).pow_base(2).mul(1e6)
+        return player.singularity.bh_tier.pow(1.5).pow_base(2).mul(1e6)
     },
 
     upgrade() {
