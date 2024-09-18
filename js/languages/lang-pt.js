@@ -129,10 +129,10 @@ LANGUAGES.PT = {
             Experimentar uma radiação do núcleo força o reset do ${toTextStyle('Núcleo','core')}.
             Enquanto esta no experimento, os reatores do núcleo core não funcionam. ${toTextStyle('Peixe','fish')}, Fragmentos de ${toTextStyle('Prestígio','prestige')} , e os recursos dos primeiros 4 oceanos sofrem uma raiz cúbica.
             O experimento força seu ${toTextStyle('Tubarão','shark')} a comer ${rf}.<br>
-            Melhore com radioativo${rf} para gerar mais ${toTextStyle('Radiação '+icon("radioactive"),'core')}, que dá a voce boosts adicionais.
+            Melhore com radioativo${rf} para gerar mais ${toTextStyle('Radiação '+icon("radioactive"),'core')}, que dá a voce impulsos adicionais.
             `
         },
-        'radioboost-div': `Você tem <h3 id="radioactive-boost">0</h3> boosts de radiação.`,
+        'radioboost-div': `Você tem <h3 id="radioactive-boost">0</h3> impulsos radioativos.`,
 
         'core-temp-div': `A temperatura do ${toTextStyle('Núcleo','core')} é <h3>${toTextStyle('6,150','core','core-temperature')}</h3>, que faz impulsionadores de radiação <h4 id="core-temp-effect">100%</h4> melhores.`,
         'core-temp-after-div': `(A temperatura do ${toTextStyle('Núcleo','core')} vai ser <span id="core-temp-after">???</span> depois de um reset do ${toTextStyle('Núcleo','core')})`,
@@ -373,7 +373,7 @@ LANGUAGES.PT = {
         'explore-0-name': `Oceano Pacífico`,
         'explore-0-desc': `Ganho de ${toTextStyle('Peixes','fish')} é elevado à raiz quadrada.`,
         'explore-0-milestone': [
-            `Incremente Fragmentos de ${toTextStyle('prestígio','prestige')} ganhos à potencia de 1.05.`,
+            `Incremente Fragmentos de ${toTextStyle('Prestígio','prestige')} ganhos à potencia de 1.05.`,
             `Aumenta o recurso e a profundidade de progresso em 1.25 elevado à raiz quadrada do nível de ${toTextStyle('Tubarão','shark')} .`,
             `Melhorar o ${toTextStyle('Tubarão','shark')} não vai mais gastar ${toTextStyle('Peixes','fish')}.`,
             `Incremente ${toTextStyle('Peixes','fish')} comidos à potencia de 1.05.`,
@@ -381,16 +381,16 @@ LANGUAGES.PT = {
         ],
 
         'explore-1-name': `Oceano ártico`,
-        'explore-1-desc': `Redefine seus Fragmentos de ${toTextStyle('prestígio','prestige')} e Melhorias de ${toTextStyle('prestígio','prestige')}. O ganho de Fragmentos de ${toTextStyle('prestígio','prestige')}  é enraizado em 2.`,
+        'explore-1-desc': `Redefine seus Fragmentos de ${toTextStyle('Prestígio','prestige')} e Melhorias de ${toTextStyle('Prestígio','prestige')}. O ganho de Fragmentos de ${toTextStyle('Prestígio','prestige')}  é enraizado em 2.`,
         'explore-1-milestone': [
             `Desbloqueia Auto melhorias de ${toTextStyle('Prestígio','prestige')} de ${toTextStyle('Tubarão','shark')}.`,
             `Aumenta o recurso e a profundidade de progresso em 1.25 elevado à raiz quadrada do nível de ${toTextStyle('Tubarão','shark')} .`,
             `Melhorias de ${toTextStyle('Prestígio','prestige')} de ${toTextStyle('Tubarão','shark')} não mais irão gastar Fragmentos de ${toTextStyle('prestígio','prestige')}.`,
-            `Passivamente gere 100% dos Fragmentos de ${toTextStyle('prestígio','prestige')} ganhos no ${toTextStyle('Prestígio','prestige')}.`,
+            `Passivamente gere 100% dos Fragmentos de ${toTextStyle('Prestígio','prestige')} ganhos no ${toTextStyle('Prestígio','prestige')}.`,
         ],
 
         'explore-2-name': `Oceano Atlântico`,
-        'explore-2-desc': `Redefine seus Fragmentos de ${toTextStyle('prestígio','prestige')} e Melhorias de ${toTextStyle('prestígio','prestige')}. O escalonamento do nível do ${toTextStyle('Tubarão','shark')} tem 10x sua força normal.` ,
+        'explore-2-desc': `Redefine seus Fragmentos de ${toTextStyle('Prestígio','prestige')} e Melhorias de ${toTextStyle('Prestígio','prestige')}. O escalonamento do nível do ${toTextStyle('Tubarão','shark')} tem 10x sua força normal.` ,
         'explore-2-milestone': [
             `Os escalonamentos de 'Dentes de Tubarão' and 'Expoente de Tubarão' são levemente mais fracos.`,
             `Aumenta o recurso e a profundidade de progresso em 1.25 elevado à raiz quadrada do nível de ${toTextStyle('Tubarão','shark')} .`,
@@ -399,7 +399,7 @@ LANGUAGES.PT = {
         ],
 
         'explore-3-name': `Oceano Antártico`,
-        'explore-3-desc': `Redefine seus Fragmentos de ${toTextStyle('prestígio','prestige')} e Melhorias de ${toTextStyle('prestígio','prestige')}. Você não consegue comprar melhorias de${toTextStyle('Tubarão','shark')}, ${toTextStyle('Peixes','fish')}, e ${toTextStyle('Prestige','prestige')}.`,
+        'explore-3-desc': `Redefine seus Fragmentos de ${toTextStyle('Prestígio','prestige')} e Melhorias de ${toTextStyle('Prestígio','prestige')}. Você não consegue comprar melhorias de${toTextStyle('Tubarão','shark')}, ${toTextStyle('Peixes','fish')}, e ${toTextStyle('Prestige','prestige')}.`,
         'explore-3-milestone': [
             `Aumenta a base da exploração em 10x.`,
             `Aumenta o recurso e a profundidade de progresso em 1.25 elevado à raiz quadrada do nível de ${toTextStyle('Tubarão','shark')} .`,
@@ -438,9 +438,9 @@ LANGUAGES.PT = {
             x=>`Impulsiona a quantidade de <b>Pedra</b> por <h4>${formatMult(x)}</h4>.`,
             x=>`Providência um bonus de compra para melhorias de exploração em <h4>${formatMult(x,3)}</h4>.`,
             x=>`Providência <h4>+${format(x)}</h4> reatores do núcleo a primeira linha.`,
-            x=>`Boost ${toTextStyle('Dark Matter','black-hole')} by <h4>${formatMult(x)}</h4>.`,
-            // x=>`Boost ${toTextStyle('Remnant','black-hole')} generation by <h4>${formatMult(x)}</h4>.`,
-            // x=>`The previous bonuses are <h4>${formatPercent(x.sub(1))}</h4> more powerful, except the sixth.`,
+            x=>`Impulsiona o ganho de ${toTextStyle('Matéria Negra','black-hole')} em <h4>${formatMult(x)}</h4>.`,
+            x=>`Impulsiona a geração de ${toTextStyle('Sobras','black-hole')} em <h4>${formatMult(x)}</h4>.`,
+            x=>`Os bonûs anteriores são <h4>${formatPercent(x.sub(1))}</h4> mais poderosos, exceto o sexto.`,
         ],
 
         // Core Reactor
@@ -486,7 +486,7 @@ LANGUAGES.PT = {
         'core-assembler-building-stats': (s,p,m) => `Força <b>${s}</b> | Colocados <b>${p} / ${m}</b>`,
         'core-assembler-building-limit': (m,x,mm) => `Construções maximas: ${mm} / ${m}<br>Requerimento: ${format(x)} Fragmentos ${toTextStyle("Magmaticos",'core')}`, 
         'ca-building-base': b => `[Base: ${b}]`,
-        'ca-building-temp': t => `Aumenta a temperatuda do núcleo em ${t}.`,
+        'ca-building-temp': t => `Aumenta a temperatura do núcleo em ${t}.`,
 
         'core-bonus': x => `Produto dos reatores do núcleo impulsiona a produção de ${toTextStyle("Peixes",'fish')} em <h4>${formatMult(x)}</h4>.`,
 
@@ -555,35 +555,35 @@ LANGUAGES.PT = {
             ["Coluna Verdadeira 4", x=>`Você consegue comprar toda a quarta coluna acima.`],
         ],
 
-        //'evolution-goal-status': (x,y)=>x?"DESBLOQUEADO":y?"BLOQUEADO":"EM PROGRESSO",
+        'evolution-goal-status': (x,y)=>x?"DESBLOQUEADO":y?"BLOQUEADO":"EM PROGRESSO",
         'evolution-goal-ctn': [
             [
-                //x=>`Ganhe pelo menos <b>${format(x,0)}</b> Fragmentos ${toTextStyle("Magmáticos",'core')} na primeira vez que entrar no ${toTextStyle("Núcleo",'core')}.`,
-                //`Passivamente gera <b>100%</b> dos seus Fragmentos ${toTextStyle("Magmáticos",'core')} que você pega quando entra no ${toTextStyle("Núcleo",'core')}.`
+                x=>`Ganhe pelo menos <b>${format(x,0)}</b> Fragmentos ${toTextStyle("Magmáticos",'core')} na primeira vez que entrar no ${toTextStyle("Núcleo",'core')}.`,
+                `Passivamente gera <b>100%</b> dos seus Fragmentos ${toTextStyle("Magmáticos",'core')} que você pega quando entra no ${toTextStyle("Núcleo",'core')}.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments without purchasing the ${toTextStyle("Core",'core')} assembler's building.`,
-                `Keep the ${toTextStyle("Core",'core')} assembler on ${toTextStyle('Evolution','humanoid')}.`
+                x=>`Alcançe <b>${format(x,0)}</b> Fragmentos ${toTextStyle("Magmáticos",'core')} no total sem comprar a construção do montador do ${toTextStyle("núcleo",'core')}.`,
+                `Mantenha o montador do ${toTextStyle("núcleo",'core')} em ${toTextStyle('Evolução','humanoid')}.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle("Magmatic",'core')} fragments.`,
-                `Improve the formula of ${toTextStyle('Prestige','prestige')} shards for ${toTextStyle("Magmatic",'core')} fragments.`
+                x=>`Alcançe <b>${format(x,0)}</b> Fragmentos ${toTextStyle("Magmáticos",'core')} no total.`,
+                `Melhore a formula de Fragmentos de ${toTextStyle('Prestígio','prestige')} para Fragmentos ${toTextStyle("Magmáticos",'core')}.`
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating ${toTextStyle('Kelp','kelp')}.`,
-                `Start with capped depth in every ocean.`,
+                x=>`Alcançe <b>${format(x,0)}</b> Fragmentos de ${toTextStyle('Prestígio','prestige')} no total sem gerar ${toTextStyle('Alga','kelp')}.`,
+                `Começa com a profundidade no limite em cada oceano.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards without generating resources in each ocean.`,
-                `Keep research on ${toTextStyle('Evolution','humanoid')}.`,
+                x=>`Alcançe <b>${format(x,0)}</b> Fragmentos de ${toTextStyle('Prestígio','prestige')} no total sem gerar recursos em cada oceano.`,
+                `Mantenha pesquisa em ${toTextStyle('Evolução','humanoid')}.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Prestige','prestige')} shards.`,
-                `Further improve the formula of ${toTextStyle('Prestige','prestige')} shards gain.`,
+                x=>`Alcançe <b>${format(x,0)}</b> Fragmentos de ${toTextStyle('Prestígio','prestige')} no total.`,
+                `Melhore ainda mais a formula do ganho de Fragmentos de ${toTextStyle('Prestígio','prestige')}.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} with at most <b>10</b> radioactive boosts.`,
-                `Radioactive boosts no longer reset upgrades related to ${toTextStyle('Radiation '+icon("radioactive"),'core')}. You start with one generator, and ${toTextStyle('Radiation '+icon("radioactive"),'core')} can go beyond its limit.`,
+                x=>`Alcançe <b>${format(x,0)}</b> ${toTextStyle('Peixe','fish')} no total com no mínimo de <b>10</b> impulsos radioativos.`,
+                `Impulsos radioativos não mais reseta as melhorias relacionadas a ${toTextStyle('Radiação '+icon("radioactive"),'core')}. Você começa com um gerador, e ${toTextStyle('Radiação '+icon("radioactive"),'core')} consegue ir além do seu limite.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')} without radioactive boosts.`,
-                `Radioactive boosts no longer reset anything. Unlock Auto-Radioactive Boosts.`,
+                x=>`Alcançe <b>${format(x,0)}</b> ${toTextStyle('Peixe','fish')} no total sem impulsos radioativos.`,
+                `Impulsos radioativos não mais reseta. Desbloqueia Auto-Impulsos Radioativos.`,
             ],[
-                x=>`Reach <b>${format(x,0)}</b> total ${toTextStyle('Fish','fish')}.`,
-                `First ${toTextStyle('Shark','shark')} Rank scaling is delayed by <b>+5</b>.`,
+                x=>`Alcançe <b>${format(x,0)}</b> ${toTextStyle('Peixe','fish')} no total.`,
+                `Primeira escala do Rank do ${toTextStyle('Tubarão','shark')} é atrasada por <b>+5</b>.`,
             ],
         ],
 
@@ -599,12 +599,12 @@ LANGUAGES.PT = {
             'bismuth': "Bismuto",
             'obsidian': "Obsidiana",
             'vibranium': "Vibranium",
-            //'radium': "Radium-223",
-            //'uranium': "Uranium-235",
-            //'berkelium': "Berkelium-247",
-            //'californium': "Californium-252",
-            //'oganesson': "Oganesson-294",
-            //'sharkium': "Sharkium",
+            'radium': "Rádio-223",
+            'uranium': "Urânio-235",
+            'berkelium': "Berkélio-247",
+            'californium': "Califórnio-252",
+            'oganesson': "Oganessônio-294",
+            'sharkium': "Sharkium",
         },
 
         'mined-resources-text': `Recursos Minerados`,
@@ -614,9 +614,9 @@ LANGUAGES.PT = {
         'mining-tier-ore-unlock': x=>`Desbloqueia o mínerio ${x}.`,
         'mining-tier-ore-generation': x=>`Você não vai mais minerar o minério ${x}, mas vai gerar baseado na velocidade da mineração e fortuna.`,
 
-        //'mining-ascend': `Mining Ascension`,
-        //'next-mining-ascend': `At <b>Mining Ascension</b>`,
-        //'mining-ascend-reset': `Increase the <b>Mining Ascension</b>, but it forces a singularity reset for powerful boosts.`,
+        'mining-ascend': `Ascensão da Mineração`,
+        'next-mining-ascend': `Na <b>Ascensão da Mineração</b>`,
+        'mining-ascend-reset': `Aumenta a <b>Ascensão da Mineração</b>, mas força a redefinição de singularidade para poderosos impulsos.`,
 
         'mining-tier-bonus': [
             x=>`A vida do minério é aumentado em <b>${formatMult(x)}</b>.`,
@@ -628,12 +628,115 @@ LANGUAGES.PT = {
             x=>`Quantidade de <b>Diamante</b> é aumentado em <b>${formatMult(x)}</b>.`,
             x=>`Quantidade de <b>Obsidiana</b> é aumentado em <b>${formatMult(x)}</b>.`,
             x=>`Os primeiros 9 minéros são aumentados em <b>${formatPow(x)}</b>.`,
-           // x=>`Super Ore's health is increased by <b>${formatMult(x)}</b>.`,
-           // x=>`<b>Radium-223</b> amount is increased by <b>${formatMult(x)}</b>.`,
-            //x=>`<b>Uranium-235</b> amount is increased by <b>${formatMult(x)}</b>.`,
-           // x=>`<b>Berkelium-247</b> amount is increased by <b>${formatMult(x)}</b>.`,
-           // x=>`<b>Californium-252</b> amount is increased by <b>${formatMult(x)}</b>.`,
+            x=>`A vida do Super Minério é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Rádio-223</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Urânio-235</b> é aumentado em <b>${formatMult(x)}</b>.`,
+            x=>`Quantidade de <b>Berkélio-247</b> é aumentado em <b>${formatMult(x)}</b>.`,Califórnio
+            x=>`Quantidade de <b>Califórnio-252</b> é aumentado em <b>${formatMult(x)}</b>.`,
         ],
+
+        // Forge
+
+        'forge': {
+            'anvil': ['Tier da Bigorna','Desbloqueia novas melhorias de forja.'],
+            'drill': ['Tier da Broca','Aumenta o multiplicador da <b>Pedra</b> minerados.'],
+            'shard': ['Fragmento Refinado',`Aumenta o multiplicador de Fragmentos de ${toTextStyle('Prestígios','prestige')}.`],
+            'tree': ['Árvore Extraordinária Tree',`Desbloqueia uma nova linha de árvore da ${toTextStyle('Evolução','humanoid')}.`],
+            'adv_research': ['Pesquisa Avançada',`Desbloqueia uma nova pesquisa.`],
+            'auto': ['Automação Avançada',`Desbloqueia uma nova automação.`],
+            'shark': ['Nível do Tubarão mais Distante',`Atrasa a terceira escala do Nível do ${toTextStyle('Tubarão','shark')}.`],
+            'refined_shard': ['Fragmento Energizado',`Aumenta o expoente de Fragmento de ${toTextStyle('Prestígio','prestige')}.`],
+            'wormhole': ['Buraco de Minhoca',`Desbloqueia um novo Acelerador de Partícula.`],
+            //'matter': ['Matter Condenser',`Increases ${toTextStyle('Remnant','black-hole')} generation.`],
+        },
+        'forge-progress': (x,s) => x ? `Forjando <b>${x}</b>... <b>${s}</b>` : `Forja está vazia`,
+        'forge-speed': x => `Velocidade da Forja: <b>${x}</b>`,
+        'forge-button': ['Cancelar Forja','Começa a Forja','Sem materias suficientes para forjar'],
+
+        // Particle Accelerator
+
+        'particle-accel-condense': x => `Condensa para ${x}:`,
+        'particle-accel-boost': [
+            x => `Aumenta a produção de ${toTextStyle('Radiação '+icon("radioactive"),'core')} em <b>${x}</b>.`,
+            x => `Aumenta o progresso da profundidade em cada oceano em <b>${x}</b>.`,
+            x => `Aumenta a quantidade de <b>Pedra</b> e o dano da mineração em <b>${x}</b>.`,
+            x => `Ganha <b>${x}</b> mais ${toTextStyle('Homens','humanoid')}-Tubarões.`,
+            x => `Atrasa a primeira escala dos reatores do núcleo em <b>${x}</b>.`,
+            x => `Aumenta o exponente do ELO do ${toTextStyle("Tubarão",'shark')} em <b>${x}</b>.`,
+        ],
+
+        // Singularity
+
+        'black-hole-texts': [
+            `Você tem matéria o suficiente para formar um buraco negro.... Mas o que você está fazendo enquanto tá preso dentro do buraco negro? Sem problemas, tem um buraco branco que vai enviar você a outro universo, mas é um pouco complexo.`,
+            `Como você está em um universo paralelo? Então, você está indo ficar preso em outro buraco negro!`,
+            `Espera um minuto... Como você pegou ${toTextStyle("Peixe",'fish')} tão rápido, não importa como? Eu vou te colocar em sérios problemas!`,
+            `Sério isso...`,
+            `...`,
+            `Por favor para aqui!`,
+            `ESSA É A SUA ULTIMA CHANCE!`,
+            `Ahh... Ok... Você venceu! Aqui está sem reduções...`,
+        ],
+        get 'singularity-milestones'() {
+            return [
+                [`1 Buraco Negro`,`Desbloqueia ${toTextStyle("Sobras",'black-hole')}. Nível do ${toTextStyle("Tubarão",'shark')} impulsiona a geração de ${toTextStyle("Sobras",'black-hole')}.`],
+                [`2 Buracos Negros`,`Começa com automações desbloqueadas na redefinção, com o intervalo inicial. Rank do ${toTextStyle("Tubarão",'shark')} impulsiona a geração de ${toTextStyle("Sobras",'black-hole')}.`],
+                [`3 Buracos Negros`,`MantenhA automações na redefinição. Começa com o conteúdo da pre-cultivação desbloqueada e 10 ${toTextStyle("Homens",'humanoid')}-Tubarões. Desbloqueia mais pesquisas.`],
+                [`4 Buracos Negros`,`Mantenha os objetivos da ${toTextStyle("Evolução",'humanoid')} completos na redefinição. Aceleradores de Partículas são 10 vezes mais rápido.`],
+                [`5 Buracos Negros`,`Vida do minério escala mais fraco. Desbloqueia mais automação.`],
+                [`6 Buracos Negros`,`A cada buraco negro formado dobra a geração de ${toTextStyle("Sobras",'black-hole')}.`],
+                [`7 Buracos Negros`,`Começa com cultivação desbloqueada na redefinição.`],
+                [`8 Buracos Negros`,`Os nerfs do ${toTextStyle("Buraco Negro",'black-hole')} são agora removidos se você tem pelo menos 8 ${toTextStyle("Buracos Negros",'black-hole')}. Formar buraco negro não mas faz a animação. Desbloqueia o novo conteúdo.`],
+            
+                [`1 Matéria Negra no Total`,`Mantenha pre-Pesquisa da ${toTextStyle("Singularidade",'black-hole')}, árvore da ${toTextStyle("Evolução",'humanoid')}, e forjas na redefinição. Desbloqueia mais presquisas.`],
+                [`10 Matéria Negra no Total`,`Automaticamente ativa todos os aceleradores de partículas.`],
+                [`${format(1e6)} Matéria Negra no Totalr`,`Mantenha pesquisa <b>s1-s3</b> no sacrificio. Desbloqueia mais automação. Melhorias de sobra não mais gasta.`],
+                [`${format(1e12)} Matéria Negra no Total`,`Desbloqueia o novo conteúdo.`],
+            ]
+        },
+
+        'remnant-upgrades': [
+            [`Bem-vindo`,x=>`Os bonûs do Nível do ${toTextStyle("Tubarão",'shark')} são ${x} mais fortes.`],
+            [`Fluindo`,x=>`Base da Multiplicação da Exploração é impulsionado em ${x}.`],
+            [`Meia-vida`,x=>`Reatores do ${toTextStyle("Núcleo",'core')} são ${x} mais fortes.`],
+            [`Sem Perda de Tempo`,x=>`Velocidade da forja é aumentada em ${x}.`],
+
+            [`Bem-vindo denovo`,x=>`${toTextStyle("Peixe",'fish')} impulsiona a si mesmo em ${x}.`],
+            [`Grão-mestre`,x=>`Os bonûs do Rank do ${toTextStyle("Tubarão",'shark')} são ${x} mais fortes.`],
+            [`Nível Galáctico`,x=>`As 3 primeiras escalas do Nível do ${toTextStyle("Tubarão",'shark')} são atrasadas em ${x}.`],
+            [`Mestre Tubarão`,x=>`ELO do ${toTextStyle("Tubarão",'shark')} é aumentado em ${x}.`],
+
+            [`Profundidade sem fundo`,x=>`O progresso da profundidade de cada oceano é impulsionado em ${x}.`],
+            [`Batata Quente`,x=>`Impulsos Radioativos são ${x} mais fortes.`],
+            [`Mega Nível`,x=>`A quarta escala do Nível do ${toTextStyle("Tubarão",'shark')} é atrasada em ${x}.`],
+            [`Mineiro de Elite`,x=>`A terceira escala do tier de mineração é atrasada em ${x}.`],
+
+            [`Auto-Aceleração`,x=>`${toTextStyle("Sobras",'black-hole')} impulsiona a si mesmo em ${x}.`],
+            [`Poder Supremo`,x=>`As primeiras 12 melhorias de ${toTextStyle("Sobra",'black-hole')} são ${x} mais poderosas, exceto a quarta.`],
+            [`Eficiência VI`,x=>`O super dano da mineração é impulsionado em ${x}.`],
+            [`Tubarão Sobrenatural`,x=>`O expoente de ${toTextStyle("Homens",'humanoid')}-tubarões é aumentado em ${x}.`],
+        ],
+
+        'solar-system-list': {
+            'sun':     ["Sol",`???`,`???`],
+            'mercury': ["Mercúrio",`Mercúrio é o menor planeta do sistema solar e o mais próximo do Sol. Ele é nomeado em homenagem ao deus romano antigo do comércio, porque se move pelo céu mais rapidamente do que os outros planetas. Mercúrio é coberto por crateras de impacto e é semelhante à Lua em aparência, indicando uma falta de atividade geológica interna ao longo do último bilhão de anos. O planeta tem quase nenhuma atmosfera, então sua temperatura de superfície varia mais do que a de qualquer outro planeta no sistema solar.`,`As 3 primeiras escalas dos impulsos radioativos são atrasado em ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
+            'venus':   ["Vênus",`Venus is the second farthest from the Sun and the sixth-largest planet in the Solar System. It is named after the ancient Roman goddess of love. Venus has a dense atmosphere consisting of more than 96% carbon dioxide. Venus has an average surface temperature of 735 K (462 °C), making it the hottest planet in the solar system. Venus has no natural satellites. In the Earth's sky, it is the third-brightest luminary, after the Sun and the Moon.`,`Passively generate 100% of current ${toTextStyle('Humanoid','humanoid')} sharks as bonus ${toTextStyle('Humanoid','humanoid')} sharks, but auto-${toTextStyle('Humanoid','humanoid')} shark no longer works. Improve ${toTextStyle('Humanoid','humanoid')} shark drastically, and the third scaling of ${toTextStyle('Shark','shark')} rank is delayed by ×2. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
+            'earth':   ["Terra",`???`,`???`],
+            'moon':    ["Lua",`Welcome to the Solar System! So, you are free to explore some planet, but it requires observing for powerful rewards. Force a singularity reset, resetting some research and evolution tree (it returns after), but black hole’s reduction is forced to ^0.5, nearly post-cultivation features are disabled, and you cannot explore any ocean. You can generate ${toTextStyle('Observatories','observ')} in the space-base, which helps you progress faster with their upgrades. There is difficulty, it affects not progress, but the space-base features to make progress further. Let’s start with Moon of the Earth! It’s called Luna, but Theta, originally before the collision.`,`Unlock the Mining Ascension and new ${toTextStyle('Remnant','black-hole')} upgrade. Mining ascension forces a singularity reset for powerful bonus and various ores.`],
+            'mars':    ["Marte",`Mars is the fourth most distant planet from the Sun in the Solar System. It belongs to the planets of the Earth group, as it has a solid surface and a size comparable to Earth. The terrain of Mars has unique features, including impact craters, volcanoes, valleys, deserts, and polar ice caps. Mars has geologic formations that resemble water erosion and minerals that could only have been formed by prolonged exposure to water. The question of the existence of life on Mars has interested scientists for centuries.`,`Earn the ability to terraform any purchased ${toTextStyle('Evolution','humanoid')} tree for powerful bonuses, but the cost grows faster. Unlock new automation. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
+            'jupiter': ["Júpiter",`Jupiter is the largest planet in the Solar System and the fifth farthest from the Sun. It is a gas giant with a mass 2.47 times greater than the combined mass of all the other planets in the Solar System. Jupiter has been known since antiquity and is mentioned in mythology and religious beliefs of different cultures. The modern name of the planet comes from the name of the ancient Roman supreme thunder god. Jupiter's atmosphere is characterized by a number of atmospheric phenomena such as storms, lightning, auroras and the Great Red Spot, a giant storm known since the 17th century.`,`Unlock more ${toTextStyle('Remnant','black-hole')} upgrades. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
+            'saturn':  ["Saturno",`Saturn is the sixth planet from the Sun and the second-largest planet in the solar system after Jupiter. Saturn is classified as a gas giant because it is composed mostly of hydrogen and helium. The planet is named after the Roman god of agriculture. Saturn is surrounded by rings made up of ice particles, heavy elements and dust. The planet has 146 known satellites, the largest of which is Titan. Saturn has a planetary magnetic field and a prominent ring system.`,`Unlock a new row of ${toTextStyle('Core','core')} reactors. <i>These reactors don’t get reset by Evolution or later, but they aren’t affected by the ${toTextStyle('Remnant','black-hole')} upgrade “Half-life”.</i>`],
+            'uranus':  ["Urano",`???`,`???`],
+            'neptune': ["Netuno",`???`,`???`],
+            'pluto':   ["Plutão",`???`,`???`],
+        },
+        'build-rocket-part': x => `Build ${x} Rocket Parts.`,
+        'total-rp': "total RP",
+        'solar-system-lock-reward': `You must complete ${toTextStyle('observing','observ')} to reveal the reward.`,
+        'solar-system-goal': x => `Total ${toTextStyle('Observatories','observ')} goal: <h4>${x}</h4>`,
+        'solar-system-status': x => [`Start Observing`,`Give up Observing`,`Complete Observing`][x],
+        'observ-progress': x => `Reach <b>${x}</b> total ${toTextStyle('Observatories','observ')}`,
+        'observ-cond': `Complete ${toTextStyle('observing','observ')}`,
 
         // Automation
 
@@ -724,6 +827,17 @@ LANGUAGES.PT = {
             Também desbloquea o Rank e a árvore da ${e}.<br>
             <img src="textures/Evolution.png"><br>
             Você tem certeza que gostaria de evoluir seus tubarões?
+            `
+        },
+        get 'reset-black-hole-message'() {
+            let e = toTextStyle('Buraco Negro','black-hole'), c = toTextStyle('Evolução','humanoid')
+            return `
+            <h3>The ${e}</h3><br>
+            O ${e} é o quarto e a maior camada de reinício.
+            Formar o ${e} redefine tudo que ${c} redefine, também o rank do tubarão, homens-tubarões, árvore da evolução, fé sharkoid, objetivos da evolução, cultivação, forja, aceleradores de partícula, algumas pesquisas, algumas automações, e alguns progressos de conteúdos para um novo ${e}.
+            Porémr, cada ${e} reduz os recursos um pouco, mas desbloqueia benefícios como marcos importantes.<br>
+            <img src="textures/black-hole.png"><br>
+            Você tem certeza que você quer entrar em outro universo?
             `
         },
         
