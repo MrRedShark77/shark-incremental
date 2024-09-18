@@ -43,7 +43,7 @@ const CONSTELLATION = {
     ],
 }
 
-function constellationBoostEffect(i,d,diff) { return (tmp.ss_difficulty>0)==d ? tmp.constellation_boosts[i]??diff : diff }
+function constellationBoostEffect(i,d,diff=1) { return (tmp.ss_difficulty>0)==d ? tmp.constellation_boosts[i]??diff : diff }
 
 function updateConstellationTemp() {
     let d = tmp.ss_difficulty, bht = player.singularity.bh_tier
