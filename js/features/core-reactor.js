@@ -227,7 +227,7 @@ function getCoreReactorBulk(i,res) {
     if (i < 4) y = (i==0 || i==3) && hasResearch('c8') ? y.scale(tmp.core_scale1,1.5,'P',true) : y.scale(tmp.core_scale1,3,'E2',true)
     else y = y.scale(10,2,'P',true)
 
-    x = x.scale(1e15,3,"P",true)
+    y = y.scale(1e15,3,"P",true)
 
     return y.floor().add(1)
 }
