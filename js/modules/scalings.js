@@ -119,7 +119,8 @@ function getScalingStarts(id) {
         }
         case "cr_boost": {
             if (tmp.ss_difficulty) {
-                b[0] = 1, b[1] = 1, b[2] = 1
+                let q = Decimal.add(1,spaceBaseUpgEffect('t5',0))
+                b[0] = q, b[1] = q, b[2] = q
                 break
             }
             b[0] = Decimal.add(b[0],researchEffect('m3',0))
@@ -129,6 +130,10 @@ function getScalingStarts(id) {
         }
         case "mining_tier": {
             b[2] = Decimal.add(b[2],remnantUpgEffect(11,0))
+            break
+        }
+        case "remnant_upg": {
+            if (hasResearch('m7')) b[0] = Decimal.add(b[0],100);
             break
         }
     }

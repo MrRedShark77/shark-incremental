@@ -72,6 +72,7 @@ const ORES = {
         get mult() { return Decimal.mul(tmp.mining_tier_bonus[13]??1,1) },
     },
     'oganesson': {
+        dense: 1e13,
         color: `radial-gradient(circle, rgb(0,0,0) 0%, rgb(180,180,180) 25%, rgb(0,0,0) 50%, rgb(180,180,180) 75%, rgb(0,0,0) 100%)`,
         textColor: 'rgb(255,255,255)',
     },
@@ -185,8 +186,8 @@ const MINING_TIER = {
         return b
     },
 
-    ascend_base_milestone: [1,3,6,12],
-    ascend_gen_milestone: [10,15],
+    ascend_base_milestone: [1,3,6,12,25],
+    ascend_gen_milestone: [10,15,30],
 
     get ascend_base() {
         var b = this.ascend_base_milestone.filter(x => player.humanoid.mining_ascend.gte(x)).length
@@ -371,6 +372,7 @@ function getSuperMiningSpeed() {
 }
 function getSuperMiningFortune() {
     var x = tmp.mining_fortune.add(1).log10().add(sharkUpgEffect('m9',0))
+    for (let i = 0; i < 4; i++) x = x.add(simpleCETEffect(24+i,0));
     return x
 }
 

@@ -53,7 +53,9 @@ text-style {
         &[text="black-hole"],
         &[text="observ"],
         &[text="reserv"],
-        &[text="traject"] {
+        &[text="traject"],
+        &[text="experiment"],
+        &[text="star"] {
             filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
             text-shadow: none;
         };
@@ -85,6 +87,16 @@ text-style {
         };
         &[text="traject"] {
             background: repeating-linear-gradient(-45deg, #e5ff00, #73ff00 20px, #e5ff00 40px);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="experiment"] {
+            background: repeating-linear-gradient(-45deg, #ff3c00, #ff9100 20px, #ff3c00 40px);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="star"] {
+            background: repeating-linear-gradient(90deg, #c5fff7, #edff9e 20px, #c5fff7 40px);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         };

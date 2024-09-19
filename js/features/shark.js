@@ -315,7 +315,7 @@ const SHARK_UPGRADES = {
     },
     m9: {
         unl: ()=>isSSObserved('moon'),
-        req: ()=>player.humanoid.mining_tier.gte(12),
+        req: ()=>player.humanoid.mining_ascend.gte(12),
 
         cost: l => {
             let x = Decimal.pow(2,l).mul(10)

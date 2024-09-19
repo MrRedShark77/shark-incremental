@@ -84,6 +84,9 @@ function getPlayerData() {
             dm: E(0),
             total_dm: E(0),
             sac_times: 0,
+
+            bh_tier: E(0),
+            constellation_res: [],
         },
 
         solar_system: {
@@ -98,6 +101,7 @@ function getPlayerData() {
 
             reserv: E(0),
             traject: E(0),
+            experiment: E(0),
 
             sb_upgs: {},
         },
@@ -131,6 +135,7 @@ function getPlayerData() {
     for (let x in PARTICLE_ACCELERATOR) s.humanoid.particle_accel.percent[x] = E(0);
     for (let x in REMNANT_UPGS) s.singularity.upgs[x] = E(0);
     for (let x in SPACEBASE_UPGS) s.solar_system.sb_upgs[x] = E(0);
+    for (let x in CONSTELLATION.boosts) s.singularity.constellation_res[x] = E(0);
 
     return s
 }

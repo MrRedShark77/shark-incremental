@@ -160,6 +160,8 @@ function calcNextDepth(x,gain,i) {
 
     let b = E(2), q = i >= player.research.s5, w = hasEvolutionTree(8+i,true) && i < 4 ? 1.5 : 2
 
+    if (i == 4 && hasResearch('e7')) w = 1.5;
+
     if (x.gte(10)) {
         // x = Decimal.pow(10,Decimal.pow(10,x.log10().pow(2)).add(gain).log10().root(2))
 

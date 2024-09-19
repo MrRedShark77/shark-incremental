@@ -78,5 +78,5 @@ const ALLOWED_LANG_KEY_TO_ELEMENT_ID = [
     'sharkoid-faith-div','shark-rank-note','respec-evolution-tree','rerun-evolution','import-evolution-tree','export-evolution-tree','evolution-tree-preset',
     'mining-text','mined-resources-text','mining-tier-div','mining-note','mining-tier-undo-btn','scaling-info','black-hole-button','black-hole-html',
     'remnant-html','rocket-part-div','observ-div','mining-ascend-div','super-mining-text','reserv-div','mining-ascend-undo-btn','traject-div',
-    'respec-evolution-tree-2',
+    'respec-evolution-tree-2','experiment-div','bh-tier-div','bh-tier-button',
 ]

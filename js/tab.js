@@ -182,12 +182,20 @@ const TAB_IDS = {
 
         notify() {
             if (tmp.ss_difficulty===0) return false;
+            if (player.solar_system.observ.gte(EXPERIMENT_TIER.require)) return true;
             for (let g_id in SPACEBASE_UPGS_GROUPS) {
                 if (!SPACEBASE_UPGS_GROUPS_AUTO[g_id]?.()) for (let i of SPACEBASE_UPGS_GROUPS[g_id]) {
                     let u = SPACEBASE_UPGS[i]
-                    if (u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true
+                    if (u && u.unl() && tmp.ss_difficulty >= u.diff && CURRENCIES[u.res].amount.gte(u.cost(player.solar_system.sb_upgs[i]))) return true;
                 }
             }
+        },
+    },
+    'constellation': {
+        html: updateConstellationHTML,
+
+        notify() {
+            if (CONSTELLATION.base.gte(CONSTELLATION.require)) return true;
         },
     },
 }
@@ -240,6 +248,7 @@ const TABS = [
             ["black-hole"],
             ["singularity-milestones"],
             ["solar-system",()=>player.feature>=20],
+            ["constellation",()=>isSSObserved('neptune')],
         ],
         style: {
             "background": `black url('textures/cosmic-pattern.png')`,

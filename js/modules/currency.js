@@ -25,10 +25,13 @@ const CURRENCIES = {
             x = expPow(x,tmp.bh_reduction)
             x = expPow(x,simpleCETEffect(12))
             x = expPow(x,coreReactorEffect(8))
+            x = expPow(x,constellationBoostEffect(0,false))
 
             var s = E('ee40'), pre_s = x
 
             s = s.pow(getSharkRankBonus('so'))
+
+            if (isSSObserved('uranus')) s = EINF;
             
             tmp.shark_op_start = s
 
@@ -73,6 +76,7 @@ const CURRENCIES = {
             x = expPow(x,tmp.bh_reduction)
             x = expPow(x,simpleCETEffect(13))
             x = expPow(x,coreReactorEffect(9))
+            x = expPow(x,constellationBoostEffect(1,false))
     
             return x.floor()
         },
@@ -187,7 +191,7 @@ const CURRENCIES = {
             return x.floor()
         },
 
-        get passive() { return 0 },
+        get passive() { return +hasSMilestone(12) },
     },
     observ: {
         get amount() { return player.solar_system.observ },
@@ -206,7 +210,7 @@ const CURRENCIES = {
             if (isSSObserved('mercury')) x = x.mul(10);
             if (isSSObserved('jupiter')) x = x.mul(10);
 
-            x = x.pow(spaceBaseUpgEffect('t1'))
+            x = x.pow(spaceBaseUpgEffect('t1')).pow(experimentBoostEffect(0)).pow(constellationBoostEffect(0,true))
 
             return x
         },
@@ -224,12 +228,16 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0);
 
-            x = expPow(x,0.5).mul(spaceBaseUpgEffect('r2')).mul(spaceBaseUpgEffect('e4')).mul(spaceBaseUpgEffect('t2'))
+            let exp = hasResearch('r2') ? 0.55 : 0.5
+
+            x = expPow(x,exp).mul(spaceBaseUpgEffect('r2')).mul(spaceBaseUpgEffect('e4')).mul(spaceBaseUpgEffect('t2'))
+
+            x = x.pow(experimentBoostEffect(1)).pow(constellationBoostEffect(1,true))
 
             return x
         },
     
-        get passive() { return 0 },
+        get passive() { return +hasResearch('r3') },
     },
     traject: {
         get require() { return E(1e12) },
@@ -244,7 +252,7 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0);
 
-            x = expPow(x,0.5).mul(spaceBaseUpgEffect('t3'))
+            x = expPow(x,0.5).mul(spaceBaseUpgEffect('t3')).mul(spaceBaseUpgEffect('e6'))
 
             return x
         },
@@ -292,6 +300,27 @@ function setupCurrencies() {
 
             name: lang[k],
             costName: toColoredText(lang[k],o.textColor ?? o.color),
+        }
+    }
+
+    lang = lang_text("constellation-boosts")
+
+    for (let i = 0; i < CONSTELLATION.boosts.length; i++) {
+        let b = CONSTELLATION.boosts[i]
+
+        CURRENCIES[b.name] = {
+            get amount() { return player.singularity.constellation_res[i] },
+            set amount(v) { player.singularity.constellation_res[i] = v.max(0) },
+
+            name: lang[i][0],
+            costName: toTextStyle(lang[i][0],'star'),
+
+            get gain() {
+                let bht = player.singularity.bh_tier
+                if (bht.lt(b.req)) return E(0);
+                let x = bht.sub(b.req).pow_base(10);
+                return x
+            },
         }
     }
 }

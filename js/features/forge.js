@@ -237,10 +237,10 @@ const FORGE = {
         ],
     },
     matter: {
-        max: 4,
+        max: 5,
         unl: ()=>hasForgeUpgrade('anvil',4),
 
-        time: [1e42,1e45,1e51,1e66],
+        time: [1e42,1e45,1e51,1e66,1e188],
         cost: [
             [
                 ['remnants',1e135],
@@ -254,6 +254,9 @@ const FORGE = {
             ],[
                 ['remnants',1e308],
                 ['californium',100],
+            ],[
+                ['remnants','e1960'],
+                ['oganesson',100],
             ],
         ],
 
