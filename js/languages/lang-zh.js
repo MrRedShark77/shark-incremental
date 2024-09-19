@@ -102,6 +102,7 @@ LANGUAGES.ZH = {
         'tab-black-hole': toTextStyle('黑洞','black-hole'),
         'tab-singularity-milestones': toTextStyle('奇点','black-hole') + "里程碑",
 		'tab-solar-system': "太阳系",
+		'tab-constellation': toTextStyle('星座','star'),
 
         // Elements
 
@@ -163,6 +164,10 @@ LANGUAGES.ZH = {
         'observ-div': `你拥有 <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> 观测数据。（总计 <h3>${toTextStyle('0','observ','observ-total')}</h3>）`,
         'reserv-div': `你拥有 <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> 储存数据。`,
 		'traject-div': `你拥有 <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> 轨迹。`,
+		'experiment-div': `你的 ${toTextStyle('实验','experiment')} 等级为 <h3 id="experiment-tier">0</h3>.`,
+		
+		'bh-tier-div': `你的黑洞层级为 <h3>${toTextStyle('0','black-hole','bh-tier')}</h3>.`,
+        'bh-tier-button': `达到升级要求后，提升${toTextStyle('黑洞','black-hole')}层级，获得强大的加成。`,
 
         // Upgrades
 
@@ -382,10 +387,20 @@ LANGUAGES.ZH = {
             'dm6': ["更好的辐射生成器",`${toTextStyle('辐射'+icon('radioactive'),'core')}发生器对其自身提供指数加成。`],
             'dm7': ["黑暗遗物",`${toTextStyle("暗物质",'black-hole')}的总量提升${toTextStyle("遗物",'black-hole')}的产量。`],
 
+            'e7': ["巽他海沟 MK2",`大幅提升在<b>印度洋</b>中的下潜深度。`],
+
 			'm5': ["高段位鲨鱼挖矿",`${toTextStyle("鲨鱼",'shark')}段位可以提升强化挖矿伤害的提升。`],
             'm6': ["含铀鲨鱼",`大幅提升“鲨鱼指数”升级的效果。`],
+			'm7': ["遗物折算",`${toTextStyle("遗物",'black-hole')}升级的第一次价格折算延迟 <b>+100</b>.`],
+            'm8': ["超级辐射",`提升第 14 项辐射加成的效果。`],
 			
-			'o1': [`自动观测`,`自动购买需要消耗观测数据的观测升级，无需消耗任何资源。<i>此升级不会被重置。</i>`],
+			'o1': [`自动观测`,`自动购买需要消耗${toTextStyle('观测数据','observ')}的观测升级，无需消耗任何资源。<i>此研究不会被重置。</i>`],
+			'o2': [`强化全能助力`,`${toTextStyle('储存数据','reserv')}升级“全能助力”作用于以下${toTextStyle('观测数据','observ')}升级：“无垠太空”、“外空之鱼”、“空间碎片”。`],
+            'o3': [`强化全能助力 II`,`${toTextStyle('储存数据','reserv')}“全能助力”影响以下${toTextStyle('储存数据','reserv')} 升级的底数：“相对论”、“可观测性”、“外空之鱼 II”和“空间碎片 II”。`],
+            
+            'r1': [`自动储存`,`自动购买需要消耗${toTextStyle('储存数据','reserv')}的观测升级，无需消耗任何资源。<i>此研究不会被重置。</i>`],
+            'r2': [`强化储存`,`提升${toTextStyle('储存数据','reserv')}的公式`],
+            'r3': [`自发储存`,`每秒获得重置时获得的所有${toTextStyle('储存数据','reserv')}。<i>此研究不会被重置。</i>`],
         },
 
         // Exploration
@@ -477,7 +492,7 @@ LANGUAGES.ZH = {
         'core-9-desc': `基于<b>钠</b>的等级，${toTextStyle("重生",'prestige')}碎片提升其自身的指数。`,
 
         'core-10-name': `磷`,
-        'core-10-desc': `基于<b>磷</b>的等级，${toTextStyle("岩浆",'core')}碎片碎片提升其自身的指数。`,
+        'core-10-desc': `基于<b>磷</b>的等级，${toTextStyle("岩浆",'core')}碎片提升其自身的指数。`,
 
         'core-11-name': `铬`,
         'core-11-desc': `基于<b>铬</b>的等级，${toTextStyle("类人",'humanoid')}鲨鱼提升${toTextStyle("鲨鱼",'shark')}战力的指数。`,
@@ -548,25 +563,25 @@ LANGUAGES.ZH = {
             ["太阳能鲨", x=>`<b>氮</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>氮</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
             ["海上飞鲨", x=>`<b>氦</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>氦</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
 
-            ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>鱼之躯体</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
-            ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
-            ["超然之躯", x=>`${toTextStyle('岩浆','core')}碎片使<b>辐射之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`],
-            ["永恒之躯", x=>`<b>完美之躯</b>的效果是原来的<b>平方</b>。`],
+            ["巨物之躯", x=>`${toTextStyle('鱼','fish')}使<b>鱼之躯体</b>的效果变为原来的 <b>${formatPow(x)}</b>`, x=>`${toTextStyle('鱼','fish')}提升<b>巨物之躯</b>的效果，<b>鱼之躯体</b>充能后的效果是原来的 <b>${formatPow(x)}</b>.`],
+            ["转世之躯", x=>`${toTextStyle('重生','prestige')}碎片使<b>重生之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`, x=>`${toTextStyle('重生','prestige')}碎片提升<b>转世之躯</b>的效果，<b>重生之躯</b>充能后的效果是原来的 <b>${formatPow(x)}</b>.`],
+            ["超然之躯", x=>`${toTextStyle('岩浆','core')}碎片使<b>辐射之躯</b>的效果变为原来的 <b>${formatPow(x)}</b>.`, x=>`${toTextStyle('岩浆','core')}碎片提升<b>超然之躯</b>的效果，<b>辐射之躯</b>充能后的效果是原来的 <b>${formatPow(x)}</b>.`],
+            ["永恒之躯", x=>`<b>完美之躯</b>的效果是原来的<b>平方</b>。`,x=>`<b>永恒之躯</b>和充能后的<b>完美之躯</b>，效果是原来的<b>平方</b>。`],
 
-            ['海洋之幸', x=>`${toTextStyle('鱼','fish')} 使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
-            ['土地之幸', x=>`<b>石头</b>使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
-            ['鲨鱼之幸', x=>`${toTextStyle('类人','humanoid')}鲨鱼使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
-            ['纯靠幸运', x=>`${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>`],
+            ['海洋之幸', x=>`${toTextStyle('鱼','fish')}使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>.`, x=>`${toTextStyle('鱼','fish')}使${toColoredText('强化幸运草 '+icon('luck'),'orange')} 的数量 <b>+${format(x)}</b>.`],
+            ['土地之幸', x=>`<b>石头</b>使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>.`, x=>`<b>镭-223</b>使${toColoredText('强化幸运草 '+icon('luck'),'orange')} 的数量 <b>+${format(x)}</b>.`],
+            ['鲨鱼之幸', x=>`${toTextStyle('类人','humanoid')}鲨鱼使${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>.`, x=>`${toTextStyle('类人','humanoid')}鲨鱼使${toColoredText('强化幸运草 '+icon('luck'),'orange')} 的数量 <b>+${format(x)}</b>.`],
+            ['纯靠幸运', x=>`${toTextStyle('幸运草 '+icon('luck'),'gold')} 的数量 <b>+${format(x)}</b>.`, x=>`${toColoredText('强化幸运草 '+icon('luck'),'orange')} 的数量 <b>+${format(x)}</b>.`],
 
-            ["更好的铁", x=>`提升<b>铁</b>的效果。`],
-            ["更好的镍", x=>`提升<b>镍</b>的效果。`],
-            ["更好的氧", x=>`提升<b>氧</b>的效果。`],
-            ["更好的氖", x=>`提升<b>氖</b>的效果。`],
+            ["更好的铁", x=>`提升<b>铁</b>的效果。`, x=>`大幅提升<b>硫</b>的效果。`],
+            ["更好的镍", x=>`提升<b>镍</b>的效果。`, x=>`大幅提升<b>硅</b>的效果。`],
+            ["更好的氧", x=>`提升<b>氧</b>的效果。`, x=>`大幅提升<b>氮</b>的效果。`],
+            ["更好的氖", x=>`提升<b>氖</b>的效果。`, x=>`大幅提升<b>氦</b>的效果。`],
 
-            ["铁离子", x=>`提升地核生产线中<b>铁</b>的效果。`],
-            ["存钱罐", x=>`提升地核生产线中<b>镍</b>的效果。`],
-            ["臭氧层", x=>`提升地核生产线中<b>氧</b>的效果。`],
-            ["霓虹灯", x=>`提升地核生产线中<b>氖</b>的效果。`],
+            ["铁离子", x=>`提升地核生产线中<b>铁</b>的效果。`, x=>`提升<b>镁</b>的效果。`],
+            ["存钱罐", x=>`提升地核生产线中<b>镍</b>的效果。`, x=>`提升<b>钠</b>的效果。`],
+            ["臭氧层", x=>`提升地核生产线中<b>氧</b>的效果。`, x=>`提升<b>磷</b>的效果。`],
+            ["霓虹灯", x=>`提升地核生产线中<b>氖</b>的效果。`, x=>`提升<b>铬</b>的效果。`],
 
             ["第 1 列强化", x=>`除此升级之外，第一列所有升级的效果 <b>${formatMult(x)}</b>.`],
             ["第 2 列强化", x=>`除此升级之外，第二列所有升级的效果 <b>${formatMult(x)}</b>.`],
@@ -721,6 +736,7 @@ LANGUAGES.ZH = {
                 [`暗物质总量为 10`,`你可以一次性填充所有的粒子加速器。`],
                 [`暗物质总量为 ${format(1e6)}`,`献祭时保留研究 <b>s1-s3</b>. 解锁新的自动化。购买遗物升级不再消耗遗物。`],
                 [`暗物质总量为 ${format(1e12)}`,`解锁下一个游戏机制。`],
+				[`暗物质总量为 ${format(1e100)}`,`每秒获得重置时获得的所有${toTextStyle("暗物质",'black-hole')}。`],
             ]
         },
 
@@ -754,9 +770,9 @@ LANGUAGES.ZH = {
             'moon':    ["月球",`欢迎来到太阳系！你可以探索太阳系中的一些行星，不过你需要观测它们，以获得强大的奖励。强制进行一次奇点重置，移除部分研究和进化树（但后续你将重获它们）。黑洞使获得部分资源的数量是原来的^0.5, 禁用几乎所有在挖矿之后解锁的游戏机制，你不能探索海洋。你可以在太空基地中获得${toTextStyle('观测数据','observ')}，通过${toTextStyle('观测数据','observ')}购买的升级有助于推进游戏进度。观测不同行星的难度不同，不过太空基地的升级能有助于推进游戏进度。先从地球的天然卫星开始吧！它叫月球，但是在这之前它叫忒伊亚。`,`解锁挖矿飞升和新的${toTextStyle('遗物','black-hole')}升级。进行挖矿飞升后，强制进行一次奇点重置，获得强大的加成，并解锁更多的矿物。`],
             'mars':    ["火星",`火星是距离太阳第四远的行星。它具有岩石表面，且它的大小与地球接近，因此它属于类地行星。火星的地形具有独特的特征，包括撞击坑、火山、山谷、沙漠和极地冰盖。火星上有类似水侵蚀的地质构造和只有长期暴露在水中才能形成的矿物质。几个世纪以来，火星上是否存在生命一直是科学家们感兴趣的问题。`,`你可以对已购买的${toTextStyle('进化树','humanoid')}进行充能，获得更强的加成，不过，充能价格大幅增长。解锁新的自动化，${toTextStyle('观测数据','observ')}的产量 ×10.`],
             'jupiter': ["木星",`木星是太阳系中最大的行星，也是距离太阳第五远的行星。它是一颗气态巨行星，其质量是太阳系中所有其他行星总质量的 2.47 倍。木星自古以来就为人所知，在不同文化的神话和宗教信仰中都有提及。这颗行星的现代名称源于古罗马神话中的至高神朱庇特。木星大气层存在许多独特的大气现象，如风暴、闪电、极光和大红斑。大红斑是自 17 世纪以来就为人所知的巨大风暴。`,`解锁更多的 ${toTextStyle('遗物','black-hole')}升级。${toTextStyle('观测数据','observ')}的产量 ×10.`],
-            'saturn':  ["土星",`土星是距太阳第六远的行星，也是太阳系中仅次于木星的第二大行星。土星被归类为气态巨行星，因为它主要由氢和氦组成。这颗行星以罗马农业之神的名字命名。土星周围环绕着由冰粒、重元素和尘埃组成的环。这颗行星有 146 颗已知的天然卫星，其中最大的是土卫六。土星有一个行星磁场和一个众人皆知的环。`,`解锁下一行${toTextStyle('地核','core')}反应堆，<i>它们并不会被重置，且不受${toTextStyle('遗物','black-hole')}升级“战栗时空”的影响。</i>`],
-            'uranus':  ["天王星",`???`,`???`],
-            'neptune': ["海王星",`???`,`???`],
+            'saturn':  ["土星",`土星是距太阳第六远的行星，也是太阳系中仅次于木星的第二大行星。土星被归类为气态巨行星，因为它主要由氢和氦组成。这颗行星以古罗马神话中的农业之神命名。土星周围环绕着由冰粒、重元素和尘埃组成的环。这颗行星有 146 颗已知的天然卫星，其中最大的是土卫六。土星有一个行星磁场和一个众人皆知的环。`,`解锁下一行${toTextStyle('地核','core')}反应堆，<i>它们并不会被重置，且不受${toTextStyle('遗物','black-hole')}升级“战栗时空”的影响。</i>`],
+            'uranus':  ["天王星",`天王星是太阳系中距离太阳第七远的行星。它于 1781 年由英国天文学家威廉·赫歇尔发现，并以希腊天神乌拉诺斯的名字命名。天王星是现代以来借助望远镜发现的第一颗行星。天王星是太阳系中直径第三大、质量第四大的行星。它主要由冰和岩石组成，大气层含有氢、氦和甲烷。天王星有一个环系统和 28 颗卫星。天王星的是“躺着”自转的，因此天王星绕太阳公转时，南北两极交替地指向太阳。`,`移除${toTextStyle('鲨鱼','shark')}吃鱼数量的软上限，${toTextStyle('鲨之信念','humanoid')}获得双倍的加成。`],
+            'neptune': ["海王星",`海王星是太阳系中第八大行星，也是距离太阳最远的行星。它与太阳的平均距离为 45 亿公里。海王星是巨行星之一。它的质量是地球的 17 倍。海王星的赤道直径位居第四，是地球的 3.9 倍。海王星的大气层与太阳系中其他气态巨行星的气体外壳相似。它主要由氢和氦组成，还混有甲烷、水、氨和其他化合物。海王星是太阳系中最冷的行星之一。它的平均温度低于 -200 °C。海王星的大气层中的风，是太阳系所有行星中最强的。`,`解锁${toTextStyle('星座','star')}，它能升级${toTextStyle('黑洞','black-hole')}，并获得强大的加成。`],
             'pluto':   ["冥王星",`???`,`???`],
         },
         'build-rocket-part': x => `火箭部件数量 ${x}.`,
@@ -772,23 +788,39 @@ LANGUAGES.ZH = {
             'o2': [`外空之鱼`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
             'o3': [`空间碎片`,x=>`获得${toTextStyle('重生碎片','prestige')}的数量是原来的 ${x}.`],
 			'o4': [`空之核心`,x=>`${toTextStyle('岩浆碎片','core')} ${x}.`],
+			'o5': [`空间辐射`,x=>`${toTextStyle('辐射'+icon("radioactive"),'core')}产量是原来的 ${x}.`],
             
             'e1': [`鱼之助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             'e2': [`重生助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
 			'e3': [`地核助力`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             'e4': [`观测-存储`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
             'e5': [`全能助力`,x=>`所有名称带有“助力”的观测升级，底数 ${x}.`],
+			'e6': [`存储-轨迹`,x=>`${toTextStyle('轨迹','traject')} ${x}.`],
 
             'r1': [`相对论`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             'r2': [`可观测性`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
             'r3': [`外空之鱼 II`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
 			'r4': [`空间碎片 II`,x=>`获得${toTextStyle('重生碎片','prestige')}的数量是原来的 ${x}.`],
+			'r5': [`空间辐射 II`,x=>`${toTextStyle('辐射'+icon("radioactive"),'core')}产量是原来的 ${x}.`],
 			
 			't1': [`真空输运`,x=>`${toTextStyle('观测数据','observ')} ${x}.`],
             't2': [`数据储存`,x=>`${toTextStyle('储存数据','reserv')} ${x}.`],
             't3': [`可观测性 II`,x=>`${toTextStyle('轨迹','traject')} ${x}.`],
             't4': [`外空之鱼 III`,x=>`获得${toTextStyle('鱼','fish')}的数量是原来的 ${x}.`],
+			't5': [`辐射折算`,x=>`辐射加成的前 3 次折算延迟 ${x}.`],
+            't6': [`真空输运 II`,x=>`“真空输运”的底数 ${x}.`],
 		},
+
+		'experiment-reset': `重置太空基地中的所有东西，提升${toTextStyle('实验','experiment')}等级，获得强大的加成。`,
+        'experiment-boosts': [
+            x=>`${toTextStyle('观测数据','observ')}是原来的 ${x}.`,
+            x=>`${toTextStyle('储存数据','reserv')}是原来的 ${x}.`,
+        ],
+
+        'constellation-boosts': [
+            [`鱼之恒星`, x=>`${toTextStyle('鱼','fish')}的指数是原来的 ${x}.`, x=>`${toTextStyle('观测数据','observ')}是原来的 ${x}.`],
+            [`重生恒星`, x=>`${toTextStyle('重生','prestige')}碎片的指数是原来的 ${x}.`, x=>`${toTextStyle('储存数据','reserv')}是原来的 ${x}.`],
+        ],
 
         // Automation
 
@@ -959,6 +991,7 @@ LANGUAGES.ZH = {
         'overwrite-current': "覆盖",
         'load': "导入",
         'force-load': "强制导入",
+		'you-have': "你拥有",
 
         'offline-time-text': x=>`您离线了 <b>${formatTime(x,0)}</b>.`,
 
