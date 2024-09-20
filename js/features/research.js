@@ -327,6 +327,27 @@ const RESEARCH = {
             ['oganesson',false,1e4],
         ],
     },
+    m9: {
+        tier: 2,
+        unl: ()=>hasForgeUpgrade('adv_research',4),
+        require: [
+            ['sharkium',false,1e3],
+        ],
+    },
+    m10: {
+        tier: 2,
+        unl: ()=>hasForgeUpgrade('adv_research',4),
+        require: [
+            ['sharkium',false,1e4],
+        ],
+    },
+    m11: {
+        tier: 2,
+        unl: ()=>hasForgeUpgrade('adv_research',4),
+        require: [
+            ['sharkium',false,1e5],
+        ],
+    },
 
     f1: {
         max: 10,
@@ -540,6 +561,28 @@ const RESEARCH = {
         unl: ()=>tmp.ss_difficulty >= 6,
         require: [
             ['traject',false,1e24],
+        ],
+    },
+
+    t1: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 7,
+        require: [
+            ['traject',false,1e250],
+        ],
+    },
+    t2: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 7,
+        require: [
+            ['traject',false,'e500'],
+        ],
+    },
+    t3: {
+        tier: 2,
+        unl: ()=>tmp.ss_difficulty >= 8,
+        require: [
+            ['traject',false,'ee6'],
         ],
     },
 }

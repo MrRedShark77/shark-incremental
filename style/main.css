@@ -289,7 +289,7 @@ input.no-arrows {
 
 #currs-top {
 	margin: 10px 0px;
-	min-height: 100px;
+	min-height: 120px;
 	display: flex;
 	justify-content: space-evenly;
 	flex-flow: row wrap;
@@ -308,7 +308,7 @@ input.no-arrows {
 
 .curr-top > button {
 	width: calc(100% - 80px);
-	height: calc(100% - 36px);
+	height: 70px;
 	font-size: 12px;
 }
 

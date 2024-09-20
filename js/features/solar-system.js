@@ -52,28 +52,28 @@ const SOLAR_SYSTEM = {
         difficulty: 3,
     },
     'saturn': {
-        rp_req: 56,
+        rp_req: 50,
         goal: 1e300,
         difficulty: 4,
     },
     'uranus': {
-        rp_req: 76,
+        rp_req: 75,
         goal: 'ee4',
         difficulty: 5,
     },
     'neptune': {
-        rp_req: 106,
+        rp_req: 100,
         goal: 'ee6',
         difficulty: 6,
     },
     'pluto': {
-        rp_req: EINF,
-        goal: EINF,
+        rp_req: 158,
+        goal: 'ee9',
         difficulty: 7,
     },
     'sun': {
-        rp_req: EINF,
-        goal: EINF,
+        rp_req: 500,
+        goal: 'ee16',
         difficulty: 8,
     },
 }
@@ -479,14 +479,15 @@ const SPACEBASE_UPGS_GROUPS = {
         't5','t6',
     ],
 }
-const SPACEBASE_RESEARCH = ['o2','o3','r2']
+const SPACEBASE_RESEARCH = ['o2','o3','r2','t2']
 const SPACEBASE_UPGS_GROUPS_AUTO = {
     o: ()=>hasResearch('o1'),
     r: ()=>hasResearch('r1'),
+    t: ()=>hasResearch('t1'),
 }
 
 const EXPERIMENT_TIER = {
-    get require() { return player.solar_system.experiment.sumBase(1.05).pow_base(3).pow_base('1e15000') },
+    get require() { return player.solar_system.experiment.mul(constellationBoostEffect(3,true)).sumBase(1.05).pow_base(3).pow_base('1e15000') },
 
     reset() {
         if (player.solar_system.observ.gte(this.require)) {
@@ -501,6 +502,7 @@ const EXPERIMENT_TIER = {
     boosts: [
         [1, x => x.pow_base(1.1).mul(x.add(1)).max(1), x => formatPow(x)],
         [2, x => x.pow_base(1.1).mul(x.div(10).add(1)).max(1), x => formatPow(x)],
+        [10, x => x.pow_base(1.05).mul(x.div(25).add(1)).max(1), x => formatPow(x)],
     ],
 }
 function experimentBoostEffect(i,def=1) { return tmp.experiment_boosts[i]??def }

@@ -117,10 +117,10 @@ const FORGE = {
         ],
     },
     adv_research: {
-        max: 3,
+        max: 4,
         unl: ()=>hasForgeUpgrade('anvil',2),
 
-        time: [300, 1800, 1e7],
+        time: [300, 1800, 1e7, 1],
         cost: [
             [
                 ['prestige','ee63',true],
@@ -133,6 +133,9 @@ const FORGE = {
                 ['prestige','e2e115',true],
                 ['obsidian',1e6],
                 ['vibranium',1e4],
+            ],[
+                ['prestige','ee1e11',true],
+                ['sharkium',1],
             ],
         ],
     },
@@ -237,10 +240,10 @@ const FORGE = {
         ],
     },
     matter: {
-        max: 5,
+        max: 6,
         unl: ()=>hasForgeUpgrade('anvil',4),
 
-        time: [1e42,1e45,1e51,1e66,1e188],
+        time: [1e42,1e45,1e51,1e66,1e188,1],
         cost: [
             [
                 ['remnants',1e135],
@@ -257,11 +260,14 @@ const FORGE = {
             ],[
                 ['remnants','e1960'],
                 ['oganesson',100],
+            ],[
+                ['remnants','e450000'],
+                ['sharkium',1e4],
             ],
         ],
 
         effect(l) {
-            var x = Decimal.mul(l,0.1).add(1)
+            var x = Decimal.mul(l * Math.max(l - 4,1),0.1).add(1)
 
             return x
         },

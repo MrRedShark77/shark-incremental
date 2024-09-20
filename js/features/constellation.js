@@ -1,6 +1,6 @@
 const CONSTELLATION = {
     get exp() {
-        let x = 0.44
+        let x = Decimal.add(0.44,remnantUpgEffect(17,0))
         return x
     },
 
@@ -11,7 +11,7 @@ const CONSTELLATION = {
     },
 
     get require() {
-        return player.singularity.bh_tier.pow(1.5).pow_base(2).mul(1e6)
+        return player.singularity.bh_tier.scaleAll('bh_tier').sumBase(1.05).pow(1.35).pow_base(2).mul(1e6)
     },
 
     upgrade() {
@@ -20,6 +20,14 @@ const CONSTELLATION = {
 
             RESETS["black-hole"].doReset()
         }
+    },
+    
+    get boost_mult() {
+        let x = remnantUpgEffect(16)
+
+        for (let i = 0; i < 4; i++) x = Decimal.mul(x,simpleCETEffect(40+i));
+
+        return x
     },
 
     boosts: [
@@ -39,6 +47,22 @@ const CONSTELLATION = {
                 return x
             },
             effDesc: x=>formatPow(x,3),
+        },{
+            name: "stellar-core",
+            req: 4,
+            effect(r,d) {
+                let x = d ? expPow(r.max(0),1/3).div(100).add(1) : expPow(r.add(1).log10(),2).pow_base(10)
+                return x
+            },
+            effDesc: x=>formatPow(x,3),
+        },{
+            name: "stellar-shark",
+            req: 8,
+            effect(r,d) {
+                let x = d ? r.add(1).log10().root(2).div(10).add(1).pow(-1) : r.add(1).log10().div(10).add(1)
+                return x
+            },
+            effDesc: x=>formatMult(x,3),
         },
     ],
 }
@@ -47,6 +71,9 @@ function constellationBoostEffect(i,d,diff=1) { return (tmp.ss_difficulty>0)==d 
 
 function updateConstellationTemp() {
     let d = tmp.ss_difficulty, bht = player.singularity.bh_tier
+
+    tmp.constellation_mult = CONSTELLATION.boost_mult
+
     for (let i = 0; i < CONSTELLATION.boosts.length; i++) {
         let b = CONSTELLATION.boosts[i]
 
@@ -67,7 +94,7 @@ function setupConstellationHTML() {
 function updateConstellationHTML() {
     let exp = CONSTELLATION.exp, base = CONSTELLATION.base, req = CONSTELLATION.require, bht = player.singularity.bh_tier, d = tmp.ss_difficulty
 
-    el('constellation-base').innerHTML = `[log(log(${CURRENCIES.fish.costName})) × log(${CURRENCIES.remnants.costName}) × log(${CURRENCIES["dark-matter"].costName})]<sup>${format(exp)}</sup> = <h3>${format(base)}</h3>`
+    el('constellation-base').innerHTML = `[log(log(${CURRENCIES.fish.costName})) × log(${CURRENCIES.remnants.costName}) × log(${CURRENCIES["dark-matter"].costName})]<sup>${format(exp,3)}</sup> = <h3>${format(base)}</h3>`
     el('cp-text').innerHTML = format(base) + " / " + format(req)
     el('cp-bar').style.width = base.div(req).max(0).min(1) * 100 + "%"
 

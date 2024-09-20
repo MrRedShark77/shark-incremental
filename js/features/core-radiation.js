@@ -12,7 +12,9 @@ const CORE_RAD = {
 
         let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).pow(getPAEffect(0)).pow(m[1]).pow(spaceBaseUpgEffect('o5')).pow(spaceBaseUpgEffect('r5'))
 
-        return x.overflow('ee18',0.5)
+        if (!hasResearch('m9')) x = x.overflow('ee18',0.5);
+
+        return x
     },
 
     limit() {
@@ -166,7 +168,7 @@ const CORE_RAD = {
         },{
             req: 2000,
             effect: (r,b)=>{
-                let x = r.add(10).log10().pow(expPow(b.add(1),0.25).div(10)).pow(getCRBoost(13))
+                let x = r.add(10).log10().overflow(1e300,0.5).pow(expPow(b.add(1),0.25).softcap(1e4,10,'log').div(10)).pow(getCRBoost(13))
 
                 return x
             },

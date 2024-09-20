@@ -77,6 +77,8 @@ const ORES = {
         textColor: 'rgb(255,255,255)',
     },
     'sharkium': {
+        dense: 1e100,
+        luck_penalty: 0.1,
         color: `linear-gradient(0deg, rgb(97,220,222) 0%, rgb(123,149,190) 50%, rgb(201,158,217) 100%)`,
         textColor: 'rgb(123,149,190)',
     },
@@ -186,8 +188,8 @@ const MINING_TIER = {
         return b
     },
 
-    ascend_base_milestone: [1,3,6,12,25],
-    ascend_gen_milestone: [10,15,30],
+    ascend_base_milestone: [1,3,6,12,25,50],
+    ascend_gen_milestone: [10,15,30,60],
 
     get ascend_base() {
         var b = this.ascend_base_milestone.filter(x => player.humanoid.mining_ascend.gte(x)).length

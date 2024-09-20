@@ -40,6 +40,8 @@ const CURRENCIES = {
                 tmp.shark_op = pre_s.log10().div(x.log10())
             } else tmp.shark_op = E(1)
 
+            x = x.min('ee9e15')
+
             return x
         },
     },
@@ -107,6 +109,7 @@ const CURRENCIES = {
             x = x.pow(tmp.bh_reduction)
             x = x.pow(simpleCETEffect(14))
             x = x.pow(coreReactorEffect(10))
+            x = x.pow(constellationBoostEffect(2,false))
     
             return x.floor()
         },
@@ -128,6 +131,7 @@ const CURRENCIES = {
             if (isSSObserved('venus')) x += 1.25;
             if (hasEvolutionTree(15,true)) x += chargedETreeEffect(15,0);
             x = Decimal.add(x,remnantUpgEffect(15,0))
+            x = x.mul(constellationBoostEffect(3,false))
             return x
         },
 
@@ -252,12 +256,14 @@ const CURRENCIES = {
 
             if (x.lt(1)) return E(0);
 
-            x = expPow(x,0.5).mul(spaceBaseUpgEffect('t3')).mul(spaceBaseUpgEffect('e6'))
+            let exp = hasResearch('t2') ? 0.55 : 0.5
+            
+            x = expPow(x,exp).mul(spaceBaseUpgEffect('t3')).mul(spaceBaseUpgEffect('e6')).pow(constellationBoostEffect(2,true))
 
             return x
         },
     
-        get passive() { return 0 },
+        get passive() { return +hasResearch('t3') },
     },
 }
 
@@ -318,7 +324,7 @@ function setupCurrencies() {
             get gain() {
                 let bht = player.singularity.bh_tier
                 if (bht.lt(b.req)) return E(0);
-                let x = bht.sub(b.req).pow_base(10);
+                let x = bht.sub(b.req).pow_base(10).mul(tmp.constellation_mult)
                 return x
             },
         }

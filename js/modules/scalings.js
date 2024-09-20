@@ -7,6 +7,7 @@ const SCALINGS = {
             [100,3,"E2"],
             [1e3,3,"P"],
             [7.5e9,2,"D"],
+            ['1e1337',3,"D"],
         ],
     },
     shark_rank: {
@@ -16,6 +17,7 @@ const SCALINGS = {
             [25,2,"P"],
             [1250,3,"E2"],
             [5000,3,"P"],
+            [1e6,2,"ME2"],
         ],
     },
     su_s3: {
@@ -73,6 +75,7 @@ const SCALINGS = {
             [15,1.5,"P"],
             [100,2,"ME2"],
             [3e3,2,"P"],
+            [1e5,2,"ME2"],
         ],
     },
     mining_ascend: {
@@ -92,6 +95,13 @@ const SCALINGS = {
 
         base: [
             [100,1.1,"ME2"],
+        ],
+    },
+    bh_tier: {
+        get amount() { return player.singularity.bh_tier },
+
+        base: [
+            [10,2,"P"],
         ],
     },
 }

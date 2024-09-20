@@ -70,7 +70,9 @@ const AUTOMATION = {
         curr: "core",
 
         trigger() {
-            for (let i=0; i<Math.min(8,tmp.core_reactor_unl); i++) upgradeCoreReactor(i);
+            let l = tmp.core_reactor_unl
+            if (!hasResearch('m10')) l = Math.min(l,8);
+            for (let i=0; i<l; i++) upgradeCoreReactor(i);
         },
     },
     core_radiation: {
@@ -108,7 +110,11 @@ const AUTOMATION = {
 
         curr: "stone",
 
-        su: ['m1','m2','m3','m4','m5'],
+        get su() {
+            let x = ['m1','m2','m3','m4','m5']
+            if (hasResearch('m10')) x.push('m6','m7','m8','m9');
+            return x
+        },
 
         trigger() {
             buyAllSharkUpgrades(this.su)

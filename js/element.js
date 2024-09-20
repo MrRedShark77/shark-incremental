@@ -8,8 +8,9 @@ function updateHTML() {
 
     var f = CURRENCIES.fish.amount, ff = []
 
-    if (f.gte(tmp.shark_op_start)) ff.push(icon("biohazard"))
-    if (tmp.cr_active) ff.push(icon("radioactive"))
+    if (f.gte('ee9e15')) ff.push(icon("benzene"));
+    if (f.gte(tmp.shark_op_start)) ff.push(icon("biohazard"));
+    if (tmp.cr_active) ff.push(icon("radioactive"));
 
     el('fish-amount').innerHTML = f.format(0) + (ff.length > 0 ? " " + ff.join("") : "")
     el('fish-gain').textContent = tmp.currency_gain.fish.gt(0) ? CURRENCIES.fish.amount.formatGain(tmp.currency_gain.fish) : ""

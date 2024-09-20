@@ -171,7 +171,7 @@ const REMNANT_UPGS = [
         effDesc: x=>formatMult(x),
     },{
         unl:()=>isSSObserved('jupiter'),
-        cost:a=>a.add(1).sumBase(1.1).pow_base(1e15).mul(1e50),
+        cost:a=>a.add(1).sumBase(1.1).pow_base(1e15).mul(1e250),
         bulk:a=>a.div(1e250).log(1e15).sumBase(1.1,true).sub(1),
         effect(a) {
             let x = a.root(2).mul(.1).add(1)
@@ -196,6 +196,26 @@ const REMNANT_UPGS = [
             return x
         },
         effDesc: x=>"+"+format(x,0),
+    },
+
+    {
+        unl:()=>isSSObserved('pluto'),
+        cost:a=>a.pow(1.25).pow_base(1.05).pow_base('e10000'),
+        bulk:a=>a.log('e10000').log(1.05).root(1.25),
+        effect(a) {
+            let x = a.add(1).mul(a.pow_base(1.1))
+            return x
+        },
+        effDesc: x=>formatMult(x),
+    },{
+        unl:()=>isSSObserved('pluto'),
+        cost:a=>a.pow_base(1.05).pow_base('ee5'),
+        bulk:a=>a.log('ee5').log(1.05),
+        effect(a) {
+            let x = a.div(1e3)
+            return x
+        },
+        effDesc: x=>"+"+format(x,3),
     },
 ]
 
@@ -237,7 +257,7 @@ function updateSingularityTemp() {
 
     for (let i = 0; i < REMNANT_UPGS.length; i++) {
         let u = REMNANT_UPGS[i], l = player.singularity.upgs[i]
-        if (tmp.ss_difficulty) l = E(0);
+        if (tmp.ss_difficulty && i < 16) l = E(0);
         if (i !== 3 && i < 12) l = l.mul(pow)
         if ('effect' in u) tmp.remnant_upg_effects[i] = u.effect(l)
     }

@@ -142,6 +142,11 @@ const PROGRESS = [
         get amount() { return CURRENCIES["dark-matter"].total },
         require: 1e12,
         logHeight: 1,
+    },{
+        cond_text: true,
+        get amount() { return CURRENCIES.fish.total },
+        require: 'ee9e15',
+        logHeight: 3,
     },
 ]
 

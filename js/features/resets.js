@@ -180,7 +180,7 @@ const RESETS = {
             if (player.singularity.sac_times == 0) tab = 0, tab_name = 'shark', stab = stab.map(x=>0);
 
             player.singularity.remnants = E(0)
-            for (let i = 0; i < REMNANT_UPGS.length; i++) player.singularity.upgs[i] = E(0);
+            for (let i = 0; i < 16; i++) player.singularity.upgs[i] = E(0);
 
             if (bh.gte(4)) {
                 for (let x = 0; x < 5; x++) {
@@ -188,7 +188,7 @@ const RESETS = {
                 }
             }
 
-            for (let i = 0; i < CONSTELLATION.boosts.length; i++) player.singularity.constellation_res[i] = E(0);
+            if (!isSSObserved('pluto')) for (let i = 0; i < CONSTELLATION.boosts.length; i++) player.singularity.constellation_res[i] = E(0);
 
             ores_grid = []
 

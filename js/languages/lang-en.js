@@ -393,6 +393,9 @@ LANGUAGES.EN = {
             'm6': ["The Uranium Shark",`'Shark Exponent' is overpowered.`],
             'm7': ["Double Remnant Scaling",`The first scaling of ${toTextStyle("Remnant",'black-hole')} upgrades is delayed by <b>+100</b>.`],
             'm8': ["Ultimate Radiation",`The 14th radioactive boost’s effect is improved.`],
+            'm9': [`No Radiation Overflow`,`The softcap of ${toTextStyle('Radiation '+icon('radioactive'),'core')} production is removed.`],
+            'm10': [`Auto-Core Reactor MK2`,`Auto-${toTextStyle('Core','core')} Reactor now applies to the third row of ${toTextStyle('Core','core')} reactors.`],
+            'm11': [`Auto-Mining Upgrade MK2`,`Auto-${toTextStyle('Shark','shark')} Mining Upgrade now applies to the rest of ${toTextStyle('Shark','shark')} mining upgrades.`],
 
             'o1': [`Observatory Automation`,`Automates all ${toTextStyle('Observatory','observ')} upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
             'o2': [`Universal Exchanger Affection`,`The “Universal Exchanger” ${toTextStyle('Reservatory','reserv')} upgrade affects the base of “The Space”, “Space Fish”, and “Space Prestige” ${toTextStyle('Observatory','observ')} upgrades.`],
@@ -401,6 +404,10 @@ LANGUAGES.EN = {
             'r1': [`Reservatory Automation`,`Automates all ${toTextStyle('Reservatory','reserv')} upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
             'r2': [`Reservatory Improvement`,`Improves ${toTextStyle('Reservatory','reserv')} gain formula even better.`],
             'r3': [`Reservatory Generation`,`Generates 100% of your ${toTextStyle('Reservatories','reserv')} gained on reset. <i>This research doesn’t get reset.</i>`],
+        
+            't1': [`Trajectory Automation`,`Automates all ${toTextStyle('Trajectory','traject')} upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
+            't2': [`Trajectory Improvement`,`Improves ${toTextStyle('Trajectory','traject')} gain formula even better.`],
+            't3': [`Trajectory Generation`,`Generates 100% of your ${toTextStyle('Trajectories','traject')} gained on reset. <i>This research doesn’t get reset.</i>`],
         },
 
         // Exploration
@@ -583,20 +590,20 @@ LANGUAGES.EN = {
             ["Ozone", x=>`Improve <b>Oxygen</b> reactor better.`, x=>`Improve <b>Phosphor</b> reactor better.`],
             ["Fake Radioactive Waste", x=>`Improve <b>Neon</b> reactor better.`, x=>`Improve <b>Chromium</b> reactor better.`],
 
-            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
-            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 1", x=>`The above upgrades in the first column are <b>${formatPercent(x-1)}</b> stronger.`, x=>`The above upgrades, including charged, in the first column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 2", x=>`The above upgrades in the second column are <b>${formatPercent(x-1)}</b> stronger.`, x=>`The above upgrades, including charged, in the second column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 3", x=>`The above upgrades in the third column are <b>${formatPercent(x-1)}</b> stronger.`, x=>`The above upgrades, including charged, in the third column are <b>${formatPercent(x-1)}</b> stronger.`],
+            ["Strong Column 4", x=>`The above upgrades in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`, x=>`The above upgrades, including charged, in the fourth column are <b>${formatPercent(x-1)}</b> stronger.`],
 
-            ["Fish Forge", x=>`${toTextStyle('Fish','fish')} speeds forging by <b>${formatMult(x)}</b>.`],
-            ["Prestigious Forge", x=>`${toTextStyle('Prestige','prestige')} shards speed forging by <b>${formatMult(x)}</b>.`],
-            ["Magmatic Forge", x=>`${toTextStyle('Magmatic','core')} fragments speed forging by <b>${formatMult(x)}</b>.`],
-            ["Faster Forge", x=>`Forging is <b>${formatMult(x)}</b> faster.`],
+            ["Fish Forge", x=>`${toTextStyle('Fish','fish')} speeds forging by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Fish','fish')} boosts ${toTextStyle("Constellation",'star')} resources by <b>${formatMult(x)}</b>.`],
+            ["Prestigious Forge", x=>`${toTextStyle('Prestige','prestige')} shards speed forging by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Prestige','prestige')} shards boost ${toTextStyle("Constellation",'star')} resources by <b>${formatMult(x)}</b>.`],
+            ["Magmatic Forge", x=>`${toTextStyle('Magmatic','core')} fragments speed forging by <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Magmatic','core')} fragments boost ${toTextStyle("Constellation",'star')} resources by <b>${formatMult(x)}</b>.`],
+            ["Faster Forge", x=>`Forging is <b>${formatMult(x)}</b> faster.`, x=>`${toTextStyle("Constellation",'star')} resources are increased by <b>${formatMult(x)}</b>.`],
 
-            ["True Column 1", x=>`You are allowed to purchase the first column of tree evolution.`],
-            ["True Column 2", x=>`You are allowed to purchase the second column of tree evolution.`],
-            ["True Column 3", x=>`You are allowed to purchase the third column of tree evolution.`],
-            ["True Column 4", x=>`You are allowed to purchase the fourth column of tree evolution.`],
+            ["True Column 1", x=>`You are allowed to purchase the first column of tree evolution.`, x=>`You are allowed to purchase the first column of charged tree evolution.`],
+            ["True Column 2", x=>`You are allowed to purchase the second column of tree evolution.`, x=>`You are allowed to purchase the second column of charged tree evolution.`],
+            ["True Column 3", x=>`You are allowed to purchase the third column of tree evolution.`, x=>`You are allowed to purchase the third column of charged tree evolution.`],
+            ["True Column 4", x=>`You are allowed to purchase the fourth column of tree evolution.`, x=>`You are allowed to purchase the fourth column of charged tree evolution.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"UNLOCKED":y?"LOCKED":"IN PROGRESS",
@@ -760,10 +767,13 @@ LANGUAGES.EN = {
             [`Ultimate Power`,x=>`The first 12 ${toTextStyle("Remnant",'black-hole')} upgrades are ${x} more powerful, except 4th.`],
             [`Efficiency VI`,x=>`The super mining damage is boosted by ${x}.`],
             [`Supernatural Shark`,x=>`The exponent of ${toTextStyle("Humanoid",'humanoid')} sharks is increased by ${x}.`],
+
+            [`The Star`,x=>`${toTextStyle("Constellation",'star')} resources are boosted by ${x}.`],
+            [`The Growth`,x=>`The exponent of the ${toTextStyle("Constellation",'star')} base is increased by ${x}.`],
         ],
 
         'solar-system-list': {
-            'sun':     ["Sun",`???`,`???`],
+            'sun':     ["Sun",`???`,`Unlock the next layer (NYI). The multiplier of ${toTextStyle('Sharkoid Faith','humanoid')} is doubled again.`],
             'mercury': ["Mercury",`Mercury is the smallest planet in the solar system and closest to the Sun. It is named after the ancient Roman god of commerce because it moves across the sky faster than the other planets. Mercury is covered in impact craters and is similar to the Moon in appearance, indicating a lack of internal geologic activity over the past billion years. The planet has almost no atmosphere, so its surface temperature varies more than any other planet in the solar system.`,`The first 3 scalings of radioactive boost are delayed by ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
             'venus':   ["Venus",`Venus is the second farthest from the Sun and the sixth-largest planet in the Solar System. It is named after the ancient Roman goddess of love. Venus has a dense atmosphere consisting of more than 96% carbon dioxide. Venus has an average surface temperature of 735 K (462 °C), making it the hottest planet in the solar system. Venus has no natural satellites. In the Earth's sky, it is the third-brightest luminary, after the Sun and the Moon.`,`Passively generate 100% of current ${toTextStyle('Humanoid','humanoid')} sharks as bonus ${toTextStyle('Humanoid','humanoid')} sharks, but auto-${toTextStyle('Humanoid','humanoid')} shark no longer works. Improve ${toTextStyle('Humanoid','humanoid')} shark drastically, and the third scaling of ${toTextStyle('Shark','shark')} rank is delayed by ×2. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
             'earth':   ["Earth",`???`,`???`],
@@ -773,7 +783,7 @@ LANGUAGES.EN = {
             'saturn':  ["Saturn",`Saturn is the sixth planet from the Sun and the second-largest planet in the solar system after Jupiter. Saturn is classified as a gas giant because it is composed mostly of hydrogen and helium. The planet is named after the Roman god of agriculture. Saturn is surrounded by rings made up of ice particles, heavy elements and dust. The planet has 146 known satellites, the largest of which is Titan. Saturn has a planetary magnetic field and a prominent ring system.`,`Unlock a new row of ${toTextStyle('Core','core')} reactors. <i>These reactors don’t get reset by Evolution or later, but they aren’t affected by the ${toTextStyle('Remnant','black-hole')} upgrade “Half-life”.</i>`],
             'uranus':  ["Uranus",`Uranus is the seventh-farthest planet in the solar system from the Sun. It was discovered in 1781 by English astronomer William Herschel and named after the Greek sky god Uranus. Uranus was the first planet discovered in modern times and with the aid of a telescope. Uranus is the third-largest planet in diameter and fourth largest in mass in the solar system. It is composed mostly of ice and rock, and its atmosphere contains hydrogen, helium, and methane. Uranus has a ring system and 28 satellites. Uranus' axis of rotation is “on its side,” so the planet orbits the Sun, alternately turning its north and south poles toward it.`,`Remove the ${toTextStyle('Shark','shark')} overpopulation. The multiplier of ${toTextStyle('Sharkoid Faith','humanoid')} is doubled.`],
             'neptune': ["Neptune",`Neptune is the eighth and farthest planet in the Solar System. Its distance from the Sun averages 4.5 billion kilometers. Neptune is one of the giant planets. It has 17 times the mass of Earth.  Neptune is fourth in equatorial diameter, 3.9 times larger than Earth. Neptune's atmosphere is similar to the gas envelopes of other major planets in the solar system. It consists mainly of hydrogen and helium, with admixtures of methane, water, ammonia, and other compounds. Neptune is considered one of the coldest planets in the solar system. Its average temperature ranges from -200 °C. Neptune's atmosphere has the strongest winds of any planet in the solar system.`,`Unlock the ${toTextStyle('Constellation','star')} that upgrade the ${toTextStyle('Black Hole','black-hole')} further for a powerful reward.`],
-            'pluto':   ["Pluto",`???`,`???`],
+            'pluto':   ["Pluto",`???`,`Unlock more ${toTextStyle('Remnant','black-hole')} upgrades again. ${toTextStyle('Constellation','star')} resources no longer get reset.`],
         },
         'build-rocket-part': x => `Build ${x} Rocket Parts.`,
         'total-rp': "total RP",
@@ -815,11 +825,14 @@ LANGUAGES.EN = {
         'experiment-boosts': [
             x=>`${toTextStyle('Observatories','observ')} are boosted by ${x}.`,
             x=>`${toTextStyle('Reservatories','reserv')} are boosted by ${x}.`,
+            x=>`${toTextStyle('Trajectories','traject')} are boosted by ${x}.`,
         ],
 
         'constellation-boosts': [
             [`Stellar Fish`, x=>`Boost ${toTextStyle('Fish','fish')} amount by ${x} to the exponent.`, x=>`Boost ${toTextStyle('Observatories','observ')} generation by ${x}.`],
-            [`Stellar Prestige`, x=>`Boost ${toTextStyle('Prestige','prestige')} shards gain by ${x} to the exponent.`, x=>`Boost ${toTextStyle('Reservatories','reserv')} generation by ${x}.`],
+            [`Stellar Prestige`, x=>`Boost ${toTextStyle('Prestige','prestige')} shards gain by ${x} to the exponent.`, x=>`Boost ${toTextStyle('Reservatories','reserv')} gain by ${x}.`],
+            [`Stellar Fragments`, x=>`Boost ${toTextStyle('Magmatic','core')} fragments gain by ${x}.`, x=>`Boost ${toTextStyle('Trajectories','traject')} gain by ${x}.`],
+            [`Stellar Sharks`, x=>`Boost the exponent of ${toTextStyle('Humanoid','humanoid')} sharks by ${x}.`, x=>`Reduce the ${toTextStyle('Experiment','experiment')} tier requirement by ${x}`],
         ],
 
         // Automation
@@ -877,6 +890,9 @@ LANGUAGES.EN = {
         get 'progress-18-cond-text'() { return `Do a ${toTextStyle('Sacrifice','black-hole')}` },
 
         'progress-19-text': r => `Reach ${format(r)} total ${toTextStyle('Dark Matter','black-hole')}`,
+
+        'progress-20-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
+        get 'progress-20-cond-text'() { return `???` },
 
         'maxed-progress': "All features unlocked!",
 
@@ -949,6 +965,7 @@ LANGUAGES.EN = {
             'mining_tier' : `Mining Tier`,
             'mining_ascend' : `Mining Ascension`,
             'remnant_upg' : `Remnant Upgrades`,
+            'bh_tier' : `Black Hole Tier`,
         },
         'scaling-start': "Starts at",
         'scaling-mode': {

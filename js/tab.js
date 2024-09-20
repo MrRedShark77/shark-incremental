@@ -76,7 +76,7 @@ const TAB_IDS = {
 
         notify() {
             let a = isAutoEnabled('core_reactor')
-            for (let i = 0; i < tmp.core_reactor_unl; i++) if (!a || i >= 8) {
+            for (let i = 0; i < tmp.core_reactor_unl; i++) if (!a || !hasResearch('m10') && i >= 8) {
                 if (CORE_REACTOR[i].resource.gte(getCoreReactorCost(i))) return true
             }
             return false

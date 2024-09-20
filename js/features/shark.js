@@ -8,7 +8,7 @@ const SHARK = {
         core: [()=>player.shark_level.gte(300),l=>Decimal.add(1.01,getCRBoost(4,0)).pow(l.sub(299)).overflow('ee3',0.5),E(1)],
         remnants: [()=>player.shark_level.gte(1)&&hasSMilestone(0),l=>{
             let x = l
-            if (hasResearch('dm4')) x = x.mul(expPow(l,0.25).pow_base(2));
+            if (hasResearch('dm4')) x = x.mul(expPow(l.softcap('e1000',10,'log'),0.25).pow_base(2));
             return x
         },E(0)],
     },

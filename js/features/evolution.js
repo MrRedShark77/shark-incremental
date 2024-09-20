@@ -15,7 +15,7 @@ const EVOLUTION_TREE = {
     },
 
     rows: 12,
-    charged_rows: 9,
+    charged_rows: 12,
 
     effect: [
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).pow(simpleETEffect(20)).pow(simpleETEffect(36)),
@@ -63,10 +63,10 @@ const EVOLUTION_TREE = {
         null,
         null,
 
-        ()=>2,
-        ()=>2,
-        ()=>2,
-        ()=>2,
+        ()=>2 * simpleCETEffect(36),
+        ()=>2 * simpleCETEffect(37),
+        ()=>2 * simpleCETEffect(38),
+        ()=>2 * simpleCETEffect(39),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(6).add(1),
         ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(6).add(1),
@@ -80,10 +80,10 @@ const EVOLUTION_TREE = {
     ],
 
     charged_effect: [
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(20)),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(21)),
-        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(20).add(1).pow(2).pow(simpleCETEffect(22)),
-        ()=>Decimal.pow(10,simpleCETEffect(23)),
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(20)).pow(simpleCETEffect(36)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(simpleCETEffect(21)).pow(simpleCETEffect(37)),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(20).add(1).pow(2).pow(simpleCETEffect(22)).pow(simpleCETEffect(38)),
+        ()=>Decimal.pow(10,simpleCETEffect(23)).pow(simpleCETEffect(39)),
 
         null,
         null,
@@ -95,30 +95,45 @@ const EVOLUTION_TREE = {
         null,
         null,
 
-        ()=>1.1,
-        ()=>1.1,
-        ()=>4,
-        ()=>1,
+        ()=>1.1 ** simpleCETEffect(36),
+        ()=>1.1 ** simpleCETEffect(37),
+        ()=>4 ** simpleCETEffect(38),
+        ()=>1 * simpleCETEffect(39),
+
+        ()=>2 * simpleCETEffect(36),
+        ()=>2 * simpleCETEffect(37),
+        ()=>2 * simpleCETEffect(38),
+        ()=>2 * simpleCETEffect(39),
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1).pow(simpleCETEffect(36)),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1).pow(simpleCETEffect(37)),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(100).add(1).softcap(10,2,'log').pow(simpleCETEffect(38)),
+        ()=>2 * simpleCETEffect(39),
+
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(2).mul(simpleCETEffect(36)),
+        ()=>CURRENCIES.radium.amount.max(0).add(1).log10().mul(3).mul(simpleCETEffect(37)),
+        ()=>CURRENCIES.humanoid.amount.max(0).add(1).log10().mul(2).mul(simpleCETEffect(38)),
+        ()=>100 * simpleCETEffect(39),
+
+        null,
+        null,
+        null,
+        null,
+
+        null,
+        null,
+        null,
+        null,
 
         ()=>2,
         ()=>2,
         ()=>2,
         ()=>2,
 
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1),
-        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1),
-        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(100).add(1).softcap(10,2,'log'),
-        ()=>2,
-
-        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(2),
-        ()=>CURRENCIES.radium.amount.max(0).add(1).log10().mul(3),
-        ()=>CURRENCIES.humanoid.amount.max(0).add(1).log10().mul(2),
-        ()=>100,
-
-        null,
-        null,
-        null,
-        null,
+        ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1),
+        ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1),
+        ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(2),
+        ()=>10,
 
         null,
         null,
@@ -255,7 +270,9 @@ function updateUnspentFaith() {
 }
 
 function getFaithMultiplier() {
-    let x = isSSObserved('uranus') ? 2 : 1
+    let x = 1
+    if (isSSObserved('uranus')) x *= 2;
+    if (isSSObserved('sun')) x *= 2;
     return x
 }
 
