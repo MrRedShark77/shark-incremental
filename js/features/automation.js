@@ -112,7 +112,7 @@ const AUTOMATION = {
 
         get su() {
             let x = ['m1','m2','m3','m4','m5']
-            if (hasResearch('m10')) x.push('m6','m7','m8','m9');
+            if (hasResearch('m11')) x.push('m6','m7','m8','m9');
             return x
         },
 
