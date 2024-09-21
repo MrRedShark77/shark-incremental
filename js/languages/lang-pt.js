@@ -113,7 +113,7 @@ LANGUAGES.PT = {
         'shark-elo-div': `O ELO do ${toTextStyle('Tubarão','shark')} é<h3>${toTextStyle('0','humanoid','shark-elo')}</h3>.`,
         'shark-rank-div': `O Rank do ${toTextStyle('Tubarão','shark')} é <h3 id="shark-rank">0</h3>.`,
         'shark-rank-req-div': `O próximo rank precisa do ELO do ${toTextStyle('Tubarão','shark')}<h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
-        'shark-rank-note': `Nota: Rank do Tubarão vai ser resetado quando você fazer um reset para Evolução.`,
+        'shark-rank-note': `Nota: Rank do Tubarão vai ser redefinido quando você fazer um reset para Evolução.`,
 
         'option-title-1': "Opções Principais",
         'option-title-2': "Notações",
@@ -176,7 +176,7 @@ LANGUAGES.PT = {
 
         'su-s2-req': "Nível 7",
         'su-s2-name': 'Agilidade do Tubarão',
-        'su-s2-desc': `Aumenta a base do bônus de ${toTextStyle('Peixe','fish')}, referente ao nível do ${toTextStyle('tubarão','shark')} por <b>+1</b> por nível.`,
+        'su-s2-desc': `Aumenta a base do bônus de ${toTextStyle('Peixe','fish')}, referente ao nível do ${toTextStyle('Tubarão','shark')} por <b>+1</b> por nível.`,
 
         'su-s3-req': "Nível 15",
         'su-s3-name': 'Dente do Tubarão',
@@ -386,20 +386,27 @@ LANGUAGES.PT = {
             'dm6': ["Melhorado Gerador de Radiação",`Gerador de ${toTextStyle('Radiação '+icon('radioactive'),'core')} eleva a si mesmo ao expoente de forma reduzida.`],
             'dm7': ["Remanescentes Sombrios",`${toTextStyle("Matéria Negra",'black-hole')} no total impulsiona a geração de ${toTextStyle("Remanescentes",'black-hole')}.`],
 
-            'e7': ["Sunda Trench MK2",`Improve the <b>Indian Ocean</b>’s depth progress significantly.`],
+            'e7': ["Fossa de Sunda MK2",`Melhora o progresso da profundidade do Oceano <b>Indíco Ocean</b> significativamente.`],
 
-            'm5': ["Shark Rank 'onto' Super Mining",`${toTextStyle("Shark",'shark')} Rank boost to mining damage affects super mining damage at a reduced rate.`],
-            'm6': ["The Uranium Shark",`'Shark Exponent' is overpowered.`],
-            'm7': ["Double Remnant Scaling",`The first scaling of ${toTextStyle("Remanescentes",'black-hole')} upgrades is delayed by <b>+100</b>.`],
-            'm8': ["Ultimate Radiation",`The 14th radioactive boost’s effect is improved.`],
+            'm5': ["Rank do Tubarão 'para' Super Mineração",`O impulso ao dano da mineração do rank do ${toTextStyle("Tubarão",'shark')} afeta super dano da mineração de forma reduzida.`],
+            'm6': ["O Tubarão de Urânio",`'Expoente do Tubarão' é poderoso.`],
+            'm7': ["Dobro da Escara de Remanescentes",`A primeira escala das melhorias de ${toTextStyle("Remanescentes",'black-hole')} upgrades is delayed by <b>+100</b>.`],
+            'm8': ["Ultimato da Radiação",`O décimo quarto efeito do impulsulsionador radioativo é melhorado.`],
+            'm9': [`Sem Overflow da Radiação`,`O softcap da produção da ${toTextStyle('Radiação '+icon('radioactive'),'core')} é removido.`],
+            'm10': [`Auto-Reator do Núcleo MK2`,`Auto-Reator do ${toTextStyle('Núcleo','core')} agora aplica a terceira linha dos reatores do ${toTextStyle('Núcleo','core')}.`],
+            'm11': [`Auto-Melhoria da Mineração MK2`,`Auto-Melhoria de Mineração do ${toTextStyle('Tubarão','shark')} agora aplcia ao resto das melhorias de mineração do ${toTextStyle('Tubarão','shark')}.`],
 
             'o1': [`Automação do Observatório`,`Automatiza todas as melhorias de ${toTextStyle('Observatório','observ')} sem gastar. <i>Essa pesquisa não é resetada.</i>`],
-            'o2': [`Afeição Universal do Trocador`,`A melhoria “Intensificador Universal” do ${toTextStyle('Reservatório','reserv')} afeta a base das melhorias “O Espaço”, “Peixe do Espaço”, “Pestígio do Espaço” do ${toTextStyle('Observatório','observ')}.`],
-            'o3': [`Afeição Universal do Trocador II`,`A melhoria “Intensificador Universal” do ${toTextStyle('Reservatório','reserv')} afeta a base das melhorias “O Relativo”, Observável, “Peixe do Espaço II”, e “Prestígio do Espaço II” do ${toTextStyle('Reservatírio','reserv')}.`],
+            'o2': [`Afeição do Trocador Universal`,`A melhoria “Intensificador Universal” do ${toTextStyle('Reservatório','reserv')} afeta a base das melhorias “O Espaço”, “Peixe do Espaço”, “Pestígio do Espaço” do ${toTextStyle('Observatório','observ')}.`],
+            'o3': [`Afeição do Trocador Universal II`,`A melhoria “Intensificador Universal” do ${toTextStyle('Reservatório','reserv')} afeta a base das melhorias “O Relativo”, Observável, “Peixe do Espaço II”, e “Prestígio do Espaço II” do ${toTextStyle('Reservatírio','reserv')}.`],
             
             'r1': [`Automação do Reservatório`,`Automatiza todas as melhorias de ${toTextStyle('Reservatório','reserv')} sem gastar. <i>Essa pesquisa não é resetada.</i>`],
-            'r2': [`Reservatory Improvement`,`Improves ${toTextStyle('Reservatory','reserv')} gain formula even better.`],
-            'r3': [`Reservatory Generation`,`Generates 100% of your ${toTextStyle('Reservatories','reserv')} gained on reset. <i>This research doesn’t get reset.</i>`],
+            'r2': [`Melhoria do Reservatório`,`Melhora ainda mais a formula de ganho do ${toTextStyle('Reservatório','reserv')}.`],
+            'r3': [`Geração de Reservatório`,`Gera 100% dos seus ${toTextStyle('Reservatórios','reserv')} ganhos na redefinição. <i>Essa pesquisa não é resetada.</i>`],
+
+            't1': [`Automação da Trajetoria`,`Automatiza tudas as melhorias de ${toTextStyle('Trajetoria','traject')} sem gastar. <i>Essa pesquisa não é resetada.</i>`],
+            't2': [`Melhoria da Trajetoria`,`Melhora ainda mais a formula de ganho do ${toTextStyle('Trajetoria','traject')}.`],
+            't3': [`Geração de Trajetoria`,`Gera 100% das suas ${toTextStyle('Trajetorias','traject')} ganhas na redefinição. <i>Essa pesquisa não é resetada.</i>`],
         },
 
         // Exploration
@@ -582,20 +589,20 @@ LANGUAGES.PT = {
             ["Ozônio", x=>`Melhore o reator de <b>Oxigênio</b>.`],
             ["Resíduos Radioativos Falsos", x=>`Melhore o reator de <b>Neon</b>.`],
 
-            ["Coluna 1 mais Forte", x=>`As melhorias da primeira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
-            ["Coluna 2 mais Forte", x=>`As melhorias da segunda coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
-            ["Coluna 3 mais Forte", x=>`As melhorias da terceira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
-            ["Coluna 4 mais Forte", x=>`As melhorias da quarta coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`],
+            ["Coluna 1 mais Forte", x=>`As melhorias da primeira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na primeira coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
+            ["Coluna 2 mais Forte", x=>`As melhorias da segunda coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na segunda coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
+            ["Coluna 3 mais Forte", x=>`As melhorias da terceira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na terceira coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
+            ["Coluna 4 mais Forte", x=>`As melhorias da quarta coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na quarta coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
 
-            ["Forja de Peixe", x=>`${toTextStyle('Peixe','fish')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
-            ["Forja de Prestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
-            ["Forja Magmática", x=>`Fragmentos ${toTextStyle('Magmáticos','core')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`],
-            ["Forja Rápida", x=>`Forja é <b>${formatMult(x)}</b> mais rápido.`],
+            ["Forja de Peixe", x=>`${toTextStyle('Peixe','fish')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`, x=>`${toTextStyle('Peixe','fish')} impulsiona os recursos da ${toTextStyle("Constelação",'star')} em <b>${formatMult(x)}</b>.`],
+            ["Forja de Prestígio", x=>`Fragmentos de ${toTextStyle('Prestígio','prestige')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`, x =>`Fragmentos de ${toTextStyle('Prestígio','prestige')} impulsiona os recursos da ${toTextStyle("Constelação",'star')} em <b>${formatMult(x)}</b>.`],
+            ["Forja Magmática", x=>`Fragmentos ${toTextStyle('Magmáticos','core')} deixa forja mais rápido por <b>${formatMult(x)}</b>.`, x=>`Fragmentos ${toTextStyle('Magmáticos','core')} impulsiona os recursos da ${toTextStyle("Constelação",'star')} em <b>${formatMult(x)}</b>.`],
+            ["Forja Rápida", x=>`Forja é <b>${formatMult(x)}</b> mais rápido.`, x=>`Os recursos da ${toTextStyle("Constelação",'star')} são aumentados em <b>${formatMult(x)}</b>.`],
 
-            ["Coluna Verdadeira 1", x=>`Você consegue comprar toda a primeira coluna acima.`],
-            ["Coluna Verdadeira 2", x=>`Você consegue comprar toda a segunda coluna acima.`],
-            ["Coluna Verdadeira 3", x=>`Você consegue comprar toda a terceira coluna acima.`],
-            ["Coluna Verdadeira 4", x=>`Você consegue comprar toda a quarta coluna acima.`],
+            ["Coluna Verdadeira 1", x=>`Você consegue comprar toda a primeira coluna acima.`, x=>`Você consegue comprar toda a primeira coluna carregada.`],
+            ["Coluna Verdadeira 2", x=>`Você consegue comprar toda a segunda coluna acima.`, x=>`Você consegue comprar toda a segunda coluna carregada.`],
+            ["Coluna Verdadeira 3", x=>`Você consegue comprar toda a terceira coluna acima.`, x=>`Você consegue comprar toda a terceira coluna carregada.`],
+            ["Coluna Verdadeira 4", x=>`Você consegue comprar toda a quarta coluna acima.`, x=>`Você consegue comprar toda a quarta coluna carregada.`],
         ],
 
         'evolution-goal-status': (x,y)=>x?"DESBLOQUEADO":y?"BLOQUEADO":"EM PROGRESSO",
@@ -759,20 +766,23 @@ LANGUAGES.PT = {
             [`Poder Supremo`,x=>`As primeiras 12 melhorias de ${toTextStyle("Sobra",'black-hole')} são ${x} mais poderosas, exceto a quarta.`],
             [`Eficiência VI`,x=>`O super dano da mineração é impulsionado em ${x}.`],
             [`Tubarão Sobrenatural`,x=>`O expoente de ${toTextStyle("Homens",'humanoid')}-tubarões é aumentado em ${x}.`],
+
+            [`A Estrela`,x=>`Os recursos da ${toTextStyle("Constelação",'star')} são impulsionados em ${x}.`],
+            [`O Crescimento`,x=>`A base do expoente da ${toTextStyle("Constelação",'star')} é aumentada em ${x}.`],
         ],
 
         'solar-system-list': {
-            'sun':     ["Sol",`???`,`???`],
+            'sun':     ["Sun",`O Sol é uma estrela que está no centro do nosso sistema solar. É composto principalmente de hidrogênio e hélio e é a principal fonte de luz e calor para a Terra e os outros planetas do sistema. O Sol também cria as condições para a vida na Terra, fornecendo fotossíntese e condições climáticas. O Sol é enorme. Seu diâmetro é 109 vezes o diâmetro da Terra, e sua massa é 330.000 vezes a massa da Terra. A distância entre a Terra e o Sol é de 150 milhões de quilômetros, então o Sol parece tão pequeno para nós.`,`Desbloqueia a próxima camada de reinício (NYI). O multiplicador de ${toTextStyle('Fé Sharkoid','humanoid')} é dobrado denovo.`],
             'mercury': ["Mercúrio",`Mercúrio é o menor planeta do sistema solar e o mais próximo do Sol. Ele é nomeado em homenagem ao deus romano antigo do comércio, porque se move pelo céu mais rapidamente do que os outros planetas. Mercúrio é coberto por crateras de impacto e é semelhante à Lua em aparência, indicando uma falta de atividade geológica interna ao longo do último bilhão de anos. O planeta tem quase nenhuma atmosfera, então sua temperatura de superfície varia mais do que a de qualquer outro planeta no sistema solar.`,`As 3 primeiras escalas dos impulsos radioativos são atrasado em ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
             'venus':   ["Vênus",`Vênus é o segundo planeta mais próximo do Sol e o sexto maior do Sistema Solar. É nomeado em homenagem à antiga deusa romana do amor. Vênus possui uma atmosfera densa composta por mais de 96% de dióxido de carbono. A temperatura média da superfície de Vênus é de 735 K (462 °C), tornando-o o planeta mais quente do sistema solar. Vênus não possui satélites naturais. No céu da Terra, é o terceiro corpo celeste mais brilhante, depois do Sol e da Lua.`,`Passivamente gera 100% do atual ${toTextStyle('Homens','humanoid')}-tubarões como ${toTextStyle('Homens','humanoid')}-tubarões, mas auto-${toTextStyle('Homem','humanoid')}-tubarão não mais funciona. Melhora ${toTextStyle('Homem','humanoid')}-tubarão drasticamente, e a terceira escala do rank do ${toTextStyle('Tubarão','shark')} é atrasada em ×2. Multiplica a geração de ${toTextStyle('Observatórios','observ')} em 10.`],
             'earth':   ["Terra",`???`,`???`],
             'mars':    ["Marte" ,`Marte é o quarto planeta mais distante do Sol no Sistema Solar. Ele pertence ao grupo dos planetas terrestres, pois possui uma superfície sólida e um tamanho comparável ao da Terra. O terreno de Marte apresenta características únicas, incluindo crateras de impacto, vulcões, vales, desertos e calotas polares de gelo. Marte possui formações geológicas que se assemelham à erosão causada pela água e minerais que só poderiam ter se formado por exposição prolongada à água. A questão da existência de vida em Marte tem interessado cientistas por séculos.`,`Ganha a habilidade de terraformar qualquer melhoria da árvore da ${toTextStyle('Evolução','humanoid')} para bônus poderosos, mas o custo cresce rápido. Desbloqueia nova automação. Multiplica a geração de ${toTextStyle('Observatórios','observ')} em 10.`],
             'moon':    ["Lua",`Bem-vindo ao Sistema Solar! Você está livre para explorar alguns planetas, mas isso requer observação para recompensas poderosas. Force um reset de singularidade, reiniciando algumas pesquisas e a árvore de evolução (ela retorna depois), mas a redução do buraco negro é forçada para ^0.5, quase todas as características pós-cultivo estão desativadas, e você não pode explorar nenhum oceano. Você pode gerar ${toTextStyle('Observatórios', 'observ')} na base espacial, que ajudam você a progredir mais rápido com suas atualizações. Há dificuldade, que não afeta o progresso, mas as características da base espacial para facilitar o progresso. Vamos começar com a Lua da Terra! Ela é chamada de Luna, mas Theta, originalmente antes da colisão.`,`Desbloqueia a Ascensão da Mineração e novas melhorias de ${toTextStyle('Sobra','black-hole')}. Ascensão da mineração força a redefinição de singularidade para poderosos bônus e vários mínerios.`],
             'jupiter': ["Júpiter",`Júpiter é o maior planeta do Sistema Solar e o quinto mais distante do Sol. É um gigante gasoso com uma massa 2,47 vezes maior do que a massa combinada de todos os outros planetas do Sistema Solar. Júpiter é conhecido desde a antiguidade e é mencionado na mitologia e nas crenças religiosas de diferentes culturas. O nome moderno do planeta vem do nome do antigo deus romano supremo do trovão. A atmosfera de Júpiter é caracterizada por uma série de fenômenos atmosféricos, como tempestades, relâmpagos, auroras e a Grande Mancha Vermelha, uma gigantesca tempestade conhecida desde o século XVII.`,`Desbloqueia mais melhorias de ${toTextStyle('Sobra','black-hole')}. Multiplica denovo a geração de ${toTextStyle('Observatórios','observ')} em 10.`],
-            'saturn':  ["Saturno",`Saturno é o sexto planeta a partir do Sol e o segundo maior planeta do sistema solar, depois de Júpiter. Saturno é classificado como um gigante gasoso porque é composto principalmente de hidrogênio e hélio. O planeta é nomeado em homenagem ao deus romano da agricultura. Saturno é cercado por anéis compostos por partículas de gelo, elementos pesados e poeira. O planeta possui 146 satélites conhecidos, sendo o maior deles Titã. Saturno tem um campo magnético planetário e um sistema de anéis proeminente.`,`Desbloqueia uma nova linha de reatores do ${toTextStyle('Núcleo','core')}. <i>Esses reators não são resetado por Evolução ou depois, mas não são afetados pela melhoria de ${toTextStyle('Sobra','black-hole')} “Meia-vida”.</i>`],
+            'saturn':  ["Saturno",`Saturno é o sexto planeta a partir do Sol e o segundo maior planeta do sistema solar, depois de Júpiter. Saturno é classificado como um gigante gasoso porque é composto principalmente de hidrogênio e hélio. O planeta é nomeado em homenagem ao deus romano da agricultura. Saturno é cercado por anéis compostos por partículas de gelo, elementos pesados e poeira. O planeta possui 146 satélites conhecidos, sendo o maior deles Titã. Saturno tem um campo magnético planetário e um sistema de anéis proeminente.`,`Desbloqueia uma nova linha de reatores do ${toTextStyle('Núcleo','core')}. <i>Esses reators não são redefinido por Evolução ou depois, mas não são afetados pela melhoria de ${toTextStyle('Sobra','black-hole')} “Meia-vida”.</i>`],
             'uranus':  ["Urano",`Urano é o sétimo planeta mais distante do Sol no sistema solar. Foi descoberto em 1781 pelo astrônomo inglês William Herschel e nomeado em homenagem ao deus grego do céu, Urano. Urano foi o primeiro planeta descoberto na era moderna e com a ajuda de um telescópio. Urano é o terceiro maior planeta em diâmetro e o quarto maior em massa no sistema solar. É composto principalmente de gelo e rocha, e sua atmosfera contém hidrogênio, hélio e metano. Urano possui um sistema de anéis e 28 satélites. O eixo de rotação de Urano está "deitado de lado", fazendo com que o planeta orbite o Sol, alternadamente voltando seus polos norte e sul em direção a ele.`, `Remova a superpopulação do ${toTextStyle('Tubarão','shark')}. O multiplicador de ${toTextStyle('Fé Sharkoid','humanoid')} é dobrada.`],
             'neptune': ["Netuno",`Netuno é o oitavo e mais distante planeta do Sistema Solar. Sua distância média do Sol é de 4,5 bilhões de quilômetros. Netuno é um dos planetas gigantes, com 17 vezes a massa da Terra. É o quarto em diâmetro equatorial, sendo 3,9 vezes maior que a Terra. A atmosfera de Netuno é semelhante às camadas gasosas de outros planetas principais do sistema solar. Ela é composta principalmente de hidrogênio e hélio, com misturas de metano, água, amônia e outros compostos. Netuno é considerado um dos planetas mais frios do sistema solar, com uma temperatura média que varia em torno de -200 °C. A atmosfera de Netuno possui os ventos mais fortes de qualquer planeta do sistema solar.`,`Desbloqueia a ${toTextStyle('Constelação','star')} que melhora o ${toTextStyle('Buraco Negro','black-hole')} ainda mais para uma recompensa poderosa.`],
-            'pluto':   ["Plutão",`???`,`???`],
+            'pluto':   ["Pluto",`Plutão é o maior planeta anão conhecido no sistema solar, um objeto transnetuniano e o décimo corpo celeste mais massivo que orbita o Sol, após os oito planetas e Éris. É composto de rocha e gelo, tendo uma massa cerca de seis vezes menor que a massa da Lua e um volume aproximadamente três vezes menor. Plutão possui uma grande excentricidade em sua órbita e uma grande inclinação em relação ao plano da eclíptica. Por causa disso, ele se aproxima do Sol a uma distância de 29,7 unidades astronômicas (a.u.) e se afasta a 49,3 a.u.`,`Desbloqueia mais melhorias de ${toTextStyle('Remanescente','black-hole')} denovo. Os recursos da ${toTextStyle('Constelação','star')} não são mais redefinidos.`],
         },
         
         'build-rocket-part': x => `Construa ${x} Partes do Foguete.`,
@@ -783,13 +793,55 @@ LANGUAGES.PT = {
         'observ-progress': x => `Alcançe <b>${x}</b> ${toTextStyle('Observatórios','observ')} no total`,
         'observ-cond': `Completa ${toTextStyle('Observação','observ')}`,
 
+        'space-base-upgrades': {
+            'o1': [`O Espaço`,x=>`${toTextStyle('Observatórios','observ')} são impulsionados em ${x}.`],
+            'o2': [`Peixe Espacial`,x=>`${toTextStyle('Peixe','fish')} é impulsionado em ${x}.`],
+            'o3': [`Prestígio Espacial`,x=>`${toTextStyle('Fragmentos de Prestígio','prestige')} é impulsionado em ${x}.`],
+            'o4': [`Núcleo Espacial`,x=>`${toTextStyle('Fragmentos Magmáticos','core')} é impulsionado em ${x}.`],
+            'o5': [`Radiação Espacial`,x=>`A produção de ${toTextStyle('Radiação '+icon("radioactive"),'core')} é impulsionado em ${x}.`],
+            
+            'e1': [`Trocador de Peixe`,x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`],
+            'e2': [`Trocador de Prestígio`,x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`],
+            'e3': [`Trocador do Núcleo`,x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`],
+            'e4': [`Observa o Reservatório`,x=>`${toTextStyle('Reservatórios','reserv')} é impulsionado em ${x}.`],
+            'e5': [`Trocador Universal`,x=>`A base das melhorias “Exchanger”, de ${toTextStyle('Observatórios','observ')} é aumentado em ${x}.`],
+            'e6': [`Trajetória Reversa`,x=>`${toTextStyle('Trajetórias','traject')} é impulsionado em ${x}.`],
+
+            'r1': [`O Relativo`,x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`],
+            'r2': [`Observável`,x=>`${toTextStyle('Reservatórios','reserv')} é impulsionado em ${x}.`],
+            'r3': [`Peixe Espacial II`,x=>`${toTextStyle('Peixe','fish')} é impulsionado em ${x}.`],
+            'r4': [`Prestígio Espacial II`,x=>`${toTextStyle('Fragmentos de Prestígio','prestige')} é impulsionado em ${x}.`],
+            'r5': [`Radiação Espacial II`,x=>`A produção de ${toTextStyle('Radiação '+icon("radioactive"),'core')} é impulsionado em ${x}.`],
+
+            't1': [`O Transporte`,x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`],
+            't2': [`Reservável`,x=>`${toTextStyle('Reservatórios','reserv')} é impulsionado em ${x}.`],
+            't3': [`Observável II`,x=>`${toTextStyle('Trajetórias','traject')} é impulsionado em ${x}.`],
+            't4': [`Peixe Espacial III`,x=>`${toTextStyle('Peixe','fish')} é impulsionado em ${x}.`],
+            't5': [`Radiação Escalada`,x=>`As 3 primeiras escalas do impulso radioativo são atrasadas em ${x}.`],
+            't6': [`O Transporte II`,x=>`A base do "O Transporte” é aumentado em ${x}.`],
+        },
+
+        'experiment-reset': `Reseta todos os conteúdos anteriores relacionados ao espaço, mas aumenta o tier do ${toTextStyle('Experimento','experiment')} para um impulso poderoso.`,
+        'experiment-boosts': [
+            x=>`${toTextStyle('Observatórios','observ')} é impulsionado em ${x}.`,
+            x=>`${toTextStyle('Reservatórios','reserv')} é impulsionado em ${x}.`,
+            x=>`${toTextStyle('Trajetórias','traject')} é impulsionado em ${x}.`,
+        ],
+
+        'constellation-boosts': [
+            [`Peixe Estelar`, x=>`Impulsiona a quantidade de ${toTextStyle('Peixe','fish')} em ${x} para o expoente.`, x=>`Impulsiona a geração de ${toTextStyle('Observatórios','observ')} em ${x}.`],
+            [`Prestígio Estelar`, x=>`Impulsiona o ganho de Fragmentos de ${toTextStyle('Prestígio','prestige')} em ${x} para o expoente.`, x=>`Impulsiona o ganho de ${toTextStyle('Reservatórios','reserv')} em ${x}.`],
+            [`Fragmentos Estelares`, x=>`Impulsiona o ganho de Fragmentos ${toTextStyle('Magmáticos','core')} em ${x}.`, x=>`Impulsiona o ganho de ${toTextStyle('Trajetórias','traject')} em ${x}.`],
+            [`Tubarões Estelares`, x=>`Impulsiona o expoente de ${toTextStyle('Homens','humanoid')}-tubarões em ${x}.`, x=>`Reduz o requerimento do tier do ${toTextStyle('Experimento','experiment')} em ${x}`],
+        ],
+
         // Automation
 
         'auto-shark-name': `Auto melhoria do nível de ${toTextStyle("Tubarão",'shark')}`,
         'auto-su-name': `Auto melhoria '${toTextStyle("Peixe","fish")}' de ${toTextStyle("Tubarão",'shark')}  `,
         'auto-spu-name': `Auto melhoria '${toTextStyle("Prestígio","prestige")}' de ${toTextStyle("Tubarão",'shark')} `,
         'auto-eu-name': `Auto melhoria de Exploração`,
-        'auto-core_reactor-name': `Auto-${toTextStyle("Núcleo","core")} do Reator`,
+        'auto-core_reactor-name': `Auto-Reator do ${toTextStyle("Núcleo","core")}`,
         'auto-core_radiation-name': `Auto-Radiação do ${toTextStyle("Núcleo","core")}`,
         'auto-radioactive_boosts-name': `Auto-Impulsionadores Radioativos`,
         'auto-mining_upgs-name': `Auto-Melhoria de Mineração do ${toTextStyle("Tubarão","shark")}`,
@@ -839,6 +891,9 @@ LANGUAGES.PT = {
 
         'progress-19-text': r => `Alcançe ${format(r)} ${toTextStyle('Matéria Negra','black-hole')} no total`,
 
+        'progress-20-text': r => `Alcançe ${format(r)} ${toTextStyle('Peixe','fish')} no total`, 
+        get 'progress-20-cond-text'() { return `???` },
+
         'maxed-progress': "Todas as funcionalidades desbloqueadas!",
 
         // Reset
@@ -883,6 +938,16 @@ LANGUAGES.PT = {
             Porémr, cada ${e} reduz os recursos um pouco, mas desbloqueia benefícios como marcos importantes.<br>
             <img src="textures/black-hole.png"><br>
             Você tem certeza que você quer entrar em outro universo?
+            `
+        },
+        get 'reset-sacrifice-message'() {
+            let e = toTextStyle('Sacrificio','black-hole'), c = toTextStyle('Buraco Negro','black-hole')
+            return `
+            <h3>O ${e}</h3><br>
+            O ${e} é a pequena camada de reinício.
+            Sacrificar seus tubarões redefine tudo que ${c} redefine, também os atuais buracos negros (exceto os primeiros 7 marcos importantes), remanescentes, melhorias de remanescente, e algumas pesquisas para ${toTextStyle('Matéria Negra','black-hole')}.<br>
+            <img src="textures/sacrifice.png"><br>
+            Você tem certeza que quer sacrificar seus tubarões?
             `
         },
         
@@ -936,6 +1001,7 @@ LANGUAGES.PT = {
         'shark-bonus-prestige': x => `${formatMult(x)} Fragmento de ${toTextStyle('Prestígio','prestige')} `,
         'shark-bonus-core': x => `${formatMult(x)}  Fragmentos ${toTextStyle('Magmáticos','core')}`,
 
+        'total': "Total",
         'level': "Nível",
         'effect': "Efeito",
         'cost': "Custo",
@@ -943,6 +1009,8 @@ LANGUAGES.PT = {
         'require': "Requer",
         'next-at': "Próximo em",
         'depth': "Profundidade",
+        'you-have': "You have",
+
         
         'research-afford': bool => bool ? "Comprar" : "Não se pode comprarr",
         'research-bought': bool => bool ? `<b>Comprado</b>` : `<b>Não comprado</b>`,
@@ -965,7 +1033,7 @@ LANGUAGES.PT = {
         },
 
         'radio-desc' : {
-            'notation': ['Notação de formatação',['Científico','Padrão','Científico mixo']],
+            'notation': ['Notação de formatação',['Científico','Padrão','Científico mixo', 'Logaritmo']],
             'comma-format': ['Maximas OdM com vírgulas',['3','6','9','12','15']],
             'autosave': ['Autosave',['Desabilitado','Habilitado']],
             'autosave-time': ['Intervalo de autosave ',['15s','30s','60s','120s']],
