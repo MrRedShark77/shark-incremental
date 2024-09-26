@@ -152,7 +152,8 @@ LANGUAGES.PT = {
         'mining-tier-div': `Tier da Mineração: <h3 id="mining-tier">0</h3>`,
         'mining-ascend-div': `Ascensão da Mineração: <h3 id="mining-ascend">0</h3>`,
         'mining-note': `Observação: Se você ficar preso enquanto minerar minério com alta saúde (levando muito tempo), você deve recarregar a página.`,
-        'mining-tier-undo-btn': `Reduz o Tier de Mineração por 1 se você ficar preso enquanto minerar.`,
+        'mining-tier-undo-btn': `Reduz o Tier de Mineração em 1 se você ficar preso enquanto minerar.`,
+        'mining-ascend-undo-btn': `Reduz a Ascensão da Mineração em 1 se você ficar preso enquanto minerar.`,
 
         'black-hole-button': `Porque você maximizou todos os aceleradores de partículas, você precisa formar um buraco negro caso entre em outro universo.`,
         'black-hole-html': `Você formou <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> buracos negros, que reduz o expoente de peixe & fragmento de prestígio e o multiplicador de fragmentos magmáticos por<h3 id="black-hole-effect">^???</h3>.`,
@@ -282,7 +283,7 @@ LANGUAGES.PT = {
         'research-e5-desc': `Automaticamente ganha a base do Oceano Indiano sem precisar explorar. Melhora o efeito de ${toTextStyle('Alga','kelp')} denovo.`,
 
         'research-e6-name': "Fossa de Sunda",
-        'research-e6-desc': `A profundidade do <b>Oceano Indiano</b> não tem mais limite e faz o seu efeito mais forte depois.`,
+        'research-e6-desc': `A profundidade do <b>Oceano Índico</b> não tem mais limite e faz o seu efeito mais forte depois.`,
 
         'research-c1-name': "Mantedor C de pesquisa",
         'research-c1-desc': `Mantenha ${toTextStyle("Pesquisa",'prestige')} ao entrar no ${toTextStyle('Núcleo','core')}.`,
@@ -290,10 +291,10 @@ LANGUAGES.PT = {
         'research-c2-name': "Mantedor C de exploração",
         'research-c2-desc': `Mantenha os primeiros <b>X</b> oceanos desbloqueados e a profundidade deles ao entrar no  ${toTextStyle('Núcleo','core')}.`,
 
-        'research-c3-name': "Afeição do neon I",
+        'research-c3-name': "Afeição do Neon I",
         'research-c3-desc': `<b>Neon</b> agora afeta 'Dente de tubarão', 'Expoente de tubarão', and 'Tubarão escalonado'.`,
 
-        'research-c4-name': "Nickel Aprimorado",
+        'research-c4-name': "Níquel Aprimorado",
         'research-c4-desc': `O poder do efeito do <b>Níquel</b> é <b>dobrado</b> `,
 
         'research-c5-name': "Impulso Adicional ao Núcleo",
@@ -360,7 +361,7 @@ LANGUAGES.PT = {
         'research-f6-desc': `Os primeiros 9 minérios são impulsionados pelo tier da mineração.`,
 
         'research-f7-name': "Melhor ELO do Tubarão",
-        'research-f7-desc': `A base de homens-tubarões na formula do ELO do ${toTextStyle("Tubarão",'shark')} é melhorado para <b>x</b> to <b>2<sup>x</sup>-1</b>.`,
+        'research-f7-desc': `A base de homens-tubarões na formula do ELO do ${toTextStyle("Tubarão",'shark')} é melhorado de <b>x</b> para <b>2<sup>x</sup>-1</b>.`,
 
         'research-f8-name': "Vida do Minério mais Fraco",
         'research-f8-desc': `O primeiro efeito do tier de mineração é reduzido.`,
@@ -390,11 +391,11 @@ LANGUAGES.PT = {
 
             'm5': ["Rank do Tubarão 'para' Super Mineração",`O impulso ao dano da mineração do rank do ${toTextStyle("Tubarão",'shark')} afeta super dano da mineração de forma reduzida.`],
             'm6': ["O Tubarão de Urânio",`'Expoente do Tubarão' é poderoso.`],
-            'm7': ["Dobro da Escara de Remanescentes",`A primeira escala das melhorias de ${toTextStyle("Remanescentes",'black-hole')} upgrades is delayed by <b>+100</b>.`],
-            'm8': ["Ultimato da Radiação",`O décimo quarto efeito do impulsulsionador radioativo é melhorado.`],
+            'm7': ["Dobro da Escara de Remanescentes",`A primeira escala das melhorias de ${toTextStyle("Remanescentes",'black-hole')} upgrades é atrasada em <b>+100</b>.`],
+            'm8': ["Ultimato da Radiação",`O décimo quarto efeito do impulsionador radioativo é melhorado.`],
             'm9': [`Sem Overflow da Radiação`,`O softcap da produção da ${toTextStyle('Radiação '+icon('radioactive'),'core')} é removido.`],
             'm10': [`Auto-Reator do Núcleo MK2`,`Auto-Reator do ${toTextStyle('Núcleo','core')} agora aplica a terceira linha dos reatores do ${toTextStyle('Núcleo','core')}.`],
-            'm11': [`Auto-Melhoria da Mineração MK2`,`Auto-Melhoria de Mineração do ${toTextStyle('Tubarão','shark')} agora aplcia ao resto das melhorias de mineração do ${toTextStyle('Tubarão','shark')}.`],
+            'm11': [`Auto-Melhoria da Mineração MK2`,`Auto-Melhoria de Mineração do ${toTextStyle('Tubarão','shark')} agora aplica ao resto das melhorias de mineração do ${toTextStyle('Tubarão','shark')}.`],
 
             'o1': [`Automação do Observatório`,`Automatiza todas as melhorias de ${toTextStyle('Observatório','observ')} sem gastar. <i>Essa pesquisa não é resetada.</i>`],
             'o2': [`Afeição do Trocador Universal`,`A melhoria “Intensificador Universal” do ${toTextStyle('Reservatório','reserv')} afeta a base das melhorias “O Espaço”, “Peixe do Espaço”, “Pestígio do Espaço” do ${toTextStyle('Observatório','observ')}.`],
@@ -457,7 +458,7 @@ LANGUAGES.PT = {
         ],
 
         'explore-4-name': `Oceano Índico`,
-        'explore-4-desc': `Você está preso nos primeiros 4 oceanos ativados, e seu expoente do ${toTextStyle('Peixe','fish')} é enraizados em 0.75.`,
+        'explore-4-desc': `Você está preso nos primeiros 4 oceanos ativados, e seu expoente do ${toTextStyle('Peixe','fish')} é enraizado em 0.75.`,
         'explore-4-milestone': [
             `Reduz o limite da radiação em /1,000.`,
             `Aumenta o recurso e a profundidade de progresso em 1.25 elevado à raiz quadrada do nível de ${toTextStyle('Tubarão','shark')} .`,
@@ -579,15 +580,15 @@ LANGUAGES.PT = {
             ['Sorte do Tubarão', x=>`${toTextStyle('Homens','humanoid')}-Tubarões impulsiona ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} em <b>+${format(x)}</b>`, x=>`${toTextStyle('Homens','humanoid')}-Tubarões impulsiona a ${toColoredText('Super Fortuna da Mineração '+icon('luck'),'orange')} em <b>+${format(x)}</b>.`],
             ['Pura Sorte', x=>`A ${toTextStyle('Fortuna da Mineração '+icon('luck'),'gold')} é aumentada em <b>+${format(x)}</b>.`, x=>`A ${toColoredText('Super Fortuna da Mineração '+icon('luck'),'orange')} é aumentada em <b>+${format(x)}</b>.`],
 
-            ["Ferro Melhorado", x=>`Melhora a construção do <b>Ferro</b>.`],
-            ["Níquel Melhorado", x=>`Melhora a construção do <b>Níquel</b>.`],
-            ["Oxigênio Melhorado", x=>`Melhora a construção do <b>Oxigênio</b>.`],
-            ["Neon Melhorado", x=>`Melhora a construção do <b>Neon</b>.`],
+            ["Ferro Melhorado", x=>`Melhora a construção do <b>Ferro</b>.`, x=>`Melhora o reator do <b>Enxofre</b> significativamente.`],
+            ["Níquel Melhorado", x=>`Melhora a construção do <b>Níquel</b>.`, x=>`Melhora o reator do <b>Silício</b> significativamente.`],
+            ["Oxigênio Melhorado", x=>`Melhora a construção do <b>Oxigênio</b>.`, x=>`Melhora o reator do <b>Nitrogênio</b> significativamente.`],
+            ["Neon Melhorado", x=>`Melhora a construção do <b>Neon</b>.`, x=>`Melhora o reator do <b>Hélio</b> significativamente.`],
 
-            ["Ferro Irônico", x=>`Melhore o reator de <b>Ferro</b>.`],
-            ["Cofrinho", x=>`Melhore o reator de <b>Níquel</b>.`],
-            ["Ozônio", x=>`Melhore o reator de <b>Oxigênio</b>.`],
-            ["Resíduos Radioativos Falsos", x=>`Melhore o reator de <b>Neon</b>.`],
+            ["Ferro Irônico", x=>`Melhore o reator de <b>Ferro</b>.`, x=>`Melhora o reator do <b>Magnésio</b> significativamente.`],
+            ["Cofrinho", x=>`Melhore o reator de <b>Níquel</b>.`, x=>`Melhora o reator do <b>Sódio</b> significativamente.`],
+            ["Ozônio", x=>`Melhore o reator de <b>Oxigênio</b>.`, x=>`Melhora o reator do <b>Fósforo</b> significativamente.`],
+            ["Resíduos Radioativos Falsos", x=>`Melhore o reator de <b>Neon</b>.`, x=>`Melhora o reator do <b>Crômio</b> significativamente.`],
 
             ["Coluna 1 mais Forte", x=>`As melhorias da primeira coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na primeira coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
             ["Coluna 2 mais Forte", x=>`As melhorias da segunda coluna acima dessa melhoria são <b>${formatPercent(x-1)}</b> mais forte.`, x=>`As melhorias acima, incluindo carregadas, na segunda coluna são <b>${formatPercent(x-1)}</b> mais fortes.`],
@@ -772,7 +773,7 @@ LANGUAGES.PT = {
         ],
 
         'solar-system-list': {
-            'sun':     ["Sun",`O Sol é uma estrela que está no centro do nosso sistema solar. É composto principalmente de hidrogênio e hélio e é a principal fonte de luz e calor para a Terra e os outros planetas do sistema. O Sol também cria as condições para a vida na Terra, fornecendo fotossíntese e condições climáticas. O Sol é enorme. Seu diâmetro é 109 vezes o diâmetro da Terra, e sua massa é 330.000 vezes a massa da Terra. A distância entre a Terra e o Sol é de 150 milhões de quilômetros, então o Sol parece tão pequeno para nós.`,`Desbloqueia a próxima camada de reinício (NYI). O multiplicador de ${toTextStyle('Fé Sharkoid','humanoid')} é dobrado denovo.`],
+            'sun':     ["Sol",`O Sol é uma estrela que está no centro do nosso sistema solar. É composto principalmente de hidrogênio e hélio e é a principal fonte de luz e calor para a Terra e os outros planetas do sistema. O Sol também cria as condições para a vida na Terra, fornecendo fotossíntese e condições climáticas. O Sol é enorme. Seu diâmetro é 109 vezes o diâmetro da Terra, e sua massa é 330.000 vezes a massa da Terra. A distância entre a Terra e o Sol é de 150 milhões de quilômetros, então o Sol parece tão pequeno para nós.`,`Desbloqueia a próxima camada de reinício (NYI). O multiplicador de ${toTextStyle('Fé Sharkoid','humanoid')} é dobrado denovo.`],
             'mercury': ["Mercúrio",`Mercúrio é o menor planeta do sistema solar e o mais próximo do Sol. Ele é nomeado em homenagem ao deus romano antigo do comércio, porque se move pelo céu mais rapidamente do que os outros planetas. Mercúrio é coberto por crateras de impacto e é semelhante à Lua em aparência, indicando uma falta de atividade geológica interna ao longo do último bilhão de anos. O planeta tem quase nenhuma atmosfera, então sua temperatura de superfície varia mais do que a de qualquer outro planeta no sistema solar.`,`As 3 primeiras escalas dos impulsos radioativos são atrasado em ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
             'venus':   ["Vênus",`Vênus é o segundo planeta mais próximo do Sol e o sexto maior do Sistema Solar. É nomeado em homenagem à antiga deusa romana do amor. Vênus possui uma atmosfera densa composta por mais de 96% de dióxido de carbono. A temperatura média da superfície de Vênus é de 735 K (462 °C), tornando-o o planeta mais quente do sistema solar. Vênus não possui satélites naturais. No céu da Terra, é o terceiro corpo celeste mais brilhante, depois do Sol e da Lua.`,`Passivamente gera 100% do atual ${toTextStyle('Homens','humanoid')}-tubarões como ${toTextStyle('Homens','humanoid')}-tubarões, mas auto-${toTextStyle('Homem','humanoid')}-tubarão não mais funciona. Melhora ${toTextStyle('Homem','humanoid')}-tubarão drasticamente, e a terceira escala do rank do ${toTextStyle('Tubarão','shark')} é atrasada em ×2. Multiplica a geração de ${toTextStyle('Observatórios','observ')} em 10.`],
             'earth':   ["Terra",`???`,`???`],
