@@ -94,7 +94,7 @@ LANGUAGES.KO = {
         'tab-shark-rank': toTextStyle('상어','shark') + " 랭크",
         'tab-evolution-tree': toTextStyle('진화','humanoid') + " 트리",
         'tab-evolution-goal': toTextStyle('진화','humanoid') + " 목표",
-        'tab-cultivation': "채굴",
+        'tab-cultivation': "채광",
         'tab-forge': "용광로",
         'tab-particle-accel': "입자 가속기",
 
@@ -122,7 +122,7 @@ LANGUAGES.KO = {
         'offline-speed': "오프라인 시간<br>계산을 가속하기",
         'offline-done': "완료됨",
 
-        'radioactive-div': `${toTextStyle('핵','core')}은  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 을 생산함 <span id="radioactive-gain"></span>.`,
+        'radioactive-div': `${toTextStyle('핵','core')}을  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 만큼 생산함 <span id="radioactive-gain"></span>.`,
         get 'radioactive-summary'() {
             var c = toTextStyle('핵','core'), rf = toTextStyle('생선'+icon("radioactive"),'fish')
             return `
@@ -155,7 +155,7 @@ LANGUAGES.KO = {
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 티어를 1 내리세요`,
         'mining-ascend-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 승천을 1 내리세요`,
 
-        'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
+        'black-hole-button': `모든 입자 가속기가 100%가 되었기\n때문에, 다른 우주에 진입하기 위한\n블랙홀을 만들어야 합니다.`,
         'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 물고기와 환생 파편의 지수, 그리고 마그마 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
 
         'remnant-html': `<h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 개의 잔재물을 가지고 있습니다.`,
@@ -595,9 +595,9 @@ LANGUAGES.KO = {
             ["강해진 열 3", x=>`세 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`, x=>`이 트리 위에 있는 세 번째 줄의 모든 트리와 강화된 트리가 <b>${formatPercent(x-1)}</b> 만큼 강해집니다.`],
             ["강해진 열 4", x=>`네 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`, x=>`이 트리 위에 있는 네 번째 줄의 모든 트리와 강화된 트리가 <b>${formatPercent(x-1)}</b> 만큼 강해집니다.`],
 
-            ["물고기 용광로", x=>`${toTextStyle('물고기','fish')}가 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('물고기','fish')}가 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
-            ["환생 용광로", x=>`${toTextStyle('환생','prestige')} 파편이 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('환생','prestige')} 파편이 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
-            ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('마그마','core')} 조각이 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["물고기 용광로", x=>`${toTextStyle('물고기','fish')}가 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle("Constellation",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["환생 용광로", x=>`${toTextStyle('환생','prestige')} 파편이 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle("Constellation",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle("Constellation",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
             ["빠른 용광로", x=>`재련이 <b>${formatMult(x)}</b> 만큼 빨라집니다.`, x=>`${toTextStyle("별자리",'star')} 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어납니다.`],
 
             ["진정한 열 1", x=>`진화 트리의 첫 번째 열을 제한 없이 구매할 수 있습니다.`, x=>`강화된 트리의 첫 번째 열을 제한 없이 구매할 수 있습니다.`],
@@ -660,7 +660,7 @@ LANGUAGES.KO = {
 
         'mined-resources-text': `채굴한 자원들`,
         'mining-tier': `채광 티어`,
-        'next-mining-tier': `<b>채광 티어</b>에서`,
+        'next-mining-tier': `<b>채광 티어</b>:`,
         'mining-tier-reset': `<b>채광 티어</b>를 올리는 대신 광석의 체력과 양이 증가합니다.`,
         'mining-tier-ore-unlock': x=>`${x} 광석을 해금합니다.`,
         'mining-tier-ore-generation': x=>`더 이상 ${x} 광석이 나타나지 않습니다, 대신 해당 광석을 채광 속도와 행운에 기반해 자동으로 생성됩니다.`,
@@ -695,9 +695,9 @@ LANGUAGES.KO = {
             'tree': ['특별한 나무',`새로운 ${toTextStyle('진화','humanoid')} 트리의 행을 해금합니다.`],
             'adv_research': ['고급 연구',`새로운 연구를 해금합니다.`],
             'auto': ['고급 자동화',`새로운 자동화를 해금합니다.`],
-            'shark': ['더 멀은 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
+            'shark': ['더 먼 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
             'refined_shard': ['충전된 파편',`${toTextStyle('환생','prestige')} 파편의 지수를 증가시킵니다.`],
-            'wormhole': ['웜홀',`새로운 콘텐츠인 입자 가속기를 해금합니다.`],
+            'wormhole': ['웜홀',`새 입자 가속기를 해금합니다.`],
             'matter': ['물질 변환기',`${toTextStyle('잔재물','black-hole')} 획득량을 늘립니다.`],
         },
         'forge-progress': (x,s) => x ? `<b>${x}</b> 재련 중... <b>${s}</b>` : `용광로에서 제작을 하고 있지 않습니다.`,
@@ -719,9 +719,9 @@ LANGUAGES.KO = {
         // Singularity / 특이점
 
         'black-hole-texts': [
-            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
-            `평행 우주에서는 어떠셨나요? 아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
-            `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요? 이제 당신을 엄청난 고난에 넣을 차례입니다!`,
+            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만\n조금 복잡합니다..`,
+            `평행 우주에서는 어떠셨나요?\n아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
+            `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요?\n이제 당신을 엄청난 고난에 넣을 차례입니다!`,
             `진짜로..`,
             `...`,
             `그만둬!`,
@@ -891,7 +891,7 @@ LANGUAGES.KO = {
 
         'progress-19-text': r => `총 ${format(r)} 개의 ${toTextStyle('암흑물질','black-hole')}에 도달하세요`,
 
-        'progress-20-text': r => `chd ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        'progress-20-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
         get 'progress-20-cond-text'() { return `???` },
 
         'maxed-progress': "모든 콘텐츠를 해금함!",
@@ -935,7 +935,7 @@ LANGUAGES.KO = {
             <h3>${e}</h3><br>
             ${e} 은 네 번째 환생 레이어 입니다.
             ${e}을 형성하는 것은 ${c} 처럼 모든것을 초기화 시킵니다, 이는 상어 랭크, 휴머노이드 상어, 진화 트리, 신앙, 진화 목표, 채광, 재련, 입자 가속기, 몇몇 연구, 몇몇 자동화, 그리고 조금의 게임 프로그래션을 포함합니다.
-            ${e} 을 만드는 것은 자원 획득을 감소 시키며, 하지만 목표처럼 새로운 이득이 있습니다.<br>
+            ${e} 을 만드는 것은 자원 획득을\n감소 시키며, 하지만 목표처럼 새로운 이득이 있습니다.<br>
             <img src="textures/black-hole.png"><br>
             정말로 다른 우주에 진입하겠습니까?
             `
