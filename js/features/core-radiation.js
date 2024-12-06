@@ -10,9 +10,13 @@ const CORE_RAD = {
     gain() {
         let m = tmp.explore_eff[4] ?? [1,1]
 
-        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).pow(getPAEffect(0)).pow(m[1]).pow(spaceBaseUpgEffect('o5')).pow(spaceBaseUpgEffect('r5'))
+        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0])
+        
+        x = x.pow(getPAEffect(0)).pow(m[1]).pow(spaceBaseUpgEffect('o5')).pow(spaceBaseUpgEffect('r5')).pow(constellationBoostEffect(4,false))
 
         if (!hasResearch('m9')) x = x.overflow('ee18',0.5);
+
+        x = expPow(x,getNucleobaseEffect('guanine',2));
 
         return x
     },
@@ -88,7 +92,7 @@ const CORE_RAD = {
         },{
             req: 1,
             effect: (r,b)=>{
-                let x = expPow(r.add(1),1/3).pow(b.div(4).add(1)).pow(getCRBoost(13))
+                let x = expPow(r.add(1),1/3).pow(b.div(4).add(1)).pow(getCRBoost(13)).overflow('eee9',0.5,2)
 
                 return x
             },

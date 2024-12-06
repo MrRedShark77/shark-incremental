@@ -102,6 +102,11 @@ const MINING_TIER = {
 
         return x.ceil()
     },
+    get ascend_bulk() {
+        var x = player.humanoid.mining_tier.mul(10).root(2).sub(100).div(5).scaleAll("mining_ascend",true)
+
+        return x.floor().add(1)
+    },
 
     get bonus() {
 
@@ -111,7 +116,10 @@ const MINING_TIER = {
         
         var x = [1,1]
 
-        if (t.gte(1)) x = [Decimal.pow(4,player.singularity.best_bh.gte(5)?t:t.scale(20,hasResearch("f8") ? 1.8 : 2,'P')),Decimal.pow(5,t_m4)]
+        if (t.gte(1)) {
+            if (!player.hadron.starter_upgs.includes(4)) x[0] = Decimal.pow(4,player.singularity.best_bh.gte(5)?t:t.scale(20,hasResearch("f8") ? 1.8 : 2,'P'));
+            x[1] = Decimal.pow(5,t_m4)
+        }
 
         if (t.gte(4)) x[2] = Decimal.pow(3,t_m4.sub(3));
         if (t.gte(7)) x[3] = Decimal.pow(4,t_m4.sub(6));
@@ -121,7 +129,7 @@ const MINING_TIER = {
         if (t.gte(25)) x[7] = Decimal.pow(2,t.sub(24));
 
         if (a.gte(1)) x[8] = Decimal.pow(1.25,a);
-        if (a.gte(2)) x[9] = Decimal.pow(4,a.sub(1));
+        if (!player.hadron.starter_upgs.includes(4) && a.gte(2)) x[9] = Decimal.pow(4,a.sub(1));
         if (a.gte(2)) x[10] = Decimal.pow(5,a.sub(1));
         if (a.gte(4)) x[11] = Decimal.pow(3,a.sub(3));
         if (a.gte(7)) x[12] = Decimal.pow(4,a.sub(6));
@@ -133,7 +141,7 @@ const MINING_TIER = {
     upgrade(bulking=false) {
         if (CURRENCIES.stone.amount.gte(this.require)) {
             let bulk = player.humanoid.mining_tier.add(1)
-            if (bulking) bulk = bulk.max(this.bulk)
+            if (bulking) bulk = bulk.max(this.bulk);
 
             player.humanoid.mining_tier = bulk
 
@@ -146,13 +154,14 @@ const MINING_TIER = {
             }
         }
     },
-    ascend() {
+    ascend(bulking=false) {
         if (isSSObserved('moon') && player.humanoid.mining_tier.gte(this.ascend_require)) {
             let bulk = player.humanoid.mining_ascend.add(1)
+            if (bulking) bulk = bulk.max(this.ascend_bulk);
 
             player.humanoid.mining_ascend = bulk
 
-            RESETS["black-hole"].doReset()
+            if (!player.hadron.starter_upgs.includes(4)) RESETS["black-hole"].doReset();
         }
     },
     undo() {
@@ -207,7 +216,7 @@ var ores_grid = []
 var mine_time = E(0)
 
 function reloadOres() {
-    if (ores_grid.length >= 8) return
+    if (player.hadron.starter_upgs.includes(4) || ores_grid.length >= 8) return
 
     var mf = tmp.mining_fortune.div(100)
     var smf = tmp.super_mining_fortune.div(100)
@@ -270,10 +279,12 @@ function updateCultivationHTML() {
         luck: icon('luck'),
         heart: icon('heart'),
     }
+    var hu4 = player.hadron.starter_upgs.includes(4)
 
     var ascend = player.humanoid.mining_ascend
 
-    for (let x = 0; x < 8; x++) {
+    el('ores-grid').style.display = el('mining-note').style.display = el_display(!hu4)
+    if (!hu4) for (let x = 0; x < 8; x++) {
         var o = ores_grid[x], e = el(`ore-grid-${x}`), s = o.super
 
         e.style.background = ORES[o.name].color
@@ -287,13 +298,13 @@ function updateCultivationHTML() {
 
     var speed, dmg
 
-    if (ores_grid[0].super) {
+    if (!hu4 && ores_grid[0].super) {
         speed = tmp.super_mining_speed, dmg = tmp.super_mining_damage
     } else {
         speed = tmp.mining_speed, dmg = tmp.mining_damage
     }
 
-    el("mining-progress").innerHTML = speed.gte(10) ? format(dmg.mul(speed))+"/s" : formatTime(Decimal.sub(1,mine_time).div(speed).max(0),1)
+    el("mining-progress").innerHTML = hu4 ? "???" : speed.gte(10) ? format(dmg.mul(speed))+"/s" : formatTime(Decimal.sub(1,mine_time).div(speed).max(0),1)
     el("mining-damage").innerHTML = tmp.mining_damage.format(0)
     el("mining-fortune").innerHTML = tmp.mining_fortune.format(0)
 
@@ -323,7 +334,7 @@ function updateCultivationHTML() {
 
     r = lang_text('mining-tier-reset')
     if (next_tier && tmp.ore_spawn_base < 8) r += "<br>" + lang_text('next-mining-tier') + " " + format(next_tier,0) + " - " + lang_text('mining-tier-ore-unlock',CURRENCIES[ORE_KEYS[tmp.ore_spawn_base+1]].costName)
-    if (next_gen) r += "<br>" + lang_text('next-mining-tier') + " " + format(next_gen,0) + " - " + lang_text('mining-tier-ore-generation',CURRENCIES[ORE_KEYS[tmp.ore_generator]].costName)
+    if (!hu4 && next_gen) r += "<br>" + lang_text('next-mining-tier') + " " + format(next_gen,0) + " - " + lang_text('mining-tier-ore-generation',CURRENCIES[ORE_KEYS[tmp.ore_generator]].costName)
 
     el('mining-tier-btn').innerHTML = r + "<br>" + lang_text('require') + ": " + req.format(0) + " " + CURRENCIES.stone.costName
     el('mining-tier-btn').className = el_classes({locked: CURRENCIES.stone.amount.lt(req), 'huge-btn': true})
@@ -340,7 +351,7 @@ function updateCultivationHTML() {
 
         r = lang_text('mining-ascend-reset')
         if (next_tier) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_tier,0) + " - " + lang_text('mining-tier-ore-unlock',CURRENCIES[ORE_KEYS[tmp.ascend_ore_spawn_base+9]].costName);
-        if (next_gen) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_gen,0) + " - " + lang_text('mining-tier-ore-generation',CURRENCIES[ORE_KEYS[tmp.ascend_ore_generator+9]].costName);
+        if (!hu4 && next_gen) r += "<br>" + lang_text('next-mining-ascend') + " " + format(next_gen,0) + " - " + lang_text('mining-tier-ore-generation',CURRENCIES[ORE_KEYS[tmp.ascend_ore_generator+9]].costName);
         r += `<br>${lang_text('require')}: <b>${lang_text('mining-tier')}</b> ${req.format(0)}`
         
         el('mining-ascend-btn').innerHTML = r

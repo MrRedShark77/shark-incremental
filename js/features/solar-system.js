@@ -32,22 +32,22 @@ const SOLAR_SYSTEM = {
         difficulty: 1,
     },
     'venus': {
-        get rp_req() { return isSSObserved('mars') ? 14 : 7 },
+        get rp_req() { return !player.hadron.starter_upgs.includes(1) && isSSObserved('mars') ? 14 : 7 },
         goal: 1e24,
         difficulty: 2,
     },
     'mars': {
-        get rp_req() { return isSSObserved('venus') ? 14 : 7 },
+        get rp_req() { return !player.hadron.starter_upgs.includes(1) && isSSObserved('venus') ? 14 : 7 },
         goal: 1e24,
         difficulty: 2,
     },
     'mercury': {
-        get rp_req() { return isSSObserved('jupiter') ? 50 : 21 },
+        get rp_req() { return !player.hadron.starter_upgs.includes(1) && isSSObserved('jupiter') ? 50 : 21 },
         goal: 1e60,
         difficulty: 3,
     },
     'jupiter': {
-        get rp_req() { return isSSObserved('mercury') ? 32 : 21 },
+        get rp_req() { return !player.hadron.starter_upgs.includes(1) && isSSObserved('mercury') ? 32 : 21 },
         goal: 1e60,
         difficulty: 3,
     },

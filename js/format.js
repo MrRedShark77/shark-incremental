@@ -230,7 +230,7 @@ const FORMATS = {
             else {
                 if (ex.gte("eeee10")) {
                     let slog = ex.slog()
-                    return (slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(),0,max)
+                    return "E" + format(Decimal.tetrate(10,slog.mod(1).add(1)),3) + "#" + format(slog.floor().sub(1),0) // (slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(),0,max)
                 }
                 let ee = e.log10().floor(), f = Decimal.sub(5, ee).max(0).min(2).toNumber()
                 let m = ex.div(E(10).pow(e)).min(10-10**-f)
@@ -329,7 +329,7 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
             } else {
                 if (ex.gte("eeee10")) {
                     let slog = ex.slog()
-                    return neg+(slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(), 0)
+                    return neg + "E" + format(Decimal.tetrate(10,slog.mod(1).add(1)),3) + "#" + format(slog.floor().sub(1),0) //(slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(), 0)
                 }
                 let ee = e.log10().floor(), f = Decimal.sub(5, ee).max(0).min(2).toNumber()
                 let m = ex.div(E(10).pow(e)).min(10-10**-f)

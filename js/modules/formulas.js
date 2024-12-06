@@ -2,7 +2,7 @@ function sumBase(x,a) {
     return Decimal.pow(a,x).sub(1).div(Decimal.sub(a,1))
 }
 function revSumBase(x,a) {
-    return Decimal.mul(x,Decimal.sub(a,1)).add(1).log(a).floor()
+    return Decimal.mul(x,Decimal.sub(a,1)).add(1).log(a)
 }
 
 Decimal.prototype.sumBase = function(a,rev=false) { return rev ? revSumBase(this,a) : sumBase(this,a) }

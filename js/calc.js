@@ -70,41 +70,43 @@ function calc(dt) {
         }
 
         if (player.feature >= 13) {
-            if (OA) {
-                var ms = tmp.mining_speed, md = tmp.mining_damage, mf = tmp.mining_fortune, hb = tmp.mining_tier_bonus[0]
-
-                for (let i = tmp.ore_generator; i < tmp.ore_spawn_base+1; i++) {
-                    var ok = ORE_KEYS[i], o = ORES[ok]
-                    var health = Decimal.mul(10, o.dense??1).mul(hb)
-                    var value = Decimal.pow(2,mf.div(100).mul(o.luck_penalty??1)).mul(md.div(health).min(1)).mul(ms).mul(o.mult??1).div(2**(i-1))
-
-                    gainCurrency(ok,value.mul(dt))
-                }
-            } else {
-                var o = ores_grid[0], s = o.super
-
-                var m = mine_time.add((s ? tmp.super_mining_speed : tmp.mining_speed).mul(dt))
-
-                if (m.gte(1)) {
-                    var dmg = m.floor().mul(s ? tmp.super_mining_damage : tmp.mining_damage)
-
-                    o.health = o.health.sub(dmg)
-                    if (o.health.round().lte(0)) {
-                        gainCurrency(o.name,o.value)
-                        ores_grid.splice(0,1)
+            if (!player.hadron.starter_upgs.includes(4)) {
+                if (OA) {
+                    var ms = tmp.mining_speed, md = tmp.mining_damage, mf = tmp.mining_fortune, hb = tmp.mining_tier_bonus[0]
+    
+                    for (let i = tmp.ore_generator; i < tmp.ore_spawn_base+1; i++) {
+                        var ok = ORE_KEYS[i], o = ORES[ok]
+                        var health = Decimal.mul(10, o.dense??1).mul(hb)
+                        var value = Decimal.pow(2,mf.div(100).mul(o.luck_penalty??1)).mul(md.div(health).min(1)).mul(ms).mul(o.mult??1).div(2**(i-1))
+    
+                        gainCurrency(ok,value.mul(dt))
                     }
-
-                    m = m.mod(1)
+                } else {
+                    var o = ores_grid[0], s = o.super
+    
+                    var m = mine_time.add((s ? tmp.super_mining_speed : tmp.mining_speed).mul(dt))
+    
+                    if (m.gte(1)) {
+                        var dmg = m.floor().mul(s ? tmp.super_mining_damage : tmp.mining_damage)
+    
+                        o.health = o.health.sub(dmg)
+                        if (o.health.round().lte(0)) {
+                            gainCurrency(o.name,o.value)
+                            ores_grid.splice(0,1)
+                        }
+    
+                        m = m.mod(1)
+                    }
+    
+                    mine_time = m
                 }
-
-                mine_time = m
             }
         }
 
         if (player.feature >= 15) {
             var forge = player.humanoid.forge
             if (forge.queue != "") {
-                forge.time = forge.time.add(tmp.forge_speed.mul(dt))
+                forge.time = player.hadron.starter_upgs.includes(3) ? EINF : forge.time.add(tmp.forge_speed.mul(dt))
                 if (forge.time.gte(FORGE[forge.queue].time[forge.level[forge.queue]])) {
                     forge.time = new Decimal(0)
                     forge.level[forge.queue]++
@@ -118,7 +120,18 @@ function calc(dt) {
 
         if (player.feature >= 16) {
             let p = player.humanoid.particle_accel, a = p.active, b4 = player.singularity.best_bh.gte(4)
-            if (hasSMilestone(9)) {
+            if (player.hadron.starter_upgs.includes(3)) {
+                for (let i = 0; i < PARTICLE_ACCELERATOR.length; i++) {
+                    let PA = PARTICLE_ACCELERATOR[i], pp = p.percent[i]
+
+                    if (pp.gte(1)) continue;
+
+                    let pg = PA.percent(CURRENCIES[PA.curr].amount).max(0)
+                    if (isNaN(pg.mag)) pg = E(0);
+
+                    p.percent[i] = p.percent[i].max(pg).max(0).min(1)
+                }
+            } else if (hasSMilestone(9)) {
                 for (let i = 0; i < PARTICLE_ACCELERATOR.length; i++) {
                     let PA = PARTICLE_ACCELERATOR[i], pp = p.percent[i]
 
@@ -145,11 +158,34 @@ function calc(dt) {
             }
         }
 
+        if (player.feature >= 22) {
+            for (let id in NUCLEOBASES.ctn) {
+                if (!NUCLEOBASES.ctn[id].unl()) continue;
+
+                let data = player.hadron.nucleobases[id]
+
+                data.experience = NUCLEOBASES.calc(data.experience,tmp.nucleobases[id].exp_gain.mul(dt),tmp.nucleobases[id].tier)
+
+                data.amount = data.amount.max(NUCLEOBASES.get_amount(id,data.experience))
+            }
+        }
+
+        if (hasResearch('h5')) {
+            player.singularity.bh_tier = player.singularity.bh_tier.max(CONSTELLATION.bulk)
+        }
+
+        var total_rp = player.solar_system.rocket_parts.reduce((a,b) => a.add(b),new Decimal(0))
+        if (player.hadron.starter_upgs.includes(1)) for (let id of SS_KEYS) {
+            let ss = SOLAR_SYSTEM[id]
+            if (!player.solar_system.completion[id] && total_rp.gte(ss.rp_req)) player.solar_system.completion[id] = true;
+        }
+
         if (tmp.ss_difficulty) {
             for (let g_id in SPACEBASE_UPGS_GROUPS) if (SPACEBASE_UPGS_GROUPS_AUTO[g_id]?.()) for (let id of SPACEBASE_UPGS_GROUPS[g_id]) if (id !== "") buySpaceBaseUpg(id,true);
         }
     
         player.shark_rank = player.shark_rank.max(SHARK.rank.bulk)
+        if (player.hadron.starter_upgs.includes(0)) player.shark_tier = player.shark_tier.max(SHARK.tier.bulk);
     }
 
     player.latest_time = Date.now()

@@ -50,6 +50,9 @@ LANGUAGES.EN = {
         'traject-name': "Trajectories",
         'traject-costName': toTextStyle('Trajectories','traject'),
 
+        'hadron-name': "Fundamental Particles",
+        'hadron-costName': toTextStyle('Fundamental Particles','hadron'),
+
         'full-shark-level': toTextStyle('Shark','shark') + ' Level',
         'full-shark-rank': toTextStyle('Shark','shark') + ' Rank',
 
@@ -72,6 +75,9 @@ LANGUAGES.EN = {
 
         'curr-top-5-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Reservatories','reserv')}`, 
         'curr-top-5-reset': x => `Traject for <b>${format(x,0)}</b> ${toTextStyle('Trajectories','traject')}`,
+
+        'curr-top-6-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Fish','fish')}`, 
+        'curr-top-6-reset': (x,next) => `Hadronize for <b>${format(x,0)}</b> ${toTextStyle('Fundamental Particles','hadron')} (Next at <b>${format(next)}</b> ${toTextStyle('Fish','fish')})`,
         
         'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
@@ -104,6 +110,11 @@ LANGUAGES.EN = {
         'tab-solar-system': "Solar System",
         'tab-constellation': toTextStyle('Constellation','star'),
 
+        'tab-hadron': toTextStyle('Hadronize','hadron'),
+        'tab-hadron-su': "Starter Upgrades",
+        'tab-shark-tier': toTextStyle('Shark','shark') + " Tier",
+        'tab-nucleobase': "Nucleobases",
+
         // Elements
 
         'fish-div': `Your ${toTextStyle('Shark','shark')} has eaten <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> fish.`,
@@ -113,6 +124,11 @@ LANGUAGES.EN = {
         'shark-rank-div': `Your ${toTextStyle('Shark','shark')} Rank is <h3 id="shark-rank">0</h3>.`,
         'shark-rank-req-div': `The next rank requires ${toTextStyle('Shark','shark')} ELO <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
         'shark-rank-note': `Note: Shark Rank gets reset when you trigger an Evolution reset.`,
+
+        'shark-iq-div': `Your ${toTextStyle('Shark','shark')} IQ is <h3>${toTextStyle('0','hadron','shark-iq')}</h3>.`,
+        'shark-tier-div': `Your ${toTextStyle('Shark','shark')} Tier is <h3 id="shark-tier2">0</h3>.`,
+        'shark-tier-req-div': `The next tier requires ${toTextStyle('Shark','shark')} IQ <h4>${toTextStyle('0','hadron','shark-tier-req')}</h4>.`,
+        'shark-tier-note': `Note: Shark Tier gets reset when you trigger a Hadronize reset.`,
 
         'option-title-1': "Main Options",
         'option-title-2': "Notations",
@@ -161,13 +177,16 @@ LANGUAGES.EN = {
         'remnant-html': `You have <h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> remnants.`,
 
         'rocket-part-div': `You have created <h3 id="total-rocket-part">0</h3> total Rocket Parts.`,
-        'observ-div': `You have <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observations. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
-        'reserv-div': `You have <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> reservations.`,
+        'observ-div': `You have <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observatories. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
+        'reserv-div': `You have <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> reservatories.`,
         'traject-div': `You have <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> trajectories.`,
         'experiment-div': `Your ${toTextStyle('Experiment','experiment')} Tier is <h3 id="experiment-tier">0</h3>.`,
 
         'bh-tier-div': `Your Black Hole Tier is <h3>${toTextStyle('0','black-hole','bh-tier')}</h3>.`,
         'bh-tier-button': `Reach the requirement to upgrade your${toTextStyle('Black Hole','black-hole')} tier for a powerful reward.`,
+
+        'fundamental-amount-div': `You have <h3>${toTextStyle('0','hadron','total-fundamental')}</h3> total fundamental particles, which increases the cap of ${toTextStyle('Fish','fish')} to <h3 id="fundamental-effect">???</h3>.`,
+        'starter-upg-note': `Note: The cost is <b>doubled</b> for each upgrade bought. The first upgrade is <b>RECOMMENDED</b> to buy after the first reset.`,
 
         // Upgrades
 
@@ -403,11 +422,22 @@ LANGUAGES.EN = {
             
             'r1': [`Reservatory Automation`,`Automates all ${toTextStyle('Reservatory','reserv')} upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
             'r2': [`Reservatory Improvement`,`Improves ${toTextStyle('Reservatory','reserv')} gain formula even better.`],
-            'r3': [`Reservatory Generation`,`Generates 100% of your ${toTextStyle('Reservatories','reserv')} gained on reset. <i>This research doesn’t get reset.</i>`],
+            'r3': [`Reservatory Generation`,`Generates <b>100%</b> of your ${toTextStyle('Reservatories','reserv')} gained on reset. <i>This research doesn’t get reset.</i>`],
         
             't1': [`Trajectory Automation`,`Automates all ${toTextStyle('Trajectory','traject')} upgrades without spending currencies. <i>This research doesn’t get reset.</i>`],
             't2': [`Trajectory Improvement`,`Improves ${toTextStyle('Trajectory','traject')} gain formula even better.`],
-            't3': [`Trajectory Generation`,`Generates 100% of your ${toTextStyle('Trajectories','traject')} gained on reset. <i>This research doesn’t get reset.</i>`],
+            't3': [`Trajectory Generation`,`Generates <b>100%</b> of your ${toTextStyle('Trajectories','traject')} gained on reset. <i>This research doesn’t get reset.</i>`],
+
+            'h1': [`IQ Exchanger`,`${toTextStyle("Shark",'shark')} Level multiplies ${toTextStyle("Shark",'shark')} ${toTextStyle("IQ",'hadron')} super-logarithmically.`],
+            'h2': [`Hadron Forge Keeper`, `Always keep forges on ${toTextStyle("Hadronize",'hadron')}.`],
+            'h3': [`Scaled Black Hole`, `Total ${toTextStyle("Fundamental Particles",'hadron')} delay the scaling of ${toTextStyle("Black Hole",'black-hole')} tier logarithmically.`],
+            'h4': [`Better Fish Cap`, `Improve the effect of total ${toTextStyle("Fundamental Particles",'hadron')}.`],
+            'h5': [`Black Hole Equivalent`, `Automatically tier ${toTextStyle("Black Hole",'black-hole')} up without triggering a reset.`],
+            'h6': [`Qubit IQ`, `${toTextStyle("Fish",'fish')} multiplies Shark ${toTextStyle("Shark",'shark')} ${toTextStyle("IQ",'hadron')}. Improve the research <b>h1</b>.`],
+            'h7': [`First Scaling Sacrifice`, `Remove the scaling of ${toTextStyle("Remnant",'black-hole')} upgrades. Unlock more ${toTextStyle("Remnant",'black-hole')} upgrades.`],
+            'h8': [`Even Better Fish Cap`, `Improve the effect of total ${toTextStyle("Fundamental Particles",'hadron')} even more.`],
+            'h9': [`Hadronic Generation`, `Passively generates <b>100%</b> of your ${toTextStyle("Funadmental Particles",'hadron')} gained on reset.`],
+            'h10': [`Inflation is Nonsense`, `Remove all scalings of radioactive boosts.`],
         },
 
         // Exploration
@@ -733,7 +763,7 @@ LANGUAGES.EN = {
                 [`1 Black Hole`,`Unlock ${toTextStyle("Remnants",'black-hole')}. ${toTextStyle("Shark",'shark')} Level boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
                 [`2 Black Holes`,`Start with automations unlocked on reset, with starting interval. ${toTextStyle("Shark",'shark')} Rank boosts ${toTextStyle("Remnant",'black-hole')} generation.`],
                 [`3 Black Holes`,`Keep automations on reset. Start with pre-cultivation features unlocked and 10 ${toTextStyle("Humanoid",'humanoid')} Sharks. Unlock more new research.`],
-                [`4 Black Holes`,`Keep ${toTextStyle("Evolution",'humanoid')} goals competed on reset. Particle accelerators are ten times faster.`],
+                [`4 Black Holes`,`Keep ${toTextStyle("Evolution",'humanoid')} goals competed on reset. Particle accelerators are ten times faster. Each exploration base is reduced to <b>1/s</b> on reset.`],
                 [`5 Black Holes`,`Ore’s health scales weaker. Unlock more automations.`],
                 [`6 Black Holes`,`Double ${toTextStyle("Remnant",'black-hole')} generation every black hole you formed.`],
                 [`7 Black Holes`,`Start with cultivation unlocked on reset.`],
@@ -770,10 +800,12 @@ LANGUAGES.EN = {
 
             [`The Star`,x=>`${toTextStyle("Constellation",'star')} resources are boosted by ${x}.`],
             [`The Growth`,x=>`The exponent of the ${toTextStyle("Constellation",'star')} base is increased by ${x}.`],
+            [`Old School`,x=>`${toTextStyle("Fundamental Particles",'hadron')} are boosted by ${x}.`],
+            [`Finished`,x=>`The exponent of ${toTextStyle("Fish",'fish')} is boosted by ${x}.`],
         ],
 
         'solar-system-list': {
-            'sun':     ["Sun",`The Sun is a star that sits at the center of our solar system. It is made up mostly of hydrogen and helium and is the main source of light and heat for Earth and the other planets in the system. The Sun also creates the conditions for life on Earth by providing photosynthesis and climatic conditions. The Sun is huge. Its diameter is 109 times the diameter of the Earth, and its mass is 330,000 times the mass of the Earth. The distance between the Earth and the Sun is 150 million kilometers, so the Sun seems so small to us.`,`Unlock the next layer (NYI). The multiplier of ${toTextStyle('Sharkoid Faith','humanoid')} is doubled again.`],
+            'sun':     ["Sun",`The Sun is a star that sits at the center of our solar system. It is made up mostly of hydrogen and helium and is the main source of light and heat for Earth and the other planets in the system. The Sun also creates the conditions for life on Earth by providing photosynthesis and climatic conditions. The Sun is huge. Its diameter is 109 times the diameter of the Earth, and its mass is 330,000 times the mass of the Earth. The distance between the Earth and the Sun is 150 million kilometers, so the Sun seems so small to us.`,`Unlock the next layer. The multiplier of ${toTextStyle('Sharkoid Faith','humanoid')} is doubled again.`],
             'mercury': ["Mercury",`Mercury is the smallest planet in the solar system and closest to the Sun. It is named after the ancient Roman god of commerce because it moves across the sky faster than the other planets. Mercury is covered in impact craters and is similar to the Moon in appearance, indicating a lack of internal geologic activity over the past billion years. The planet has almost no atmosphere, so its surface temperature varies more than any other planet in the solar system.`,`The first 3 scalings of radioactive boost are delayed by ×10. Multiply ${toTextStyle('Observatories','observ')} generation by 10 again.`],
             'venus':   ["Venus",`Venus is the second farthest from the Sun and the sixth-largest planet in the Solar System. It is named after the ancient Roman goddess of love. Venus has a dense atmosphere consisting of more than 96% carbon dioxide. Venus has an average surface temperature of 735 K (462 °C), making it the hottest planet in the solar system. Venus has no natural satellites. In the Earth's sky, it is the third-brightest luminary, after the Sun and the Moon.`,`Passively generate 100% of current ${toTextStyle('Humanoid','humanoid')} sharks as bonus ${toTextStyle('Humanoid','humanoid')} sharks, but auto-${toTextStyle('Humanoid','humanoid')} shark no longer works. Improve ${toTextStyle('Humanoid','humanoid')} shark drastically, and the third scaling of ${toTextStyle('Shark','shark')} rank is delayed by ×2. Multiply ${toTextStyle('Observatories','observ')} generation by 10.`],
             'earth':   ["Earth",`???`,`???`],
@@ -833,7 +865,57 @@ LANGUAGES.EN = {
             [`Stellar Prestige`, x=>`Boost ${toTextStyle('Prestige','prestige')} shards gain by ${x} to the exponent.`, x=>`Boost ${toTextStyle('Reservatories','reserv')} gain by ${x}.`],
             [`Stellar Fragments`, x=>`Boost ${toTextStyle('Magmatic','core')} fragments gain by ${x}.`, x=>`Boost ${toTextStyle('Trajectories','traject')} gain by ${x}.`],
             [`Stellar Sharks`, x=>`Boost the exponent of ${toTextStyle('Humanoid','humanoid')} sharks by ${x}.`, x=>`Reduce the ${toTextStyle('Experiment','experiment')} tier requirement by ${x}`],
+            [`Stellar Radiation `+icon("radioactive"), x=>`Boost ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production by ${x}.`, x=>`No effect provided.`],
+            [`Hawking Radiation `+icon("radioactive"), x=>`Boost ${toTextStyle('Fundamental Particles','hadron')} by ${x}.`, x=>`No effect provided.`],
+            [`Nebulae`, x=>`First 6 ${toTextStyle("Constellation",'star')} resources are ${x} stronger.`, x=>`No effect provided.`],
         ],
+
+        // Haronize
+
+        'hadron-cutscenes': [
+            `Open your eyes before this point.`,
+            `To hadronize, must go pray to holy particle yourself.`,
+            `No pain, no gain, no hard reset.`,
+            `Is that Antimatter Dimensions NG+3 reference?!?!??!`,
+            `Some days, it's easier. Other days, it's harder. Be it easy or hard, the only way to get there...<br>...is to start.`
+        ],
+        'starter-upgrades': [
+            [`Shark Tier`,`Unlock ${toTextStyle('Shark','shark')} Tier similar to ${toTextStyle('Shark','shark')} Rank, but even more overpowered. ${toTextStyle('Shark','shark')} Tier is calculated by ${toTextStyle('Shark','shark')} ${toTextStyle('IQ','hadron')}.`],
+            [`Auto Solar System`,`Some planet or star can be completed immediately if you meet its rocket part requirement, and its rocket part requirement won’t be increased again.`],
+            [`Uncapped Prestige Upgrades`,`The first and second ${toTextStyle('Shark','shark')} ${toTextStyle('Prestige','prestige')} upgrades’ effect no longer gets capped, but it gets reduced harsher after the removed cap.`],
+            [`Instant Forge & Particle Accelerator`,`Forge can be completed instantly, particle accelerators' speed is ludicrous.`],
+            [`Mining Continuum`,`Every ore can be generated without mining, depending on speed, fortune, and unlock requirement. Ore field is removed.`],
+            [`Distant Remnant Scaling`,`The first scaling of ${toTextStyle('Remnant','black-hole')} upgrades is delayed from <b>100</b> (normally) to <b>1000</b>.`],
+            [`No more annoying resets`,`Start with 8 ${toTextStyle('Black Holes','black-hole')} and all previous generations unlocked on reset.`],
+            [`Eternal Tree`,`The ${toTextStyle("Evolution","humanoid")} tree no longer takes ${toTextStyle("Sharkoid Faith","humanoid")} away. Unlock an automation for the ${toTextStyle("Evolution","humanoid")} tree.`],
+        ],
+
+        'nucleobases': {
+            'cytosine': ["Cytosine",[
+                x => `${x} to ${toTextStyle('Constellation','star')} resources.`,
+                x => `${x} to ${toTextStyle('Fundamental Particles','hadron')}.`,
+                x => `${x} to ${toTextStyle('Remnant','black-hole')} generation & ${toTextStyle('Dark Matter','black-hole')}.`,
+                x => `${x} to ${toTextStyle('Constellation','star')} resources.`,
+                x => `${toTextStyle('Core','core')} reactors in the third row are ${x} stronger.`,
+            ]],
+            'guanine': ["Guanine",[
+                x => `${x} to the exponent of ${toTextStyle('Constellation','star')} base.`,
+                x => `${x} to ${toTextStyle('Fundamental Particles','hadron')}.`,
+                x => `${x} to the exponent of ${toTextStyle('Magmatic','core')} fragments and ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production.`,
+                x => `${x} to the strength of ${toTextStyle("Shark",'shark')} Tier Bonuses.`,
+                x => `The tenth row of the ${toTextStyle('Evolution','humanoid')} tree is ${x} stronger.`,
+            ]],
+            'adenine': ["Adenine",[
+                x => `${x} to the exponent of ${toTextStyle('Shark','shark')} ${toTextStyle('IQ','hadron')}.`,
+                x => `All pre-${toTextStyle('Hadronize','hadron')} scalings are ${x} weaker.`,
+                x => `${x} to the tier of <b>Cytosine</b>.`,
+            ]],
+        },
+        'experience': "Experience",
+        'next-at-experience': "Next amount at experience",
+        'nucleobase-boosts': "Nucleobase Boosts",
+        'experience-base': "Experience Base",
+        'nucleobase-tier': "Nucleobase Tier",
 
         // Automation
 
@@ -850,6 +932,11 @@ LANGUAGES.EN = {
         'auto-mining_tier-name': `Auto-Mining Tier`,
         'auto-remnant-name': `Auto-${toTextStyle("Remnant","black-hole")} Upgrades`,
         'auto-faith-name': `Auto-${toTextStyle("Sharkoid Faith","humanoid")}`,
+
+        'auto-sing_research-name': `Auto-${toTextStyle("Singularity","black-hole")} Research`,
+        'auto-evolution_tree-name': `Auto-${toTextStyle("Evolution","humanoid")} Tree`,
+        'auto-rocket_part-name': `Auto-Rocket Part`,
+        'auto-mining_ascend-name': `Auto-Mining Ascension`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -892,7 +979,10 @@ LANGUAGES.EN = {
         'progress-19-text': r => `Reach ${format(r)} total ${toTextStyle('Dark Matter','black-hole')}`,
 
         'progress-20-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')}`, 
-        get 'progress-20-cond-text'() { return `???` },
+        get 'progress-20-cond-text'() { return `Do a ${toTextStyle('Hadronize','hadron')}` },
+
+        'progress-21-text': r => `Reach ${format(r,0)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the next feature`, 
+        'progress-22-text': r => `Reach ${format(r)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the third nucleobase`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -950,12 +1040,23 @@ LANGUAGES.EN = {
             Are you sure you want to sacrifice your sharks?
             `
         },
+        get 'reset-hadron-message'() {
+            let e = toTextStyle('Hadronize','hadron'), c = toTextStyle('Sacrifice','black-hole')
+            return `
+            <h3>The ${e}</h3><br>
+            The ${e} is the fifth and major reset layer.
+            Making sharks go beyond the omniverse resets everything ${c} does, as well as dark matter, post-16 remnant upgrades, solar system (including rocket parts), black hole tiers, constellation resources, singularity milestones, mining ascensions and their ores, and some post-singularity research for ${toTextStyle('Fundamental Particles','hadron')}. It also unlocks the starter upgrades, more research and automations.<br>
+            <img src="textures/hadronize.png"><br>
+            Are you sure you want to go beyond the omniverse?
+            `
+        },
         
         // Other
 
         'scalings': {
             'shark_level' : `Shark Level`,
             'shark_rank' : `Shark Rank`,
+            'shark_tier' : `Shark Tier`,
             'su_s3' : `"Shark Teeth" Upgrade`,
             'su_s4' : `"Shark Exponent" Upgrade`,
             'su_m1' : `"Mining Damage" Upgrade`,
@@ -991,6 +1092,14 @@ LANGUAGES.EN = {
             remnants: x => `${formatMult(x)} ${toTextStyle('Remnants','black-hole')}`,
         },
 
+        'shark-tier-bonuses': {
+            fish: x => `${x} ${toTextStyle('Fish','fish')} to the exponent`,
+            hadron: x => `${x} ${toTextStyle('Fundamental Particles','hadron')}`,
+            prestige: x => `${x} ${toTextStyle('Prestige','prestige')} shards to the exponent`,
+            nucleobase: x => `${x} nucleobase's experience`,
+        },
+
+        'amount': "Amount",
         'total': "total",
         'level': "Level",
         'effect': "Effect",
@@ -1016,6 +1125,8 @@ LANGUAGES.EN = {
         'research-bought': bool => bool ? `<b>Purchased</b>` : `<b>Not Purchased</b>`,
         'research-pages': x => `${x} pages`,
 
+        'purchased': "Purchased",
+
         'off-on': bool => bool ? "ON" : "OFF",
 
         'popup-buttons': [
@@ -1028,6 +1139,7 @@ LANGUAGES.EN = {
             wipe: `Are you sure you want to wipe your save? To wipe, type "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
             "evolution-tree-respec": `Are you sure you want to respec ${toTextStyle('Evolution','humanoid')} tree? It will trigger an ${toTextStyle('Evolution','humanoid')} reset, not gaining ${toTextStyle('Humanoid','humanoid')} sharks.`,
             "evolution-tree-import": `Paste in your evolution tree.`,
+            "starter-upgrade-warning": `Are you sure you want to purchase this starter upgrade? You should purchase upgrade <b>"Shark Tier"</b>!`,
         },
 
         'notify-desc' : {
@@ -1058,5 +1170,6 @@ LANGUAGES.EN = {
         'confirm-humanoid': "Evolve Sharks",
         'confirm-black-hole': "Form the Black Hole",
         'confirm-sacrifice': "Sacrifice Sharks",
+        'confirm-hadron': "Hadronize",
     },
 }

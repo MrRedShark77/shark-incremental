@@ -39,7 +39,7 @@ const S_MILESTONES = [
         req:()=>CURRENCIES["dark-matter"].total.gte(1e12),
     },{
         unl:()=>player.feature>=18,
-        req:()=>CURRENCIES["dark-matter"].total.gte(1e100),
+        req:()=>player.hadron.starter_upgs.includes(6) || CURRENCIES["dark-matter"].total.gte(1e100),
     },
 ]
 
@@ -216,6 +216,24 @@ const REMNANT_UPGS = [
             return x
         },
         effDesc: x=>"+"+format(x,3),
+    },{
+        unl:()=>hasResearch('h7'), // ee45
+        cost:a=>Decimal.tetrate(10,a.mul(.0025).add(3.290898223231325)),
+        bulk:a=>a.slog(10).sub(3.290898223231325).div(.0025),
+        effect(a) {
+            let x = a.pow_base(2).mul(a.add(1))
+            return x
+        },
+        effDesc: x=>formatMult(x,0),
+    },{
+        unl:()=>hasResearch('h7'), // ee100
+        cost:a=>a.pow_base(1.01).pow_base(1e100).pow10(),
+        bulk:a=>a.log10().log(1e100).log(1.01),
+        effect(a) {
+            let x = a.pow_base(2)
+            return x
+        },
+        effDesc: x=>formatPow(x,0),
     },
 ]
 

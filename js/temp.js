@@ -15,6 +15,9 @@ function reloadTemp() {
         shark_elo: E(0),
         shark_rank_bonus: {},
 
+        shark_iq: E(0),
+        shark_tier_bonus: {},
+
         research_eff: {},
 
         su_el: {},
@@ -66,6 +69,8 @@ function reloadTemp() {
         experiment_boosts: [],
 
         constellation_boosts: [],
+
+        nucleobases: {},
     }
 
     for (let x in EXPLORE) {
@@ -81,14 +86,25 @@ function reloadTemp() {
             tmp.scalings[x].push(b)
         }
     }
+
+    for (let x in NUCLEOBASES.ctn) {
+        tmp.nucleobases[x] = {
+            tier: E(0),
+            exp_gain: E(0),
+            effect: [],
+        }
+    }
 }
 
 function updateTemp() {
     tmp.ss_difficulty = SOLAR_SYSTEM[player.solar_system.active]?.difficulty ?? 0 
     tmp.cr_active = player.core.radiation.active
 
+    tmp.fish_cap = SHARK.fish_cap
+
     updateResearchTemp()
     updateScalingsTemp()
+    updateHadronTemp()
     updateConstellationTemp()
     updateSingularityTemp()
     updatePATemp()
@@ -103,7 +119,7 @@ function updateTemp() {
 
     for (let [i,v] of Object.entries(CURRENCIES)) tmp.currency_gain[i] = preventNaNDecimal(v.gain??E(0))
 
-    reloadOres()
+    reloadOres();
 }
 
 function updateOptions() {

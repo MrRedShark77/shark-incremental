@@ -8,7 +8,7 @@ function updateHTML() {
 
     var f = CURRENCIES.fish.amount, ff = []
 
-    if (f.gte('ee9e15')) ff.push(icon("benzene"));
+    if (f.gte(tmp.fish_cap)) ff.push(icon("benzene"));
     if (f.gte(tmp.shark_op_start)) ff.push(icon("biohazard"));
     if (tmp.cr_active) ff.push(icon("radioactive"));
 
@@ -34,6 +34,7 @@ function setupHTML() {
     setupPAHtml()
     setupSingularityHTML()
     setupSpaceBaseHTML()
+    setupHadronHTML()
 
     setupLanguageHTML()
 
@@ -99,6 +100,7 @@ function updateProgressHTML() {
         }
         
         let percent = ( l > 0 ? amount.max(m).iteratedlog(10,l).div(Decimal.max(req,m).iteratedlog(10,l)) : amount.div(req) ).max(0).min(1).toNumber()
+        if (isNaN(percent)) percent = 0;
         let cond = !auto && amount.gte(req)
 
         el('fp-text').innerHTML = cond && (tmp.ss_difficulty || p.cond_text) ? cond_text : progress_text + " ("+formatPercent(percent,3)+")"

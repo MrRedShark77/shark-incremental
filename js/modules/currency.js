@@ -26,6 +26,8 @@ const CURRENCIES = {
             x = expPow(x,simpleCETEffect(12))
             x = expPow(x,coreReactorEffect(8))
             x = expPow(x,constellationBoostEffect(0,false))
+            x = expPow(x,getSharkTierBonus('fish'))
+            x = expPow(x,remnantUpgEffect(19))
 
             var s = E('ee40'), pre_s = x
 
@@ -40,7 +42,7 @@ const CURRENCIES = {
                 tmp.shark_op = pre_s.log10().div(x.log10())
             } else tmp.shark_op = E(1)
 
-            x = x.min('ee9e15')
+            x = x.min(tmp.fish_cap)
 
             return x
         },
@@ -79,6 +81,7 @@ const CURRENCIES = {
             x = expPow(x,simpleCETEffect(13))
             x = expPow(x,coreReactorEffect(9))
             x = expPow(x,constellationBoostEffect(1,false))
+            x = expPow(x,getSharkTierBonus('prestige'))
     
             return x.floor()
         },
@@ -110,6 +113,8 @@ const CURRENCIES = {
             x = x.pow(simpleCETEffect(14))
             x = x.pow(coreReactorEffect(10))
             x = x.pow(constellationBoostEffect(2,false))
+
+            x = expPow(x,getNucleobaseEffect('guanine',2))
     
             return x.floor()
         },
@@ -122,7 +127,7 @@ const CURRENCIES = {
             x = x.pow_base(this.base).mul(1.5e18).pow_base(10)
             return x
         },
-        get require() { return isSSObserved('venus') ? E('e1.5e18') : this.next() },
+        get require() { return player.hadron.starter_upgs.includes(6) || isSSObserved('venus') ? E('e1.5e18') : this.next() },
 
         get base() { return Decimal.sub(10,simpleETEffect(15,0)) },
         get mult() { return getPAEffect(3) },
@@ -135,13 +140,13 @@ const CURRENCIES = {
             return x
         },
 
-        get moreArg() { return [this.next(isSSObserved('venus') ? tmp.currency_gain.humanoid : player.humanoid.shark.add(tmp.currency_gain.humanoid))] },
+        get moreArg() { return [this.next(player.hadron.starter_upgs.includes(6) || isSSObserved('venus') ? tmp.currency_gain.humanoid : player.humanoid.shark.add(tmp.currency_gain.humanoid))] },
 
         get amount() { return player.humanoid.shark },
         set amount(v) { player.humanoid.shark = v.max(0) },
 
         get gain() {
-            let x = player.fish, v = isSSObserved('venus')
+            let x = player.fish, v = player.hadron.starter_upgs.includes(6) || isSSObserved('venus')
 
             if (x.lt("e1.5e18")) return E(0)
 
@@ -154,7 +159,7 @@ const CURRENCIES = {
             return x.add(1).max(0).floor()
         },
 
-        get passive() { return isSSObserved('venus') ? 1 : 0 },
+        get passive() { return player.hadron.starter_upgs.includes(6) || isSSObserved('venus') ? 1 : 0 },
     },
     remnants: {
         get amount() { return player.singularity.remnants },
@@ -169,7 +174,7 @@ const CURRENCIES = {
             if (hasResearch('dm7')) x = x.mul(researchEffect('dm7'));
             if (player.singularity.best_bh.gte(6)) x = x.mul(player.singularity.bh.pow_base(2));
 
-            x = x.pow(forgeUpgradeEffect('matter'))
+            x = x.pow(forgeUpgradeEffect('matter')).pow(getNucleobaseEffect('cytosine',2))
 
             return x
         },
@@ -191,6 +196,8 @@ const CURRENCIES = {
             x = x.div(2e3).add(1).pow(.5).sub(1).pow_base(100)
 
             x = x.mul(getCRBoost(11))
+
+            x = x.pow(getNucleobaseEffect('cytosine',2))
     
             return x.floor()
         },
@@ -265,6 +272,45 @@ const CURRENCIES = {
     
         get passive() { return +hasResearch('t3') },
     },
+    hadron: {
+        next(o) {
+            let x = o.root(this.exp).div(this.mult).add(1).log10().add(1).log10().div(10).add(1).root(.75).add(this.require_slog).sub(1)
+            x = Decimal.tetrate(10,x)
+            return x
+        },
+
+        require: E('ee9e15'),
+        require_slog: Decimal.slog('ee9e15',10),
+        
+        get amount() { return player.hadron.amount },
+        set amount(v) { player.hadron.amount = v.max(0) },
+
+        get total() { return player.hadron.total },
+        set total(v) { player.hadron.total = v.max(0) },
+
+        get moreArg() { return [this.next(tmp.currency_gain.hadron)] },
+
+        get mult() {
+            let x = getSharkTierBonus('hadron')
+
+            x = x.mul(getNucleobaseEffect('cytosine',1)).mul(getNucleobaseEffect('guanine',1)).mul(constellationBoostEffect(5,false)).mul(remnantUpgEffect(18))
+
+            return x
+        },
+        get exp() { return 1 },
+
+        get gain() {
+            let x = player.fish.max(1).slog(10).sub(this.require_slog)
+
+            if (x.lt(0)) return E(0);
+
+            x = x.add(1).pow(.75).sub(1).mul(10).pow10().sub(1).pow10().sub(1).mul(this.mult).pow(this.exp).add(1)
+
+            return x.floor()
+        },
+
+        get passive() { return +hasResearch('h9') },
+    }
 }
 
 function setupCurrencies() {
@@ -300,9 +346,14 @@ function setupCurrencies() {
             get amount() { return player.humanoid.ores[k] },
             set amount(v) { player.humanoid.ores[k] = v.max(0) },
 
-            get gain() { return i >= 9 ? Decimal.mul(tmp.ascend_ore_generator_mult,ORES[k].mult??1) : Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1) },
+            get gain() {
+                return i >= 9 ? Decimal.mul(tmp.ascend_ore_generator_mult,ORES[k].mult??1) : Decimal.mul(tmp.ore_generator_mult,ORES[k].mult??1)
+            },
 
-            get passive() { return (i >= 9 ? tmp.ascend_ore_generator + 9 > i : tmp.ore_generator > i) ? 1 : 0 },
+            get passive() {
+                if (player.hadron.starter_upgs.includes(4)) return +(i >= 9 ? tmp.ascend_ore_spawn_base + 7 + player.humanoid.mining_ascend.gte(1) >= i : tmp.ore_spawn_base >= i);
+                return +(i >= 9 ? tmp.ascend_ore_generator + 9 > i : tmp.ore_generator > i)
+            },
 
             name: lang[k],
             costName: toColoredText(lang[k],o.textColor ?? o.color),

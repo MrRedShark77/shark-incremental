@@ -20,6 +20,13 @@ const SCALINGS = {
             [1e6,2,"ME2"],
         ],
     },
+    shark_tier: {
+        get amount() { return player.shark_tier },
+
+        base: [
+            [25,2,"P"],
+        ],
+    },
     su_s3: {
         get amount() { return player.shark_upg.s3 },
 
@@ -102,9 +109,12 @@ const SCALINGS = {
 
         base: [
             [10,2,"P"],
+            [50,3,"P"],
         ],
     },
 }
+
+const PRE_HADRON_SCALINGS = ['shark_level','shark_rank','su_s3','su_s4','su_m1','su_m3','su_m5','cr_boost','mining_tier','mining_ascend','remnant_upg','bh_tier']
 
 function getScalingStarts(id) {
     let b = SCALINGS[id].base.map(x=>x[0])
@@ -143,8 +153,12 @@ function getScalingStarts(id) {
             break
         }
         case "remnant_upg": {
+            if (player.hadron.starter_upgs.includes(5)) b[0] = Decimal.mul(b[0],10);
             if (hasResearch('m7')) b[0] = Decimal.add(b[0],100);
             break
+        }
+        case "bh_tier": {
+            b[0] = Decimal.add(b[0],simpleResearchEffect('h3',0))
         }
     }
 
@@ -165,6 +179,8 @@ function getScalingPowers(id) {
         }
     }
 
+    if (PRE_HADRON_SCALINGS.includes(id)) for (let i = 0; i < b.length; i++) b[i] = Decimal.pow(b[i],getNucleobaseEffect('adenine',1));
+
     return b
 }
 
@@ -172,6 +188,31 @@ function getScalingModes(id) {
     let b = SCALINGS[id].base.map(x=>x[2])
 
     return b
+}
+
+function getScalingExclusions(id) {
+    let e = SCALINGS[id].base.map(x=>false)
+
+    switch (id) {
+        case "shark_level": {
+            if (false) for (let x = 0; x < 4; x++) e[x] = true;
+            break
+        }
+        case "shark_rank": {
+            if (false) for (let x = 0; x < 3; x++) e[x] = true;
+            break
+        }
+        case "remnant_upg": {
+            e[0] = hasResearch('h7')
+            break
+        }
+        case "cr_boost": {
+            if (hasResearch('h10')) for (let x = 0; x < 3; x++) e[x] = true;
+            break
+        }
+    }
+
+    return e
 }
 
 Decimal.prototype.scale = function (s, p, mode, rev=false) {
@@ -191,7 +232,7 @@ Decimal.prototype.scale = function (s, p, mode, rev=false) {
             return rev ? x.div(s).max(1).log(p).add(s) : Decimal.pow(p,x.sub(s)).mul(s)
         case 'E2':
             // p^(x/s-1)*s, p >= 2.71828
-            return rev ? x.div(s).max(1).log(p).add(1).mul(s) : Decimal.pow(p,x.div(s).sub(1)).mul(s)
+            return rev ? x.div(s).max(1).log(p).add(1).mul(s).min(x) : Decimal.pow(p,x.div(s).sub(1)).mul(s).max(x)
         case 'ME1': {
             // p^(x-s)*x
             let ln_p = Decimal.ln(p)
@@ -216,10 +257,10 @@ Decimal.prototype.scale = function (s, p, mode, rev=false) {
 Decimal.prototype.scaleAll = function (id, rev=false) {
     var x = this.clone(), t = tmp.scalings[id], l = t.length
 
-    for (let i = 0; i < l; i++) {
+    for (let i = 0; i < l; i++){
         let j = rev ? i : l - i - 1, tt = t[j]
 
-        x = x.scale(...tt,rev)
+        if (!tt[3]) x = x.scale(tt[0],tt[1],tt[2],rev);
     }
 
     return x
@@ -229,9 +270,9 @@ function updateScalingsTemp() {
     for (let x in SCALINGS) {
         let t = tmp.scalings[x]
 
-        let s = getScalingStarts(x), m = getScalingModes(x), p = getScalingPowers(x).map((q,i) => m[i] == "E2" ? Decimal.max(q,Math.E) : q)
+        let s = getScalingStarts(x), m = getScalingModes(x), p = getScalingPowers(x).map((q,i) => m[i] == "E2" ? Decimal.max(q,Math.E) : q), e = getScalingExclusions(x)
 
-        for (let i = 0; i < SCALINGS[x].base.length; i++) t[i] = [s[i],p[i],m[i]];
+        for (let i = 0; i < SCALINGS[x].base.length; i++) t[i] = [s[i],p[i],m[i],e[i]];
     }
 }
 
@@ -253,14 +294,14 @@ function updateScalingsTable() {
     for (let i in SCALINGS) {
         let scaling = SCALINGS[i], amount = scaling.amount, t = tmp.scalings[i]
 
-        let u = t.findLastIndex(x => Decimal.gte(amount, x[0]))
+        let u = t.findLastIndex(x => !x[3] && Decimal.gte(amount, x[0]))
 
         if ((el('scaling-tr-' + i).style.display = u > -1 ? "table-row" : "none") == "table-row") {
             for (let j = 0; j < scaling.base.length; j++) {
-                let e = el("scaling-" + i + "-" + j)
+                let e = el("scaling-" + i + "-" + j), u2 = !t[j][3] && j <= u
 
-                e.style.display = j <= u ? "table-cell" : "none"
-                if (j <= u) {
+                e.style.display = u2 ? "table-cell" : "none"
+                if (u2) {
                     let tt = t[j]
                     let h = `${text[0]}: <b>${format(tt[0],0)}</b><br>`, p = tt[1]
 

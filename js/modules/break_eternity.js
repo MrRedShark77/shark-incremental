@@ -368,8 +368,8 @@
         w = wn;
       }
     }
-    throw Error("Iteration failed to converge: ".concat(z.toString()));
-    //return Decimal.dNaN;
+    //throw Error("Iteration failed to converge: ".concat(z.toString()));
+    return Decimal.dZero;
   }
   /**
    * The value of the Decimal is sign * 10^10^10...^mag, with (layer) 10s. If the layer is not 0, then negative mag means it's the reciprocal of the corresponding number with positive mag.

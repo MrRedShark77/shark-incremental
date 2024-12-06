@@ -23,25 +23,25 @@ const EVOLUTION_TREE = {
         ()=>CURRENCIES.core.total.max(0).add(10).log10().root(2).pow(simpleETEffect(22)).pow(simpleETEffect(38)),
         ()=>Decimal.pow(10,simpleETEffect(23)).pow(simpleETEffect(39)),
 
-        ()=>10 ** simpleETEffect(36),
-        ()=>10 ** simpleETEffect(37),
-        ()=>10 ** simpleETEffect(38),
-        ()=>10 ** simpleETEffect(39),
+        ()=>Decimal.pow(10,simpleETEffect(36)),
+        ()=>Decimal.pow(10,simpleETEffect(37)),
+        ()=>Decimal.pow(10,simpleETEffect(38)),
+        ()=>Decimal.pow(10,simpleETEffect(39)),
 
         null,
         null,
         null,
         null,
 
-        ()=>1.5 ** simpleETEffect(36),
-        ()=>1.5 ** simpleETEffect(37),
-        ()=>1.1 ** simpleETEffect(38),
-        ()=>1 * simpleETEffect(39),
+        ()=>Decimal.pow(1.5,simpleETEffect(36)),
+        ()=>Decimal.pow(1.5,simpleETEffect(37)),
+        ()=>Decimal.pow(1.1,simpleETEffect(38)),
+        ()=>Decimal.mul(1,simpleETEffect(39)).min(8),
 
-        ()=>1 * simpleETEffect(36),
-        ()=>1 * simpleETEffect(37),
-        ()=>1 * simpleETEffect(38),
-        ()=>1 * simpleETEffect(39),
+        ()=>simpleETEffect(36),
+        ()=>simpleETEffect(37),
+        ()=>simpleETEffect(38),
+        ()=>simpleETEffect(39),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(60).add(1).mul(simpleETEffect(36)).pow(simpleCETEffect(20)),
         ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(45).add(1).mul(simpleETEffect(37)).pow(simpleCETEffect(21)),
@@ -51,7 +51,7 @@ const EVOLUTION_TREE = {
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(2).mul(simpleETEffect(36)),
         ()=>CURRENCIES.stone.amount.max(0).add(1).log10().mul(5).mul(simpleETEffect(37)),
         ()=>CURRENCIES.humanoid.amount.mul(simpleETEffect(38)),
-        ()=>30 * simpleETEffect(39),
+        ()=>Decimal.mul(30,simpleETEffect(39)),
 
         null,
         null,
@@ -63,10 +63,10 @@ const EVOLUTION_TREE = {
         null,
         null,
 
-        ()=>2 * simpleCETEffect(36),
-        ()=>2 * simpleCETEffect(37),
-        ()=>2 * simpleCETEffect(38),
-        ()=>2 * simpleCETEffect(39),
+        ()=>Decimal.mul(2,simpleCETEffect(36)).mul(getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,simpleCETEffect(37)).mul(getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,simpleCETEffect(38)).mul(getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,simpleCETEffect(39)).mul(getNucleobaseEffect('guanine',4)),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().div(6).add(1),
         ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().div(6).add(1),
@@ -95,25 +95,25 @@ const EVOLUTION_TREE = {
         null,
         null,
 
-        ()=>1.1 ** simpleCETEffect(36),
-        ()=>1.1 ** simpleCETEffect(37),
-        ()=>4 ** simpleCETEffect(38),
-        ()=>1 * simpleCETEffect(39),
+        ()=>Decimal.pow(1.1,simpleCETEffect(36)),
+        ()=>Decimal.pow(1.1,simpleCETEffect(37)),
+        ()=>Decimal.pow(4,simpleCETEffect(38)),
+        ()=>Decimal.mul(1,simpleCETEffect(39)),
 
-        ()=>2 * simpleCETEffect(36),
-        ()=>2 * simpleCETEffect(37),
-        ()=>2 * simpleCETEffect(38),
-        ()=>2 * simpleCETEffect(39),
+        ()=>Decimal.mul(2,simpleCETEffect(36)),
+        ()=>Decimal.mul(2,simpleCETEffect(37)),
+        ()=>Decimal.mul(2,simpleCETEffect(38)),
+        ()=>Decimal.mul(2,simpleCETEffect(39)),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1).pow(simpleCETEffect(36)),
         ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().div(10).add(1).pow(simpleCETEffect(37)),
         ()=>CURRENCIES.core.total.max(0).add(10).log10().log10().div(100).add(1).softcap(10,2,'log').pow(simpleCETEffect(38)),
-        ()=>2 * simpleCETEffect(39),
+        ()=>Decimal.mul(2,simpleCETEffect(39)),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1).pow(2).mul(simpleCETEffect(36)),
         ()=>CURRENCIES.radium.amount.max(0).add(1).log10().mul(3).mul(simpleCETEffect(37)),
         ()=>CURRENCIES.humanoid.amount.max(0).add(1).log10().mul(2).mul(simpleCETEffect(38)),
-        ()=>100 * simpleCETEffect(39),
+        ()=>Decimal.mul(100,simpleCETEffect(39)),
 
         null,
         null,
@@ -125,10 +125,10 @@ const EVOLUTION_TREE = {
         null,
         null,
 
-        ()=>2,
-        ()=>2,
-        ()=>2,
-        ()=>2,
+        ()=>Decimal.mul(2,getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,getNucleobaseEffect('guanine',4)),
+        ()=>Decimal.mul(2,getNucleobaseEffect('guanine',4)),
 
         ()=>CURRENCIES.fish.total.max(0).add(10).log10().log10().add(1).log10().add(1),
         ()=>CURRENCIES.prestige.total.max(0).add(10).log10().log10().add(1).log10().add(1),
@@ -259,12 +259,14 @@ function chargedETreeEffect(x,def=1) { return tmp.charged_et_effect[x] ?? def }
 function simpleCETEffect(x,def=1) { return player.humanoid.tree.includes(x+"C") ? chargedETreeEffect(x,def) : def }
 
 function updateUnspentFaith() {
-    var spent = E(0)
+    var spent = E(0), hu7 = player.hadron.starter_upgs.includes(7)
     for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
         tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
         tmp.charged_et_effect[x] = EVOLUTION_TREE.charged_effect[x]?.() ?? null
-        if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x));
-        if (player.humanoid.tree.includes(x+"C")) spent = spent.add(EVOLUTION_TREE.getCost(x,true));
+        if (!hu7) {
+            if (player.humanoid.tree.includes(x)) spent = spent.add(EVOLUTION_TREE.getCost(x));
+            if (player.humanoid.tree.includes(x+"C")) spent = spent.add(EVOLUTION_TREE.getCost(x,true));
+        }
     }
     tmp.unspent_faith = tmp.total_faith.sub(spent).max(0)
 }
@@ -412,13 +414,22 @@ function exportEvolutionTree() {
 }
 
 function calculateEvolutionTreeCost(tree) {
-    var sum = 0, a = []
+    var sum = 0, a = [], hu7 = player.hadron.starter_upgs.includes(7), row = [], c_row = [];
     console.log(tree)
     for (let x of tree) if (!a.includes(x)) {
         var c = String(x).includes("C"); x = c ? +x.split("C")[0] : x;
+        
+        var r = Math.floor(x/10)
+        if (hu7 && (c ? c_row.includes(r) : row.includes(r))) continue;
+
         var cost = EVOLUTION_TREE.getCost(x,c)
         sum += isNaN(cost) ? 0 : cost
+
         a.push(x)
+        if (hu7) {
+            if (c) c_row.push(r);
+            else row.push(r);
+        }
     }
     return sum
 }
