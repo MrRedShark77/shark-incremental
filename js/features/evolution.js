@@ -397,14 +397,7 @@ function convertStringToTree(str) {
 
 function importEvolutionTree() {
     createPromptPopup(lang_text('popup-desc')["evolution-tree-import"],x=>{
-        let y = []
-        for (let z of x.split(",")) {
-            let c = z.includes("C");
-            z = parseInt(z.split("C")[0])
-
-            if (isNaN(z)) y.push(z + (c ? "C" : ""));
-        }
-        loadEvolutionTree(y) // x.split(",").map(y=>parseInt(y)).filter(y=>!isNaN(y))
+        loadEvolutionTree(convertStringToTree(x),true)
     })
 }
 
