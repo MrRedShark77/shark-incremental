@@ -25,8 +25,10 @@ function buyStarterUpgrade(i) {
         if (STARTER_UPGRADES_ON_PURCHASE[i]) STARTER_UPGRADES_ON_PURCHASE[i]();
     }
 
-    if (!player.hadron.starter_upgs.includes(0) && i > 0) createConfirmationPopup(lang_text('popup-desc')['starter-upgrade-warning'],success);
-    else if (!player.hadron.starter_upgs.includes(i) && player.hadron.amount.gte(cost)) success();
+    if (player.hadron.amount.gte(cost)) {
+        if (!player.hadron.starter_upgs.includes(0) && i > 0) createConfirmationPopup(lang_text('popup-desc')['starter-upgrade-warning'],success);
+        else if (!player.hadron.starter_upgs.includes(i)) success();
+    }
 }
 
 function updateStarterUpgradesHTML() {
