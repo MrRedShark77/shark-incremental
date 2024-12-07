@@ -912,7 +912,7 @@ LANGUAGES.KO = {
             ]],
         },
         'experience': "경험치",
-        'next-at-experience': "다음 경험치",
+        'next-at-experience': "획득을 위한 요구 경험치",
         'nucleobase-boosts': "핵산 부스트",
         'experience-base': "경험치 베이스",
         'nucleobase-tier': "핵산 티어",
