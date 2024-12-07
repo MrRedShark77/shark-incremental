@@ -113,7 +113,7 @@ LANGUAGES.KO = {
         'tab-hadron': toTextStyle('하드로나이즈','hadron'),
         'tab-hadron-su': "스타터 업그레이드",
         'tab-shark-tier': toTextStyle('상어','shark') + " 티어",
-        'tab-nucleobase': "핵 베이스",
+        'tab-nucleobase': "핵산",
 
         // Elements / 기초적인 것들
 
@@ -913,9 +913,9 @@ LANGUAGES.KO = {
         },
         'experience': "경험치",
         'next-at-experience': "다음 경험치",
-        'nucleobase-boosts': "핵 베이스 부스트",
+        'nucleobase-boosts': "핵산 부스트",
         'experience-base': "경험치 베이스",
-        'nucleobase-tier': "핵 베이스 티어",
+        'nucleobase-tier': "핵산 티어",
 
         // Automation / 자동화
 
@@ -982,7 +982,7 @@ LANGUAGES.KO = {
         get 'progress-20-cond-text'() { return `${toTextStyle('하드로나이즈','hadron')}를 하세요` },
 
         'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
-        'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵 베이스를 해금하세요`, 
+        'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵산을 해금하세요`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -1096,7 +1096,7 @@ LANGUAGES.KO = {
             fish: x => `${x}만큼 ${toTextStyle('물고기','fish')} 지수 증가`,
             hadron: x => `${x} ${toTextStyle('기본 입자','hadron')}`,
             prestige: x => `${x}만큼 ${toTextStyle('환생','prestige')} 파편 지수 증가`,
-            nucleobase: x => `${x} 핵 베이스 경험치`,
+            nucleobase: x => `${x} 핵산 경험치`,
         },
 
         'amount': "소지량",
