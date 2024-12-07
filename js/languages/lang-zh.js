@@ -880,11 +880,11 @@ LANGUAGES.ZH = {
             `时而轻而易举，时而难如登天。无论是轻而易举，还是难如登天，都要记住这句话：<br>千里之行，始于足下。`
         ],
         'starter-upgrades': [
-            [`鲨鱼层次`,`解锁${toTextStyle('鲨鱼','shark')}层次。它类似于${toTextStyle('鲨鱼','shark')}段位，但加成更强。${toTextStyle('鲨鱼','shark')}段位由${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}确定。`],
+            [`鲨鱼层次`,`解锁${toTextStyle('鲨鱼','shark')}层次。它类似于${toTextStyle('鲨鱼','shark')}段位，但加成更强。${toTextStyle('鲨鱼','shark')}层次由${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}确定。`],
             [`自动观测`,`对于某些行星或恒星的观测而言，当火箭部件总量达到其解锁要求时，你可以立刻完成它们。这并不会提升火箭部件总量的要求。`],
             [`无限升级`,`移除第一个和第二个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼','shark')}升级的效果上限，但它达到原来的上限后，其加成效果的增速将大幅降低。`],
             [`光速锻造`,`你可以瞬间完成锻造，并以飞一般的速度填充粒子加速器。`],
-            [`连续挖矿`,`基于挖矿速度、幸运草和解锁条件获得矿物，并移除矿场。`],
+            [`连续挖矿`,`基于挖矿速度、幸运草和矿物的解锁条件，自动获得矿物，并移除矿场。`],
             [`折算推迟`,`${toTextStyle('遗物','black-hole')}升级的第一次价格折算，从 <b>100</b> 延迟到 <b>1000</b>.`],
             [`无需重置`,`每次强子化后，开局自带 8 个${toTextStyle('黑洞','black-hole')}和前面解锁的所有生成器。`],
             [`永恒之树`,`购买${toTextStyle("进化","humanoid")}树无需消耗${toTextStyle("鲨之信念","humanoid")}，解锁自动购买${toTextStyle("进化","humanoid")}树。`],
