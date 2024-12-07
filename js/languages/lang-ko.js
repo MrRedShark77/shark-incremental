@@ -800,8 +800,8 @@ LANGUAGES.KO = {
             
             [`별`,x=>`${toTextStyle("별자리",'star')} 재화 생산량이<br>${x} 만큼<br>증가합니다.`],
             [`성장`,x=>`${toTextStyle("별자리",'star')} 베이스의<br>지수가 ${x} 만큼<br>증가합니다.`],
-            [`Old School`,x=>`${toTextStyle("기본 입자",'hadron')}가<br>${x}만큼<br>늘어납니다.`],
-            [`Finished`,x=>`The exponent of ${toTextStyle("Fish",'fish')} is boosted by ${x}.`],
+            [`올드 스쿨`,x=>`${toTextStyle("기본 입자",'hadron')}가<br>${x}만큼<br>늘어납니다.`],
+            [`마지막`,x=>`${toTextStyle("물고기",'fish')}의 지수가<br>${x} 만큼<br>증가합니다.`],
         ],
         
         'solar-system-list': {
@@ -908,11 +908,11 @@ LANGUAGES.KO = {
             'adenine': ["아데닌",[
                 x => `${toTextStyle('상어','shark')} ${toTextStyle('IQ','hadron')}의 지수 ${x}.`,
                 x => `모든 ${toTextStyle('하드로나이즈','hadron')} 이전 스케일링이 ${x}만큼 약해짐.`,
-                x => `<b>사이토신</b>의 티어에 ${x}.`,
+                x => `<b>사이토신</b> ${x}.`,
             ]],
         },
         'experience': "경험치",
-        'next-at-experience': "다음 경험치",
+        'next-at-experience': "획득을 위한 요구 경험치",
         'nucleobase-boosts': "핵산 부스트",
         'experience-base': "경험치 베이스",
         'nucleobase-tier': "핵산 티어",
@@ -984,7 +984,7 @@ LANGUAGES.KO = {
         'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
         'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵산을 해금하세요`, 
 
-        'maxed-progress': "All features unlocked!",
+        'maxed-progress': "모든 콘텐츠 해금됨!",
 
         // Reset / 환생 메시지
 
