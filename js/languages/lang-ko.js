@@ -979,7 +979,7 @@ LANGUAGES.KO = {
         'progress-19-text': r => `총 ${format(r)} 개의 ${toTextStyle('암흑물질','black-hole')}에 도달하세요`,
 
         'progress-20-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
-        get 'progress-20-cond-text'() { return `???` },
+        get 'progress-20-cond-text'() { return `${toTextStyle('하드로나이즈','hadron')}를 하세요` },
 
         'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
         'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵 베이스를 해금하세요`, 
