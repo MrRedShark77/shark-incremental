@@ -50,6 +50,9 @@ LANGUAGES.KO = {
         'traject-name': "궤도",
         'traject-costName': toTextStyle('궤도','traject'),
 
+        'hadron-name': "기본 입자",
+        'hadron-costName': toTextStyle('기본 입자','hadron'),
+
         'full-shark-level': toTextStyle('상어','shark') + ' 레벨',
         'full-shark-rank': toTextStyle('상어','shark') + ' 랭크',
 
@@ -73,6 +76,9 @@ LANGUAGES.KO = {
         'curr-top-5-req': x => `총 <b>${format(x)}</b> 개의 ${toTextStyle('비축량','reserv')}에 도달`, 
         'curr-top-5-reset': x => `<b>${format(x,0)}</b> 개의 ${toTextStyle('궤도','traject')} 획득`,
 
+        'curr-top-6-req': x => `총 <b>${format(x)}</b> ${toTextStyle('물고기','fish')} 도달`, 
+        'curr-top-6-reset': (x,next) => `<b>${format(x,0)}</b>개의 ${toTextStyle('기본 입자','hadron')} (다음: <b>${format(next)}</b> ${toTextStyle('물고기','fish')})를 위해 하드로나이즈 하기`,
+
         'radioactive-name': toTextStyle('방사능 '+icon("radioactive"),'core'),
 
         // Tabs / 탭들
@@ -94,7 +100,7 @@ LANGUAGES.KO = {
         'tab-shark-rank': toTextStyle('상어','shark') + " 랭크",
         'tab-evolution-tree': toTextStyle('진화','humanoid') + " 트리",
         'tab-evolution-goal': toTextStyle('진화','humanoid') + " 목표",
-        'tab-cultivation': "채굴",
+        'tab-cultivation': "채광",
         'tab-forge': "용광로",
         'tab-particle-accel': "입자 가속기",
 
@@ -103,6 +109,11 @@ LANGUAGES.KO = {
         'tab-singularity-milestones': toTextStyle('특이점','black-hole') + " 마일스톤",
         'tab-solar-system': "태양계",
         'tab-constellation': toTextStyle('별자리','star'),
+
+        'tab-hadron': toTextStyle('하드로나이즈','hadron'),
+        'tab-hadron-su': "스타터 업그레이드",
+        'tab-shark-tier': toTextStyle('상어','shark') + " 티어",
+        'tab-nucleobase': "핵산",
 
         // Elements / 기초적인 것들
 
@@ -114,6 +125,11 @@ LANGUAGES.KO = {
         'shark-rank-req-div': `다음 랭크는 ${toTextStyle('상어','shark')} ELO <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>을 더 요구합니다.`,
         'shark-rank-note': `노트: 진화 환생을 할 때 상어 랭크는 초기화 됩니다.`,
 
+        'shark-iq-div': `당신의 ${toTextStyle('상어','shark')}의 IQ는 <h3>${toTextStyle('0','hadron','shark-iq')}</h3>입니다.`,
+        'shark-tier-div': `당신의 ${toTextStyle('상어','shark')} 티어는 <h3 id="shark-tier2">0</h3>입니다.`,
+        'shark-tier-req-div': `다음 티어 요구 IQ: ${toTextStyle('상어','shark')} IQ <h4>${toTextStyle('0','hadron','shark-tier-req')}</h4>.`,
+        'shark-tier-note': `노트: 상어 티어는 하드로나이즈 리셋에서 초기화 됩니다.`,
+
         'option-title-1': "메인 옵션들",
         'option-title-2': "표기법",
         'option-title-3': "환생 확인",
@@ -122,7 +138,7 @@ LANGUAGES.KO = {
         'offline-speed': "오프라인 시간<br>계산을 가속하기",
         'offline-done': "완료됨",
 
-        'radioactive-div': `${toTextStyle('핵','core')}은  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 을 생산함 <span id="radioactive-gain"></span>.`,
+        'radioactive-div': `${toTextStyle('핵','core')}을  <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> 만큼 생산함 <span id="radioactive-gain"></span>.`,
         get 'radioactive-summary'() {
             var c = toTextStyle('핵','core'), rf = toTextStyle('생선'+icon("radioactive"),'fish')
             return `
@@ -155,7 +171,7 @@ LANGUAGES.KO = {
         'mining-tier-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 티어를 1 내리세요`,
         'mining-ascend-undo-btn': `채광 중 막혔을 경우 버튼을 눌러<br>채광 승천을 1 내리세요`,
 
-        'black-hole-button': `모든 입자 가속기가 최대에 달성하였기 때문에, 다른 우주에 진입할 때를 대비해 블랙홀을 만들어야 합니다.`,
+        'black-hole-button': `모든 입자 가속기가 100%가 되었기\n때문에, 다른 우주에 진입하기 위한\n블랙홀을 만들어야 합니다.`,
         'black-hole-html': `<h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> 개의 블랙홀을 만들었습니다. 이는 물고기와 환생 파편의 지수, 그리고 마그마 파편의 획득 지수를 <h3 id="black-hole-effect">^???</h3> 만큼 감소시킵니다.`,
 
         'remnant-html': `<h3>${toTextStyle('0','black-hole','remnant-amount')}</h3> <span id="remnant-gain"></span> 개의 잔재물을 가지고 있습니다.`,
@@ -168,6 +184,9 @@ LANGUAGES.KO = {
 
         'bh-tier-div': `당신의 블랙홀 티어는 <h3>${toTextStyle('0','black-hole','bh-tier')}</h3> 입니다.`,
         'bh-tier-button': `요구치를 달성해 당신의 ${toTextStyle('블랙홀','black-hole')} 티어를 올려 강력한 보상을 받으세요.`,
+
+        'fundamental-amount-div': `현재 총 <h3>${toTextStyle('0','hadron','total-fundamental')}</h3> 개의 기본 입자를 획득했으며, 이는 ${toTextStyle('물고기','fish')} 상한을 <h3 id="fundamental-effect">???</h3>까지 확장시킵니다.`,
+        'starter-upg-note': `노트: 각 업그레이드의 가격은 구매 당 <b>두 배</b>씩 상승합니다. 첫 번째 업그레이드는 첫 리셋 이후 구매하는 것을 <b>추천합니다</b>.`,
 
         // Upgrades / 업그레이드들
 
@@ -405,9 +424,20 @@ LANGUAGES.KO = {
             'r2': [`비축량 개선`,`${toTextStyle('비축량','reserv')} 획득 공식을 개선합니다.`],
             'r3': [`비축량 생산`,`환생시 얻는 ${toTextStyle('비축량','reserv')}의 100%를 자동으로 생산합니다.<br><i>이 업그레이드는 초기화 되지 않습니다.</i>`],
 
-            't1': [`궤도 자동화`,`모든 ${toTextStyle('궤도','traject')}  업그레이드를 자동으로 구매하며<br>${toTextStyle('비축량','reserv')}를 소모하지 않습니다.<br><i>이 업그레이드는 초기화 되지 않습니다.</i>`],
+            't1': [`궤도 자동화`,`모든 ${toTextStyle('궤도','traject')}  업그레이드를 자동으로 구매하며<br>자원을 소모하지 않습니다.<br><i>이 업그레이드는 초기화 되지 않습니다.</i>`],
             't2': [`궤도 개선`,`${toTextStyle('궤도','traject')} 획득 공식을 개선합니다.`],
             't3': [`궤도 생산`,`환생시 얻는 ${toTextStyle('궤도','traject')}의 100%를 자동으로 생산합니다.<br><i>이 업그레이드는 초기화 되지 않습니다.</i>`],
+
+            'h1': [`IQ 전환기`,`${toTextStyle("상어",'shark')} 레벨이 ${toTextStyle("상어",'shark')} ${toTextStyle("IQ",'hadron')}를<br>초 로그적으로(super-logarithmically)에 기반해<br>증가시킵니다.`],
+            'h2': [`하드론 용광 유지`, `${toTextStyle("하드로나이즈",'hadron')}에도 용광로를 유지합니다.`],
+            'h3': [`늦춰진 블랙홀`, `총 ${toTextStyle("기본 입자",'hadron')} 개수가 ${toTextStyle("블랙홀",'black-hole')}의 티어 스케일링을<br>로그적으로 늦춥니다.`],
+            'h4': [`좋은 물고기 상한`, `총 ${toTextStyle("기본 입자",'hadron')}의 효과를 상향합니다.`],
+            'h5': [`자동-블랙홀`, `리셋 없이 자동으로 ${toTextStyle("블랙홀",'black-hole')} 티어를 올립니다.`],
+            'h6': [`큐빗 IQ`, `${toTextStyle("물고기",'fish')}가 ${toTextStyle("상어",'shark')} ${toTextStyle("IQ",'hadron')}를 늘려줍니다.<br>연구 <b>h1</b>을 개선합니다.`],
+            'h7': [`첫 희생 스케일링`, `${toTextStyle("잔재물",'black-hole')} 업그레이드의 스케일링이 사라집니다.<br>더 많은 ${toTextStyle("잔재물",'black-hole')} 업그레이드를 해금합니다.`],
+            'h8': [`더 나은 물고기 상한`, `총 ${toTextStyle("기본 입자",'hadron')}의 효과를 더욱 상향합니다.`],
+            'h9': [`하드로닉 생산기`, `환생시 획득하는 ${toTextStyle("기본 입자의",'hadron')} <b>100%</b> 만큼을<br>자동으로 획득합니다.`],
+            'h10': [`인플레이션은 거짓말`, `모든 방사능 부스트의 스케일링을 삭제합니다.`],
         },
 
         // Exploration / 탐험들
@@ -595,9 +625,9 @@ LANGUAGES.KO = {
             ["강해진 열 3", x=>`세 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`, x=>`이 트리 위에 있는 세 번째 줄의 모든 트리와 강화된 트리가 <b>${formatPercent(x-1)}</b> 만큼 강해집니다.`],
             ["강해진 열 4", x=>`네 번째 열에 있는 이 위의 모든 업그레이드가 <b>${formatPercent(x-1)}</b> 더 강해집니다.`, x=>`이 트리 위에 있는 네 번째 줄의 모든 트리와 강화된 트리가 <b>${formatPercent(x-1)}</b> 만큼 강해집니다.`],
 
-            ["물고기 용광로", x=>`${toTextStyle('물고기','fish')}가 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('물고기','fish')}가 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
-            ["환생 용광로", x=>`${toTextStyle('환생','prestige')} 파편이 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('환생','prestige')} 파편이 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
-            ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('마그마','core')} 조각이 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["물고기 용광로", x=>`${toTextStyle('물고기','fish')}가 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('물고기','fish')}가 ${toTextStyle("별자리",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["환생 용광로", x=>`${toTextStyle('환생','prestige')} 파편이 재련을 <b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('환생','prestige')} 파편이 ${toTextStyle("별자리",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
+            ["마그마 용광로", x=>`${toTextStyle('마그마','core')} 조각이 재련을<b>${formatMult(x)}</b> 만큼 빨라지게 합니다.`, x=>`${toTextStyle('마그마','core')} 조각이 ${toTextStyle("별자리",'star')} 재화 획득량을 <b>${formatMult(x)}</b> 만큼 늘어나게 합니다.`],
             ["빠른 용광로", x=>`재련이 <b>${formatMult(x)}</b> 만큼 빨라집니다.`, x=>`${toTextStyle("별자리",'star')} 재화 획득량이 <b>${formatMult(x)}</b> 만큼 늘어납니다.`],
 
             ["진정한 열 1", x=>`진화 트리의 첫 번째 열을 제한 없이 구매할 수 있습니다.`, x=>`강화된 트리의 첫 번째 열을 제한 없이 구매할 수 있습니다.`],
@@ -660,7 +690,7 @@ LANGUAGES.KO = {
 
         'mined-resources-text': `채굴한 자원들`,
         'mining-tier': `채광 티어`,
-        'next-mining-tier': `<b>채광 티어</b>에서`,
+        'next-mining-tier': `<b>채광 티어</b>:`,
         'mining-tier-reset': `<b>채광 티어</b>를 올리는 대신 광석의 체력과 양이 증가합니다.`,
         'mining-tier-ore-unlock': x=>`${x} 광석을 해금합니다.`,
         'mining-tier-ore-generation': x=>`더 이상 ${x} 광석이 나타나지 않습니다, 대신 해당 광석을 채광 속도와 행운에 기반해 자동으로 생성됩니다.`,
@@ -695,9 +725,9 @@ LANGUAGES.KO = {
             'tree': ['특별한 나무',`새로운 ${toTextStyle('진화','humanoid')} 트리의 행을 해금합니다.`],
             'adv_research': ['고급 연구',`새로운 연구를 해금합니다.`],
             'auto': ['고급 자동화',`새로운 자동화를 해금합니다.`],
-            'shark': ['더 멀은 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
+            'shark': ['더 먼 상어 레벨',`세 번째 ${toTextStyle('상어','shark')} 레벨의 스케일링을 미룹니다.`],
             'refined_shard': ['충전된 파편',`${toTextStyle('환생','prestige')} 파편의 지수를 증가시킵니다.`],
-            'wormhole': ['웜홀',`새로운 콘텐츠인 입자 가속기를 해금합니다.`],
+            'wormhole': ['웜홀',`새 입자 가속기를 해금합니다.`],
             'matter': ['물질 변환기',`${toTextStyle('잔재물','black-hole')} 획득량을 늘립니다.`],
         },
         'forge-progress': (x,s) => x ? `<b>${x}</b> 재련 중... <b>${s}</b>` : `용광로에서 제작을 하고 있지 않습니다.`,
@@ -719,9 +749,9 @@ LANGUAGES.KO = {
         // Singularity / 특이점
 
         'black-hole-texts': [
-            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만 조금 복잡합니다..`,
-            `평행 우주에서는 어떠셨나요? 아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
-            `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요? 그래서 어쩌라고요? 이제 당신을 엄청난 고난에 넣을 차례입니다!`,
+            `블랙홀을 형성하기 위한 충분한 물질들이 모였습니다.... <br>하지만 당신은 블랙홀 안에 갇혀 무엇을할 수 있나요? <br>걱정하지 마세요, 당신을 다른 우주로 보내는 화이트홀이 있지만\n조금 복잡합니다..`,
+            `평행 우주에서는 어떠셨나요?<br>아무튼 당신은 또 다른 블랙홀에 갇히게 될 것 입니다!`,
+            `잠시만... 어떻게 ${toTextStyle("물고기",'fish')}를 그렇게 빨리 모았나요?<br>그래요?<br>이제 당신을 엄청난 고난에 넣을 차례입니다!`,
             `진짜로..`,
             `...`,
             `그만둬!`,
@@ -761,19 +791,21 @@ LANGUAGES.KO = {
             [`끝없는 깊이`,x=>`각 바다의 깊이<br>진행이 ${x} 만큼<br>부스트 됩니다.`],
             [`뜨거운 감자`,x=>`방사선 부스트가<br>${x} 만큼<br>강해집니다.`],
             [`메가 레벨`,x=>`${toTextStyle("상어",'shark')} 레벨의 첫<br>네 개의 스케일링이 ${x} 만큼<br>늦춰집니다.`],
-            [`엘리트 마이너`,x=>`채광 티어의 세 번째<br>스케일링이 ${x} 만큼<br>늦춰집니다.`],
+            [`엘리트 마이너`,x=>`채광 티어의<br>세 번째 스케일링이<br>${x} 만큼<br>늦춰집니다.`],
 
             [`셀프-가속기`,x=>`${toTextStyle("잔재물",'black-hole')}이 자기 자신을<br>${x} 만큼<br>강화시킵니다.`],
             [`궁극의 힘`,x=>`첫 12 개의 ${toTextStyle("잔재물",'black-hole')}<br>업그레이드가 ${x}<br>만큼 강해집니다.<br>(4번째 제외)`],
-            [`효율 VI`,x=>`슈퍼 채광 대미지가<br>${x} 만큼 증가합니다.`],
+            [`효율 VI`,x=>`슈퍼 채광 대미지가<br>${x} 만큼<br>증가합니다.`],
             [`슈퍼내츄럴 상어`,x=>`${toTextStyle("휴머노이드",'humanoid')} 상어의<br>지수가 ${x} 만큼<br>증가합니다.`],
             
-            [`별`,x=>`${toTextStyle("별자리",'star')} 재화 생산량이<br>${x} 만큼 증가합니다.`],
+            [`별`,x=>`${toTextStyle("별자리",'star')} 재화 생산량이<br>${x} 만큼<br>증가합니다.`],
             [`성장`,x=>`${toTextStyle("별자리",'star')} 베이스의<br>지수가 ${x} 만큼<br>증가합니다.`],
+            [`Old School`,x=>`${toTextStyle("기본 입자",'hadron')}가<br>${x}만큼<br>늘어납니다.`],
+            [`Finished`,x=>`The exponent of ${toTextStyle("Fish",'fish')} is boosted by ${x}.`],
         ],
         
         'solar-system-list': {
-            'sun':     ["태양",`태양은 태양계의 중심에 있는 별입니다. 대부분 수소와 헬륨으로 이루어져 있으며 지구와 태양계<br>내 다른 행성들의 주요한 빛과 열원입니다. 또한 태양은 광합성과 기후 조건을 제공하여 지구에<br>생명체가 살 수 잇는 조건을 만들어 줍니다. 태양은 거대합니다: 지름은 지구 지름의 109배, 질량은<br>지구 질량의 33만 배에 달합니다. 지구와 태양 사이의 거리가 1억 5천만 km나 되니 우리에게는<br>태양이 작게 느껴지는 것 뿐이죠.`, `다음 환생 레이어를 해금합니다(아직 구현되지 않음). ${toTextStyle('신앙','humanoid')}의 배수가 두 배 증가합니다.`],
+            'sun':     ["태양",`태양은 태양계의 중심에 있는 별입니다. 대부분 수소와 헬륨으로 이루어져 있으며 지구와 태양계<br>내 다른 행성들의 주요한 빛과 열원입니다. 또한 태양은 광합성과 기후 조건을 제공하여 지구에<br>생명체가 살 수 잇는 조건을 만들어 줍니다. 태양은 거대합니다: 지름은 지구 지름의 109배, 질량은<br>지구 질량의 33만 배에 달합니다. 지구와 태양 사이의 거리가 1억 5천만 km나 되니 우리에게는<br>태양이 작게 느껴지는 것 뿐이죠.`, `다음 환생 레이어를 해금합니다. ${toTextStyle('신앙','humanoid')}의 배수가 두 배 증가합니다.`],
             'mercury': ["수성",`수성은 태양계에서 가장 작은 행성이며 태양과 제일 가까운 행성입니다.<br>수성은 하늘에서 다른 행성보다 빠르게 움직였기에 로마 신화의 헤르메스의 또 다른 이름인<br>메르쿠리우스(Mercury)에서 따온 머큐리(Mercury)가 되었습니다. 수성은 달과 비슷하게<br>충돌 크레이터가 있으며, 이는 지난 10억 년 동안 내부 지질 활동이 부족했음을 나타내기도 합니다.<br>수성은 또한 거의 대기가 없기에 표면 온도는 태양계의 어떤 다른 행성보다 극과 극을 달립니다.`, `방사선 부스트의 첫 3 스케일링이 x10 늦춰지며 ${toTextStyle('천체','observ')}의 생산량이 다시 10배 늘어납니다.`],
             'venus':   ["금성",`금성은 태양계의 두 번째 행성으로 태양계에서 6번째로 큰 행성입니다. 금성의 이름은 로마 신화의<br>미를 상징하는 여신의 이름을 따 비너스(Venus)라고 부릅니다. 금성은 96% 이상이 이산화탄소로<br>이루어져 있으며 밀도가 높은 대기를 가지고 있습니다. 금성의 평균 표면 온도는 735 K (462 °C)으로<br>태양계에서 가장 뜨거운 행성이며 위성이 없습니다. 태양과 달에 이어 지구의 하늘에서 볼 수 있는<br>세 번째로 밝은 천체입니다.`,`현재 ${toTextStyle('휴머노이드','humanoid')} 상어의 100%를 추가 ${toTextStyle('휴머노이드','humanoid')} 상어로 써 획득하는 대신<br>'자동-${toTextStyle('휴머노이드','humanoid')} 상어'가 더 이상 작동하지 않습니다. ${toTextStyle('휴머노이드','humanoid')} 상어를 드라마틱하게 개선하며,<br>${toTextStyle('상어','shark')} 랭크의 세 번째 스케일링이 x2 만큼 미뤄집니다. ${toTextStyle('천체','observ')}의 생산량이 x10 만큼 증가합니다.`],
             'earth':   ["지구",`???`,`???`],
@@ -829,11 +861,61 @@ LANGUAGES.KO = {
         ],
 
         'constellation-boosts': [
-            [`별의 물고기`, x=>`${toTextStyle('물고기','fish')}의 획득량에 ${x} 을 지수에<br>추가합니다.`, x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
-            [`별의 환생`, x=>`${toTextStyle('환생','prestige')} 파편 획득량에 ${x} 을 지수를<br>추가합니다.`, x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
-            [`별의 조각`, x=>`${toTextStyle('마그마','core')} 조각 획득량이 ${x} 만큼<br>증가합니다.`, x=>`${toTextStyle('궤도','traject')} 획득량이 ${x} 만큼 증가합니다.`],
-            [`별의 상어`, x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 지수를 ${x} 만큼<br>강화시킵니다.`, x=>`${toTextStyle('경험','experiment')} 티어 요구량을 ${x} 만큼 감소시킵니다`],
+            [`물고기의 별`, x=>`${toTextStyle('물고기','fish')}의 획득량에 ${x} 을 지수에<br>추가합니다.`, x=>`${toTextStyle('천체','observ')} 획득량이 ${x} 만큼 증가합니다.`],
+            [`환생의 별`, x=>`${toTextStyle('환생','prestige')} 파편 획득량에 ${x} 을 지수를<br>추가합니다.`, x=>`${toTextStyle('비축량','reserv')} 획득량이 ${x} 만큼 증가합니다.`],
+            [`조각의 별`, x=>`${toTextStyle('마그마','core')} 조각 획득량이 ${x} 만큼<br>증가합니다.`, x=>`${toTextStyle('궤도','traject')} 획득량이 ${x} 만큼 증가합니다.`],
+            [`상어의 별`, x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 지수를 ${x} 만큼<br>강화시킵니다.`, x=>`${toTextStyle('경험','experiment')} 티어 요구량을 ${x} 만큼 감소시킵니다`],
+            [`방사선의 별`+icon("radioactive"), x=>`${toTextStyle('방사능 ' + icon("radioactive"),'core')}의 획득량이 ${x}만큼<br>증가합니다.`, x=>`아무 효과 없음.`],
+            [`호킹 복사`+icon("radioactive"), x=>`${toTextStyle('기본 입자','hadron')}의 획득량이 ${x}만큼<br>증가합니다.`, x=>`아무 효과 없음.`],
+            [`은하`, x=>`첫 6 ${toTextStyle("별자리",'star')} 재화가<br>${x}만큼 강해집니다.`, x=>`아무 효과 없음.`],
         ],
+
+        // Haronize
+
+        'hadron-cutscenes': [
+            `이제 눈을 뜰 차례다.`,
+            `하드로나이즈를 위해선<br>신성한 입자에게 기도해야 한다.`,
+            `고진감래,<br>이제 하드 리셋은 없을거다.`,
+            `앞으로도<br>먼 길이 남았다...`,
+            `어떤 날은 쉽고, 다른 날엔 어렵지...<br>쉽든 어렵든... 길은 하나다...<br> ...바로 시작하는 것이다.`
+        ],
+        'starter-upgrades': [
+            [`상어 티어`,`${toTextStyle('상어','shark')} 랭크와 비슷하지만 더 강한<br>${toTextStyle('상어','shark')} 티어를 해금합니다.<br>${toTextStyle('상어','shark')} 티어는 ${toTextStyle('상어','shark')} ${toTextStyle('IQ','hadron')}에 기반해<Br>결정됩니다.`],
+            [`자동 태양계 탐사`,`태양계 천체들이 로켓 부품 조건만 만족하면 바로 탐사가 완료됩니다.<br>천체들의 로켓 부품 요구량이<br>증가하지 않습니다.`],
+            [`환생 업그레이드 상한 해제`,`1 & 2번째 ${toTextStyle('상어','shark')} ${toTextStyle('환생','prestige')} 업그레이드의<br>제한이 사라집니다.<br> 대신 상한 수치를 넘어가면 스케일링이<br>강해집니다.`],
+            [`준비된 용광로 & 입자 가속기`,`용광로 업그레이드가 즉시 완료됩니다<br>입자 가속기의 속도가 매우 빨라집니다.`],
+            [`채광 컨티늄`,`모든 광석이 채광을 하지 않고도<br>획득 가능합니다.<br>이는 채광 속도, 행운,<br>그리고 광물 해금 조건에 기반합니다.<br> 채광 필드가 삭제됩니다.`],
+            [`늦춰진 잔재물 스케일링`,`${toTextStyle('잔재물','black-hole')} 업그레이드의 첫 스케일링이<br><b>100</b>(기본)에서 <b>1000</b>으로 늦춰집니다.`],
+            [`불편한 환생 제거`,`${toTextStyle('블랙홀','black-hole')} 8개로 게임을 시작합니다.<br>블랙홀 이전 해금 컨텐츠들을<br>전부 해금한 상태로 시작합니다.`],
+            [`영원한 트리`,`${toTextStyle("진화","humanoid")} 트리가 더이상<br>${toTextStyle("신앙","humanoid")}을 소모하지 않습니다.<br>${toTextStyle("진화","humanoid")} 트리의 자동화를 해금합니다.`],
+        ],
+
+        'nucleobases': {
+            'cytosine': ["사이토신",[
+                x => `${toTextStyle('별자리','star')} 재화 획득량 ${x}.`,
+                x => `${toTextStyle('기본 입자','hadron')} ${x}.`,
+                x => `${toTextStyle('잔재물','black-hole')} 생산 & ${toTextStyle('암흑 물질','black-hole')} 획득량 ${x}.`,
+                x => `${toTextStyle('별자리','star')} 재화 획득량 ${x}.`,
+                x => `${toTextStyle('핵','core')} 원자로의 세번째 줄이 ${x}만큼 강해짐.`,
+            ]],
+            'guanine': ["구아닌",[
+                x => `${toTextStyle('별자리','star')} 베이스 지수 ${x}.`,
+                x => `${toTextStyle('기본 입자','hadron')} ${x}.`,
+                x => `${toTextStyle('마그마','core')} 파편과 ${toTextStyle('방사능 ' + icon("radioactive"),'core')} 생산량 ${x}.`,
+                x => `${toTextStyle("상어",'shark')} 티어 보너스 ${x}만큼 강해짐.`,
+                x => `${toTextStyle('진화','humanoid')} 트리의 열 번째 줄이 ${x}만큼 강해짐.`,
+            ]],
+            'adenine': ["아데닌",[
+                x => `${toTextStyle('상어','shark')} ${toTextStyle('IQ','hadron')}의 지수 ${x}.`,
+                x => `모든 ${toTextStyle('하드로나이즈','hadron')} 이전 스케일링이 ${x}만큼 약해짐.`,
+                x => `<b>사이토신</b>의 티어에 ${x}.`,
+            ]],
+        },
+        'experience': "경험치",
+        'next-at-experience': "다음 경험치",
+        'nucleobase-boosts': "핵산 부스트",
+        'experience-base': "경험치 베이스",
+        'nucleobase-tier': "핵산 티어",
 
         // Automation / 자동화
 
@@ -850,6 +932,11 @@ LANGUAGES.KO = {
         'auto-mining_tier-name': `자동-채광 티어`,
         'auto-remnant-name': `자동-${toTextStyle("잔재물","black-hole")} 업그레이드`,
         'auto-faith-name': `자동-${toTextStyle("신앙","humanoid")}`,
+
+        'auto-sing_research-name': `자동-${toTextStyle("특이점","black-hole")} 연구`,
+        'auto-evolution_tree-name': `자동-${toTextStyle("환생","humanoid")} 트리`,
+        'auto-rocket_part-name': `자동-로켓 부품`,
+        'auto-mining_ascend-name': `자동-채광 승천`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -891,10 +978,13 @@ LANGUAGES.KO = {
 
         'progress-19-text': r => `총 ${format(r)} 개의 ${toTextStyle('암흑물질','black-hole')}에 도달하세요`,
 
-        'progress-20-text': r => `chd ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
-        get 'progress-20-cond-text'() { return `???` },
+        'progress-20-text': r => `총 ${format(r)} 개의 ${toTextStyle('물고기','fish')}에 도달하세요`, 
+        get 'progress-20-cond-text'() { return `${toTextStyle('하드로나이즈','hadron')}를 하세요` },
 
-        'maxed-progress': "모든 콘텐츠를 해금함!",
+        'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
+        'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵산을 해금하세요`, 
+
+        'maxed-progress': "All features unlocked!",
 
         // Reset / 환생 메시지
 
@@ -902,7 +992,7 @@ LANGUAGES.KO = {
             let p = toTextStyle('환생','prestige'), s = toTextStyle('상어','shark'), f = toTextStyle('물고기','fish')
             return `
             <h3>${p}</h3><br>
-            ${p} 은 첫 번째 환생 레이어 입니다. 환생은 당신의 ${s} 와 ${s} 업그레이드, 그리고 ${f} 를 초기화 하는 대신 ${p} 파편을 획득합니다.
+            ${p}은 첫 번째 환생 레이어 입니다. 환생은 당신의 ${s} 와 ${s} 업그레이드, 그리고 ${f} 를 초기화 하는 대신 ${p} 파편을 획득합니다.
             첫 번째 ${p} 은 새로운 ${s} 업그레이드를 해금합니다.<br>
             <img src="textures/PrestigeShard.png"><br>
             정말로 환생을 하시겠습니까?
@@ -912,7 +1002,7 @@ LANGUAGES.KO = {
             let c = toTextStyle('핵','core'), m = toTextStyle('마그마','core'), p = toTextStyle('환생','prestige')
             return `
             <h3>${c}</h3><br>
-            ${c} 은 두 번째 환생 레이어 입니다. 핵에 진입하는 것은 ${p} 파편과 ${p} 업그레이드 같은 ${p} 에 관련한 모든것을 초기화 시키며, 몇몇 ${toTextStyle('연구','prestige')} 와 탐험도 초기화 되는 대신 ${m} 조각을 획득합니다.
+            ${c}은 두 번째 환생 레이어 입니다. 핵에 진입하는 것은 ${p} 파편과 ${p} 업그레이드 같은 ${p} 에 관련한 모든것을 초기화 시키며, 몇몇 ${toTextStyle('연구','prestige')} 와 탐험도 초기화 되는 대신 ${m} 조각을 획득합니다.
             또한 ${c} 원자로를 해금합니다.<br>
             <img src="textures/Magmatic.png"><br>
             정말로 핵에 들어가시겠습니까?
@@ -923,7 +1013,7 @@ LANGUAGES.KO = {
             return `
             <h3>${e}</h3><br>
             <subtitle>“상어가 야생을 깨우쳐 상어 인간으로 변합니다. 하지만 지금까지 모은 것을 전부 초기화 해야 합니다.”</subtitle>
-            ${e} 는 세 번째 환생 레이어 입니다. 상어를 진화 시키는 것은 ${c} 관련한 ${m} 조각들, ${c} 원자로, ${c} 방사선, ${c} 조립기, 그리고 몇몇 ${toTextStyle('환생','prestige')} 을 초기화 시키는 대신 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득합니다.
+            ${e}는 세 번째 환생 레이어 입니다. 상어를 진화 시키는 것은 ${c} 관련한 ${m} 조각들, ${c} 원자로, ${c} 방사선, ${c} 조립기, 그리고 몇몇 ${toTextStyle('환생','prestige')} 을 초기화 시키는 대신 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득합니다.
             또한 랭크와 ${e} 트리를 해금합니다.<br>
             <img src="textures/Evolution.png"><br>
             정말로 당신의 상어를 진화시키겠습니까?
@@ -933,9 +1023,9 @@ LANGUAGES.KO = {
             let e = toTextStyle('블랙홀','black-hole'), c = toTextStyle('진화','humanoid'), m = toTextStyle('마그마','core'), p = toTextStyle('환생','prestige')
             return `
             <h3>${e}</h3><br>
-            ${e} 은 네 번째 환생 레이어 입니다.
+            ${e}은 네 번째 환생 레이어 입니다.
             ${e}을 형성하는 것은 ${c} 처럼 모든것을 초기화 시킵니다, 이는 상어 랭크, 휴머노이드 상어, 진화 트리, 신앙, 진화 목표, 채광, 재련, 입자 가속기, 몇몇 연구, 몇몇 자동화, 그리고 조금의 게임 프로그래션을 포함합니다.
-            ${e} 을 만드는 것은 자원 획득을 감소 시키며, 하지만 목표처럼 새로운 이득이 있습니다.<br>
+            ${e}을 만드는 것은 자원 획득을\n감소 시키며, 하지만 목표처럼 새로운 이득이 있습니다.<br>
             <img src="textures/black-hole.png"><br>
             정말로 다른 우주에 진입하겠습니까?
             `
@@ -945,9 +1035,19 @@ LANGUAGES.KO = {
             return `
             <h3>${e}</h3><br>
             ${e}은 미니 환생 레이어입니다.
-            희생을 하는 것은 ${c} 처럼 모든것을 초기화 시킵니다, 이는 현재 가진 블랙홀 (첫 7개의 블랙홀 마일스톤을 제외한), 잔재물, 잔재물 업그레이드, 그리고 몇몇 연구를 초기화하는 대신 ${toTextStyle('암흑물질','black-hole')}을 획득합니다.<br>
+            희생을 하는 것은 ${c} 처럼 모든 것을 초기화 시킵니다, 이는 현재 가진 블랙홀 (첫 7개의 블랙홀 마일스톤을 제외한), 잔재물, 잔재물 업그레이드, 그리고 몇몇 연구를 초기화하는 대신 ${toTextStyle('암흑물질','black-hole')}을 획득합니다.<br>
             <img src="textures/sacrifice.png"><br>
             정말로 당신의 상어를 희생시키겠습니까?
+            `
+        },
+        get 'reset-hadron-message'() {
+            let e = toTextStyle('하드로나이즈','hadron'), c = toTextStyle('환생','black-hole')
+            return `
+            <h3>${e}</h3><br>
+            ${e}는 다섯 번째 환생 레이어입니다.
+            상어가 전 우주를 누비도록 하는 대신 ${c}처럼<br>모든 것을 초기화 시키며, 암흑 물질, 16번째 이후의 잔재물 업그레이드, 태양계와 로켓 부품,<br>블랙홀 티어, 별자리 재화, 특이점 마일스톤, 채광 승천과 그 광물들, 그리고 몇 특이점 이후의 연구들을<br>${toTextStyle('기본 입자','hadron')}를 얻기 위해 초기화 합니다.<br>그리고 스타터 업그레이드와 더 많은 연구와 자동화를 해금합니다.<br>
+            <img src="textures/hadronize.png"><br>
+            정말로 하시겠습니까?
             `
         },
         
@@ -956,6 +1056,7 @@ LANGUAGES.KO = {
         'scalings': {
             'shark_level' : `상어 레벨`,
             'shark_rank' : `상어 랭크`,
+            'shark_tier' : `상어 티어`,
             'su_s3' : `"상어 이빨 강화" 업그레이드`,
             'su_s4' : `"상어 지수 강화" 업그레이드`,
             'su_m1' : `"채광 대미지" 업그레이드`,
@@ -991,6 +1092,14 @@ LANGUAGES.KO = {
             remnants: x => `${formatMult(x)} ${toTextStyle('잔재물','black-hole')}`,
         },
 
+        'shark-tier-bonuses': {
+            fish: x => `${x}만큼 ${toTextStyle('물고기','fish')} 지수 증가`,
+            hadron: x => `${x} ${toTextStyle('기본 입자','hadron')}`,
+            prestige: x => `${x}만큼 ${toTextStyle('환생','prestige')} 파편 지수 증가`,
+            nucleobase: x => `${x} 핵산 경험치`,
+        },
+
+        'amount': "소지량",
         'total': "총",
         'level': "레벨",
         'effect': "효과",
@@ -1015,6 +1124,8 @@ LANGUAGES.KO = {
         'research-afford': bool => bool ? "구매" : "구매하지 않음",
         'research-bought': bool => bool ? `<b>구매함</b>` : `<b>구매하지 않음</b>`,
         'research-pages': x => `${x} 페이지`,
+        
+        'purchased': "구매함",
 
         'off-on': bool => bool ? "켜짐" : "꺼짐",
 
@@ -1028,6 +1139,7 @@ LANGUAGES.KO = {
             wipe: `정말로 게임 진행 상태를 초기화 하겠습니까? 초기화 하기 위해선 아래에<br>"<span class="free-select">I'm sorry what I don't want sharks!</span>"를 입력하세요`,
             "evolution-tree-respec": `정말로 ${toTextStyle('진화','humanoid')} 트리를 재설정 하시겠습니까? 재설정은 ${toTextStyle('진화','humanoid')} 환생을 강제로 진행하며, 어떠한 ${toTextStyle('휴머노이드','humanoid')} 상어를 획득할 수 없습니다.`,
             "evolution-tree-import": `아래에 트리 프리셋을 넣으세요.`,
+            "starter-upgrade-warning": `정말로 이 스타터 업그레이드를 구매하시겠습니까?<br><b>"상어 티어"</b>를 먼저 구매해야 합니다!`,
         },
 
         'notify-desc' : {
@@ -1051,12 +1163,13 @@ LANGUAGES.KO = {
 
         'prompt-placeholder': "아래에 입력하세요...",
 
-        'option-buttons-text': ["저장","클립보드에 내보내기","파일로 내보내기","프롬포트로 불러오기","파일로 불러오기","초기화!!!",'커뮤니티에 가입하기 (Discord)','제작자를 지원하기 (Boosty)'],
+        'option-buttons-text': ["저장","클립보드에<br>내보내기","파일로<br>내보내기","프롬포트로<br>불러오기","파일로<br>불러오기","초기화!!!",'커뮤니티<br>(Discord)','제작자를 지원하기<br>(Boosty)'],
 
         'confirm-prestige': "환생",
         'confirm-core': "핵 진입",
         'confirm-humanoid': "상어 진화",
         'confirm-black-hole': "블랙홀 형성",
         'confirm-sacrifice': "상어 희생",
+        'confirm-hadron': "하드로나이즈",
     },
 }
