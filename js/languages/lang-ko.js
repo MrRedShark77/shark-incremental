@@ -908,7 +908,7 @@ LANGUAGES.KO = {
             'adenine': ["아데닌",[
                 x => `${toTextStyle('상어','shark')} ${toTextStyle('IQ','hadron')}의 지수 ${x}.`,
                 x => `모든 ${toTextStyle('하드로나이즈','hadron')} 이전 스케일링이 ${x}만큼 약해짐.`,
-                x => `<b>사이토신</b>의 티어에 ${x}.`,
+                x => `<b>사이토신</b> ${x}.`,
             ]],
         },
         'experience': "경험치",
