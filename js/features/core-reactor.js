@@ -338,7 +338,8 @@ function updateCoreTemp() {
     if (isSSObserved('saturn')) tmp.core_reactor_unl = 12
 
     var bonus1 = getCRBoost(0,0), bonus2 = getCRBoost(10,0)
-    var strong = remnantUpgEffect(2)
+    var strong1 = remnantUpgEffect(2)
+    var strong2 = getNucleobaseEffect('cytosine',4)
     
     for (let i = 0; i < CORE_REACTOR.length; i++) {
         var bonus = Decimal.dZero
@@ -355,7 +356,8 @@ function updateCoreTemp() {
 
         if (tmp.ss_difficulty && i >= 8) level = E(0);
 
-        if (i < 8) level = level.mul(strong);
+        if (i < 8) level = level.mul(strong1);
+        else if (i < 12) level = level.mul(strong2);
 
         tmp.core_effect[i] = CR.effect(level)
     }

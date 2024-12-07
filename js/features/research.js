@@ -585,12 +585,99 @@ const RESEARCH = {
             ['traject',false,'ee6'],
         ],
     },
+
+    h1: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',true,5]
+        ],
+        effect(r) {
+            let x = player.shark_level.add(10).slog(10)
+            if (hasResearch('h6')) x = x.max(player.shark_level.add(1).slog(2).pow_base(2));
+            return x
+        },
+        effDesc: x => formatMult(x),
+    },
+    h2: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',true,100]
+        ],
+    },
+    h3: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e6]
+        ],
+        effect(r) {
+            return player.hadron.total.add(1).log10()
+        },
+        effDesc: x => "+"+format(x,3),
+    },
+    h4: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e10]
+        ],
+    },
+    h5: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e20]
+        ],
+    },
+    h6: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e50]
+        ],
+        effect(r) {
+            return player.fish.add(1).slog(2).pow_base(2)
+        },
+        effDesc: x => formatMult(x),
+    },
+    h7: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e63],
+            ['remnants',false,'ee45'],
+        ],
+    },
+    h8: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,1e93]
+        ],
+    },
+    h9: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,'1e1000']
+        ],
+    },
+    h10: {
+        tier: 3,
+        unl: ()=>player.hadron.times,
+        require: [
+            ['hadron',false,'1e3000']
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
 const MAX_RESEARCH = [null,15,20,25,30]
 
-const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => (RESEARCH[x].tier ?? 1) === 1)
+const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => RESEARCH[x].tier < 2)
+const PRE_HADRON_RESEARCH = RESEARCH_KEYS.filter(x => RESEARCH[x].tier < 3)
 
 var research_page = 1
 

@@ -1,6 +1,6 @@
 const CONSTELLATION = {
     get exp() {
-        let x = Decimal.add(0.44,remnantUpgEffect(17,0))
+        let x = Decimal.add(0.44,remnantUpgEffect(17,0)).add(getNucleobaseEffect('guanine',0))
         return x
     },
 
@@ -12,6 +12,12 @@ const CONSTELLATION = {
 
     get require() {
         return player.singularity.bh_tier.scaleAll('bh_tier').sumBase(1.05).pow(1.35).pow_base(2).mul(1e6)
+    },
+
+    get bulk() {
+        let base = this.base
+        if (base.lt(1e6)) return E(0);
+        return base.div(1e6).log(2).root(1.35).sumBase(1.05,true).scaleAll("bh_tier",true).add(1).floor()
     },
 
     upgrade() {
@@ -27,6 +33,10 @@ const CONSTELLATION = {
 
         for (let i = 0; i < 4; i++) x = Decimal.mul(x,simpleCETEffect(40+i));
 
+        x = x.mul(getNucleobaseEffect('cytosine',0))
+
+        x = x.pow(getNucleobaseEffect('cytosine',3))
+
         return x
     },
 
@@ -35,7 +45,7 @@ const CONSTELLATION = {
             name: "stellar-fish",
             req: 1,
             effect(r,d) {
-                let x = d ? expPow(r.max(0),0.5).div(10).add(1) : r.add(1).log10().div(4).add(1)
+                let x = d ? expPow(r.max(0),0.5).div(10).add(1) : r.add(1).log10().div(4).add(1).pow(constellationBoostEffect(6,false))
                 return x
             },
             effDesc: x=>formatPow(x,3),
@@ -43,7 +53,7 @@ const CONSTELLATION = {
             name: "stellar-prestige",
             req: 2,
             effect(r,d) {
-                let x = d ? expPow(r.max(0),0.5).div(25).add(1) : r.add(1).log10().div(4).add(1)
+                let x = d ? expPow(r.max(0),0.5).div(25).add(1) : r.add(1).log10().div(4).add(1).pow(constellationBoostEffect(6,false))
                 return x
             },
             effDesc: x=>formatPow(x,3),
@@ -51,7 +61,7 @@ const CONSTELLATION = {
             name: "stellar-core",
             req: 4,
             effect(r,d) {
-                let x = d ? expPow(r.max(0),1/3).div(100).add(1) : expPow(r.add(1).log10(),2).pow_base(10)
+                let x = d ? expPow(r.max(0),1/3).div(100).add(1) : expPow(r.add(1).log10(),2).pow(constellationBoostEffect(6,false)).pow_base(10)
                 return x
             },
             effDesc: x=>formatPow(x,3),
@@ -59,10 +69,35 @@ const CONSTELLATION = {
             name: "stellar-shark",
             req: 8,
             effect(r,d) {
-                let x = d ? r.add(1).log10().root(2).div(10).add(1).pow(-1) : r.add(1).log10().div(10).add(1)
+                let x = d ? r.add(1).log10().root(2).div(10).add(1).pow(-1) : r.add(1).log10().div(10).add(1).pow(constellationBoostEffect(6,false))
                 return x
             },
             effDesc: x=>formatMult(x,3),
+        },{
+            name: "stellar-radiation",
+            req: 12,
+            effect(r,d) {
+                let x = d ? E(1) : expPow(r.add(1),Decimal.mul(2,constellationBoostEffect(6,false)))
+                return x
+            },
+            effDesc: x=>formatPow(x,3),
+        },{
+            name: "hawking-radiation",
+            req: 24,
+            effect(r,d) {
+                let slog = r.add(1).slog(10)
+                let x = d ? E(1) : slog.pow_base(2).mul(slog.add(1)).pow(constellationBoostEffect(6,false,E(1)).slog(10).add(1))
+                return x
+            },
+            effDesc: x=>formatMult(x,3),
+        },{
+            name: "nebulae",
+            req: 60,
+            effect(r,d) {
+                let x = d ? E(1) : r.add(10).log10().log10().add(1)
+                return x
+            },
+            effDesc: x=>"+"+formatPercent(x.sub(1),3),
         },
     ],
 }

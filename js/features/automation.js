@@ -112,7 +112,7 @@ const AUTOMATION = {
 
         get su() {
             let x = ['m1','m2','m3','m4','m5']
-            if (hasResearch('m10')) x.push('m6','m7','m8','m9');
+            if (hasResearch('m11')) x.push('m6','m7','m8','m9');
             return x
         },
 
@@ -192,6 +192,62 @@ const AUTOMATION = {
 
         trigger() {
             for (let i = 0; i < 3; i++) purchaseSharkoidFaith(i);
+        },
+    },
+    sing_research: {
+        unl: ()=>player.hadron.times,
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(10,x+1),
+        bulk: x=>x.log(10).floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            for (let i of PRE_HADRON_RESEARCH) {
+                let r = RESEARCH[i], max = r.max??1
+
+                purchaseResearch(i, !r.noBuyMax && max > 1)
+            }
+        },
+    },
+    evolution_tree: {
+        unl: ()=>player.hadron.starter_upgs.includes(7),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(10,x+1),
+        bulk: x=>x.log(10).floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            for (let x = 0; x < EVOLUTION_TREE.rows * 4; x++) purchaseEvolutionTree(x);
+        },
+    },
+    rocket_part: {
+        unl: ()=>player.hadron.times,
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(10,x+1),
+        bulk: x=>x.log(10).floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            for (let x = 0; x < 3; x++) ROCKET_PARTS.buy(x);
+        },
+    },
+    mining_ascend: {
+        unl: ()=>player.hadron.times,
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(10,x+1),
+        bulk: x=>x.log(10).floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            MINING_TIER.ascend(true)
         },
     },
 }

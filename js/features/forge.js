@@ -348,6 +348,12 @@ function updateForgeHTML() {
 }
 
 function doForge() {
+    if (player.hadron.starter_upgs.includes(3) && tmp.forge_affords[forge_tab]) {
+        player.humanoid.forge.level[forge_tab]++
+        updateForgeTemp()
+        return
+    }
+
     if (player.humanoid.forge.queue == "") if (forge_tab == "" || !tmp.forge_affords[forge_tab]) return
 
     if (player.humanoid.forge.queue == "") {
@@ -363,6 +369,8 @@ function doForge() {
     }
 
     player.humanoid.forge.time = E(0)
+
+    updateForgeTemp()
 }
 
 function updateForgeTemp() {

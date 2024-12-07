@@ -8,6 +8,7 @@ function getPlayerData() {
         total_fish: E(0),
         shark_level: E(0),
         shark_rank: E(0),
+        shark_tier: E(0),
         shark_upg: {},
 
         prestige: {
@@ -106,6 +107,15 @@ function getPlayerData() {
             sb_upgs: {},
         },
 
+        hadron: {
+            times: 0,
+            amount: E(0),
+            total: E(0),
+            starter_upgs: [],
+
+            nucleobases: {},
+        },
+
         radios: {},
 
         auto: {},
@@ -136,6 +146,11 @@ function getPlayerData() {
     for (let x in REMNANT_UPGS) s.singularity.upgs[x] = E(0);
     for (let x in SPACEBASE_UPGS) s.solar_system.sb_upgs[x] = E(0);
     for (let x in CONSTELLATION.boosts) s.singularity.constellation_res[x] = E(0);
+    for (let x in NUCLEOBASES.ctn) s.hadron.nucleobases[x] = {
+        amount: E(0),
+        experience: E(0),
+        upg: [E(0), E(0)],
+    };
 
     return s
 }

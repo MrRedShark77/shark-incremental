@@ -58,6 +58,52 @@ const SHARK = {
             },E(1)],
         },
     },
+
+    tier: {
+        get ELO() {
+            var x = player.shark_rank.add(1).slog(10).pow10().sub(1)
+
+            x = x.mul(player.hadron.total.add(1).log10())
+
+            var mult = E(10), exp = E(1)
+
+            mult = mult.mul(simpleResearchEffect('h1')).mul(simpleResearchEffect('h6'))
+
+            exp = exp.add(getNucleobaseEffect('adenine',0,0))
+
+            tmp.shark_iq_mult = mult, tmp.shark_iq_exp = exp
+
+            return x.mul(mult).pow(exp).floor()
+        },
+
+        get ELO_calculation() {
+            var h = `(10<sup>slog10(${lang_text("full-shark-rank")} + 1)</sup> - 1) × log10(${lang_text('total')} ${CURRENCIES.hadron.costName} + 1) × ${tmp.shark_iq_mult.format()}`
+            if (tmp.shark_iq_exp.neq(1)) h = `(${h})<sup>${tmp.shark_iq_exp.format()}</sup>`
+            return `[${h}]`
+        },
+
+        get require() { return player.shark_tier.add(1).scaleAll("shark_tier").sumBase(1.1).mul(10).add(50).ceil() },
+        get bulk() { return tmp.shark_iq.sub(50).div(10).max(0).sumBase(1.1,true).scaleAll("shark_tier",true).floor() },
+
+        bonuses: {
+            fish: [()=>player.shark_tier.gte(1),l=>Decimal.pow(1.1,l),E(1),x=>formatPow(x)],
+            hadron: [()=>player.shark_tier.gte(1),l=>Decimal.pow(1.05,l),E(1),x=>formatMult(x)],
+            prestige: [()=>player.shark_tier.gte(50),l=>Decimal.pow(1.1,l.sub(49)),E(1),x=>formatPow(x)],
+            nucleobase: [()=>player.shark_tier.gte(75),l=>Decimal.pow(1.1,l.sub(99).pow(.75)).mul(l.sub(99)),E(1),x=>formatMult(x)],
+        },
+    },
+
+    get fish_cap() {
+        let x = E('ee9e15')
+
+        let b = 10
+        if (hasResearch('h4')) b -= 2.5;
+        if (hasResearch('h8')) b -= 0.5;
+
+        x = x.addTP(player.hadron.total.add(1).log10().add(1).log10().div(b))
+
+        return x
+    },
 }
 
 const SHARK_UPGRADES = {
@@ -153,7 +199,11 @@ const SHARK_UPGRADES = {
 
         curr: "prestige",
 
-        effect: l=>Decimal.pow(3,l.mul(simpleResearchEffect('p5'))).min('eee7'),
+        effect: l=>{
+            let x = Decimal.pow(3,l.mul(simpleResearchEffect('p5')))
+            x = player.hadron.starter_upgs.includes(2) ? x.overflow('eee7',0.5,2) : x.min('eee7')
+            return x
+        },
         effDesc: x=>formatMult(x,0),
     },
     p2: {
@@ -164,7 +214,11 @@ const SHARK_UPGRADES = {
 
         curr: "prestige",
 
-        effect: l=>Decimal.pow(player.fish.add(10).max(10).log10(),l).min('eee7'),
+        effect: l=>{
+            let x = Decimal.pow(player.fish.add(10).max(10).log10(),l)
+            x = player.hadron.starter_upgs.includes(2) ? x.overflow('eee7',0.5,2) : x.min('eee7')
+            return x
+        },
         effDesc: x=>formatMult(x),
     },
     p3: {
@@ -400,6 +454,12 @@ function updateSharkTemp() {
         tmp.su_el.gold = true
         tmp.su_el.platinum = true
     }
+    if (hasResearch('m11')) {
+        tmp.su_el.radium = true
+        tmp.su_el.uranium = true
+        tmp.su_el.berkelium = true
+        tmp.su_el.californium = true
+    }
 
     for (let [i,v] of Object.entries(SHARK_UPGRADES)) {
         var lvl = player.shark_upg[i]
@@ -422,7 +482,12 @@ function updateSharkTemp() {
 
     for (let [i,v] of Object.entries(SHARK.rank.bonuses)) tmp.shark_rank_bonus[i] = v[0]() ? v[1](player.shark_rank.mul(bonus_str)) : v[2]
 
+    bonus_str = getNucleobaseEffect('guanine',3)
+
+    for (let [i,v] of Object.entries(SHARK.tier.bonuses)) tmp.shark_tier_bonus[i] = v[0]() ? v[1](player.shark_tier.mul(bonus_str)) : v[2]
+
     tmp.shark_elo = SHARK.ELO
+    tmp.shark_iq = SHARK.tier.ELO
 }
 
 function updateSharkHTML() {
@@ -482,6 +547,17 @@ function updateSharkRankHTML() {
     el("shark-overpopulation").innerHTML = tmp.shark_op.gt(1) ? lang_text("shark-overpopulation",tmp.shark_op,tmp.shark_op_start) : ""
 }
 
+function updateSharkTierHTML() {
+    el("shark-iq").innerHTML = tmp.shark_iq.format(0)
+    el("shark-iq-calc").innerHTML = SHARK.tier.ELO_calculation
+
+    el("shark-tier2").innerHTML = player.shark_tier.format(0)
+    el("shark-tier-req").innerHTML = SHARK.tier.require.format(0)
+
+    var rank_text = lang_text("shark-tier-bonuses")
+    el('shark-tier-bonus').innerHTML = Object.keys(SHARK.tier.bonuses).filter(x=>SHARK.tier.bonuses[x][0]()).map(x=>rank_text[x](SHARK.tier.bonuses[x][3](getSharkTierBonus(x)))).join(", ")
+}
+
 function upgradeShark(auto) {
     let cost = SHARK.cost()
     if (player.fish.gte(cost)) {
@@ -499,6 +575,7 @@ function getSharkBonus(id,def=E(1)) { return tmp.shark_bonus[id] ?? def }
 function sharkUpgEffect(id,def=E(1)) { return tmp.shark_upg_eff[id] ?? def }
 
 function getSharkRankBonus(id,def=E(1)) { return tmp.shark_rank_bonus[id] ?? def }
+function getSharkTierBonus(id,def=E(1)) { return tmp.shark_tier_bonus[id] ?? def }
 
 function setupSharkHTML() {
     let h = ""

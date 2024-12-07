@@ -50,6 +50,11 @@ const TOP_CURR = [
         curr: "traject",
         req: ()=>player.solar_system.reserv.gte(CURRENCIES.traject.require),
     },
+    {
+        unl: ()=>player.hadron.times > 0 || isSSObserved('sun'),
+        curr: "hadron",
+        req: ()=>player.fish.gte(CURRENCIES.hadron.require),
+    },
 ]
 
 const PROGRESS = [
@@ -147,11 +152,20 @@ const PROGRESS = [
         get amount() { return CURRENCIES.fish.total },
         require: 'ee9e15',
         logHeight: 3,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.hadron.total },
+        require: 10,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.hadron.total },
+        require: '1e1000',
+        logHeight: 2,
     },
 ]
 
 function increaseFeature(v) {
-    if (player.feature == v-1) player.feature++
+    if (player.feature == v-1) player.feature++;
 }
 
 const CONFIRMATIONS = {
@@ -160,4 +174,5 @@ const CONFIRMATIONS = {
     humanoid: [()=>player.humanoid.times>0],
     'black-hole': [()=>player.singularity.first],
     sacrifice: [()=>player.singularity.sac_times>0],
+    hadron: [()=>player.hadron.times>0],
 }

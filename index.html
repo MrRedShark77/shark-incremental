@@ -49,6 +49,8 @@
     <script src="js/features/solar-system.js"></script>
     <script src="js/features/constellation.js"></script>
 
+    <script src="js/features/hadron/hadron.js"></script>
+
     <script src="js/features/resets.js"></script>
 
     <script src="js/temp.js"></script>
@@ -366,6 +368,55 @@
             </div>
         </div>
 
+        <div id="hadron-su-tab">
+            <p id="fundamental-amount-div"></p>
+            <subtitle id="starter-upg-note"></subtitle>
+            <div id="starter-upgrades-table">
+                <button>
+                    <div class="starter-upg-title">Shark Tier</div>
+                    <br class="line">
+                    <div class="starter-upg-desc">Unlock Shark Tier similar to Shark Rank, but even more overpowered. Shark Tier is calculated by Shark IQ.</div>
+                    <div>Cost: ???</div>
+                </button>
+            </div>
+        </div><div id="shark-tier-tab">
+            <table class="table">
+                <tr>
+                    <td style="width: 50%;">
+                        <div id="shark-iq-div"></div>
+                        <div id="shark-iq-calc"></div>
+                    </td><td style="width: 50%;">
+                        <div id="shark-tier-div"></div>
+                        <subtitle id="shark-tier-note"></subtitle>
+                        <div id="shark-tier-req-div"></div>
+                        <div id="shark-tier-bonus"></div>
+                    </td>
+                </tr>
+            </table>
+        </div><div id="nucleobase-tab">
+            <div id="nucleobases-table">
+                <div class="nucleobase-div">
+                    <div class="nucleobase-name">
+                        <h3>Cytosine<sup>e123,456,789</sup></h3><br>
+                        <b>Amount:</b> e123,456,789
+                        <img src="textures/nucleobases/cytosine.png">
+                    </div><div class="nucleobase-exp">
+                        <div style="width: 100%; min-height: 156px;">
+                            <b>Experience:</b> 0 (+0/s)<br>
+                            <b>Next amount at experience:</b> ???
+                        </div><div class="table-left">
+                            <button class="explore-cost">Experience Base: <text-style style="color: lime;">+1</text-style><br>Cost: ???</button>
+                            <button class="explore-cost">Nucleobase Tier: <text-style style="color: lime;">0</text-style><br>Cost: ???</button>
+                        </div>
+                    </div><div>
+                        <h3>Nucleobase Boosts:</h3><ul>
+                            <li>???</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="options-tab">
             <div class="option-div">
                 <div>
@@ -420,7 +471,7 @@
 
         <div style="height: 60px;"></div>
         <div id="bottom-div">
-            Shark Incremental v0.3.2.3 by MrRedShark77
+            Shark Incremental v0.4 by MrRedShark77
             <div id="feature-progress">
                 <div id="fp-bar"></div>
                 <div id="fp-text">Feature Progression</div>
@@ -429,6 +480,10 @@
 
         <div id="black-hole"></div>
         <div id="title-center"></div>
+
+        <div id="hadron-cutscene">
+            <text-style id="hadron-cutscene-text">Open your eyes before this point.</text-style>
+        </div>
 
         <div id="popup">
             <div id="popup-ctn">

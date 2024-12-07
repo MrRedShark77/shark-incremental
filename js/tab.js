@@ -33,9 +33,12 @@ const TAB_IDS = {
         html: updateResearchHTML,
 
         notify() {
-            let auto = isAutoEnabled('research')
+            let tier = 0
+            if (isAutoEnabled('sing_research')) tier = 2;
+            else if (isAutoEnabled('research')) tier = 1;
+
             for (let [i,x] of Object.entries(RESEARCH)) {
-                if (auto && PRE_BH_RESEARCH.includes(i)) continue;
+                if (x.tier <= tier) continue;
 
                 var max = x.max ?? 1, amt = player.research[i]
 
@@ -112,6 +115,8 @@ const TAB_IDS = {
                 if (CURRENCIES[x[0]].amount.gte(x[1](player.humanoid.faith[i]))) return true
             }
 
+            if (isAutoEnabled('evolution_tree')) return false;
+
             var row_available = [], charged_row_available = [], tf_unl = isSSObserved('mars'), maxed_row = []
             for (let i = 0; i < tmp.evo_tree_rows; i++) {
                 row_available.push(EVOLUTION_TREE.getAvilableSlot(i))
@@ -136,7 +141,7 @@ const TAB_IDS = {
         html: updateCultivationHTML,
 
         notify() {
-            return !isAutoEnabled('mining_tier') && CURRENCIES.stone.amount.gte(MINING_TIER.require) || isSSObserved('moon') && player.humanoid.mining_tier.gte(MINING_TIER.ascend_require)
+            return !isAutoEnabled('mining_tier') && CURRENCIES.stone.amount.gte(MINING_TIER.require) || !isAutoEnabled('mining_ascend') && isSSObserved('moon') && player.humanoid.mining_tier.gte(MINING_TIER.ascend_require)
         },
     },
     'forge': {
@@ -171,6 +176,8 @@ const TAB_IDS = {
         html: updateSolarSystemHTML,
 
         notify() {
+            if (isAutoEnabled('rocket_part')) return false;
+
             for (let i = 0; i < ROCKET_PARTS.costs.length; i++) {
                 var x = ROCKET_PARTS.costs[i]
                 if (x[0]().gte(x[2](player.solar_system.rocket_parts[i]))) return true
@@ -195,13 +202,36 @@ const TAB_IDS = {
         html: updateConstellationHTML,
 
         notify() {
-            if (CONSTELLATION.base.gte(CONSTELLATION.require)) return true;
+            return !hasResearch('h5') && CONSTELLATION.base.gte(CONSTELLATION.require);
+        },
+    },
+    'hadron-su': {
+        html: updateStarterUpgradesHTML,
+
+        notify() {
+            let len = player.hadron.starter_upgs.length
+            return len < STARTER_UPGRADES_LENGTH && player.hadron.amount.gte(2 ** len)
+        },
+    },
+    'shark-tier': {
+        html: updateSharkTierHTML,
+    },
+    'nucleobase': {
+        html: updateNucleobasesHTML,
+
+        notify() {
+            for (let id in NUCLEOBASES.ctn) {
+                let n = NUCLEOBASES.ctn[id], unl = n.unl(), upg = player.hadron.nucleobases[id].upg;
+
+                if (unl && (CURRENCIES[n.base.currency].amount.gte(NUCLEOBASES.get_cost(id,'base',upg[0])) || player.hadron.amount.gte(NUCLEOBASES.get_cost(id,'tier',upg[1])))) return true;
+            }
+            return false
         },
     },
 }
 
 const TABS = [
-    {
+    { // 0
         stab: "shark",
     },{
         stab: "options",
@@ -213,7 +243,7 @@ const TABS = [
     },{
         unl: ()=>player.feature>=3,
         stab: "research",
-    },{
+    },{ // 5
         unl: ()=>!tmp.ss_difficulty && player.feature>=4,
         stab: "explore",
     },{
@@ -255,11 +285,25 @@ const TABS = [
             "color": "white",
             "animation": `cosmic-pattern 20s linear infinite`,
         },
+    },{ // 10
+        id: 'hadron',
+        unl: ()=>player.hadron.times,
+        stab: [
+            ["hadron-su"],
+            ["shark-tier",()=>player.hadron.starter_upgs.includes(0)],
+            ['nucleobase',()=>player.feature>=22],
+        ],
+        style: {
+            "background": `#ff8 repeating-conic-gradient(#0000 0 25%, #f802 0 50%)`,
+            "backgroundSize": "200px 200px",
+            "animation": `cosmic-pattern 20s linear infinite`,
+        },
     },
 ]
 
 const DEFAULT_TAB_STYLE = {
     "background": "lightseagreen",
+    "backgroundSize": 'initial',
     "color": "black",
     "animation": "none",
 }
