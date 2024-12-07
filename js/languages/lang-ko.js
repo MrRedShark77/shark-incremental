@@ -984,7 +984,7 @@ LANGUAGES.KO = {
         'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
         'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵산을 해금하세요`, 
 
-        'maxed-progress': "All features unlocked!",
+        'maxed-progress': "모든 콘텐츠 해금됨!",
 
         // Reset / 환생 메시지
 
