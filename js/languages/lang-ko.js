@@ -800,8 +800,8 @@ LANGUAGES.KO = {
             
             [`별`,x=>`${toTextStyle("별자리",'star')} 재화 생산량이<br>${x} 만큼<br>증가합니다.`],
             [`성장`,x=>`${toTextStyle("별자리",'star')} 베이스의<br>지수가 ${x} 만큼<br>증가합니다.`],
-            [`Old School`,x=>`${toTextStyle("기본 입자",'hadron')}가<br>${x}만큼<br>늘어납니다.`],
-            [`Finished`,x=>`The exponent of ${toTextStyle("Fish",'fish')} is boosted by ${x}.`],
+            [`올드 스쿨`,x=>`${toTextStyle("기본 입자",'hadron')}가<br>${x}만큼<br>늘어납니다.`],
+            [`마지막`,x=>`${toTextStyle("물고기",'fish')}의 지수가<br>${x} 만큼<br>증가합니다.`],
         ],
         
         'solar-system-list': {
