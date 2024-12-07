@@ -309,9 +309,9 @@ function updateForgeHTML() {
                 var c = f.cost[lvl][i]
                 if (CURRENCIES[c[0]].amount.lt(c[1])) lock.push(i)
             }
-
-            locks[i] = lock
         }
+
+        locks[i] = lock
 
         forge_el.className = el_classes({bought: lvl >= f.max, 'forge-btn': true, 'notify': player.humanoid.forge.queue != i && lvl < f.max && tmp.forge_affords[i]})
     }
@@ -332,7 +332,7 @@ function updateForgeHTML() {
         el_btn.style.display = el_display(!maxed)
 
         if (!maxed) {
-            var cost = f.cost[lvl], lock = locks[forge_tab]
+            var cost = f.cost[lvl], lock = locks[forge_tab] ?? []
             h += `
             <p>
                 <b>${lang_text('cost')}:</b> ${cost.map((x,i) => `<span ${lock.includes(i) ? `style="color: #800"` : ""}>${format(x[1],0)}</span>` + " " + CURRENCIES[x[0]].costName).join(", ")} + ${formatTime(Decimal.div(f.time[lvl], tmp.forge_speed),1)}
