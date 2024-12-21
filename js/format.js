@@ -228,7 +228,7 @@ const FORMATS = {
             let e = ex.log10().floor()
             if (e.lt(63) && e.gte(max)) return format(ex,acc,max,"st")
             else {
-                if (ex.gte("eeee10")) {
+                if (ex.gte("eeee15")) {
                     let slog = ex.slog()
                     return "E" + format(Decimal.tetrate(10,slog.mod(1).add(1)),3) + "#" + format(slog.floor().sub(1),0) // (slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(),0,max)
                 }
@@ -327,7 +327,7 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
                 let a = Math.max(Math.min(acc-e.toNumber(), acc), 0)
                 return neg+(a>0?ex.toFixed(a):ex.toFixed(a).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'))
             } else {
-                if (ex.gte("eeee10")) {
+                if (ex.gte("eeee15")) {
                     let slog = ex.slog()
                     return neg + "E" + format(Decimal.tetrate(10,slog.mod(1).add(1)),3) + "#" + format(slog.floor().sub(1),0) //(slog.gte(1e9)?'':E(10).pow(slog.sub(slog.floor())).toFixed(4)) + "F" + format(slog.floor(), 0)
                 }
@@ -337,7 +337,7 @@ function format(ex, acc=2, max=options.max_range, type=options.notation) {
                 return neg+(be?'':m.toFixed(f))+'e'+format(e, 0, max, "sc")
             }
         case "st":
-            if (e.lt(max) || ex.gte("eeee10")) return format(ex, acc, max, "sc")
+            if (e.lt(max) || ex.gte("eeee15")) return format(ex, acc, max, "sc")
 
             let e3 = ex.log(1e3).floor()
             if (e3.lt(1)) {

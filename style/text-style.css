@@ -1,5 +1,5 @@
 text-style {
-    display: inline-block;
+    display: inline;
     font-style: normal;
     font-weight: 1000;
     text-shadow: 1px 1px 0px black, 0px 0px 2px black, 1px 1px 2px black;
@@ -59,8 +59,15 @@ text-style {
         &[text="reserv"],
         &[text="traject"],
         &[text="experiment"],
-        &[text="star"] {
+        &[text="star"],
+        &[text="gal-explore-1"],
+        &[text="gal-explore-2"] {
             filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
+            text-shadow: none;
+        };
+        &[text="gal-explore-0"],
+        &[text="gal-explore-3"] {
+            filter: drop-shadow(1px 1px white) drop-shadow(0px 0px 1px white);
             text-shadow: none;
         };
 
@@ -101,6 +108,27 @@ text-style {
         };
         &[text="star"] {
             background: repeating-linear-gradient(90deg, #c5fff7, #edff9e 20px, #c5fff7 40px);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="gal-explore-0"] {
+            background: linear-gradient(blue, navy);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="gal-explore-1"] {
+            background: linear-gradient(#cff, cyan, blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="gal-explore-2"] {
+            background: linear-gradient(grey, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="gal-explore-3"] {
+            background: repeating-conic-gradient(#ff00dc 0 25%, #010001 0 50%);
+            background-size: 20px 20px;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         };

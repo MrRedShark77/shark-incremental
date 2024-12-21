@@ -71,6 +71,9 @@ function reloadTemp() {
         constellation_boosts: [],
 
         nucleobases: {},
+
+        gal_explore_eff: [],
+        gal_explore_mult: [],
     }
 
     for (let x in EXPLORE) {
@@ -105,6 +108,7 @@ function updateTemp() {
     updateResearchTemp()
     updateScalingsTemp()
     updateHadronTemp()
+    updateGalacticExploreTemp()
     updateConstellationTemp()
     updateSingularityTemp()
     updatePATemp()

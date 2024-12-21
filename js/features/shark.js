@@ -9,6 +9,7 @@ const SHARK = {
         remnants: [()=>player.shark_level.gte(1)&&hasSMilestone(0),l=>{
             let x = l
             if (hasResearch('dm4')) x = x.mul(expPow(l.softcap('e1000',10,'log'),0.25).pow_base(2));
+            if (x.gte('ee100000')) x = x.log10().log10().div(1e5).log10().add(1).mul(1e5).pow10().pow10();
             return x
         },E(0)],
     },
@@ -26,9 +27,17 @@ const SHARK = {
 
         var mult = E(0.1), exp = E(1)
 
-        mult = mult.mul(simpleETEffect(0)).mul(simpleETEffect(1)).mul(simpleETEffect(2)).mul(simpleETEffect(3)).mul(getCRBoost(7)).mul(remnantUpgEffect(7))
+        if (!inGalacticExploration(2)) {
+            mult = mult.mul(simpleETEffect(0)).mul(simpleETEffect(1)).mul(simpleETEffect(2)).mul(simpleETEffect(3)).mul(getCRBoost(7)).mul(remnantUpgEffect(7))
 
-        exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0)).mul(simpleCETEffect(0)).mul(simpleCETEffect(1)).mul(simpleCETEffect(2)).mul(simpleCETEffect(3)).mul(coreReactorEffect(11))
+            // if (mult.gte('eee1e7')) mult = mult.log10().log10().log10().div(1e7).log10().add(1).mul(1e7).pow10().pow10().pow10();
+
+            exp = exp.add(researchEffect('f1',0)).add(getPAEffect(5,0)).mul(simpleCETEffect(0)).mul(simpleCETEffect(1)).mul(simpleCETEffect(2)).mul(simpleCETEffect(3)).mul(coreReactorEffect(11))
+
+            // console.log(format(exp))
+
+            exp = expPow(exp,simpleResearchEffect('ge6'))
+        }
 
         tmp.shark_elo_mult = mult, tmp.shark_elo_exp = exp
 
@@ -100,7 +109,7 @@ const SHARK = {
         if (hasResearch('h4')) b -= 2.5;
         if (hasResearch('h8')) b -= 0.5;
 
-        x = x.addTP(player.hadron.total.add(1).log10().add(1).log10().div(b))
+        x = x.addTP(player.hadron.total.add(1).log10().add(1).log10().div(b).mul(getNucleobaseEffect('adenine',3)))
 
         return x
     },

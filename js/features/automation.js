@@ -250,6 +250,22 @@ const AUTOMATION = {
             MINING_TIER.ascend(true)
         },
     },
+    nucleobase: {
+        unl: ()=>player.feature>=25,
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow('e1e6',x+1),
+        bulk: x=>x.log('e1e6').floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            for (let id in NUCLEOBASES.ctn) {
+                buyNucleobaseUpgrade(id,0)
+                buyNucleobaseUpgrade(id,1)
+            }
+        },
+    },
 }
 
 for (let [i,x] of Object.entries(AUTOMATION)) {

@@ -160,7 +160,16 @@ const PROGRESS = [
         auto: true,
         get amount() { return CURRENCIES.hadron.total },
         require: '1e1000',
-        logHeight: 2,
+        logHeight: 1,
+    },{
+        auto: true,
+        get amount() { return player.shark_tier },
+        require: 111,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.hadron.total },
+        require: 'e1e6',
+        logHeight: 1,
     },
 ]
 

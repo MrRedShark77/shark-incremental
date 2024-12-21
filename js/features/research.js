@@ -178,7 +178,7 @@ const RESEARCH = {
             ['core',false,1e20],
         ],
         effect(r) {
-            return expPow(CURRENCIES.core.amount.add(1),hasResearch('c11') ? 0.55 : 0.5)
+            return expPow(CURRENCIES.core.amount.add(1),hasResearch('c11') ? 0.55 : 0.5)//.overflow('eee1000',0.5,3)
         },
         effDesc: x => formatMult(x.pow(-1)),
     },
@@ -515,7 +515,9 @@ const RESEARCH = {
             ['remnants',false,'1e110'],
         ],
         effect(r) {
-            return CURRENCIES['dark-matter'].total.add(1)
+            let x = CURRENCIES['dark-matter'].total.add(1)
+            if (x.gte('ee100000')) x = x.log10().log10().div(1e5).log10().add(1).mul(1e5).pow10().pow10();
+            return x
         },
         effDesc: x => formatMult(x),
     },
@@ -669,6 +671,120 @@ const RESEARCH = {
         unl: ()=>player.hadron.times,
         require: [
             ['hadron',false,'1e3000']
+        ],
+    },
+    h11: {
+        tier: 3,
+        unl: ()=>player.feature>=24,
+        require: [
+            ['hadron',false,'e150000']
+        ],
+    },
+    h12: {
+        tier: 3,
+        unl: ()=>player.feature>=24,
+        require: [
+            ['hadron',false,'e900000']
+        ],
+    },
+
+    ge1: {
+        tier: 3,
+        unl: ()=>player.feature>=24,
+        require: [
+            ['gal-explore-0',false,1e4]
+        ],
+        effect(r) {
+            return player.shark_tier.root(2).pow_base(1.25)
+        },
+        effDesc: x => formatMult(x),
+    },
+    ge2: {
+        max: 5,
+        tier: 3,
+        unl: ()=>player.feature>=24,
+        require: [
+            ['gal-explore-0',false,x=>x.pow10().mul(1e5),x=>x.div(1e5).log10().add(1).floor()]
+        ],
+        effect(r) {
+            return r.mul(.2).add(1)
+        },
+        effDesc: x => formatPow(x),
+    },
+    ge3: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=2,
+        require: [
+            ['gal-explore-1',false,1e4]
+        ],
+        effect(r) {
+            return player.hadron.gal_explore.res[1].add(10).log10()
+        },
+        effDesc: x => formatPow(x),
+    },
+    ge4: {
+        max: 10,
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=2,
+        require: [
+            ['gal-explore-1',false,x=>x.pow(2).pow10().mul(1e5),x=>x.div(1e5).log10().root(2).add(1).floor()]
+        ],
+        effect(r) {
+            return r.mul(.1).add(1)//.min(1.25)
+        },
+        effDesc: x => formatPow(x),
+    },
+    ge5: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=2,
+        require: [
+            ['gal-explore-1',false,1e12]
+        ],
+    },
+    ge6: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=3,
+        require: [
+            ['gal-explore-2',false,1e6]
+        ],
+        effect(r) {
+            return CURRENCIES.humanoid.amount.add(10).log10().log10().add(10).log10().pow(2)
+        },
+        effDesc: x => formatPow(x),
+    },
+    ge7: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=3,
+        require: [
+            ['gal-explore-2',false,1e7]
+        ],
+    },
+    ge8: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=3,
+        require: [
+            ['gal-explore-2',false,1e10]
+        ],
+    },
+    ge9: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=4,
+        require: [
+            ['gal-explore-3',false,1e5]
+        ],
+    },
+    ge10: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=3,
+        require: [
+            ['gal-explore-2',false,1e36]
+        ],
+    },
+    ge11: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=4,
+        require: [
+            ['gal-explore-3',false,1e9]
         ],
     },
 }

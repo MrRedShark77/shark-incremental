@@ -114,6 +114,7 @@ LANGUAGES.EN = {
         'tab-hadron-su': "Starter Upgrades",
         'tab-shark-tier': toTextStyle('Shark','shark') + " Tier",
         'tab-nucleobase': "Nucleobases",
+        'tab-gal-explore': "Galactic Exploration",
 
         // Elements
 
@@ -436,8 +437,22 @@ LANGUAGES.EN = {
             'h6': [`Qubit IQ`, `${toTextStyle("Fish",'fish')} multiplies Shark ${toTextStyle("Shark",'shark')} ${toTextStyle("IQ",'hadron')}. Improve the research <b>h1</b>.`],
             'h7': [`First Scaling Sacrifice`, `Remove the scaling of ${toTextStyle("Remnant",'black-hole')} upgrades. Unlock more ${toTextStyle("Remnant",'black-hole')} upgrades.`],
             'h8': [`Even Better Fish Cap`, `Improve the effect of total ${toTextStyle("Fundamental Particles",'hadron')} even more.`],
-            'h9': [`Hadronic Generation`, `Passively generates <b>100%</b> of your ${toTextStyle("Funadmental Particles",'hadron')} gained on reset.`],
+            'h9': [`Hadronic Generation`, `Passively generates <b>100%</b> of your ${toTextStyle("Fundamental Particles",'hadron')} gained on reset.`],
             'h10': [`Inflation is Nonsense`, `Remove all scalings of radioactive boosts.`],
+            'h11': [`Rank-into-rank`, `Remove the first 3 scalings of ${toTextStyle("Shark",'shark')} rank.`],
+            'h12': [`Better Constellation`, `Improve ${toTextStyle("Black Hole",'black-hole')} tier’s boost to ${toTextStyle("Constellation",'star')} resources.`],
+
+            'ge1': [`Galactic Ocean Affection`,`Every galactic ocean’s resource is increased by <b>25%</b> compounding per square-rooted ${toTextStyle("Shark",'shark')} tier.`],
+            'ge2': [`Better Nucleobase`,`The fifth boost of guanine is improved.`],
+            'ge3': [`Post-Tetration Prestige`,`After the nerf, ${toTextStyle('Prestige','prestige')} shards are raised by ${toTextStyle('Bioluminescent Matter','gal-explore-1')} while exploring in Abyssal ocean.`],
+            'ge4': [`Overpowered Remnant`,`All ${toTextStyle("Remnant",'black-hole')} upgrades are <b>+10% exponentially</b> stronger per level.`],
+            'ge5': [`Better Blue Algae`,`Improve the ${toTextStyle('Blue Algae','gal-explore-0')}’s effect.`],
+            'ge6': [`ELO Exponent^2`,`${toTextStyle('Humanoid','humanoid')} sharks boost the exponent of ${toTextStyle('Shark','shark')} ${toTextStyle('ELO','humanoid')} to the exponent.`],
+            'ge7': [`Better Score Boost`,`Improve the galactic ocean's score boost to its resource.`],
+            'ge8': [`Scaled Tier`,`Delay the scaling of ${toTextStyle('Shark','shark')} tier by <b>+5</b>.`],
+            'ge9': [`Better Galactic Upgrade`,`Increase the base of galactic ocean’s upgrade by <b>+1</b>.`],
+            'ge10': [`Better Gray Plankton`,`Improve the ${toTextStyle('Gray Plankton','gal-explore-2')}’s effect.`],
+            'ge11': [`Better Nucleobase II`,`The second boost of cytosine and guanine is improved.`],
         },
 
         // Exploration
@@ -868,6 +883,8 @@ LANGUAGES.EN = {
             [`Stellar Radiation `+icon("radioactive"), x=>`Boost ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production by ${x}.`, x=>`No effect provided.`],
             [`Hawking Radiation `+icon("radioactive"), x=>`Boost ${toTextStyle('Fundamental Particles','hadron')} by ${x}.`, x=>`No effect provided.`],
             [`Nebulae`, x=>`First 6 ${toTextStyle("Constellation",'star')} resources are ${x} stronger.`, x=>`No effect provided.`],
+            [`Galaxies`, x=>`First 7 ${toTextStyle("Constellation",'star')} resources are boosted by ${x}.`, x=>`No effect provided.`],
+            [`Galaxy Clusters`, x=>`Boost the exponent of ${toTextStyle('Remnant','black-hole')} generation and ${toTextStyle('Dark Matter','black-hole')} by ${x}.`, x=>`No effect provided.`],
         ],
 
         // Haronize
@@ -897,6 +914,7 @@ LANGUAGES.EN = {
                 x => `${x} to ${toTextStyle('Remnant','black-hole')} generation & ${toTextStyle('Dark Matter','black-hole')}.`,
                 x => `${x} to ${toTextStyle('Constellation','star')} resources.`,
                 x => `${toTextStyle('Core','core')} reactors in the third row are ${x} stronger.`,
+                x => `${x} to decayed radioactive boost's growth.`,
             ]],
             'guanine': ["Guanine",[
                 x => `${x} to the exponent of ${toTextStyle('Constellation','star')} base.`,
@@ -904,11 +922,19 @@ LANGUAGES.EN = {
                 x => `${x} to the exponent of ${toTextStyle('Magmatic','core')} fragments and ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production.`,
                 x => `${x} to the strength of ${toTextStyle("Shark",'shark')} Tier Bonuses.`,
                 x => `The tenth row of the ${toTextStyle('Evolution','humanoid')} tree is ${x} stronger.`,
+                x => `${x} to the exponent of ${toTextStyle('Remnant','black-hole')} generation & ${toTextStyle('Dark Matter','black-hole')}.`,
             ]],
             'adenine': ["Adenine",[
                 x => `${x} to the exponent of ${toTextStyle('Shark','shark')} ${toTextStyle('IQ','hadron')}.`,
                 x => `All pre-${toTextStyle('Hadronize','hadron')} scalings are ${x} weaker.`,
                 x => `${x} to the tier of <b>Cytosine</b>.`,
+                x => `${x} to the effect of total ${toTextStyle('Fundamental Particles','hadron')}.`,
+                x => `${x} to ${toTextStyle('Fundamental Particles','hadron')}.`,
+            ]],
+            'thymine': ["Thymine",[
+                x => `The 6-9th ${toTextStyle('Constellation','star')} resources are ${x} stronger.`,
+                x => `${x} to the base of galactic ocean's upgrade.`,
+                x => `${x} to the tier of <b>Guanine</b>.`,
             ]],
         },
         'experience': "Experience",
@@ -916,6 +942,30 @@ LANGUAGES.EN = {
         'nucleobase-boosts': "Nucleobase Boosts",
         'experience-base': "Experience Base",
         'nucleobase-tier': "Nucleobase Tier",
+
+        'gal-explore-ocean': `Explore the ocean.`,
+        'gal-explore-inside': (x,y) => `<b>Current Score:</b> ${x}<br>Reach ${y} ${toTextStyle('Fish','fish')}.`,
+        'gal-explore-require': x => `${toTextStyle('Shark','shark')} Tier ${x} required to unlock.`,
+        'gal-explore-upgrade': (x,y) => `Boost ${x} gained by ${y}.`,
+        'gal-explore': [
+            [
+                `Deep Blue Ocean`, `Blue Algae`,
+                `${toTextStyle('Magmatic','core')} fragments are raised by <b>0.5</b> to the exponent^2, the ${toTextStyle('Core','core')} temperature and ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production are set to <b>log(x)</b>.`,
+                x => `${x} to the exponent of ${toTextStyle('Magmatic','core')} fragments and ${toTextStyle('Radiation ' + icon("radioactive"),'core')} production.`
+            ],[
+                `Abyssal Ocean`, `Bioluminescent Matter`,
+                `The tetration of ${toTextStyle('Prestige','prestige')} shards is <b>halved</b>.`,
+                x => `${x} to the exponent of ${toTextStyle('Prestige','prestige')} shards.`
+            ],[
+                `Grey Ocean`, `Grey Plankton`,
+                `The exponent of ${toTextStyle('Humanoid','humanoid')} sharks is rooted by 10, you cannot increase the multiplier and exponent of ${toTextStyle('Shark','shark')} ${toTextStyle('ELO','humanoid')}.`,
+                x => `${x} to the exponent of ${toTextStyle('Shark','shark')} ${toTextStyle('ELO','humanoid')}.`
+            ],[
+                `Corrupted Ocean`, `Corrupted Remnants`,
+                `The exponent^2 of ${toTextStyle('Remnant','black-hole')} generation & ${toTextStyle('Dark Matter','black-hole')} is square-rooted.`,
+                x => `${x} to the exponent of ${toTextStyle('Remnant','black-hole')} generation.`
+            ],
+        ],
 
         // Automation
 
@@ -937,6 +987,7 @@ LANGUAGES.EN = {
         'auto-evolution_tree-name': `Auto-${toTextStyle("Evolution","humanoid")} Tree`,
         'auto-rocket_part-name': `Auto-Rocket Part`,
         'auto-mining_ascend-name': `Auto-Mining Ascension`,
+        'auto-nucleobase-name': `Auto-Nucleobases`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -983,6 +1034,8 @@ LANGUAGES.EN = {
 
         'progress-21-text': r => `Reach ${format(r,0)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the next feature`, 
         'progress-22-text': r => `Reach ${format(r)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the third nucleobase`, 
+        'progress-23-text': r => `Reach ${toTextStyle('Shark','shark')} Tier ${format(r,0)} to unlock the next feature`,
+        'progress-24-text': r => `Reach ${format(r)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the fourth nucleobase`, 
 
         'maxed-progress': "All features unlocked!",
 
@@ -1112,6 +1165,7 @@ LANGUAGES.EN = {
         'new-preset': "New Preset",
         'maxed': "Maxed",
         'difficulty': "Difficulty",
+        'score': "Score",
 
         'remove': "Remove",
         'overwrite-current': "Overwrite Current",

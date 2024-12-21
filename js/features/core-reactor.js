@@ -204,6 +204,7 @@ const CORE_REACTOR = [
             if (isNaNed(x)) return E(1);
             x = x.div(10).add(1).pow(l)
             if (hasEvolutionTree(35,true)) x = x.pow(2);
+            if (x.gte('ee100000')) x = x.log10().log10().div(1e5).log10().add(1).mul(1e5).pow10().pow10();
             return x
         },
         effDesc: x => formatMult(x,3),

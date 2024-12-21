@@ -86,7 +86,7 @@ const CONSTELLATION = {
             req: 24,
             effect(r,d) {
                 let slog = r.add(1).slog(10)
-                let x = d ? E(1) : slog.pow_base(2).mul(slog.add(1)).pow(constellationBoostEffect(6,false,E(1)).slog(10).add(1))
+                let x = d ? E(1) : slog.pow_base(2).mul(slog.add(1)).pow(constellationBoostEffect(6,false,E(1)).slog(10).add(1)).pow(getNucleobaseEffect('thymine',0))
                 return x
             },
             effDesc: x=>formatMult(x,3),
@@ -94,10 +94,26 @@ const CONSTELLATION = {
             name: "nebulae",
             req: 60,
             effect(r,d) {
-                let x = d ? E(1) : r.add(10).log10().log10().add(1)
+                let x = d ? E(1) : r.add(10).log10().log10().add(1).pow(getNucleobaseEffect('thymine',0))
                 return x
             },
             effDesc: x=>"+"+formatPercent(x.sub(1),3),
+        },{
+            name: "galaxies",
+            req: 100,
+            effect(r,d) {
+                let x = d ? E(1) : expPow(r.add(10).log10(),0.5).pow(getNucleobaseEffect('thymine',0))
+                return x
+            },
+            effDesc: x=>formatPow(x,3),
+        },{
+            name: "galaxy-clusters",
+            req: 200,
+            effect(r,d) {
+                let x = d ? E(1) : r.add(10).log10().log10().div(10).mul(getNucleobaseEffect('thymine',0)).add(1)
+                return x
+            },
+            effDesc: x=>formatPow(x,3),
         },
     ],
 }
@@ -131,7 +147,7 @@ function updateConstellationHTML() {
 
     el('constellation-base').innerHTML = `[log(log(${CURRENCIES.fish.costName})) × log(${CURRENCIES.remnants.costName}) × log(${CURRENCIES["dark-matter"].costName})]<sup>${format(exp,3)}</sup> = <h3>${format(base)}</h3>`
     el('cp-text').innerHTML = format(base) + " / " + format(req)
-    el('cp-bar').style.width = base.div(req).max(0).min(1) * 100 + "%"
+    el('cp-bar').style.width = (req.gte(1e100) ? base.max(1).log10().div(req.log10()) : base.div(req)).max(0).min(1) * 100 + "%"
 
     el('bh-tier').textContent = format(player.singularity.bh_tier,0)
     el('bh-tier-button').className = el_classes({locked: base.lt(req), 'half-huge-btn': true})

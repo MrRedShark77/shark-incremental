@@ -320,6 +320,7 @@ const RESETS = {
             }
 
             player.shark_tier = E(0)
+            player.hadron.gal_explore.best_fish = E(0)
 
             RESETS.sacrifice.doReset()
         },

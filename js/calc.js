@@ -170,6 +170,24 @@ function calc(dt) {
             }
         }
 
+        if (player.feature >= 24) {
+            let ge = player.hadron.gal_explore
+            let u = ge.unl
+            if (GALACTIC_EXPLORE[u] && player.shark_tier.gte(GALACTIC_EXPLORE[u].tier_req)) ge.unl++;
+    
+            if (ge.active > -1) ge.best_fish = ge.best_fish.max(player.fish);
+    
+            // var auto_e = player.research.e3.toNumber() + (hasResearch('e5') ? 1 : 0)
+            // var research_e6 = hasResearch('e6')
+    
+            for (let i in GALACTIC_EXPLORE) {
+                i = parseInt(i)
+                if (u > i) {
+                    
+                }
+            }
+        }
+
         if (hasResearch('h5')) {
             player.singularity.bh_tier = player.singularity.bh_tier.max(CONSTELLATION.bulk)
         }

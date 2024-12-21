@@ -70,13 +70,16 @@ h4 {
 	text-align: left;
 }
 
-.line {
+.line, .black-line {
 	content: '';
 	display: block;
 	width: 100%;
 	margin-top: 6px;
 	height: 6px;
 	border-top: solid 2px white;
+}
+.black-line {
+	border-top-color: black;
 }
 
 .main-line {
@@ -1197,4 +1200,39 @@ subtitle {
 
 .nucleobase-exp {
 	width: 500px;
+}
+
+.gal-explore {
+	position: relative;
+	width: 450px;
+	min-height: 285px;
+	border: dashed 2px #0008;
+	background-color: #0004;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 5px;
+}
+.gal-explore.unlocked {
+	border-style: solid;
+}
+
+.gal-explore-req {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: calc(100% - 20px);
+}
+.gal-explore-div {
+	font-size: 14px;
+}
+.gal-explore-div .explore-cost {
+	padding: 0px;
+	width: 221px;
+}
+
+.gal-explore.unlocked > .gal-explore-req {
+	display: none;
+}
+.gal-explore:not(.unlocked) > .gal-explore-div {
+	display: none;
 }
