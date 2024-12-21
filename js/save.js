@@ -114,6 +114,15 @@ function getPlayerData() {
             starter_upgs: [],
 
             nucleobases: {},
+
+            gal_explore: {
+                unl: 0,
+                active: -1,
+                best_fish: E(0),
+                res: [],
+                score: [],
+                upg: [],
+            },
         },
 
         radios: {},
@@ -151,6 +160,11 @@ function getPlayerData() {
         experience: E(0),
         upg: [E(0), E(0)],
     };
+    for (let x in EXPLORE) {
+        s.hadron.gal_explore.res[x] = E(0)
+        s.hadron.gal_explore.score[x] = E(0)
+        s.hadron.gal_explore.upg[x] = E(0)
+    }
 
     return s
 }

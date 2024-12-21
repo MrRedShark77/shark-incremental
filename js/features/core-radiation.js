@@ -17,6 +17,9 @@ const CORE_RAD = {
         if (!hasResearch('m9')) x = x.overflow('ee18',0.5);
 
         x = expPow(x,getNucleobaseEffect('guanine',2));
+        x = expPow(x,galacticExplorationEffect(0))
+
+        if (inGalacticExploration(0)) x = x.max(1).log10();
 
         return x
     },
@@ -33,13 +36,19 @@ const CORE_RAD = {
 
         if (hasDepthMilestone(4,0)) x = x.mul(1e3)
 
-        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scaleAll("cr_boost",true).floor().add(1)
+        x = x.div(1e6).mul(simpleResearchEffect("c6")).log(1e3).root(hasResearch('c12') ? 1.2 : 1.25).scaleAll("cr_boost",true)
 
-        return x
+        if (x.gte('ee1000')) x = x.log10().log10().div(1e3).log10().mul(tmp.cr_decay_speed).add(1).mul(1e3).pow10().pow10();
+
+        return x.floor().add(1)
     },
 
     limitIncrease() {
-        let x = Decimal.pow(1e3,player.core.radiation.boost.scaleAll("cr_boost").pow(hasResearch('c12') ? 1.2 : 1.25))
+        let x = player.core.radiation.boost
+
+        if (x.gte('ee1000')) x = x.log10().log10().div(1e3).sub(1).div(tmp.cr_decay_speed).pow10().mul(1e3).pow10().pow10();
+
+        x = Decimal.pow(1e3,x.scaleAll("cr_boost").pow(hasResearch('c12') ? 1.2 : 1.25))
 
         return x
     },
@@ -174,6 +183,8 @@ const CORE_RAD = {
             effect: (r,b)=>{
                 let x = r.add(10).log10().overflow(1e300,0.5).pow(expPow(b.add(1),0.25).softcap(1e4,10,'log').div(10)).pow(getCRBoost(13))
 
+                if (x.gte('ee1e6')) x = x.log10().log10().div(1e6).log10().add(1).mul(1e6).pow10().pow10();
+
                 return x
             },
         },{
@@ -192,11 +203,13 @@ const CORE_RAD = {
 function getCRBoost(i,def=1) { return player.core.radiation.boost.gte(CORE_RAD.boosts[i].req) ? tmp.cr_boost[i] ?? def : def }
 
 function getCoreTemperature() {
-    var x = E(6150)
+    var x = E(0)
 
-    for (let i = 0; i < CORE_ASSEMBLER.length; i++) x = x.add(CORE_ASSEMBLER[i].temperature(player.core.assembler_strength[i]))
+    for (let i = 0; i < CORE_ASSEMBLER.length; i++) x = x.add(CORE_ASSEMBLER[i].temperature(player.core.assembler_strength[i]));
 
-    return x
+    if (inGalacticExploration(0)) x = x.max(1).log10();
+
+    return x.add(6150)
 }
 
 function getCoreTemperatureEffect() {
@@ -208,7 +221,11 @@ function getCoreTemperatureEffect() {
         x = x.softcap(10,hasResearch('f4') ? 0.5 : 1/3,0,hasResearch('dm5'))
     } else x = x.div(6150).max(0)
 
-    return x.mul(remnantUpgEffect(9))
+    x = x.mul(remnantUpgEffect(9))
+
+    if (x.gte('ee1000')) x = x.log10().log10().div(1e3).log10().add(1).mul(1e3).pow10().pow10();
+
+    return x
 }
 
 function updateCoreRadiation() {
@@ -243,6 +260,8 @@ function updateCoreRadiation() {
 }
 
 function updateCoreRadiationTemp() {
+    tmp.cr_decay_speed = getNucleobaseEffect('cytosine',5)
+
     tmp.cr_gain = CORE_RAD.gain()
     tmp.cr_limit = CORE_RAD.limit()
 

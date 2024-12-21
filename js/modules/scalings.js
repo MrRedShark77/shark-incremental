@@ -133,8 +133,12 @@ function getScalingStarts(id) {
             break
         }
         case "shark_rank": {
-            if (hasEvolutionGoal(8)) b[0] = 30
-            if (isSSObserved('venus')) b[2] *= 2
+            if (hasEvolutionGoal(8)) b[0] = 30;
+            if (isSSObserved('venus')) b[2] *= 2;
+            break
+        }
+        case "shark_tier": {
+            if (hasResearch('ge8')) b[0] += 5;
             break
         }
         case "cr_boost": {
@@ -199,7 +203,7 @@ function getScalingExclusions(id) {
             break
         }
         case "shark_rank": {
-            if (false) for (let x = 0; x < 3; x++) e[x] = true;
+            if (hasResearch('h11')) for (let x = 0; x < 3; x++) e[x] = true;
             break
         }
         case "remnant_upg": {

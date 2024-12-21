@@ -49,6 +49,9 @@ LANGUAGES.ZH = {
 		
 		'traject-name': "轨迹",
         'traject-costName': toTextStyle('轨迹','traject'),
+		
+		'hadron-name': "基本粒子",
+        'hadron-costName': toTextStyle('基本粒子','hadron'),
 
 		'full-shark-level': toTextStyle('鲨鱼','shark') + '等级',
 		'full-shark-rank': toTextStyle('鲨鱼','shark') + '段位',
@@ -72,6 +75,9 @@ LANGUAGES.ZH = {
 		
 		'curr-top-5-req': x => `${toTextStyle('储存数据','reserv')}达到  <b>${format(x)}</b>`, 
         'curr-top-5-reset': x => `绘制 <b>${format(x,0)}</b> ${toTextStyle('轨迹','traject')}`,
+		
+		'curr-top-6-req': x => `${toTextStyle('鱼','fish')}的数量达到 <b>${format(x)}</b>`,  
+        'curr-top-6-reset': (x,next) => `强子化后获得 <b>${format(x,0)}</b> ${toTextStyle('基本粒子','hadron')} (下一个需要 <b>${format(next)}</b> ${toTextStyle('鱼','fish')})`,
 
 		'radioactive-name': toTextStyle('辐射'+icon("radioactive"),'core'),
         
@@ -103,6 +109,11 @@ LANGUAGES.ZH = {
         'tab-singularity-milestones': toTextStyle('奇点','black-hole') + "里程碑",
 		'tab-solar-system': "太阳系",
 		'tab-constellation': toTextStyle('星座','star'),
+		
+		'tab-hadron': toTextStyle('强子化','hadron'),
+        'tab-hadron-su': "强子升级",
+        'tab-shark-tier': toTextStyle('鲨鱼','shark') + "层次",
+        'tab-nucleobase': "碱基",
 
         // Elements
 
@@ -113,6 +124,11 @@ LANGUAGES.ZH = {
         'shark-rank-div': `${toTextStyle('鲨鱼','shark')}的段位为 <h3 id="shark-rank">0</h3>.`,
         'shark-rank-req-div': `${toTextStyle('鲨鱼','shark')}的战力达到 <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4> 后升段。`,
         'shark-rank-note': `注意：鲨鱼段位在鲨鱼进化后重置。`,
+		
+		'shark-iq-div': `你的${toTextStyle('鲨鱼','shark')}的智商为 <h3>${toTextStyle('0','hadron','shark-iq')}</h3>.`,
+        'shark-tier-div': `你的${toTextStyle('鲨鱼','shark')}在第 <h3 id="shark-tier2">0</h3> 层次。`,
+        'shark-tier-req-div': `${toTextStyle('鲨鱼','shark')}智商达到 <h4>${toTextStyle('0','hadron','shark-tier-req')}</h4> 后，进入下一层次。`,
+        'shark-tier-note': `注意：鲨鱼层次在进行强子化后重置。`,
 
         'option-title-1': "主要选项",
         'option-title-2': "记数法",
@@ -168,6 +184,9 @@ LANGUAGES.ZH = {
 		
 		'bh-tier-div': `你的黑洞层级为 <h3>${toTextStyle('0','black-hole','bh-tier')}</h3>.`,
         'bh-tier-button': `达到升级要求后，提升${toTextStyle('黑洞','black-hole')}层级，获得强大的加成。`,
+		
+		'fundamental-amount-div': `你拥有过的基本粒子总量为 <h3>${toTextStyle('0','hadron','total-fundamental')}</h3>, 吃${toTextStyle('鱼','fish')}数量的上限为 <h3 id="fundamental-effect">???</h3>.`,
+        'starter-upg-note': `注意：每购买一个强子升级，其他强子升级的价格都会<b>翻倍</b>一次。第一次强子化后，<b>强烈建议</b>购买第一个强子升级。`,
 
         // Upgrades
 
@@ -408,6 +427,17 @@ LANGUAGES.ZH = {
 			't1': [`自动轨迹`,`自动购买需要消耗${toTextStyle('轨迹','traject')}的观测升级，无需消耗任何资源。<i>此研究不会被重置。</i>`],
             't2': [`轨迹提升`,`提升获得${toTextStyle('轨迹','traject')}的公式。`],
             't3': [`自动绘制`,`每秒获得重置时获得的所有${toTextStyle('轨迹','traject')}。<i>此研究不会被重置。</i>`],
+			
+			'h1': [`智商充值`,`${toTextStyle("鲨鱼",'shark')}${toTextStyle("智商",'hadron')}乘以${toTextStyle("鲨鱼",'shark')}等级的超对数值。`],
+            'h2': [`锻造保持`,`${toTextStyle("强子化",'hadron')}不会重置锻造。`],
+            'h3': [`黑洞折算`,`基于${toTextStyle("基本粒子",'hadron')}总量的对数值，延迟${toTextStyle("黑洞",'black-hole')}层级的价格折算。`],
+            'h4': [`提升吃鱼上限`,`提升${toTextStyle("基本粒子",'hadron')}总量的效果。`],
+            'h5': [`等效黑洞`,`自动提升${toTextStyle("黑洞",'black-hole')}层级，提升黑洞层级时不再进行重置。`],
+            'h6': [`量子智能`, `基于${toTextStyle("鱼",'fish')}的数量，提升${toTextStyle("鲨鱼",'shark')}${toTextStyle("智商",'hadron')}，增强<b>“智商充值”</b>的效果。`],
+            'h7': [`移除遗物折算`, `移除${toTextStyle("遗物",'black-hole')}升级的价格折算，解锁更多的${toTextStyle("遗物",'black-hole')}升级。`],
+            'h8': [`更高的吃鱼上限`, `进一步提升${toTextStyle("基本粒子",'hadron')}总量的效果。`],
+            'h9': [`强子生成`, `每秒获得重置时获得的<b>所有</b>${toTextStyle("基本粒子",'hadron')}。`],
+            'h10': [`无视膨胀`, `移除辐射加成的所有价格折算。`],
         },
 
         // Exploration
@@ -562,7 +592,7 @@ LANGUAGES.ZH = {
 
             ["暴胀的鱼", x=>`${toTextStyle('鱼','fish')}的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('鱼','fish')}的指数是原来的 <b>${format(x)}</b> 次幂。`],
             ["过度重生", x=>`${toTextStyle('重生','prestige')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('重生','prestige')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
-            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('岩浆','core')}碎片的指数是原来的 <b>${format(x)}</b> 次幂。`],
+            ["地核高压", x=>`${toTextStyle("岩浆",'core')}碎片的数量是原来的 <b>${format(x)}</b> 次幂。`, x=>`${toTextStyle('岩浆','core')}碎片的数量再次是原来的 <b>${format(x)}</b> 次幂。`],
             ["自制鲨鱼", x=>`${toTextStyle('类人','humanoid')}鲨鱼所需数量的基数降低 <b>${format(x,0)}</b>.`, x=>`${toTextStyle('类人','humanoid')}鲨鱼的指数 <b>+${format(x)}</b>.`],
 
             ["化身为鲨", x=>`<b>硫</b>的等级额外加 <b>${format(x,0)}</b>.`, x=>`<b>硫</b>的等级大于 1 时，其加成是原来的 <b>${formatPow(x)}</b>.`],
@@ -770,20 +800,22 @@ LANGUAGES.ZH = {
 			
 			[`星之助力`,x=>`${toTextStyle("星座",'star')}中获得的资源 ${x}.`],
             [`星之增长`,x=>`${toTextStyle("星座",'star')}中获得的资源，其底数 ${x}.`],
+			[`老当益壮`,x=>`${toTextStyle("基本粒子",'hadron')}的效果 ${x}.`],
+            [`万物终结`,x=>`吃${toTextStyle("鱼",'fish')}数量的指数 ${x}.`],
         ],
 
 		'solar-system-list': {
-            'sun':     ["太阳",`太阳是位于太阳系中心的一颗恒星。它主要由氢和氦组成，是地球和太阳系其他行星的主要光和热来源。太阳还通过提供光合作用和气候条件为地球上的生命创造了条件。太阳非常巨大。它的直径是地球直径的 109 倍，质量是地球质量的 330,000 倍。地球和太阳之间的距离为 1.5 亿公里，所以在我们看来，太阳似乎很小。`,`解锁下一重置层级（咕咕咕），${toTextStyle('鲨之信念','humanoid')}的倍率 ×2.`],
-            'mercury': ["水星",`水星是太阳系中最小的行星，也是距离太阳最近的行星。因为它在天空中的移动速度看起来比其他行星快，它以古罗马神话中的商业之神墨丘利命名。水星的外观与月球相似，其表面布满了撞击坑，表明过去十亿年来它的内部没有发生地质活动。这颗行星几乎没有大气层，因此其表面的昼夜温差大于太阳系中的其他行星。`,`辐射加成的前 3 次价格折算 ×10. ${toTextStyle('观测数据','observ')}的产量 ×10. `],
+            'sun':     ["太阳",`太阳是位于太阳系中心的一颗恒星。它主要由氢和氦组成，为地球和太阳系其他行星送去了光和热。太阳还通过提供光合作用的能量来源和适宜的气候条件，为地球上的生命创造了生存繁衍的条件。太阳非常巨大。它的直径是地球直径的 109 倍，质量是地球质量的 330,000 倍。地球和太阳之间的距离约为 1.5 亿公里，所以在我们看来，太阳似乎很小。`,`解锁下一个重置层级，${toTextStyle('鲨之信念','humanoid')}的倍率 ×2.`],
+            'mercury': ["水星",`水星是太阳系中最小的行星，也是距离太阳最近的行星。因为它在天空中的移动速度看起来比其他行星快，它以古罗马神话中的商业之神墨丘利命名。水星的表面与月球表面相似，布满了撞击坑。这表明过去十亿年来，水星的内部没有发生任何地质活动。水星几乎没有大气层，因此它表面的昼夜温差大于太阳系中的其他行星。`,`辐射加成的前 3 次价格折算 ×10. ${toTextStyle('观测数据','observ')}的产量 ×10. `],
             'venus':   ["金星",`金星是距离太阳第二远的行星，也是太阳系第六大行星。它以古罗马神话中的爱神维纳斯命名。在金星稠密的大气层中，二氧化碳的占比大于 96%. 金星是太阳系中最热的行星，其表面的平均温度是 735 K (462 °C). 金星没有天然卫星。从地球上看，它是第三亮的天体，仅次于太阳和月球。`,`每秒自动获得进化后能获得的所有${toTextStyle('类人','humanoid')}鲨鱼，禁用自动获得${toTextStyle('类人','humanoid')}鲨鱼，大幅提升${toTextStyle('类人','humanoid')}鲨鱼的效果，${toTextStyle('鲨鱼','shark')}段位的第三次折算 ×2. ${toTextStyle('观测数据','observ')}的产量 ×10.`],
             'earth':   ["地球",`???`,`???`],
             'moon':    ["月球",`欢迎来到太阳系！你可以探索太阳系中的一些行星，不过你需要观测它们，以获得强大的奖励。强制进行一次奇点重置，移除部分研究和进化树（但后续你将重获它们）。黑洞使获得部分资源的数量是原来的^0.5, 禁用几乎所有在挖矿之后解锁的游戏机制，你不能探索海洋。你可以在太空基地中获得${toTextStyle('观测数据','observ')}，通过${toTextStyle('观测数据','observ')}购买的升级有助于推进游戏进度。观测不同行星的难度不同，不过太空基地的升级能有助于推进游戏进度。先从地球的天然卫星开始吧！它叫月球，但是在这之前它叫忒伊亚。`,`解锁挖矿飞升和新的${toTextStyle('遗物','black-hole')}升级。进行挖矿飞升后，强制进行一次奇点重置，获得强大的加成，并解锁更多的矿物。`],
-            'mars':    ["火星",`火星是距离太阳第四远的行星。它具有岩石表面，且它的大小与地球接近，因此它属于类地行星。火星的地形具有独特的特征，包括撞击坑、火山、山谷、沙漠和极地冰盖。火星上有类似水侵蚀的地质构造和只有长期暴露在水中才能形成的矿物质。几个世纪以来，火星上是否存在生命一直是科学家们感兴趣的问题。`,`你可以对已购买的${toTextStyle('进化树','humanoid')}进行充能，获得更强的加成，不过，充能价格大幅增长。解锁新的自动化，${toTextStyle('观测数据','observ')}的产量 ×10.`],
-            'jupiter': ["木星",`木星是太阳系中最大的行星，也是距离太阳第五远的行星。它是一颗气态巨行星，其质量是太阳系中所有其他行星总质量的 2.47 倍。木星自古以来就为人所知，在不同文化的神话和宗教信仰中都有提及。这颗行星的现代名称源于古罗马神话中的至高神朱庇特。木星大气层存在许多独特的大气现象，如风暴、闪电、极光和大红斑。大红斑是自 17 世纪以来就为人所知的巨大风暴。`,`解锁更多的 ${toTextStyle('遗物','black-hole')}升级。${toTextStyle('观测数据','observ')}的产量 ×10.`],
-            'saturn':  ["土星",`土星是距太阳第六远的行星，也是太阳系中仅次于木星的第二大行星。土星被归类为气态巨行星，因为它主要由氢和氦组成。这颗行星以古罗马神话中的农业之神命名。土星周围环绕着由冰粒、重元素和尘埃组成的环。这颗行星有 146 颗已知的天然卫星，其中最大的是土卫六。土星有一个行星磁场和一个众人皆知的环。`,`解锁下一行${toTextStyle('地核','core')}反应堆，<i>它们并不会被重置，且不受${toTextStyle('遗物','black-hole')}升级“战栗时空”的影响。</i>`],
-            'uranus':  ["天王星",`天王星是太阳系中距离太阳第七远的行星。它于 1781 年由英国天文学家威廉·赫歇尔发现，并以希腊天神乌拉诺斯的名字命名。天王星是现代以来借助望远镜发现的第一颗行星。天王星是太阳系中直径第三大、质量第四大的行星。它主要由冰和岩石组成，大气层含有氢、氦和甲烷。天王星有一个环系统和 28 颗卫星。天王星的是“躺着”自转的，因此天王星绕太阳公转时，南北两极交替地指向太阳。`,`移除${toTextStyle('鲨鱼','shark')}吃鱼数量的软上限，${toTextStyle('鲨之信念','humanoid')}获得双倍的加成。`],
-            'neptune': ["海王星",`海王星是太阳系中第八大行星，也是距离太阳最远的行星。它与太阳的平均距离为 45 亿公里。海王星是巨行星之一。它的质量是地球的 17 倍。海王星的赤道直径位居第四，是地球的 3.9 倍。海王星的大气层与太阳系中其他气态巨行星的气体外壳相似。它主要由氢和氦组成，还混有甲烷、水、氨和其他化合物。海王星是太阳系中最冷的行星之一。它的平均温度低于 -200 °C。海王星的大气层中的风，是太阳系所有行星中最强的。`,`解锁${toTextStyle('星座','star')}，它能升级${toTextStyle('黑洞','black-hole')}，并获得强大的加成。`],
-            'pluto':   ["冥王星",`冥王星是太阳系中已知最大的矮行星，是一颗海王星外天体，也是继八大行星和阋神星之后绕太阳公转的第十大天体。冥王星由岩石和冰组成，其质量约为月球质量的六分之一，体积约为月球的三分之一。冥王星的轨道具有很大的离心率，且轨道平面与黄道面的倾角很大。因此，它的近日点距离太阳 29.7 个，远日点距离太阳 49.3 个天文单位。`,`解锁更多的${toTextStyle('遗物','black-hole')}升级，${toTextStyle('星座','star')}中的资源不会被重置。`],
+            'mars':    ["火星",`火星是距离太阳第四远的行星。它具有岩石表面，且它的大小与地球接近，因此它属于类地行星。火星的地形具有独特的特征，包括撞击坑、火山、山谷、沙漠和极地冰盖。火星上有类似水侵蚀的地质构造和只有长期暴露在水中才能形成的矿物质。几个世纪以来，火星上是否存在生命，一直是科学家们感兴趣的问题。`,`你可以对已购买的${toTextStyle('进化树','humanoid')}升级进行充能，获得更强的加成，不过，充能价格大幅增长。解锁进化树充能的同时，解锁新的自动化，${toTextStyle('观测数据','observ')}的产量 ×10.`],
+            'jupiter': ["木星",`木星是太阳系中最大的行星，也是距离太阳第五远的行星。它是一颗气态巨行星，其质量是太阳系中所有其他行星质量之和的 2.47 倍。木星自古以来就为人所知，在不同文化的神话和宗教信仰中都有提及。这颗行星的现代名称源于古罗马神话中的至高神朱庇特。木星大气层存在许多独特的大气现象，如风暴、闪电、极光和大红斑。大红斑是自 17 世纪以来就为人所知的巨大风暴。`,`解锁更多的 ${toTextStyle('遗物','black-hole')}升级。${toTextStyle('观测数据','observ')}的产量 ×10.`],
+            'saturn':  ["土星",`土星是距太阳第六远的行星，也是太阳系中仅次于木星的第二大行星。因为土星主要由氢和氦组成，所以它被归类为气态巨行星，。这颗行星以古罗马神话中的农业之神命名。土星周围环绕着由冰粒、重元素和尘埃组成的环。这颗行星有 146 颗已知的天然卫星，其中最大的是土卫六。土星有一个行星磁场和一个众人皆知的环。`,`解锁下一行${toTextStyle('地核','core')}反应堆，<i>它们并不会被重置，且不受${toTextStyle('遗物','black-hole')}升级“战栗时空”的影响。</i>`],
+            'uranus':  ["天王星",`天王星是太阳系中距离太阳第七远的行星。它于 1781 年由英国天文学家威廉·赫歇尔发现，并以希腊天神乌拉诺斯的名字命名。天王星是现代以来借助望远镜发现的第一颗行星。天王星是太阳系中直径第三大、质量第四大的行星。天王星主要由冰和岩石组成，它的大气层中含有氢、氦和甲烷。天王星有一个环系统和 28 颗卫星。天王星的是“躺着”自转的，因此天王星绕太阳公转时，南北两极交替地指向太阳。`,`移除${toTextStyle('鲨鱼','shark')}吃鱼数量的软上限，${toTextStyle('鲨之信念','humanoid')}获得双倍的加成。`],
+            'neptune': ["海王星",`海王星是太阳系中第八大行星，也是距离太阳最远的行星。它与太阳的平均距离为 45 亿公里。海王星是巨行星之一。它的质量是地球的 17 倍。海王星的赤道直径位居第四，是地球的 3.9 倍。海王星的大气层与太阳系中其他气态巨行星的气体外壳相似。它主要由氢和氦组成，还混有甲烷、水、氨和其他化合物。海王星是太阳系中最冷的行星之一。它的平均温度低于 -200 °C。海王星大气层中的风，是太阳系所有行星中最强的。`,`解锁${toTextStyle('星座','star')}，它能升级${toTextStyle('黑洞','black-hole')}，并获得强大的加成。`],
+            'pluto':   ["冥王星",`冥王星是太阳系中已知最大的矮行星，是一颗海王星外天体，也是继八大行星和阋神星之后绕太阳公转的第十大天体。冥王星由岩石和冰组成，其质量约为月球质量的六分之一，体积约为月球的三分之一。冥王星的轨道具有很大的离心率，且轨道平面与黄道面的倾角很大。因此，它的近日点距离太阳 29.7 个天文单位，远日点距离太阳 49.3 个天文单位。`,`解锁更多的${toTextStyle('遗物','black-hole')}升级，${toTextStyle('星座','star')}中的资源不会被重置。`],
         },
         'build-rocket-part': x => `火箭部件数量 ${x}.`,
         'total-rp': "火箭部件总量",
@@ -832,8 +864,58 @@ LANGUAGES.ZH = {
             [`鱼之恒星`, x=>`${toTextStyle('鱼','fish')}的指数是原来的 ${x}.`, x=>`${toTextStyle('观测数据','observ')}是原来的 ${x}.`],
             [`重生恒星`, x=>`${toTextStyle('重生','prestige')}碎片的指数是原来的 ${x}.`, x=>`${toTextStyle('储存数据','reserv')}是原来的 ${x}.`],
 			[`恒星碎片`, x=>`${toTextStyle('岩浆','core')}碎片的指数是原来的 ${x}.`, x=>`${toTextStyle('轨迹','traject')}是原来的 ${x}.`],
-            [`星际鲨鱼`, x=>`${toTextStyle('类人','humanoid')}鲨鱼的指数 by ${x}.`, x=>`提升${toTextStyle('实验','experiment')}层级的要求降低 ${x}`],
+            [`星际鲨鱼`, x=>`${toTextStyle('类人','humanoid')}鲨鱼的指数 ${x}.`, x=>`提升${toTextStyle('实验','experiment')}层级的要求降低 ${x}`],
+			[`星际辐射`+icon("radioactive"), x=>`${toTextStyle('辐射' + icon("radioactive"),'core')}产量 ${x}.`, x=>`无效`],
+			[`霍金辐射`+icon("radioactive"), x=>`${toTextStyle('基本粒子','hadron')} ${x}.`, x=>`无效`],
+			[`星云之力`, x=>`前 6 个${toTextStyle("星座",'star')}资源的效果 ${x}.`, x=>`无效`],
+		],
+
+        // Hadronize
+
+        'hadron-cutscenes': [
+            `你接下来看到的东西，能让你大开眼界。`,
+            `若要进行强子化，首先要敬畏基本粒子的力量。`,
+            `没有重置，就没有收获。`,
+            `别告诉我这些游戏机制是你从反物质维度 NG+3 那学来的？！？！？？！`,
+            `时而轻而易举，时而难如登天。无论是轻而易举，还是难如登天，都要记住这句话：<br>千里之行，始于足下。`
         ],
+        'starter-upgrades': [
+            [`鲨鱼层次`,`解锁${toTextStyle('鲨鱼','shark')}层次。它类似于${toTextStyle('鲨鱼','shark')}段位，但加成更强。${toTextStyle('鲨鱼','shark')}层次由${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}确定。`],
+            [`自动观测`,`对于某些行星或恒星的观测而言，当火箭部件总量达到其解锁要求时，你可以立刻完成它们。这并不会提升火箭部件总量的要求。`],
+            [`无限升级`,`移除第一个和第二个用${toTextStyle('重生','prestige')}碎片购买的${toTextStyle('鲨鱼','shark')}升级的效果上限，但它达到原来的上限后，其加成效果的增速将大幅降低。`],
+            [`光速锻造`,`你可以瞬间完成锻造，并以飞一般的速度填充粒子加速器。`],
+            [`连续挖矿`,`基于挖矿速度、幸运草和矿物的解锁条件，自动获得矿物，并移除矿场。`],
+            [`折算推迟`,`${toTextStyle('遗物','black-hole')}升级的第一次价格折算，从 <b>100</b> 延迟到 <b>1000</b>.`],
+            [`无需重置`,`每次强子化后，开局自带 8 个${toTextStyle('黑洞','black-hole')}和前面解锁的所有生成器。`],
+            [`永恒之树`,`购买${toTextStyle("进化","humanoid")}树无需消耗${toTextStyle("鲨之信念","humanoid")}，解锁自动购买${toTextStyle("进化","humanoid")}树。`],
+        ],
+
+        'nucleobases': {
+            'cytosine': ["胞嘧啶",[
+                x => `${toTextStyle('星座','star')}资源 ${x}.`,
+                x => `${toTextStyle('基本粒子','hadron')} ${x}.`,
+                x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')} ${x}.`,
+                x => `${toTextStyle('星座','star')}资源 ${x}.`,
+                x => `第三行${toTextStyle('地核','core')}反应堆的效果 ${x}.`,
+            ]],
+            'guanine': ["鸟嘌呤",[
+                x => `${toTextStyle('星座','star')}基数的指数 ${x}.`,
+                x => `${toTextStyle('基本粒子','hadron')} ${x}.`,
+                x => `${toTextStyle('岩浆','core')}碎片和${toTextStyle('辐射' + icon("radioactive"),'core')}产量的指数 ${x}.`,
+                x => `${toTextStyle("鲨鱼",'shark')}层次的加成效果 ${x}.`,
+                x => `第 10 行${toTextStyle('进化树','humanoid')}的效果 ${x}.`,
+            ]],
+            'adenine': ["腺嘌呤",[
+                x => `${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}的指数 ${x}.`,
+                x => `${toTextStyle('强子化','hadron')}之前的折算削弱 ${x}.`,
+                x => `<b>胞嘧啶</b>层级 ${x}.`,
+            ]],
+        },
+        'experience': "经验值",
+        'next-at-experience': "数量加 1 所需经验值",
+        'nucleobase-boosts': "碱基加成",
+        'experience-base': "经验值基数",
+        'nucleobase-tier': "碱基层级",
 
         // Automation
 
@@ -850,6 +932,11 @@ LANGUAGES.ZH = {
         'auto-mining_tier-name': `自动提升挖矿等级`,
 		'auto-remnant-name': `自动购买${toTextStyle("遗物","black-hole")}升级`,
 		'auto-faith-name': `自动购买${toTextStyle("鲨之信念","humanoid")}`,
+		
+		'auto-sing_research-name': `自动购买${toTextStyle("奇点","black-hole")}升级`,
+        'auto-evolution_tree-name': `自动购买${toTextStyle("进化","humanoid")}树`,
+        'auto-rocket_part-name': `自动制造火箭部件`,
+        'auto-mining_ascend-name': `自动进行挖矿飞升`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
@@ -892,7 +979,10 @@ LANGUAGES.ZH = {
         'progress-19-text': r => `${toTextStyle('暗物质','black-hole')}总量达到 ${format(r)}`,
 		
 		'progress-20-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)}`, 
-        get 'progress-20-cond-text'() { return `???` },
+        get 'progress-20-cond-text'() { return `进行一次${toTextStyle('强子化','hadron')}` },
+
+        'progress-21-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁下一个游戏机制。`, 
+        'progress-22-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第三个碱基。`, 
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -950,12 +1040,23 @@ LANGUAGES.ZH = {
             你确定要献祭你的鲨鱼吗？
             `
         },
+		get 'reset-hadron-message'() {
+            let e = toTextStyle('强子化','hadron'), c = toTextStyle('献祭','black-hole')
+            return `
+            <h3>${e}</h3><br>
+            ${e}是第五层重置。
+            让你的鲨鱼超越多重宇宙的限制。强子化后，除了重置${c}所重置的资源， 还重置暗物质的数量、16 个遗物后的奇点升级、太阳系和火箭部件、黑洞层级、星座资源、奇点里程碑、挖矿中的飞升次数、和在解锁奇点之后购买的某些研究，来获得${toTextStyle('基本粒子','hadron')}。第一次强子化后，解锁强子升级、更多的研究和自动化项目。<br>
+            <img src="textures/hadronize.png"><br>
+            你想超越多重宇宙的限制吗？
+            `
+        },
 
         // Other
 
 		'scalings': {
             'shark_level' : `鲨鱼等级`,
             'shark_rank' : `鲨鱼段位`,
+			'shark_tier' : `鲨鱼层次`,
             'su_s3' : `“鲨鱼牙齿”升级`,
             'su_s4' : `“鲨鱼指数”升级`,
             'su_m1' : `“强力挖矿”升级`,
@@ -990,7 +1091,15 @@ LANGUAGES.ZH = {
 			vibranium: x => `<b>振金</b> ${formatMult(x)}`,
 			remnants: x => `${toTextStyle('遗物','black-hole')} ${formatMult(x)}`,
         },
+		
+		'shark-tier-bonuses': {
+            fish: x => `吃${toTextStyle('鱼','fish')}数量的指数 ${x}`,
+            hadron: x => `${toTextStyle('基本粒子','hadron')} ${x}`,
+            prestige: x => `${toTextStyle('重生碎片','prestige')}的指数 ${x}`,
+            nucleobase: x => `${x} 碱基经验值`,
+        },
 
+		'amount': "数量",
 		'total': "总",
         'level': "等级",
         'effect': "效果",
@@ -1016,6 +1125,8 @@ LANGUAGES.ZH = {
         'research-bought': bool => bool ? `<b>已购买</b>` : `<b>未购买</b>`,
 		'research-pages': x => `共 ${x} 页`,
 
+		'purchased': "已购买",
+
         'off-on': bool => bool ? "开" : "关",
 
         'popup-buttons': [
@@ -1028,6 +1139,7 @@ LANGUAGES.ZH = {
             wipe: `你确定要删除存档吗？请输入 "<span class="free-select">I'm sorry what I don't want sharks!</span>"`,
 			"evolution-tree-respec": `你确定要重置${toTextStyle('进化','humanoid')}树吗？这将触发一次不获得${toTextStyle('类人','humanoid')}鲨鱼的${toTextStyle('进化','humanoid')}重置。`,
             "evolution-tree-import": `输入进化树。`,
+			"starter-upgrade-warning": `你确定要购买这个强子升级吗？你应该购买<b>"鲨鱼层次"</b>！`,
         },
 
         'notify-desc' : {
@@ -1058,5 +1170,6 @@ LANGUAGES.ZH = {
 		'confirm-humanoid': "鲨鱼进化",
 		'confirm-black-hole': "生成黑洞",
 		'confirm-sacrifice': "献祭鲨鱼",
+		'confirm-hadron': "强子化",
     },
 }

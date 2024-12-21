@@ -89,6 +89,7 @@ const REMNANT_UPGS = [
         effect(a) {
             if (hasResearch('dm2')) a = a.sqr();
             let x = player.fish.add(1).log10().add(1).log10().add(1).pow(a)
+            // if (x.gte('ee100000')) x = x.log10().log10().div(1e5).log10().add(1).mul(1e5).pow10().pow10();
             return x
         },
         effDesc: x=>formatPow(x),
@@ -98,6 +99,7 @@ const REMNANT_UPGS = [
         bulk:a=>a.div(1e5).log(10).root(1.25).sub(1),
         effect(a) {
             let x = a.mul(.5).add(1)
+            // if (x.gte('e1e7')) x = x.log10().div(1e7).log10().add(1).mul(1e7).pow10();
             return x
         },
         effDesc: x=>"+"+formatPercent(x.sub(1)),
@@ -166,6 +168,7 @@ const REMNANT_UPGS = [
         bulk:a=>a.div(1e247).log(1e3).root(1.25).sub(1),
         effect(a) {
             let x = player.singularity.remnants.add(1).log10().add(1).pow(a)
+            if (x.gte('ee100000')) x = x.log10().log10().div(1e5).log10().add(1).mul(1e5).pow10().pow10();
             return x
         },
         effDesc: x=>formatMult(x),
@@ -265,7 +268,7 @@ function remnantUpgEffect(i,def=1) { return tmp.remnant_upg_effects[i]??def }
 function updateSingularityTemp() {
     tmp.bh_reduction = tmp.ss_difficulty ? E(.5) : player.singularity.bh.gte(8) ? E(1) : Decimal.div(1,player.singularity.bh.sub(player.research.dm1).max(0).pow(2).div(20).add(1))
 
-    let pow = remnantUpgEffect(13), experiment = player.solar_system.experiment
+    let pow = remnantUpgEffect(13), experiment = player.solar_system.experiment, exp = researchEffect('ge4')
 
     for (let i = 0; i < EXPERIMENT_TIER.boosts.length; i++) {
         let b = EXPERIMENT_TIER.boosts[i]
@@ -276,8 +279,9 @@ function updateSingularityTemp() {
     for (let i = 0; i < REMNANT_UPGS.length; i++) {
         let u = REMNANT_UPGS[i], l = player.singularity.upgs[i]
         if (tmp.ss_difficulty && i < 16) l = E(0);
-        if (i !== 3 && i < 12) l = l.mul(pow)
-        if ('effect' in u) tmp.remnant_upg_effects[i] = u.effect(l)
+        if (i !== 3 && i < 12) l = l.mul(pow);
+        if (l.gt(1)) l = l.pow(exp);
+        if ('effect' in u) tmp.remnant_upg_effects[i] = u.effect(l);
     }
 
     for (let i of SPACEBASE_UPG_KEYS) {

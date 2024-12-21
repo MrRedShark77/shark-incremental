@@ -220,10 +220,21 @@ const TAB_IDS = {
         html: updateNucleobasesHTML,
 
         notify() {
-            for (let id in NUCLEOBASES.ctn) {
+            if (!isAutoEnabled('nucleobase')) for (let id in NUCLEOBASES.ctn) {
                 let n = NUCLEOBASES.ctn[id], unl = n.unl(), upg = player.hadron.nucleobases[id].upg;
 
                 if (unl && (CURRENCIES[n.base.currency].amount.gte(NUCLEOBASES.get_cost(id,'base',upg[0])) || player.hadron.amount.gte(NUCLEOBASES.get_cost(id,'tier',upg[1])))) return true;
+            }
+            return false
+        },
+    },
+    'gal-explore': {
+        html: updateGalacticExploreHTML,
+
+        notify() {
+            for (let i = 0; i < player.hadron.gal_explore.unl; i++) {
+                const GE = GALACTIC_EXPLORE[i]
+                if (CURRENCIES[GE.upgrade[2]].amount.gte(GE.upgrade[0](player.hadron.gal_explore.upg[i]))) return true;
             }
             return false
         },
@@ -292,6 +303,7 @@ const TABS = [
             ["hadron-su"],
             ["shark-tier",()=>player.hadron.starter_upgs.includes(0)],
             ['nucleobase',()=>player.feature>=22],
+            ['gal-explore',()=>player.feature>=24],
         ],
         style: {
             "background": `#ff8 repeating-conic-gradient(#0000 0 25%, #f802 0 50%)`,

@@ -51,14 +51,14 @@ const NUCLEOBASES = {
     },
 
     get_cost(id,type,x) {
-        x = x.scale(10,2,"P")
+        x = x.scale(125,2,"ME2").scale(10,2,"P")
 
         return this.ctn[id][type].cost(x)
     },
     get_bulk(id,type,y) {
         let x = this.ctn[id][type].bulk(y)
 
-        x = x.scale(10,2,"P",true)
+        x = x.scale(10,2,"P",true).scale(125,2,"ME2",true)
 
         return x.add(1).floor()
     },
@@ -94,10 +94,11 @@ const NUCLEOBASES = {
 
             effect: [
                 [1, 1, y => y.pow_base(1.5).mul(y.pow(2).add(1)), x => formatMult(x)],
-                [10, 1, y => y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)), x => formatMult(x)],
+                [10, 1, y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
                 [50, 1, y => y.pow_base(1.1), x => formatPow(x)],
                 [150, 1, y => y.pow_base(1.01), x => formatPow(x,3)],
                 [300, 1, y => y.pow_base(1.1).mul(y.add(1)), x => formatMult(x)],
+                [500, 1, y => y.div(10).add(1), x => formatMult(x)],
             ],
         },
         'guanine': {
@@ -119,10 +120,11 @@ const NUCLEOBASES = {
 
             effect: [
                 [1, 0, y => y.mul(.01), x => "+"+format(x)],
-                [10, 1, y => y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)), x => formatMult(x)],
+                [10, 1, y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
                 [50, 1, y => y.pow_base(1.1), x => formatPow(x)],
                 [150, 1, y => y.root(2).mul(.1).add(1), x => "+"+formatPercent(x.sub(1))],
-                [300, 1, y => y.add(1), x => formatMult(x)],
+                [300, 1, y => y.add(1).pow(researchEffect('ge2')), x => formatMult(x)],
+                [500, 1, y => y.add(1).cbrt(), x => formatPow(x,3)],
             ],
         },
         'adenine': {
@@ -145,6 +147,31 @@ const NUCLEOBASES = {
             effect: [
                 [1, 0, y => y.root(2).mul(.1), x => "+"+format(x,3)],
                 [25, 1, y => y.log10().add(1).pow(-1), x => formatReduction(x,3)],
+                [100, 0, y => y, x => "+"+format(x,0)],
+                [250, 1, y => y.add(1).log10().div(150).add(1), x => "+"+formatPercent(x.sub(1),3)],
+                [350, 1, y => y.add(10).log10(), x => formatPow(x,3)],
+            ],
+        },
+        'thymine': {
+            unl: ()=>player.feature>=25,
+
+            exp_req: x => x.sumBase(1.01).pow_base(4).mul(2.5e6),
+            exp_bulk: x => x.div(2.5e6).max(1).log(4).sumBase(1.01,true),
+
+            base: {
+                slog: Decimal.slog('ee1e8',10),
+                cost(x) { return Decimal.tetrate(10,x.mul(.01).add(this.slog)) },
+                bulk(x) { return x.slog(10).sub(this.slog).div(.01) },
+                currency: "remnants",
+            },
+            tier: {
+                cost(x) { return x.pow(1.25).pow_base('e6.5e4').mul('e1e6').ceil() },
+                bulk(x) { return x.div('e1e6').log('e6.5e5').root(1.25) },
+            },
+
+            effect: [
+                [1, 1, y => y.mul(.2).add(1).root(2), x => "+"+formatPercent(x.sub(1),3)],
+                [25, 0, y => y.root(2).mul(.1), x => "+"+format(x,3)],
                 [100, 0, y => y, x => "+"+format(x,0)],
             ],
         },
@@ -227,6 +254,7 @@ function updateHadronTemp() {
         let bonus = E(0)
 
         if (id == "cytosine") bonus = bonus.add(getNucleobaseEffect("adenine",2,0));
+        if (id == "guanine") bonus = bonus.add(getNucleobaseEffect("thymine",2,0));
 
         n_tmp.tier = data.upg[1].add(bonus)
 
@@ -283,4 +311,6 @@ function setupHadronHTML() {
     }
 
     el('nucleobases-table').innerHTML = h
+
+    setupGalacticExploreHTML()
 }
