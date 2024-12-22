@@ -114,6 +114,7 @@ LANGUAGES.ZH = {
         'tab-hadron-su': "强子升级",
         'tab-shark-tier': toTextStyle('鲨鱼','shark') + "层次",
         'tab-nucleobase': "碱基",
+		'tab-gal-explore': "星系探索",
 
         // Elements
 
@@ -438,6 +439,20 @@ LANGUAGES.ZH = {
             'h8': [`更高的吃鱼上限`, `进一步提升${toTextStyle("基本粒子",'hadron')}总量的效果。`],
             'h9': [`强子生成`, `每秒获得重置时获得的<b>所有</b>${toTextStyle("基本粒子",'hadron')}。`],
             'h10': [`无视膨胀`, `移除辐射加成的所有价格折算。`],
+			'h11': [`无限段位`, `移除${toTextStyle("鲨鱼",'shark')}段位的前 3 次折算。`],
+            'h12': [`更好的星座`, `提升${toTextStyle("黑洞",'black-hole')}层级对${toTextStyle("星座",'star')}资源的加成。`],
+
+            'ge1': [`星系之海`,`星系探索中每增加一种资源，${toTextStyle("鲨鱼",'shark')}层次的平方根提升 <b>25%</b>.`],
+            'ge2': [`更好的碱基`,`提升鸟嘌呤的第五项加成。`],
+            'ge3': [`四阶之后`,`探索深渊之海时，在原有削弱的基础上，${toTextStyle('重生','prestige')}碎片的指数获得基于${toTextStyle('发光生物','gal-explore-1')}数量的提升。`],
+            'ge4': [`超强遗物`,`遗物升级每加一级，所有${toTextStyle("遗物",'black-hole')}升级的效果<b>的指数提升 10%</b>.`],
+            'ge5': [`更好的蓝藻`,`提升${toTextStyle('蓝藻','gal-explore-0')}的效果。`],
+            'ge6': [`战力指数^2`,`${toTextStyle('类人','humanoid')}鲨鱼提升${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的指数。`],
+            'ge7': [`更好的分数加成`,`提升星系探索分数的加成效果。`],
+            'ge8': [`层次折算推迟`,`${toTextStyle('鲨鱼','shark')}层次折算推迟 <b>+5</b>.`],
+            'ge9': [`更好的星系升级`,`星系升级的底数 <b>+1</b>.`],
+            'ge10': [`更好的灰色浮游生物`,`提升${toTextStyle('灰色浮游生物','gal-explore-2')}的效果。`],
+            'ge11': [`更好的碱基 II`,`提升胞嘧啶和鸟嘌呤的第二项加成。`],
         },
 
         // Exploration
@@ -868,7 +883,9 @@ LANGUAGES.ZH = {
 			[`星际辐射`+icon("radioactive"), x=>`${toTextStyle('辐射' + icon("radioactive"),'core')}产量 ${x}.`, x=>`无效`],
 			[`霍金辐射`+icon("radioactive"), x=>`${toTextStyle('基本粒子','hadron')} ${x}.`, x=>`无效`],
 			[`星云之力`, x=>`前 6 个${toTextStyle("星座",'star')}资源的效果 ${x}.`, x=>`无效`],
-		],
+			[`星系之力`, x=>`前 7 个${toTextStyle("星座",'star')}资源 ${x}.`, x=>`无效`],
+            [`星团之力`, x=>`Boost the exponent of ${toTextStyle('Remnant','black-hole')} generation and ${toTextStyle('Dark Matter','black-hole')} by ${x}.`, x=>`无效`],
+        ],
 
         // Hadronize
 
@@ -897,6 +914,7 @@ LANGUAGES.ZH = {
                 x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')} ${x}.`,
                 x => `${toTextStyle('星座','star')}资源 ${x}.`,
                 x => `第三行${toTextStyle('地核','core')}反应堆的效果 ${x}.`,
+				x => `被减弱的辐射加成，增速 ${x}.`,
             ]],
             'guanine': ["鸟嘌呤",[
                 x => `${toTextStyle('星座','star')}基数的指数 ${x}.`,
@@ -904,11 +922,19 @@ LANGUAGES.ZH = {
                 x => `${toTextStyle('岩浆','core')}碎片和${toTextStyle('辐射' + icon("radioactive"),'core')}产量的指数 ${x}.`,
                 x => `${toTextStyle("鲨鱼",'shark')}层次的加成效果 ${x}.`,
                 x => `第 10 行${toTextStyle('进化树','humanoid')}的效果 ${x}.`,
+				x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')}产量的指数 ${x}.`,
             ]],
             'adenine': ["腺嘌呤",[
                 x => `${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}的指数 ${x}.`,
                 x => `${toTextStyle('强子化','hadron')}之前的折算削弱 ${x}.`,
                 x => `<b>胞嘧啶</b>层级 ${x}.`,
+				x => `${toTextStyle('基本粒子','hadron')}总量的效果 ${x}.`,
+                x => `${toTextStyle('基本粒子','hadron')} ${x}.`,
+            ]],
+			'thymine': ["胸腺嘧啶",[
+                x => `第 6-9 个${toTextStyle('星座','star')}资源的效果 ${x}.`,
+                x => `星系探索升级的底数 ${x}.`,
+                x => `<b>鸟嘌呤</b>层级 ${x}.`,
             ]],
         },
         'experience': "经验值",
@@ -916,6 +942,30 @@ LANGUAGES.ZH = {
         'nucleobase-boosts': "碱基加成",
         'experience-base': "经验值基数",
         'nucleobase-tier': "碱基层级",
+		
+		'gal-explore-ocean': `探索海洋`,
+        'gal-explore-inside': (x,y) => `<b>当前分数：</b> ${x}<br>达到 ${y} ${toTextStyle('鱼','fish')}`,
+        'gal-explore-require': x => `${toTextStyle('鲨鱼','shark')}层次达到 ${x} 时解锁`,
+        'gal-explore-upgrade': (x,y) => `${x} ${y}.`,
+        'gal-explore': [
+            [
+                `深蓝之海`, `蓝藻`,
+                `${toTextStyle('岩浆','core')}碎片的二重对数是原来的<b>平方根</b>，${toTextStyle('地核','core')}温度和${toTextStyle('辐射' + icon("radioactive"),'core')}是原来的<b>对数</b>。`,
+                x => `${toTextStyle('地核','core')}温度和${toTextStyle('辐射' + icon("radioactive"),'core')}产量的指数是原来的 ${x}.`
+            ],[
+                `深渊之海`, `发光生物`,
+                `${toTextStyle('重生','prestige')}碎片的四阶运算加成<b>减半</b>。`,
+                x => `${toTextStyle('重生','prestige')}碎片的指数 ${x}.`
+            ],[
+                `灰色之海`, `灰色浮游生物`,
+                `${toTextStyle('类人','humanoid')}鲨鱼的指数是原来的 10 次方根，${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的倍率和指数无法提升。`,
+                x => `${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的指数 ${x}.`
+            ],[
+                `腐化之海`, `腐化遗物`,
+                `${toTextStyle('遗物','black-hole')}产量的二重对数和${toTextStyle('暗物质','black-hole')}的产量是原来的平方根。`,
+                x => `${toTextStyle('遗物','black-hole')}产量的指数 ${x}.`
+            ],
+        ],
 
         // Automation
 
@@ -937,6 +987,7 @@ LANGUAGES.ZH = {
         'auto-evolution_tree-name': `自动购买${toTextStyle("进化","humanoid")}树`,
         'auto-rocket_part-name': `自动制造火箭部件`,
         'auto-mining_ascend-name': `自动进行挖矿飞升`,
+		'auto-nucleobase-name': `自动购买核苷酸升级`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
@@ -981,8 +1032,10 @@ LANGUAGES.ZH = {
 		'progress-20-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)}`, 
         get 'progress-20-cond-text'() { return `进行一次${toTextStyle('强子化','hadron')}` },
 
-        'progress-21-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁下一个游戏机制。`, 
-        'progress-22-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第三个碱基。`, 
+        'progress-21-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁下一个游戏机制`, 
+        'progress-22-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第三个碱基`, 
+		'progress-23-text': r => `${toTextStyle('鲨鱼','shark')}层次达到 ${format(r,0)} 后，解锁下一个游戏机制`,
+        'progress-24-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第四个碱基`, 
 
         'maxed-progress': "已解锁所有机制！",
 
@@ -1112,6 +1165,7 @@ LANGUAGES.ZH = {
 		'new-preset': "新预设",
 		'maxed': "已达最大值",
 		'difficulty': "难度",
+		'score': "分数",
 
         'remove': "删除",
         'overwrite-current': "覆盖",
