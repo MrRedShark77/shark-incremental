@@ -94,7 +94,7 @@ const NUCLEOBASES = {
 
             effect: [
                 [1, 1, y => y.pow_base(1.5).mul(y.pow(2).add(1)), x => formatMult(x)],
-                [10, 1, y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
+                [10, [1,1], y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
                 [50, 1, y => y.pow_base(1.1), x => formatPow(x)],
                 [150, 1, y => y.pow_base(1.01), x => formatPow(x,3)],
                 [300, 1, y => y.pow_base(1.1).mul(y.add(1)), x => formatMult(x)],
@@ -120,7 +120,7 @@ const NUCLEOBASES = {
 
             effect: [
                 [1, 0, y => y.mul(.01), x => "+"+format(x)],
-                [10, 1, y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
+                [10, [1,1], y => [y.root(2).pow_base(1.1).mul(y.mul(.1).add(1)),y.add(1).log10().div(25).add(1)], x => formatMult(x[0]) + (hasResearch('ge11') ? ", " + formatPow(x[1]) : "")],
                 [50, 1, y => y.pow_base(1.1), x => formatPow(x)],
                 [150, 1, y => y.root(2).mul(.1).add(1), x => "+"+formatPercent(x.sub(1))],
                 [300, 1, y => y.add(1).pow(researchEffect('ge2')), x => formatMult(x)],
