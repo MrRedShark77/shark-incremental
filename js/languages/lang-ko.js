@@ -114,6 +114,7 @@ LANGUAGES.KO = {
         'tab-hadron-su': "스타터 업그레이드",
         'tab-shark-tier': toTextStyle('상어','shark') + " 티어",
         'tab-nucleobase': "핵산",
+        'tab-gal-explore': "은하계 탐험",
 
         // Elements / 기초적인 것들
 
@@ -438,6 +439,20 @@ LANGUAGES.KO = {
             'h8': [`더 나은 물고기 상한`, `총 ${toTextStyle("기본 입자",'hadron')}의 효과를 더욱 상향합니다.`],
             'h9': [`하드로닉 생산기`, `환생시 획득하는 ${toTextStyle("기본 입자의",'hadron')} <b>100%</b> 만큼을<br>자동으로 획득합니다.`],
             'h10': [`인플레이션은 거짓말`, `모든 방사능 부스트의 스케일링을 삭제합니다.`],
+            'h11': [`앞뒤가 똑같은 랭크`, `${toTextStyle("상어",'shark')} 랭크의 첫 3 스케일링을 제거합니다.`],
+            'h12': [`나은 별자리`, `${toTextStyle("블랙홀",'black-hole')} 티어가 ${toTextStyle("별자리",'star')} 재화 생산을 강화합니다.`],
+
+            'ge1': [`사랑스러운 은하계 바다`,`모든 은하계 바다의 재화가<br>${toTextStyle("상어",'shark')} 티어의 제곱근당 <b>25%</b> 복리로 증가합니다.`],
+            'ge2': [`나은 핵산`,`구아닌의 다섯 번째 효과가 강화됩니다.`],
+            'ge3': [`테트레이션-다음 환생`,`너프 이후, 심해 바다 탐험 중에서 ${toTextStyle('환생','prestige')} 파편이<br>${toTextStyle('생체 발광 물질','gal-explore-1')}에 기반해 상승됩니다.`],
+            'ge4': [`강화된 잔재물`,`모든 ${toTextStyle("잔재물",'black-hole')} 업그레이드가 레벨마다<br><b>지수적으로 +10%</b> 강해집니다다.`],
+            'ge5': [`나은 파랑 조류`,`${toTextStyle('파랑 조류','gal-explore-0')}의 효과를 개선합니다.`],
+            'ge6': [`ELO 지수^2`,`${toTextStyle('휴머노이드','humanoid')} 상어가 ${toTextStyle('상어','shark')} ${toTextStyle('ELO','humanoid')}의 지수를<Br>강화시킵니다.`],
+            'ge7': [`나은 점수 부스트`,`은하계 바다의 점수가 주는 재화 부스트가<br>증가합니다.`],
+            'ge8': [`티어 스케일링`,`${toTextStyle('상어','shark')} 티어의 스케일링을 <b>+5</b> 늦춥니다.`],
+            'ge9': [`나은 은하계 업그레이드`,`은하계 바다의 업그레이드 베이스를<br><b>+1</b> 증가시킵니다.`],
+            'ge10': [`나은 회색 플랑크톤`,`${toTextStyle('회색 플랑크톤','gal-explore-2')}의 효과를 개선합니다다.`],
+            'ge11': [`나은 핵산 II`,`사이토신과 구아닌의 두 번째 효과가<br>강화됩니다.`],
         },
 
         // Exploration / 탐험들
@@ -867,7 +882,9 @@ LANGUAGES.KO = {
             [`상어의 별`, x=>`${toTextStyle('휴머노이드','humanoid')} 상어의 지수를 ${x} 만큼<br>강화시킵니다.`, x=>`${toTextStyle('경험','experiment')} 티어 요구량을 ${x} 만큼 감소시킵니다`],
             [`방사선의 별`+icon("radioactive"), x=>`${toTextStyle('방사능 ' + icon("radioactive"),'core')}의 획득량이 ${x}만큼<br>증가합니다.`, x=>`아무 효과 없음.`],
             [`호킹 복사`+icon("radioactive"), x=>`${toTextStyle('기본 입자','hadron')}의 획득량이 ${x}만큼<br>증가합니다.`, x=>`아무 효과 없음.`],
-            [`은하`, x=>`첫 6 ${toTextStyle("별자리",'star')} 재화가<br>${x}만큼 강해집니다.`, x=>`아무 효과 없음.`],
+            [`성운`, x=>`첫 6 ${toTextStyle("별자리",'star')} 재화가<br>${x}만큼 강해집니다.`, x=>`아무 효과 없음.`],
+            [`은하`, x=>`첫 7 ${toTextStyle("별자리",'star')} 재화가<br>${x}만큼 강해집니다.`, x=>`아무 효과 없음.`],
+            [`은하 클러스터`, x=>`${toTextStyle('잔재물','black-hole')} 생산과 ${toTextStyle('암흑 물질','black-hole')}의<br>지수를 ${x}만큼 증가시킵니다.`, x=>`아무 효과 없음.`],
         ],
 
         // Haronize
@@ -897,6 +914,7 @@ LANGUAGES.KO = {
                 x => `${toTextStyle('잔재물','black-hole')} 생산 & ${toTextStyle('암흑 물질','black-hole')} 획득량 ${x}.`,
                 x => `${toTextStyle('별자리','star')} 재화 획득량 ${x}.`,
                 x => `${toTextStyle('핵','core')} 원자로의 세번째 줄이 ${x}만큼 강해짐.`,
+                x => `붕괴된 방사능 부스트 성장 ${x}.`,
             ]],
             'guanine': ["구아닌",[
                 x => `${toTextStyle('별자리','star')} 베이스 지수 ${x}.`,
@@ -904,11 +922,19 @@ LANGUAGES.KO = {
                 x => `${toTextStyle('마그마','core')} 파편과 ${toTextStyle('방사능 ' + icon("radioactive"),'core')} 생산량 ${x}.`,
                 x => `${toTextStyle("상어",'shark')} 티어 보너스 ${x}만큼 강해짐.`,
                 x => `${toTextStyle('진화','humanoid')} 트리의 열 번째 줄이 ${x}만큼 강해짐.`,
+                x => `${toTextStyle('잔재물','black-hole')} 생산 & ${toTextStyle('암흑 물질','black-hole')} 지수 ${x}.`,
             ]],
             'adenine': ["아데닌",[
                 x => `${toTextStyle('상어','shark')} ${toTextStyle('IQ','hadron')}의 지수 ${x}.`,
                 x => `모든 ${toTextStyle('하드로나이즈','hadron')} 이전 스케일링이 ${x}만큼 약해짐.`,
                 x => `<b>사이토신 티어 </b> ${x}.`,
+                x => `총 ${toTextStyle('기본 입자','hadron')} 효과 ${x}.`,
+                x => `${toTextStyle('기본 입자','hadron')} ${x}.`,
+            ]],
+            'thymine': ["티민",[
+                x => `6 ~ 9 번째 ${toTextStyle('별자리','star')} 재화가 ${x}만큼 강해짐.`,
+                x => `은하계 바다 업그레이드 베이스 ${x}.`,
+                x => `<b>구아닌 티어</b> ${x}.`,
             ]],
         },
         'experience': "경험치",
@@ -916,6 +942,30 @@ LANGUAGES.KO = {
         'nucleobase-boosts': "핵산 부스트",
         'experience-base': "경험치 베이스",
         'nucleobase-tier': "핵산 티어",
+
+        'gal-explore-ocean': `바다를 탐험하기.`,
+        'gal-explore-inside': (x,y) => `<b>현재 점수:</b> ${x}<br>${y} ${toTextStyle('물고기','fish')}에 도달하기.`,
+        'gal-explore-require': x => `${toTextStyle('상어','shark')} 티어 ${x}에서 잠금 해제.`,
+        'gal-explore-upgrade': (x,y) => `${x} 획득을 ${y}만큼 강화화.`,
+        'gal-explore': [
+            [
+                `깊은 파랑 바다`, `파랑 조류`,
+                `${toTextStyle('마그마','core')} 파편의 지수^2의 지수가 <b>0.5</b> 만큼 상승하며,<br>${toTextStyle('핵','core')} 온도와 ${toTextStyle('방사능 ' + icon("radioactive"),'core')} 생산량이 <b>log(x)</b>이 됩니다.`,
+                x => `${toTextStyle('마그마','core')} 파편과 ${toTextStyle('방사능 ' + icon("radioactive"),'core')} 생산 지수에 ${x}.`
+            ],[
+                `심해 바다`, `생체 발광 물질`,
+                `${toTextStyle('환생','prestige')} 파편의 테트레이션이 <b>절반</b>이 됩니다.`,
+                x => `${toTextStyle('환생','prestige')} 파편의 지수에 ${x}.`
+            ],[
+                `회색 바다`, `회색 플랑크톤`,
+                `${toTextStyle('휴머노이드','humanoid')} 상어의 지수가 루트 10이 되며,<br>${toTextStyle('상어','shark')} ${toTextStyle('ELO','humanoid')}의 배수와 지수를 올릴 수 없습니다.`,
+                x => `${toTextStyle('상어','shark')} ${toTextStyle('ELO','humanoid')}의 지수에 ${x}.`
+            ],[
+                `오염된 바다`, `오염된 잔재물`,
+                `${toTextStyle('잔재물','black-hole')} 생산 & ${toTextStyle('암흑 물질','black-hole')} 의 지수^2가 제곱근이 됩니다.`,
+                x => `${toTextStyle('잔재물','black-hole')} 생산의 지수에 ${x}.`
+            ],
+        ],
 
         // Automation / 자동화
 
@@ -937,6 +987,7 @@ LANGUAGES.KO = {
         'auto-evolution_tree-name': `자동-${toTextStyle("환생","humanoid")} 트리`,
         'auto-rocket_part-name': `자동-로켓 부품`,
         'auto-mining_ascend-name': `자동-채광 승천`,
+        'auto-nucleobase-name': `자동-핵산`,
 
         'auto-cost': (D,cost,name) => `간격 ${formatReduction(D,0)} 감소.<br>비용: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `간격: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -983,6 +1034,8 @@ LANGUAGES.KO = {
 
         'progress-21-text': r => `총 ${format(r,0)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 다음 컨텐츠를 해금하세요`, 
         'progress-22-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 세번째 핵산을 해금하세요`, 
+        'progress-23-text': r => `${toTextStyle('상어','shark')} 티어 ${format(r,0)}에 도달해 다음 콘텐츠를 해금하세요`,
+        'progress-24-text': r => `총 ${format(r)} 개의 ${toTextStyle('기본 입자','hadron')}에 도달해 네번째 핵산을 해금하세요`, 
 
         'maxed-progress': "모든 콘텐츠 해금됨!",
 
@@ -1112,6 +1165,7 @@ LANGUAGES.KO = {
         'new-preset': "새로운 프리셋",
         'maxed': "최대",
         'difficulty': "난이도",
+        'score': "점수",
 
         'remove': "삭제",
         'overwrite-current': "현재 트리 불러오기",
