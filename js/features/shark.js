@@ -105,6 +105,8 @@ const SHARK = {
     get fish_cap() {
         let x = E('ee9e15')
 
+        if (tmp.ss_difficulty > 0) return x;
+
         let b = 10
         if (hasResearch('h4')) b -= 2.5;
         if (hasResearch('h8')) b -= 0.5;
