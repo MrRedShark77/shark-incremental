@@ -884,7 +884,7 @@ LANGUAGES.ZH = {
 			[`霍金辐射`+icon("radioactive"), x=>`${toTextStyle('基本粒子','hadron')} ${x}.`, x=>`无效`],
 			[`星云之力`, x=>`前 6 个${toTextStyle("星座",'star')}资源的效果 ${x}.`, x=>`无效`],
 			[`星系之力`, x=>`前 7 个${toTextStyle("星座",'star')}资源 ${x}.`, x=>`无效`],
-            [`星团之力`, x=>`Boost the exponent of ${toTextStyle('Remnant','black-hole')} generation and ${toTextStyle('Dark Matter','black-hole')} by ${x}.`, x=>`无效`],
+            [`星团之力`, x=>`${toTextStyle('遗物','black-hole')}产量和${toTextStyle('暗物质','black-hole')}的指数 ${x}.`, x=>`无效`],
         ],
 
         // Hadronize
