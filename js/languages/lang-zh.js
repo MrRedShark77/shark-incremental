@@ -189,6 +189,15 @@ LANGUAGES.ZH = {
 		'fundamental-amount-div': `你拥有过的基本粒子总量为 <h3>${toTextStyle('0','hadron','total-fundamental')}</h3>, 吃${toTextStyle('鱼','fish')}数量的上限为 <h3 id="fundamental-effect">???</h3>.`,
         'starter-upg-note': `注意：每购买一个强子升级，其他强子升级的价格都会<b>翻倍</b>一次。第一次强子化后，<b>强烈建议</b>购买第一个强子升级。`,
 
+        "dna-descirption": `你的${toTextStyle('鲨鱼','shark')}的 <b>DNA （脱氧核糖核酸）</b>长度为 <h3 id="dna-length">???</h3> (<span id="dna-length-gain">???</span>) 纳米。<br>
+        提升 ${toTextStyle('鱼','fish')}的指数塔强度 <h4 id="dna-boost1">???</h4>，并增强前 4 个碱基 <h4 id="dna-boost2">???</h4>。`,
+        "dna-button": `强制进行${toTextStyle('强子化','hadron')}重置以扩增 DNA.`,
+        'dna-note': `注意：扩增 DNA 将重置${toTextStyle('强子化','hadron')}的所有内容，再加上${toTextStyle('基本粒子','hadron')}和碱基的内容。`,
+
+        'shark-worth': bool => bool ? `吸收 ${toColoredText('绝对的一切','red')}，将你的 ${toTextStyle('鲨鱼','shark')}转化为 <h3>${toTextStyle('全能鲨鱼','omni')}</h3>……` : `对不起，你的 ${toTextStyle('鲨鱼','shark')} 毫无价值……`,
+        
+        'research-all-btn': "购买尽可能多的研究",
+
         // Upgrades
 
         'su-s1-req': "等级为 3",
@@ -439,20 +448,53 @@ LANGUAGES.ZH = {
             'h8': [`更高的吃鱼上限`, `进一步提升${toTextStyle("基本粒子",'hadron')}总量的效果。`],
             'h9': [`强子生成`, `每秒获得重置时获得的<b>所有</b>${toTextStyle("基本粒子",'hadron')}。`],
             'h10': [`无视膨胀`, `移除辐射加成的所有价格折算。`],
-			'h11': [`无限段位`, `移除${toTextStyle("鲨鱼",'shark')}段位的前 3 次折算。`],
-            'h12': [`更好的星座`, `提升${toTextStyle("黑洞",'black-hole')}层级对${toTextStyle("星座",'star')}资源的加成。`],
+            'h11': [`等级跃迁`, `移除${toTextStyle("鲨鱼",'shark')}段位的前3个折算。`],
+			'h12': [`优化星座`, `增强${toTextStyle("黑洞",'black-hole')}层级对${toTextStyle("星座",'star')}资源的加成效果。`],
+            'h13': [`众鱼平等`, `${toTextStyle("重生",'prestige')}碎片和${toTextStyle('岩浆','core')}碎片的获取量现在等于${toTextStyle("鱼",'fish')}的获取量。`],
+            'h14': [`等级与段位，再见残酷世界！`, `移除${toTextStyle("鲨鱼",'shark')}等级与段位的所有折算。`],
+            'h15': [`更好的碱基 III`, `改善腺嘌呤的第六项加成。`],
+            'h16': [`银河探索自动化`, `自动获得前 6 个银河海洋的分数，无需探索。`],
+            'h17': [`神圣 DNA`, `${toTextStyle("基本粒子",'hadron')}总量以降低的速率增加 DNA 长度。`],
+            'h18': [`完全鱼 DNA`, `${toTextStyle("鱼",'fish')}以降低的速率增加 DNA 长度。`],
+            'h19': [`腺嘌呤强化`, `极大改善腺嘌呤的第四项加成... <i>快要结束了...</i>`],
+            'h20': [`鸟嘌呤强化`, `鸟嘌呤的第四项加成现在影响第五鲨鱼层级奖励... <i>收手吧...</i>`],
+            'h21': [`DNA 强化 `, `DNA 将自我扩增... ${toColoredText('警告：自我扩增的 DNA 会导致鲨鱼严重不稳定，使其无法吃鱼并能够将鱼转化为反物质鱼！该过程无法逆转！','red')} 不是吗？`],      
+			'ge1': [`银河海洋眷顾`,`每个${toTextStyle("鲨鱼",'shark')}层次的平方根使星际探索资源获取提升 25%。`],
+			'ge2': [`更好的核碱基`,`增强鸟嘌呤的第五个加成效果。`],
+			'ge3': [`超幂级声望`,`削弱后，在深渊海域探索时${toTextStyle('声望','prestige')}碎片将获得${toTextStyle('发光物质','gal-explore-1')}的加成。`],
+			'ge4': [`过载遗物`,`所有${toTextStyle("遗物",'black-hole')}升级效果每级<b>指数增强10%</b>。`],
+			'ge5': [`更好的蓝藻`,`提升${toTextStyle('蓝藻能源','gal-explore-0')}的效果。`],
+			'ge6': [`极强战力`,`${toTextStyle('类人','humanoid')}鲨鱼加成${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}二重指数。`],
+			'ge7': [`更好的分数加成`,`增强星系探索中海域分数对资源的加成效果。`],
+			'ge8': [`延迟折算`,`${toTextStyle('鲨鱼','shark')}层级的折算延迟<b>5</b>次出现。`],
+			'ge9': [`增强星系升级`,`星系探索中海域升级的基数<b>+1</b>。`],
+			'ge10': [`更好的浮游生物`,`提升${toTextStyle('灰影浮游','gal-explore-2')}的效果。`],
+			'ge11': [`更好的核碱基II`,`增强胞嘧啶和鸟嘌呤的第二个加成效果。`],
+			'ge12': [`无用折算`,`移除黑洞层级的前两个折算。`],
 
-            'ge1': [`星系之海`,`星系探索中每增加一种资源，${toTextStyle("鲨鱼",'shark')}层次的平方根提升 <b>25%</b>.`],
-            'ge2': [`更好的碱基`,`提升鸟嘌呤的第五项加成。`],
-            'ge3': [`四阶之后`,`探索深渊之海时，在原有削弱的基础上，${toTextStyle('重生','prestige')}碎片的指数获得基于${toTextStyle('发光生物','gal-explore-1')}数量的提升。`],
-            'ge4': [`超强遗物`,`遗物升级每加一级，所有${toTextStyle("遗物",'black-hole')}升级的效果<b>的指数提升 10%</b>.`],
-            'ge5': [`更好的蓝藻`,`提升${toTextStyle('蓝藻','gal-explore-0')}的效果。`],
-            'ge6': [`战力指数^2`,`${toTextStyle('类人','humanoid')}鲨鱼提升${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的指数。`],
-            'ge7': [`更好的分数加成`,`提升星系探索分数的加成效果。`],
-            'ge8': [`层次折算推迟`,`${toTextStyle('鲨鱼','shark')}层次折算推迟 <b>+5</b>.`],
-            'ge9': [`更好的星系升级`,`星系升级的底数 <b>+1</b>.`],
-            'ge10': [`更好的灰色浮游生物`,`提升${toTextStyle('灰色浮游生物','gal-explore-2')}的效果。`],
-            'ge11': [`更好的碱基 II`,`提升胞嘧啶和鸟嘌呤的第二项加成。`],
+            't1': ['全能鲨强度折算', `将'全能鲨强度'的折算延迟 <b>+15</b> 每级。`],
+            't2': ['全能鲨敏捷影响', `'全能鲨敏捷'以 10% 的速率影响'超级全能鲨强度'和'全能鲨超越'的底数。`],
+            't3': ['更好的超越', `略微改善 ${toTextStyle("超越",'transcend')} 碎片获取公式。`],
+            't4': ['更好的超越冷凝器', `压缩的 ${toTextStyle("超越",'transcend')} 碎片略为改善。`],
+
+            'u1': ['更好的亡灵升级', `'亡灵反物质' & '亡灵超越' 的效果的平方。`],
+            'u2': ['更好的亡灵产量', `'亡灵产量' 的成本增量减少。 <i>此研究在 ${toTextStyle('鲨鱼全能','omni')} 中持续存在。</i>`],
+            'u3': ['亡灵影响', `游戏速度现在影响 ${toTextStyle('亡灵精华','undead')} 的产量。`],
+            'u4': ['更好的亡灵冷凝器', `压缩的 ${toTextStyle('亡灵精华','undead')} 只对 ${toTextStyle('不死精华','undead')} 显著改善。`],
+
+            'r1': ['研究 R-保持者',`在 ${toTextStyle('反应','atom')} 中保持 ${toTextStyle('研究','prestige')}。`],
+
+            'd1': ['研究 R-保持者+',`在 ${toTextStyle('符文化','rune')} 中保持 ${toTextStyle('研究','prestige')}。`],
+            'd2': ['更好的全能鲨指数', `改善 '全能鲨指数' 的公式。`],
+            'd3': ['冷凝器守护者 I', `在 ${toTextStyle('符文化','rune')} 开始时，以你曾经压缩的最好的 ${toTextStyle("超越",'transcend')} 碎片的指数^2 的 <b>^0.75</b> 开始。`],
+            'd4': ['冷凝器守护者 II', `在 ${toTextStyle('符文化','rune')} 开始时，以你曾经压缩的最好的 ${toTextStyle('不死精华','undead')} 开始。`],
+            'd5': ['更好的符文碎片', `改善${toTextStyle('符文','rune')}碎片的获取公式。`],
+
+            'rc1': ['符文加成', `任何 ${toTextStyle('符文','rune')} 升级的每个 <b>100%</b> 效果给予一个受其影响的${toTextStyle('符文','rune')}加成。`],
+            'rc2': ['更快的符文升级', `前三个 ${toTextStyle('符文','rune')} 升级的折算延迟 <b>×2</b>.`],
+            'rc3': ['削弱惩罚', `削弱第二个 ${toTextStyle('天神','god')} 的惩罚效果。`],
+            'rc4': ['更好的符文升级', `改善前三个${toTextStyle('符文','rune')}升级的效果。`],
+            'rc5': ['符文连续统', `你将不再能够放置任何${toTextStyle('符文','rune')}，而是基于第四个${toTextStyle('符文','rune')}升级来计算 ${toTextStyle('符文','rune')}的效果。自动购买 ${toTextStyle('符文','rune')} 升级。`],
         },
 
         // Exploration
@@ -883,9 +925,9 @@ LANGUAGES.ZH = {
 			[`星际辐射`+icon("radioactive"), x=>`${toTextStyle('辐射' + icon("radioactive"),'core')}产量 ${x}.`, x=>`无效`],
 			[`霍金辐射`+icon("radioactive"), x=>`${toTextStyle('基本粒子','hadron')} ${x}.`, x=>`无效`],
 			[`星云之力`, x=>`前 6 个${toTextStyle("星座",'star')}资源的效果 ${x}.`, x=>`无效`],
-			[`星系之力`, x=>`前 7 个${toTextStyle("星座",'star')}资源 ${x}.`, x=>`无效`],
-            [`星团之力`, x=>`${toTextStyle('遗物','black-hole')}产量和${toTextStyle('暗物质','black-hole')}的指数 ${x}.`, x=>`无效`],
-        ],
+			[`银河星系`, x=>`前 7 个${toTextStyle("星座",'star')}资源的效果 ${x}.`, x=>`无效.`],
+            [`星系团簇`, x=>`${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')}的指数${x}.`, x=>`无效.`],
+		],
 
         // Hadronize
 
@@ -914,7 +956,7 @@ LANGUAGES.ZH = {
                 x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')} ${x}.`,
                 x => `${toTextStyle('星座','star')}资源 ${x}.`,
                 x => `第三行${toTextStyle('地核','core')}反应堆的效果 ${x}.`,
-				x => `被减弱的辐射加成，增速 ${x}.`,
+				x => `辐射加成的增长 ${x}.`,
             ]],
             'guanine': ["鸟嘌呤",[
                 x => `${toTextStyle('星座','star')}基数的指数 ${x}.`,
@@ -922,19 +964,27 @@ LANGUAGES.ZH = {
                 x => `${toTextStyle('岩浆','core')}碎片和${toTextStyle('辐射' + icon("radioactive"),'core')}产量的指数 ${x}.`,
                 x => `${toTextStyle("鲨鱼",'shark')}层次的加成效果 ${x}.`,
                 x => `第 10 行${toTextStyle('进化树','humanoid')}的效果 ${x}.`,
-				x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')}产量的指数 ${x}.`,
+				x => `${toTextStyle('遗物','black-hole')}和${toTextStyle('暗物质','black-hole')}的指数 ${x}.`,
             ]],
             'adenine': ["腺嘌呤",[
                 x => `${toTextStyle('鲨鱼','shark')}${toTextStyle('智商','hadron')}的指数 ${x}.`,
                 x => `${toTextStyle('强子化','hadron')}之前的折算削弱 ${x}.`,
                 x => `<b>胞嘧啶</b>层级 ${x}.`,
 				x => `${toTextStyle('基本粒子','hadron')}总量的效果 ${x}.`,
-                x => `${toTextStyle('基本粒子','hadron')} ${x}.`,
+                x => `${toTextStyle('基本粒子','hadron')}数量上限的指数塔 ${x}.`,
             ]],
 			'thymine': ["胸腺嘧啶",[
-                x => `第 6-9 个${toTextStyle('星座','star')}资源的效果 ${x}.`,
-                x => `星系探索升级的底数 ${x}.`,
-                x => `<b>鸟嘌呤</b>层级 ${x}.`,
+                x => `第 6 到第 9 个${toTextStyle('星座','star')}资源的效果 ${x}.`,
+                x => `星系探索中升级效果的基数 ${x}.`,
+                x => `<b>鸟嘌呤</b>层级 ${x} .`,
+                x => `星际海域的分数 ${x}.`,
+                x => `到星际海域中获得的资源 ${x}.`,
+            ]],
+            'uracil': ["尿嘧啶",[
+                x => `${toTextStyle('鱼','fish')}的指数塔 ${x}.`,
+                x => `前四个核碱基 ${x}.`,
+                x => `${toTextStyle('基本粒子','hadron')}的指数 ${x}.`,
+                x => `<b>尿嘧啶</b>经验值获得其自身 ${x} 的加成。`,
             ]],
         },
         'experience': "经验值",
@@ -944,28 +994,468 @@ LANGUAGES.ZH = {
         'nucleobase-tier': "碱基层级",
 		
 		'gal-explore-ocean': `探索海洋`,
-        'gal-explore-inside': (x,y) => `<b>当前分数：</b> ${x}<br>达到 ${y} ${toTextStyle('鱼','fish')}`,
+        'gal-explore-inside': (x,y) => `<b>当前分数：</b> ${x}<br>达到 ${y} ${toTextStyle('鱼','fish')}.`,
         'gal-explore-require': x => `${toTextStyle('鲨鱼','shark')}层次达到 ${x} 时解锁`,
-        'gal-explore-upgrade': (x,y) => `${x} ${y}.`,
+        'gal-explore-upgrade': (x,y) => `${x} 获取 ×${y}.`,
         'gal-explore': [
             [
-                `深蓝之海`, `蓝藻`,
-                `${toTextStyle('岩浆','core')}碎片的二重对数是原来的<b>平方根</b>，${toTextStyle('地核','core')}温度和${toTextStyle('辐射' + icon("radioactive"),'core')}是原来的<b>对数</b>。`,
+                `深蓝海域`, `蓝藻能源`,
+                `${toTextStyle('岩浆','core')}碎片的二重对数是原来的<b>平方根</b>，${toTextStyle('地核','core')}温度和${toTextStyle('辐射 ' + icon("radioactive"),'core')}是原来的<b>对数</b>。`,
                 x => `${toTextStyle('地核','core')}温度和${toTextStyle('辐射' + icon("radioactive"),'core')}产量的指数是原来的 ${x}.`
             ],[
-                `深渊之海`, `发光生物`,
-                `${toTextStyle('重生','prestige')}碎片的四阶运算加成<b>减半</b>。`,
+                `深渊海域`, `发光物质`,
+                `${toTextStyle('重生','prestige')}碎片的指数塔<b>减半</b>。`,
                 x => `${toTextStyle('重生','prestige')}碎片的指数 ${x}.`
             ],[
-                `灰色之海`, `灰色浮游生物`,
+                `灰暗海域`, `灰暗浮游`,
                 `${toTextStyle('类人','humanoid')}鲨鱼的指数是原来的 10 次方根，${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的倍率和指数无法提升。`,
-                x => `${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的指数 ${x}.`
+                x => ` ${toTextStyle('鲨鱼','shark')}${toTextStyle('战力','humanoid')}的指数 ${x}.`
             ],[
-                `腐化之海`, `腐化遗物`,
+                `腐化海域`, `腐化残骸`,
                 `${toTextStyle('遗物','black-hole')}产量的二重对数和${toTextStyle('暗物质','black-hole')}的产量是原来的平方根。`,
                 x => `${toTextStyle('遗物','black-hole')}产量的指数 ${x}.`
+            ],[
+                `星域海洋`, `等离子体`,
+                `你无法提升黑洞层级，因为你无法获得 ${toTextStyle('星座','star')} 资源。`,
+                x => `${x} 到 ${toTextStyle('星座','star')} 基础和资源。`
+            ],[
+                `沙漠海洋`, `干沙`,
+                `${toTextStyle('鱼','fish')} 的四则运算减半。`,
+                x => `${x} 到 ${toTextStyle('鱼','fish')} 的四则运算（此海洋之外）。`
             ],
         ],
+
+        'dna-milestones': [
+            `解锁自动银河探索升级。`,
+            `${toTextStyle('鱼','fish')} 可以超越 ${toTextStyle('强子化','hadron')} 上限，但其获取速度会急剧下降。`,
+            `${toTextStyle('类人','humanoid')}鲨鱼的获取量与 ${toTextStyle('鱼','fish')}的获取量相等。`,
+            `更好地改善 DNA 加成。`,
+            `再次更好地改善 DNA 的第一个加成。`,
+            `解锁第五个核碱基。`,
+            `胸腺嘧啶的第一个加成以 10% 的速率影响最后一个 ${toTextStyle('星座','star')} 资源。`,
+            `${toTextStyle('鲨鱼','shark')} 层级从 1,000 开始四则运算地增加 ${toTextStyle('鱼','fish')} 的消耗。`,
+            `自动扩增 DNA.`,
+            `DNA 的第二个加成影响尿嘧啶加成。`,
+        ],
+
+        // Omnipotence
+
+        'omni-cutscene-texts': [`你的鲨鱼成为了全能鲨鱼...`, `...那么，代价是什么呢？`],
+        
+        'tab-omni-rewards': `${toTextStyle("全能","omni")} 奖励`,
+        'tab-shark-condenser': `${toTextStyle("鲨鱼","shark")} ${toTextStyle("压缩器","omni")}`,
+        'tab-undead': `${toTextStyle('亡灵','undead')} 猎人`,
+
+        'tab-nucleus': `${toTextStyle('核反应','atom')}`,
+        'tab-actinium': `${toTextStyle('锕','atom')} 衰变系`,
+        'tab-particles': `${toTextStyle('原子','atom')}粒子`,
+        'tab-isotopes': `同位素`,
+
+        'tab-runes': `${toTextStyle('符文','rune')}`,
+        'tab-rune-constructor': `${toTextStyle('符文','rune')}构造器`,
+        'tab-rune-sacrifice': `${toTextStyle('符文','rune')}献祭`,
+
+        'tab-god': `${toTextStyle('鲨神','god')}`,
+
+        'antimatter-div': `你的 ${toTextStyle('全能鲨<sup id="omni-tier"></sup>','omni')} 已消耗 <h2>${toTextStyle('0','antimatter','antimatter-amount')}</h2> <span id="antimatter-gain"></span> 反物质鱼.`,
+        'antimatter-equivalent-div': `相当于 <b id="antimatter-equivalent">???</b> ${toTextStyle("鱼",'fish')}`,
+        'undead-essence-html': `你已收集 <h3>${toTextStyle('0','undead','undead-essence-amount')}</h3> <span id="undead-essence-gain"></span> 亡灵精华。<br>
+        每秒有 <b id="undead-essence-chance">0%</b> 的机会捕获 ${toTextStyle('亡灵精华','undead')}，不受游戏速度影响.`,
+        'game-speed-div': `游戏速度: <b id="game-speed">???</b>`,
+        'antimatter-god-div': `由于 ${toTextStyle('天神','god')} 的惩罚，你的 ${toTextStyle('反物质鱼','antimatter')} 的指数被 ${toTextStyle('1','god','antimatter-god-penalty')} 次方根.`,
+        'rune-sacrifice-info': `献祭任何 ${toTextStyle('符文','rune')} 使其不再放置，但其数量受其他 ${toTextStyle('符文','rune')} 给出的最高数量影响。在挑战期间，大多数 ${toTextStyle('符文','rune')} 升级没有效果，且 <b>游戏速度</b> 降低为对数。`,
+
+        'anti-fish-name': "反物质鱼",
+        'anti-fish-costName': toTextStyle('反物质鱼','antimatter'),
+
+        'transcend-name': "超越碎片",
+        'transcend-costName': toTextStyle('超越','transcend') + " 碎片",
+
+        'undead-name': "亡灵精华",
+        'undead-costName': toTextStyle('亡灵精华','undead'),
+
+        'nucleus-name': "原子核",
+        'nucleus-costName': toTextStyle('原子核','atom'),
+
+        'rune-fragments-name': "符文碎片",
+        'rune-fragments-costName': toTextStyle('符文','rune') + " 碎片",
+
+        'curr-top-7-req': x => `${toTextStyle('反物质鱼','antimatter')}的总量达到 <b>${format(x)}</b>`, 
+        'curr-top-7-reset': x => `超越以获得 <b>${x.format(0)}</b> ${toTextStyle('超越','transcend')}碎片`,
+
+        'curr-top-8-req': x => `达到 <b>${format(x)}</b> ${toTextStyle('超越','transcend')} 碎片`, 
+        'curr-top-8-reset': x => `反应以获得 <b>${x.format(0)}</b> ${toTextStyle('原子核','atom')}`,
+
+        'curr-top-9-req': x => `达到 <b>${format(x)}</b> 总 ${toTextStyle('反物质鱼','antimatter')}`, 
+        'curr-top-9-reset': x => `符文化以获得 <b>${x.format(0)}</b> ${toTextStyle('符文','rune')} 碎片`,
+
+        'omni-shark-button': `压缩一切以增加你的 ${toTextStyle("鲨鱼","shark")} 的 ${toTextStyle("全能性","omni")} 以获得巨大的奖励。<hr class="line"><b>要求:</b> <span id="omni-require"></span>`,
+        'omni-tier': `${toTextStyle("全能","omni")} 层级`,
+        'omni-other-requirements': {
+            7: `进行一次${toTextStyle('超越','transcend')}`,
+            20: `进行一次${toTextStyle('反应','atom')}`,
+        },
+        'omni-rewards': {
+            2: x => `开始以 ${x} 基数生成 ${toTextStyle('反物质鱼','antimatter')}。`,
+            5: x => `'全能鲨敏捷' 影响 ${toTextStyle("全能","omni")} 层级 2 奖励。`,
+            7: x => `解锁 ${toTextStyle('超越','transcend')}。`,
+            9: x => `解锁自动 ${toTextStyle("全能鲨","omni")} ${toTextStyle('反物质鱼','antimatter')} 升级。这些升级不再带走 ${toTextStyle('反物质鱼','antimatter')}。`,
+            10: x => `解锁 ${toTextStyle("鲨鱼","shark")} ${toTextStyle("冷凝器","omni")}，在 ${toTextStyle("鲨鱼","shark")} ${toTextStyle("全能","omni")} 中持续存在。`,
+            11: x => `'超级全能鲨力量' 和 '全能鲨超越' 的基数增加 ${x}。`,
+            12: x => `解锁 ${toTextStyle("研究","prestige")}。`,
+            15: x => `开始每秒以 ${x} 机会收集 ${toTextStyle('亡灵精华','undead')}。`,
+            16: x => `${toTextStyle('亡灵精华','undead')} 可以被压缩以获得持续增强。`,
+            19: x => `解锁自动 ${toTextStyle("全能鲨","omni")} ${toTextStyle('超越','transcend')} 升级。这些升级不再带走 ${toTextStyle('超越','transcend')} 碎片。`,
+            20: x => `解锁 ${toTextStyle('原子核','atom')}。被动生成你重置时获得的 ${toTextStyle('超越','transcend')} 碎片的 ${x}，受游戏速度影响，速率为 <b>1%</b>。`,
+            22: x => `解锁自动 ${toTextStyle('亡灵精华','undead')} 升级（不花费任何东西）。`,
+            24: x => `${toTextStyle('原子核','atom')} 可以被压缩以获得持续增强。${toTextStyle('超越','transcend')} 碎片将最佳压缩更新。`,
+            28: x => `解锁同位素。在 ${toTextStyle("鲨鱼","shark")} ${toTextStyle("全能","omni")} 中保持 '研究 R-保持者' 研究。`,
+            30: x => `解锁自动 ${toTextStyle('原子核','atom')}（不花费任何东西）。${toTextStyle('亡灵精华','undead')} 将最佳压缩更新。`,
+            32: x => `被动生成你重置时获得的 ${toTextStyle('原子核','atom')} 的 ${x}，受游戏速度影响，速率为 <b>^0.1</b>。`,
+            36: x => `${toTextStyle("全能","omni")} 层级 32 奖励的速率增加到 ${x}。`,
+            40: x => `解锁 ${toTextStyle("符文化","rune")}。${toTextStyle('原子核','atom')} 将最佳压缩更新。`,
+            41: x => `${toTextStyle("符文","rune")} 碎片乘以 ${x}。${toTextStyle("全能","omni")} 层级 15 奖励始终为 <b>100%</b>。`,
+            43: x => `${toTextStyle("符文","rune")} 碎片可以被压缩以获得持续增强。`,
+            44: x => `乌尔兹 ${toTextStyle("符文","rune")} 的基数增加到 ${x}。`,
+            48: x => `解锁 ${toTextStyle("符文","rune")} 牺牲。`,
+            50: x => `第一个 ${toTextStyle("天神","god")} 的惩罚 ${x} 更弱。在 ${toTextStyle("符文化","rune")} 中保持同位素。`,
+            53: x => `${toTextStyle("全能","omni")} 层级 41 奖励被改善。`,
+            56: x => `被动生成你重置时获得的 ${toTextStyle("符文","rune")} 碎片的 ${x}。${toTextStyle("符文","rune")} 碎片将最佳压缩更新。`,
+            60: x => `第一个 ${toTextStyle("天神","god")} 的惩罚被解除。 <i>还有三步...</i>`,
+            63: x => `${toTextStyle("天神","god")} 为你解除其惩罚，让你解锁称为 ${toTextStyle("???","god")} 的 ${toTextStyle("终极","god")} 阶段。`,
+        },
+
+        'su-os1-req': `${toTextStyle("全能","omni")} 层级 3`,
+        'su-os1-name': '全能鲨力量',
+        'su-os1-desc': `每级使消耗的 ${toTextStyle('反物质鱼','antimatter')} 翻倍。`,
+
+        'su-os2-req': `${toTextStyle("全能","omni")} 层级 4`,
+        'su-os2-name': '全能鲨敏捷',
+        'su-os2-desc': `每级将 '全能鲨力量' 的基数增加 <b>+1</b>。`,
+
+        'su-os3-req': `${toTextStyle("全能","omni")} 层级 6`,
+        'su-os3-name': '全能鲨协同',
+        'su-os3-desc': `每级使 ${toTextStyle('反物质鱼','antimatter')} 的消耗增加 <b>×lg(${toTextStyle('反物质鱼','antimatter')})</b>。`,
+
+        'su-os4-req': `${toTextStyle("全能","omni")} 层级 29`,
+        'su-os4-name': '全能鲨指数',
+        'su-os4-desc': `每级将 ${toTextStyle('反物质鱼','antimatter')} 的指数增加 <b>+1%</b>。`,
+
+        'su-t1-req': `${toTextStyle("全能","omni")} 层级 7`,
+        'su-t1-name': '超级全能鲨力量',
+        'su-t1-desc': `每级使消耗的 ${toTextStyle('反物质鱼','antimatter')} 三倍。`,
+
+        'su-t2-req': `${toTextStyle("全能","omni")} 层级 9`,
+        'su-t2-name': '全能鲨超越',
+        'su-t2-desc': `每级使获得的 ${toTextStyle('超越','transcend')} 碎片翻倍。`,
+
+        'condense': "压缩",
+        'condensed': x => `（已压缩 ${x}）`,
+
+        'condensers': [
+            x => `${toTextStyle('超越','transcend')} 碎片 ${x}`,
+            x => `${toTextStyle('亡灵精华','undead')}和<b>游戏速度</b> ${x}`,
+            x => `${toTextStyle('原子核','atom')} 和 <b>衰变产量</b>  ${x}`,
+            x => `${toTextStyle('符文','rune')}碎片的效果 ${x}`,
+        ],
+
+        'undead-upgrades': [
+            [`亡灵鱼`,x=>`${toTextStyle('反物质鱼','antimatter')} ${x}.`],
+            [`亡灵重生`,x=>`${toTextStyle('超越','transcend')}碎片 ${x}.`],
+            [`亡灵概率`,x=>`获得${toTextStyle('亡灵精华','undead')}的概率增加 ${x}.`],
+            [`亡灵产量`,x=>`${toTextStyle('亡灵精华','undead')}的产量增加 ${x}.`],
+
+            [`亡灵反物质`,x=>`${toTextStyle('亡灵精华','undead')}增加 ${x}.`],
+            [`亡灵超越`,x=>`${toTextStyle('亡灵精华','undead')}增加 ${x}.`],
+            [`亡灵之力`,x=>`第 1、2、5 和 6 个 ${toTextStyle('亡灵','undead')}升级的效果是原来的 ${x}.`],
+            [`亡灵之力 II`,x=>`“亡灵之力”的效果是原来的 ${x}.`],
+        ],
+
+        'decay-series-boosts': [
+            [
+                x => `将 '亡灵产量' 的基数增加 ${x}。`,
+                x => `将 ${toTextStyle('亡灵精华','undead')} 的机会增加 ${x}。`,
+            ],[
+                x => `${toTextStyle('反物质鱼','antimatter')} ${x}.`,
+            ],[
+                x => `${toTextStyle('超越','transcend')}碎片 ${x}.`,
+            ],[
+                x => `前 3 个 ${toTextStyle("全能鲨","omni")}${toTextStyle('反物质鱼','antimatter')}升级的效果 ${x}.`,
+                x => `${toTextStyle("全能鲨","omni")}${toTextStyle('超越','transcend')}的效果 ${x}.`,
+                x => `第四个 ${toTextStyle("全能鲨","omni")}${toTextStyle('反物质鱼','antimatter')}升级的效果 ${x}.`,
+            ],[
+                x => `将前 7 个 ${toTextStyle('亡灵','undead')} 升级强化 ${x}。`,
+            ],[
+                x => `“亡灵反物质”和“亡灵超越”的效果 ${x}.`,
+            ],[
+                x => `${toTextStyle("全能鲨","omni")}${toTextStyle('反物质鱼','antimatter')}升级的价格是原来的 ${x} 次方根。`,
+            ],[
+                x => `前 4 个原子核强化 ${x}.`,
+                x => `第一个加成的效果作用于第 5-7 个原子核。`,
+            ],[
+                x => `以 ${x} 为幂 ${toTextStyle('亡灵精华','undead')}。`,
+            ],[
+                x => `压缩${toTextStyle('原子核','atom')} 的效果 ${x}.`,
+                x => `α 粒子的基数 ${x}.`,
+            ],[
+                x => `下一个同位素的需求除以 ${x}。`,
+            ],[
+                x => `${toTextStyle('反物质鱼','antimatter')} ${x}.`,
+            ],[
+                x => `${toTextStyle('超越','transcend')} 碎片 ${x}.`,
+            ],[
+                x => `第 8 个${toTextStyle('亡灵','undead')}升级的效果 ${x}.`,
+            ],[
+                x => `第 8-10 个原子核的效果 ${x}。`,
+                x => `第一个加成的效果作用于第 11-13 个原子核。`,
+            ],[
+                x => `氦-3 的基数 ${x}.`,
+            ],[
+                x => `每秒生成 ${x} 个铀-<sup>235</sup> 原子核，该数值受游戏速度都影响。`,
+            ],
+        ],
+        'full-element-name': [
+            '中子素',
+            '氢','氦','锂','铍','硼','碳','氮','氧','氟','氖',
+            '钠','镁','铝','硅','磷','硫','氯','氩','钾','钙',
+            '钪','钛','钒','铬','锰','铁','钴','镍','铜','锌',
+            '镓','锗','砷','硒','溴','氪','铷','锶','钇','锆',
+            '铌','钼','锝','钌','铑','钯','银','镉','铟','锡',
+            '锑','碲','碘','氙','铯','钡','镧','铈','镨','钕',
+            '钷','钐','铕','钆','铽','镝','钬','铒','铥','镱',
+            '镥','铪','钽','钨','铼','锇','铱','铂','金','汞',
+            '铊','铅','铋','钋','砹','氡','钫','镭','锕','钍',
+            '镤','铀','镎','钚','镅','锔','锫','锎','锿','镄',
+            '钔','锘','铹','𬬻','𬭊','𬭳','𬭛','𬭶','鿏','𫟼',
+            '𬬭','鿔','鿭','𫓧','镆','𫟷','鿬','鿫'
+        ],
+
+        'decay-chain-max': "购买最大",
+        'decay-chain-buy-all': "购买尽可能多的原子",
+        
+        'alpha-particle-div': `衰变的原子核已生成 <h3 id="alpha-particle-amount">0</h3> <span id="alpha-particle-gain"></span> 个 α 粒子，${toTextStyle('原子核','atom')}从而增强 <h3 id="alpha-particle-effect">???</h3>.`,
+        'beta-particle-div': `衰变的原子核已生成 <h3 id="beta-particle-amount">0</h3> <span id="beta-particle-gain"></span> 个 β 粒子，这将游戏速度增强 <h3 id="beta-particle-effect">???</h3>.`,
+        'gamma-ray-particle-div': `铀-236 原子核已生成 <h3 id="gamma-ray-particle-amount">0</h3> <span id="gamma-ray-particle-gain"></span> γ 射线，这将以 <h3 id="gamma-ray-particle-effect">???</h3> 为幂 α 和 β 粒子。`,
+        'energy-particle-div': `铀-236 原子核已生成 <h3 id="energy-particle-amount">0</h3> <span id="energy-particle-gain"></span> MeV 能量，衰变产物的产量增强 <h3 id="energy-particle-effect">???</h3>。`,
+        'barium-particle-div': `铀-236 原子核已生成 <h3 id="barium-particle-amount">0</h3> <span id="barium-particle-gain"></span> 钡-141 原子核，这将以 <h3 id="barium-particle-effect">???</h3> 为幂 ${toTextStyle('反物质鱼','antimatter')}。`,
+        'krypton-particle-div': `铀-236 原子核已生成 <h3 id="krypton-particle-amount">0</h3> <span id="krypton-particle-gain"></span> 氪-92 原子核，这将以 <h3 id="krypton-particle-effect">???</h3> 为幂 ${toTextStyle('超越','transcend')} 碎片。`,
+
+        'uranium-235-fission': `用一个中子来轰击 铀-235 的原子核，以开始核裂变。`,
+
+        'isotopes-div': `你有 <h3 id="isotopes-amount">0 / 0</h3> 同位素。(+1 在 <h4 id="isotopes-next">???</h4> ${toTextStyle('原子核','atom')})
+        <subtitle>注意：降级任何同位素强制进行 ${toTextStyle('反应','atom')} 重置。悬停任何同位素以显示其效果。</subtitle>`,
+        'isotope-rewards': [
+            [
+                x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
+                x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
+                x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
+                x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
+            ],[
+                x => `${toTextStyle('亡灵精华','undead')} 乘以 ${x[0]} 每平方根数量的“亡灵反物质”和“亡灵超越”。（当前 ${x[1]}）`,
+                x => `此第一个同位素的基数增加 ${x[0]} 每此同位素。（当前 ${x[1]}）`,
+                x => `第一个同位素的指数增加到 ${x}。`,
+                x => `第一个同位素的指数增加到 ${x}。`,
+                x => `第一个同位素的指数增加到 ${x}。`,
+            ],[
+                x => `${toTextStyle('超越','transcend')}碎片基数的指数增加 ${x}.`,
+                x => `${toTextStyle('超越','transcend')}碎片基数的指数增加 ${x}.`,
+                x => `${toTextStyle('超越','transcend')}碎片基数的指数增加 ${x}.`,
+                x => `${toTextStyle('超越','transcend')}碎片基数的指数增加 ${x}.`,
+            ],[
+                x => `${toTextStyle('亡灵精华','undead')} 乘以 ${x[0]} 每立方根 100% 机会捕获 ${toTextStyle('亡灵精华','undead')}。（当前 ${x[1]}）`,
+                x => `此第一个同位素的基数增加 ${x[0]} 每此同位素。（当前 ${x[1]}）`,
+                x => `此第一个同位素的指数增加到 ${x}。`,
+                x => `此第一个同位素的指数增加到 ${x}。`,
+            ],[
+                x => `铅-207 的效果翻倍。`,
+                x => `削弱 铋-211 第三个效果的软上限。`,
+                x => `钋-215 以极低速率影响'亡灵产量'。（当前 ${x}）`,
+                x => `增强 砹-219 的第二个效果。`,
+            ],[
+                x => `铅-211 的效果 ${x}.`,
+                x => `铅-211 的效果 ${x}.`,
+                x => `铅-211 的效果 ${x}.`,
+                x => `铅-211 的效果 ${x}.`,
+                x => `铅-211 的效果 ${x}.`,
+            ],[
+                x => `压缩 ${toTextStyle('超越','transcend')} 碎片增强的指数增加 ${x}。`,
+                x => `压缩 ${toTextStyle('超越','transcend')} 碎片增强的指数增加 ${x}。`,
+                x => `压缩 ${toTextStyle('超越','transcend')} 碎片增强的指数增加 ${x}。`,
+                x => `压缩 ${toTextStyle('超越','transcend')} 碎片增强的指数增加 ${x}。`,
+                x => `压缩 ${toTextStyle('超越','transcend')} 碎片增强的指数增加 ${x}。`,
+            ],
+        ],
+
+        'runes': {
+            'fehu': [
+                `费胡`,
+                `以指数（基于当前 ${toTextStyle('反物质鱼','antimatter')}）为幂 ${toTextStyle('反物质鱼','antimatter')}。`,
+                x => `${toTextStyle('反物质鱼','antimatter')} 以 ${x} 为指数的幂。`,
+            ],
+            'berkanan': [
+                `贝尔卡南`,
+                `以指数（基于当前 ${toTextStyle('超越','transcend')} 碎片）为幂 ${toTextStyle('超越','transcend')} 碎片。`,
+                x => `${toTextStyle('超越','transcend')} 碎片以 ${x} 为指数的幂。`,
+            ],
+            'kaunan': [
+                `考南`,
+                `（基于当前 ${toTextStyle('不死精华','undead')}）增强 ${toTextStyle('不死精华','undead')}。`,
+                x => `${toTextStyle('不死精华','undead')} 以 ${x} 为幂。`,
+            ],
+            'naudiz': [
+                `瑙迪兹`,
+                `（基于当前 ${toTextStyle('原子核','atom')}）增强 ${toTextStyle('原子核','atom')}。`,
+                x => `${toTextStyle('原子核','atom')} 以 ${x} 为幂。`,
+            ],
+            'uruz': [
+                `乌鲁兹`,
+                `增强相邻的非乌鲁兹 ${toTextStyle("符文","rune")}。`,
+                x => `非乌鲁兹相邻 ${toTextStyle("符文","rune")} 强 ${x} 倍。`,
+            ],
+        },
+        'short-rune-essence': '符文精华',
+
+        'rune-upgrades': [
+            x => `费胡 ${toTextStyle("符文","rune")} 强 ${x} 倍。`,
+            x => `贝尔卡南和考南 ${toTextStyle("符文","rune")} 强 ${x} 倍。`,
+            x => `瑙迪兹 ${toTextStyle("符文","rune")} 强 ${x} 倍。`,
+            x => `添加 ${x} ${toTextStyle("符文","rune")} 精华。`,
+        ],
+
+        'rune-clear-all': `清除所有 ${toTextStyle("符文","rune")}`,
+        'rune-erase-mode': bool => bool ? "取消擦除" : "擦除模式",
+        'rune-sacrificed': "已献祭",
+
+        'rune-sacrifice': [
+            [
+                `符文献祭 I`,
+                [
+                    `符文 ${toTextStyle("费胡","rune")} 没有效果。`,
+                    `‘亡灵鱼’ ${toTextStyle('亡灵','undead')} 升级、钡-141、铊-207和钫-223没有效果。`,
+                ],
+                `完全献祭费胡 ${toTextStyle("符文","rune")}。`,
+            ],[
+                `符文献祭 II`,
+                [
+                    `符文 ${toTextStyle("贝尔卡南","rune")} 没有效果。`,
+                    `‘亡灵声望’ ${toTextStyle('亡灵','undead')} 升级、氪-92、钋-211、钍-227和浓缩 ${toTextStyle('超越','transcend')} 碎片没有效果。`,
+                    `${toTextStyle('超越','transcend')} 碎片减少为对数。`,
+                ],
+                `完全献祭贝尔卡南 ${toTextStyle("符文","rune")}。`,
+            ],[
+                `符文献祭 III`,
+                [
+                    `符文 ${toTextStyle("考南","rune")} 没有效果。`,
+                    `‘亡灵机会’、‘亡灵反物质’和‘亡灵超越’ ${toTextStyle('亡灵','undead')} 升级、氦-3、碳-11、氡-219和浓缩 ${toTextStyle('亡灵精华','undead')} 没有效果。`,
+                ],
+                `完全献祭贝尔卡南 ${toTextStyle("符文","rune")}。`,
+            ],
+        ],
+
+        'rune-sacrifice-state': [
+            `开始献祭这个 ${toTextStyle("符文","rune")}。`,
+            `取消献祭这个 ${toTextStyle("符文","rune")}。`,
+            `完成献祭这个 ${toTextStyle("符文","rune")}。`
+        ],
+
+        get 'reset-transcend-message'() {
+            let p = toTextStyle('超越','transcend'), s = toTextStyle('全能鲨鱼','omni'), f = toTextStyle('鱼反物质','antimatter')
+            return `
+            <h3>${p}</h3><br>
+            ${p} 是第一个全能重置层。超越会重置你的${s}升级和${f}你已获得的${toTextStyle('超越','transcend')}碎片。
+            第一次 ${p} 会解锁新的 ${s} 升级。<br>
+            <img src="textures/TranscendentalShard.png"><br>
+            你确定要进行超越吗？
+            `
+        },
+        get 'reset-reaction-message'() {
+            let c = toTextStyle('反应','atom'), m = toTextStyle('原子核','atom'), p = toTextStyle('超越','transcend')
+            return `
+            <h3>${c}</h3><br>
+            ${c} 是第二个全能重置层。反应会重置${p}所重置的所有内容，以及 ${p} 碎片、${p} 升级、一些 ${toTextStyle('研究','prestige')} 和 ${toTextStyle('亡灵精华','undead')} 以获得 ${m}。<br>
+            <img src="textures/Nucleus.png"><br>
+            你确定要进行反应重置吗？
+            `
+        },
+        get 'reset-runeification-message'() {
+            let c = toTextStyle('符文','rune'), m = toTextStyle('符文','rune'), p = toTextStyle('反应','atom')
+            return `
+            <h3>${c}</h3><br>
+            ${c}是第三个全能重置层。它会重置${p}所重置的所有内容，以及 ${toTextStyle('原子核','atom')}、${toTextStyle('锕-227','atom')} 衰变、${toTextStyle('原子','atom')} 粒子、同位素和一些研究以获得${m}碎片。<br>
+            <subtitle>然而，它也会重置符文化之前的 ${toTextStyle("冷凝器","omni")}（以及 ${toTextStyle("全能","omni")} 40 层之后）。大多数 ${m} 功能会通过${toTextStyle("鲨鱼","shark")}${toTextStyle("全能","omni")}保留，但${m}碎片会被重置。</subtitle>
+            <img src="textures/Rune.png"><br>
+            你确定要进行符文重置吗？
+            `
+        },
+
+        'confirm-transcend': "超越重置",
+        'confirm-reaction': "反应重置",
+        'confirm-runeification': "符文重置",
+
+        'progress-28-text': r => `${toTextStyle('鱼反物质','antimatter')}的总量达到 ${format(r)}`, 
+        get 'progress-28-cond-text'() { return `进行一次 ${toTextStyle('超越','transcend')}` },
+
+        'progress-29-text': r => `${toTextStyle('超越','transcend')} 碎片达到 ${format(r)}`, 
+        get 'progress-29-cond-text'() { return `进行一次 ${toTextStyle('反应','atom')}` },
+
+        'progress-30-text': r => `${toTextStyle('鱼反物质','antimatter')}的总量达到 ${format(r)}`, 
+        get 'progress-30-cond-text'() { return `进行一次 ${toTextStyle('符文化','rune')}` },
+
+        'progress-31-text': r => `???`,
+
+        'auto-osu-name': `自动购买${toTextStyle("全能鲨鱼","omni")}${toTextStyle('鱼反物质','antimatter')} 升级`,
+        'auto-ostu-name': `自动购买${toTextStyle("全能鲨鱼","omni")}${toTextStyle('超越','transcend')} 升级`,
+        'auto-ue-name': `自动购买${toTextStyle('亡灵精华','undead')}升级`,
+        'auto-nucleus-name': `自动购买${toTextStyle('原子核','atom')}`,
+
+        'god-info': `"重复，${toTextStyle("鲨鱼之神","god")} 让你进入最后阶段！然后在这一点之前的一切都会被清除，这是不可逆转的！但是 ${toTextStyle("鲨鱼之神","god")} 给了你一种产生几乎超越 ${toTextStyle("神界","god")} 的 ${toTextStyle("全能鱼","god")} 的能力。或者...这意味着它几乎准备好重生 ${toTextStyle("鲨鱼","shark")}...所以，你别无选择..."`,
+        'overmodify-shark': `过度改造 ${toTextStyle("鲨鱼","shark")}。`,
+
+        'god-fish-div': ` ${toTextStyle('神鲨','god')} 已经湮灭了 <h2>${toTextStyle('0','god','god-fish-amount')}</h2> <span id="god-fish-gain"></span> 全能鱼。`,
+
+        'omni-fish-name': "全能鱼",
+        'omni-fish-costName': toTextStyle('全能鱼','god'),
+
+        'endings': [
+            `恭喜！你通关游戏的用时为`,
+            `你有 3 个选择：进行${toTextStyle("鲨鱼","shark")}${toTextStyle("重生","rebirth")}以获得额外的游戏内容；导入存档；重置到上一个。`
+        ],
+        'ending-options': [
+            `进行${toTextStyle("鲨鱼","shark")}重生`,
+            `导入存档文本`,
+            `导入存档文件`,
+            `重置到上一个`
+        ],
+
+        'tab-rebirth': `${toTextStyle('重生','rebirth')}`,
+        'tab-rebirth-upgs': `${toTextStyle('重生','rebirth')} 升级`,
+        'tab-rebirth-past10': `过去 10 次${toTextStyle('重生','rebirth')}`,
+
+        'rebirth-points-div': `你有 <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> 重生点数，这给你 <h3>${toTextStyle('???','rebirth','global-mult')}</h3> 全局倍数。`,
+
+        'rebirth-upgrades': [
+            ["经典自动化", `永久解锁 ${toTextStyle('鲨鱼','shark')}、${toTextStyle('声望','prestige')} 和 ${toTextStyle('核心','core')} 自动化。`],
+            ["银河栽培", `永久解锁 ${toTextStyle('进化','humanoid')} 和 ${toTextStyle('奇点','black-hole')} 自动化。`],
+            ["强子组装器", `永久解锁 ${toTextStyle('强子','hadron')}-相关自动化。`],
+            ["反物质自动化 I", `永久解锁 ${toTextStyle('全能','omni')}-相关自动化。`],
+            ["反物质自动化 II", `无需重置即可自动更新 ${toTextStyle('全能','omni')} 层。`],
+            ["经典生成", `永久解锁 ${toTextStyle('声望','prestige')} 点数和 ${toTextStyle('岩浆','core')} 碎片生成。`],
+            ["类人鲨鱼人口", `永久解锁 ${toTextStyle('类人','humanoid')} 鲨鱼生成。`],
+            ["自复制粒子", `永久解锁 ${toTextStyle('奇点','black-hole')}-相关和 ${toTextStyle('基本粒子','hadron')} 生成。`],
+            ["反物质三重奏", `永久解锁 ${toTextStyle('全能','omni')}-相关生成。`],
+            ["额外倍数器", `获得 <b>+50%</b> 更多全局倍数。`],
+        ],
+
+        'rebirth-upgrades-note': `注意：大多数重生升级实际上并未实装，如果你注意到某个升级没有效果，请联系开发者。`,
+        'rebirth-time': `${toTextStyle('重生','rebirth')} 中的游戏时间`,
+        'rebirth-points': `${toTextStyle('重生','rebirth')} 点数`,
+
+        'global-mult-title': `全局倍数的乘积`,
+        'global-mults': {
+            base: x => `${x} 倍数基础`,
+            time: x => `${x} 来自最快的 ${toTextStyle('重生','rebirth')}`,
+            other: x => `${x} 来自其他来源`,
+        },
 
         // Automation
 
@@ -987,14 +1477,15 @@ LANGUAGES.ZH = {
         'auto-evolution_tree-name': `自动购买${toTextStyle("进化","humanoid")}树`,
         'auto-rocket_part-name': `自动制造火箭部件`,
         'auto-mining_ascend-name': `自动进行挖矿飞升`,
-		'auto-nucleobase-name': `自动购买核苷酸升级`,
+		'auto-nucleobase-name': `自动提升碱基`,
+        'auto-gal_eu-name': `自动购买星际探索升级`,
 
         'auto-cost': (D,cost,name) => `冷却时间降低 ${formatReduction(D,0)}.<br>价格：${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `冷却时间：${format(a,3)} 秒`+(maxed ? "" :` ➜ ${format(b,3)} 秒`),
 
         // Progress
 
-        'progress-0-text': r => `${toTextStyle('鱼','fish')}的总量达到 ${format(r)}`, 
+        'progress-0-text': r => `吃 ${toTextStyle('鱼','fish')}的总量达到 ${format(r)}`, 
         get 'progress-0-cond-text'() { return `进行一次${toTextStyle('重生','prestige')}` },
 
         'progress-1-text': r => `${toTextStyle('重生','prestige')}碎片达到 ${format(r)} 时，解锁自动化`,
@@ -1008,9 +1499,9 @@ LANGUAGES.ZH = {
 		'progress-6-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 时，解锁${toTextStyle('地核','core')}的下一个机制`, 
 		'progress-7-text': r => `${toTextStyle('鲨鱼','shark')}等级达到 ${format(r,0)} 时，解锁新的海洋`, 
 		'progress-8-text': r => `${toTextStyle('岩浆','core')}碎片达到 ${format(r)} 时，解锁${toTextStyle('地核','core')}的下一个机制`, 
-        'progress-9-text': r => `吃${toTextStyle('鱼','fish')}总量达到 ${format(r)} 时，解锁新的${toTextStyle('地核','core')}反应堆`, 
+        'progress-9-text': r => `吃 ${toTextStyle('鱼','fish')}的总量达到 ${format(r)} 时，解锁新的${toTextStyle('地核','core')}反应堆`, 
 
-		'progress-10-text': r => `吃${toTextStyle('鱼','fish')}总量达到${format(r)}`, 
+		'progress-10-text': r => `吃 ${toTextStyle('鱼','fish')}的总量达到${format(r)}`, 
         get 'progress-10-cond-text'() { return `${toTextStyle('鲨鱼','shark')}进化` },
 
         'progress-11-text': r => `${toTextStyle('类人','humanoid')}鲨鱼的数量达到 ${format(r,0)} 时，解锁${toTextStyle('进化','humanoid')}的下一个机制`, 
@@ -1036,7 +1527,11 @@ LANGUAGES.ZH = {
         'progress-22-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第三个碱基`, 
 		'progress-23-text': r => `${toTextStyle('鲨鱼','shark')}层次达到 ${format(r,0)} 后，解锁下一个游戏机制`,
         'progress-24-text': r => `${toTextStyle('基本粒子','hadron')}的总量达到 ${format(r,0)} 后，解锁第四个碱基`, 
+        'progress-25-text': r => `吃${toTextStyle('鱼','fish')}总量达到  ${format(r)} 后，解锁下一个游戏机制`,
+        'progress-26-text': r => `DNA 的长度达到 ${format(r)}nm 后，解锁第五个碱基`,
 
+        'progress-27-text': r => `你还不够格来证明这只${toTextStyle('鲨鱼','shark')}的价值！`,
+        get 'progress-27-cond-text'() { return `证明这只鲨鱼的价值...` },
         'maxed-progress': "已解锁所有机制！",
 
         // Reset
@@ -1045,7 +1540,7 @@ LANGUAGES.ZH = {
             let p = toTextStyle('重生','prestige'), s = toTextStyle('鲨鱼','shark'), f = toTextStyle('鱼','fish')
             return `
             <h3>${p}</h3><br>
-            ${p}是第一层重置，它将重置你的${s}、${s}升级和${f}，获得${p}碎片。
+            ${p}是第一层大重置，它将重置你的${s}、${s}升级和${f}。重生后可获得${p}碎片。
             第一次${p}将解锁新的${s}升级。<br>
             <img src="textures/PrestigeShard.png"><br>
             你确定要进行重生吗？
@@ -1055,7 +1550,7 @@ LANGUAGES.ZH = {
             let c = toTextStyle('地核','core'), m = toTextStyle('岩浆','core'), p = toTextStyle('重生','prestige')
             return `
             <h3>${c}</h3><br>
-			${c}是第二层重置。进入地核除了重置${p}所重置的资源，还重置${p}碎片、${p}升级、几乎所有的${toTextStyle('研究','prestige')}和探索进度，获得${m}碎片。
+			${c}是第二层大重置。进入地核除了重置${p}所重置的资源，还重置${p}碎片、${p}升级、探索进度和几乎所有的${toTextStyle('研究','prestige')}。进入地核后可获得${m}碎片。
             第一次进入地核将解锁${c}反应堆。<br>
             <img src="textures/Magmatic.png"><br>
             你确定要进入地核吗？
@@ -1066,7 +1561,7 @@ LANGUAGES.ZH = {
             return `
             <h3>${e}</h3><br>
             <subtitle>“这些变异会让鲨鱼具有野性，它们将变成类人鲨鱼。不过，你需要献祭你曾获得的一切”</subtitle>
-            ${e}是第三层重置。鲨鱼进化除了重置${c}所重置的资源，还重置${m}碎片、${c}反应堆、${c}辐射、${c}生产线，和一些与${toTextStyle('类人','humanoid')}鲨鱼相关的${toTextStyle('研究','prestige')}。
+            ${e}是第三层大重置。鲨鱼进化除了重置${c}所重置的资源，还重置${m}碎片、${c}反应堆、${c}辐射、${c}生产线，和一些与${toTextStyle('类人','humanoid')}鲨鱼相关的${toTextStyle('研究','prestige')}。
             第一次进行鲨鱼进化将解锁鲨鱼段位和${e}树。<br>
             <img src="textures/Evolution.png"><br>
             你确定要进行鲨鱼进化吗？
@@ -1076,8 +1571,8 @@ LANGUAGES.ZH = {
             let e = toTextStyle('黑洞','black-hole'), c = toTextStyle('进化','humanoid'), m = toTextStyle('岩浆','core'), p = toTextStyle('重生','prestige')
             return `
             <h3>${e}</h3><br>
-            ${e}是第四层重置。
-            生成${e}后，除了重置${c}所重置的资源，还重置鲨鱼段位、类人鲨鱼、进化树、鲨之信念、进化目标、挖矿、锻造、粒子加速器、某些研究和自动化，以及其他的一些机制，来生成一个新的${e}。
+            ${e}是第四层大重置。
+            生成${e}后，除了重置${c}所重置的资源，还重置鲨鱼段位、类人鲨鱼、进化树、鲨之信念、进化目标、挖矿、锻造、粒子加速器、部分研究和自动化，以及其他的一些机制，来生成一个新的${e}。
             ${e}会降低资源的产量，但它会提供包括里程碑在内的大量增益。<br>
             <img src="textures/black-hole.png"><br>
             准备好进入新的宇宙了吗？
@@ -1097,10 +1592,10 @@ LANGUAGES.ZH = {
             let e = toTextStyle('强子化','hadron'), c = toTextStyle('献祭','black-hole')
             return `
             <h3>${e}</h3><br>
-            ${e}是第五层重置。
-            让你的鲨鱼超越多重宇宙的限制。强子化后，除了重置${c}所重置的资源， 还重置暗物质的数量、16 个遗物后的奇点升级、太阳系和火箭部件、黑洞层级、星座资源、奇点里程碑、挖矿中的飞升次数、和在解锁奇点之后购买的某些研究，来获得${toTextStyle('基本粒子','hadron')}。第一次强子化后，解锁强子升级、更多的研究和自动化项目。<br>
+            ${e}是第五层大重置。
+            让你的鲨鱼超越全息宇宙的限制。强子化后，除了重置${c}所重置的资源， 还重置暗物质的数量、16 个遗物后的奇点升级、太阳系和火箭部件、黑洞层级、星座资源、奇点里程碑、挖矿中的飞升次数、和在解锁奇点之后购买的某些研究，来获得${toTextStyle('基本粒子','hadron')}。第一次强子化后，解锁强子升级、更多的研究和自动化项目。<br>
             <img src="textures/hadronize.png"><br>
-            你想超越多重宇宙的限制吗？
+            你想超越全息宇宙的限制吗？
             `
         },
 
@@ -1120,6 +1615,10 @@ LANGUAGES.ZH = {
 			'mining_ascend' : `挖矿飞升`,
 			'remnant_upg' : `遗物升级`,
 			'bh_tier' : `黑洞层级`,
+            'decay_series' : `衰变原子核`,
+            'isotopes' : `同位素`,
+            'rune_upg1' : `前 3 个符文升级`,
+            'rune_upg2' : `第四个符文升级`,
         },
         'scaling-start': "生效于",
         'scaling-mode': {
@@ -1166,7 +1665,7 @@ LANGUAGES.ZH = {
 		'maxed': "已达最大值",
 		'difficulty': "难度",
 		'score': "分数",
-
+        'picked': "已选择",
         'remove': "删除",
         'overwrite-current': "覆盖",
         'load': "导入",
@@ -1194,6 +1693,8 @@ LANGUAGES.ZH = {
 			"evolution-tree-respec": `你确定要重置${toTextStyle('进化','humanoid')}树吗？这将触发一次不获得${toTextStyle('类人','humanoid')}鲨鱼的${toTextStyle('进化','humanoid')}重置。`,
             "evolution-tree-import": `输入进化树。`,
 			"starter-upgrade-warning": `你确定要购买这个强子升级吗？你应该购买<b>"鲨鱼层次"</b>！`,
+            "rebirth-confirm": `${toTextStyle('重生','rebirth')} 是后期功能，他能让你在主阶段上更快地推进游戏进度。${toTextStyle('重生','rebirth')} 鲨鱼会重置所有的游戏内容，但不会重置选项设置和进化树预设。它会奖励你一个${toTextStyle('重生','rebirth')}点数并增加你的全局游戏速度倍率，适用于游戏内几乎所有的资源。你可以花费${toTextStyle('重生','rebirth')}点数，来购买${toTextStyle('重生','rebirth')}升级，以加快你的游戏进度。<br><br>你确定要进行鲨鱼重生吗？`,
+            "rebirth-undo": `你确定要重置到上一个吗？`,
         },
 
         'notify-desc' : {
@@ -1211,6 +1712,7 @@ LANGUAGES.ZH = {
 			'max-research-amt': ['每页研究个数',['∞','15','20','25','30']],
             'visible-research': [`显示已购买的研究`,["显示","隐藏"]],
 			'notify': ['标签高亮提示',['禁用','启用']],
+			'condenser-ratio': ['压缩比例',['10%','25%','50%','100%']],
         },
 
         'radio-desc-default' : ['禁用','启用'],
