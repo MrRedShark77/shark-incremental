@@ -18,7 +18,7 @@ text-style {
     };
 
     &[text="coral"] {
-        color: coral;
+        color: #ff7f50;
     };
 
     &[text="ice"] {
@@ -51,6 +51,16 @@ text-style {
         text-shadow: 1px 1px 0px black, 0px 0px 2px black, 1px 1px 2px black, -1px -1px 2px #ff0, 1px 1px 2px #ff0, -2px -2px 4px #880, 2px 2px 4px #880;
     };
 
+    &[text="rebirth"] {
+        color: pink;
+    };
+
+    &[text="god"] {
+        font-family: TrueFont;
+        color: white;
+        text-shadow: 1px 1px 2px white, 0px 0px 4px #fff6, 0px 0px 6px #fff4;
+    };
+
     @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
         &[text="core"],
         &[text="humanoid"],
@@ -61,7 +71,10 @@ text-style {
         &[text="experiment"],
         &[text="star"],
         &[text="gal-explore-1"],
-        &[text="gal-explore-2"] {
+        &[text="gal-explore-2"],
+        &[text="gal-explore-4"],
+        &[text="gal-explore-5"],
+        &[text="omni"], &[text="antimatter"], &[text="transcend"], &[text="undead"], &[text="atom"], &[text="rune"] {
             filter: drop-shadow(1px 1px black) drop-shadow(0px 0px 1px black);
             text-shadow: none;
         };
@@ -106,7 +119,7 @@ text-style {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         };
-        &[text="star"] {
+        &[text="star"], &[text="gal-explore-4"] {
             background: repeating-linear-gradient(90deg, #c5fff7, #edff9e 20px, #c5fff7 40px);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -129,6 +142,41 @@ text-style {
         &[text="gal-explore-3"] {
             background: repeating-conic-gradient(#ff00dc 0 25%, #010001 0 50%);
             background-size: 20px 20px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="gal-explore-5"] {
+            background: linear-gradient(#f0deb4, #d5c295);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="omni"] {
+            background: linear-gradient(135deg, #93a3ac, #6f6fff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="antimatter"] {
+            background: linear-gradient(#ffa500, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="transcend"] {
+            background: linear-gradient(#a200ff, #5a00a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="undead"] {
+            background: linear-gradient(#ff48d1, #c200c9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="atom"] {
+            background: radial-gradient(circle, #feff00 0%, #48ff00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        };
+        &[text="rune"] {
+            background: linear-gradient(to right, #F6C7A0, #927359);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         };

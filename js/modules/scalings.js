@@ -25,6 +25,7 @@ const SCALINGS = {
 
         base: [
             [25,2,"P"],
+            [1000,2,"ME2"],
         ],
     },
     su_s3: {
@@ -112,6 +113,44 @@ const SCALINGS = {
             [50,3,"P"],
         ],
     },
+    decay_series: {
+        get amount() {
+            let x = E(0)
+            for (let i = 0; i < DECAY_CHAIN.length; i++) x = x.max(player.omni.decay_series[i][0]);
+            return x
+        },
+
+        base: [
+            [25,2,"P"],
+        ],
+    },
+    isotopes: {
+        get amount() { return player.omni.total_isotopes },
+
+        base: [
+            [10,2,"P"],
+            [20,3,"P"],
+        ],
+    },
+    rune_upg1: {
+        get amount() {
+            let x = E(0)
+            for (let i = 0; i < 3; i++) x = x.max(player.omni.rune_upgrades[i]);
+            return x
+        },
+
+        base: [
+            [25,2,"P"],
+        ],
+    },
+    rune_upg2: {
+        get amount() { return player.omni.rune_upgrades[3] },
+
+        base: [
+            [10,2,"L"],
+            [15,2,"L"],
+        ],
+    },
 }
 
 const PRE_HADRON_SCALINGS = ['shark_level','shark_rank','su_s3','su_s4','su_m1','su_m3','su_m5','cr_boost','mining_tier','mining_ascend','remnant_upg','bh_tier']
@@ -164,6 +203,9 @@ function getScalingStarts(id) {
         case "bh_tier": {
             b[0] = Decimal.add(b[0],simpleResearchEffect('h3',0))
         }
+        case "rune_upg1": {
+            if (hasResearch('rc2')) b[0] = Decimal.mul(b[0],2);
+        }
     }
 
     return b
@@ -199,11 +241,12 @@ function getScalingExclusions(id) {
 
     switch (id) {
         case "shark_level": {
-            if (false) for (let x = 0; x < 4; x++) e[x] = true;
+            if (hasResearch('h14')) for (let x = 0; x < 5; x++) e[x] = true;
             break
         }
         case "shark_rank": {
-            if (hasResearch('h11')) for (let x = 0; x < 3; x++) e[x] = true;
+            if (hasResearch('h14')) for (let x = 0; x < 4; x++) e[x] = true;
+            else if (hasResearch('h11')) for (let x = 0; x < 3; x++) e[x] = true;
             break
         }
         case "remnant_upg": {
@@ -212,6 +255,10 @@ function getScalingExclusions(id) {
         }
         case "cr_boost": {
             if (hasResearch('h10')) for (let x = 0; x < 3; x++) e[x] = true;
+            break
+        }
+        case "bh_tier": {
+            if (hasResearch('ge12')) for (let x = 0; x < 2; x++) e[x] = true;
             break
         }
     }
@@ -337,4 +384,6 @@ function updateScalingsTable() {
             }
         }
     }
+
+    el('scalings-table').className = el_classes({omni: player.omni.active})
 }

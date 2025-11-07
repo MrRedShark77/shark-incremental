@@ -100,3 +100,5 @@ function romanize(num) {
     }
     return roman;
 }
+
+const IP = (i,x,y,w) => Math.floor(i / w + y) % w * w + (i % w + x) % w

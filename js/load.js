@@ -19,6 +19,8 @@ function loadGame(start=true, gotNaN=false) {
         setupCurrencies()
         setupHTML()
 
+        if (player.omni.god) tab = 14, tab_name = 'god';
+
         setTimeout(() => {
             var offline_t = (Date.now() - player.latest_time)/1000
 
@@ -68,6 +70,11 @@ function setupOptions() {
     })
     createRadio(...getLangRadio('visible-research'), {
         start_position: 0,
+    })
+
+    createRadio(...getLangRadio('condenser-ratio'), {
+        start_position: 3,
+        width: 40,
     })
 
     // Confirmations

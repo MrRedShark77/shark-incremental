@@ -229,7 +229,7 @@ function updateEvolutionTreeHTML() {
         if (row >= unl_rows) continue
         let c = tf_unl && row < EVOLUTION_TREE.charged_rows && maxed_row[row]
         let w = lang_texts[x]?.[1]?.(tmp.evolution_tree_effect[x]) ?? "Placeholder"
-        if (c) w += "<br class='line'>" + (lang_texts[x]?.[2]?.(tmp.charged_et_effect[x]) ?? "Placeholder")
+        if (c) w += "<hr class='line'>" + (lang_texts[x]?.[2]?.(tmp.charged_et_effect[x]) ?? "Placeholder")
         el("evolution-tree-"+x+"-desc").innerHTML = w
         tree_el.className = el_classes({locked: c ? !EVOLUTION_TREE.canAfford(x, charged_row_available[row], true) : !EVOLUTION_TREE.canAfford(x, row_available[row]), bought: !c && player.humanoid.tree.includes(x), 'pre-charged': c, charged: player.humanoid.tree.includes(x+"C"), "evolution-tree-btn": true})
 
@@ -259,7 +259,7 @@ function chargedETreeEffect(x,def=1) { return tmp.charged_et_effect[x] ?? def }
 function simpleCETEffect(x,def=1) { return player.humanoid.tree.includes(x+"C") ? chargedETreeEffect(x,def) : def }
 
 function updateUnspentFaith() {
-    var spent = E(0), hu7 = player.hadron.starter_upgs.includes(7)
+    var spent = E(0), hu7 = REBIRTH.hasUpgrade(1) || player.hadron.starter_upgs.includes(7)
     for (let x = 0; x < EVOLUTION_TREE.rows*4; x++) {
         tmp.evolution_tree_effect[x] = EVOLUTION_TREE.effect[x]?.() ?? null
         tmp.charged_et_effect[x] = EVOLUTION_TREE.charged_effect[x]?.() ?? null

@@ -389,7 +389,7 @@ function updateForgeTemp() {
 
     var fs = E(1)
 
-    fs = fs.mul(simpleETEffect(40)).mul(simpleETEffect(41)).mul(simpleETEffect(42)).mul(simpleETEffect(43)).mul(remnantUpgEffect(3))
+    fs = fs.mul(simpleETEffect(40)).mul(simpleETEffect(41)).mul(simpleETEffect(42)).mul(simpleETEffect(43)).mul(remnantUpgEffect(3)).mul(tmp.global_mult)
 
     tmp.forge_speed = fs
 }

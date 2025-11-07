@@ -360,33 +360,33 @@ function updateCultivationHTML() {
 }
 
 function getMiningDamage() {
-    var x = Decimal.mul(sharkUpgEffect('m1'),getSharkRankBonus('mining_damage'))
+    var x = Decimal.mul(sharkUpgEffect('m1'),getSharkRankBonus('mining_damage')).mul(tmp.global_mult)
     if (hasResearch('f5')) x = x.mul(researchEffect('f5'))
     return x.pow(getPAEffect(2))
 }
 function getMiningSpeed() {
-    var x = Decimal.mul(1,sharkUpgEffect('m2')).mul(sharkUpgEffect('m7'))
+    var x = Decimal.mul(1,sharkUpgEffect('m2')).mul(sharkUpgEffect('m7')).mul(tmp.global_mult)
     return x
 }
 function getMiningFortune() {
     var x = researchEffect('m1',0)
     for (let i = 0; i < 4; i++) x = x.add(simpleETEffect(24+i,0))
     x = x.add(sharkUpgEffect('m4',0))
-    return x.overflow(1e9,0.5)
+    return x.mul(tmp.global_mult).overflow(1e9,0.5)
 }
 
 function getSuperMiningDamage() {
-    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleResearchEffect('m5')).mul(remnantUpgEffect(14))
+    var x = tmp.mining_damage.add(10).log10().log10().add(1).mul(sharkUpgEffect('m6')).mul(simpleResearchEffect('m5')).mul(remnantUpgEffect(14)).mul(tmp.global_mult)
     return x
 }
 function getSuperMiningSpeed() {
-    var x = tmp.mining_speed.add(10).log10().mul(sharkUpgEffect('m7'))
+    var x = tmp.mining_speed.add(10).log10().mul(sharkUpgEffect('m7')).mul(tmp.global_mult)
     return x
 }
 function getSuperMiningFortune() {
     var x = tmp.mining_fortune.add(1).log10().add(sharkUpgEffect('m9',0))
     for (let i = 0; i < 4; i++) x = x.add(simpleCETEffect(24+i,0));
-    return x
+    return x.mul(tmp.global_mult)
 }
 
 function updateCultivationTemp() {
@@ -406,6 +406,6 @@ function updateCultivationTemp() {
     tmp.super_mining_speed = getSuperMiningSpeed()
     tmp.super_mining_fortune = getSuperMiningFortune()
 
-    tmp.ore_generator_mult = Decimal.pow(2,tmp.mining_fortune.div(100)).mul(tmp.mining_speed)
-    tmp.ascend_ore_generator_mult = Decimal.pow(2,tmp.super_mining_fortune.div(100)).mul(tmp.super_mining_speed)
+    tmp.ore_generator_mult = Decimal.pow(2,tmp.mining_fortune.div(100)).mul(tmp.mining_speed).mul(tmp.global_mult)
+    tmp.ascend_ore_generator_mult = Decimal.pow(2,tmp.super_mining_fortune.div(100)).mul(tmp.super_mining_speed).mul(tmp.global_mult)
 }

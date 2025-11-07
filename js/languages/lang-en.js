@@ -115,6 +115,9 @@ LANGUAGES.EN = {
         'tab-shark-tier': toTextStyle('Shark','shark') + " Tier",
         'tab-nucleobase': "Nucleobases",
         'tab-gal-explore': "Galactic Exploration",
+        'tab-dna': "DNA",
+
+        'tab-shark-upgs': toTextStyle('Shark','shark') + " Upgrades",
 
         // Elements
 
@@ -188,6 +191,15 @@ LANGUAGES.EN = {
 
         'fundamental-amount-div': `You have <h3>${toTextStyle('0','hadron','total-fundamental')}</h3> total fundamental particles, which increases the cap of ${toTextStyle('Fish','fish')} to <h3 id="fundamental-effect">???</h3>.`,
         'starter-upg-note': `Note: The cost is <b>doubled</b> for each upgrade bought. The first upgrade is <b>RECOMMENDED</b> to buy after the first reset.`,
+
+        "dna-descirption": `The length of your ${toTextStyle('Shark','shark')} <b>DNA (Deoxyribonucleic Acid)</b> is <h3 id="dna-length">???</h3> (<span id="dna-length-gain">???</span>) nanometers.<br>
+        Increases the tetration of ${toTextStyle('Fish','fish')} by <h4 id="dna-boost1">???</h4> and strengthens the first 4 Nucleobases by <h4 id="dna-boost2">???</h4>.`,
+        "dna-button": `Force a ${toTextStyle('Hadronize','hadron')} reset to expand DNA.`,
+        'dna-note': `Note: Extending DNA resets everything ${toTextStyle('Hadronize','hadron')} does, as well as ${toTextStyle('Fundamental Particles','hadron')} and Nucleobases.`,
+
+        'shark-worth': bool => bool ? `Absorb ${toColoredText('absolutely everything','red')} to transform your ${toTextStyle('Shark','shark')} into the <h3>${toTextStyle('Omnipotence','omni')}</h3>...` : `Your ${toTextStyle('Shark','shark')} is worthless, sorry...`,
+        
+        'research-all-btn': "Attempt to purchase all possible research.",
 
         // Upgrades
 
@@ -441,6 +453,15 @@ LANGUAGES.EN = {
             'h10': [`Inflation is Nonsense`, `Remove all scalings of radioactive boosts.`],
             'h11': [`Rank-into-rank`, `Remove the first 3 scalings of ${toTextStyle("Shark",'shark')} rank.`],
             'h12': [`Better Constellation`, `Improve ${toTextStyle("Black Hole",'black-hole')} tier’s boost to ${toTextStyle("Constellation",'star')} resources.`],
+            'h13': [`Fish Equality`, `${toTextStyle("Prestige",'prestige')} shards and ${toTextStyle('Magmatic','core')} fragments gain is now equal to ${toTextStyle("Fish",'fish')} gain.`],
+            'h14': [`Level & Rank, goodbye cruel world!`, `All scalings of ${toTextStyle("Shark",'shark')} Level & Rank are removed.`],
+            'h15': [`Better Nucleobase III`, `The sixth boost of adenine is improved.`],
+            'h16': [`Galactic Exploration Automation`, `Automatically gain score of the first 6 galactic oceans without exploring.`],
+            'h17': [`Holy DNA`, `Total ${toTextStyle("Fundamental Particles",'hadron')} increase the length of DNA at a reduced rate.`],
+            'h18': [`Totally fish DNA`, `${toTextStyle("Fish",'fish')} increases the length of DNA at a reduced rate.`],
+            'h19': [`EMPOWERED ADENINE`, `Improve the fourth boost of adenine significantly... <i>It’s almost coming to the end...</i>`],
+            'h20': [`EMPOWERED GUANINE`, `The fourth boost of guanine now affects the fifth shark tier bonus... <i>Please stop doing this...</i>`],
+            'h21': [`EMPOWERED DNA`, `DNA will expand itself... ${toColoredText(`CAUTION: SELF-EXPANDING DNA CAUSES A SERIOUS INSTABILITY IN YOUR SHARK TO MAKE IT UNABLE TO EAT FISH AND ABLE TO CONVERT THEM INTO ANTIMATTER FISH! THERE IS NO GOING BACK!`,'red')} No?`],
 
             'ge1': [`Galactic Ocean Affection`,`Every galactic ocean’s resource is increased by <b>25%</b> compounding per square-rooted ${toTextStyle("Shark",'shark')} tier.`],
             'ge2': [`Better Nucleobase`,`The fifth boost of guanine is improved.`],
@@ -453,6 +474,31 @@ LANGUAGES.EN = {
             'ge9': [`Better Galactic Upgrade`,`Increase the base of galactic ocean’s upgrade by <b>+1</b>.`],
             'ge10': [`Better Gray Plankton`,`Improve the ${toTextStyle('Gray Plankton','gal-explore-2')}’s effect.`],
             'ge11': [`Better Nucleobase II`,`The second boost of cytosine and guanine is improved.`],
+            'ge12': [`Useless Scalings`,`Remove the first 2 scalings of black hole tier.`],
+
+            't1': ['Scaled Omni-Shark Strength', `Delays the scaling of 'Omni-Shark Strength' by <b>+15</b> per level.`],
+            't2': ['Omni-Shark Agility Affection', `'Omni-Shark Agility' affects the base of 'Super Omni-Shark Strength' and 'Omni-Shark Transcendence' at a 10% rate.`],
+            't3': ['Better Transcendence', `Slightly improve the formula of ${toTextStyle("Transcendental",'transcend')} shards gain.`],
+            't4': ['Better Transcendental Condenser', `Condensed ${toTextStyle("Transcendental",'transcend')} shards are improved slightly.`],
+
+            'u1': ['Better Undead Upgrades', `The effect of 'Undead Antimatter' & 'Undead Transcendence' is squared.`],
+            'u2': ['Better Undead Yield', `The cost increment of 'Undead Yield' is reduced. <i>This research persists through ${toTextStyle('Shark Omnipotence','omni')}.</i>`],
+            'u3': ['Undead Affection', `Game speed now affects the catch of ${toTextStyle('Undead Essence','undead')}.`],
+            'u4': ['Better Undead Condenser', `Condensed ${toTextStyle('Undead Essence','undead')} is improved significantly only for ${toTextStyle('Undead Essence','undead')}.`],
+
+            'r1': ['Research R-Keeper',`Keep ${toTextStyle('Research','prestige')} on ${toTextStyle('Reaction','atom')}.`],
+
+            'd1': ['Research R-Keeper+',`Keep ${toTextStyle('Research','prestige')} on ${toTextStyle('Runeification','rune')}.`],
+            'd2': ['Better Omni-Shark Exponent', `The formula for ‘Omni-Shark Exponent’ is improved.`],
+            'd3': ['Condenser Keeper I', `Start with <b>^0.75</b> of the exponent^2 of the best condensed ${toTextStyle("Transcendental",'transcend')} shards you ever condensed on ${toTextStyle('Runeification','rune')}.`],
+            'd4': ['Condenser Keeper II', `Start with the best condensed ${toTextStyle('Undead Essence','undead')} you ever condensed on ${toTextStyle('Runeification','rune')}.`],
+            'd5': ['Better Rune Fragments', `Improve ${toTextStyle('Rune','rune')} fragments gain.`],
+
+            'rc1': ['Bonus Runes', `Every <b>100%</b> of any ${toTextStyle('Rune','rune')} upgrade's effect gives one bonus ${toTextStyle('Rune','rune')} which is affected by it.`],
+            'rc2': ['Faster Rune Upgrades', `The first 3 ${toTextStyle('Rune','rune')} upgrades’ scaling starts <b>×2</b> later.`],
+            'rc3': ['Less Punishment', `The second ${toTextStyle('God','god')}’s punishment is weaker.`],
+            'rc4': ['Better Rune Upgrades', `The first 3 ${toTextStyle('Rune','rune')} upgrades are improved.`],
+            'rc5': ['Rune Continuum', `You will no longer be able to place any ${toTextStyle('Runes','rune')}, instead ${toTextStyle('Runes','rune')}' effect is calculated based on the fourth ${toTextStyle('Rune','rune')} upgrade. Automate ${toTextStyle('Rune','rune')} upgrades.`],
         },
 
         // Exploration
@@ -885,6 +931,9 @@ LANGUAGES.EN = {
             [`Nebulae`, x=>`First 6 ${toTextStyle("Constellation",'star')} resources are ${x} stronger.`, x=>`No effect provided.`],
             [`Galaxies`, x=>`First 7 ${toTextStyle("Constellation",'star')} resources are boosted by ${x}.`, x=>`No effect provided.`],
             [`Galaxy Clusters`, x=>`Boost the exponent of ${toTextStyle('Remnant','black-hole')} generation and ${toTextStyle('Dark Matter','black-hole')} by ${x}.`, x=>`No effect provided.`],
+            [`Galaxy Superclusters`, x=>`Black Hole Tier scales ${x} slower.`, x=>`No effect provided.`],
+            [`Universes`, x=>`Boost ${toTextStyle('Fish','fish')} amount by ${x} to the exponent^2.`, x=>`No effect provided.`],
+            [`Multiverses`, x=>`Boost ${toTextStyle('Fish','fish')} amount by ${x} to the tetration.`, x=>`No effect provided.`],
         ],
 
         // Haronize
@@ -930,11 +979,20 @@ LANGUAGES.EN = {
                 x => `${x} to the tier of <b>Cytosine</b>.`,
                 x => `${x} to the effect of total ${toTextStyle('Fundamental Particles','hadron')}.`,
                 x => `${x} to ${toTextStyle('Fundamental Particles','hadron')}.`,
+                x => `${x} to the tetration of ${toTextStyle('Hadronize','hadron')} cap.`,
             ]],
             'thymine': ["Thymine",[
                 x => `The 6-9th ${toTextStyle('Constellation','star')} resources are ${x} stronger.`,
                 x => `${x} to the base of galactic ocean's upgrade.`,
                 x => `${x} to the tier of <b>Guanine</b>.`,
+                x => `${x} to the score of each galactic ocean.`,
+                x => `${x} to galactic ocean resources.`,
+            ]],
+            'uracil': ["Uracil",[
+                x => `${x} to the tetration of ${toTextStyle('Fish','fish')}.`,
+                x => `${x} to the first 4 nucleobases.`,
+                x => `${x} to the exponent of ${toTextStyle('Fundamental Particles','hadron')}.`,
+                x => `<b>Uracil</b> experience boosts itself by ${x}.`,
             ]],
         },
         'experience': "Experience",
@@ -964,8 +1022,448 @@ LANGUAGES.EN = {
                 `Corrupted Ocean`, `Corrupted Remnants`,
                 `The exponent^2 of ${toTextStyle('Remnant','black-hole')} generation & ${toTextStyle('Dark Matter','black-hole')} is square-rooted.`,
                 x => `${x} to the exponent of ${toTextStyle('Remnant','black-hole')} generation.`
+            ],[
+                `Stellar Ocean`, `Plasma`,
+                `You cannot tier black hole up as you cannot gain ${toTextStyle('Constellation','star')} resources.`,
+                x => `${x} to ${toTextStyle('Constellation','star')} base and resources.`
+            ],[
+                `Desert Ocean`, `Dry Sands`,
+                `The tetration of ${toTextStyle('Fish','fish')} is halved.`,
+                x => `${x} to the tetration of ${toTextStyle('Fish','fish')} outside of this ocean.`
             ],
         ],
+
+        'dna-milestones': [
+            `Unlock an Auto-Galactic Exploration Upgrade.`,
+            `${toTextStyle('Fish','fish')} can surpass ${toTextStyle('Hadronize','hadron')} cap, but its gain will be slower harshly.`,
+            `${toTextStyle('Humanoid','humanoid')} sharks gain is now equal to ${toTextStyle('Fish','fish')} gain.`,
+            `Improve DNA boosts better.`,
+            `Improve DNA’s first boost better again.`,
+            `Unlock the fifth nucleobase.`,
+            `The first boost of thymine affects the last ${toTextStyle('Constellation','star')} resource at a 10% rate.`,
+            `${toTextStyle('Shark','shark')} Tier increases ${toTextStyle('Fish','fish')} eaten tetrationally, starting at 1,000.`,
+            `Automatically expand DNA.`,
+            `The second boost of DNA affects boosts of uracil.`,
+        ],
+
+        // Omnipotence
+
+        'omni-cutscene-texts': [`Your shark became the omnipotence...`, `...but at what cost?`],
+        
+        'tab-omni-rewards': `${toTextStyle("Omnipotence","omni")} Rewards`,
+        'tab-shark-condenser': `${toTextStyle("Shark","shark")} ${toTextStyle("Condenser","omni")}`,
+        'tab-undead': `${toTextStyle('Undead','undead')} Hunter`,
+
+        'tab-nucleus': `${toTextStyle('Nuclear Reaction','atom')}`,
+        'tab-actinium': `${toTextStyle('Actinium','atom')} Decay Series`,
+        'tab-particles': `${toTextStyle('Atom','atom')} Particles`,
+        'tab-isotopes': `Isotopes`,
+
+        'tab-runes': `${toTextStyle('Runes','rune')}`,
+        'tab-rune-constructor': `${toTextStyle('Rune','rune')} Constructor`,
+        'tab-rune-sacrifice': `${toTextStyle('Rune','rune')} Sacrifice`,
+
+        'tab-god': `${toTextStyle('Shark God','god')}`,
+
+        'antimatter-div': `Your ${toTextStyle('Omni-Shark<sup id="omni-tier"></sup>','omni')} has consumed <h2>${toTextStyle('0','antimatter','antimatter-amount')}</h2> <span id="antimatter-gain"></span> fish antimatter.`,
+        'antimatter-equivalent-div': `Equivalent to <b id="antimatter-equivalent">???</b> ${toTextStyle("Fish",'fish')}`,
+        'undead-essence-html': `You have gathered <h3>${toTextStyle('0','undead','undead-essence-amount')}</h3> <span id="undead-essence-gain"></span> undead essence.<br>
+        It's a <b id="undead-essence-chance">0%</b> chance to catch ${toTextStyle('Undead Essence','undead')} every second, unaffected by game speed.`,
+        'game-speed-div': `Game Speed: <b id="game-speed">???</b>`,
+        'antimatter-god-div': `Due to ${toTextStyle('God','god')}'s punishment, your ${toTextStyle('Fish Antimatter','antimatter')}'s exponent is rooted by ${toTextStyle('1','god','antimatter-god-penalty')}.`,
+        'rune-sacrifice-info': `Sacrificing any ${toTextStyle('Rune','rune')} makes it no longer placed, but its amount is affected by the highest amount given by other ${toTextStyle('Runes','rune')}. During the challenge, most ${toTextStyle('Rune','rune')} upgrades have no effect, and <b>game speed</b> is reduced to logarithmic.`,
+
+        'anti-fish-name': "Fish Antimatter",
+        'anti-fish-costName': toTextStyle('Fish Antimatter','antimatter'),
+
+        'transcend-name': "Transcendental Shards",
+        'transcend-costName': toTextStyle('Transcendental','transcend') + " Shards",
+
+        'undead-name': "Undead Essence",
+        'undead-costName': toTextStyle('Undead Essence','undead'),
+
+        'nucleus-name': "Atomic Nucleus",
+        'nucleus-costName': toTextStyle('Atomic Nucleus','atom'),
+
+        'rune-fragments-name': "Rune Fragments",
+        'rune-fragments-costName': toTextStyle('Rune','rune') + " Fragments",
+
+        'curr-top-7-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Fish Antimatter','antimatter')}`, 
+        'curr-top-7-reset': x => `Transcend for <b>${x.format(0)}</b> ${toTextStyle('Transcendental','transcend')} Shards`,
+
+        'curr-top-8-req': x => `Reach <b>${format(x)}</b> ${toTextStyle('Transcendental','transcend')} Shards`, 
+        'curr-top-8-reset': x => `Reactive for <b>${x.format(0)}</b> ${toTextStyle('Atomic Nucleus','atom')}`,
+
+        'curr-top-9-req': x => `Reach <b>${format(x)}</b> total ${toTextStyle('Fish Antimatter','antimatter')}`, 
+        'curr-top-9-reset': x => `Runeificate for <b>${x.format(0)}</b> ${toTextStyle('Rune','rune')} Fragments`,
+
+        'omni-shark-button': `Condense everything to increase your ${toTextStyle("Shark","shark")}'s ${toTextStyle("Omnipotence","omni")} for a big reward.<hr class="line"><b>Require:</b> <span id="omni-require"></span>`,
+        'omni-tier': `${toTextStyle("Omnipotence","omni")} Tier`,
+        'omni-other-requirements': {
+            7: `Do a ${toTextStyle('Transcendence','transcend')}`,
+            20: `Do a ${toTextStyle('Reaction','atom')}`,
+        },
+        'omni-rewards': {
+            2: x => `Start generating ${toTextStyle('Fish Antimatter','antimatter')} with a ${x} base.`,
+            5: x => `'Omni-Shark Agility' affects the ${toTextStyle("Omnipotence","omni")} Tier 2 reward.`,
+            7: x => `Unlock the ${toTextStyle('Transcendence','transcend')}.`,
+            9: x => `Unlock an Auto-${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Fish Antimatter','antimatter')} Upgrade. Those upgrades no longer take ${toTextStyle('Fish Antimatter','antimatter')} away.`,
+            10: x => `Unlock the ${toTextStyle("Shark","shark")} ${toTextStyle("Condenser","omni")} that persists through ${toTextStyle("Shark","shark")} ${toTextStyle("Omnipotence","omni")}.`,
+            11: x => `The base of 'Super Omni-Shark Strength' and 'Omni-Shark Transcendence' is increased by ${x}.`,
+            12: x => `Unlock the ${toTextStyle("Research","prestige")}.`,
+            15: x => `Start gathering ${toTextStyle('Undead Essence','undead')} every second with a ${x} chance.`,
+            16: x => `${toTextStyle('Undead Essence','undead')} can be condensed for persisted boost.`,
+            19: x => `Unlock an Auto-${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Transcendental','transcend')} Upgrade. Those upgrades no longer take ${toTextStyle('Transcendental','transcend')} shards away.`,
+            20: x => `Unlock the ${toTextStyle('Atomic Nucleus','atom')}. Passively generate ${x} of ${toTextStyle('Transcendental','transcend')} shards you gained on reset, affected by game speed at a <b>1%</b> rate.`,
+            22: x => `Unlock an Auto-${toTextStyle('Undead Essence','undead')} Upgrade (without spending anything).`,
+            24: x => `${toTextStyle('Atomic Nucleus','atom')} can be condensed for persisted boost. ${toTextStyle('Transcendental','transcend')} shards update the condensed to best.`,
+            28: x => `Unlock the Isotopes. Keep the ‘Research R-Keeper’ research on ${toTextStyle("Shark","shark")} ${toTextStyle("Omnipotence","omni")}.`,
+            30: x => `Unlock an Auto-${toTextStyle('Nucleus','atom')} (without spending anything). ${toTextStyle('Undead Essence','undead')} updates the condensed to best.`,
+            32: x => `Passively generate ${x} of ${toTextStyle('Atomic Nucleus','atom')} you gained on reset, affected by game speed at a <b>^0.1</b> rate.`,
+            36: x => `The rate of ${toTextStyle("Omnipotence","omni")} Tier 32 reward is increased to ${x}.`,
+            40: x => `Unlock the ${toTextStyle("Runeification","rune")}. ${toTextStyle('Atomic Nucleus','atom')} updates the condensed to best.`,
+            41: x => `${toTextStyle("Rune","rune")} fragments are multiplied by ${x}. ${toTextStyle("Omnipotence","omni")} Tier 15 reward is always <b>100%</b>.`,
+            43: x => `${toTextStyle("Rune","rune")} fragments can be condensed for persisted boost.`,
+            44: x => `Uruz ${toTextStyle("Rune","rune")}'s base is increased to ${x}.`,
+            48: x => `Unlock the ${toTextStyle("Rune","rune")} Sacrifice.`,
+            50: x => `The first ${toTextStyle("God","god")}’s punishment is ${x} weaker. Keep isotopes on ${toTextStyle("Runeification","rune")}.`,
+            53: x => `${toTextStyle("Omnipotence","omni")} Tier 41 reward is improved.`,
+            56: x => `Passively generate ${x} of ${toTextStyle("Rune","rune")} fragments you gained on reset. ${toTextStyle("Rune","rune")} fragments update the condensed to best.`,
+            60: x => `The first ${toTextStyle("God","god")}'s punishment is lifted. <i>Three steps left...</i>`,
+            63: x => `The ${toTextStyle("God","god")} lifted its punishments for you and lets you unlock the ${toTextStyle("ULTIMATE","god")} stage called ${toTextStyle("???","god")}.`,
+        },
+
+        'su-os1-req': `${toTextStyle("Omnipotence","omni")} Tier 3`,
+        'su-os1-name': 'Omni-Shark Strength',
+        'su-os1-desc': `Doubles ${toTextStyle('Fish Antimatter','antimatter')} consumed per level.`,
+
+        'su-os2-req': `${toTextStyle("Omnipotence","omni")} Tier 4`,
+        'su-os2-name': 'Omni-Shark Agility',
+        'su-os2-desc': `Increases the base of 'Omni-Shark Strength' by <b>+1</b> per level.`,
+
+        'su-os3-req': `${toTextStyle("Omnipotence","omni")} Tier 6`,
+        'su-os3-name': 'Omni-Shark Synergism',
+        'su-os3-desc': `Increases ${toTextStyle('Fish Antimatter','antimatter')} consumed by <b>×lg(${toTextStyle('Fish Antimatter','antimatter')})</b> per level.`,
+
+        'su-os4-req': `${toTextStyle("Omnipotence","omni")} Tier 29`,
+        'su-os4-name': 'Omni-Shark Exponent',
+        'su-os4-desc': `Increases the exponent of ${toTextStyle('Fish Antimatter','antimatter')} by <b>+1%</b> per level.`,
+
+        'su-t1-req': `${toTextStyle("Omnipotence","omni")} Tier 7`,
+        'su-t1-name': 'Super Omni-Shark Strength',
+        'su-t1-desc': `Triples ${toTextStyle('Fish Antimatter','antimatter')} consumed per level.`,
+
+        'su-t2-req': `${toTextStyle("Omnipotence","omni")} Tier 9`,
+        'su-t2-name': 'Omni-Shark Transcendence',
+        'su-t2-desc': `Doubles ${toTextStyle('Transcendental','transcend')} shards gained per level.`,
+
+        'condense': "Condense",
+        'condensed': x => `(${x} condensed)`,
+
+        'condensers': [
+            x => `${x} boost to ${toTextStyle('Transcendental','transcend')} shards`,
+            x => `${x} boost to ${toTextStyle('Undead Essence','undead')} and <b>Game Speed</b>`,
+            x => `${x} boost to ${toTextStyle('Atomic Nucleus','atom')} and <b>Decay Yield</b>`,
+            x => `${x} boost to ${toTextStyle('Rune','rune')} fragments`,
+        ],
+
+        'undead-upgrades': [
+            [`Undead Fish`,x=>`${toTextStyle('Fish Antimatter','antimatter')} is powered by ${x}.`],
+            [`Undead Prestige`,x=>`${toTextStyle('Transcendental','transcend')} shards are powered by ${x}.`],
+            [`Undead Chance`,x=>`${toTextStyle('Undead Essence','undead')}'s chance is increased by ${x}.`],
+            [`Undead Yield`,x=>`${toTextStyle('Undead Essence','undead')} is increased by ${x}.`],
+
+            [`Undead Antimatter`,x=>`${toTextStyle('Undead Essence','undead')} is increased by ${x}.`],
+            [`Undead Transcendence`,x=>`${toTextStyle('Undead Essence','undead')} is increased by ${x}.`],
+            [`Undead Strength`,x=>`The 1st, 2nd, 5th, and 6th ${toTextStyle('Undead','undead')} upgrades are ${x} stronger.`],
+            [`Undead Strength II`,x=>`The power of 'Undead Strength' is increased to ${x}.`],
+        ],
+
+        'decay-series-boosts': [
+            [
+                x => `Increase the base of 'Undead Yield' by ${x}.`,
+                x => `Increase the chance of ${toTextStyle('Undead Essence','undead')} by ${x}.`,
+            ],[
+                x => `Power ${toTextStyle('Fish Antimatter','antimatter')} by ${x}.`,
+            ],[
+                x => `Power ${toTextStyle('Transcendental','transcend')} shards by ${x}.`,
+            ],[
+                x => `Strengthen the first 3 ${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Fish Antimatter','antimatter')} upgrades by ${x}.`,
+                x => `Strengthen ${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Transcendental','transcend')} upgrades by ${x}.`,
+                x => `Strengthen the fourth ${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Fish Antimatter','antimatter')} upgrades by ${x}.`,
+            ],[
+                x => `Strengthen the first 7 ${toTextStyle('Undead','undead')} upgrades by ${x}.`,
+            ],[
+                x => `Power the effect of ‘Undead Antimatter’ & ‘Undead Transcendence’ by ${x}.`,
+            ],[
+                x => `${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Fish Antimatter','antimatter')} upgrades' cost is rooted by ${x}.`,
+            ],[
+                x => `Strengthen the first 4 nuclei by ${x}.`,
+                x => `The first boost affects the 5-7th nuclei.`,
+            ],[
+                x => `Power ${toTextStyle('Undead Essence','undead')} by ${x}.`,
+            ],[
+                x => `Power the effect of condensed ${toTextStyle('Atomic Nucleus','atom')} by ${x}.`,
+                x => `Power the effect of alpha particle by ${x}.`,
+            ],[
+                x => `Divide the requirement of next isotope by ${x}.`,
+            ],[
+                x => `Power ${toTextStyle('Fish Antimatter','antimatter')} by ${x} to the exponent.`,
+            ],[
+                x => `Power ${toTextStyle('Transcendental','transcend')} shards by ${x} to the exponent.`,
+            ],[
+                x => `Strengthen the 8th ${toTextStyle('Undead','undead')} upgrade by ${x}.`,
+            ],[
+                x => `Strengthen the 8-10th nuclei by ${x}.`,
+                x => `The first boost affects the 11-13th nuclei.`,
+            ],[
+                x => `Power the Helium-3's base by ${x}.`,
+            ],[
+                x => `Generate ${x} <sup>235</sup>U nuclei every second, affected by game speed.`,
+            ],
+        ],
+        'full-element-name': [
+            'Neutronium',
+            'Hydrogen','Helium','Lithium','Beryllium','Boron','Carbon','Nitrogen','Oxygen','Fluorine','Neon',
+            'Sodium','Magnesium','Aluminium','Silicon','Phosphorus','Sulfur','Chlorine','Argon','Potassium','Calcium',
+            'Scandium','Titanium','Vanadium','Chromium','Manganese','Iron','Cobalt','Nickel','Copper','Zinc',
+            'Gallium','Germanium','Arsenic','Selenium','Bromine','Krypton','Rubidium','Strontium','Yttrium','Zirconium',
+            'Niobium','Molybdenum','Technetium','Ruthenium','Rhodium','Palladium','Silver','Cadmium','Indium','Tin',
+            'Antimony','Tellurium','Iodine','Xenon','Caesium','Barium','Lanthanum','Cerium','Praseodymium','Neodymium',
+            'Promethium','Samarium','Europium','Gadolinium','Terbium','Dysprosium','Holmium','Erbium','Thulium','Ytterbium',
+            'Lutetium','Hafnium','Tantalum','Tungsten','Rhenium','Osmium','Iridium','Platinum','Gold','Mercury',
+            'Thallium','Lead','Bismuth','Polonium','Astatine','Radon','Francium','Radium','Actinium','Thorium',
+            'Protactinium','Uranium','Neptunium','Plutonium','Americium','Curium','Berkelium','Californium','Einsteinium','Fermium',
+            'Mendelevium','Nobelium','Lawrencium','Rutherfordium','Dubnium','Seaborgium','Bohrium','Hassium','Meitnerium','Darmstadium',
+            'Roeritgenium','Copernicium','Nihonium','Flerovium','Moscovium','Livermorium','Tennessine','Oganesson'
+        ],
+
+        'decay-chain-max': "Buy Max",
+        'decay-chain-buy-all': "Attempt to purchase all possible atoms",
+        
+        'alpha-particle-div': `Decayed nuclei have generated <h3 id="alpha-particle-amount">0</h3> <span id="alpha-particle-gain"></span> alpha particles, which boosts ${toTextStyle('Atomic Nucleus','atom')} by <h3 id="alpha-particle-effect">???</h3>.`,
+        'beta-particle-div': `Decayed nuclei have generated <h3 id="beta-particle-amount">0</h3> <span id="beta-particle-gain"></span> beta particles, which boosts the game speed by <h3 id="beta-particle-effect">???</h3>.`,
+        'gamma-ray-particle-div': `Uranum-236 nuclei has generated <h3 id="gamma-ray-particle-amount">0</h3> <span id="gamma-ray-particle-gain"></span> gamma rays, which powers alpha & beta particles by <h3 id="gamma-ray-particle-effect">???</h3>.`,
+        'energy-particle-div': `Uranum-236 nuclei has generated <h3 id="energy-particle-amount">0</h3> <span id="energy-particle-gain"></span> MeV of energy, which boosts decay yield by <h3 id="energy-particle-effect">???</h3>.`,
+        'barium-particle-div': `Uranum-236 nuclei has generated <h3 id="barium-particle-amount">0</h3> <span id="barium-particle-gain"></span> Barium-141 nuclei, which powers ${toTextStyle('Fish Antimatter','antimatter')} by <h3 id="barium-particle-effect">???</h3>.`,
+        'krypton-particle-div': `Uranum-236 nuclei has generated <h3 id="krypton-particle-amount">0</h3> <span id="krypton-particle-gain"></span> Krypton-92 nuclei, which powers ${toTextStyle('Transcendental','transcend')} shards by <h3 id="krypton-particle-effect">???</h3>.`,
+
+        'uranium-235-fission': `Insert one neutron into Uranium-235 to start fission.`,
+
+        'isotopes-div': `You have <h3 id="isotopes-amount">0 / 0</h3> isotopes. (+1 at <h4 id="isotopes-next">???</h4> ${toTextStyle('Atomic Nucleus','atom')})
+        <subtitle>Note: Downgrading any isotope forces a ${toTextStyle('Reaction','atom')} reset. Hover any isotope to show its effect.</subtitle>`,
+        'isotope-rewards': [
+            [
+                x => `The exponent of ${toTextStyle('Atomic Nucleus','atom')}’ base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Atomic Nucleus','atom')}’ base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Atomic Nucleus','atom')}’ base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Atomic Nucleus','atom')}’ base is increased by ${x}.`,
+            ],[
+                x => `${toTextStyle('Undead Essence','undead')} is multiplied by ${x[0]} per square-rooted amount of ‘Undead Antimatter’ and ‘Undead Transcendence’. (Currently ${x[1]})`,
+                x => `The base of this first isotope is increased by ${x[0]} per this isotope. (Currently ${x[1]})`,
+                x => `The exponent of this first isotope is increased to ${x}.`,
+                x => `The exponent of this first isotope is increased to ${x}.`,
+                x => `The exponent of this first isotope is increased to ${x}.`,
+            ],[
+                x => `The exponent of ${toTextStyle('Transcendental','transcend')} shard's base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Transcendental','transcend')} shard's base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Transcendental','transcend')} shard's base is increased by ${x}.`,
+                x => `The exponent of ${toTextStyle('Transcendental','transcend')} shard's base is increased by ${x}.`,
+            ],[
+                x => `${toTextStyle('Undead Essence','undead')} is multiplied by ${x[0]} per cube-rooted 100% chance to catch ${toTextStyle('Undead Essence','undead')}. (Currently ${x[1]})`,
+                x => `The base of this first isotope is increased by ${x[0]} per this isotope. (Currently ${x[1]})`,
+                x => `The exponent of this first isotope is increased to ${x}.`,
+                x => `The exponent of this first isotope is increased to ${x}.`,
+            ],[
+                x => `Lead-207 is twice stronger.`,
+                x => `The softcap of Bismuth-211’s third effect is weaker.`,
+                x => `Polonium-215 affects ‘Undead Yield’ at an extremely reduced rate. (Currently ${x})`,
+                x => `The second effect of Astatine-219 is stronger.`,
+            ],[
+                x => `Lead-211 is ${x} stronger.`,
+                x => `Lead-211 is ${x} stronger.`,
+                x => `Lead-211 is ${x} stronger.`,
+                x => `Lead-211 is ${x} stronger.`,
+                x => `Lead-211 is ${x} stronger.`,
+            ],[
+                x => `The exponent of condensed ${toTextStyle('Transcendental','transcend')} shard's boost is increased by ${x}.`,
+                x => `The exponent of condensed ${toTextStyle('Transcendental','transcend')} shard's boost is increased by ${x}.`,
+                x => `The exponent of condensed ${toTextStyle('Transcendental','transcend')} shard's boost is increased by ${x}.`,
+                x => `The exponent of condensed ${toTextStyle('Transcendental','transcend')} shard's boost is increased by ${x}.`,
+                x => `The exponent of condensed ${toTextStyle('Transcendental','transcend')} shard's boost is increased by ${x}.`,
+            ],
+        ],
+
+        'runes': {
+            'fehu': [
+                `Fehu`,
+                `Powers ${toTextStyle('Fish Antimatter','antimatter')} to the exponent (based on current ${toTextStyle('Fish Antimatter','antimatter')}).`,
+                x => `${toTextStyle('Fish Antimatter','antimatter')} is powered by ${x} to the exponent.`,
+            ],
+            'berkanan': [
+                `Berkanan`,
+                `Powers ${toTextStyle('Transcendental','transcend')} shards to the exponent (based on current ${toTextStyle('Transcendental','transcend')} shards).`,
+                x => `${toTextStyle('Transcendental','transcend')} shards are powered by ${x} to the exponent.`,
+            ],
+            'kaunan': [
+                `Kaunan`,
+                `Powers ${toTextStyle('Undead Essence','undead')} (based on current ${toTextStyle('Undead Essence','undead')}).`,
+                x => `${toTextStyle('Undead Essence','undead')} is powered by ${x}.`,
+            ],
+            'naudiz': [
+                `Naudiz`,
+                `Powers ${toTextStyle('Atomic Nucleus','atom')} (based on current ${toTextStyle('Atomic Nucleus','atom')}).`,
+                x => `${toTextStyle('Atomic Nucleus','atom')} is powered by ${x}.`,
+            ],
+            'uruz': [
+                `Uruz`,
+                `Strengthens non-Uruz adjacent ${toTextStyle("Runes","rune")}.`,
+                x => `Non-Uruz adjacent ${toTextStyle("Runes","rune")} are ${x} stronger.`,
+            ],
+        },
+        'short-rune-essence': 'RE',
+
+        'rune-upgrades': [
+            x => `Fehu ${toTextStyle("Runes","rune")} are ${x} stronger.`,
+            x => `Berkanan & Kaunan ${toTextStyle("Runes","rune")} are ${x} stronger.`,
+            x => `Naudiz ${toTextStyle("Runes","rune")} are ${x} stronger.`,
+            x => `Adds ${x} ${toTextStyle("Rune","rune")} Essence.`,
+        ],
+
+        'rune-clear-all': `Clear all ${toTextStyle("Runes","rune")}`,
+        'rune-erase-mode': bool => bool ? "Cancel erasing" : "Erase mode",
+        'rune-sacrificed': "SACRIFICED",
+
+        'rune-sacrifice': [
+            [
+                `Sacrifice Tier I`,
+                [
+                    `Fehu ${toTextStyle("Rune","rune")} have no effect.`,
+                    `‘Undead Fish’ ${toTextStyle('Undead','undead')} upgrade, Barium-141, Thallium-207, and Francium-223 have no effect.`,
+                ],
+                `Sacrifice Fehu ${toTextStyle("Rune","rune")} completely.`,
+            ],[
+                `Sacrifice Tier II`,
+                [
+                    `Berkanan ${toTextStyle("Rune","rune")} have no effect.`,
+                    `‘Undead Prestige’ ${toTextStyle('Undead','undead')} upgrade, Krypton-92, Polonium-211, Thorium-227, and condensed ${toTextStyle('Transcendental','transcend')} shards have no effect.`,
+                    `${toTextStyle('Transcendental','transcend')} shards are reduced to logarithmic.`,
+                ],
+                `Sacrifice Berkanan ${toTextStyle("Rune","rune")} completely.`,
+            ],[
+                `Sacrifice Tier III`,
+                [
+                    `Kaunan  ${toTextStyle("Rune","rune")} have no effect.`,
+                    `‘Undead Chance’, ‘Undead Antimatter’ and ‘Undead Transcendence’ ${toTextStyle('Undead','undead')} upgrades, Helium-3, Carbon-11, Radon-219, and condensed ${toTextStyle('Undead Essence','undead')} have no effect.`,
+                ],
+                `Sacrifice Berkanan ${toTextStyle("Rune","rune")} completely.`,
+            ],
+        ],
+
+        'rune-sacrifice-state': [
+            `Start sacrificing this ${toTextStyle("Rune","rune")}.`,
+            `Cancel sacrificing this ${toTextStyle("Rune","rune")}.`,
+            `Finish sacrificing this ${toTextStyle("Rune","rune")}.`
+        ],
+
+        get 'reset-transcend-message'() {
+            let p = toTextStyle('Transcendence','transcend'), s = toTextStyle('Omni-Shark','omni'), f = toTextStyle('Fish Antimatter','antimatter')
+            return `
+            <h3>${p}</h3><br>
+            ${p} is the first omni-reset layer. Transcending resets your ${s} upgrades and ${f} for ${toTextStyle('Transcendental','transcend')} shards.
+            First ${p} unlocks new ${s} upgrades.<br>
+            <img src="textures/TranscendentalShard.png"><br>
+            Are you sure you want to transcend?
+            `
+        },
+        get 'reset-reaction-message'() {
+            let c = toTextStyle('Reaction','atom'), m = toTextStyle('Atomic Nucleus','atom'), p = toTextStyle('Transcendental','transcend')
+            return `
+            <h3>The ${c}</h3><br>
+            The ${c} is the second omni-reset layer. Doing the reaction resets everything ${p} does, as well as ${p} shards, ${p} upgrades, some ${toTextStyle('Research','prestige')}, and ${toTextStyle('Undead Essence','undead')} for ${m}.<br>
+            <img src="textures/Nucleus.png"><br>
+            Are you sure you want to do the reaction?
+            `
+        },
+        get 'reset-runeification-message'() {
+            let c = toTextStyle('Runeification','rune'), m = toTextStyle('Rune','rune'), p = toTextStyle('Reaction','atom')
+            return `
+            <h3>The ${c}</h3><br>
+            The ${c} is the third omni-reset layer. Runeificating resets everything ${p} does, as well as ${toTextStyle('Atomic Nucleus','atom')}, ${toTextStyle('Actinium','atom')} radioactive decay, ${toTextStyle('Atom','atom')} particles, isotopes, and some research for ${m} Fragments.<br>
+            <subtitle>However, it also resets pre-Runeification ${toTextStyle("Condensers","omni")} (as well as after ${toTextStyle("Omnipotence","omni")} Tier 40). Most ${m} features are persisted through ${toTextStyle("Shark","shark")} ${toTextStyle("Omnipotence","omni")}, but ${m} fragments are reset.</subtitle>
+            <img src="textures/Rune.png"><br>
+            Are you sure you want to runeificate?
+            `
+        },
+
+        'confirm-transcend': "Transcend",
+        'confirm-reaction': "Reaction",
+        'confirm-runeification': "Runeification",
+
+        'progress-28-text': r => `Reach ${format(r)} total ${toTextStyle('Fish Antimatter','antimatter')}`, 
+        get 'progress-28-cond-text'() { return `Do a ${toTextStyle('Transcendence','transcend')}` },
+
+        'progress-29-text': r => `Reach ${format(r)} ${toTextStyle('Transcendental','transcend')} shards`, 
+        get 'progress-29-cond-text'() { return `Do a ${toTextStyle('Reaction','atom')}` },
+
+        'progress-30-text': r => `Reach ${format(r)} total ${toTextStyle('Fish Antimatter','antimatter')}`, 
+        get 'progress-30-cond-text'() { return `Do a ${toTextStyle('Runeification','rune')}` },
+
+        'progress-31-text': r => `???`,
+
+        'auto-osu-name': `Auto-${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Fish Antimatter','antimatter')} Upgrade`,
+        'auto-ostu-name': `Auto-${toTextStyle("Omni-Shark","omni")} ${toTextStyle('Transcendental','transcend')} Upgrade`,
+        'auto-ue-name': `Auto-${toTextStyle('Undead Essence','undead')} Upgrade`,
+        'auto-nucleus-name': `Auto-${toTextStyle('Nucleus','atom')}`,
+
+        'god-info': `"Repeat, the ${toTextStyle("Shark God","god")} lets you go to the final stage! Then everything is wiped before this point, and it is irreversible! But the ${toTextStyle("Shark God","god")} gives you an ability to produce ${toTextStyle("Omni-Fish","god")} that almost exceeds the ${toTextStyle("Godverse","god")}. Or... it means it almost ready to rebirth ${toTextStyle("Shark","shark")}... So, you have no choice..."`,
+        'overmodify-shark': `Overmodify the ${toTextStyle("Shark","shark")}.`,
+
+        'god-fish-div': `The ${toTextStyle('God Shark','god')} has annihilated <h2>${toTextStyle('0','god','god-fish-amount')}</h2> <span id="god-fish-gain"></span> omni-fish.`,
+
+        'omni-fish-name': "Omni-Fish",
+        'omni-fish-costName': toTextStyle('Omni-Fish','god'),
+
+        'endings': [
+            `Congrulations! You beat the game in`,
+            `You have 3 options: ${toTextStyle("Rebirth","rebirth")} your ${toTextStyle("Shark","shark")} for an extra content; import the game; reset to the previous.`
+        ],
+        'ending-options': [
+            `Rebirth ${toTextStyle("Shark","shark")}`,
+            `Import from prompt`,
+            `Import from file`,
+            `Reset to the previous`
+        ],
+
+        'tab-rebirth': `${toTextStyle('Rebirth','rebirth')}`,
+        'tab-rebirth-upgs': `${toTextStyle('Rebirth','rebirth')} Upgrades`,
+        'tab-rebirth-past10': `Past 10 ${toTextStyle('Rebirths','rebirth')}`,
+
+        'rebirth-points-div': `You have <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> rebirth points, which gives you <h3>${toTextStyle('???','rebirth','global-mult')}</h3> to global mult.`,
+
+        'rebirth-upgrades': [
+            ["The Classic Automation", `Unlock the ${toTextStyle('Shark','shark')}, ${toTextStyle('Prestige','prestige')}, and ${toTextStyle('Core','core')} automations permanently.`],
+            ["Galactic Cultivation", `Unlock the ${toTextStyle('Evolution','humanoid')} and ${toTextStyle('Singularity','black-hole')} automations permanently.`],
+            ["Hadronic Assembler", `Unlock the ${toTextStyle('Hadron','hadron')}-related automations permanently.`],
+            ["Antimatter Automation I", `Unlock the ${toTextStyle('Omnipotence','omni')}-related automations permanently.`],
+            ["Antimatter Automation II", `Automatically update ${toTextStyle('Omnipotence','omni')} tier without reset required.`],
+            ["The Classic Generation", `Unlock the ${toTextStyle('Prestige','prestige')} point and ${toTextStyle('Magmatic','core')} fragment generations permanently. `],
+            ["Humanoid Shark Population", `Unlock the ${toTextStyle('Humanoid','humanoid')} shark generation permanently.`],
+            ["Self-duplicate Particle", `Unlock the ${toTextStyle('Singularity','black-hole')}-related and ${toTextStyle('Fundamental Particle','hadron')} generations permanently.`],
+            ["Antimatter Triad", `Unlock the ${toTextStyle('Omnipotence','omni')}-related generations permanently.`],
+            ["Extra Multiplier", `Gain <b>+50%</b> more global multiplier.`],
+        ],
+
+        'rebirth-upgrades-note': `Note: Most rebirth upgrades are unknowingly unimplemented, contact the developer if you notice the upgrade that gives noting.`,
+        'rebirth-time': `Time played on ${toTextStyle('Rebirth','rebirth')}`,
+        'rebirth-points': `${toTextStyle('Rebirth','rebirth')} Points`,
+
+        'global-mult-title': `Products of Global Mult`,
+        'global-mults': {
+            base: x => `${x} multiplier base`,
+            time: x => `${x} from the fastest ${toTextStyle('Rebirth','rebirth')}`,
+            other: x => `${x} from other sources`,
+        },
 
         // Automation
 
@@ -988,6 +1486,7 @@ LANGUAGES.EN = {
         'auto-rocket_part-name': `Auto-Rocket Part`,
         'auto-mining_ascend-name': `Auto-Mining Ascension`,
         'auto-nucleobase-name': `Auto-Nucleobases`,
+        'auto-gal_eu-name': `Auto-Galactic Exploration Upgrade`,
 
         'auto-cost': (D,cost,name) => `Decrease Interval by ${formatReduction(D,0)}.<br>Cost: ${format(cost,0)} ${name}`,
         'auto-interval': (a,b,maxed) => `Interval: ${format(a,3)}s`+(maxed ? "" :` ➜ ${format(b,3)}s`),
@@ -1036,6 +1535,11 @@ LANGUAGES.EN = {
         'progress-22-text': r => `Reach ${format(r)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the third nucleobase`, 
         'progress-23-text': r => `Reach ${toTextStyle('Shark','shark')} Tier ${format(r,0)} to unlock the next feature`,
         'progress-24-text': r => `Reach ${format(r)} total ${toTextStyle('Fundamental Particles','hadron')} to unlock the fourth nucleobase`, 
+        'progress-25-text': r => `Reach ${format(r)} total ${toTextStyle('Fish','fish')} to unlock the next feature`,
+        'progress-26-text': r => `Reach ${format(r)}nm of DNA to unlock the fifth nucleobase`,
+
+        'progress-27-text': r => `I won't give you a requirement to prove your ${toTextStyle('Shark','shark')}'s worth!`,
+        get 'progress-27-cond-text'() { return `Prove worth...` },
 
         'maxed-progress': "All features unlocked!",
 
@@ -1120,6 +1624,10 @@ LANGUAGES.EN = {
             'mining_ascend' : `Mining Ascension`,
             'remnant_upg' : `Remnant Upgrades`,
             'bh_tier' : `Black Hole Tier`,
+            'decay_series' : `Decay Nucleus`,
+            'isotopes' : `Isotopes`,
+            'rune_upg1' : `First 3 Rune Upgrades`,
+            'rune_upg2' : `Fourth Rune Upgrade`,
         },
         'scaling-start': "Starts at",
         'scaling-mode': {
@@ -1150,6 +1658,7 @@ LANGUAGES.EN = {
             hadron: x => `${x} ${toTextStyle('Fundamental Particles','hadron')}`,
             prestige: x => `${x} ${toTextStyle('Prestige','prestige')} shards to the exponent`,
             nucleobase: x => `${x} nucleobase's experience`,
+            fish2: x => `${x} ${toTextStyle('Fish','fish')} to the tetration`,
         },
 
         'amount': "Amount",
@@ -1157,6 +1666,7 @@ LANGUAGES.EN = {
         'level': "Level",
         'effect': "Effect",
         'cost': "Cost",
+        'goal': "Goal",
         'buyMax': "Buy Max",
         'require': "Require",
         'next-at': "Next at",
@@ -1166,6 +1676,7 @@ LANGUAGES.EN = {
         'maxed': "Maxed",
         'difficulty': "Difficulty",
         'score': "Score",
+        'picked': "Picked",
 
         'remove': "Remove",
         'overwrite-current': "Overwrite Current",
@@ -1194,6 +1705,8 @@ LANGUAGES.EN = {
             "evolution-tree-respec": `Are you sure you want to respec ${toTextStyle('Evolution','humanoid')} tree? It will trigger an ${toTextStyle('Evolution','humanoid')} reset, not gaining ${toTextStyle('Humanoid','humanoid')} sharks.`,
             "evolution-tree-import": `Paste in your evolution tree.`,
             "starter-upgrade-warning": `Are you sure you want to purchase this starter upgrade? You should purchase upgrade <b>"Shark Tier"</b>!`,
+            "rebirth-confirm": `${toTextStyle('Rebirth','rebirth')} is the post-end feature that helps you progress faster through the main stage. ${toTextStyle('Rebirthing','rebirth')} the shark resets EVERYTHING POSSIBLE, except options and humanoid tree presets. It rewards you with a ${toTextStyle('Rebirth','rebirth')} point and increases your global multiplier for almost every currency. You can spend ${toTextStyle('Rebirth','rebirth')} points on buying ${toTextStyle('Rebirth','rebirth')} upgrades to make your progress faster.<br><br>Are you sure you want your shark to rebirth?`,
+            "rebirth-undo": `Are you sure you want to reset to the previous?`,
         },
 
         'notify-desc' : {
@@ -1211,6 +1724,7 @@ LANGUAGES.EN = {
             'max-research-amt': ['Maximum research upgrades per page',['∞','15','20','25','30']],
             'visible-research': [`Purchased research's visibility`,["Shown","Hidden"]],
             'notify': ['Tab Notification',['Disabled','Enabled']],
+            'condenser-ratio': ['Condenser Ratio',['10%','25%','50%','100%']],
         },
 
         'radio-desc-default' : ['Disabled','Enabled'],

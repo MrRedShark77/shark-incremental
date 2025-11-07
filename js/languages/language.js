@@ -47,7 +47,7 @@ function setupLanguageHTML() {
 }
 
 function calculateTotalLanguageTexts(obj,s=0) {
-    for (let v of Object.values(obj)) {
+    for (let v of Object.values(obj)) if (v !== null) {
         if (typeof v == 'object') s = calculateTotalLanguageTexts(v,s)
         else s++
     }
@@ -55,7 +55,7 @@ function calculateTotalLanguageTexts(obj,s=0) {
 }
 
 function deepCheckLanguage(obj,data) {
-    for (let [i,v] of Object.entries(data)) {
+    for (let [i,v] of Object.entries(data)) if (v !== null) {
         // console.log(i,v)
         var opd = Object.getOwnPropertyDescriptor(obj, i)
         if (opd && opd.get) {
@@ -79,5 +79,8 @@ const ALLOWED_LANG_KEY_TO_ELEMENT_ID = [
     'mining-text','mined-resources-text','mining-tier-div','mining-note','mining-tier-undo-btn','scaling-info','black-hole-button','black-hole-html',
     'remnant-html','rocket-part-div','observ-div','mining-ascend-div','super-mining-text','reserv-div','mining-ascend-undo-btn','traject-div',
     'respec-evolution-tree-2','experiment-div','bh-tier-div','bh-tier-button','fundamental-amount-div','starter-upg-note','shark-tier-note','shark-iq-div',
-    'shark-tier-div','shark-tier-req-div',
+    'shark-tier-div','shark-tier-req-div','dna-descirption','dna-button','dna-note','antimatter-div','antimatter-equivalent-div','omni-shark-button',
+    'undead-essence-html','game-speed-div','decay-chain-max','alpha-particle-div','beta-particle-div','isotopes-div','uranium-235-fission','gamma-ray-particle-div',
+    'barium-particle-div','krypton-particle-div','energy-particle-div','research-all-btn','rune-clear-all','antimatter-god-div','rune-sacrifice-info',
+    'god-info','god-fish-div','rebirth-points-div','rebirth-upgrades-note','decay-chain-buy-all',
 ]

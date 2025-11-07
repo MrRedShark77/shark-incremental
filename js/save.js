@@ -1,4 +1,4 @@
-const VERSION = 2
+const VERSION = 3
 const SAVE_ID = "shark_inc_save"
 var prevSave = "", autosave
 
@@ -123,7 +123,12 @@ function getPlayerData() {
                 score: [],
                 upg: [],
             },
+
+            dna: E(0),
         },
+
+        omni: getOmniSaveData(),
+        end: false,
 
         radios: {},
 
@@ -135,6 +140,17 @@ function getPlayerData() {
         language: "EN",
 
         VERSION: VERSION,
+        timePlayed: 0,
+        totalTimePlayed: 0,
+
+        rebirth: {
+            first: false,
+            total: E(0),
+            points: E(0),
+            upgrades: [],
+            past10: [],
+            best: Number.MAX_VALUE,
+        },
     }
 
     for (let x in SHARK_UPGRADES) s.shark_upg[x] = E(0);
@@ -160,7 +176,7 @@ function getPlayerData() {
         experience: E(0),
         upg: [E(0), E(0)],
     };
-    for (let x in EXPLORE) {
+    for (let x = 0 ; x < GALACTIC_EXPLORE.length ; x++) {
         s.hadron.gal_explore.res[x] = E(0)
         s.hadron.gal_explore.score[x] = E(0)
         s.hadron.gal_explore.upg[x] = E(0)
@@ -174,7 +190,7 @@ function wipe(reload,start) {
     if (start) return
     setupOptions()
     reloadTemp()
-    tab = 0, stab = stab.map(x=>0), tab_name = 'shark'
+    tab = 0, stab = stab.map(x=>0), tab_name = 'shark-upgs'
     ores_grid = []
 	if (reload) {
         save()
@@ -195,6 +211,10 @@ function loadPlayer(load) {
 function checkVersion() {
     if (player.VERSION < 2) {
         player.humanoid.faith[2] = E(0)
+    }
+
+    if (player.VERSION < 3) {
+        player.timePlayed = Number.MAX_VALUE;
     }
 
     player.VERSION = Math.max(player.VERSION, VERSION)
@@ -240,7 +260,7 @@ function deepUndefinedAndDecimal(obj, data) {
     return obj
 }
 
-function preventSaving() { return tmp.bh_pause || offline.nosave }
+function preventSaving() { return tmp.bh_pause || offline.nosave || tmp.omni.pause || player.end }
 
 function save(auto=false) {
     if (auto && !player.radios.autosave) return
