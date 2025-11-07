@@ -416,7 +416,7 @@ function formatTime(ex,acc=0,type="s") {
   ex = E(ex)
   if (ex.mag == Infinity) return 'Forever'
   if (ex.gte(31536000)) {
-    return format(ex.div(31536000).floor(),0)+"y"+(ex.div(31536000).gte(1e9) ? "" : " " + formatTime(ex.mod(31536000),acc,'y'))
+    return format(ex.div(31536000).floor(),0)+"y"+(ex.div(31536000).gte(1e9) || ex.mod(31536000).eq(0) ? "" : " " + formatTime(ex.mod(31536000),acc,'y'))
   }
   if (ex.gte(86400)) {
     var n = ex.div(86400).floor()

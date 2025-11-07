@@ -64,14 +64,16 @@ const NUCLEOBASES = {
     },
 
     get_require(id,x) {
-        x = x.add(1)
+        if (['cytosine','guanine','adenine','thymine'].includes(id)) x = x.div(getNucleobaseEffect('uracil',1));
 
-        return this.ctn[id].exp_req(x)
+        return this.ctn[id].exp_req(x.add(1))
     },
     get_amount(id,y) {
-        let x = this.ctn[id].exp_bulk(y)
+        let x = this.ctn[id].exp_bulk(y).sub(1)
+        
+        if (['cytosine','guanine','adenine','thymine'].includes(id)) x = x.mul(getNucleobaseEffect('uracil',1));
 
-        return x.floor()
+        return x.add(1).floor()
     },
 
     ctn: {
@@ -148,8 +150,9 @@ const NUCLEOBASES = {
                 [1, 0, y => y.root(2).mul(.1), x => "+"+format(x,3)],
                 [25, 1, y => y.log10().add(1).pow(-1), x => formatReduction(x,3)],
                 [100, 0, y => y, x => "+"+format(x,0)],
-                [250, 1, y => y.add(1).log10().div(150).add(1), x => "+"+formatPercent(x.sub(1),3)],
-                [350, 1, y => y.add(10).log10(), x => formatPow(x,3)],
+                [250, 1, y => y.add(1).log(1 + 9 / 2 ** player.research.h19.toNumber()).div(150).add(1), x => "+"+formatPercent(x.sub(1),3)],
+                [350, E(1), y => y.add(10).log10(), x => formatPow(x,3)],
+                [600, 0, y => hasResearch('h15') ? y.sqrt().div(10) : y.add(1).log10().div(10), x => "+"+format(x,3)],
             ],
         },
         'thymine': {
@@ -166,13 +169,39 @@ const NUCLEOBASES = {
             },
             tier: {
                 cost(x) { return x.pow(1.25).pow_base('e6.5e4').mul('e1e6').ceil() },
-                bulk(x) { return x.div('e1e6').log('e6.5e5').root(1.25) },
+                bulk(x) { return x.div('e1e6').log('e6.5e4').root(1.25) },
             },
 
             effect: [
                 [1, 1, y => y.mul(.2).add(1).root(2), x => "+"+formatPercent(x.sub(1),3)],
                 [25, 0, y => y.root(2).mul(.1), x => "+"+format(x,3)],
                 [100, 0, y => y, x => "+"+format(x,0)],
+                [500, 1, y => y.root(2).pow_base(2).mul(y.add(1)), x => formatMult(x)],
+                [900, 1, y => y.mul(.15).add(1).root(3), x => formatPow(x)],
+            ],
+        },
+        'uracil': {
+            unl: ()=>player.feature>=27,
+
+            exp_req: x => x.sumBase(1.01).scale(100,2,"P").pow_base(1e30),
+            exp_bulk: x => x.max(1).log(1e30).scale(100,2,"P",true).sumBase(1.01,true),
+
+            base: {
+                slog: 25,
+                cost(x) { return Decimal.tetrate(10,x.add(this.slog)) },
+                bulk(x) { return x.slog(10).sub(this.slog) },
+                currency: "fish",
+            },
+            tier: {
+                cost(x) { return x.pow(1.25).pow_base(1e3).pow_base('e1e90').ceil() },
+                bulk(x) { return x.log('e1e90').log(1e3).root(1.25) },
+            },
+
+            effect: [
+                [1, 1, y => y.mul(.05).add(1).cbrt(), x => formatMult(x,3)], // log10().div(10).add(1)
+                [15, 1, y => y.add(1).root(10), x => "+"+formatPercent(x.sub(1),3)],
+                [50, 1, y => y.mul(.03).add(1).root(3), x => formatPow(x,3)],
+                [100, 1, y => player.hadron.nucleobases.uracil.experience.add(10).log10().pow(y), x => formatMult(x)],
             ],
         },
     },
@@ -186,12 +215,14 @@ function buyNucleobaseUpgrade(id,type) {
     let amt = player.hadron.nucleobases[id].upg[type], si = ['base','tier'][type], cost = NUCLEOBASES.get_cost(id,si,amt), res = si == 'base' ? CURRENCIES[n.base.currency] : player.hadron
 
     if (res.amount.gte(cost)) {
-        let bulk = NUCLEOBASES.get_bulk(id,si,res.amount)
+        let bulk = NUCLEOBASES.get_bulk(id,si,res.amount).max(amt.add(1))
 
+        /*
         if (bulk.gt(amt)) cost = NUCLEOBASES.get_cost(id,si,bulk.sub(1));
         else bulk = amt.add(1)
 
         if (si != 'base') res.amount = res.amount.sub(cost).max(0);
+        */
 
         player.hadron.nucleobases[id].upg[type] = bulk
     }
@@ -243,13 +274,15 @@ function updateNucleobasesHTML() {
 }
 
 function updateHadronTemp() {
-    let mult1 = getSharkTierBonus('nucleobase')
+    let mult1 = getSharkTierBonus('nucleobase'), d9 = hasDNAMilestone(9)
 
     for (let [id,n] of Object.entries(NUCLEOBASES.ctn)) {
         let unl = n.unl(), data = player.hadron.nucleobases[id], n_tmp = tmp.nucleobases[id]
 
         n_tmp.base_mult = data.upg[0].pow_base(2)
-        n_tmp.exp_gain = n_tmp.base_mult.mul(mult1)
+
+        n_tmp.exp_gain = n_tmp.base_mult.mul(mult1).mul(tmp.global_mult)
+        if (id === 'uracil') n_tmp.exp_gain = n_tmp.exp_gain.mul(getNucleobaseEffect('uracil',3));
 
         let bonus = E(0)
 
@@ -261,7 +294,11 @@ function updateHadronTemp() {
         for (let i = 0; i < n.effect.length; i++) {
             let a = data.amount, e = n.effect[i]
 
-            n_tmp.effect[i] = a.gte(e[0]) ? e[2](a.sub(e[0]).add(1)) : e[1]
+            if (a.gte(e[0])) {
+                let f = a.sub(e[0]).add(1)
+                if (d9 || ['cytosine','guanine','adenine','thymine'].includes(id)) f = f.mul(tmp.dna_boosts.nucleobases);
+                n_tmp.effect[i] = e[2](f)
+            } else n_tmp.effect[i] = e[1]
         }
     }
 }
@@ -273,7 +310,7 @@ function setupHadronHTML() {
         h += `
         <button id="starter-upgrade-${i}-div" onclick="buyStarterUpgrade(${i})">
             <div class="starter-upg-title">${text[i][0]}</div>
-            <br class="line">
+            <hr class="line">
             <div class="starter-upg-desc">${text[i][1]}</div>
             <div id="starter-upgrade-${i}-cost">???</div>
         </button>
@@ -313,4 +350,5 @@ function setupHadronHTML() {
     el('nucleobases-table').innerHTML = h
 
     setupGalacticExploreHTML()
+    setupDNAHTML()
 }

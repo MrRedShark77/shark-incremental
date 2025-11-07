@@ -74,6 +74,41 @@ function reloadTemp() {
 
         gal_explore_eff: [],
         gal_explore_mult: [],
+
+        dna_boosts: {
+            fish: 0,
+            nucleobases: 1,
+        },
+
+        omni: {
+            op_start: E('ee1000'),
+            op_penalty: 1,
+
+            pause: false,
+            rewards: {},
+            condensers: [],
+            undead_upgs: [],
+
+            decay_nucleus_gain: [],
+            decay_series_effects: [],
+
+            particles_gain: [E(0),E(0)],
+            particles_effect: [],
+
+            isotopes_effect: [],
+
+            rune_strength: [],
+            runes: {},
+            rune_upgrades: [E(1),E(1),E(1),E(0)],
+        },
+
+        speed: E(1),
+        global_mult: E(1),
+        global_mults: {
+            base: 1,
+            time: 1,
+            other: 1,
+        },
     }
 
     for (let x in EXPLORE) {
@@ -97,6 +132,19 @@ function reloadTemp() {
             effect: [],
         }
     }
+
+    for (let i = 0; i < DECAY_CHAIN.length; i++) {
+        tmp.omni.decay_series_effects[i] = [];
+        for (let j = 0; j < DECAY_CHAIN[i].boost.length; j++) {
+            tmp.omni.decay_series_effects[i].push(DECAY_CHAIN[i].boost[j][1]);
+        }
+        tmp.omni.decay_nucleus_gain[i] = E(0);
+    }
+
+    for (let i = 0; i < ISOTOPES.ctn.length; i++) tmp.omni.isotopes_effect[i] = ISOTOPES.ctn[i].rewards.map(x => x[1]);
+
+    for (let i = 0; i < 25; i++) tmp.omni.rune_strength[i] = E(1);
+    for (let i in RUNES) tmp.omni.runes[i] = { amount: E(0), effect: E(1) };
 }
 
 function updateTemp() {
@@ -107,14 +155,23 @@ function updateTemp() {
 
     updateResearchTemp()
     updateScalingsTemp()
-    updateHadronTemp()
-    updateGalacticExploreTemp()
-    updateConstellationTemp()
-    updateSingularityTemp()
-    updatePATemp()
-    updateEvolutionTreeTemp()
-    updateCoreTemp()
-    updateExplorationTemp()
+
+    if (player.omni.god) {
+
+    } else if (player.omni.active) {
+        updateOmniTemp()
+    } else {
+        updateDNATemp()
+        updateHadronTemp()
+        updateGalacticExploreTemp()
+        updateConstellationTemp()
+        updateSingularityTemp()
+        updatePATemp()
+        updateEvolutionTreeTemp()
+        updateCoreTemp()
+        updateExplorationTemp()
+    }
+
     updateSharkTemp()
 
     var asu = []
@@ -123,7 +180,7 @@ function updateTemp() {
 
     for (let [i,v] of Object.entries(CURRENCIES)) tmp.currency_gain[i] = preventNaNDecimal(v.gain??E(0))
 
-    reloadOres();
+    if (!player.omni.active) reloadOres();
 }
 
 function updateOptions() {

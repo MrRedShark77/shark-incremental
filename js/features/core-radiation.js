@@ -10,7 +10,7 @@ const CORE_RAD = {
     gain() {
         let m = tmp.explore_eff[4] ?? [1,1]
 
-        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0])
+        let x = this.genValue(player.core.radiation.gen).mul(sharkUpgEffect('s5')).mul(m[0]).mul(tmp.global_mult)
         
         x = x.pow(getPAEffect(0)).pow(m[1]).pow(spaceBaseUpgEffect('o5')).pow(spaceBaseUpgEffect('r5')).pow(constellationBoostEffect(4,false))
 

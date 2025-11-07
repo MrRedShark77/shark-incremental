@@ -104,7 +104,7 @@ const RESETS = {
         get require() { return player.humanoid.particle_accel.percent.reduce((x,y)=>Decimal.add(x,y)).gte(6) }, 
         reset(force) {
             if (!force && !tmp.bh_pause) {
-                if (player.singularity.best_bh.lt(8)) {
+                if (!player.rebirth.first && player.singularity.best_bh.lt(8)) {
                     tmp.bh_pause = true
 
                     el('black-hole').style.width = el('black-hole').style.height = "200vmax"
@@ -130,7 +130,8 @@ const RESETS = {
                         }, 10000);
                     }, 5000);
                 } else {
-                    player.singularity.bh = player.singularity.bh.add(1).min(8)
+                    player.singularity.best_bh = player.singularity.best_bh.max(player.singularity.bh = player.singularity.bh.add(1).min(8))
+                    player.singularity.first = true
                     updateTemp()
                     this.doReset()
                 }
@@ -177,7 +178,7 @@ const RESETS = {
 
             RESETS.humanoid.doReset()
 
-            if (player.singularity.sac_times == 0) tab = 0, tab_name = 'shark', stab = stab.map(x=>0);
+            if (player.singularity.sac_times == 0) tab = 0, tab_name = 'shark-upgs', stab = stab.map(x=>0);
 
             player.singularity.remnants = E(0)
             for (let i = 0; i < 16; i++) player.singularity.upgs[i] = E(0);
@@ -191,6 +192,8 @@ const RESETS = {
             if (!isSSObserved('pluto')) for (let i = 0; i < CONSTELLATION.boosts.length; i++) player.singularity.constellation_res[i] = E(0);
 
             ores_grid = []
+
+            REBIRTH.restore();
 
             tmp.pass = 2
         },
@@ -249,7 +252,7 @@ const RESETS = {
             let not_reset = true
 
             if (!force && !tmp.bh_pause) {
-                if (player.hadron.times < 10) {
+                if (!player.rebirth.first && player.hadron.times < 10) {
                     not_reset = false
                     tmp.bh_pause = true
 

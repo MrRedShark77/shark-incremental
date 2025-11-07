@@ -6,8 +6,12 @@ const EXPLORE = [
 
         effect(r,d) {
             let m = d.div(this.maxDepth).max(1)
-            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3).pow(m.pow(.85)).min('ee2000'),
+            let x = r.add(1).pow(hasResearch('p7') ? 4 : 3).pow(m.pow(.85)),
             y = hasResearch('s3') ? r.add(1).log10().add(1).pow(m.log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : E(1)
+
+            x = x.min('ee2000')
+            y = y.min('ee1e16')
+
             return [x,y]
         },
         effDesc: x => formatMult(x[0]) + (x[1].gt(1) ? ", " + formatPow(x[1]) : "") + " " + CURRENCIES.fish.costName,
@@ -53,7 +57,7 @@ const EXPLORE = [
         effect(r,d) {
             let x = hasResearch('s3') ? r.add(1).log10().add(1).pow(d.div(this.maxDepth).max(1).log10().add(1).root(2).overflow(100,0.5,2).softcap(1e4,2,'log')) : r.add(1).log10().div(100).mul(d.div(this.maxDepth).max(1).log10().root(2).div(5).add(1))
             if (hasDepthMilestone(2,3)) x = x.mul(1.5);
-            return x.add(1)
+            return x.add(1).min('ee1e16')
         },
         effDesc: x => formatPow(x,3) + " " + CURRENCIES.fish.costName,
 
@@ -98,7 +102,7 @@ const EXPLORE = [
             let m = d.div(this.maxDepth).max(1)
             let x = expPow(r.add(1),hasDepthMilestone(4,3) ? 0.75 : 0.5)
             if (hasResearch('e5')) x = x.max(r.add(1).root(2));
-            x = x.pow(m.log10().root(2).div(8).add(1)).overflow('ee12',0.5,2)
+            x = x.pow(m.log10().root(2).div(8).add(1)).overflow('ee12',0.5,2).min('4 PT 16')
             let y = hasResearch('s4') ? r.add(10).log10().log10().mul(m.log10().add(10).log10()).root(2).div(2).add(1) : E(1)
             return [x,y]
         },
@@ -306,7 +310,7 @@ function updateExplorationTemp() {
         let upg = player.explore.upg[i]
         tmp.explore_upg_boost[i] = [Decimal.pow(2,upg[0]), Decimal.pow(2,upg[1])]
 
-        let d = player.explore.base[i].mul(tmp.explore_upg_boost[i][1])
+        let d = player.explore.base[i].mul(tmp.explore_upg_boost[i][1]).mul(tmp.global_mult)
         if (hasDepthMilestone(i,1)) d = d.mul(Decimal.pow(1.25,player.shark_level.root(2)))
         tmp.depth_gain[i] = d.pow(getPAEffect(1)).pow(remnantUpgEffect(8))
 

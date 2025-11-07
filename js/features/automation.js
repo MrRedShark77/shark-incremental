@@ -3,7 +3,7 @@ var auto_time = {}
 
 const AUTOMATION = {
     shark: {
-        unl: ()=>player.feature>=2 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.feature>=2 || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(3,x).mul(1e3),
@@ -16,7 +16,7 @@ const AUTOMATION = {
         },
     },
     su: {
-        unl: ()=>player.feature>=2 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.feature>=2 || player.singularity.best_bh.gte(2)),
         interval: [1,0.8],
 
         cost: x=>Decimal.pow(2,x).mul(1e3),
@@ -31,7 +31,7 @@ const AUTOMATION = {
         },
     },
     spu: {
-        unl: ()=>hasDepthMilestone(1,0) || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || hasDepthMilestone(1,0) || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e5,x).mul(1e125),
@@ -46,7 +46,7 @@ const AUTOMATION = {
         },
     },
     eu: {
-        unl: ()=>player.core.times>0 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.core.times>0 || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(2,x).mul(100),
@@ -61,7 +61,7 @@ const AUTOMATION = {
         },
     },
     core_reactor: {
-        unl: ()=>player.humanoid.times>0 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.humanoid.times>0 || player.singularity.best_bh.gte(2)),
         interval: [10,0.9],
 
         cost: x=>Decimal.pow(1e10,x+1),
@@ -71,12 +71,12 @@ const AUTOMATION = {
 
         trigger() {
             let l = tmp.core_reactor_unl
-            if (!hasResearch('m10')) l = Math.min(l,8);
+            if (!REBIRTH.hasUpgrade(0) && !hasResearch('m10')) l = Math.min(l,8);
             for (let i=0; i<l; i++) upgradeCoreReactor(i);
         },
     },
     core_radiation: {
-        unl: ()=>player.humanoid.times>0 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.humanoid.times>0 || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e10,x+1),
@@ -89,7 +89,7 @@ const AUTOMATION = {
         },
     },
     radioactive_boosts: {
-        unl: ()=>hasEvolutionGoal(7) || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || hasEvolutionGoal(7) || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e100,x+1),
@@ -102,7 +102,7 @@ const AUTOMATION = {
         },
     },
     mining_upgs: {
-        unl: ()=>hasForgeUpgrade('auto') || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || hasForgeUpgrade('auto') || player.singularity.best_bh.gte(2)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(100,x+1).mul(1e70),
@@ -112,7 +112,7 @@ const AUTOMATION = {
 
         get su() {
             let x = ['m1','m2','m3','m4','m5']
-            if (hasResearch('m11')) x.push('m6','m7','m8','m9');
+            if (REBIRTH.hasUpgrade(1) || hasResearch('m11')) x.push('m6','m7','m8','m9');
             return x
         },
 
@@ -121,7 +121,7 @@ const AUTOMATION = {
         },
     },
     humanoid: {
-        unl: ()=>!isSSObserved('venus') && (hasForgeUpgrade('auto',2) || player.singularity.best_bh.gte(2)),
+        unl: ()=>!player.omni.active && !isSSObserved('venus') && (REBIRTH.hasUpgrade(1) || hasForgeUpgrade('auto',2) || player.singularity.best_bh.gte(2)),
         interval: [10,0.9],
 
         cost: x=>Decimal.pow(10,x+1).mul(1e2),
@@ -139,7 +139,7 @@ const AUTOMATION = {
         },
     },
     research: {
-        unl: ()=>player.singularity.best_bh.gte(5),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(0) || player.singularity.best_bh.gte(5)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e3,x+1).mul(1e6),
@@ -156,7 +156,7 @@ const AUTOMATION = {
         },
     },
     mining_tier: {
-        unl: ()=>player.singularity.best_bh.gte(5),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || player.singularity.best_bh.gte(5)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e3,x+1).mul(1e15),
@@ -169,7 +169,7 @@ const AUTOMATION = {
         },
     },
     remnant: {
-        unl: ()=>hasSMilestone(10),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || hasSMilestone(10)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e6,x+1).mul(1e60),
@@ -182,7 +182,7 @@ const AUTOMATION = {
         },
     },
     faith: {
-        unl: ()=>isSSObserved('mars'),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || isSSObserved('mars')),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(1e3,x+1).mul(1e15),
@@ -195,7 +195,7 @@ const AUTOMATION = {
         },
     },
     sing_research: {
-        unl: ()=>player.hadron.times,
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || player.hadron.times),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(10,x+1),
@@ -212,7 +212,7 @@ const AUTOMATION = {
         },
     },
     evolution_tree: {
-        unl: ()=>player.hadron.starter_upgs.includes(7),
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || player.hadron.starter_upgs.includes(7)),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(10,x+1),
@@ -225,7 +225,7 @@ const AUTOMATION = {
         },
     },
     rocket_part: {
-        unl: ()=>player.hadron.times,
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || player.hadron.times),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(10,x+1),
@@ -238,7 +238,7 @@ const AUTOMATION = {
         },
     },
     mining_ascend: {
-        unl: ()=>player.hadron.times,
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(1) || player.hadron.times),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow(10,x+1),
@@ -251,7 +251,7 @@ const AUTOMATION = {
         },
     },
     nucleobase: {
-        unl: ()=>player.feature>=25,
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(2) || player.feature>=25),
         interval: [1,0.9],
 
         cost: x=>Decimal.pow('e1e6',x+1),
@@ -264,6 +264,76 @@ const AUTOMATION = {
                 buyNucleobaseUpgrade(id,0)
                 buyNucleobaseUpgrade(id,1)
             }
+        },
+    },
+    gal_eu: {
+        unl: ()=>!player.omni.active&&(REBIRTH.hasUpgrade(2) || hasDNAMilestone(0)),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow10(x + 10).pow10(),
+        bulk: x=>x.log10().log10().sub(9).floor(),
+
+        curr: "hadron",
+
+        trigger() {
+            for (let i = 0; i < player.hadron.gal_explore.unl; i++) upgradeGalacticExploration(i);
+        },
+    },
+
+    osu: {
+        unl: ()=>player.omni.active && (REBIRTH.hasUpgrade(3) || player.omni.tier.gte(9)),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(2,x).mul(1e4),
+        bulk: x=>x.div(1e4).log(2).floor().add(1),
+
+        curr: "transcend",
+
+        su: ['os4','os3','os2','os1'],
+
+        trigger() {
+            buyAllSharkUpgrades(this.su)
+        },
+    },
+    ostu: {
+        unl: ()=>player.omni.active && (REBIRTH.hasUpgrade(3) || player.omni.tier.gte(19)),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e15,x).mul(1e300),
+        bulk: x=>x.div(1e300).log(1e15).floor().add(1),
+
+        curr: "transcend",
+
+        su: ['t2','t1'],
+
+        trigger() {
+            buyAllSharkUpgrades(this.su)
+        },
+    },
+    ue: {
+        unl: ()=>player.omni.active && (REBIRTH.hasUpgrade(3) || player.omni.tier.gte(22)),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e3,x+1),
+        bulk: x=>x.log(1e3).floor(),
+
+        curr: "nucleus",
+
+        trigger() {
+            for (let i = 0; i < UNDEAD.upgrades.length; i++) if (UNDEAD.upgrades[i].unl()) UNDEAD.purchase(i);
+        },
+    },
+    nucleus: {
+        unl: ()=>player.omni.active && (REBIRTH.hasUpgrade(3) || player.omni.tier.gte(30)),
+        interval: [1,0.9],
+
+        cost: x=>Decimal.pow(1e50,x+1).mul('e450'),
+        bulk: x=>x.div('e450').log(1e50).floor(),
+
+        curr: "nucleus",
+
+        trigger() {
+            for (let i = 0; i < DECAY_CHAIN.length; i++) purchaseDecaySeries(i, true);
         },
     },
 }
@@ -279,6 +349,10 @@ function toggleAutomation(i) {
 
 function isAutoEnabled(i) {
     return AUTOMATION[i].unl() && player.auto[i][1]
+}
+
+function unlockAutomations(ids=[]) {
+    ids.forEach(x => player.auto[x] = [AUTOMATION[x].max, player.auto[x][1]])
 }
 
 function buyAutomation(i) {

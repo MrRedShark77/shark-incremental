@@ -25,7 +25,7 @@ const RESEARCH = {
             ['prestige',false,l=>[1e13,1e15,1e24,1e30,1e48][l.round().toNumber()]??EINF,x=>0],
         ],
         onBuy() {
-            if (player.singularity.best_bh.gte(5)) return;
+            if (REBIRTH.hasUpgrade(0) || player.singularity.best_bh.gte(5)) return;
             CURRENCIES.prestige.amount = E(0)
             resetSharkUpgrades('p1','p2')
             doReset('prestige',true)
@@ -687,6 +687,89 @@ const RESEARCH = {
             ['hadron',false,'e900000']
         ],
     },
+    h13: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=5,
+        require: [
+            ['hadron',false,'e1.6e7']
+        ],
+    },
+    h14: {
+        tier: 3,
+        unl: ()=>player.feature>=26,
+        require: [
+            ['hadron',false,'e1.6e36']
+        ],
+    },
+    h15: {
+        tier: 3,
+        unl: ()=>player.feature>=26,
+        require: [
+            ['hadron',false,'e1e51']
+        ],
+    },
+    h16: {
+        tier: 3,
+        unl: ()=>player.feature>=26,
+        require: [
+            ['hadron',false,'e6e82']
+        ],
+    },
+    h17: {
+        tier: 3,
+        unl: ()=>player.feature>=26,
+        require: [
+            ['hadron',false,'e3e84']
+        ],
+        effect(r) {
+            return player.hadron.total.add(1).log10().add(1).log10().add(1).log10().div(8.5).add(1)
+        },
+        effDesc: x => formatMult(x,3),
+    },
+    h18: {
+        tier: 3,
+        unl: ()=>player.feature>=26,
+        require: [
+            ['hadron',false,'e2.6e89']
+        ],
+        effect(r) {
+            return player.fish.add(10).slog(10).log10().div(8.5).add(1)
+        },
+        effDesc: x => formatMult(x,3),
+    },
+    h19: {
+        tier: 3,
+        unl: ()=>player.feature>=27,
+        max: 10,
+        require: [
+            ['hadron',false,l=>[
+                'e1e16486',
+                'e2e18089',
+                'e4e21462',
+                'e3e27213',
+                'e1e39185',
+                'e4e69166',
+                'e2e171028',
+                'e1e664653',
+                'ee3873926',
+                'ee31506045',
+            ][l.round().toNumber()]??EINF,x=>0]
+        ],
+    },
+    h20: {
+        tier: 3,
+        unl: ()=>hasResearch('h19',10),
+        require: [
+            ['hadron',false,'ee305316605']
+        ],
+    },
+    h21: {
+        tier: 3,
+        unl: ()=>hasDNAMilestone(9),
+        require: [
+            ['hadron',false,'ee2.037e17']
+        ],
+    },
 
     ge1: {
         tier: 3,
@@ -787,13 +870,176 @@ const RESEARCH = {
             ['gal-explore-3',false,1e9]
         ],
     },
+    ge12: {
+        tier: 3,
+        unl: ()=>player.hadron.gal_explore.unl>=5,
+        require: [
+            ['gal-explore-4',false,1e6]
+        ],
+    },
+
+    t1: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(12),
+        max: 9,
+        require: [
+            ['transcend',false,x=>x.pow(1.25).pow_base(1e2).mul(1e20),x=>x.div(1e20).log(1e2).root(1.25).add(1).floor()]
+        ],
+        effect: r => r.mul(15),
+        effDesc: x => "+"+format(x,0),
+    },
+    t2: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(13),
+        require: [
+            ['transcend',false,1e30]
+        ],
+        effect: r => Decimal.div(sharkUpgEffect('os2',0),10),
+        effDesc: x => "+"+format(x,1),
+    },
+    t3: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(14),
+        require: [
+            ['transcend',false,1e50]
+        ],
+    },
+    t4: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(18),
+        require: [
+            ['transcend',false,1e200]
+        ],
+    },
+
+    u1: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(17),
+        require: [
+            ['transcend',false,1e125]
+        ],
+    },
+    u2: {
+        tier: 5,
+        max: 10,
+        unl: ()=>player.omni.tier.gte(18),
+        require: [
+            ['undead',false,x=>x.pow_base(4/3).pow_base(1e9),x=>x.log(1e9).log(4/3).add(1).floor()]
+        ],
+        effect: r => Decimal.div(8,r.add(1)).add(2).max(2),
+        effDesc: x => formatMult(x),
+    },
+    u3: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(21),
+        require: [
+            ['nucleus',false,100]
+        ],
+    },
+    u4: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(38),
+        require: [
+            ['undead',false,'e10000']
+        ],
+        effect: r => expPow(getCondenserBonus(1), 2).overflow('ee6',0.5,2),
+        effDesc: x => formatMult(x),
+    },
+
+    r1: {
+        tier: 4,
+        unl: ()=>player.omni.tier.gte(22),
+        require: [
+            ['nucleus',false,1e4]
+        ],
+    },
+
+    d1: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(40),
+        require: [
+            ['rune-fragments',false,10]
+        ],
+    },
+    d2: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(41),
+        require: [
+            ['rune-fragments',false,100]
+        ],
+    },
+    d3: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(42),
+        require: [
+            ['rune-fragments',false,5000]
+        ],
+    },
+    d4: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(44),
+        require: [
+            ['rune-fragments',false,1e9]
+        ],
+    },
+    d5: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(62),
+        require: [
+            ['rune-fragments',false,'e5.358e10']
+        ],
+    },
+
+    rc1: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(46),
+        require: [
+            ['rune-fragments',false,2.5e22]
+        ],
+    },
+    rc2: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(50),
+        require: [
+            ['rune-fragments',false,1e100]
+        ],
+    },
+    rc3: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(52),
+        require: [
+            ['rune-fragments',false,1e120]
+        ],
+    },
+    rc4: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(59),
+        require: [
+            ['rune-fragments',false,'e17080']
+        ],
+    },
+    rc5: {
+        tier: 5,
+        unl: ()=>player.omni.tier.gte(61),
+        require: [
+            ['rune-fragments',false,'e2.14e7']
+        ],
+    },
 }
 
 const RESEARCH_KEYS = Object.keys(RESEARCH)
 const MAX_RESEARCH = [null,15,20,25,30]
 
+RESEARCH_KEYS.forEach(x => RESEARCH[x].tier ??= 1)
+
 const PRE_BH_RESEARCH = RESEARCH_KEYS.filter(x => RESEARCH[x].tier < 2)
 const PRE_HADRON_RESEARCH = RESEARCH_KEYS.filter(x => RESEARCH[x].tier < 3)
+const PRE_OMNI_RESEARCH = RESEARCH_KEYS.filter(x => RESEARCH[x].tier < 4)
+
+PRE_OMNI_RESEARCH.forEach(x => {
+    const U = RESEARCH[x].unl ?? (() => true)
+    RESEARCH[x].unl = () => !player.omni.active && U()
+})
 
 var research_page = 1
 
@@ -802,7 +1048,7 @@ function setupResearchHTML() {
     el('research-table').innerHTML = Object.entries(RESEARCH).map(
         ([i,x]) => {
             return `
-            <div class="research-div" id="research-${i}-div">
+            <div class="research-div ${x.tier > 3 ? 'omni' : ''}" id="research-${i}-div">
                 <div class="research-name">${text[i]?.[0] ?? lang_text('research-'+i+'-name')}</div>
                 <div class="research-desc" id="research-${i}-desc">???</div>
                 <div class="research-short-text" id="research-${i}-require"></div>
@@ -828,7 +1074,8 @@ function simpleResearchEffect(id,def=E(1)) { return player.research[id].gte(1)?t
 function purchaseResearch(id,bulking=false) {
     const R = RESEARCH[id]
     let max = R.max??1
-    if (player.research[id].gte(max) || bulking && max == 1) return
+    bulking &&= max != 1;
+    if (!R.unl() || player.research[id].gte(max)) return
     let amt = player.research[id], afford = true, after = R.require.map(r => {
         if (afford) {
             let curr = CURRENCIES[r[0]], c = max>1?r[2](amt):r[2], s = (r[1]?curr.total:curr.amount)
@@ -855,6 +1102,10 @@ function purchaseResearch(id,bulking=false) {
         }
         R.onBuy?.()
     }
+}
+
+function purchaseAllResearch() {
+    for (const id of RESEARCH_KEYS) purchaseResearch(id, true);
 }
 
 function changeResearchPage(diff) {

@@ -1,6 +1,6 @@
 const CONSTELLATION = {
     get exp() {
-        let x = Decimal.add(0.44,remnantUpgEffect(17,0)).add(getNucleobaseEffect('guanine',0))
+        let x = Decimal.add(0.44,remnantUpgEffect(17,0)).add(getNucleobaseEffect('guanine',0)).mul(galacticExplorationEffect(4))
         return x
     },
 
@@ -11,13 +11,13 @@ const CONSTELLATION = {
     },
 
     get require() {
-        return player.singularity.bh_tier.scaleAll('bh_tier').sumBase(1.05).pow(1.35).pow_base(2).mul(1e6)
+        return inGalacticExploration(4) ? EINF : player.singularity.bh_tier.scaleAll('bh_tier').div(constellationBoostEffect(9,false)).sumBase(1.05).pow(1.35).pow_base(2).mul(1e6)
     },
 
     get bulk() {
         let base = this.base
-        if (base.lt(1e6)) return E(0);
-        return base.div(1e6).log(2).root(1.35).sumBase(1.05,true).scaleAll("bh_tier",true).add(1).floor()
+        if (inGalacticExploration(4) || base.lt(1e6)) return E(0);
+        return base.div(1e6).log(2).root(1.35).sumBase(1.05,true).scaleAll("bh_tier",true).mul(constellationBoostEffect(9,false)).add(1).floor()
     },
 
     upgrade() {
@@ -35,7 +35,7 @@ const CONSTELLATION = {
 
         x = x.mul(getNucleobaseEffect('cytosine',0))
 
-        x = x.pow(getNucleobaseEffect('cytosine',3))
+        x = x.pow(getNucleobaseEffect('cytosine',3)).pow(galacticExplorationEffect(4))
 
         return x
     },
@@ -114,6 +114,31 @@ const CONSTELLATION = {
                 return x
             },
             effDesc: x=>formatPow(x,3),
+        },{
+            name: "galaxy-superclusters",
+            req: 1e3,
+            effect(r,d) {
+                let x = d ? E(1) : r.add(10).log10().log10().add(1)//.mul(simpleResearchEffect('h13'))
+                return x
+            },
+            effDesc: x=>formatMult(x,3),
+        },{
+            name: "universe",
+            req: 1e5,
+            effect(r,d) {
+                let x = d ? E(1) : r.add(10).log10()
+                return x
+            },
+            effDesc: x=>formatPow(x,3),
+        },{
+            name: "multiverse",
+            req: '11 PT',
+            effect(r,d) {
+                let x = d ? E(1) : r.add(1).log10().sqrt().div(10)
+                if (!d && hasDNAMilestone(6)) x = Decimal.sub(getNucleobaseEffect('thymine',0),1).div(10).add(1).mul(x)
+                return x
+            },
+            effDesc: x=>"+"+format(x,4),
         },
     ],
 }
@@ -137,7 +162,7 @@ function setupConstellationHTML() {
     for (let i = 0; i < CONSTELLATION.boosts.length; i++) {
         let b = CONSTELLATION.boosts[i]
 
-        h += `<div class="constellation-boost" id="constellation-boost-${i}-div"><div style="min-height: 40px;">${lang_text('you-have')} <span id="constellation-boost-${i}-amount">???</span> <span id="constellation-boost-${i}-gain"></span> ${CURRENCIES[b.name].costName}.</div><br class="line"><div id="constellation-boost-${i}-effect">???</div></div>`
+        h += `<div class="constellation-boost" id="constellation-boost-${i}-div"><div style="min-height: 40px;">${lang_text('you-have')} <span id="constellation-boost-${i}-amount">???</span> <span id="constellation-boost-${i}-gain"></span> ${CURRENCIES[b.name].costName}.</div><hr class="line"><div id="constellation-boost-${i}-effect">???</div></div>`
     }
     el('constellation-boosts-table').innerHTML = h
 }

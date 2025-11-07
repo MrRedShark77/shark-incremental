@@ -1,11 +1,14 @@
-var tab = 0, stab = [0,0,0,0,0], tab_name = 'shark'
+var tab = 0, stab = [0,0,0,0,0], tab_name = 'shark-upgs'
 
 const TAB_IDS = {
-    'shark': {
+    'shark-upgs': {
         html: updateSharkHTML,
 
         notify() {
-            return !isAutoEnabled('shark') && CURRENCIES.fish.amount.gte(SHARK.cost())
+            if (player.omni.active) {
+                const G = OMNI.goals[player.omni.tier]
+                return G && G !== "other" && CURRENCIES[G[1]].amount.gte(G[0]);
+            } else return !isAutoEnabled('shark') && CURRENCIES.fish.amount.gte(SHARK.cost());
         },
     },
     'options': {
@@ -232,40 +235,131 @@ const TAB_IDS = {
         html: updateGalacticExploreHTML,
 
         notify() {
-            for (let i = 0; i < player.hadron.gal_explore.unl; i++) {
+            if (!isAutoEnabled('gal_eu')) for (let i = 0; i < player.hadron.gal_explore.unl; i++) {
                 const GE = GALACTIC_EXPLORE[i]
                 if (CURRENCIES[GE.upgrade[2]].amount.gte(GE.upgrade[0](player.hadron.gal_explore.upg[i]))) return true;
             }
             return false
         },
     },
+    'dna': {
+        html: updateDNAHTML,
+
+        notify() {
+            return !hasDNAMilestone(8) && player.feature>=26 && DNA.length.gte(player.hadron.dna)
+        },
+    },
+
+    'omni-rewards': {
+        html: updateOmniRewardsHTML,
+    },
+    'shark-condenser': {
+        html: updateSharkCondensersHTML,
+    },
+    'undead': {
+        html: updateUndeadHTML,
+
+        notify() {
+            if (!isAutoEnabled("ue")) for (let i = 0; i < UNDEAD.upgrades.length; i++) {
+                const U = UNDEAD.upgrades[i]
+                if (U.unl() && CURRENCIES[U.res].amount.gte(U.cost(player.omni.undead_upgs[i]))) return true;
+            }
+            return false
+        },
+    },
+    'actinium': {
+        html: updateDecaySeriesHTML,
+
+        notify() {
+            if (!isAutoEnabled('nucleus')) for (let i = 0; i < DECAY_CHAIN.length; i++) {
+                const D = DECAY_CHAIN[i];
+                if (D.unl() && player.omni.nucleus.gte(getDecaySeriesCost(i, player.omni.decay_series[i][0]))) return true;
+            }
+            return false;
+        },
+    },
+    'particles': {
+        html: updateDecayParticlesHTML,
+
+        notify() {
+            return !player.omni.fission && player.omni.decay_series[16][1].gte(1) && player.omni.tier.gte(39);
+        },
+    },
+    'isotopes': {
+        html: () => {ISOTOPES.updateHTML()},
+
+        notify() {
+            if (ISOTOPES.unspent.gte(1)) for (let i = 0; i < ISOTOPES.ctn.length; i++) {
+                const I = ISOTOPES.ctn[i];
+                if (I.unl() && player.omni.isotopes[i].lt(I.rewards.length)) return true;
+            }
+
+            return false;
+        },
+    },
+    'rune-constructor': {
+        html: updateRuneHTML,
+
+        notify() {
+            if (!(REBIRTH.hasUpgrade(3) || hasResearch('rc5'))) for (let i = 0; i < 4; i++) if (player.omni.rune_fragments.gte(RUNE_UPGS[i].cost(player.omni.rune_upgrades[i]))) return true;
+
+            return false;
+        },
+    },
+    'rune-sacrifice': {
+        html: () => RUNE_SACRIFICE.html(),
+    },
+    'god': {
+        html: () => OMNI.godHTML(),
+
+        notify() {
+            return player.omni.god ? player.fish.gte(OMNI.godRequire2) : player.fish.gte(OMNI.godRequire1)
+        },
+    },
+    'rebirth-upgs': {
+        html: () => REBIRTH.html.upgrades(),
+
+        notify() {
+            return player.rebirth.upgrades.length < 10 && player.rebirth.points.gte(1);
+        },
+    },
+    'rebirth-past10': {
+        html: () => REBIRTH.html.past10(),
+    },
 }
 
 const TABS = [
     { // 0
-        stab: "shark",
+        unl: ()=>!player.omni.god,
+        id: "shark",
+        stab: [
+            ["shark-upgs"],
+            ["omni-rewards", () => player.omni.tier.gt(1)],
+            ["shark-condenser", () => player.omni.tier.gte(10)],
+        ],
     },{
         stab: "options",
     },{
+        unl: ()=>!player.omni.god,
         stab: "scalings",
     },{
-        unl: ()=>player.feature>=2 || player.singularity.best_bh.gte(2),
+        unl: ()=>!player.omni.god && (player.rebirth.first || player.feature>=2 || player.singularity.best_bh.gte(2)),
         stab: "auto",
     },{
-        unl: ()=>player.feature>=3,
+        unl: ()=>!player.omni.god && (!player.omni.active && player.feature>=3 || player.omni.tier.gte(12)),
         stab: "research",
     },{ // 5
-        unl: ()=>!tmp.ss_difficulty && player.feature>=4,
+        unl: ()=>!player.omni.active && !tmp.ss_difficulty && player.feature>=4,
         stab: "explore",
     },{
-        unl: ()=>tmp.ss_difficulty,
+        unl: ()=>!player.omni.active && tmp.ss_difficulty,
         stab: "space-base",
         style: {
             "background": `#006c9e`,
         },
     },{
         id: 'core',
-        unl: ()=>player.core.times>0,
+        unl: ()=>!player.omni.active && player.core.times>0,
         stab: [
             ["core-reactor"],
             ['core-radiation',()=>player.feature>=7],
@@ -273,7 +367,7 @@ const TABS = [
         ],
     },{
         id: 'evolution',
-        unl: ()=>player.humanoid.times>0,
+        unl: ()=>!player.omni.active && player.humanoid.times>0,
         stab: [
             ["shark-rank"],
             ["evolution-tree"],
@@ -284,7 +378,7 @@ const TABS = [
         ],
     },{
         id: 'singularity',
-        unl: ()=>player.singularity.first,
+        unl: ()=>!player.omni.active && player.singularity.first,
         stab: [
             ["black-hole"],
             ["singularity-milestones"],
@@ -298,16 +392,51 @@ const TABS = [
         },
     },{ // 10
         id: 'hadron',
-        unl: ()=>player.hadron.times,
+        unl: ()=>!player.omni.active && player.hadron.times,
         stab: [
             ["hadron-su"],
             ["shark-tier",()=>player.hadron.starter_upgs.includes(0)],
             ['nucleobase',()=>player.feature>=22],
             ['gal-explore',()=>player.feature>=24],
+            ['dna',()=>player.feature>=26],
         ],
         style: {
             "background": `#ff8 repeating-conic-gradient(#0000 0 25%, #f802 0 50%)`,
             "backgroundSize": "200px 200px",
+            "animation": `cosmic-pattern 20s linear infinite`,
+        },
+    },{
+        unl: () => !player.omni.god && player.omni.tier.gte(15),
+        stab: "undead",
+    },{
+        unl: () => !player.omni.god && player.omni.tier.gte(21),
+        id: "nucleus",
+        stab: [
+            ['actinium'],
+            ['particles',()=>player.omni.tier.gte(22)],
+            ['isotopes',()=>player.omni.tier.gte(28)],
+        ]
+    },{
+        unl: () => !player.omni.god && player.omni.tier.gte(40) && player.omni.runeifications,
+        id: "runes",
+        stab: [
+            ['rune-constructor'],
+            ['rune-sacrifice',()=>player.omni.tier.gte(48)],
+        ]
+    },{
+        unl: () => player.omni.god || player.omni.tier.gte(63),
+        stab: "god",
+    },{ // 15
+        unl: () => player.rebirth.first,
+        id: "rebirth",
+        stab: [
+            ['rebirth-upgs'],
+            ['rebirth-past10'],
+        ],
+        style: {
+            "background": `#101 repeating-conic-gradient(#0000 0 25%, #4042 0 50%)`,
+            "backgroundSize": "200px 200px",
+            "color": "white",
             "animation": `cosmic-pattern 20s linear infinite`,
         },
     },
@@ -374,8 +503,22 @@ function updateTabs() {
         if (unl) v.html?.()
     }
 
+    DEFAULT_TAB_STYLE.background = player.omni.god ? 'black' : player.omni.active ? "#080011" : "lightseagreen"
+    DEFAULT_TAB_STYLE.color = player.omni.active ? "white" : "black"
+    document.body.style.setProperty("--main-background", player.omni.god ? 'black' : player.omni.active ? "#002" : "lightseagreen")
+    document.body.style.setProperty("--main-line", player.omni.active ? "white" : "#11857f")
+    document.body.style.setProperty("--main-color", player.omni.active ? "white" : "black")
+
     let s = TABS[tab]?.style ?? {}
     for (let [k,v] of Object.entries(DEFAULT_TAB_STYLE)) document.body.style[k] = s[k] ?? v
+
+    el('worth-shark').style.display = el_display(!player.omni.active && player.feature >= 27 && tab_name == 'shark-upgs')
+    if (!player.omni.active && tab_name == 'shark-upgs') {
+        document.body.style.background = `hsl(177, 70%, ${41 * Math.max(0,1 - Math.max(0,window.scrollY/5000 - 1))}%)`
+        document.body.style.color = `hsl(0,0%,${100*Math.min(1,Math.max(0,window.scrollY/5000 - 1))}%)`
+
+        el('worth-shark-button').innerHTML = lang_text('shark-worth',player.hadron.dna.gte(1e100))
+    }
 }
 
 function setupTabs() {

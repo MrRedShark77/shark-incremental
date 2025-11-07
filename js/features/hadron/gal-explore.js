@@ -31,6 +31,22 @@ const GALACTIC_EXPLORE = [
         effDesc: x => formatPow(x,3),
 
         upgrade: [x => Decimal.tetrate(10,x.mul(.01).add(3.9004007556831843)), x => x.max(1).slog(10).sub(3.9004007556831843).div(.01).floor().add(1), 'remnants'], // ee1e7
+    },{
+        tier_req: 175,
+        fish_req: E('eee9e8'),
+
+        effect(x) { return x.add(1).pow(2) },
+        effDesc: x => formatPow(x),
+
+        upgrade: [x => Decimal.tetrate(10,x.mul(.01).add(3.3059160970914423)), x => x.max(1).slog(10).sub(3.3059160970914423).div(.01).floor().add(1), 'stellar-fish'], // e1e50
+    },{
+        tier_req: 245,
+        fish_req: E('1e750'),
+
+        effect(x) { return x.add(1).log10().root(3).div(100) },
+        effDesc: x => "+"+format(x,4),
+
+        upgrade: [x => Decimal.tetrate(10,x.mul(.01).add(4.3881638527542695)), x => x.max(1).slog(10).sub(4.3881638527542695).div(.01).floor().add(1), 'sharkium'], // ee1e96
     },
 ]
 
@@ -41,6 +57,7 @@ function getGalacticExplorationScore(fish,i) {
     var s = E(0)
     if (fish.gte(GE.fish_req)) {
         s = fish.slog(10).sub(GE.slog_fish_req).mul(10).add(1).pow(2).sub(1).pow10().max(1)
+        s = s.mul(getNucleobaseEffect('thymine',3))
     }
     return s
 }
@@ -109,9 +126,9 @@ function setupGalacticExploreHTML() {
                 <div style="min-height: 200px;">
                     <h3>${toTextStyle(g_text[0],'gal-explore-'+i)}</h3><br>
                     <b>${text[1]}:</b> <span id="gal-explore-${i}-score">???</span>
-                    <br class="black-line">
+                    <hr class="black-line">
                     ${g_text[2]}
-                    <br class="black-line">
+                    <hr class="black-line">
                     You have <span id="gal-explore-${i}-res">???</span> ${toTextStyle(g_text[1],'gal-explore-'+i)}.
                     <div id="gal-explore-${i}-effect">Boost Placeholder</div>
                 </div><div class="table-center">

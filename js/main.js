@@ -2,7 +2,7 @@ const el = id => document.getElementById(id);
 const FPS = 30;
 
 function toTextStyle(text,style="",id) { return `<text-style text="${style}" ${id ? `id="${id}"` : ""}>${text}</text-style>` }
-function toColoredText(text,color="") { return `<text-style style="color:${color}">${text}</text-style>` }
+function toColoredText(text,color="") { return Array.isArray(text) ? text.map(x => toColoredText(x,color)) : `<text-style style="color:${color}">${text}</text-style>` }
 function compareStyle(text,x,y) { return Decimal.eq(x,y)?toTextStyle(text):Decimal.gte(x,y)?toTextStyle(icon("up-arrow")+text,"green"):toTextStyle(icon("down-arrow")+text,"red") }
 
 var player = {}, date = Date.now(), diff = 0;
@@ -10,50 +10,75 @@ var player = {}, date = Date.now(), diff = 0;
 function loop() {
     if (offline.active) return
 
-    updateTemp()
+    if (!tmp.omni.pause && !player.end) {
+        REBIRTH.temp();
+        updateTemp();
+    }
 
     diff = Date.now()-date;
-    updateOptions()
-    updateHTML()
-    calc(diff/1000)
+    
+    if (!tmp.omni.pause && !player.end) {
+        updateOptions()
+        updateHTML()
+        calc(diff/1000)
+    }
+    
     date = Date.now()
 }
 
 const TOP_CURR = [
     {
+        unl: ()=>!player.omni.active,
         curr: "prestige",
         req: ()=>player.total_fish.gte(CURRENCIES.prestige.require),
     },
     {
-        unl: ()=>player.core.times > 0 || hasDepthMilestone(0,4),
+        unl: ()=>!player.omni.active&&(player.core.times > 0 || hasDepthMilestone(0,4)),
         curr: "core",
         req: ()=>player.prestige.total.gte(CURRENCIES.core.require),
     },
     {
-        unl: ()=>player.humanoid.times > 0 || player.feature >= 10,
+        unl: ()=>!player.omni.active&&(player.humanoid.times > 0 || player.feature >= 10),
         curr: "humanoid",
         req: ()=>player.fish.gte(CURRENCIES.humanoid.require),
     },
     {
-        unl: ()=>player.feature >= 18 && !tmp.ss_difficulty,
+        unl: ()=>!player.omni.active&&(player.feature >= 18 && !tmp.ss_difficulty),
         reset: "sacrifice",
         curr: "dark-matter",
         req: ()=>player.fish.gte(CURRENCIES['dark-matter'].require) && player.singularity.bh.gte(8),
     },
     {
-        unl: ()=>tmp.ss_difficulty >= 2,
+        unl: ()=>!player.omni.active&&tmp.ss_difficulty >= 2,
         curr: "reserv",
         req: ()=>player.solar_system.observ.gte(CURRENCIES.reserv.require),
     },
     {
-        unl: ()=>tmp.ss_difficulty >= 4,
+        unl: ()=>!player.omni.active&&tmp.ss_difficulty >= 4,
         curr: "traject",
         req: ()=>player.solar_system.reserv.gte(CURRENCIES.traject.require),
     },
     {
-        unl: ()=>player.hadron.times > 0 || isSSObserved('sun'),
+        unl: ()=>!player.omni.active&&(player.hadron.times > 0 || isSSObserved('sun')),
         curr: "hadron",
         req: ()=>player.fish.gte(CURRENCIES.hadron.require),
+    },
+    {
+        unl: ()=>!player.omni.god && player.omni.active && player.omni.tier.gte(7),
+        curr: "transcend",
+        req: ()=>player.fish.gte(CURRENCIES.transcend.require),
+    },
+    {
+        unl: ()=>!player.omni.god && player.omni.active && player.omni.tier.gte(20),
+        reset: "reaction",
+        curr: "nucleus",
+        req: ()=>player.omni.transcend.gte(CURRENCIES.nucleus.require),
+    },
+    {
+        unl: ()=>!player.omni.god && player.omni.active && player.omni.tier.gte(40),
+        reset: "runeification",
+        curr: "rune-fragments",
+        req: ()=>player.fish.gte(CURRENCIES["rune-fragments"].require),
     },
 ]
 
@@ -170,6 +195,39 @@ const PROGRESS = [
         get amount() { return CURRENCIES.hadron.total },
         require: 'e1e6',
         logHeight: 1,
+    },{
+        auto: true,
+        get amount() { return CURRENCIES.fish.total },
+        require: '4 PT 1600',
+        logHeight: 4,
+    },{
+        auto: true,
+        get amount() { return player.hadron.dna },
+        require: 1000,
+    },{
+        cond_text: true,
+        get amount() { return player.hadron.dna },
+        require: 1e100,
+        logHeight: 1,
+    },{
+        cond_text: true,
+        get amount() { return player.total_fish.mul(+player.omni.tier.gte(7)) },
+        require: 1e33,
+        logHeight: 1,
+    },{
+        cond_text: true,
+        get amount() { return player.omni.transcend.mul(+player.omni.tier.gte(20)) },
+        require: '1e800',
+        logHeight: 1,
+    },{
+        cond_text: true,
+        get amount() { return player.total_fish.mul(+player.omni.tier.gte(40)) },
+        require: 'ee60',
+        logHeight: 2,
+    },{
+        auto: true,
+        get amount() { return player.omni.overmodification },
+        require: 178,
     },
 ]
 
@@ -184,4 +242,7 @@ const CONFIRMATIONS = {
     'black-hole': [()=>player.singularity.first],
     sacrifice: [()=>player.singularity.sac_times>0],
     hadron: [()=>player.hadron.times>0],
+    transcend: [()=>!player.omni.god && player.omni.transcendences>0],
+    reaction: [()=>!player.omni.god && player.omni.reactions>0],
+    runeification: [()=>!player.omni.god && player.omni.runeifications>0],
 }

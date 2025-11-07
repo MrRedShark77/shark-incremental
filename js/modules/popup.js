@@ -40,6 +40,8 @@ function createPromptPopup(text,acceptFunc,rejectFunc) {
     })
 }
 
+var closePopup;
+
 function updatePopup() {
     var popup_el = el('popup')
 
@@ -54,7 +56,7 @@ function updatePopup() {
         el('popup-html').innerHTML = p.html + (p.type == 'prompt' ? '<br><textarea id="popup-input" placeholder="'+lang_text('prompt-placeholder')+'" rows="5"></textarea>' : '')
         el('popup-btns').innerHTML = p.buttonName.map((b,i) => `<button id="popup-btn${i}">${b}</button>`).join('')
 
-        var closePopup = () => {
+        closePopup = () => {
             popups.splice(0,1)
 
             popupVisibled = false

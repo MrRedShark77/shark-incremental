@@ -7,6 +7,7 @@ const ICONS = {
     'down-arrow' : '&#xe005;',
     'luck' : '&#xe006;',
     'heart' : '&#xe007;',
+    'warn' : '&#xe008;',
 }
 
 function icon(id) { return `<icon>${ICONS[id]}</icon>` }

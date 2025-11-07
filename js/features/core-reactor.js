@@ -360,6 +360,8 @@ function updateCoreTemp() {
         if (i < 8) level = level.mul(strong1);
         else if (i < 12) level = level.mul(strong2);
 
+        if (i < 8) level = level.min('ee1e16');
+
         tmp.core_effect[i] = CR.effect(level)
     }
 
