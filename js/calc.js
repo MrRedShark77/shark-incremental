@@ -27,7 +27,7 @@ function calc(dt) {
 
         if (REBIRTH.hasUpgrade(6) && RESETS.humanoid.require && player.feature == 11-1) {
             increaseFeature(11);
-            player.core.times++;
+            player.humanoid.times++;
         }
 
         if (REBIRTH.hasUpgrade(7) && RESETS.core.require && player.feature == 19-1) {
