@@ -131,6 +131,22 @@ function updateRuneTemp() {
     if (hasResearch('rc5')) {
         const p = player.omni.rune_upgrades[3], q = p.pow_base(1.2).mul(p.add(1))
         for (const id of RUNE_KEYS) tmp.omni.runes[id].amount = q;
+
+        if (hasResearch('rc1')) for (let i = 0; i < 3; i++) {
+            const r = player.omni.rune_upgrades[i].div(10).floor();
+            switch (i) {
+                case 0:
+                    tmp.omni.runes.fehu.amount = tmp.omni.runes.fehu.amount.add(r);
+                break;
+                case 1:
+                    tmp.omni.runes.berkanan.amount = tmp.omni.runes.berkanan.amount.add(r);
+                    tmp.omni.runes.kaunan.amount = tmp.omni.runes.kaunan.amount.add(r);
+                break;
+                case 2:
+                    tmp.omni.runes.naudiz.amount = tmp.omni.runes.naudiz.amount.add(r);
+                break;
+            }
+        }
     } else {
         let existed = 0, uruz_existed = 0;
 
