@@ -168,26 +168,26 @@ function updateRuneTemp() {
             if (!sacrificed.includes(D.id)) I.amount = I.amount.add(D.amount.mul(tmp.omni.rune_strength[i]));
         }
 
+        if (hasResearch('rc1')) for (let i = 0; i < 3; i++) {
+            const r = player.omni.rune_upgrades[i].div(10).floor();
+            switch (i) {
+                case 0:
+                    tmp.omni.runes.fehu.amount = tmp.omni.runes.fehu.amount.add(r);
+                break;
+                case 1:
+                    tmp.omni.runes.berkanan.amount = tmp.omni.runes.berkanan.amount.add(r);
+                    tmp.omni.runes.kaunan.amount = tmp.omni.runes.kaunan.amount.add(r);
+                break;
+                case 2:
+                    tmp.omni.runes.naudiz.amount = tmp.omni.runes.naudiz.amount.add(r);
+                break;
+            }
+        }
+
         const maxed = Object.keys(tmp.omni.runes).reduce((a,b) => Decimal.max(a,b == 'uruz' ? 0 : tmp.omni.runes[b].amount), E(0))
 
         for (let i = 0; i < player.omni.rune_sacrificed; i++) {
             tmp.omni.runes[RUNE_KEYS[i]].amount = maxed;
-        }
-    }
-
-    if (hasResearch('rc1')) for (let i = 0; i < 3; i++) {
-        const r = player.omni.rune_upgrades[i].div(10).floor();
-        switch (i) {
-            case 0:
-                tmp.omni.runes.fehu.amount = tmp.omni.runes.fehu.amount.add(r);
-            break;
-            case 1:
-                tmp.omni.runes.berkanan.amount = tmp.omni.runes.berkanan.amount.add(r);
-                tmp.omni.runes.kaunan.amount = tmp.omni.runes.kaunan.amount.add(r);
-            break;
-            case 2:
-                tmp.omni.runes.naudiz.amount = tmp.omni.runes.naudiz.amount.add(r);
-            break;
         }
     }
 
