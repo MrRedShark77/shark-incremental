@@ -120,7 +120,7 @@ const REBIRTH = {
     hasUpgrade: i => player.rebirth.upgrades.includes(i),
 
     purchaseUpgrade(i) {
-        if (!player.rebirth.upgrades.includes(i) || player.rebirth.points.gte(1)) {
+        if (!player.rebirth.upgrades.includes(i) && player.rebirth.points.gte(1)) {
             player.rebirth.points = player.rebirth.points.sub(1);
             player.rebirth.upgrades.push(i)
             this.upgrades[i]?.()
