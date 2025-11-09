@@ -946,7 +946,7 @@ const RESEARCH = {
         effDesc: x => formatMult(x),
     },
 
-    r1: {
+    re1: {
         tier: 4,
         unl: ()=>player.omni.tier.gte(22),
         require: [

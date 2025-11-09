@@ -482,7 +482,7 @@ LANGUAGES.ZH = {
             'u3': ['亡灵影响', `游戏速度现在影响 ${toTextStyle('亡灵精华','undead')} 的产量。`],
             'u4': ['更好的亡灵冷凝器', `压缩的 ${toTextStyle('亡灵精华','undead')} 只对 ${toTextStyle('不死精华','undead')} 显著改善。`],
 
-            'r1': ['研究 R-保持者',`在 ${toTextStyle('反应','atom')} 中保持 ${toTextStyle('研究','prestige')}。`],
+            're1': ['研究 R-保持者',`在 ${toTextStyle('反应','atom')} 中保持 ${toTextStyle('研究','prestige')}。`],
 
             'd1': ['研究 R-保持者+',`在 ${toTextStyle('符文化','rune')} 中保持 ${toTextStyle('研究','prestige')}。`],
             'd2': ['更好的全能鲨指数', `改善 '全能鲨指数' 的公式。`],

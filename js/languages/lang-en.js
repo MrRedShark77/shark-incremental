@@ -486,7 +486,7 @@ LANGUAGES.EN = {
             'u3': ['Undead Affection', `Game speed now affects the catch of ${toTextStyle('Undead Essence','undead')}.`],
             'u4': ['Better Undead Condenser', `Condensed ${toTextStyle('Undead Essence','undead')} is improved significantly only for ${toTextStyle('Undead Essence','undead')}.`],
 
-            'r1': ['Research R-Keeper',`Keep ${toTextStyle('Research','prestige')} on ${toTextStyle('Reaction','atom')}.`],
+            're1': ['Research R-Keeper',`Keep ${toTextStyle('Research','prestige')} on ${toTextStyle('Reaction','atom')}.`],
 
             'd1': ['Research R-Keeper+',`Keep ${toTextStyle('Research','prestige')} on ${toTextStyle('Runeification','rune')}.`],
             'd2': ['Better Omni-Shark Exponent', `The formula for ‘Omni-Shark Exponent’ is improved.`],

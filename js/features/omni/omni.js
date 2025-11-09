@@ -254,7 +254,7 @@ const OMNI = {
 
         let keep = [];
 
-        if (O.tier.gte(28)) keep.push('r1');
+        if (O.tier.gte(28)) keep.push('re1');
 
         for (let id of RESEARCH_KEYS) if (RESEARCH[id].tier < 5 && !keep.includes(id)) player.research[id] = E(0);
         for (let id of SU_KEYS) player.shark_upg[id] = E(0);
@@ -757,7 +757,7 @@ RESETS.reaction = {
         for (let i = 0; i < UNDEAD.upgrades.length; i++) player.omni.undead_upgs[i] = E(0);
 
         resetSharkUpgrades('t1','t2')
-        if (!hasResearch('r1')) resetResearch('t1','t2','u1');
+        if (!hasResearch('re1')) resetResearch('t1','t2','u1');
 
         RESETS.transcend.doReset()
     },
