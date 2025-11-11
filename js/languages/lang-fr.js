@@ -15,37 +15,69 @@ LANGUAGES.FR = {
 		'coral-name': "Coraux",
 		'coral-costName': toTextStyle('Coraux','coral'),
 
-		'ice-name': "Ice",
-		'ice-costName': toTextStyle('Glaces','ice'),
+		'ice-name': "Glace",
+		'ice-costName': toTextStyle('Glace','ice'),
 
-		'salt-name': "Salt",
+		'salt-name': "Sel",
 		'salt-costName': toTextStyle('Sel','salt'),
 
-		'snow-name': "Compressed Snow",
+		'snow-name': "Neige comprimée",
 		'snow-costName': toTextStyle('Neige comprimé','snow'),
 		
 		'kelp-name': "Varech",
 		'kelp-costName': toTextStyle('Varech','kelp'),
 
-		'core-name': "Fragments Magmatique",
+		'core-name': "Fragments Magmatiques",
 		'core-costName': ' Fragments' + toTextStyle('Magmatique','core'),
 
 		'humanoid-name': "Requins Humanoïdes",
         'humanoid-costName':  'Requins ' + toTextStyle('Humanoïdes','humanoid'),
-
-        'full-shark-level': 'Niveau du ' + toTextStyle('Requin','shark'),
-
+		
+		'remnants-name': "Vestiges",
+		'remnants-costName': toTextStyle('Vestiges','black-hole'),
+		
+		'dark-matter-name': "Matière Noire",
+		'dark-matter-costName': toTextStyle('Matière Noire','black-hole'),
+		
+		'observ-name': "Observatoires",
+		'observ-costName': toTextStyle('Observatoires','observ'),
+		
+		'reserv-name': "Réservoirs",
+		'reserv-costName': toTextStyle('Réservoirs','reserv'),
+		
+		'traject-name': "Trajectoires",
+		'traject-costName': toTextStyle('Trajectoires','traject'),
+		
+		'hadron-name': "Particules Fondamentales",
+		'hadron-costName': toTextStyle('Particules Fondamentales','hadron'),
+		
+		'full-shark-level': 'Niveau du' + toTextStyle('Requin','shark'),
+        'full-shark-rank': 'Rang du' + toTextStyle('Requin','shark') + ' Rank',
+		
 		'sharkoid-faith': toTextStyle('Foi sharkoïde','humanoid'),
 
 		'curr-top-0-req': x => `Atteignez un total de <b>${format(x)}</b> ${toTextStyle('Poissons','fish')}`, 
-		'curr-top-0-reset': x => `Prestige pour <b>${x.format(0)}</b> Éclats de ${toTextStyle('Prestige','prestige')}`,
+		'curr-top-0-reset': x => `Faites un prestige pour <b>${x.format(0)}</b> Éclats de ${toTextStyle('Prestige','prestige')}`,
 
 		'curr-top-1-req': x => `Atteignez un total de <b>${format(x)}</b> éclats de ${toTextStyle('Prestige','prestige')}`, 
-		'curr-top-1-reset': x => `Entrez dans le noyau pour <b>${x.format(0)}</b> Fragments ${toTextStyle('Magmatique','core')}`,
+		'curr-top-1-reset': x => `Entrez dans le noyau pour <b>${x.format(0)}</b> Fragments ${toTextStyle('Magmatiques','core')}`,
 
-		'curr-top-2-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('poissons','fish')}`, 
+		'curr-top-2-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('Poissons','fish')}`, 
         'curr-top-2-reset': (x,next) => `Evoluez vos ${toTextStyle('Requins','shark')} en <b>${format(x,0)}</b> Requins ${toTextStyle('Humanoïdes','humanoid')}  (Prochain à <b>${format(next)}</b> ${toTextStyle('poissons','fish')})`,
 
+		'curr-top-3-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('Poissons','fish')} & <b>8</b> ${toTextStyle('Trou Noirs','black-hole')}`, 
+        'curr-top-3-reset': x => `Sacrifiez vos ${toTextStyle('Requins','shark')} pour <b>${format(x,0)}</b> ${toTextStyle('Matière Noire','black-hole')}`,
+
+        'curr-top-4-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('Observatoires','observ')}`, 
+        'curr-top-4-reset': x => `Réservez pour <b>${format(x,0)}</b> ${toTextStyle('Réservoirs','reserv')}`,
+
+        'curr-top-5-req': x => `Atteingez <b>${format(x)}</b> ${toTextStyle('Reservoirs','reserv')}`, 
+        'curr-top-5-reset': x => `Faites un trajet pour <b>${format(x,0)}</b> ${toTextStyle('Trajectoires','traject')}`,
+
+        'curr-top-6-req': x => `Atteignez <b>${format(x)}</b> ${toTextStyle('Poissons','fish')}`, 
+        'curr-top-6-reset': (x,next) => `Hadronisez pour <b>${format(x,0)}</b> ${toTextStyle('Particules Fondamentales','hadron')} (Prochain à <b>${format(next)}</b> ${toTextStyle('Poissons','fish')})`,
+        
+		
 		'radioactive-name': toTextStyle('Radiation '+icon("radioactive"),'core'),
 
 		// Tabs
@@ -55,6 +87,7 @@ LANGUAGES.FR = {
 		'tab-auto': "Automatisation",
 		'tab-research': toTextStyle('Recherche','prestige'),
 		'tab-explore': "Exploration",
+		'tab-space-base': toTextStyle('Base Spatiale','observ'),
 
 		'tab-core': "Le " + toTextStyle('Noyau','core'),
 		'tab-core-reactor': "Réacteur du " + toTextStyle('Noyau','core'),
@@ -62,11 +95,28 @@ LANGUAGES.FR = {
         'tab-core-assembler': "Assembleur du " + toTextStyle('Noyau','core'),
 
 		'tab-evolution': toTextStyle('Évolution','humanoid'),
-        'tab-shark-rank': "Rang de " + toTextStyle('Requin','shark'),
+        'tab-shark-rank': "Rang du " + toTextStyle('Requin','shark'),
         'tab-evolution-tree':  "Arbre d'" + toTextStyle('Évolution','humanoid'),
         'tab-evolution-goal':  "Objectifs d'" + toTextStyle('Évolution','humanoid'),
 		'tab-cultivation': "Culture",
+		'tab-forge': "Forge",
+        'tab-particle-accel': "Accélérateur de particules",
 
+        'tab-singularity': toTextStyle('Singularité','black-hole'),
+        'tab-black-hole': toTextStyle('Trou Noir','black-hole'),
+        'tab-singularity-milestones': 'Jalons de' + toTextStyle('Singularité','black-hole'),
+        'tab-solar-system': "Système Solaire",
+        'tab-constellation': toTextStyle('Constellation','star'),
+		
+		'tab-hadron': toTextStyle('Hadronisation','hadron'),
+        'tab-hadron-su': "Améliorations de départ",
+        'tab-shark-tier': "Niveau du" + toTextStyle('Requin','shark'),
+        'tab-nucleobase': "Bases nucléïques",
+        'tab-gal-explore': "Exploration galactique",
+        'tab-dna': "ADN",
+
+        'tab-shark-upgs': toTextStyle('Shark','shark') + " Upgrades",
+		
 		// Elements
 
 		'fish-div': `Votre ${toTextStyle('Requin','shark')} a mangé <h2>${toTextStyle('0','fish','fish-amount')}</h2> <span id="fish-gain"></span> poissons.`,
@@ -76,7 +126,12 @@ LANGUAGES.FR = {
         'shark-rank-div': `Le rang de votre ${toTextStyle('Requin','shark')} est de <h3 id="shark-rank">0</h3>.`,
         'shark-rank-req-div': `Le prochain rang nécessite ${toTextStyle('Requin','shark')} ELO de <h4>${toTextStyle('0','humanoid','shark-rank-req')}</h4>.`,
         'shark-rank-note': `Note: Le rang de requin est réinitialisé lorsque vous déclenchez une réinitialisation de l'évolution.`,
-
+		
+		'shark-iq-div': `Le QI de votre ${toTextStyle('Requin','shark')} est <h3>${toTextStyle('0','hadron','shark-iq')}</h3>.`,
+        'shark-tier-div': `Le tier de votre ${toTextStyle('Requin','shark')}  <h3 id="shark-tier2">0</h3>.`,
+        'shark-tier-req-div': `Le prochain tier requiert <h4>${toTextStyle('0','hadron','shark-tier-req')}</h4> QI de requin.`,
+        'shark-tier-note': `Note: Le tier du requin se réinitialise lorsque vous Hadronisez.`,
+		
 		'option-title-1': "Options principales",
 		'option-title-2': "Notations",
 		'option-title-3': "Confirmations",
@@ -85,7 +140,7 @@ LANGUAGES.FR = {
 		'offline-speed': "Accelérer",
 		'offline-done': "Terminer",
 
-		'radioactive-div': `Le ${toTextStyle('Noyau','core')} à produit <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
+		'radioactive-div': `Le ${toTextStyle('Noyau','core')} a produit <h3>${toTextStyle('0 / 1,000 '+icon("radioactive"),'core','radioactive-amount')}</h3> <span id="radioactive-gain"></span>.`,
 		get 'radioactive-summary'() {
 			var c = toTextStyle('Noyau','core'), rf = toTextStyle('Poissons '+icon("radioactive"),'fish')
 			return `
@@ -103,15 +158,45 @@ LANGUAGES.FR = {
 
 		'sharkoid-faith-div': `Vous avez <h3 id="sharkoid-faith-spent">0</h3> / <h3 id="sharkoid-faith-total">0</h3> ${toTextStyle('Foi sharkoïde','humanoid')}.`,
         'respec-evolution-tree': `Réinitialiser l'arbre d'${toTextStyle('Évolution','humanoid')}`,
-		'export-evolution-tree': `Exporter l'arbre d'${toTextStyle('Évolution','humanoid')} Tree`,
-        'import-evolution-tree': `Importer l'arbre d'${toTextStyle('Évolution','humanoid')} Tree`,
+		'export-evolution-tree': `Exporter l'arbre d'${toTextStyle('Évolution','humanoid')}`,
+        'import-evolution-tree': `Importer l'arbre d'${toTextStyle('Évolution','humanoid')}`,
         'evolution-tree-preset': `Préréglages de l'arbre d'${toTextStyle('Évolution','humanoid')}`,
 
-        'rerun-evolution': `Recommencer l'${toTextStyle('Évolution','humanoid')}, réinitialise l'arbre`,
+        'rerun-evolution': `Recommencer l'${toTextStyle('Évolution','humanoid')}, réinitialisant l'arbre`,
 
 		'mining-text': `Minage en cours... <b id="mining-progress">???</b> | Dégâts <b id="mining-damage">???</b> | ${toTextStyle(`Fortune de minage <span id="mining-fortune">0</span>`+icon("luck"),'gold')}`,
-        'mining-tier-div': `Niveau du minage: <h3 id="mining-tier">0</h3>`,
+        'super-mining-text': `Super Dégâts <b id="super-mining-damage">???</b> | ${toColoredText(`Super Fortune de minage <span id="super-mining-fortune">0</span>`+icon("luck"),'orange')}`,
+        'mining-tier-div': `Tier de minage: <h3 id="mining-tier">0</h3>`,
+        'mining-ascend-div': `Ascension de minage: <h3 id="mining-ascend">0</h3>`,
+        'mining-note': `Note: Si vous êtes coincé en minant un minerai avec avec un gros nombre de PV (prend très longtemps), Relancez la page.`,
+        'mining-tier-undo-btn': `Baissez le tier de minage de 1 si vous êtes coincé en train de miner.`,
+        'mining-ascend-undo-btn': `Baissez l'ascension de minage de 1 si vous êtes coincé en train de miner.`,
 
+
+		'black-hole-button': `Puisque vous avez rempli tous les accélérateurs de particule, vous devezformer un trou noir au cas-où vous rentreriez dans un autre univers.`,
+        'black-hole-html': `Vous avez formé <h2>${toTextStyle('0','black-hole','black-hole-amount')}</h2> trou noirs, ce qui réduit l'exposant des poissons & des éclats de prestige et le multiplieur des fragements magmatiques par <h3 id="black-hole-effect">^???</h3>.`,
+		
+		'rocket-part-div': `Vous avez créé au total <h3 id="total-rocket-part">0</h3> Parties de fusée.`,
+        'observ-div': `Vous avez <h3>${toTextStyle('0','observ','observ-amount')}</h3> <span id="observ-gain"></span> observatoires. (<h3>${toTextStyle('0','observ','observ-total')}</h3> total)`,
+        'reserv-div': `Vous avez <h3>${toTextStyle('0','reserv','reserv-amount')}</h3> <span id="reserv-gain"></span> réservoirs.`,
+        'traject-div': `Vous avez <h3>${toTextStyle('0','traject','traject-amount')}</h3> <span id="traject-gain"></span> trajectoires.`,
+        'experiment-div': `Votre tier d'${toTextStyle('Expérience','experiment')} est <h3 id="experiment-tier">0</h3>.`,
+		
+		'bh-tier-div': `Le tier de votre trou noir est <h3>${toTextStyle('0','black-hole','bh-tier')}</h3>.`,
+        'bh-tier-button': `Atteignez l'exigence pour mettre à niveau votre tier de ${toTextStyle('Trou Noir','black-hole')} pour une récompense importante.`,
+
+		'fundamental-amount-div': `Vous avez <h3>${toTextStyle('0','hadron','total-fundamental')}</h3> particules fondamentales au total, ce qui augemente la limite des ${toTextStyle('Poissons','fish')} à <h3 id="fundamental-effect">???</h3>.`,
+        'starter-upg-note': `Note: le coût est <b>doublé</b> pour chaque amélioration achetée. Acheter la première amélioration est <b>RECOMMENDÉE</b> après avoir réinitialisé pour la première fois.`,
+		
+		"dna-descirption": `La longueur de votre <b>ADN(acide désoxyribonucléique)</b> de ${toTextStyle('Shark','shark')} est <h3 id="dna-length">???</h3> (<span id="dna-length-gain">???</span>) nanomètres.<br>
+        Augemente la tétration des ${toTextStyle('Poissons','fish')} par <h4 id="dna-boost1">???</h4> et renforce les 4 premières bases nucléiques par <h4 id="dna-boost2">???</h4>.`,
+        "dna-button": `Force une ${toTextStyle('Hadronisation','hadron')} pour étendre l'ADN.`,
+        'dna-note': `Note: Etendre l'ADN réinitialise tout ce que l'${toTextStyle('Hadronisation','hadron')} fait, et réinitialise en plus les ${toTextStyle('Particules Fondamentales','hadron')} et les bases nucléiques.`,
+		
+		'shark-worth': bool => bool ? `Absorbez ${toColoredText('absolument tout','red')} pour transformer votre ${toTextStyle('Requin','shark')} en <h3>${toTextStyle('Omnipotence','omni')}</h3>...` : `Votre ${toTextStyle('Requin','shark')} est sans valeur, désolé...`,
+        
+        'research-all-btn': "Eassyer d'acheter toutes les recherches possibles.",
+		
 		// Upgrades
 
 		'su-s1-req': "Niveau 3",
@@ -128,7 +213,7 @@ LANGUAGES.FR = {
 
 		'su-s4-req': "Niveau 38",
 		'su-s4-name': 'L\'éxposant du Requin',
-		'su-s4-desc': `Augment l'exposant de  ${toTextStyle('Poissons','fish')} de <b>+1%</b> par niveau.`,
+		'su-s4-desc': `Augmente l'exposant de  ${toTextStyle('Poissons','fish')} de <b>+1%</b> par niveau.`,
 
 		'su-s5-req': "Niveau 640",
 		'su-s5-name': 'Requin Radioactif',
@@ -162,7 +247,23 @@ LANGUAGES.FR = {
         'su-m5-req': 'Niveau de minage 9',
         'su-m5-name': 'Minerais de base',
         'su-m5-desc': `Augmente les 4 premiers minérais minés de <b>×2</b> par niveau.`,
+		
+		'su-m6-req': 'Ascension de minage 1',
+        'su-m6-name': 'Super dégâts de minage',
+        'su-m6-desc': `Augemente les super dégâts de minage par <b>×2</b> par niveau.`,
 
+        'su-m7-req': 'Ascension de minage 3',
+        'su-m7-name': 'Super vitesse de minage',
+        'su-m7-desc': `Augemente la super vitesse de minage et vitesse normale de minage par <b>+25%</b> par niveau.`,
+
+        'su-m8-req': 'Ascension de minage 6',
+        'su-m8-name': 'Radium comprimé',
+        'su-m8-desc': `Augemente le <b>Radium-223</b> miné par <b>×2</b> par niveau.`,
+
+        'su-m9-req': 'Ascension de minage 12',
+        'su-m9-name': 'Super fortune de minage',
+        'su-m9-desc': `Augemente la ${toColoredText('Super fortune de minage '+icon('luck'),'orange')} par <b>+5</b> par niveau.`,
+		
 		// Researches
 
 		'research-p1-name': "Agilité Prestigieuse",
@@ -265,7 +366,101 @@ LANGUAGES.FR = {
 
         'research-m3-name': "Boost radioactif à grande échelle",
         'research-m3-desc': `Retarde les 2 premières augmentations radioactives de <b>+1</b> par niveau.`,
+		
+        'research-m4-name': "Meilleur tier de minage",
+        'research-m4-desc': `Le deuxième, troisième, quatrième et cinquième effect du tier de minage sont augementés de <b>+25%</b> par niveau.`,
+		
+		'research-f1-name': "Exposant du rang basique",
+        'research-f1-desc': `Augemente l'exposant de l'ELO du ${toTextStyle("Requin",'shark')} par <b>+25%</b> par niveau.`,
 
+        'research-f2-name': "Plus de foi sharkoïde",
+        'research-f2-desc': `Gagnez plus de ${toTextStyle('Foi sharkoïde','humanoid')} depuis les ${toTextStyle('Poissons','fish')} & depuis les éclats de ${toTextStyle("Prestige",'prestige')}.`,
+
+        'research-f3-name': "Scaled Core Reactors",
+        'research-f3-desc': `Delaie la première mise à l'échelle des réacteurs du noyau par <b>+1</b> par niveau.`,
+
+        'research-f4-name': "Moins de ralentissement de la température du noyau",
+        'research-f4-desc': `Le ralentissement de la température du  ${toTextStyle('Noyau','core')} est plus faible.`,
+
+        'research-f5-name': "Boost de Vibranium",
+        'research-f5-desc': `Le <b>Vibranium</b> augemente les dégâts de minage à un rythme faible.`,
+
+        'research-f6-name': "Tier de minage universel",
+        'research-f6-desc': `Les 9 premiers minerais sont boostés par le tier de minage.`,
+
+        'research-f7-name': "meilleur ELO du requin",
+        'research-f7-desc': `la base des requins humanoïdes dans la formule pour l'ELO du ${toTextStyle("Requin",'shark')} est amélioré de <b>x</b> à <b>2<sup>x</sup>-1</b>.`,
+
+        'research-f8-name': "PV des minerais faible",
+        'research-f8-desc': `Le premier effet du tier de minage est réduit.`,
+
+        'research-s1-name': "Vestige de poissons",
+        'research-s1-desc': `les ${toTextStyle("Poissons",'fish')} augementent la génération de  ${toTextStyle("Vestiges",'black-hole')} à un rythme faible.`,
+
+        'research-s2-name': "Boost de rang meilleur",
+        'research-s2-desc': `Améliore le boost du rang du ${toTextStyle("Requin",'shark')} aux éclats de ${toTextStyle('Prestige','prestige')}.`,
+
+        'research-s3-name': "Océans Purs",
+        'research-s3-desc': `Les océans <b>Pacifique & Arctique </b> donnent un boost exponentiel, et améliore les océans <b>Atlantique & Austral</b>.`,
+		
+		'all-research': {
+            's4': ["Océans Purs II",`L' <b>Océan Indien</b> Donne un boost exponentiel à un rythme faible.`],
+            's5': ["Océans Purs III",`La réduction des progressions de profondeur des <b>N</b> premiers océans sont enlevés jusqu'à l'<b>Océan Indien</b>. Le 6th niveau améliorer le 10e bonus radioactif.`],
+
+            'dm1': ["Trous Noirs de départ",`Commence avec <b>+1</b> ${toTextStyle("Trou Noir",'black-hole')} formé après un sacrifice par niveau. Chaque trou noir de départ délaie la réduction.`],
+            'dm2': ["Meilleurs Vestiges I",`Améliore l'amélioration de ${toTextStyle("Vestiges",'black-hole')} "Bienvenue de nouveau", cette amélioration affecte les éclats de ${toTextStyle("Prestige",'prestige')}.`],
+            'dm3': ["Better Remnant II",`Améliore l'amelioration de ${toTextStyle("Vestiges",'black-hole')} "Maître Requin".`],
+            'dm4': ["Better Remnant III",`Améliore l'effet du niveau et du rang du ${toTextStyle("Requin",'shark')} pour la génération de ${toTextStyle("Vestiges",'black-hole')}.`],
+            'dm5': ["Température du Noyau sans ralentissement",`Enlève le ralentissementde la température du ${toTextStyle('Noyau','core')}.`],
+            'dm6': ["Meilleur générateur de radiation",`Le générateur de ${toTextStyle('Radiation '+icon('radioactive'),'core')} se met à l'exposant lui-même à un rythme faible.`],
+            'dm7': ["Vestiges sombres",`Le total de la ${toTextStyle("Matière Noire",'black-hole')} booste la génération des ${toTextStyle("Vestiges",'black-hole')}.`],
+
+            'e7': ["Fosse de la Sonde MK2",`Améliorela progression de profondeur de l'<b>Océan Indien</b> de manière significative.`],
+
+            'm5': ["Rank du requin 'sur' le Super minage",`le boost du rang du ${toTextStyle("Requin",'shark')} aux dégâts de minage affecte également les super dégâts de minage à un rythme faible.`],
+            'm6': ["The requin d'Uranium",`'Exposant du requin' est surpuissant.`],
+            'm7': ["Double mise à l'échelle des vestiges",`La première mise à l'échelle des améliorations de ${toTextStyle("Vestige",'black-hole')} est délayé de <b>+100</b>.`],
+            'm8': ["Radiation Ultime",`TL'effet du 14e boost radioactif est meilleur.`],
+            'm9': [`Pas de débordement de radiation`,`Le ralentissement de la production de ${toTextStyle('Radiation '+icon('radioactive'),'core')}est enlevé.`],
+            'm10': [`Auto-Réacteur du Noyau MK2`,`Auto-Réacteur du ${toTextStyle('Noyau','core')} s'applique maintenant à la 3ème rangée des réacteurs du ${toTextStyle('Noyau','core')}.`],
+            'm11': [`Auto-Amélioration de minage MK2`,`Auto-${toTextStyle('Requin','shark')} Amélioration du minage s'applique maintenant au reste des amélioration du minage du ${toTextStyle('Requin','shark')}.`],
+
+            'o1': [`Automatisation observatoire`,`Automatise toutes les améliorations d'${toTextStyle('Observatoire','observ')}sans dépenser des ressources. <i>Cette recherche ne se réinitialise pas.</i>`],
+            'o2': [`Affection de l'échangeur universel`,`L'amélioration "Echangeur Universel” des ${toTextStyle('Réseroirs','reserv')} affecte la base des améliorations d'${toTextStyle('Observatoire','observ')} “L'Espace”, “Poisson Spatial”, et "Prestige Spatial”.`],
+            'o3': [`Affection de l'échangeur universel II`,`L'amélioration "Echangeur Universel" des ${toTextStyle('Réservoirs','reserv')} affecte la base des améliorations d'${toTextStyle('Reservatory','reserv')} "Le Relatif", "Observable", "Poisson Spatial II" et "Prestige Spatial II".`],
+            
+            'r1': [`Automatisation de réservoirs`,`Automatise toutes les améliorations de ${toTextStyle('Réservoirs','reserv')} sans dépenser des ressources. <i>Cette recherche ne se réinitialise pas.</i>`],
+            'r2': [`Amélioration des réservoirs`,`Améliore la formule du gain des ${toTextStyle('Réservoirs','reserv')} encore plus.`],
+            'r3': [`Génération des réservoirs`,`Génère <b>100%</b> des ${toTextStyle('Réservoirs','reserv')} gagnés par réinitialisation. <i>Cette recherche ne se réinitialise pas.</i>`],
+        
+            't1': [`Automatisation des trajectoires`,`Automatise toutes les améliorations de ${toTextStyle('Trajectoire','traject')} sans dépenser des ressources. <i>Cette recherche ne se réinitialise pas.</i>`],
+            't2': [`Amélioration des trajectoires`,`Améliore la formule du gain des ${toTextStyle('Trajectoires','traject')} encore plus.`],
+            't3': [`Trajectory Generation`,`Génère <b>100%</b> des ${toTextStyle('Trajectoires','traject')} gagnés par réinitialisation. <i>Cette recherche ne se réinitialise pas.</i>`],
+
+            'h1': [`Echangeur de QI`,`le niveau du ${toTextStyle("Requin",'shark')} multiplie le ${toTextStyle("QI",'hadron')} du ${toTextStyle("Requin",'shark')} super-logarithmiquement.`],
+            'h2': [`Gardeur de forges Hadron`, `Garde toujours les forges après une ${toTextStyle("Hadronisation",'hadron')}.`],
+            'h3': [`Mise à l'échelle du Trou Noir`, `Le total des ${toTextStyle("Particules fondamentales",'hadron')} delaiant la mise à l'échelle du tier des ${toTextStyle("Trous Noirs",'black-hole')} logarithmiquement.`],
+            'h4': [`Meilleur plafond de poissons`, `Améliore l'effet du total des ${toTextStyle("Particules fondamentales",'hadron')}.`],
+            'h5': [`Equivalent du Trou Noir`, `Augemente automatiquement le tier du  ${toTextStyle("Trou Noir",'black-hole')} sans réinitialisation.`],
+            'h6': [`QI Qubit`, `Les ${toTextStyle("Poissons",'fish')} multiplient le ${toTextStyle("QI",'hadron')} du ${toTextStyle("Requin",'shark')}. Améliore la recherche <b>h1</b>.`],
+            'h7': [`Première mise à l'échelle du Sacrifice`, `Enlève la mise à l'échelle des améliorations des ${toTextStyle("Vestiges",'black-hole')}. Débloque plus d'améliorations de ${toTextStyle("Vestige",'black-hole')}.`],
+            'h8': [`Plafond des po`, `Améliore l'effet du total des ${toTextStyle("Particules fondamentales",'hadron')} encore plus.`],
+            'h9': [`Génération hadronique`, `génère passivement <b>100%</b> des ${toTextStyle("Particules fondamentales",'hadron')} gagnés par réinitialisation.`],
+            'h10': [`L'Inflation n'a pas de sens`, `Enlève toutees les mises à l'échelle des boosts radioactifs.`],
+            'h11': [`Rang dans le rang`, `Enlève les 3 premières mises  à l'échelle du rang du ${toTextStyle("Requin",'shark')}.`],
+            'h12': [`Meilleur Consellation`, `Améliore le boost du tier du ${toTextStyle("Trou Noir",'black-hole')} aux ressources des  ${toTextStyle("Constellations",'star')}.`],
+            'h13': [`Egalité de poissons`, `Les éclats de ${toTextStyle("Prestige",'prestige')} et le gain des fragements ${toTextStyle('Magmatiques','core')} est maintenant égal au gain des ${toTextStyle("Poissons",'fish')}.`],
+            'h14': [`Niveaux et rangs, au revoir monde cruel !`, `Toutes les mises à l'échelle des niveaux et rangs du ${toTextStyle("Requin",'shark')} sont enlevés.`],
+            'h15': [`Meilleure base nucléique III`, `Le 6ème boost de l'adénine est amélioré.`],
+            'h16': [`Automatisation de l'Exploration Galactique`, `Gagne automiquement du score des 6 premiers océans galactiques sans explorer.`],
+            'h17': [`ADN Divine`, `Le total des  ${toTextStyle("Particules fondamentales",'hadron')} augementent la longueur de l'ADN à un rythme faible.`],
+            'h18': [`Totalement ADN des poissons`, `Les ${toTextStyle("Poissons",'fish')} augementent la longueur de l'ADN à un rythme réduit.`],
+            'h19': [`ADENINE SURPUISSANTE`, `Améliore le 4ème boost de l'adénine significativement... <i>C'est bientôt la fin...</i>`],
+            'h20': [`GUANINE SURPUISSANTE`, `Le 4ème boost de la guanine affecte maintenant le bonus du 5ème tier du requin... <i>S'il te plaît, arrête de faire ça...</i>`],
+            'h21': [`ADN SURPUISSANTE`, `l'ADN s'étend elle-même... ${toColoredText(`ATTENTION: L'ADN QUI S'ETEND ELLE-MÊME CAUSE UNE SERIEUSE INSTABILITE DANS VOTRE REQUIN QUI LE REND INCAPABLE DE MANGER DES POISSONS ET CAPABLE DE LES CONVERTIR EN POISSONS D'ANTIMATIÈRE ! IL N'Y A PAS DE RETOUR EN ARRIÈRE ! `,'red')} Non?`],
+			
+		// Note : Post-Ominpotence research to add
+		
 		// Exploration
 
 		'explore-while': `En explorant`,
@@ -275,10 +470,10 @@ LANGUAGES.FR = {
 		'explore-next': x=>`Nouvel océan au niveau <h3>${format(x,0)}</h3> du ${toTextStyle("Requin",'shark')}.`,
 
 		'explore-doubler-1': x=>`Double ${x} acquis.`,
-		'explore-doubler-2': `Double profondeur de la progression acquise.`,
+		'explore-doubler-2': `Double la profondeur de la progression acquise.`,
 
 		'explore-0-name': `Océan Pacifique`,
-		'explore-0-desc': `Le gain de ${toTextStyle('Poissons','fish')} est divisé par 2.`,
+		'explore-0-desc': `Le gain de ${toTextStyle('Poissons','fish')} est à la racine carrée.`,
 		'explore-0-milestone': [
 			`Augmenter les Éclats de ${toTextStyle('Prestige','prestige')} acquis à la puissance 1.05e.`,
 			`Augmenter les ressources et la profondeur de la progression de 25% par niveau du ${toTextStyle('Requin','shark')} à la racine carrée.`,
@@ -328,7 +523,7 @@ LANGUAGES.FR = {
 		'core-0-desc': `Le ${toTextStyle("Poissons",'fish')} s'augmente basé sur le niveau de <b>Fer</b>.`,
 
 		'core-1-name': `Nickel`,
-		'core-1-desc': `L'Éclats de ${toTextStyle("Prestige",'prestige')} augmente sa base baseé sur le niveau de <b>Nickel</b>.`,
+		'core-1-desc': `Les éclats de ${toTextStyle("Prestige",'prestige')} augmente sa base baseé sur le niveau de <b>Nickel</b>.`,
 
 		'core-2-name': `Oxygène`,
 		'core-2-desc': `Le produit des ressources des quatre premiers océans augmente leur production en fonction du niveau de l'<b>Oxygène</b>.`,
@@ -348,6 +543,18 @@ LANGUAGES.FR = {
         'core-7-name': `Hélium`,
         'core-7-desc': `Le niveau de ${toTextStyle("Requin",'shark')} renforce le <b>Néon</b> basé sur le niveau d'<b>Hélium</b>.`,
 		
+		'core-8-name': `Magnésium`,
+        'core-8-desc': `Les ${toTextStyle("Fish",'fish')} augementent eux-mêmes l'exposant de leur exposant basé sur le niveau de <b>Magnesium</b>.`,
+
+        'core-9-name': `Sodium`,
+        'core-9-desc': `Les éclats de ${toTextStyle("Prestige",'prestige')} augementent eux-mêmes l'exposant de leur exposant basé sur le niveau de <b>Sodium</b>.`,
+
+        'core-10-name': `Phosphore`,
+        'core-10-desc': `Les fragements ${toTextStyle("Magmatiques",'core')}augementent eux-mêmes leur exposant basé sur le niveau de <b>Phosphore</b>.`,
+
+        'core-11-name': `Chromium`,
+        'core-11-desc': `Les requins ${toTextStyle("Humanoïdes",'humanoid')} augementent l'exposant de l'ELO du ${toTextStyle("Requin",'shark')} basé sur le niveau de <b>Chromium</b>.`,
+
 		'core-bonus': x => `Le produit des réacteurs du noyau vont booster vos ${toTextStyle("Poissons",'fish')} de <h4>${formatMult(x)}</h4>.`,
 
         'core-assembler-erase': `Effacer`,
@@ -468,13 +675,13 @@ LANGUAGES.FR = {
             'diamond': "Diamant",
             'bismuth': "Bismuth",
             'obsidian': "Obsidienne",
-            'vibranium': "Vibrantium",
+            'vibranium': "Vibranium",
             'radium': "Radium-223",
             'uranium': "Uranium-235",
-            'berkelium': "Berkelium-247",
+            'berkelium': "Berkélium-247",
             'californium': "Californium-252",
             'oganesson': "Oganesson-294",
-            'sharkium': "Requinum",
+            'sharkium': "Requinium",
         },
 
         'mined-resources-text': `Ressources minées`,
@@ -487,9 +694,47 @@ LANGUAGES.FR = {
             x=>`La quantité de <b>Pierre</b> et de <b>Charbon</b> est augmentée de <b>${formatMult(x)}</b>.`,
             x=>`La quantité de <b>Fer</b> est augmentée de <b>${formatMult(x)}</b>.`,
             x=>`La quantité d'<b>Or</b> est augmentée de <b>${formatMult(x)}</b>.`,
-            x=>`La quantité de <b>Platine</b> est augmenté de <b>${formatMult(x)}</b>.`,
-        ],
+            x=>`La quantité de <b>Platine</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité de <b>Bismuth</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité de <b>Diamant</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité d'<b>Obsidienne</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité des 9 premiers minerais est augementée de <b>${formatPow(x)}</b>.`,
+			x=>`Les PV des Super minearis est augementée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité de <b>Radium-223</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité d'<b>Uranium-235</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité de <b>Berkélium-247</b> est augmentée de <b>${formatMult(x)}</b>.`,
+			x=>`La quantité de <b>Californium-252</b> est augmentée de <b>${formatMult(x)}</b>.`,
+		],
+		
+		// Forge
+		'forge': {
+            'anvil': ["Niveau d'enclume",'Débloque de nouvelles améliorations de forge'],
+            'drill': ["Niveau de foreuse",'Augemente le multiplier de <b>Pierre</b> minée.'],
+            'shard': ['Eclat rafinné',`Augemente le multiplieur des éclats de ${toTextStyle('Prestige','prestige')}.`],
+            'tree': ['Arbre Extraordinaire',`Débloque une nouvelle rangée de l'arbre d'${toTextStyle('Evolution','humanoid')}.`],
+            'adv_research': ['Recherche Avancée',`Débloque de nouvelles recherches.`],
+            'auto': ['Automatisation avancée',`Débloque de nouvelles automatisations.`],
+            'shark': ['Niveau du requin distant',`Délaie la 3ème mise à l'échelle du niveau du ${toTextStyle('Requin','shark')}.`],
+            'refined_shard': ['Ecalt énergétique',`Augemente l'exposant des éclats de ${toTextStyle('Prestige','prestige')}.`],
+            'wormhole': ['Trou de ver',`Débloque un nouvel accélérateur de particules.`],
+            'matter': ['Condensateur de matière',`Augemente la génération de ${toTextStyle('Vestiges','black-hole')}.`],
+        },
+        'forge-progress': (x,s) => x ? `En train de forger <b>${x}</b>... <b>${s}</b>` : `La forge est vide`,
+        'forge-speed': x => `Vitesse de forge: <b>${x}</b>`,
+        'forge-button': ['Annuler le forgement','Commencer à forger','Pas assez de matériaux pour forger'],
+		
+		// Particle Accelerator
 
+        'particle-accel-condense': x => `Condense les ${x} pour:`,
+        'particle-accel-boost': [
+            x => `Augementer la production de ${toTextStyle('Radiation '+icon("radioactive"),'core')} par <b>${x}</b>.`,
+            x => `Augementer la progression de profonduer de chaque océan par <b>${x}</b>.`,
+            x => `Augementer la quantité de <b>Pierre</b> et les dégâts de minage par <b>${x}</b>.`,
+            x => `Gagner <b>${x}</b> Requins ${toTextStyle('Humanoïdes','humanoid')} de plus.`,
+            x => `Delayer la 1ère mise à l'échelle des réacteurs de noyau par <b>${x}</b>.`,
+            x => `Améliorer l'exposant de l'ELO du ${toTextStyle("Requin",'shark')} par <b>${x}</b>.`,
+        ],
+		
 		// Automation
 
 		'auto-shark-name': `Auto-Niveau du ${toTextStyle("Requin","shark")}`,
@@ -639,5 +884,9 @@ LANGUAGES.FR = {
 		'confirm-prestige': "Prestige",
 		'confirm-core': "Entrer dans le Noyau",
 		'confirm-humanoid': "Évoluer vos Requins",
-	},
+		'confirm-black-hole': "Former le Trou Noir",
+		'confirm-sacrifice': "Sacrifiez vos Requins",
+		'confirm-hadron': "Faire une hadronisation",
+	}
 }
+
