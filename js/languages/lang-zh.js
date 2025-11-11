@@ -485,19 +485,19 @@ LANGUAGES.ZH = {
             'u3': ['亡灵加速', `游戏速度倍率提升${toTextStyle('亡灵精华','undead')}的产量。`],
             'u4': ['强化亡灵压缩器', `压缩${toTextStyle('亡灵精华','undead')}大幅提升${toTextStyle('亡灵精华','undead')}的产量。`],
 
-            'r1': ['研究守护者',`${toTextStyle('核反应','atom')}重置后保留所有${toTextStyle('研究','prestige')}。`],
+            're1': ['研究守护者',`${toTextStyle('核反应','atom')}重置后保留所有${toTextStyle('研究','prestige')}。`],
 
             'd1': ['研究守护者+',`${toTextStyle('符文','rune')}重置后保留所有${toTextStyle('研究','prestige')}。`],
             'd2': ['全能鲨指数强化', `提升“全能鲨指数”的公式。`],
-            'd3': ['压缩器守护者 I', `在 ${toTextStyle('符文','rune')} 开始时，以你曾经压缩的最好的 ${toTextStyle("超越",'transcend')} 碎片的指数^2 的 <b>^0.75</b> 开始。`],
-            'd4': ['压缩器守护者 II', `在 ${toTextStyle('符文','rune')} 开始时，以你曾经压缩的最好的 ${toTextStyle('不死精华','undead')} 开始。`],
+            'd3': ['压缩器守护者 I', `每轮${toTextStyle('符文','rune')}开始时，立刻获得压缩${toTextStyle("超越",'transcend')}碎片的指数 ^2 的 <b>^0.75</b>.`],
+            'd4': ['压缩器守护者 II', `每轮${toTextStyle('符文','rune')}开始时，立刻获得最大数量的压缩${toTextStyle('亡灵精华','undead')}。`],
             'd5': ['符文碎片强化', `提升${toTextStyle('符文','rune')}碎片的获取公式。`],
 
-            'rc1': ['符文加成', `任何 ${toTextStyle('符文','rune')} 升级的每个 <b>100%</b> 效果给予一个受其影响的${toTextStyle('符文','rune')}加成。`],
-            'rc2': ['符文升级加速', `前三个 ${toTextStyle('符文','rune')} 升级的折算延迟 <b>×2</b>.`],
-            'rc3': ['削弱惩罚', `削弱第二个 ${toTextStyle('天神','god')} 的惩罚效果。`],
+            'rc1': ['符文加成', `任何${toTextStyle('符文','rune')}升级的效果每增加 <b>100%</b>, 受其影响的${toTextStyle('符文','rune')}加成效果加 1.`],
+            'rc2': ['符文升级加速', `前三个${toTextStyle('符文','rune')}升级的折算延迟 <b>×2</b>.`],
+            'rc3': ['削弱惩罚', `削弱${toTextStyle('天神','god')}的第二个惩罚的效果。`],
             'rc4': ['符文升级强化', `提升前三个${toTextStyle('符文','rune')}升级的效果。`],
-            'rc5': ['符文连续统', `你将不再能够放置任何${toTextStyle('符文','rune')}，而是基于第四个${toTextStyle('符文','rune')}升级来计算 ${toTextStyle('符文','rune')}的效果。自动购买 ${toTextStyle('符文','rune')} 升级。`],
+            'rc5': ['符文之河', `你无法放置任何${toTextStyle('符文','rune')}，所有${toTextStyle('符文','rune')}的加成效果基于第四个${toTextStyle('符文','rune')}升级计算。自动购买 ${toTextStyle('符文','rune')}升级。`],
         },
 
         // Exploration
@@ -1069,8 +1069,8 @@ LANGUAGES.ZH = {
         'undead-essence-html': `你已捕获 <h3>${toTextStyle('0','undead','undead-essence-amount')}</h3> <span id="undead-essence-gain"></span> 亡灵精华。<br>
         每秒捕获${toTextStyle('亡灵精华','undead')}的概率为 <b id="undead-essence-chance">0%</b>, 捕获亡灵精华的速度不受游戏速度倍率的影响。`,
         'game-speed-div': `游戏速度: <b id="game-speed">???</b>`,
-        'antimatter-god-div': `由于 ${toTextStyle('天神','god')} 的惩罚，你的 ${toTextStyle('反物质鱼','antimatter')} 的指数被 ${toTextStyle('1','god','antimatter-god-penalty')} 次方根.`,
-        'rune-sacrifice-info': `献祭任何 ${toTextStyle('符文','rune')} 使其不再放置，但其数量受其他 ${toTextStyle('符文','rune')} 给出的最高数量影响。在挑战期间，大多数 ${toTextStyle('符文','rune')} 升级没有效果，且 <b>游戏速度</b> 降低为对数。`,
+        'antimatter-god-div': `由于${toTextStyle('天神','god')}的惩罚，${toTextStyle('反物质鱼','antimatter')}的指数是原来的 ${toTextStyle('1','god','antimatter-god-penalty')} 次方根。`,
+        'rune-sacrifice-info': `你无法放置被献祭的${toTextStyle('符文','rune')}，但其数量受其他 ${toTextStyle('符文','rune')} 给出的最高数量影响。进行符文献祭时，大部分${toTextStyle('符文','rune')}升级无效，<b>游戏速度</b>倍率是原来的对数。`,
 
         'anti-fish-name': "反物质鱼",
         'anti-fish-costName': toTextStyle('反物质鱼','antimatter'),
@@ -1121,13 +1121,13 @@ LANGUAGES.ZH = {
             32: x => `每秒自动获得重置时获得的${toTextStyle('原子核','atom')}的 ${x}, 游戏速度倍率以它的 <b>0.1 次幂</b>增强这项奖励。`,
             36: x => `游戏速度倍率以它的 ${x} 增强${toTextStyle("全能","omni")}层级 32 的奖励。`,
             40: x => `解锁${toTextStyle("符文","rune")}重置。压缩${toTextStyle('原子核','atom')}的数量始终等于当前${toTextStyle('原子核','atom')}的数量。`,
-            41: x => `${toTextStyle("符文","rune")} 碎片乘以 ${x}。${toTextStyle("全能","omni")}层级 15 的奖励始终为 <b>100%</b>。`,
-            43: x => `${toTextStyle("符文","rune")} 碎片可以被压缩以获得持续增强。`,
-            44: x => `乌尔兹 ${toTextStyle("符文","rune")} 的基数增加到 ${x}。`,
+            41: x => `获得${toTextStyle("符文","rune")}碎片的数量乘 ${x}. ${toTextStyle("全能","omni")}层级 15 的奖励始终为 <b>100%</b>.`,
+            43: x => `${toTextStyle("鲨鱼","shark")}${toTextStyle("压缩器","omni")}可以压缩${toTextStyle("符文","rune")}碎片，从而获得更多的加成。`,
+            44: x => `乌鲁兹 ${toTextStyle("符文","rune")}效果的基数增加 ${x}.`,
             48: x => `解锁${toTextStyle("符文","rune")}献祭。`,
-            50: x => `第一个 ${toTextStyle("天神","god")} 的惩罚 ${x} 更弱。在 ${toTextStyle("符文","rune")}重置中保持同位素。`,
+            50: x => `${toTextStyle("天神","god")}第一个的惩罚削弱 ${x}. ${toTextStyle("符文","rune")}重置不再重置同位素。`,
             53: x => `提升${toTextStyle("全能","omni")}层级 41 的奖励。`,
-            56: x => `每秒自动获得重置时获得的 ${toTextStyle("符文","rune")} 碎片的 ${x}。${toTextStyle("符文","rune")} 碎片将最佳压缩更新。`,
+            56: x => `每秒自动获得重置时获得的${toTextStyle("符文","rune")}碎片的 ${x}。${toTextStyle("符文","rune")} 碎片将最佳压缩更新。`,
             60: x => `解除第一个${toTextStyle("天神","god")} 的惩罚。 <i>还有三步……</i>`,
             63: x => `${toTextStyle("天神","god")} 为你解除其惩罚，让你解锁称为 ${toTextStyle("???","god")} 的 ${toTextStyle("终极","god")} 阶段。`,
         },
@@ -1193,7 +1193,7 @@ LANGUAGES.ZH = {
             ],[
                 x => `前 7 个${toTextStyle('亡灵','undead')}升级的效果增强 ${x}.`,
             ],[
-                x => `“亡灵反物质”和“亡灵超越”的效果是原来的 ${x}.`,
+                x => `“反物质亡灵”和“超越之亡灵”的效果是原来的 ${x}.`,
             ],[
                 x => `${toTextStyle("全能鲨","omni")}${toTextStyle('反物质鱼','antimatter')}升级的价格是原来的 ${x} 次方根。`,
             ],[
@@ -1258,7 +1258,7 @@ LANGUAGES.ZH = {
                 x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
                 x => `${toTextStyle('原子核','atom')}基数的指数增加 ${x}.`,
             ],[
-                x => `“亡灵反物质”和“超越之亡灵”的平方根每增加 1, 获得${toTextStyle('亡灵精华','undead')}的数量乘以 ${x[0]}. （当前 ${x[1]}）`,
+                x => `“反物质亡灵”和“超越之亡灵”的平方根每增加 1, 获得${toTextStyle('亡灵精华','undead')}的数量乘以 ${x[0]}. （当前 ${x[1]}）`,
                 x => `本组同位素的数量每增加 1, 第一个同位素的基数增加 ${x[0]}. （当前 ${x[1]}）`,
                 x => `本组第一个同位素效果的指数增加到 ${x}.`,
                 x => `本组第一个同位素效果的指数增加到 ${x}.`,
@@ -1306,8 +1306,8 @@ LANGUAGES.ZH = {
             ],
             'kaunan': [
                 `考南`,
-                `基于当前${toTextStyle('不死精华','undead')}的数量，提升${toTextStyle('不死精华','undead')}数量的指数。`,
-                x => `${toTextStyle('不死精华','undead')} ${x}.`,
+                `基于当前${toTextStyle('亡灵精华','undead')}的数量，提升${toTextStyle('亡灵精华','undead')}数量的指数。`,
+                x => `${toTextStyle('亡灵精华','undead')} ${x}.`,
             ],
             'naudiz': [
                 `瑙迪兹`,
@@ -1337,32 +1337,32 @@ LANGUAGES.ZH = {
             [
                 `符文献祭 I`,
                 [
-                    `符文 ${toTextStyle("费胡","rune")} 没有效果。`,
-                    `‘亡灵鱼’ ${toTextStyle('亡灵','undead')} 升级、钡-141、铊-207和钫-223没有效果。`,
+                    `费胡${toTextStyle("符文","rune")}无效。`,
+                    `${toTextStyle('亡灵','undead')}升级“亡灵鱼”、钡-141、铊-207和钫-223无效。`,
                 ],
-                `完全献祭费胡 ${toTextStyle("符文","rune")}。`,
+                `献祭费胡${toTextStyle("符文","rune")}。`,
             ],[
                 `符文献祭 II`,
                 [
-                    `符文 ${toTextStyle("贝尔卡南","rune")} 没有效果。`,
-                    `‘亡灵声望’ ${toTextStyle('亡灵','undead')} 升级、氪-92、钋-211、钍-227和浓缩 ${toTextStyle('超越','transcend')} 碎片没有效果。`,
-                    `${toTextStyle('超越','transcend')} 碎片减少为对数。`,
+                    `贝尔卡南${toTextStyle("符文","rune")}无效。`,
+                    `${toTextStyle('亡灵','undead')}升级“亡灵超越”、氪-92、钋-211、钍-227和浓缩 ${toTextStyle('超越','transcend')}碎片无效。`,
+                    `获得${toTextStyle('超越','transcend')}碎片的数量是原来的对数。`,
                 ],
-                `完全献祭贝尔卡南 ${toTextStyle("符文","rune")}。`,
+                `献祭贝尔卡南${toTextStyle("符文","rune")}。`,
             ],[
                 `符文献祭 III`,
                 [
-                    `符文 ${toTextStyle("考南","rune")} 没有效果。`,
-                    `‘亡灵机会’、‘亡灵反物质’和‘亡灵超越’ ${toTextStyle('亡灵','undead')} 升级、氦-3、碳-11、氡-219和浓缩 ${toTextStyle('亡灵精华','undead')} 没有效果。`,
+                    `考南${toTextStyle("符文","rune")}无效。`,
+                    `${toTextStyle('亡灵','undead')}升级“亡灵概率”、“反物质亡灵”和“超越之亡灵”、氦-3、碳-11、氡-219和浓缩 ${toTextStyle('亡灵精华','undead')}无效。`,
                 ],
-                `完全献祭贝尔卡南 ${toTextStyle("符文","rune")}。`,
+                `献祭考南${toTextStyle("符文","rune")}。`,
             ],
         ],
 
         'rune-sacrifice-state': [
-            `开始献祭这个 ${toTextStyle("符文","rune")}。`,
-            `取消献祭这个 ${toTextStyle("符文","rune")}。`,
-            `完成献祭这个 ${toTextStyle("符文","rune")}。`
+            `开始${toTextStyle("符文","rune")}献祭。`,
+            `取消${toTextStyle("符文","rune")}献祭。`,
+            `完成${toTextStyle("符文","rune")}献祭。`
         ],
 
         get 'reset-transcend-message'() {
@@ -1415,7 +1415,7 @@ LANGUAGES.ZH = {
         'auto-ue-name': `自动购买${toTextStyle('亡灵精华','undead')}升级`,
         'auto-nucleus-name': `自动购买${toTextStyle('原子核','atom')}`,
 
-        'god-info': `"重复，${toTextStyle("鲨鱼之神","god")} 让你进入最后阶段！然后在这一点之前的一切都会被清除，这是不可逆转的！但是 ${toTextStyle("鲨鱼之神","god")} 给了你一种产生几乎超越 ${toTextStyle("神界","god")} 的 ${toTextStyle("全能鱼","god")} 的能力。或者...这意味着它几乎准备好重生 ${toTextStyle("鲨鱼","shark")}...所以，你别无选择..."`,
+        'god-info': `"重复，${toTextStyle("鲨鱼之神","god")}让你进入最后阶段！此前获得的一切都会被清除，这一步是不可逆转的！但是，${toTextStyle("鲨鱼之神","god")}将赐予你一种产生几乎超越${toTextStyle("神界","god")}的能力，这种能力能让你湮灭${toTextStyle("全能鱼","god")}。或许……这意味着，这是${toTextStyle("鲨鱼","shark")}转世的最后一步……所以，你别无选择……"`,
         'overmodify-shark': `魔改${toTextStyle("鲨鱼","shark")}`,
 
         'god-fish-div': ` ${toTextStyle('神鲨','god')}已经湮灭了 <h2>${toTextStyle('0','god','god-fish-amount')}</h2> <span id="god-fish-gain"></span> 条全能鱼。`,
@@ -1425,43 +1425,43 @@ LANGUAGES.ZH = {
 
         'endings': [
             `恭喜！你此次通关游戏的用时为`,
-            `你有 3 个选择：进行${toTextStyle("鲨鱼","shark")}${toTextStyle("重生","rebirth")}以获得额外的游戏内容；导入存档；重置到上一个。`
+            `你有 3 个选择：进行${toTextStyle("鲨鱼","shark")}${toTextStyle("转世","rebirth")}以获得额外的游戏内容；导入存档；回到本轮转世的起点。`
         ],
         'ending-options': [
-            `进行${toTextStyle("鲨鱼","shark")}重生`,
+            `进行${toTextStyle("鲨鱼","shark")}转世`,
             `导入存档文本`,
             `导入存档文件`,
-            `重置到上一个`
+            `回到转世起点`
         ],
 
-        'tab-rebirth': `${toTextStyle('重生','rebirth')}`,
-        'tab-rebirth-upgs': `${toTextStyle('重生','rebirth')} 升级`,
-        'tab-rebirth-past10': `过去 10 次${toTextStyle('重生','rebirth')}`,
+        'tab-rebirth': `${toTextStyle('转世','rebirth')}`,
+        'tab-rebirth-upgs': `${toTextStyle('转世','rebirth')} 升级`,
+        'tab-rebirth-past10': `过去 10 次${toTextStyle('转世','rebirth')}`,
 
-        'rebirth-points-div': `你有 <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> 重生点数，这给你 <h3>${toTextStyle('???','rebirth','global-mult')}</h3> 全局倍数。`,
+        'rebirth-points-div': `你拥有 <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> 转世点数，全局倍率 <h3>${toTextStyle('???','rebirth','global-mult')}</h3>.`,
 
         'rebirth-upgrades': [
-            ["经典自动化", `永久解锁 ${toTextStyle('鲨鱼','shark')}、${toTextStyle('声望','prestige')} 和 ${toTextStyle('核心','core')} 自动化。`],
-            ["银河栽培", `永久解锁 ${toTextStyle('进化','humanoid')} 和 ${toTextStyle('奇点','black-hole')} 自动化。`],
-            ["强子组装器", `永久解锁 ${toTextStyle('强子','hadron')}-相关自动化。`],
-            ["反物质自动化 I", `永久解锁 ${toTextStyle('全能','omni')}-相关自动化。`],
-            ["反物质自动化 II", `无需重置即可自动更新 ${toTextStyle('全能','omni')} 层。`],
-            ["经典生成", `永久解锁 ${toTextStyle('声望','prestige')} 点数和 ${toTextStyle('岩浆','core')} 碎片生成。`],
-            ["类人鲨鱼人口", `永久解锁 ${toTextStyle('类人','humanoid')} 鲨鱼生成。`],
-            ["自复制粒子", `永久解锁 ${toTextStyle('奇点','black-hole')}-相关和 ${toTextStyle('基本粒子','hadron')} 生成。`],
-            ["反物质三重奏", `永久解锁 ${toTextStyle('全能','omni')}-相关生成。`],
-            ["额外倍数器", `获得 <b>+50%</b> 更多全局倍数。`],
+            ["经典自动化", `永久解锁${toTextStyle('鲨鱼','shark')}、${toTextStyle('重生','prestige')}和${toTextStyle('地核','core')}的自动化。`],
+            ["银河栽培", `永久解锁${toTextStyle('进化','humanoid')}和${toTextStyle('奇点','black-hole')}的自动化。`],
+            ["强子组装器", `永久解锁${toTextStyle('强子','hadron')}相关的自动化。`],
+            ["反物质自动化 I", `永久解锁${toTextStyle('全能','omni')}相关的自动化。`],
+            ["反物质自动化 II", `自动提升${toTextStyle('全能','omni')}层级且无需重置。`],
+            ["经典生成", `自动获得${toTextStyle('重生','prestige')}碎片和${toTextStyle('岩浆','core')}碎片。`],
+            ["类人鲨鱼人口", `自动获得${toTextStyle('类人','humanoid')}鲨鱼。`],
+            ["自复制粒子", `自动获得${toTextStyle('奇点','black-hole')}相关的所有资源和${toTextStyle('基本粒子','hadron')}。`],
+            ["反物质三重奏", `自动获得${toTextStyle('全能','omni')}相关的所有 资源`],
+            ["额外倍数器", `全局倍率 <b>+50%</b>.`],
         ],
 
-        'rebirth-upgrades-note': `注意：大多数重生升级实际上并未实装，如果你注意到某个升级没有效果，请联系开发者。`,
-        'rebirth-time': `${toTextStyle('重生','rebirth')} 中的游戏时间`,
-        'rebirth-points': `${toTextStyle('重生','rebirth')} 点数`,
+        'rebirth-upgrades-note': `注意：大多数转世升级实际上并未实装，如果你注意到某个升级没有效果，请联系开发者。`,
+        'rebirth-time': `${toTextStyle('转世','rebirth')}用时`,
+        'rebirth-points': `${toTextStyle('转世','rebirth')}点数`,
 
-        'global-mult-title': `全局倍数的乘积`,
+        'global-mult-title': `全局倍率因子`,
         'global-mults': {
-            base: x => `${x} 倍数基础`,
-            time: x => `${x} 来自最快的 ${toTextStyle('重生','rebirth')}`,
-            other: x => `${x} 来自其他来源`,
+            base: x => `${x} 倍率基数`,
+            time: x => `${x} 最快${toTextStyle('转世','rebirth')}`,
+            other: x => `${x} 其他来源`,
         },
 
         // Automation
@@ -1636,9 +1636,9 @@ LANGUAGES.ZH = {
 
         'upgrade-shark': x => `提升${toTextStyle('鲨鱼','shark')}等级<br>价格：${x.format(0)} ${toTextStyle('鱼','fish')}`,
         'shark-bonus-fish': x => `吃${toTextStyle('鱼','fish')}速度的基数 +${x.format(0)}`,
-        'shark-bonus-prestige': x => `${formatMult(x)} ${toTextStyle('重生','prestige')}碎片`,
-        'shark-bonus-core': x => `${formatMult(x)} ${toTextStyle('岩浆','core')}碎片`,
-		'shark-bonus-remnants': x => `+${x.format(0)} ${toTextStyle('遗物','black-hole')}`,
+        'shark-bonus-prestige': x => `${toTextStyle('重生','prestige')}碎片 ${formatMult(x)}`,
+        'shark-bonus-core': x => `${toTextStyle('岩浆','core')}碎片 ${formatMult(x)}`,
+		'shark-bonus-remnants': x => `${toTextStyle('遗物','black-hole')} +${x.format(0)}`,
 
         'shark-overpopulation': (x,y) => `你的${toTextStyle('鲨鱼','shark')}太大了，在吃了 <h4>${format(y)}</h4> 条鱼后，吃${toTextStyle('鱼','fish')}的数量是原来的 <h4>${format(x,3)} 次方根</h4>。`,
 
@@ -1703,8 +1703,8 @@ LANGUAGES.ZH = {
 			"evolution-tree-respec": `你确定要重置${toTextStyle('进化','humanoid')}树吗？这将触发一次不获得${toTextStyle('类人','humanoid')}鲨鱼的${toTextStyle('进化','humanoid')}重置。`,
             "evolution-tree-import": `输入进化树。`,
 			"starter-upgrade-warning": `你确定要购买这个强子升级吗？你应该购买<b>"鲨鱼层次"</b>！`,
-            "rebirth-confirm": `${toTextStyle('重生','rebirth')} 是后期功能，他能让你在主阶段上更快地推进游戏进度。${toTextStyle('重生','rebirth')} 鲨鱼会重置所有的游戏内容，但不会重置选项设置和进化树预设。它会奖励你一个${toTextStyle('重生','rebirth')}点数并增加你的全局游戏速度倍率，适用于游戏内几乎所有的资源。你可以花费${toTextStyle('重生','rebirth')}点数，来购买${toTextStyle('重生','rebirth')}升级，以加快你的游戏进度。<br><br>你确定要进行鲨鱼重生吗？`,
-            "rebirth-undo": `你确定要重置到上一个吗？`,
+            "rebirth-confirm": `${toTextStyle('转世','rebirth')}是基于游戏通关的功能，它能让你更快地推进游戏进度。鲨鱼${toTextStyle('转世','rebirth')}会重置所有的游戏内容，但不会重置选项设置和进化树预设。你将获得一个${toTextStyle('转世','rebirth')}点数，并提升几乎所有游戏内资源的倍率。你可以消耗${toTextStyle('转世','rebirth')}点数，来购买${toTextStyle('转世','rebirth')}升级，以加速你的游戏进度。<br><br>你确定要进行鲨鱼转世吗？`,
+            "rebirth-undo": `你确定要回到本次转世的起点吗？`,
         },
 
         'notify-desc' : {
