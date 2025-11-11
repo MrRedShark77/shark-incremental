@@ -503,21 +503,21 @@ LANGUAGES.ZH = {
         // Exploration
 
         'explore-while': `探索时`,
-        'explore-inside': (a,b,c)=>`基数：${a.format()}/秒`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/秒`+`<br> ${toTextStyle("鱼",'fish')}的最大数量达到${format(c,0)}.`,
+        'explore-inside': (a,b,c)=>`基数：${a.format()}/秒`+(b.gt(a) ? " ➜ " : " ~ ")+`${b.format()}/秒`+`<br> ${toTextStyle("鱼",'fish')}的最大数量达到 ${format(c,0)}.`,
         'explore-outside': x=>`当前基数：${x.format()}/秒<br>探索海洋！`,
 
-        'explore-next': x=>`${toTextStyle("鲨鱼",'shark')}等级达到<h3>${format(x,0)}</h3>时，解锁新的海洋。`,
+        'explore-next': x=>`${toTextStyle("鲨鱼",'shark')}等级达到 <h3>${format(x,0)}</h3> 时，解锁新的海洋。`,
 
-        'explore-doubler-1': x=>`获得双倍的${x}。`,
-        'explore-doubler-2': `下潜速度加倍。`,
+        'explore-doubler-1': x=>`获得双倍的${x}`,
+        'explore-doubler-2': `下潜速度加倍`,
 
         'explore-0-name': `太平洋`,
         'explore-0-desc': `吃${toTextStyle('鱼','fish')}的速度是原来的平方根。`,
         'explore-0-milestone': [
-            `获得${toTextStyle('重生','prestige')}碎片的数量是原来的1.05次幂。`,
+            `获得${toTextStyle('重生','prestige')}碎片的数量是原来的 1.05 次幂。`,
             `${toTextStyle('鲨鱼','shark')}等级的平方根每增加 1, 下潜速度和资源产量增加 25%.`,
             `升级${toTextStyle('鲨鱼','shark')}无需消耗${toTextStyle('鱼','fish')}。`,
-            `吃${toTextStyle('鱼','fish')}的速度是原来的1.05次幂。`,
+            `吃${toTextStyle('鱼','fish')}的速度是原来的 1.05 次幂。`,
             `解锁${toTextStyle('地核','core')}.`,
         ],
 
@@ -1438,26 +1438,26 @@ LANGUAGES.ZH = {
         'tab-rebirth-upgs': `${toTextStyle('转世','rebirth')} 升级`,
         'tab-rebirth-past10': `过去 10 次${toTextStyle('转世','rebirth')}`,
 
-        'rebirth-points-div': `你拥有 <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> 转世点数，全局倍率 <h3>${toTextStyle('???','rebirth','global-mult')}</h3>.`,
+        'rebirth-points-div': `你拥有 <h3>${toTextStyle('???','rebirth','rebirth-amount')}</h3> 转世点数，全局资源倍率 <h3>${toTextStyle('???','rebirth','global-mult')}</h3>.`,
 
         'rebirth-upgrades': [
             ["经典自动化", `永久解锁${toTextStyle('鲨鱼','shark')}、${toTextStyle('重生','prestige')}和${toTextStyle('地核','core')}的自动化。`],
             ["银河栽培", `永久解锁${toTextStyle('进化','humanoid')}和${toTextStyle('奇点','black-hole')}的自动化。`],
             ["强子组装器", `永久解锁${toTextStyle('强子','hadron')}相关的自动化。`],
             ["反物质自动化 I", `永久解锁${toTextStyle('全能','omni')}相关的自动化。`],
-            ["反物质自动化 II", `自动提升${toTextStyle('全能','omni')}层级且无需重置。`],
+            ["反物质自动化 II", `无需重置，自动提升${toTextStyle('全能','omni')}层级。`],
             ["经典生成", `自动获得${toTextStyle('重生','prestige')}碎片和${toTextStyle('岩浆','core')}碎片。`],
             ["类人鲨鱼人口", `自动获得${toTextStyle('类人','humanoid')}鲨鱼。`],
             ["自复制粒子", `自动获得${toTextStyle('奇点','black-hole')}相关的所有资源和${toTextStyle('基本粒子','hadron')}。`],
-            ["反物质三重奏", `自动获得${toTextStyle('全能','omni')}相关的所有 资源`],
-            ["额外倍数器", `全局倍率 <b>+50%</b>.`],
+            ["反物质三重奏", `自动获得${toTextStyle('全能','omni')}相关的所有资源`],
+            ["额外倍率", `全局资源倍率 <b>+50%</b>.`],
         ],
 
         'rebirth-upgrades-note': `注意：大多数转世升级实际上并未实装，如果你注意到某个升级没有效果，请联系开发者。`,
         'rebirth-time': `${toTextStyle('转世','rebirth')}用时`,
         'rebirth-points': `${toTextStyle('转世','rebirth')}点数`,
 
-        'global-mult-title': `全局倍率因子`,
+        'global-mult-title': `全局资源倍率因子`,
         'global-mults': {
             base: x => `${x} 倍率基数`,
             time: x => `${x} 最快${toTextStyle('转世','rebirth')}`,
