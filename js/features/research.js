@@ -878,7 +878,7 @@ const RESEARCH = {
         ],
     },
 
-    t1: {
+    tr1: {
         tier: 4,
         unl: ()=>player.omni.tier.gte(12),
         max: 9,
@@ -888,7 +888,7 @@ const RESEARCH = {
         effect: r => r.mul(15),
         effDesc: x => "+"+format(x,0),
     },
-    t2: {
+    tr2: {
         tier: 4,
         unl: ()=>player.omni.tier.gte(13),
         require: [
@@ -897,14 +897,14 @@ const RESEARCH = {
         effect: r => Decimal.div(sharkUpgEffect('os2',0),10),
         effDesc: x => "+"+format(x,1),
     },
-    t3: {
+    tr3: {
         tier: 4,
         unl: ()=>player.omni.tier.gte(14),
         require: [
             ['transcend',false,1e50]
         ],
     },
-    t4: {
+    tr4: {
         tier: 4,
         unl: ()=>player.omni.tier.gte(18),
         require: [

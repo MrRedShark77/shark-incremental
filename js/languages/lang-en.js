@@ -476,10 +476,10 @@ LANGUAGES.EN = {
             'ge11': [`Better Nucleobase II`,`The second boost of cytosine and guanine is improved.`],
             'ge12': [`Useless Scalings`,`Remove the first 2 scalings of black hole tier.`],
 
-            't1': ['Scaled Omni-Shark Strength', `Delays the scaling of 'Omni-Shark Strength' by <b>+15</b> per level.`],
-            't2': ['Omni-Shark Agility Affection', `'Omni-Shark Agility' affects the base of 'Super Omni-Shark Strength' and 'Omni-Shark Transcendence' at a 10% rate.`],
-            't3': ['Better Transcendence', `Slightly improve the formula of ${toTextStyle("Transcendental",'transcend')} shards gain.`],
-            't4': ['Better Transcendental Condenser', `Condensed ${toTextStyle("Transcendental",'transcend')} shards are improved slightly.`],
+            'tr1': ['Scaled Omni-Shark Strength', `Delays the scaling of 'Omni-Shark Strength' by <b>+15</b> per level.`],
+            'tr2': ['Omni-Shark Agility Affection', `'Omni-Shark Agility' affects the base of 'Super Omni-Shark Strength' and 'Omni-Shark Transcendence' at a 10% rate.`],
+            'tr3': ['Better Transcendence', `Slightly improve the formula of ${toTextStyle("Transcendental",'transcend')} shards gain.`],
+            'tr4': ['Better Transcendental Condenser', `Condensed ${toTextStyle("Transcendental",'transcend')} shards are improved slightly.`],
 
             'u1': ['Better Undead Upgrades', `The effect of 'Undead Antimatter' & 'Undead Transcendence' is squared.`],
             'u2': ['Better Undead Yield', `The cost increment of 'Undead Yield' is reduced. <i>This research persists through ${toTextStyle('Shark Omnipotence','omni')}.</i>`],

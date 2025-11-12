@@ -414,7 +414,7 @@ RESETS.runeification = {
 
         OMNI.condenserReset()
 
-        if (!hasResearch('d1')) resetResearch('t3','t4','u3','u4');
+        if (!hasResearch('d1')) resetResearch('tr3','tr4','u3','u4');
 
         RESETS.reaction.doReset();
     },

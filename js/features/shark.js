@@ -406,8 +406,8 @@ const SHARK_UPGRADES = {
         unl: ()=>player.omni.active,
         req: ()=>player.omni.tier.gte(3),
 
-        cost: l => l.sumBase(1.01).scale(Decimal.add(15, researchEffect('t1',0)),2,"P").pow_base(10).mul(10).root(decaySeriesEffect(6,0)),
-        bulk: x => x.pow(decaySeriesEffect(6,0)).div(10).log(10).scale(Decimal.add(15, researchEffect('t1',0)),2,"P",true).sumBase(1.01,true).floor().add(1),
+        cost: l => l.sumBase(1.01).scale(Decimal.add(15, researchEffect('tr1',0)),2,"P").pow_base(10).mul(10).root(decaySeriesEffect(6,0)),
+        bulk: x => x.pow(decaySeriesEffect(6,0)).div(10).log(10).scale(Decimal.add(15, researchEffect('tr1',0)),2,"P",true).sumBase(1.01,true).floor().add(1),
 
         curr: "anti-fish",
 
@@ -464,7 +464,7 @@ const SHARK_UPGRADES = {
 
         curr: "transcend",
 
-        effect: l=>Decimal.add(3,getOmniReward(11,0)).add(simpleResearchEffect('t2',0)).pow(l.mul(decaySeriesEffect(3,1))),
+        effect: l=>Decimal.add(3,getOmniReward(11,0)).add(simpleResearchEffect('tr2',0)).pow(l.mul(decaySeriesEffect(3,1))),
         effDesc: x=>formatMult(x),
     },
     t2: {
@@ -476,7 +476,7 @@ const SHARK_UPGRADES = {
 
         curr: "transcend",
 
-        effect: l=>Decimal.add(2,getOmniReward(11,0)).add(simpleResearchEffect('t2',0)).pow(l.mul(decaySeriesEffect(3,1))),
+        effect: l=>Decimal.add(2,getOmniReward(11,0)).add(simpleResearchEffect('tr2',0)).pow(l.mul(decaySeriesEffect(3,1))),
         effDesc: x=>formatMult(x),
     },
 }

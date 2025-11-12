@@ -277,7 +277,7 @@ const OMNI = {
 
     condensers: [
         [() => player.omni.tier.gte(10), 'transcend', x => {
-            let e = hasResearch('t4') ? .625 : .5
+            let e = hasResearch('tr4') ? .625 : .5
             for (let i = 0; i < 5; i++) e += ISOTOPES.boost(6,i);
             return expPow(x.add(1), e).overflow('ee100',0.5,2)
         }, x => formatMult(x), () => player.omni.tier.gte(24)],
@@ -670,7 +670,7 @@ CURRENCIES.transcend = {
 
         var exp = .5
 
-        if (hasResearch('t3')) exp += .05;
+        if (hasResearch('tr3')) exp += .05;
         for (let i = 0; i < 4; i++) exp += ISOTOPES.boost(2,i);
         
         x = expPow(x, exp).mul(sharkUpgEffect('t2')).mul(tmp.global_mult)
@@ -757,7 +757,7 @@ RESETS.reaction = {
         for (let i = 0; i < UNDEAD.upgrades.length; i++) player.omni.undead_upgs[i] = E(0);
 
         resetSharkUpgrades('t1','t2')
-        if (!hasResearch('re1')) resetResearch('t1','t2','u1');
+        if (!hasResearch('re1')) resetResearch('tr1','tr2','u1');
 
         RESETS.transcend.doReset()
     },
