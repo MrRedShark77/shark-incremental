@@ -13,7 +13,7 @@ const DECAY_CHAIN = [
         ],
     },{
         unl: () => player.omni.tier.gte(22),
-        symbols: ['Ti',207,81],
+        symbols: ['Tl',207,81],
         pos: [1,4],
         target: [[0,1,1]],
         half: 4.7*60,
