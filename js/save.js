@@ -2,6 +2,18 @@ const VERSION = 3
 const SAVE_ID = "shark_inc_save"
 var prevSave = "", autosave
 
+// btoa/atob only support ASCII, which breaks saves containing non-ASCII characters (e.g. preset names)
+const TEXT_ENCODER = new TextEncoder()
+const TEXT_DECODER = new TextDecoder()
+
+function encodeSave(str) {
+    return TEXT_ENCODER.encode(str).toBase64()
+}
+
+function decodeSave(str) {
+    return TEXT_DECODER.decode(Uint8Array.fromBase64(str))
+}
+
 function getPlayerData() {
     let s = {
         fish: E(1),
@@ -264,7 +276,7 @@ function preventSaving() { return tmp.bh_pause || offline.nosave || tmp.omni.pau
 
 function save(auto=false) {
     if (auto && !player.radios.autosave) return
-    let str = btoa(JSON.stringify(player))
+    let str = encodeSave(JSON.stringify(player))
     if (preventSaving() || findNaN(str, true)) return
     if (localStorage.getItem(SAVE_ID) == '') wipe()
     localStorage.setItem(SAVE_ID,str)
@@ -274,14 +286,14 @@ function save(auto=false) {
 
 function load(x){
     if(typeof x == "string" && x != ''){
-        loadPlayer(JSON.parse(atob(x)))
+        loadPlayer(JSON.parse(decodeSave(x)))
     } else {
         wipe(false,true)
     }
 }
 
 function exporty() {
-    let str = btoa(JSON.stringify(player))
+    let str = encodeSave(JSON.stringify(player))
     save();
     let file = new Blob([str], {type: "text/plain"})
     window.URL = window.URL || window.webkitURL;
@@ -301,7 +313,7 @@ function copyToClipboard(text) {
 }
 
 function export_copy() {
-    copyToClipboard(btoa(JSON.stringify(player)))
+    copyToClipboard(encodeSave(JSON.stringify(player)))
 }
 
 function importy() {
@@ -364,7 +376,7 @@ function isNaNed(val) {
 }
 
 function findNaN(obj, str=false, data=getPlayerData(), node='player') {
-    if (str ? typeof obj == "string" : false) obj = JSON.parse(atob(obj))
+    if (str ? typeof obj == "string" : false) obj = JSON.parse(decodeSave(obj))
     for (let k in obj) {
         if (typeof obj[k] == "number") if (isNaNed(obj[k])) return node+'.'+k
         if (str) {
